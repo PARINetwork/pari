@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n wagtailcore_tags %}
+
+{% block meta_title %}
+{{ self.title }}
+{% endblock %}
+
+{% block extra_css %}
+<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/homepage.less">
+<style>
+  .content-container {
+      font-size: 12.5pt;
+  }
+</style>
+{% endblock %}
+
+{% block main %}
+<div class="container content-container">
+  {{ self.content|richtext }}
+</div>
+{% endblock %}

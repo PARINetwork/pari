@@ -1,0 +1,71 @@
+{% extends "core/static_page.html" %}{% load i18n %}
+
+{% block meta_title %}
+{% trans "Contact Us" %}
+{% endblock %}
+
+
+{% block main %}
+<div class="container content-container">
+  <h3>{% trans "Contact Us" %}</h3>
+  <form method="post" action="{% url "contact_us" %}">{% csrf_token %}
+    <p>{% trans "Pick a category" %}</p>
+    <select name="category" id="category">
+      <option>-----</option>
+      <option class="contribute">{% trans "How do I Contribute Content?" %}</option>
+      <option>{% trans "Press / Institutional Enquiries" %}</option>
+      <option class="donate">{% trans "How do I Donate?" %}</option>
+      <option>{% trans "Story Pitch / Idea" %}</option>
+      <option class="volunteer">{% trans "I want to be a Volunteer" %}</option>
+      <option>{% trans "Others" %}</option>
+    </select>
+
+  {% url "contribute" as contribute_url %}
+  {% url "static_page" slug="guidelines" as guidelines_url %}
+    {% url "static_page" slug="donate" as donate_url %}
+    <div class="content-container helpers">
+      <div class="hidden contribute">
+	{% blocktrans %}
+	<p>Please check the <a href="{{ contribute_url }}">contribute page</a> and the <a href="{{ guidelines_url }}">guidelines</a> for details.</p>
+	<p>Do you still have a query and want to get in touch with us? Please click <a href="javascript:void(0)" class="contact">here</a> to get in touch with us.</p>
+	{% endblocktrans %}
+      </div>
+      <div class="hidden donate">
+	{% blocktrans %}
+	<p>Please check the <a href="{{ donate_url }}">donate</a> page for details.</p>
+	<p>Do you still have a query and want to get in touch with us? Please click <a href="javascript:void(0)" class="contact">here</a> to get in touch with us.</p>
+	{% endblocktrans %}
+      </div>
+      <div class="hidden volunteer">
+	{% blocktrans %}
+	<p>Please check the <a href="{{ contribute_url }}">contribute page</a> and the <a href="{{ guidelines_url }}">guidelines</a> for details.</p>
+	<p>Do you still have a query and want to get in touch with us? Please click <a href="javascript:void(0)" class="contact">here</a> to get in touch with us.</p>
+	{% endblocktrans %}
+      </div>
+    </div>
+
+    <div class="form hidden">
+      <div class="form-group">
+	<p>{{ contact_form.name.label }}</p>
+	{{ contact_form.name }}
+      </div>
+      <div class="form-group">
+	<p>{{ contact_form.email.label }}</p>
+	{{ contact_form.email }}
+      </div>
+      <div class="form-group">
+	<p>{{ contact_form.message.label }}</p>
+	{{ contact_form.message }}
+      </div>
+      <div class="form-group">
+	<input type="submit" value="{% trans "Send" %}">
+      </div>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/contact_us.js"></script>
+{% endblock %}

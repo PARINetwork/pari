@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load i18n wagtailcore_tags %}
+
+{% block meta_title %}{% trans resource.title %}{% if filter %} - {{ filter }}{% endif %}{% endblock %}
+{% block title %}{% trans resource.title %}{% endblock %}
+
+{% block meta_keywords %}
+    {{ resource.title }}
+{% endblock %}
+
+{% block meta_description %}
+    {{ resource.description }}
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/resources.less">
+{% endblock %}
+
+{% block main %}
+<div class="container content-container">
+    <div class="row">
+        <div class="col-lg-12">
+        <table>
+            <tr class="factoids-title">
+                <td>{% trans "Title" %}:</td>
+                <td>&nbsp;{{ resource.title }}</td>
+            </tr>
+            {% if resource.date %}
+            <tr>
+                <td class="factoids-title">{% trans "Date" %}:</td>
+                <td>&nbsp;{{resource.date | date:"M , Y" }}</td>
+            </tr>
+        {% endif %}
+	{% for block in resource.content %}
+	{% if block.block_type != "factoids" %}    
+            <tr>
+              <td class="factoids-title">{{ block.block_type|capfirst }}:</td>
+              <td>&nbsp;{{ block.render }}</td>
+            </tr>
+	{% endif %}
+	{% endfor %}
+        </table>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-9 col-md-9 col-sm-9">
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-9 col-md-9 col-sm-9">
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3">
+      </div>
+    </div>
+</div>
+{% endblock %}

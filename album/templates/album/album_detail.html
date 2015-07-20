@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load i18n wagtailimages_tags wagtailcore_tags %}
+{% block meta_title %}{% blocktrans with album.title as title%}{{ title }}{% endblocktrans %}{% endblock %}
+
+{% block feed_block %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "album_feeds" %}">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "album_feeds" %}">
+{% endblock %}
+
+{% block breadcrumb_menu %}
+    <li class="active">{% trans "Album" %}</li>
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}album/js/lightbox.js"></script>
+{% endblock %}
+
+{% block extra_uncompressed_js %}
+    <script src="//connect.soundcloud.com/sdk.js"></script>
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}album/css/magnific-popup.css">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}album/css/album.less">
+{% endblock %}
+
+{% block main %}
+<div class="popup-gallery">
+  <div class="jumbotron album-header">
+    <div class="row">
+      <div class="col-lg-3  col-md-3 col-sm-3">
+	{% if album.slides.count %}
+        {% with album.slides.all|random as cover %}
+	{% image cover.image fill-360x300 as cover_image %}
+        <img class="img-responsive" src="{{ cover_image.url }}" alt="{{ cover.description|striptags }}">
+        {% endwith %}
+	{% endif %}
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-9">
+        <div class="caption">
+          <h2>{{ album.title }}</h2>
+          {{ album.description|richtext }}
+          <div class="mfp-img-holder">
+            <div class="album-controls">
+              <button class="btn btn-large btn-colour" id="start-slideshow-button">{% trans "Start slideshow" %} <i class="fa fa-play album-audio"></i></button>
+            </div>
+            {% with album.articles.all as articles %}
+            {% if articles %}
+            <div class="related-articles">
+              <p>Related Articles:</p>
+              <ul>
+                {% for article in articles %}
+                <li class="tag"><a href="{{article.get_absolute_url}}">{{article.title}}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endif %}
+            {% endwith %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% for slide in album.slides.all %}
+  {% if forloop.first or forloop.counter0|divisibleby:"3" %}
+  <div class="row">
+  {% endif %}
+  <div class="album-images">
+    <div class="col-lg-4 col-md-4 col-sm-4 center">{% image slide.image max-1024x1024 as slide_image %}
+      <a href="{{ slide_image.url }}" title="{{ slide.description|escape }}" data-audio="{% firstof slide.audio "" %}" data-photographer="{{ album.photographer.name }}" data-location="{% for location in album.locations.all %}{{ location.name }}{% if not forloop.last %},{% endif %} {% endfor %}" data-location-description="{% for location in album.locations.all %}{{ location.name }}{% if not forloop.last %},{% endif %} {% endfor %}" data-date="{{ album.first_published_at|date:"F Y" }}" data-url="{{ album.get_absolute_url }}" data-allowcomments="false" class="image-tag mfp-image">
+	<div class="grid-column">
+	  <img class="center-block album_image" src="{{ slide_image.url }}" alt="{{ slide.description }}">
+	  <div class="caption">
+	    <p>{{ slide.description|striptags|truncatechars:50 }}</p>
+	    {% if slide.audio %}
+	    <div class="audio-icon"><i class="fa fa-microphone"></i></div>
+	    {% endif %}
+	  </div>
+	</div>
+      </a>
+    </div>
+  </div>
+  {% if forloop.last or forloop.counter|divisibleby:"3" %}
+  </div>
+  {% endif %}
+  {% endfor %}
+</div>
+{% endblock %}

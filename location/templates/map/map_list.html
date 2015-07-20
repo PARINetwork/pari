@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block meta_title %}{% trans "Map"  %}{% endblock %}
+
+{% block extra_uncompressed_css %}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.Default.css"/>
+{% endblock %}
+
+{% block extra_css %}
+<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}map/css/map.less">
+{% endblock %}
+
+{% block extra_uncompressed_js %}
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster.js"></script>
+<script type="text/javascript">
+  var locations = [
+  {% for location in locations %}{% if location.slug %}{% url "location-detail" slug=location.slug as location_url %}{"lat": {{ location.point.x }}, "lng": {{ location.point.y }}, "title": "{% trans "View pages from" %} <a href=\"{{ location_url }}\" target=\"_blank\">{{ location.name }}</a>"} {% if not forloop.last %},{% endif %}{% endif %}{% endfor %}
+  ];
+</script>
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript" src="{{ STATIC_URL }}map/js/map.js"></script>
+{% endblock %}
+
+{% block main %}
+<div class="container content-container">
+  <div class="row filter">
+    <h3>{% trans "Filter by" %}:</h3>
+    <ul>
+      <li><input type="checkbox" name="filter" value="articles" {% if articles_checked %}checked="checked"{% endif %}>{% trans "Articles" %}</li>
+      <li><input type="checkbox" name="filter" value="faces" {% if faces_checked %}checked="checked"{% endif %}>{% trans "Faces" %}</li>
+      <li><input type="checkbox" name="filter" value="albums" {% if albums_checked %}checked="checked"{% endif %}>{% trans "Albums" %}</li>
+      <li><input type="button" value="Filter" id="filter"></li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12" id="map"></div>
+  </div>
+</div>
+{% endblock %}

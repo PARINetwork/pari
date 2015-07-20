@@ -1,0 +1,23 @@
+{% load i18n %}
+{% spaceless %}
+<div class="social-icons">
+  <div class="footer-left">
+    <a href="{% url "static_page" slug="terms-and-conditions" %}">
+      <h6>{% trans "Terms & Conditions" %}</h6>
+    </a>
+    <a href="{% url "static_page" slug="copyright" %}">
+      <h6>{% trans "Copyright" %}</h6>
+    </a>
+  </div>
+  <div class="footer-right">
+    <a href="{% url "contact_us" %}"><h6>{% trans "Contact Us" %}</h6></a>
+    <a href="{% url "static_page" slug="donate" %}"><h6>{% trans "Donate" %}</h6></a>
+  </div>
+  <ul>
+    <li><a href="https://facebook.com/{{ SOCIAL_FACEBOOK }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+    <li><a href="https://twitter.com/{{ SOCIAL_TWITTER }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+    <li><a href="{% url "feeds_list_page" %}"><i class="fa fa-rss"></i></a></li>
+    <li><a href="https://github.com/{{ SOCIAL_GITHUB_REPO }}" target="_blank"><i class="fa fa-github"></i></a></li>
+  </ul>
+</div>
+{% endspaceless %}

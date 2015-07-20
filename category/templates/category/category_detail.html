@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load i18n wagtailimages_tags %}
+
+{% block meta_title %}{{ category.name }}{% if filter %} - {{ filter }}{% endif %}{% endblock %}
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}article/js/media_player.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}article/js/category.js"></script>
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}album/css/magnific-popup.css">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/category.less">
+{% endblock %}
+
+{% block breadcrumb_menu %}
+    <li class="active">{% trans "{{ category.name }}" %}</li>
+{% endblock %}
+
+{% block main %}
+    <div class="jumbotron category-header">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3">{% image category.image fill-270x270 as category_image %}
+                <a class="image-popup-fit-width" href="{{ category_image.url }}" title="{{ category.description }}">
+                    <img class="img-responsive" src="{{ category_image.url }}" style="width:270px;height:270px;" alt="{{ category.name }}">
+                </a>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                <div class="category-title">
+                    {{ category.name }}
+                 </div>
+                <div class="category-description">
+                    {{ category.description }}
+                </div>
+                </div>
+            </div>
+        </div>
+    <div class="filter-list-container" data-title="{{ category.name }}" data-filter-endpoint="category_article_filter" data-filter-required-args-category="{{ category.id }}">
+
+      {% include "article/includes/article_list.html" with articles=articles category=category %}
+    </div>
+{% endblock %}

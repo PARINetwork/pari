@@ -1,0 +1,3 @@
+Name: {{ instance.name }}
+Email: {{ instance.email }}
+Message: {{ instance.message }}

@@ -1,0 +1,40 @@
+.ui-button-text .icon-text-height:before {
+    font-family: "FontAwesome";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    font-size: 14px;
+    content:"\f10d";
+}
+.ui-button-text .icon-align-left:before {
+    font-family: "FontAwesome";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    font-size: 14px;
+    content:"\f036";
+}
+.ui-button-text .icon-align-center:before {
+    font-family: "FontAwesome";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    font-size: 14px;
+    content:"\f037";
+}
+.ui-button-text .icon-align-right:before {
+    font-family: "FontAwesome";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    font-size: 14px;
+    content:"\f038";
+}
+.ui-button-text .icon-list-alt:before {
+    font-family: "FontAwesome";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    font-size: 14px;
+    content:"\f13b";
+}

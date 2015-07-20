@@ -1,0 +1,105 @@
+{% load i18n %}
+
+<li class="dropdown">
+  <a href="{% url "category-list" %}">{% trans "Categories" %}</a>
+</li>
+<li class="dropdown">
+  <a href="{% url "category-list" %}">
+    {% trans "Gallery" %}
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li class="dropdown">
+      <a href="{% url "talking-album-list" %}">
+	<span class="glyphicon glyphicon-bullhorn"></span>
+	{% trans "Talking Albums" %}
+      </a>
+    </li>
+    <li class="dropdown">
+      <a href="{% url "category-detail" slug="faces" %}">
+	<span class="glyphicon glyphicon-user"></span>
+	{% trans "Faces" %}
+      </a>
+    </li>
+    <li class="dropdown">
+      <a href="{% url "category-detail" slug="videozone" %}">
+	<span class="glyphicon glyphicon-film"></span>
+	{% trans "Video Zone" %}
+      </a>
+    </li>
+    <li class="dropdown">
+      <a href="{% url "category-detail" slug="audiozone" %}">
+	<span class="glyphicon glyphicon-volume-up"></span>
+	{% trans "Audio Zone" %}
+      </a>
+    </li>
+    <li class="dropdown">
+      <a href="{% url "category-detail" slug="photozone" %}">
+	<span class="glyphicon glyphicon-camera"></span>
+	{% trans "Photo Zone" %}
+      </a>
+    </li>
+    <li class="dropdown">
+      <a href="{% url "category-detail" slug="visible-work-invisible-women" %}">
+	<span class="glyphicon glyphicon-eye-open"></span>
+	{% trans "P Sainath's Online Photo Exhibition" %}
+      </a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="{% url "resource-list" %}">
+    {% trans "Resources" %}
+  </a>
+</li>
+<li class="dropdown">
+  <a href="javascript:void(0);">
+    {% trans "Contribute" %}
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li class="dropdown">
+      <a href="{% url "contribute" slug="contribute" %}">
+	{% trans "Get Involved" %}
+      </a>
+    </li>
+    <li class="dropdown">
+      <a href="{% url "static_page" slug="guidelines" %}">
+	{% trans "Guidelines" %}
+      </a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="javascript:void(0);">
+    {% trans "About PARI" %}
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li class="dropdown">
+      <a href="{% url "static_page" slug="about" %}">
+	{% trans "The story of PARI" %}
+      </a>
+    </li>
+    <li class="dropdown">
+      <a href="{% url "static_page" slug="pari-teachers-students" %}">
+	{% trans "PARI Students & Teachers" %}
+      </a>
+    </li>
+    <li class="dropdown">
+      <a href="{% url "static_page" slug="about-the-editor" %}">
+	{% trans "Founder Editor P Sainath" %}
+      </a>
+    </li>
+    <li class="dropdown">
+      <a href="{% url "static_page" slug="acknowledgements" %}">
+	{% trans "Acknowledgements" %}
+      </a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="{% url "map-list" %}">
+    {% trans "Map" %}
+  </a>
+</li>

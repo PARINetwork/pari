@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load i18n wagtailimages_tags %}
+
+{% block meta_title %}{% trans "Pages from" %} {{ location.address }}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block extra_css %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}album/css/magnific-popup.css">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}article/css/article.less">
+{% endblock %}
+
+{% block main %}
+<div class="container content-container">
+  <div id="articles" class="heading row">
+    {% if location %}
+    <h3 class="col-lg-10">{% trans "Pages from" %} "{{ location.name }}, {{ location.district }}, {{ location.state }}"</h3>
+    {% endif %}
+  </div>
+  <div class="list">
+    {% for page in pages_in_location %}
+    {% with page.specific as article %}
+    <div class="item">
+      <div class="item-image">
+	<div class="image-thumbnail">{% if article.featured_image %}{% image article.featured_image fill-270x270 as featured_image %}
+	  <img class="img-responsive" src="{{ featured_image.url }}" alt="{{ article.featured_image.title }}">{% endif %}
+	</div>
+      </div>
+      {% include "article/includes/default_atom.html" %}
+    </div>
+    {% endwith %}
+    {% empty %}
+    <p>{% trans "No pages to display." %}</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

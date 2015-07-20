@@ -1,0 +1,17 @@
+<div class="paginator">
+  <ul>
+    {% if results.has_previous %}
+    <li class="page-nav" data-page="1"><a href="?page=1&q={{ query }}"><i class="fa fa-angle-double-left"></i></a></li>
+    <li class="page-nav" data-page="{{ results.previous_page_number }}"><a href="?page={{ results.previous_page_number }}&q={{ query }}"><i class="fa fa-angle-left"></i></a></li>
+    {% endif %}
+
+    {% for page in results.paginator.page_range %}
+    <li class="{% if page == results.number %}active{% endif %}" data-page="{{ page }}"><a href="?page={{ page }}&q={{ query }}">{{ page }}</a></li>
+    {% endfor %}
+
+    {% if results.has_next %}
+    <li class="page-nav" data-page="{{ results.next_page_number }}"><a href="?page={{ results.next_page_number }}&q={{ query }}"><i class="fa fa-angle-right"></i></a></li>
+    <li class="page-nav" data-page="{{ results.paginator.num_pages }}"><a href="?page={{ results.paginator.num_pages }}&q={{ query }}"><i class="fa fa-angle-double-right"></i></a></li>
+    {% endif %}
+  </ul>
+</div>

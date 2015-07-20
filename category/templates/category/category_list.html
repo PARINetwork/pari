@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load i18n wagtailimages_tags %}
+
+{% block meta_title %}{% trans "Categories" %}{% endblock %}
+{% block title %}{% trans "Categories" %}{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/categories.less">
+{% endblock %}
+
+
+{% block breadcrumb_menu %}
+    <li class="active">{% trans "Categories" %}</li>
+{% endblock %}
+
+{% block main %}
+    <div class="content-container container">
+    {% for category in categories %}
+    {% if forloop.first or forloop.counter0|divisibleby:"3" %}
+    <div class="row">
+    {% endif %}
+      <div class="categories">
+        <a href="{{ category.get_absolute_url}}">
+          <div class="col-lg-4 col-md-4">
+            <div class="grid-column">{% image category.image fill-370x300 as category_image %}
+              <img class="img-responsive" src="{{ category_image.url }}" alt="{{ category.name }}" style="width:370px;height:300px;">
+              <div class="caption">
+                <h4>{{ category.name }}</h4>
+                <p class="description">{{ category.description }}</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    {% if forloop.last or forloop.counter|divisibleby:"3" %}
+    </div>
+    {% endif %}
+    {% endfor %}
+    </div>
+{% endblock %}

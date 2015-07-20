@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% load i18n wagtailcore_tags wagtailimages_tags %}
+
+{% block meta_title %}{{ article.title }}{% endblock %}
+
+{% block opengraph_block %}
+<meta property="og:title" content="{{ article.title }}">
+<meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ article.get_absolute_url }}">
+<meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{% if article.featured_image %}{{ MEDIA_URL }}{{ article.featured_image|urlencode }}{% else %}{{ STATIC_URL }}img/logo.png{% endif %}">
+<meta property="og:type" content="article">
+<meta property="og:published_time" content="{{ article.publish_date|date:"c" }}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
+<meta name="twitter:title" content="{{ article.title }}" >
+<meta name="twitter:description" content="Read the article on People's archive of Rural India" >
+<meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{% if article.featured_image %}{{ MEDIA_URL }}{{ article.featured_image|urlencode }}{% else %}{{ STATIC_URL }}img/logo.png{% endif %}" >
+<meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ article.get_absolute_url }}" >
+{% endblock %}
+
+{% block breadcrumb_menu %}
+{{ block.super }}
+<li class="active">{{ article.title }}</li>
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}article/css/article.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/carousel.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/location.less">
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{{ STATIC_URL }}article/js/social.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}article/js/map.js"></script>
+{% endblock %}
+
+{% block extra_uncompressed_js %}
+    <script src="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+{% endblock %}
+
+{% block extra_uncompressed_css %}
+    <link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+{% endblock %}
+
+{% block main %}
+<div class="container content-container">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="article-head">
+	{% block title %}
+        <div class="page-header">
+          <h1 class="article-title">{{ article.title }}</h1>
+          <div class="article-strap">{% if article.strap %} {{ article.strap }} {% endif %}</div>
+        </div>
+        <div class="article-meta">
+          {% if translations and translations|length > 1 %}
+	  <span class="dropdown translations">
+	    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+	      {% trans "Choose language" %}
+	      <span class="caret"></span>
+	    </button>
+	    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+	      {% for translation in translations %}
+	      <li role="presentation"><a role="menuitem" tabindex="{{ forloop.counter0 }}" href="{{ translation.get_absolute_url }}">{{ translation.get_language_display }}</a></li>
+	      {% endfor %}
+	    </ul>
+	  </span>
+	  |
+	  {% endif %}
+	  {% if article.first_published_at %}<a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month %}"><i class="fa fa-calendar"></i> {{ article.first_published_at|date }}</a>{% endif %}
+          |  {% for author in article.authors.all %}<a href="{% url "author-detail" author.slug %}"><i class="fa fa-user"></i>  {{ author.name }}</a>
+	  <div>
+	    <a href="https://twitter.com/@{{ SOCIAL_TWITTER }}" class="twitter-follow-button" data-show-count="false">Follow {{ author.twitter_username }}</a>
+	    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		{% include "article/includes/author_social.html" with author=author %}
+		{% endfor %}
+	  </div>
+        </div>
+        {% include "article/includes/social.html" with item=article %}
+	{% endblock %}
+
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 article-holder">
+      <div class="article-content">
+	{% if article.locations.count %}
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right well">
+          <p>{% for location in article.locations.all %}{{ location.name }}{% if not forloop.last %},{% endif %}{% endfor %}</p>
+          <div id="map" class="map-view" data-lat="{% for location in article.locations.all %}{{ location.point.x }}{% if not forloop.last %},{% endif %}{% endfor %}" data-long="{% for location in article.locations.all %}{{ location.point.y }}{% if not forloop.last %},{% endif %}{% endfor %}"></div>
+	</div>
+	{% endif%}
+	<div>
+	  {{ article.content|richtext }}
+	</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      {% for related_article in article.related_articles %}
+      {% if forloop.first %}
+      <div class="related-articles well">
+        <h3><i class="fa fa-exchange"></i>  {% trans "You may also like" %}...</h3>
+        <div class="row">
+          {% endif %}
+	  <div class="col-lg-3 col-md-3 col-sm-3">
+	    <a href="{{ related_article.get_absolute_url }}">
+	      {% if related_article.featured_image %}
+	      <div class="article-image">{% image related_article.featured_image fill-512x512 as featured_image %}
+                <img class="img-responsive" src="{{ featured_image.url }}" alt="{{ related_article.featured_image.title }}">
+	      </div>
+	      {% else %}
+	      <div class="article-image">
+                <img class="img-responsive" src="{{ STATIC_URL }}img/logo.png" alt="PARI Logo">
+	      </div>
+	      {% endif %}
+	      <div class="caption">
+                <h4> {{ related_article.title|truncatechars:70 }} </h4>
+                {% for location in related_article.locations.all %}
+		{% if forloop.first %}<p>{% trans "Location" %}:{% endif %} {{ location.name }}{% if not forloop.last %},{% endif %}{% if forloop.last %}</p>{% endif %}
+		{% endfor %}
+                <p>{% trans "Author" %}: {% for author in related_article.authors.all %}{{ author.name }}{% if not forloop.last %},{% endif %}{% endfor %}</p>
+	      </div>
+	    </a>
+          </div>
+          {% if forloop.last %}
+        </div>
+        {% endif %}
+	{% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

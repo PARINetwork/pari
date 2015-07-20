@@ -1,0 +1,208 @@
+@import "/static/css/common.less";
+
+.ribbon-wrapper {
+    width: 85px;
+    height: 88px;
+    overflow: hidden;
+    position: absolute;
+    top: -12px;
+    right: -10px;
+    display: none;
+
+    .ribbon {
+        text-align: center;
+        position: relative;
+        padding: 7px 0;
+        left: -5px;
+        top: 15px;
+        width: 120px;
+        background-color: @headingsColor;
+        color: #fff;
+
+        .box-shadow (0px 0px 3px rgba(0,0,0,0.3));
+        .rotation (45deg);
+
+        &:before, &:after {
+            content: "";
+            border-top:   3px solid #D43F3F;
+            border-left:  3px solid transparent;
+            border-right: 3px solid transparent;
+            position:absolute;
+            bottom: -3px;
+        }
+
+        &:before {
+            left: 0;
+        }
+        &:after {
+            right: 0;
+        }
+    }
+}
+
+.picture () {
+    border: 6px solid #fff;
+
+    @media (min-width: 1200px) {
+        height: 250px;
+        width: 300px;
+    }
+
+    @media (max-width: 767px) {
+        height: 250px;
+        width: 300px;
+    }
+
+    .box-shadow (2px 2px 5px rgba(0,0,0,0.3));
+}
+
+.stack-effect (@beforeBg: #003366, @afterBg: #993333 , @beforeRotation: -5deg, @afterRotation: 4deg) {
+    @media (min-width: 1200px) {
+        &:before {
+            .rotation (@beforeRotation);
+            background: @beforeBg;
+        }
+
+        &:after {
+            .rotation (@afterRotation);
+            background: @afterBg;
+        }
+    }
+}
+
+.stack-effect-grey (@beforeRotation: -5deg, @afterRotation: 4deg) {
+    .stack-effect (@beforeBg: #333, @afterBg: #fff , @beforeRotation: @beforeRotation, @afterRotation: @afterRotation);
+}
+
+.stack {
+    position: relative;
+    margin: 24px auto;
+
+    img {
+        box-shadow: none;
+        margin: 0 auto;
+    }
+
+    &, &:before, &:after {
+        .picture;
+    }
+
+    @media (min-width: 1200px) {
+        &:before, &:after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+
+            -webkit-transform-origin: bottom left;
+            -moz-transform-origin: bottom left;
+            transform-origin: bottom left;
+
+            .transition (0.3s);
+        }
+
+        &:before {
+            top: 0px;
+            left: -10px;
+        }
+
+        &:after {
+            top: 5px; 
+            left: 0px;
+        }
+    }
+}
+
+.album-grid {
+    .album {
+        @media(max-width:767px){
+          width: 100%;
+          margin: 0 auto;
+          margin-bottom: 18px;
+        }
+        background-color: @alternateBgColor;
+        padding: 10px;
+        .box-sizing (border-box);
+        margin-bottom: 18px;
+        position: relative;
+        z-index: 1;
+        .box-shadow(1px 1px 2px 0 #d0d0d0);
+        border: 1px solid #ccc;
+        border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
+        height: 451px;
+        max-height: 451px;
+
+        .stack1 {
+            .stack-effect ();
+        }
+
+        .stack2{
+            .stack-effect (@beforeBg: #FF9900; @afterBg: #CC3300; @beforeRotation: -2deg; @afterRotation: 3deg);
+        }
+
+        .stack3{
+            .stack-effect (@beforeBg: #009933; @afterBg: #666633; @beforeRotation: 2deg; @afterRotation: -3deg);
+        }
+
+        .stack4{
+            .stack-effect (@beforeBg: #6699FF; @afterBg: #663300; @beforeRotation: -1deg; @afterRotation: 2deg);
+        }
+
+        .stack5{
+            .stack-effect (@beforeBg: #0066CC; @afterBg: #FFCC00; @beforeRotation: -4deg; @afterRotation: 1deg);
+        }
+
+        .caption {
+            p {
+                height: 44px;
+                max-height: 44px;
+            }
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        p {
+            color: black;
+            margin-top: 8px;
+        }
+
+        h3 {
+            color: @headingsColor;
+        }
+
+        &-grey {
+            .stack1 {
+                .stack-effect-grey ();
+            }
+
+            .stack2{
+                .stack-effect-grey (@beforeRotation: -2deg; @afterRotation: 3deg);
+            }
+
+            .stack3{
+                .stack-effect-grey (@beforeRotation: 2deg; @afterRotation: -3deg);
+            }
+
+            .stack4{
+                .stack-effect-grey (@beforeRotation: -1deg; @afterRotation: 2deg);
+            }
+
+            .stack5{
+                .stack-effect-grey (@beforeRotation: -4deg; @afterRotation: 1deg);
+            }            
+        }
+
+        &:hover {
+            div[class*='stack'] {
+                &:before, &:after {
+                    .rotation (0);
+                }
+            }
+
+            .ribbon-wrapper {
+                display: block;
+            }
+        }
+    }
+}

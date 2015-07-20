@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% load i18n wagtailimages_tags wagtailcore_tags %}
+
+{% block meta_title %}{{ page.title }}{% endblock %}
+{% block meta_description %}{{ page.strap.0.value|striptags }}{% endblock %}
+
+{% block breadcrumb_menu %}
+<li class="active">{% trans "Home" %}</li>
+{% endblock %}
+
+{% block extra_css %}
+  <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/homepage.less">
+  <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/categories.less">
+  <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/carousel.less">
+{% endblock %}
+
+
+
+{% block extra_header %}
+    <div class="jumbotron home-page content-container">
+      <h1>{{ page.title }}</h1>
+      <div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12">{{ page.strap.0.value|richtext }}</div>
+      </div>
+    </div>
+
+        <div id="homeCarousel" class="carousel slide carousel-thin-controls container" data-interval="8000" data-ride="carousel">
+            <div class="carousel-inner">
+              {% for item in page.carousel %}
+                    <div class="{% if forloop.first %}active{% endif %} item">
+		    <a href="{{ item.specific.get_absolute_url }}">{% image item.specific.featured_image max-800x800 as featured_image %}
+                    <img class="img-responsive" src="{{ featured_image.url }}" alt="{{ featured_image.title }}">
+                    <div class="custom-carousel-caption">
+                      <p>
+                          <h4>{{ item.title }}</h4>
+                          <h5>{% for location in item.specific.locations.all %}{{ location.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</h5>
+                          <h5>{% if item.specific.strap %} {{ item.specific.strap }}{% else %}&nbsp;{% endif %}</h5>
+                      </p>
+                    </div>
+                    </a>
+                    </div>
+                {% endfor%}
+            </div>
+	    {% if page.carousel %}
+            <a class="carousel-control left" href="#homeCarousel" data-slide="prev">&lsaquo;</a>
+            <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
+            <ol class="carousel-indicators">
+                {% for count in page.carousel %}
+                    <li data-target="#homeCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
+                {% endfor %}
+            </ol>
+	    {% endif %}
+        </div>
+
+    <hr class="line-divider">
+        <div class="container">
+          <div class="row">
+	    {% for col in page.about %}
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <div class="grid-column about">
+                <div>
+		  {{ col.value|richtext }}
+                </div>
+              </div>
+            </div>
+	    {% endfor %}
+          </div>
+	</div>
+	<hr class="line-divider">
+{% endblock %}
+
+{% block main %}
+<div id="homepage">
+    <section id="mainsection">
+        <div class="main-section">
+            <div class="container-fluid">
+                <div class="category-heading">
+                    {% trans "Categories" %}
+                </div>
+                {% for category in categories %}
+		{% if forloop.first or forloop.counter0|divisibleby:"3" %}
+		<div class="row">
+		{% endif %}
+                  <div class="categories">
+                    <a href="{{ category.get_absolute_url}}">
+                      <div class="col-lg-4 col-md-4">
+                        <div class="grid-column">
+
+                          {% image category.image fill-512x512 as category_image %}<img src="{{ category_image.url }}" alt="{{ category.name }}" width="370" height="300" class="img-responsive">
+                          <div class="caption">
+                            <h4>{{ category.name }}</h4>
+                            <p class="description">{{ category.description }}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+		{% if forloop.last or forloop.counter|divisibleby:"3" %}
+		</div>
+		{% endif %}
+		{% endfor %}
+            </div>
+            <a href="{% url 'category-list' %}" class="btn btn-lg btn-warning btn-homepage"><span class="glyphicon glyphicon-th-list"></span> {% trans "View all categories" %}</a>
+         </div>
+    </section>
+ </div>
+{% endblock %}

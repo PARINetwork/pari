@@ -1,0 +1,15 @@
+# Minimal requirements
+Django>=1.8.3,<1.9
+# TODO: Change after 1.0+ releases
+-e git+git://github.com/torchbox/wagtail/commit/d1897f9c143edfa2bf5a3f08018768dbe58f7473#egg=wagtail
+
+# Recommended components (require additional setup):
+psycopg2==2.6.1
+elasticsearch==1.6.0
+
+# Recommended components to improve performance in production:
+django-redis==3.8.2
+
+# For M2M Field support.
+# TODO: Remove after M2MField lands into django-modelcluster
+-e git+git://github.com/theju/django-modelcluster#egg=django-modelcluster

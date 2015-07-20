@@ -1,0 +1,10 @@
+{% load i18n wagtailcore_tags %}
+<div class="caption">
+    <h4><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h4>
+    <p>{% for location in article.locations.all %}{{ location.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+    {% if article.authors.count %}<p>by {% for author in article.authors.all %}{{ author.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>{% endif %}
+    <p>{{ article.search_description|truncatechars_html:"50" }}</p>
+    {% with article.full_url as url and article.title as title %}
+    {% include "article/includes/share.html" %}
+    {% endwith %}
+</div>

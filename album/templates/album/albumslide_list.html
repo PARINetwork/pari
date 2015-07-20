@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load i18n wagtailimages_tags %}
+
+{% block meta_title %}{% blocktrans with album.title as title%}{{ title }}{% endblocktrans %}{% endblock %}
+
+
+{% block extra_js %}
+    <script type="text/javascript" src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}album/js/imagecollectionimage_detail.js"></script>
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}album/css/magnific-popup.css">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}album/css/album.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}album/css/imagecollectionimage_detail.less">
+{% endblock %}
+
+{% block main %}
+<div class="popup-gallery image-collection">
+  {% for slide in album.slides.all %}
+  {% if forloop.first or forloop.counter0|divisibleby:"3" %}
+  <div class="row">
+  {% endif %}
+    <div class="album-images">
+      <div class="col-lg-4">
+	<a href="{{ MEDIA_URL }}{{ slide.image }}" title="{{ slide.description }}" data-audio="{% firstof slide.audio "" %}" data-photographer="{{ album.photographer.name }}" data-location="{% for location in album.locations.all %}{{ location.name }}{% if not forloop.last %},{% endif %} {% endfor %}" data-location-description="{% for location in album.locations.all %}{{ location.name }}{% if not forloop.last %},{% endif %} {% endfor %}" data-date="{{ album.first_published_at|date:"F Y" }}" data-url="{{ album.get_absolute_url }}" class="image-tag mfp-image">
+        <div class="grid-column">{% image slide.image max-1024x1024 as album_image %}
+          <img class="img-responsive" src="{{ album_image.url }}" alt="{{ slide.description }}">
+        </div>
+	</a>
+      </div>
+    {% if forloop.last or forloop.counter|divisibleby:"3" %}
+    </div>
+    {% endif %}
+  {% endfor %}
+</div>
+{% endblock %}

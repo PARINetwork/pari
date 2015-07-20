@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load i18n wagtailimages_tags %}
+
+{% block feed_block %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "album_feeds" %}">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "album_feeds" %}">
+{% endblock %}
+
+{% block meta_title %}{% trans "Albums" %}{% endblock %}
+{% block title %}{% trans "Albums" %}{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}album/css/album_list.less">
+{% endblock %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+{% block breadcrumb_menu %}
+    <li class="active">{% trans "Albums" %}</li>
+{% endblock %}
+
+{% block main %}
+    <div class="content-container container">
+      <div class="album-grid">
+	{% for album in albums %}
+	{% if forloop.first or forloop.counter0|divisibleby:"3" %}
+	<div class="row">
+	{% endif %}
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="album">
+              <a href="{{ album.get_absolute_url }}">
+		<div class="stack">
+                  <div class="ribbon-wrapper">
+                    <div class="ribbon">{{ album.slides.count }}</div>
+                  </div>{% with album.slides.all|random as random_cover %}{% image random_cover.image fill-300x250 as cover_image %}
+                  <img class="img-responsive" src="{{ cover_image.url }}" alt="{{ cover_image.description|striptags }}">{% endwith %}
+		</div>
+		<div class="caption">
+                  <p>{{ album.description|striptags }}</p>
+                  <h3>{{ album.title }}</h3>
+                  <p class="pull-right">{{ album.photographer.name }}</p>
+		</div>
+              </a>
+            </div>
+          </div>
+	{% if forloop.last or forloop.counter|divisibleby:"3" %}
+	</div>
+	{% endif %}
+	{% endfor %}
+      </div>
+    </div>
+{% endblock %}

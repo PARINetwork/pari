@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load i18n wagtailimages_tags %}
+
+{% block feed_block %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "face_feeds" %}">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "face_feeds" %}">
+{% endblock %}
+
+{% block meta_title %}{% trans "Faces" %}{% endblock %}
+{% block title %}{% trans "Faces" %}{% endblock %}
+
+{% block extra_js %}
+
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/categories.less">
+{% endblock %}
+
+
+{% block breadcrumb_menu %}
+    <li class="active">{% trans "Faces" %}</li>
+{% endblock %}
+
+{% block main %}
+  <div class="container content-container">
+    {% for face in faces %}
+    {% if forloop.first or forloop.counter0|divisibleby:"3" %}
+    <div class="row">
+    {% endif %}
+    <div class="categories">
+      <div class="col-lg-4 col-md-4">
+        <a href="{% url "face-detail" alphabet=face.district|lower|first %}">
+          <div class="grid-column">{% image face.image max-512x512 as face_image %}
+            <img class="img-responsive" src="{{ face_image.url }}" width="370" height="470" alt="{{ face.title }}">
+            <div class="label">
+              <p>
+                {{ face.district|upper|first }}
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    {% if forloop.last or forloop.counter|divisibleby:"3" %}
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+{% endblock %}

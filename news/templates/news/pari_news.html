@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load i18n wagtailcore_tags wagtailimages_tags %}
+
+{% block meta_title %}{% trans "New on PARI" %}{% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}article/css/article.less">
+{% endblock %}
+
+{% block main %}
+<div class="container content-container">
+  <div class="row">
+    <div class="article-head">
+      <div class="page-header">
+	<h1 class="article-title">{% trans "New on PARI" %}</h1>
+      </div>
+    </div>
+  </div>
+    <div class="related-articles well">
+      {% for page in new_pages %}
+      <div class="row article" style="margin: 20px 0px;overflow:visible;">
+	{% if page.featured_image %}
+        {% image page.featured_image fill-100x78 as featured_image %}
+	{% endif %}
+	{% if featured_image %}
+	<img src="{{ featured_image.url }}" alt="{{ page.title }}" style="float:left;width:100px;height:78px;">
+	{% else %}
+	<div style="float:left;width:100px;height:78px;"></div>
+	{% endif %}
+	<div class="col-lg-10 col-md-10 col-sm-10">
+	  <a href="{{ page.specific.get_absolute_url }}">
+            <div class="caption" style="margin-left:0px;">
+              <h4>{{ page.title|truncatechars:70 }}</h4>
+              <p>{% for location in page.locations.all %}{{ location.name }}{% if not forloop.last %},{% endif %}{% endfor %}</p>
+              {% if page.authors.count %}
+	      <p>by {% for author in page.authors.all %}{{ author.name }}{% if not forloop.last %},{% endif %}{% endfor %}</p>
+	      {% endif %}
+            </div>
+	  </a>
+	</div>
+      </div>
+      {% endfor %}
+    </div>
+</div>
+{% endblock %}

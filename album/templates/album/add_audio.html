@@ -1,0 +1,58 @@
+{% load i18n %}
+<style>
+  .center { text-align: center; }
+  .hidden { display: none; }
+  .sc_buttons li { display: inline; margin-right: 10px; float: left; }
+</style>
+<div class="tab-content">
+  <header class="active nice-padding">
+    <div class="row">
+      <h1>{% blocktrans %}Add {{ name }}{% endblocktrans %}</h1>
+    </div>
+  </header>
+  <ul class="tab-nav merged">
+    <li class="upload active"><a href="#upload">{% trans "Upload" %}</a></li>
+    <li class="record"><a href="#record" class="active">{% trans "Record" %}</a></li>
+  </ul>
+  <div class="tab-content">
+    <input type="hidden" name="access_token" value="{{ access_token }}">
+    <input type="hidden" name="client_id" value="{{ client_id }}">
+    <input type="hidden" name="obj_id" value="{{ obj_id }}">
+    <section id="upload" class="nice-padding active">
+      <div class="progress hidden">
+	<div class="bar"></div>
+      </div>
+      <ul class="fields sc_buttons center">
+	<li><input type="file" name="{% trans "Audio File" %}"></li>
+	<li><input type="button" class="upload" value="{% trans "Upload" %}"></li>
+      </ul>
+    </section>
+    <section id="record" class="nice-padding">
+      <div class="progress hidden">
+	<div class="bar"></div>
+      </div>
+      <ul class="fields sc_buttons center">
+	<li><p><input type="text" name="audio_title" placeholder="{% trans "Title of the recording" %}"></p></li>
+	<li><input type="button" class="record" value="{% trans "Record" %}"></li>
+	<li><input type="button" class="play" value="{% trans "Play" %}"></li>
+	<li><input type="button" class="download" value="{% trans "Download" %}"></li>
+	<li><input type="button" class="upload" value="{% trans "Upload" %}"></li>
+      </ul>
+    </section>
+  </div>
+</div>
+<script type="text/javascript">
+  if (typeof SC === "undefined" || typeof p5 === "undefined") {
+      [
+	  "//connect.soundcloud.com/sdk-2.0.0.js",
+	  "//cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.6/p5.min.js",
+	  "//cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.6/addons/p5.sound.min.js",
+	  "{{ STATIC_URL }}album/js/sc_audio.js"
+      ].forEach(function(src) {
+	  var script = document.createElement('script');
+	  script.src = src;
+	  script.async = false;
+	  document.body.appendChild(script);
+      });
+  }
+</script>

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block feed_block %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "resource_feeds" %}">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "resource_feeds" %}">
+{% endblock %}
+
+{% block meta_title %}{% trans "Resources" %}{% endblock %}
+{% block title %}{% trans "Resources" %}{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/resources.less">
+{% endblock %}
+
+{% block breadcrumb_menu %}
+    <li class="active">{% trans "Resources" %}</li>
+{% endblock %}
+
+{% block main %}
+    <div id="main_content">
+      <div class="resourceheading">
+        <h1>{% trans "Resources" %}</h1>
+        <p>{% trans "All official and independent reports on rural India" %}</p>
+      </div>
+    </div>
+    <div class="row">
+    {% for resource in object_list %}
+    {% if forloop.first or forloop.counter0|divisibleby:"3" %}
+    <div class="row">
+    {% endif %}
+      <div class="resources">
+        <a href="{{ resource.get_absolute_url }}">
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+            <div class="grid-column">
+              <div class="image-container">
+                <img src="{{ resource.embed_thumbnail }}" alt="{{ resource.title }}" width="250" height="240">
+              </div>
+              <div class="caption">
+                {{ resource.title|truncatechars:50 }}
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    {% if forloop.last or forloop.counter|divisibleby:"3" %}
+    </div>
+    {% endif %}
+    {% endfor %}
+    </div>
+    <div class="row">
+      {% include "includes/paginator.html" with results=page_obj %}
+    </div>
+{% endblock %}

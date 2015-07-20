@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block meta_title %}{% trans "Stay updated with RSS/Atom feeds" %}{% endblock %}
+
+{% block main %}
+<div class="row">
+  <h3>{% trans "Stay updated with latest content through Feeds" %}</h3>
+  <ul>
+    <li>
+      <h4>{% trans "Consolidated Feed" %} (<a href="{% url "all_feeds" %}?format=atom">{% trans "Atom" %}</a> | <a href="{% url "all_feeds" %}?format=rss">{% trans "RSS" %}</a>)</h4>
+    </li>
+    <li>
+      <h4>{% trans "Article Feed" %} (<a href="{% url "article_feeds" %}?format=atom">{% trans "Atom" %}</a> | <a href="{% url "article_feeds" %}?format=rss">{% trans "RSS" %}</a>)</h4>
+    </li>
+    <li>
+      <h4>{% trans "Album Feed" %} (<a href="{% url "album_feeds" %}?format=atom">{% trans "Atom" %}</a> | <a href="{% url "album_feeds" %}?format=rss">{% trans "RSS" %}</a>)</h4>
+    </li>
+    <li>
+      <h4>{% trans "Face Feed" %} (<a href="{% url "face_feeds" %}?format=atom">{% trans "Atom" %}</a> | <a href="{% url "face_feeds" %}?format=rss">{% trans "RSS" %}</a>)</h4>
+    </li>
+    <li>
+      <h4>{% trans "Resource Feed" %} (<a href="{% url "resource_feeds" %}?format=atom">{% trans "Atom" %}</a> | <a href="{% url "resource_feeds" %}?format=rss">{% trans "RSS" %}</a>)</h4>
+    </li>
+  </ul>
+</div>
+{% endblock %}

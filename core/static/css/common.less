@@ -1,0 +1,220 @@
+@import "elements.less";
+
+@headingsColor: #ee4303;
+@navColor: #333;
+@alternateBgColor: #E8E8E8;
+@contactFormBgColor: #9E9D95;
+
+// screen sizes
+@screen-xs-max: 767px;
+@screen-sm-min: 768px;
+@screen-sm-max: 991px;
+@screen-md-min: 992px;
+@screen-md-max: 1199px;
+@screen-lg-min: 1200px;
+
+.fixed-header () {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+h4{
+  small{
+    font-size: 14px;
+  }
+}
+.section-header () {
+   // color: #999;
+    font-size: 18px;
+    font-weight: 200;
+    margin-bottom: 0px;
+
+    a {
+        text-decoration: none;
+        small {
+            color: @headingsColor;
+        }
+    }
+}
+
+.dark-caption () {
+    background-color: rgba(0, 0, 0, 0.74902);
+
+    p {
+        color: #fff;
+    }
+
+    i {
+        color: @headingsColor;
+    }
+}
+
+.full-size-background (@bg: #E8E8E8) {
+    &:before, &:after{
+        content: '';
+        position: absolute;
+        background: @bg;
+        top: 0;
+        bottom: 0;
+        width: 9999px;
+    }
+    &:before {
+        right: 100%
+    }
+    &:after {
+        left: 100%;
+    }
+}
+
+
+.menu-arrow (@border) {
+    &:after {
+        .menu-arrow-after;
+    }
+
+    &:before{
+        .menu-arrow-before (@border);
+    };
+}
+
+.menu-arrow-after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent transparent #fff transparent;
+    border-style: solid;
+    border-width: 12px;
+    top: 71%;
+    left: 50%;
+    z-index: 11;
+    margin-left: -10px;
+}
+
+.menu-arrow-before (@border) {
+    content: '';
+    z-index: 10;
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent transparent @border transparent;
+    border-style: solid;
+    border-width: 14px;
+    top: 61%;
+    left: 50%;
+    margin-left: -12px;
+}
+
+.menu-arrow-before-other(@border){
+  content: '';
+    z-index: 10;
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent transparent @border transparent;
+    border-style: solid;
+    border-width: 8px;
+    top: 61%;
+    left: 50%;
+    margin-left: -12px;
+}
+
+.vertical-separator (@height, @color1, @color2, @color3) {
+    border : 0;
+    height : @height;
+    width : 1px;
+    background-image: -webkit-linear-gradient(top, @color1, @color2, @color3);
+    background-image: -moz-linear-gradient(to bottom, @color1, @color2, @color3);
+    background-image: -ms-linear-gradient(to bottom, @color1, @color2, @color3);
+    background-image: -o-linear-gradient(to bottom, @color1, @color2, @color3);
+    background-image: linear-gradient(to bottom, @color1, @color2, @color3);
+}
+
+.horizontal-separator (@width, @color1, @color2, @color3) {
+    border : 0;
+    width : @width;
+    height : 1px;
+    background-image: -webkit-linear-gradient(left, @color1, @color2, @color3);
+    background-image: -moz-linear-gradient(to right, @color1, @color2, @color3);
+    background-image: -ms-linear-gradient(to right, @color1, @color2, @color3);
+    background-image: -o-linear-gradient(to right, @color1, @color2, @color3);
+    background-image: linear-gradient(to right, @color1, @color2, @color3);
+}
+
+/* Take from Bootstrap */
+
+.gradientBar(@primaryColor, @secondaryColor, @textColor: #fff, @textShadow: 0 -1px 0 rgba(0,0,0,.25)) {
+  color: @textColor;
+  text-shadow: @textShadow;
+  #gradient > .vertical(@primaryColor, @secondaryColor);
+  border-color: @secondaryColor @secondaryColor darken(@secondaryColor, 15%);
+  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
+}
+
+.reset-filter() {
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
+}
+
+#gradient {
+    .vertical(@startColor: #555, @endColor: #333) {
+        background-color: mix(@startColor, @endColor, 60%);
+        background-image: -moz-linear-gradient(top, @startColor, @endColor); // FF 3.6+
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
+        background-image: -webkit-linear-gradient(top, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+        background-image: -o-linear-gradient(top, @startColor, @endColor); // Opera 11.10
+        background-image: linear-gradient(to bottom, @startColor, @endColor); // Standard, IE10
+        background-repeat: repeat-x;
+        filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@startColor),argb(@endColor))); // IE9 and down
+    }
+}
+
+.buttonBackground (@startColor, @endColor, @textColor: #fff, @textShadow: 0 -1px 0 rgba(0,0,0,.25)) {
+  .gradientBar(@startColor, @endColor, @textColor, @textShadow);
+  *background-color: @endColor;
+  .reset-filter();
+
+  &:hover, &:focus, &:active, &.active, &.disabled, &[disabled] {
+    color: @textColor;
+    background-color: @endColor;
+    *background-color: darken(@endColor, 5%);
+  }
+
+  &:active,
+  &.active {
+    background-color: darken(@endColor, 10%) e("\9");
+  }
+}
+
+.perspective (@value: 1000) {
+	-webkit-perspective: 	@value;
+	-moz-perspective: 	@value;
+	-ms-perspective: 	@value;
+	perspective: 		@value;
+}
+
+.backface-visibility(@visibility: hidden){
+    -webkit-backface-visibility: @visibility;
+    -moz-backface-visibility: @visibility;
+    backface-visibility: @visibility;
+}
+
+#transform {
+    .style(@style) {
+        -webkit-transform-style: @style;
+        -moz-transform-style: @style;
+        -ms-transform-style: @style;
+        -o-transform-style: @style;
+        transform-style: @style;
+    }
+
+    .origin(@origin) {
+        -webkit-transform-origin: @origin;
+        -moz-transform-origin: @origin;
+        -o-transform-origin: @origin;
+        transform-origin: @origin;
+    }
+
+}

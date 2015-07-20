@@ -1,0 +1,68 @@
+<!-- TODO: Currently supports only Points geographic feature -->{% load static %}
+<link rel="stylesheet" href="{% get_static_prefix %}location/css/leaflet.css" />
+<link rel="stylesheet" href="{% get_static_prefix %}location/css/Control.Geocoder.css" />
+<script src="{% get_static_prefix %}location/js/leaflet.js"></script>
+<script src="{% get_static_prefix %}location/js/leaflet-omnivore.min.js"></script>
+<script src="{% get_static_prefix %}location/js/Control.Geocoder.js"></script>
+
+<textarea id="{{ id }}" class="vWKTField required hidden" cols="150" rows="10" name="{{ name }}">{{ serialized }}</textarea>
+<div id="map" style="height:{{map_height}}px;width:{{map_width}}px;"></div>
+<script type="text/javascript">
+    setTimeout(function() {
+	(function($) {
+	    var map = L.map('map').setView({lat: {{ default_lat }}, lon: {{ default_lon }} }, {{ default_zoom }});
+
+	    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+		attribution: '&copy; <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors | Reverse and Geocoding powered by <a href="http://wiki.openstreetmap.org/wiki/Nominatim" target="_blank">Nominatim</a>'
+	    }).addTo(map);
+	    var geocoder = L.Control.geocoder().addTo(map);
+
+	    var marker, markerOpts = {
+		draggable: true,
+		clickable: true
+	    };
+	    if (!document.getElementById('{{ id }}').value) {
+		marker = L.marker(map.getCenter(), markerOpts);
+	    } else {
+		var pointWKT = document.getElementById('{{ id }}').value;
+		var layers = omnivore.wkt.parse(pointWKT).getLayers();
+		marker = L.marker([layers[0].getLatLng().lng, layers[0].getLatLng().lat], markerOpts);
+	    }
+	    geocoder.markGeocode = function(result) {
+		marker.setLatLng(result.center);
+		$("#id_state").val(result.properties.address.state);
+		$("#id_district").val(result.properties.address.state_district);
+		$("#id_name").val(result.name.split(",")[0].trim());
+	    };
+
+	    function reverseGeoCode() {
+		$.ajax({
+		    url: "http://nominatim.openstreetmap.org/reverse",
+		    type: "GET",
+		    data: {
+			format: "json",
+			zoom: 18,
+			lat: marker.getLatLng().lat,
+			lon: marker.getLatLng().lng,
+			addressdetails: 1
+		    }
+		}).done(function(data) {
+		    var address = data["address"];
+		    $("#id_name").val(data["display_name"]);
+		    if (address) {
+			$("#id_district").val(address["state_district"]);
+			$("#id_state").val(address["state"]);
+			$("#id_point").val("POINT(" + marker.getLatLng().lat + " " + marker.getLatLng().lng + ")");
+		    }
+		});
+	    }
+
+	    marker.on('dragend', reverseGeoCode);
+	    map.on('dblclick', function(ev) {
+		marker.setLatLng(ev.latlng);
+		reverseGeoCode();
+	    });
+	    marker.addTo(map);
+	})(jQuery || django.jQuery);
+    }, 500);
+</script>

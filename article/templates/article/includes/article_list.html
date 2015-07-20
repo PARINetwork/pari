@@ -1,0 +1,20 @@
+<div id="articles" class="heading row">{% load i18n static wagtailimages_tags %}
+    {% if category.name %}
+        <h3 class="col-lg-10">{% trans "Articles for" %} "{{ category.name }}"</h3>
+    {% endif %}
+</div>
+<div class="list">
+    {% for article in articles %}
+        <div class="item">
+          <div class="item-image">
+	    <div class="image-thumbnail">{% if article.featured_image %}{% image article.featured_image fill-270x270 as featured_image %}
+	      <img class="img-responsive" src="{{ featured_image.url }}" alt="{{ article.featured_image.title }}">{% endif %}
+	    </div>
+            </div>
+	    {% include "article/includes/default_atom.html" %}
+        </div>
+    {% empty %}
+        {% trans "No articles to display." %}
+    {% endfor %}
+    {% include "includes/paginator.html" with results=articles %}
+</div>

@@ -1,0 +1,20 @@
+from django.utils.translation import activate
+
+from wagtail.wagtailcore.models import Page
+
+
+def get_translations_for_page(page):
+    translations = []
+    if page.language != "en":
+        activate(page.language)
+    try:
+        trans_holder = page.get_children().get(title="Translations")
+        translations.append(page.specific)
+        translations.extend(trans_holder.get_children().specific())
+    except Page.DoesNotExist:
+        # Check if page exists within the translation folder
+        parent = page.get_parent()
+        if parent.title == "Translations":
+            translations.append(parent.get_parent().specific)
+            translations.extend(parent.get_children().specific())
+    return translations

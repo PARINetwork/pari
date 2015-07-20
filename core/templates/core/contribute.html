@@ -1,0 +1,47 @@
+{% extends "core/static_page.html" %}
+
+{% block extra_css %}
+<style>
+  h4 {
+      font-size: 20px;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+      color: #ee4303;
+      margin: 0px;
+      padding: 10px 25px;
+      cursor: pointer;
+      background: #e8e8e8;
+  }
+  .rich-text h4:not(:last-of-type) {
+      border-bottom: 1px #a6a6a6 solid;
+  }
+  .rich-text h4:first-of-type {
+      border-top-left-radius: 7px;
+      border-top-right-radius: 7px;
+  }
+  .rich-text h4:last-of-type {
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;	
+  }
+  p {
+      margin: 10px 0px;
+      padding: 0px 25px;
+  }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript">
+    $(function() {
+	$(".rich-text h4").addClass("glyphicon-plus");
+	$(".rich-text p").addClass("collapse");
+	$(".rich-text h4").on("click", function() {
+	    if ($(this).hasClass("glyphicon-plus")) {
+		$(this).removeClass("glyphicon-plus").addClass("glyphicon-minus");
+	    } else {
+		$(this).removeClass("glyphicon-minus").addClass("glyphicon-plus");
+	    }
+	    $(this).next("p").toggleClass("in");
+	});
+    });
+</script>
+{% endblock %}
