@@ -6,7 +6,7 @@
 {% block opengraph_block %}
 <meta property="og:title" content="{{ article.title }}">
 <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ article.get_absolute_url }}">
-<meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{% if article.featured_image %}{{ MEDIA_URL }}{{ article.featured_image|urlencode }}{% else %}{{ STATIC_URL }}img/logo.png{% endif %}">
+<meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{% if article.featured_image %}{{ MEDIA_URL }}{{ article.featured_image|urlencode }}{% else %}{{ STATIC_URL }}img/default_featured_image.png{% endif %}">
 <meta property="og:type" content="article">
 <meta property="og:published_time" content="{{ article.publish_date|date:"c" }}">
 
@@ -14,7 +14,7 @@
 <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
 <meta name="twitter:title" content="{{ article.title }}" >
 <meta name="twitter:description" content="Read the article on People's archive of Rural India" >
-<meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{% if article.featured_image %}{{ MEDIA_URL }}{{ article.featured_image|urlencode }}{% else %}{{ STATIC_URL }}img/logo.png{% endif %}" >
+<meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{% if article.featured_image %}{{ MEDIA_URL }}{{ article.featured_image|urlencode }}{% else %}{{ STATIC_URL }}img/default_featured_image.png{% endif %}" >
 <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ article.get_absolute_url }}" >
 {% endblock %}
 
@@ -114,7 +114,7 @@
 	      </div>
 	      {% else %}
 	      <div class="article-image">
-                <img class="img-responsive" src="{{ STATIC_URL }}img/logo.png" alt="PARI Logo">
+                <img class="img-responsive" src="{{ STATIC_URL }}img/default_featured_image.png" alt="PARI Logo">
 	      </div>
 	      {% endif %}
 	      <div class="caption">
