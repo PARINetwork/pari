@@ -169,6 +169,8 @@ WAGTAILSEARCH_RESULTS_TEMPLATE = "search/search_results.html"
 COMPRESS_PRECOMPILERS = (
     ('text/less', 'lessc {infile} {outfile}'),
     ('text/typescript', 'tsc {infile} --out {outfile}'),
+    ('text/x-sass', 'sassc {infile} {outfile}'),
+    ('text/x-scss', 'sassc --scss {infile} {outfile}'),
 )
 
 COMPRESS_ENABLED = False
