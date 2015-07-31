@@ -35,11 +35,11 @@
 {% endblock %}
 
 {% block extra_uncompressed_js %}
-    <script src="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src="{{ STATIC_URL }}location/js/leaflet.js"></script>
 {% endblock %}
 
 {% block extra_uncompressed_css %}
-    <link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}location/css/leaflet.css" />
 {% endblock %}
 
 {% block main %}
