@@ -22,11 +22,13 @@ def editor_js():
         """
         <script>
         registerHalloPlugin('hallojustify');
-        registerHalloPlugin('halloblock', {{"elements": ["blockquote"]}});
-        registerHalloPlugin('hallorequireparagraphs', {{"blockElements": ['dd', 'div', 'dl', 'figure', 'form', 'ul', 'ol', 'table', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote']}}); 
+        registerHalloPlugin('halloblock', {{ "elements": ["blockquote"] }});
+        registerHalloPlugin('hallorequireparagraphs', {{ "blockElements": ['dd', 'div', 'dl', 'figure', 'form', 'ul', 'ol', 'table', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote'] }}); 
         registerHalloPlugin('hallohtml');
         </script>
-        """
+        <script src="{0}article/js/slug.js"></script>
+        """,
+        settings.STATIC_URL
     )
 
 @hooks.register('insert_editor_css')
@@ -35,5 +37,6 @@ def editor_css():
         """
         <link rel="stylesheet" href="{0}font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="{0}article/css/hallo-icons.css">
-        """.format(settings.STATIC_URL)
+        """,
+        settings.STATIC_URL
     )
