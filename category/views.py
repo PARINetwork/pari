@@ -18,7 +18,7 @@ class CategoryDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(CategoryDetail, self).get_context_data(**kwargs)
-        qs = Article.objects.filter(categories=context["category"])
+        qs = Article.objects.live(categories=context["category"])
         paginator = Paginator(qs, self.paginate_by)
         try:
             page_num = self.request.GET.get("page", 1)
