@@ -5,6 +5,7 @@ from django.views.generic.list import ListView
 from django.contrib.sites.requests import RequestSite
 from django.utils import translation
 from django.conf import settings
+from django.http import Http404
 
 from article.models import Article
 from author.models import Author
@@ -14,6 +15,14 @@ from core.utils import get_translations_for_page
 class ArticleDetail(DetailView):
     template_name = "article/article.html"
     model = Article
+
+    def get_object(self, queryset=None):
+        obj = super(ArticleDetail, self).get_object(queryset)
+        if self.request.user.is_staff or self.request.GET.get("preview"):
+            return obj
+        if not obj.live:
+            raise Http404
+        return obj
 
     def get_context_data(self, **kwargs):
         context = super(ArticleDetail, self).get_context_data(**kwargs)
