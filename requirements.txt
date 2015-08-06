@@ -8,7 +8,7 @@ psycopg2==2.6.1
 elasticsearch==1.6.0
 
 # Recommended components to improve performance in production:
-django-redis==3.8.2
+django-redis==4.2.0
 
 # For M2M Field support.
 # TODO: Remove after M2MField lands into django-modelcluster
