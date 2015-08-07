@@ -33,6 +33,7 @@
 		$("#id_state").val(result.properties.address.state);
 		$("#id_district").val(result.properties.address.state_district);
 		$("#id_name").val(result.name.split(",")[0].trim());
+		$("#id_point").val("POINT (" + result.properties.lon + " " + result.properties.lat + ")");
 	    };
 
 	    function reverseGeoCode() {
@@ -52,7 +53,7 @@
 		    if (address) {
 			$("#id_district").val(address["state_district"]);
 			$("#id_state").val(address["state"]);
-			$("#id_point").val("POINT(" + marker.getLatLng().lat + " " + marker.getLatLng().lng + ")");
+			$("#id_point").val("POINT(" + marker.getLatLng().lng + " " + marker.getLatLng().lat + ")");
 		    }
 		});
 	    }
