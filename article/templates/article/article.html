@@ -8,7 +8,7 @@
 <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ article.get_absolute_url }}">
 <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{% if article.featured_image %}{{ MEDIA_URL }}{{ article.featured_image|urlencode }}{% else %}{{ STATIC_URL }}img/default_featured_image.png{% endif %}">
 <meta property="og:type" content="article">
-<meta property="og:published_time" content="{{ article.publish_date|date:"c" }}">
+<meta property="og:published_time" content="{% firstof article.original_published_date|date:"c" article.first_published_at|date:"c" %}">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
