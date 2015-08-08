@@ -9,5 +9,5 @@ def settings(request):
         "SOCIAL_TWITTER": django_settings.SOCIAL.get("TWITTER", ""),
         "SOCIAL_GITHUB_REPO": django_settings.SOCIAL.get("GITHUB_REPO", ""),
         "GOOGLE_ANALYTICS_ID": django_settings.SOCIAL.get("GOOGLE_ANALYTICS_ID", ""),
-        "SITE_TITLE": _("People's Archive of Rural India")
+        "SITE_TITLE": django_settings.SITE_TITLE
     }
