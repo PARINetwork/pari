@@ -9,12 +9,15 @@ def get_translations_for_page(page):
         activate(page.language)
     try:
         trans_holder = page.get_children().get(title="Translations")
-        translations.append(page.specific)
-        translations.extend(trans_holder.get_children().specific())
+        if page.live:
+            translations.append(page.specific)
+        translations.extend(trans_holder.get_children().live().specific())
     except Page.DoesNotExist:
         # Check if page exists within the translation folder
         parent = page.get_parent()
         if parent.title == "Translations":
-            translations.append(parent.get_parent().specific)
-            translations.extend(parent.get_children().specific())
+            if parent.get_parent().live:
+                translations.append(parent.get_parent().specific)
+            if parent.get_children().live():
+                translations.extend(parent.get_children().specific())
     return translations
