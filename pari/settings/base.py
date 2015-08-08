@@ -213,3 +213,5 @@ LANGUAGES = (
 )
 
 SITE_ID = 1
+
+SITE_TITLE = ""
