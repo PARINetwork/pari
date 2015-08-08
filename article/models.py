@@ -22,6 +22,18 @@ from wagtail.wagtailsearch.backends.elasticsearch import ElasticSearchMapping, \
 from core.edit_handlers import M2MFieldPanel
 
 
+# Override the url property of the Page model
+# to accommodate for child pages
+Page.wg_url = Page.url
+@property
+def url_property(self):
+    instance = self.specific
+    if getattr(instance, 'get_absolute_url', None):
+        return instance.get_absolute_url()
+    return self.wg_url
+Page.url = url_property
+
+
 class Article(Page):
     authors = M2MField("author.Author", related_name="articles_by_author")
     strap = models.TextField(blank=True)
