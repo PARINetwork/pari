@@ -13,7 +13,7 @@ $(function () {
         maxZoom: 7,
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors. '
 	    + 'Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a>'
-	    + '<img src="http://developer.mapquest.com/content/osm/mq_logo.png">'
+	    + '<img src="https://developer.mapquest.com/sites/default/files/mapquest/osm/mq_logo.png">'
     }).addTo(map);
 
     for (var i = 0; i < lat.length; i++) {
