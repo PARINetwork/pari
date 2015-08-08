@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.utils.functional import cached_property
 from django.core import serializers
 from django.conf import settings
 from django.core.urlresolvers import reverse
@@ -25,7 +26,7 @@ from core.edit_handlers import M2MFieldPanel
 # Override the url property of the Page model
 # to accommodate for child pages
 Page.wg_url = Page.url
-@property
+@cached_property
 def url_property(self):
     instance = self.specific
     if getattr(instance, 'get_absolute_url', None):
