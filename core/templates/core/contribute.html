@@ -33,14 +33,19 @@
 <script type="text/javascript">
     $(function() {
 	$(".rich-text h4").addClass("glyphicon-plus");
-	$(".rich-text p").addClass("collapse");
-	$(".rich-text h4").on("click", function() {
-	    if ($(this).hasClass("glyphicon-plus")) {
-		$(this).removeClass("glyphicon-plus").addClass("glyphicon-minus");
-	    } else {
-		$(this).removeClass("glyphicon-minus").addClass("glyphicon-plus");
-	    }
-	    $(this).next("p").toggleClass("in");
+	$(".rich-text h4").each(function() {
+	    var $this = $(this);
+	    var children = $this.next("p");
+	    $this.after("<div></div>");
+	    $this.next("div").addClass("collapse").html(children);
+	    $this.on("click", function() {
+		if ($this.hasClass("glyphicon-plus")) {
+		    $this.removeClass("glyphicon-plus").addClass("glyphicon-minus");
+		} else {
+		    $this.removeClass("glyphicon-minus").addClass("glyphicon-plus");
+		}
+		$this.next("div").toggleClass("in");
+	    });
 	});
     });
 </script>
