@@ -1,6 +1,7 @@
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, PageNotAnInteger
+from django.http import Http404
 
 from category.models import Category
 from article.models import Article
@@ -24,5 +25,8 @@ class CategoryDetail(DetailView):
             page_num = self.request.GET.get("page", 1)
         except ValueError:
             page_num = 1
-        context["articles"] = paginator.page(page_num)
+        try:
+            context["articles"] = paginator.page(page_num)
+        except PageNotAnInteger:
+            raise Http404
         return context
