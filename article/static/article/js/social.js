@@ -1,5 +1,5 @@
 $(function(){
-    var socialBar = $('.social');
+    var socialBar = $('.social[data-url]');
     $.get('https://graph.facebook.com/?id=' + socialBar.data('url'), function(data) {
         $('.facebook .count', socialBar).html(data['shares']);
     })
