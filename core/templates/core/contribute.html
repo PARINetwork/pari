@@ -35,7 +35,7 @@
 	$(".rich-text h4").addClass("glyphicon-plus");
 	$(".rich-text h4").each(function() {
 	    var $this = $(this);
-	    var children = $this.next("p");
+	    var children = $this.nextUntil("h4");
 	    $this.after("<div></div>");
 	    $this.next("div").addClass("collapse").html(children);
 	    $this.on("click", function() {
