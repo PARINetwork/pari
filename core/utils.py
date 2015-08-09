@@ -18,6 +18,7 @@ def get_translations_for_page(page):
         if parent.title == "Translations":
             if parent.get_parent().live:
                 translations.append(parent.get_parent().specific)
-            if parent.get_children().live():
-                translations.extend(parent.get_children().specific())
+            live_children = parent.get_children().live()
+            if live_children:
+                translations.extend(live_children.specific())
     return translations
