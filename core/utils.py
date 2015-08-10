@@ -5,8 +5,7 @@ from wagtail.wagtailcore.models import Page
 
 def get_translations_for_page(page):
     translations = []
-    if page.language != "en":
-        activate(page.language)
+    activate(page.language)
     try:
         trans_holder = page.get_children().get(title="Translations")
         if page.live:
