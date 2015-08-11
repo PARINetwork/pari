@@ -5,6 +5,12 @@
 {% block title %}{% trans "Categories" %}{% endblock %}
 
 {% block extra_js %}
+  <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.lazyload.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+        $("img.lazy").lazyload();
+    });
+  </script>
 {% endblock %}
 
 {% block extra_css %}
@@ -26,7 +32,7 @@
         <a href="{{ category.get_absolute_url}}">
           <div class="col-lg-4 col-md-4">
             <div class="grid-column">{% image category.image fill-370x300 as category_image %}
-              <img class="img-responsive" src="{{ category_image.url }}" alt="{{ category.name }}" style="width:370px;height:300px;">
+              <img class="img-responsive lazy" data-original="{{ category_image.url }}" alt="{{ category.name }}" style="width:370px;height:300px;">
               <div class="caption">
                 <h4>{{ category.name }}</h4>
                 <p class="description">{{ category.description }}</p>

@@ -14,6 +14,19 @@
   <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/carousel.less">
 {% endblock %}
 
+{% block extra_js %}
+  <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.lazyload.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+	$("img.lazy").lazyload();
+	$("#homeCarousel").on('slide.bs.carousel', function() {
+	    setTimeout(function() {
+		$(window).trigger("scroll");
+	    }, 1000);
+	});
+    });
+  </script>
+{% endblock %}
 
 
 {% block extra_header %}
@@ -29,7 +42,10 @@
               {% for item in page.carousel %}
                     <div class="{% if forloop.first %}active{% endif %} item">
 		    <a href="{{ item.specific.get_absolute_url }}">{% image item.specific.featured_image max-800x800 as featured_image %}
-                    <img class="img-responsive" src="{{ featured_image.url }}" alt="{{ featured_image.title }}">
+		      <img class="img-responsive lazy" data-original="{{ featured_image.url }}" alt="{{ featured_image.title }}">
+		      <noscript>
+			<img class="img-responsive" src="{{ featured_image.url }}" alt="{{ featured_image.title }}">
+		      </noscript>
                     <div class="custom-carousel-caption">
                       <p>
                           <h4>{{ item.title }}</h4>
@@ -86,7 +102,7 @@
                       <div class="col-lg-4 col-md-4">
                         <div class="grid-column">
 
-                          {% image category.image fill-512x512 as category_image %}<img src="{{ category_image.url }}" alt="{{ category.name }}" width="370" height="300" class="img-responsive">
+                          {% image category.image fill-512x512 as category_image %}<img data-original="{{ category_image.url }}" alt="{{ category.name }}" width="370" height="300" class="img-responsive lazy">
                           <div class="caption">
                             <h4>{{ category.name }}</h4>
                             <p class="description">{{ category.description }}</p>
