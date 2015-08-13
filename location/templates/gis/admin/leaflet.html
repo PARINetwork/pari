@@ -13,9 +13,9 @@
 	    var map = L.map('map').setView({lat: {{ default_lat }}, lon: {{ default_lon }} }, {{ default_zoom }});
 
 	    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-		attribution: '&copy; <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors | Reverse and Geocoding powered by <a href="http://wiki.openstreetmap.org/wiki/Nominatim" target="_blank">Nominatim</a>'
+		attribution: '&copy; <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors | Geocoding powered by <a href="https://developers.google.com/maps/documentation/geocoding/">Google</a> and reverse geocoding powered by <a href="http://wiki.openstreetmap.org/wiki/Nominatim" target="_blank">Nominatim</a>'
 	    }).addTo(map);
-	    var geocoder = L.Control.geocoder().addTo(map);
+	    var geocoder = L.Control.geocoder({geocoder: new L.Control.Geocoder.Google()}).addTo(map);
 
 	    var marker, markerOpts = {
 		draggable: true,
@@ -30,10 +30,7 @@
 	    }
 	    geocoder.markGeocode = function(result) {
 		marker.setLatLng(result.center);
-		$("#id_state").val(result.properties.address.state);
-		$("#id_district").val(result.properties.address.state_district);
-		$("#id_name").val(result.name.split(",")[0].trim());
-		$("#id_point").val("POINT (" + result.properties.lat + " " + result.properties.lon + ")");
+		reverseGeoCode();
 	    };
 
 	    function reverseGeoCode() {
