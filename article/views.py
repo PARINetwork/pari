@@ -19,7 +19,7 @@ class ArticleDetail(DetailView):
     def get_object(self, queryset=None):
         obj = super(ArticleDetail, self).get_object(queryset)
         if self.request.user.is_staff or self.request.GET.get("preview"):
-            obj = ob.get_latest_revision_as_page()
+            obj = obj.get_latest_revision_as_page()
             return obj
         if not obj.live:
             raise Http404
