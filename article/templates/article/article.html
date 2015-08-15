@@ -76,7 +76,7 @@
 		{% endfor %}
 	  </div>
         </div>
-        {% include "article/includes/social.html" with item=article %}
+        {% if article.live %}{% include "article/includes/social.html" with item=article %}{% endif %}
 	{% endblock %}
 
       </div>
