@@ -67,7 +67,11 @@
 	  </span>
 	  |
 	  {% endif %}
+	  {% if article.original_published_date %}
+	  <a href="{% url "archive-detail" year=article.original_published_date.year month=article.original_published_date.month %}"><i class="fa fa-calendar"></i> {{ article.original_published_date|date }}</a>
+	  {% else %}
 	  {% if article.first_published_at %}<a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month %}"><i class="fa fa-calendar"></i> {{ article.first_published_at|date }}</a>{% endif %}
+	  {% endif %}
           |  {% for author in article.authors.all %}<a href="{% url "author-detail" author.slug %}"><i class="fa fa-user"></i>  {{ author.name }}</a>
 	  <div>
 	    <a href="https://twitter.com/@{{ SOCIAL_TWITTER }}" class="twitter-follow-button" data-show-count="false">Follow {{ author.twitter_username }}</a>
