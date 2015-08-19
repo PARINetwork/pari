@@ -1,5 +1,5 @@
 # Minimal requirements
-Django>=1.8.3,<1.9
+Django>=1.8.4,<1.9
 # TODO: Change after 1.0+ releases
 -e git+git://github.com/torchbox/wagtail#egg=wagtail
 
