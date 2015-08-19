@@ -83,11 +83,13 @@
           </div>
         </div>
       </nav>
+      {% comment %}
       <div class="user">
         <a href="{% url 'pari-news' %}" class="btn btn-lg btn-homepage">
 	  {% trans "PARI news" %}
         </a>
       </div>
+      {% endcomment %}
       {% if messages %}
       <div class="container messages">
         {% for message in messages %}
