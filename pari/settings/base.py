@@ -162,6 +162,7 @@ WAGTAILSEARCH_BACKENDS = {
     'default': {
         'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
         'INDEX': 'pari',
+        'ATOMIC_REBUILD': True,
     },
 }
 
