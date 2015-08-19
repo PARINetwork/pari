@@ -70,6 +70,9 @@ class ArticleList(ListView):
         url_name = self.request.resolver_match.url_name
         context['title'] = "All articles"
         if url_name == "author-detail":
-            context["author"] = Author.objects.get(slug=self.kwargs["slug"])
+            try:
+                context["author"] = Author.objects.get(slug=self.kwargs["slug"])
+            except Author.DoesNotExist:
+                raise Http404
             context["title"] = context["author"].name
         return context
