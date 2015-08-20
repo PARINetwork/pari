@@ -62,7 +62,7 @@
       {% if forloop.first or forloop.counter0|divisibleby:"3" %}
       <div class="row">
       {% endif %}
-        <div class="categories">{% image face.image max-1152x864 as face_image %}
+        <div class="categories">{% image face.image fill-1110x1410 as face_image %}
           <a href="{{ face_image.url }}" data-title="{{ face.title }}" data-district="{{ face.location.district }}" data-description="{{ face.description }}"  class="image-tag mfp-image">
             <div class="col-lg-4 col-md-4">
               <div class="grid-column">
