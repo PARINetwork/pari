@@ -1,9 +1,9 @@
 {% with request.build_absolute_uri as url and item.title as title %}
     <div class="social" data-url="{{ url }}">
-        <a target="_blank" href="https://facebook.com/sharer.php?u={{ url }}&amp;t={{ title|urlencode }}"><div class="badge facebook"><i class="fa fa-facebook-square"></i><span class="count"></span></div></a>
+        <a target="_blank" href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}"><div class="badge facebook"><i class="fa fa-facebook-square"></i><span class="count"></span></div></a>
 
-        <a target="_blank" href="https://twitter.com/home?status={{ title }}+{{ url }}"><div class="badge twitter"><i class="fa fa-twitter-square"></i><span class="count"></span></div></a>
+        <a target="_blank" href="https://twitter.com/home?status={{ title|urlencode }}+{{ url|urlencode }}"><div class="badge twitter"><i class="fa fa-twitter-square"></i><span class="count"></span></div></a>
         
-        <a target="_blank" href="https://plus.google.com/share?url={{ url }}"><div class="badge google-plus"><i class="fa fa-google-plus-square"></i><span class="count"></span></div></a>
+        <a target="_blank" href="whatsapp://send?text={{ title|urlencode }}-%20{{ url|urlencode }}"><div class="hidden badge whatsapp"><i class="fa fa-whatsapp"></i><span class="count"></span></div></a>
     </div>
 {% endwith %}

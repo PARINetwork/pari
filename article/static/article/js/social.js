@@ -12,5 +12,8 @@ $(function(){
     .fail(function() {
         $('.twitter .count', socialBar).html('0');
     });
-    
+    if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+	// Mobile device.
+	$(".hidden.whatsapp").removeClass("hidden")
+    }
 });
