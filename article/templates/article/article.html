@@ -91,7 +91,7 @@
     </div>
     <div class="col-lg-2 col-md-2 col-sm-2">
       {% if article.locations.count %}
-        <p>{% for location in article.locations.all %}{{ location.name }}{% if not forloop.last %},{% endif %}{% endfor %}</p>
+        <p>{% for location in article.locations.all %}<a href="https://www.openstreetmap.org/#map=14/{{ location.point.x }}/{{ location.point.y }}" target="_blank">{{ location.name }}</a>{% if not forloop.last %},{% endif %}{% endfor %}</p>
         <div id="map" class="map-view" data-lat="{% for location in article.locations.all %}{{ location.point.x }}{% if not forloop.last %},{% endif %}{% endfor %}" data-long="{% for location in article.locations.all %}{{ location.point.y }}{% if not forloop.last %},{% endif %}{% endfor %}"></div>
       {% endif%}
     </div>
