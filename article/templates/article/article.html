@@ -27,19 +27,13 @@
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}article/css/article.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/carousel.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/location.less">
+    <link rel="stylesheet" href="{{ STATIC_URL }}location/css/leaflet.css" />
 {% endblock %}
 
 {% block extra_js %}
     <script type="text/javascript" src="{{ STATIC_URL }}article/js/social.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}article/js/map.js"></script>
-{% endblock %}
-
-{% block extra_uncompressed_js %}
     <script src="{{ STATIC_URL }}location/js/leaflet.js"></script>
-{% endblock %}
-
-{% block extra_uncompressed_css %}
-    <link rel="stylesheet" href="{{ STATIC_URL }}location/css/leaflet.css" />
 {% endblock %}
 
 {% block main %}
