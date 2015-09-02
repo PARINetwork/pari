@@ -37,6 +37,7 @@ class ArchiveDetail(ListView):
     context_object_name = "articles"
     model = Article
     template_name = 'article/article_list.html'
+    paginate_by = 10
 
     def get_queryset(self):
         year = self.kwargs['year']
@@ -56,6 +57,7 @@ class ArchiveDetail(ListView):
 class ArticleList(ListView):
     context_object_name = "articles"
     model = Article
+    paginate_by = 10
 
     def get_queryset(self):
         url_name = self.request.resolver_match.url_name

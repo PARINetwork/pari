@@ -19,5 +19,5 @@
     {% empty %}
         {% trans "No articles to display." %}
     {% endfor %}
-    {% include "includes/paginator.html" with results=articles %}
+    {% include "includes/paginator.html" with results=page_obj %}
 </div>
