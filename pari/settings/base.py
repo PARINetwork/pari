@@ -186,6 +186,10 @@ COMPRESS_PRECOMPILERS = (
 COMPRESS_ENABLED = False
 
 COMPRESS_PARSER = 'compressor.parser.HtmlParser'
+COMPRESS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.CSSMinFilter',
+]
 
 # India Map Center
 MAP_CENTER = (23, 80)
