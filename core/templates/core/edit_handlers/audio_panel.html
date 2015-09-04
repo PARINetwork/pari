@@ -30,7 +30,8 @@
 <script type="text/javascript" src="{% get_static_prefix %}js/add_audio.js"></script>
 <script type="text/javascript">
     $(function() {
-	$(".addbutton").last().on("click", function() {
+	$(".content").off("click", ".addbutton");
+	$(".content").on("click", ".addbutton", function() {
 	    addAudio($(this).parent().find("input[type=text]").attr("id"));
 	});
     });
