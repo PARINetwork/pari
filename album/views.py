@@ -48,6 +48,7 @@ class AlbumDetail(DetailView):
 
 def add_audio(request):
     sc = settings.SOUNDCLOUD_SETTINGS
+    access_token = None
     if not cache.get("sc_access_token"):
         response = requests.post(sc["API_URL"] + "/oauth2/token/",
                                  data={
