@@ -77,4 +77,5 @@ class ArticleList(ListView):
             except Author.DoesNotExist:
                 raise Http404
             context["title"] = context["author"].name
+        context["articles"] = context["page_obj"]
         return context
