@@ -1,5 +1,5 @@
 $(function() {
-    var recorder, mic, soundFile, filter, soundBlob, inProgress;
+    var recorder, mic, soundFile, filter, inProgress;
     var obj_id = "#" + $("input[name=obj_id]").val();
 
     SC.initialize({
@@ -18,7 +18,7 @@ $(function() {
 	return result;
     }
 
-    $("input.record").on("click", function() {
+    $("body").on("click", "input.record", function() {
 	if ($(this).val() === "Record") {
 	    recorder = new p5.SoundRecorder();
 	    mic = new p5.AudioIn();
@@ -33,7 +33,7 @@ $(function() {
 	    $(this).val("Record");
 	}
     });
-    $("input.play").on("click", function() {
+    $("body").on("click", "input.play", function() {
 	filter = new p5.Filter('highpass');
 	soundFile.disconnect();
 	filter.set(150, 0.1);
@@ -48,62 +48,62 @@ $(function() {
 	var rightChannel = soundFile.buffer.getChannelData(1);
 	var interleaved = interleave(leftChannel, rightChannel);
 	var buffer = new ArrayBuffer(44 + interleaved.length * 2);
-	soundBlob = new Blob([buffer]);
+	return new Blob([buffer]);
     }
 
-    $("input.download").on("click", function() {
+    $("body").on("click", "input.download", function() {
 	downloadFile();
     });
 
-    $("input.upload").on("click", function(e) {
+    $("body").on("click", "input.upload", function(e) {
 	var sectionName = $(this).parents("section").attr("id");
-	var title, assetData;
-	while (typeof soundBlob === "undefined") {
-	    downloadFile();
-	    setTimeout(function() { }, 500);
-	}
+	var title, assetData, deferred = $.Deferred();
 	if (sectionName === "upload") {
 	    title = $("input[type=file]").prop("files")[0].name;
 	    assetData = $("input[type=file]").prop("files")[0];
+	    deferred.resolve();
 	} else {
+	    assetData = downloadFile();
 	    title = $("input[name=audio_title]").val();
-	    assetData = soundBlob;
+	    deferred.resolve();
 	}
-	var fd = new FormData();
-	fd.append('oauth_token', $("input[name=access_token]").val());
-	fd.append('format','json');
-	fd.append("track[title]", title);
-	fd.append("track[asset_data]", assetData);
+	$.when(deferred).then(function() {
+	    var fd = new FormData();
+	    fd.append('oauth_token', $("input[name=access_token]").val());
+	    fd.append('format','json');
+	    fd.append("track[title]", title);
+	    fd.append("track[asset_data]", assetData);
 
-	if (!inProgress) {
-	    $.ajax({
-		url: 'https://api.soundcloud.com/v1/tracks',
-		type: 'POST',
-		data: fd,
-		processData: false,
-		contentType: false,
-		xhr: function() {
-		    inProgress = true;
-		    var xhr = $.ajaxSettings.xhr();
-		    xhr.upload.onprogress = function(e) {
-			if(e.lengthComputable) {
-			    var percent = Math.floor((e.loaded / e.total) * 100) + '%';
-			    if ($(".progress").hasClass("hidden")) {
-				$(".progress").removeClass("hidden").addClass("active");
+	    if (!inProgress) {
+		$.ajax({
+		    url: 'https://api.soundcloud.com/v1/tracks',
+		    type: 'POST',
+		    data: fd,
+		    processData: false,
+		    contentType: false,
+		    xhr: function() {
+			inProgress = true;
+			var xhr = $.ajaxSettings.xhr();
+			xhr.upload.onprogress = function(ev) {
+			    if(ev.lengthComputable) {
+				var percent = Math.floor((ev.loaded / ev.total) * 100) + '%';
+				if ($(".progress").hasClass("hidden")) {
+				    $(".progress").removeClass("hidden").addClass("active");
+				}
+				$(".progress .bar").html(percent).css("width", percent);
 			    }
-			    $(".progress .bar").html(percent).css("width", percent);
-			}
-		    };
-		    return xhr;
-		}
-	    }).done(function(e) {
-		inProgress = false;
-		$(".progress .bar").html('Upload Complete!');
-		$(obj_id).val(e.id);
-	    }).fail(function() {
-		inProgress = false;
-	    });
-	}
+			};
+			return xhr;
+		    }
+		}).done(function(ev) {
+		    inProgress = false;
+		    $(".progress .bar").html('Upload Complete!');
+		    $(obj_id).val(ev.id);
+		}).fail(function() {
+		    inProgress = false;
+		});
+	    }
+	});
 	e.preventDefault();
     });
 });
