@@ -21,7 +21,7 @@
   {% endif %}
     <div class="album-images">
       <div class="col-lg-4">
-	<a href="{{ MEDIA_URL }}{{ slide.image }}" title="{{ slide.description }}" data-audio="{% firstof slide.audio "" %}" data-photographer="{{ album.photographer.name }}" data-location="{% for location in album.locations.all %}{{ location.name }}{% if not forloop.last %},{% endif %} {% endfor %}" data-location-description="{% for location in album.locations.all %}{{ location.name }}{% if not forloop.last %},{% endif %} {% endfor %}" data-date="{{ album.first_published_at|date:"F Y" }}" data-url="{{ album.get_absolute_url }}" class="image-tag mfp-image">
+	<a href="{{ MEDIA_URL }}{{ slide.image }}" title="{{ slide.description }}" data-audio="{% firstof slide.audio "" %}" data-photographer="{{ album.photographer.name }}" data-location="{% for location in album.locations.all %}{{ location.name }}{% if not forloop.last %},{% endif %} {% endfor %}" data-location-description="{% for location in album.locations.all %}{% if location.district %}{{ location.district }}{% endif %}{% if location.state %}, {{ location.state %}{% endif %}{% if not forloop.last %};{% endif %} {% endfor %}" data-date="{{ album.first_published_at|date:"F Y" }}" data-url="{{ album.get_absolute_url }}" class="image-tag mfp-image">
         <div class="grid-column">{% image slide.image max-1024x1024 as album_image %}
           <img class="img-responsive" src="{{ album_image.url }}" alt="{{ slide.description }}">
         </div>
