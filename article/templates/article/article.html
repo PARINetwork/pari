@@ -33,6 +33,9 @@
 {% block extra_js %}
     <script type="text/javascript" src="{{ STATIC_URL }}article/js/social.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}article/js/map.js"></script>
+{% endblock %}
+
+{% block extra_uncompressed_js %}
     <script src="{{ STATIC_URL }}location/js/leaflet.js"></script>
 {% endblock %}
 
