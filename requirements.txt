@@ -1,7 +1,6 @@
 # Minimal requirements
 Django>=1.8.4,<1.9
-# TODO: Change after 1.0+ releases
--e git+git://github.com/torchbox/wagtail#egg=wagtail
+wagtail==1.1
 
 # Recommended components (require additional setup):
 psycopg2==2.6.1
