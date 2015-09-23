@@ -77,6 +77,10 @@ class YTIframeParser(HTMLParser):
         parts = urlparse.urlsplit(tag_attr_dict["src"])
         url_attrs = dict(urlparse.parse_qsl(parts.query))
         url_attrs["showinfo"] = "0"
+        url_attrs["rel"] = "0"
+        url_attrs["modestbranding"] = "1"
+        url_attrs["cc_load_policy"] = "1"
+        url_attrs["autohide"] = "1"
         src_url = urlparse.urlunsplit((parts.scheme, parts.netloc,
                                        parts.path, urllib.urlencode(url_attrs),
                                        parts.fragment))
