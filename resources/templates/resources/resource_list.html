@@ -29,26 +29,20 @@
     </div>
     <div class="row">
     {% for resource in object_list %}
-    {% if forloop.first or forloop.counter0|divisibleby:"3" %}
-    <div class="row">
-    {% endif %}
-      <div class="resources">
-        <a href="{{ resource.get_absolute_url }}">
-          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-            <div class="grid-column">
-              <div class="image-container">
-                <img src="{{ resource.embed_thumbnail }}" alt="{{ resource.title }}" width="250" height="240">
-              </div>
-              <div class="caption">
-                {{ resource.title|truncatechars:50 }}
-              </div>
+    <div class="resources">
+      <a href="{{ resource.get_absolute_url }}">
+        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+          <div class="grid-column">
+            <div class="image-container">
+              <img src="{{ resource.embed_thumbnail }}" alt="{{ resource.title }}" width="250" height="240">
+            </div>
+            <div class="caption">
+              {{ resource.title|truncatechars:50 }}
             </div>
           </div>
-        </a>
-      </div>
-    {% if forloop.last or forloop.counter|divisibleby:"3" %}
+        </div>
+      </a>
     </div>
-    {% endif %}
     {% endfor %}
     </div>
     <div class="row">
