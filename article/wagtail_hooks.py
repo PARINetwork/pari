@@ -10,6 +10,10 @@ def whitelist_blockquote():
     return {
         'blockquote': attribute_rule({'style': True}),
         'p': attribute_rule({'style': True}),
+        'h2': attribute_rule({'style': True}),
+        'h3': attribute_rule({'style': True}),
+        'h4': attribute_rule({'style': True}),
+        'h5': attribute_rule({'style': True}),
         'iframe': attribute_rule({
             'style': True, 'src': True,
             'width': True, 'height': True
