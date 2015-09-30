@@ -40,6 +40,7 @@ def contact_us(request):
         if form.is_valid():
             form.save()
             success(request, _("Your query has successfully been sent"))
+            form = ContactForm()
     else:
         form = ContactForm()
     return render(request, "core/contact_us.html", {
