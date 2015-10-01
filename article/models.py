@@ -59,11 +59,12 @@ class Article(Page):
     ]
 
     search_fields = Page.search_fields + (
-        index.SearchField('authors', partial_match=True),
-        index.SearchField('strap', partial_match=True, boost=2),
-        index.SearchField('content', partial_match=True, boost=2),
+        index.SearchField('title', partial_match=True, boost=6),
+        index.SearchField('authors', partial_match=True, boost=3),
+        index.SearchField('strap', partial_match=True, boost=5),
+        index.SearchField('content', partial_match=True, boost=4),
         index.FilterField('categories'),
-        index.SearchField('locations', partial_match=True),
+        index.SearchField('locations', partial_match=True, boost=2),
         index.FilterField('language'),
     )
 
@@ -84,10 +85,36 @@ class Article(Page):
         max_results = getattr(settings, "MAX_RELATED_RESULTS", 4)
         es_backend = get_search_backend()
         mapping = ElasticSearchMapping(self.__class__)
-        mlt = es_backend.es.mlt(es_backend.es_index,
-                                mapping.get_document_type(),
-                                mapping.get_document_id(self),
-                                params={"fields": self.search_fields})
+        query = {
+            "query": {
+                "filtered": {
+                    "filter": {
+                        "term": {
+                            "live_filter": True
+                        }
+                    },
+                    "query": {
+                        "more_like_this": {
+                            "docs": [
+                                {
+                                    "_id": mapping.get_document_id(self),
+                                    "_type": mapping.get_document_type()
+                                }
+                            ],
+                            "min_doc_freq": 1,
+                            "min_term_freq": 1,
+                            "max_query_terms": 100,
+                            "fields": [ii.field_name for ii in self.search_fields]
+                        }
+                    }
+                }
+            }
+        }
+        mlt = es_backend.es.search(
+            index=es_backend.es_index,
+            doc_type=mapping.get_document_type(),
+            body=query
+        )
         # Get pks from results
         pks = [hit['_source']['pk'] for hit in mlt['hits']['hits']][:max_results]
 
