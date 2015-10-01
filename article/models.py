@@ -101,8 +101,8 @@ class Article(Page):
                                     "_type": mapping.get_document_type()
                                 }
                             ],
-                            "min_doc_freq": 1,
-                            "min_term_freq": 1,
+                            "min_doc_freq": 2,
+                            "min_term_freq": 2,
                             "max_query_terms": 100,
                             "fields": [ii.field_name for ii in self.search_fields]
                         }
