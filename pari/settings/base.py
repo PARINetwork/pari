@@ -46,6 +46,8 @@ INSTALLED_APPS = (
     'django.contrib.gis',
     'django.contrib.sites',
 
+    'overextends',
+
     'compressor',
     'taggit',
     'modelcluster',
