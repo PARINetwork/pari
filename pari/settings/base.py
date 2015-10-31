@@ -24,8 +24,6 @@ SECRET_KEY = 'vcg^g$-6bce@3hk+bmiyn^exoe4r()+a9g%ypo7p(+fy*q*8em'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
@@ -37,6 +35,8 @@ BASE_URL = 'http://ruralindiaonline.org'
 # Application definition
 
 INSTALLED_APPS = (
+    'overextends',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,11 +46,20 @@ INSTALLED_APPS = (
     'django.contrib.gis',
     'django.contrib.sites',
 
-    'overextends',
-
     'compressor',
     'taggit',
     'modelcluster',
+
+    'core',
+    'location',
+    'author',
+    'category',
+    'article',
+    'album',
+    'face',
+    'feeds',
+    'resources',
+    'news',
 
     'wagtail.wagtailcore',
     'wagtail.wagtailadmin',
@@ -63,17 +72,6 @@ INSTALLED_APPS = (
     'wagtail.wagtailsearch',
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
-
-    'core',
-    'location',
-    'author',
-    'category',
-    'article',
-    'album',
-    'face',
-    'feeds',
-    'resources',
-    'news',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -140,16 +138,6 @@ STATICFILES_FINDERS = (
 
 MEDIA_ROOT = join(PROJECT_ROOT, 'media')
 MEDIA_URL = '/media/'
-
-
-# Template configuration
-
-from django.conf import global_settings
-
-TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
-    'django.core.context_processors.request',
-    'core.context_processors.settings',
-)
 
 
 # Wagtail settings
@@ -223,6 +211,10 @@ SITE_ID = 1
 
 SITE_TITLE = ""
 
+# Template configuration
+
+from django.conf import global_settings
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -230,19 +222,14 @@ TEMPLATES = [
             join(PROJECT_ROOT, 'templates'),
         ],
         'OPTIONS': {
+            'debug': DEBUG,
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
                 'django.template.loaders.app_directories.Loader',
             ],
-            'context_processors': (
-                "django.template.context_processors.request",
-                "django.contrib.auth.context_processors.auth",
-                "django.template.context_processors.debug",
-                "django.template.context_processors.i18n",
-                "django.template.context_processors.media",
-                "django.template.context_processors.static",
-                "django.template.context_processors.tz",
-                "django.contrib.messages.context_processors.messages"
+            'context_processors': global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+                'django.core.context_processors.request',
+                'core.context_processors.settings',
             ),
         },
     },
