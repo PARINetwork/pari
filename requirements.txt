@@ -1,18 +1,17 @@
 # Minimal requirements
 Django>=1.8.4,<1.9
-wagtail==1.1
+wagtail==1.2
 django-overextends==0.4.0
 
 # Recommended components (require additional setup):
 psycopg2==2.6.1
-elasticsearch==1.6.0
+elasticsearch==1.9.0
 
 # Recommended components to improve performance in production:
-django-redis==4.2.0
+django-redis==4.3.0
 
 # For M2M Field support.
 # TODO: Remove after M2MField lands into django-modelcluster
 -e git+git://github.com/theju/django-modelcluster#egg=django-modelcluster
 
-# TODO: Remove after django-compressor==1.6
--e git+https://github.com/django-compressor/django-compressor.git@de3afb17ab102430e9d3c97034f6016c6a0d3037#egg=django_compressor-dev
+django-compressor==1.6
