@@ -1,11 +1,10 @@
-function addObject(obj) {
+function addObject(obj, elem) {
     ModalWorkflow({
 	url: "/admin/" + obj + "/add/",
 	responses: {
 	    objectAdded: function(data) {
-		var widget = $("#id_" + obj);
-		widget.prepend('<option value="' + data.id + '">' + data.name + '</option>');
-		widget.find("option").first().attr("selected", "selected");
+		var widget = $(elem);
+		widget.prepend('<option value="' + data.id + '" selected="selected">' + data.name + '</option>');
 		$(widget).trigger("change");
 	    }
 	}

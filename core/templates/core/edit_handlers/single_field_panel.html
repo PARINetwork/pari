@@ -29,7 +29,7 @@
     </li>
   </ul>
   <div class="addbutton">
-    <a href="javascript:void(0);" onclick="addObject('{{ field.name }}');" class="button bicolor icon icon-plus">Add {{ field.name }}</a>
+    <a href="javascript:void(0);" onclick="addObject('{{ field.name }}', '#id_{{ field.name }}');" class="button bicolor icon icon-plus">Add {{ field.name }}</a>
   </div>
 
   <link rel="stylesheet" href="{% get_static_prefix %}css/chosen.min.css" type="text/css" media="screen">

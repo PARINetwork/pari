@@ -7,13 +7,20 @@
 
 {% block extra_js %}
 {{ block.super }}
+<script type="text/javascript" src="{% get_static_prefix %}wagtailadmin/js/modal-workflow.js"></script>
+<script type="text/javascript" src="{% get_static_prefix %}js/add_object.js"></script>
 <script type="text/javascript" src="{% get_static_prefix %}js/chosen.jquery.min.js"></script>
 <script type="text/javascript">
 $(function() {
     $("select").on("change", function() {
 	$(this).trigger("chosen:updated");
     });
-    $("select").chosen();
+    $("select").each(function(ii, sel) {
+	$(sel).chosen();
+	if ($(sel).attr("name") === "locations") {
+	    $(sel).parents("li").append('<div class="addbutton"><a href="javascript:void(0);" onclick="addObject(\'locations\', \'#id_locations\');" class="button bicolor icon icon-plus">Add locations</a></div>');
+	}
+    });
 });
 </script>
 {% endblock %}
