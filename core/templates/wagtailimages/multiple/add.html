@@ -1,0 +1,29 @@
+{% overextends "wagtailimages/multiple/add.html" %}{% load static %}
+
+{% block extra_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% get_static_prefix %}css/chosen.min.css" type="text/css" media="screen">
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+<script type="text/javascript" src="{% get_static_prefix %}js/chosen.jquery.min.js"></script>
+<script type="text/javascript">
+$(function() {
+    var observer = new MutationObserver(function(mutations) {
+	mutations.forEach(function(mutation) {
+	    $(mutation.target).find("select").each(function(ii, sel) {
+		if ($(sel).css("display") !== "none") {
+		    $(sel).chosen();
+		    $(sel).on("change", function() {
+			$(this).trigger("chosen:updated");
+		    });
+		}
+	    });
+	});
+    });
+
+    observer.observe(document.querySelector("#upload-list"), {childList: true, subtree: true});
+});
+</script>
+{% endblock %}

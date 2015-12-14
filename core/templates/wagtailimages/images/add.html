@@ -1,0 +1,19 @@
+{% overextends "wagtailimages/images/add.html" %}{% load static %}
+
+{% block extra_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% get_static_prefix %}css/chosen.min.css" type="text/css" media="screen">
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+<script type="text/javascript" src="{% get_static_prefix %}js/chosen.jquery.min.js"></script>
+<script type="text/javascript">
+$(function() {
+    $("select").on("change", function() {
+	$(this).trigger("chosen:updated");
+    });
+    $("select").chosen();
+});
+</script>
+{% endblock %}
