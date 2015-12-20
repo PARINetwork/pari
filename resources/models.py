@@ -36,7 +36,7 @@ class Resource(Page):
     )
 
     class Meta:
-        ordering = ["first_published_at"]
+        ordering = ["-first_published_at"]
 
     def get_absolute_url(self):
         return reverse("resource-detail", kwargs={"slug": self.slug})
