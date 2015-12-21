@@ -8,6 +8,10 @@ class ResourceList(ListView):
     context_object_name = "resources"
     model = Resource
 
+    def get_queryset(self, *args, **kwargs):
+        qs = super(ResourceList, self).get_queryset(*args, **kwargs)
+        return qs.order_by('-first_published_at')
+
 
 class ResourceDetail(DetailView):
     context_object_name = "resource"

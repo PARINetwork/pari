@@ -35,9 +35,6 @@ class Resource(Page):
         index.FilterField('language'),
     )
 
-    class Meta:
-        ordering = ["-first_published_at"]
-
     def get_absolute_url(self):
         return reverse("resource-detail", kwargs={"slug": self.slug})
 
