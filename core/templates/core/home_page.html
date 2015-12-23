@@ -107,10 +107,10 @@
 		{% endif %}
                   <div class="categories">
                     <a href="{{ category.get_absolute_url}}">
-                      <div class="col-lg-4 col-md-4">
+                      <div class="col-lg-4 col-md-4 col-xs-12">
                         <div class="grid-column">
 
-                          {% image category.image fill-512x512 as category_image %}<img data-original="{{ category_image.url }}" alt="{{ category.name }}" width="370" height="300" class="img-responsive lazy">
+                          {% image category.image fill-512x512 as category_image %}<img data-original="{{ category_image.url }}" alt="{{ category.name }}" style="width:370px;height:300px;margin:0 auto;" class="img-responsive lazy">
                           <div class="caption">
                             <h4>{{ category.name }}</h4>
                             <p class="description">{{ category.description }}</p>
