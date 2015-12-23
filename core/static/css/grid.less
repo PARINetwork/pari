@@ -1,17 +1,16 @@
 @import "common.less";
 
-.grid-row () {
+.grid-row (@captionHeight: 50px, @maxCaptionHeight: 50px) {
 
     .grid-column {
         margin-bottom: 15px;
 
         .caption {
-            //positioning caption text below !
             background-color: rgba(0, 0, 0, 1);
             padding: 10px;
             word-wrap: break-word;
 	    color: #fff;
-	    max-height: 50px;
+	    max-height: @captionHeight;
 	    width: 100%;
 	    max-width: 370px;
 	    margin: 0 auto;
