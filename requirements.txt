@@ -15,3 +15,5 @@ django-redis==4.3.0
 -e git+git://github.com/theju/django-modelcluster#egg=django-modelcluster
 
 django-compressor==1.6
+
+requests
