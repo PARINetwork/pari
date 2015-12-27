@@ -40,13 +40,13 @@ ordering: the current sort parameter
     <th class="parent">{% trans 'Parent' %}</th>
     {% endif %}
     <th class="author">
-        {% if author %}
-            <a href="{% url 'wagtailadmin_explore' parent_page.id %}?ordering={% if ordering == "live" %}-{% endif %}live" class="icon icon-arrow-{% if ordering == "-live" %}up-after{% else %}down-after{% endif %} {% if ordering == "live" or ordering == "-live" %}teal {% endif %}">
-                {% trans 'Author' %}
-            </a>
-        {% else %}
-            {% trans 'Author' %}
-        {% endif %}
+      {% with pages.0.content_type.model_class.get_verbose_name as class_name %}
+      {% if class_name != "Face" %}
+      {% trans 'Author' %}
+      {% else %}
+      {% trans 'District' %}
+      {% endif %}
+      {% endwith %}
     </th>
      <th class="updated">
         {% if sortable %}
