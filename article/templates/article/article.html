@@ -90,6 +90,11 @@
 	<div>
 	  {{ article.content|richtext }}
 	</div>
+	<div>
+	  {% for author in article.authors.all %}
+	  <p><i>{% if author.bio %}{{ author.bio }}.{% endif %}{% if author.twitter_username %} You may contact the author at <a href="https://twitter.com/{{ author.twitter_username }}">{{ author.twitter_username }}</a>{% endif %}</i></p>
+	  {% endfor %}
+	</div>
       </div>
     </div>
     <div class="col-lg-2 col-md-2 col-sm-2">
