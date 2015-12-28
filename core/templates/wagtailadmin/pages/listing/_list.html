@@ -69,7 +69,7 @@
 		      {{ page.specific.photographer }}
 		      {% else %}
 		        {% if page.content_type.model_class.get_verbose_name == "Face" %}
-		        {{ page.specific.location.district }}
+		        {{ page.specific.location.district }}, {{ page.specific.location.state }}
 		        {% else %}
 		        {{ page.specific.content.0.value|striptags|truncatechars_html:50 }}
 		        {% endif %}
