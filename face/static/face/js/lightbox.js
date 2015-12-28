@@ -54,7 +54,33 @@ var Face = {
                 }, this),
                 close: $.proxy(function () {
                     this._popup.removeData('slideshow');
-                }, this)
+		    history.pushState(null, null, $(".popup-gallery").data("url"));
+                }, this),
+		open: function() {
+		    var mfp = $.magnificPopup.instance;
+		    var proto = $.magnificPopup.proto;
+
+		    // extend function that moves to next item
+		    mfp.next = function() {
+
+			// if index is not last, call parent method
+			if(mfp.index < mfp.items.length - 1) {
+			    proto.next.call(mfp);
+			    history.pushState(null, null, $($(".mfp-image")[mfp.index]).data("url"));
+			} else {
+			    // otherwise do whatever you want, e.g. hide "next" arrow
+			    proto.close();
+			}
+		    };
+
+		    // same with prev method
+		    mfp.prev = function() {
+			if(mfp.index > 0) {
+			    proto.prev.call(mfp);
+			    history.pushState(null, null, $($(".mfp-image")[mfp.index]).data("url"));
+			}
+		    };
+		}
             }
         });
     },
@@ -106,11 +132,17 @@ var Face = {
         $('.mfp-figure').on('click', function() {
             $('.mfp-container').removeClass('mfp-container-fullscreen');
         });
+
+	var mfp = $.magnificPopup.instance;
+	history.pushState(null, null, $($(".mfp-image")[mfp.index]).data("url"));
     }
 
 }
 
 $(function() {
     Face.init();
-});
 
+    $(window).on("popstate", function() {
+	$('a[data-url="' + location.pathname + '"]').click();
+    });
+});

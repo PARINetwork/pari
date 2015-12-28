@@ -25,3 +25,9 @@ class FaceDetail(ListView):
     def get_queryset(self):
         alphabet = self.kwargs['alphabet']
         return Face.objects.live().filter(location__district__istartswith=alphabet)
+
+    def get_context_data(self):
+        context = super(FaceDetail, self).get_context_data()
+        context["alphabet"] = self.kwargs["alphabet"]
+        context["slug"] = self.kwargs.get("slug")
+        return context

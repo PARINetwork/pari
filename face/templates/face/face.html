@@ -12,6 +12,13 @@
 {% block extra_js %}
     <script type="text/javascript" src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}face/js/lightbox.js"></script>
+    {% if slug %}
+    <script type="text/javascript">
+      $(function() {
+	  $('a[data-slug="{{ slug }}"]').click();
+      });
+    </script>
+    {% endif %}
 {% endblock %}
 
 {% block extra_css %}
@@ -57,13 +64,13 @@
         <li><a href="{% url "face-detail" alphabet="z" %}">Z</a></li>
       </ul>
     </div>
-    <div class="popup-gallery">
+    <div class="popup-gallery" data-url="{% url "face-detail" alphabet=alphabet %}">
       {% for face in faces %}
       {% if forloop.first or forloop.counter0|divisibleby:"3" %}
       <div class="row">
       {% endif %}
         <div class="categories">{% image face.image fill-1110x1410 as face_image %}
-          <a href="{{ face_image.url }}" data-title="{{ face.title }}" data-district="{{ face.location.district }}" data-description="{{ face.description }}"  class="image-tag mfp-image">
+          <a href="{{ face_image.url }}" data-title="{{ face.title }}" data-district="{{ face.location.district }}" data-description="{{ face.description }}" data-slug="{{ face.slug }}" class="image-tag mfp-image" data-url="{% url "face-detail-single" alphabet=alphabet slug=face.slug %}">
             <div class="col-lg-4 col-md-4">
               <div class="grid-column">
                 <img class="img-responsive" src="{{ face_image.url }}" width="370" height="470" alt="{{ face_image.title }}">
