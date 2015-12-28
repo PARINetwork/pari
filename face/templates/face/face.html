@@ -12,13 +12,16 @@
 {% block extra_js %}
     <script type="text/javascript" src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}face/js/lightbox.js"></script>
-    {% if slug %}
+{% endblock %}
+
+{% block extra_uncompressed_js %}
+{% if slug %}
     <script type="text/javascript">
       $(function() {
 	  $('a[data-slug="{{ slug }}"]').click();
       });
     </script>
-    {% endif %}
+{% endif %}
 {% endblock %}
 
 {% block extra_css %}

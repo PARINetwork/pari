@@ -123,7 +123,6 @@
     </div>
   </div>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  {% block extra_uncompressed_js %}{% endblock %}
   {% compress js %}
     <script src="{{ STATIC_URL }}bootstrap-3.1.1/js/bootstrap.min.js"></script>
     <script>
@@ -142,7 +141,8 @@
     });
     </script>
     {% block extra_js %}{% endblock %}
-  {% endcompress %}
+    {% endcompress %}
+  {% block extra_uncompressed_js %}{% endblock %}
   {% include "includes/footer_scripts.html" %}
 </body>
 </html>
