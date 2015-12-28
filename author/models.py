@@ -10,6 +10,7 @@ class Author(models.Model):
     twitter_username = models.CharField(max_length=50, null=True, blank=True)
     facebook_username = models.CharField(max_length=50, null=True, blank=True)
     website = models.URLField(null=True, blank=True)
+    bio = models.TextField(null=True, blank=True)
     image = models.ForeignKey('core.AffixImage', null=True, blank=True)
 
     def __str__(self):
