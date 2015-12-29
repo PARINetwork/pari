@@ -9,6 +9,23 @@
 {% block meta_title %}{% trans "Faces" %}{% endblock %}
 {% block title %}{% trans "Faces" %}{% endblock %}
 
+{% block opengraph_block %}
+{% if slug %}
+<meta property="og:title" content="{{ face.title }}">
+<meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ face.get_absolute_url }}">
+<meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{% if face.featured_image %}{{ face.featured_image.file.url }}{% else %}{{ STATIC_URL }}img/default_featured_image.png{% endif %}">
+<meta property="og:type" content="article">
+<meta property="og:published_time" content="{% firstof face.original_published_date|date:"c" face.first_published_at|date:"c" %}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
+<meta name="twitter:title" content="{{ face.title }}" >
+<meta name="twitter:description" content="View the face on {{ SITE_TITLE }}" >
+<meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{% if face.featured_image %}{{ face.featured_image.file.url }}{% else %}{{ STATIC_URL }}img/default_featured_image.png{% endif %}" >
+<meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ face.get_absolute_url }}" >
+{% endif %}
+{% endblock %}
+
 {% block extra_js %}
     <script type="text/javascript" src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}face/js/lightbox.js"></script>
@@ -73,7 +90,7 @@
       <div class="row">
       {% endif %}
         <div class="categories">{% image face.image fill-1110x1410 as face_image %}
-          <a href="{{ face_image.url }}" data-title="{{ face.title }}" data-district="{{ face.location.district }}" data-description="{{ face.description }}" data-slug="{{ face.slug }}" class="image-tag mfp-image" data-url="{% url "face-detail-single" alphabet=alphabet slug=face.slug %}">
+          <a href="{{ face_image.url }}" data-title="{{ face.title }}" data-district="{{ face.location.district }}" data-description="{{ face.description }}" data-slug="{{ face.slug }}" class="image-tag mfp-image" data-url="{{ face.get_absolute_url }}">
             <div class="col-lg-4 col-md-4">
               <div class="grid-column">
                 <img class="img-responsive" src="{{ face_image.url }}" width="370" height="470" alt="{{ face_image.title }}">

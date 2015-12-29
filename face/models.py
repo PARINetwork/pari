@@ -42,8 +42,11 @@ class Face(Page):
     ]
 
     def get_absolute_url(self):
-        name = "face-detail"
-        return reverse(name, kwargs={"alphabet": self.location.district[0]})
+        name = "face-detail-single"
+        return reverse(name, kwargs={
+            "alphabet": self.location.district[0].lower(),
+            "slug": self.slug
+        })
 
     def get_context(self, request, *args, **kwargs):
         return {

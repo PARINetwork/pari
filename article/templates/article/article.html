@@ -13,7 +13,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
 <meta name="twitter:title" content="{{ article.title }}" >
-<meta name="twitter:description" content="Read the article on People's archive of Rural India" >
+<meta name="twitter:description" content="Read the article on {{ SITE_TITLE }}" >
 <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{% if article.featured_image %}{{ article.featured_image.file.url }}{% else %}{{ STATIC_URL }}img/default_featured_image.png{% endif %}" >
 <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ article.get_absolute_url }}" >
 {% endblock %}

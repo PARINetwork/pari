@@ -1,5 +1,6 @@
 from django.views.generic import ListView
 from django.db import connections
+from django.contrib.sites.requests import RequestSite
 
 from .models import Face
 
@@ -29,5 +30,11 @@ class FaceDetail(ListView):
     def get_context_data(self):
         context = super(FaceDetail, self).get_context_data()
         context["alphabet"] = self.kwargs["alphabet"]
+        context['site'] = RequestSite(self.request)
         context["slug"] = self.kwargs.get("slug")
+        if context["slug"]:
+            try:
+                context["face"] = self.get_queryset().get(slug=context["slug"])
+            except Face.DoesNotExist:
+                pass
         return context
