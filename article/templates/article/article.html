@@ -33,10 +33,26 @@
 {% block extra_js %}
     <script type="text/javascript" src="{{ STATIC_URL }}article/js/social.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}article/js/map.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}article/js/article.js"></script>
 {% endblock %}
 
 {% block extra_uncompressed_js %}
     <script src="{{ STATIC_URL }}location/js/leaflet.js"></script>
+{% endblock %}
+
+{% block main_wrapper %}
+{% if article.featured_image %}
+<div class="full-row">
+  <img src="{{ article.featured_image.file.url }}" alt="{{ article.featured_image.title }}">
+  <div class="info visible-lg-12">
+    <a href="javascript:void(0);" class="animated infinite bounce">
+      <i class="fa fa-angle-double-down"></i>
+      <p>Scroll down to view the article</p>
+    </a>
+  </div>
+</div>
+{% endif %}
+{{ block.super }}
 {% endblock %}
 
 {% block main %}
@@ -65,19 +81,16 @@
 	  |
 	  {% endif %}
 	  {% if article.original_published_date %}
-	  <a href="{% url "archive-detail" year=article.original_published_date.year month=article.original_published_date.month %}"><i class="fa fa-calendar"></i> {{ article.original_published_date|date }}</a>
+	  <a href="{% url "archive-detail" year=article.original_published_date.year month=article.original_published_date.month %}"> {{ article.original_published_date|date }}</a>
 	  {% else %}
-	  {% if article.first_published_at %}<a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month %}"><i class="fa fa-calendar"></i> {{ article.first_published_at|date }}</a>{% endif %}
+	  {% if article.first_published_at %}<a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month %}"> {{ article.first_published_at|date }}</a>{% endif %}
 	  {% endif %}
-          |  {% for author in article.authors.all %}<a href="{% url "author-detail" author.slug %}"><i class="fa fa-user"></i>  {{ author.name }}</a>
-	  <div>
-	    <a href="https://twitter.com/@{{ SOCIAL_TWITTER }}" class="twitter-follow-button" data-show-count="false">Follow {{ author.twitter_username }}</a>
-	    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-		{% include "article/includes/author_social.html" with author=author %}
-		{% endfor %}
-	  </div>
+          |  {% for author in article.authors.all %}<a href="{% url "author-detail" author.slug %}"> {{ author.name }}</a>{% endfor %}
         </div>
-        {% if article.live %}{% include "article/includes/social.html" with item=article %}{% endif %}
+	<div>
+          {% if article.live %}{% include "article/includes/social.html" with item=article %}{% endif %}
+	  <div class="scrollToTop"><a href="javascript:void(0);"><i class="fa fa-angle-double-up"></i>Scroll to Top</a></div>
+	</div>
 	{% endblock %}
 
       </div>
