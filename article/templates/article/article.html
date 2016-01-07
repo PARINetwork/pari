@@ -42,8 +42,9 @@
 
 {% block main_wrapper %}
 {% if article.featured_image %}
+{% image article.featured_image max-1400x1120 as featured_image %}
 <div class="full-row">
-  <img src="{{ article.featured_image.file.url }}" alt="{{ article.featured_image.title }}">
+  <img src="{{ featured_image.file.url }}" alt="{{ article.featured_image.title }}">
   <div class="info visible-lg-12">
     <a href="javascript:void(0);" class="animated infinite bounce">
       <i class="fa fa-angle-double-down"></i>
