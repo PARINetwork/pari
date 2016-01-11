@@ -41,6 +41,26 @@ def editor_css():
         """
         <link rel="stylesheet" href="{0}font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="{0}article/css/hallo-icons.css">
+        <style>
+        blockquote {{
+	    color: #101010;
+	    font-size: 1.6em;
+	    border: none;
+	    font-style: italic;
+	    font-weight: bold;
+	    margin: 10px 0;
+	    padding: 10px;
+	    text-align: center;
+	    display: block;
+        }}
+
+        blockquote::before {{
+            content: open-quote;
+        }}
+	blockquote::after {{
+	    content: close-quote;
+        }}
+        </style>
         """,
         settings.STATIC_URL
     )
