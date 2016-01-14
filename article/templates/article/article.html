@@ -4,9 +4,11 @@
 {% block meta_title %}{{ article.title }}{% endblock %}
 
 {% block opengraph_block %}
+{% if article.featured_image %}
+{% image article.featured_image max-1400x1120 as featured_image %}
 <meta property="og:title" content="{{ article.title }}">
 <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ article.get_absolute_url }}">
-<meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{% if article.featured_image %}{{ article.featured_image.file.url }}{% else %}{{ STATIC_URL }}img/default_featured_image.png{% endif %}">
+<meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ featured_image.file.url }}">
 <meta property="og:type" content="article">
 <meta property="og:published_time" content="{% firstof article.original_published_date|date:"c" article.first_published_at|date:"c" %}">
 
@@ -14,8 +16,9 @@
 <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
 <meta name="twitter:title" content="{{ article.title }}" >
 <meta name="twitter:description" content="Read the article on {{ SITE_TITLE }}" >
-<meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{% if article.featured_image %}{{ article.featured_image.file.url }}{% else %}{{ STATIC_URL }}img/default_featured_image.png{% endif %}" >
+<meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ featured_image.file.url }}" >
 <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ article.get_absolute_url }}" >
+{% endif %}
 {% endblock %}
 
 {% block breadcrumb_menu %}
@@ -34,6 +37,7 @@
     <script type="text/javascript" src="{{ STATIC_URL }}article/js/social.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}article/js/map.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}article/js/article.js"></script>
+  </script>
 {% endblock %}
 
 {% block extra_uncompressed_js %}
@@ -44,7 +48,7 @@
 {% if article.featured_image %}
 {% image article.featured_image max-1400x1120 as featured_image %}
 <div class="full-row">
-  <img src="{{ featured_image.file.url }}" alt="{{ article.featured_image.title }}">
+  <img class="lazy" data-original="{{ featured_image.file.url }}" alt="{{ article.featured_image.title }}">
   <div class="info visible-lg-12">
     <a href="javascript:void(0);" class="animated infinite bounce">
       <i class="fa fa-angle-double-down"></i>
@@ -130,7 +134,7 @@
 	    <a href="{{ related_article.get_absolute_url }}">
 	      {% if related_article.featured_image %}
 	      <div class="article-image">{% image related_article.featured_image fill-512x512 as featured_image %}
-                <img class="img-responsive" src="{{ featured_image.url }}" alt="{{ related_article.featured_image.title }}">
+                <img class="img-responsive lazy" data-original="{{ featured_image.url }}" alt="{{ related_article.featured_image.title }}">
 	      </div>
 	      {% else %}
 	      <div class="article-image">

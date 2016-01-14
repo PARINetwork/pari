@@ -9,6 +9,7 @@ from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtailsearch import urls as wagtailsearch_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
+from wagtail.wagtailimages import urls as wagtailimages_urls
 
 
 urlpatterns = [
@@ -24,6 +25,8 @@ urlpatterns = [
     url(r'^resources/', include('resources.urls')),
     url(r'^article/', include('article.urls')),
     url(r'^albums/', include('album.urls')),
+
+    url(r'^images/', include(wagtailimages_urls)),
 
     url(r'^', include('article.urls')),
     url(r'^', include('face.urls')),

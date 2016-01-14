@@ -15,10 +15,8 @@
 {% endblock %}
 
 {% block extra_js %}
-  <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.lazyload.min.js"></script>
   <script type="text/javascript">
     $(function() {
-	$("img.lazy").lazyload();
 	$("#homeCarousel").on('slide.bs.carousel', function() {
 	    setTimeout(function() {
 		$(window).trigger("scroll");

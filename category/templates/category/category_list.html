@@ -4,15 +4,6 @@
 {% block meta_title %}{% trans "Categories" %}{% endblock %}
 {% block title %}{% trans "Categories" %}{% endblock %}
 
-{% block extra_js %}
-  <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.lazyload.min.js"></script>
-  <script type="text/javascript">
-    $(function() {
-        $("img.lazy").lazyload();
-    });
-  </script>
-{% endblock %}
-
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/categories.less">
 {% endblock %}

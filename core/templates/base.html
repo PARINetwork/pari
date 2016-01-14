@@ -124,6 +124,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   {% compress js %}
     <script src="{{ STATIC_URL }}bootstrap-3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.lazyload.min.js"></script>
     <script>
     $(function() {
         $('.middleinput:text, textarea').addClass('xlarge');
@@ -137,6 +138,10 @@
 		}
 	    });
 	}
+	$("img.lazy").lazyload({
+	    threshold: 300,
+	    effect: "fadeIn"
+	});
     });
     </script>
     {% block extra_js %}{% endblock %}
