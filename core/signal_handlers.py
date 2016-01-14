@@ -11,6 +11,7 @@ from django.template import loader, Context
 
 from wagtail.wagtailembeds.models import Embed
 from wagtail.wagtailsearch.signal_handlers import post_delete_signal_handler
+from wagtail.wagtailimages.formats import get_image_format
 
 from .models import AffixImage, AffixImageRendition, Page, Contact
 
@@ -25,6 +26,13 @@ def image_delete(sender, instance, **kwargs):
 def rendition_delete(sender, instance, **kwargs):
     # Pass false so FileField doesn't save the model.
     instance.file.delete(False)
+
+
+@receiver(post_save, sender=AffixImage)
+def image_halfwidth(sender, instance, **kwargs):
+    # Create thumbnails for the image
+    thumbnail_format = get_image_format("halfwidth")
+    instance.get_rendition(thumbnail_format.filter_spec)
 
 
 @receiver(post_save)
