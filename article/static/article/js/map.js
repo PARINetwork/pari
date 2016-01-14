@@ -8,7 +8,7 @@ $(function () {
     var lat = $('.map-view').data("lat").toString().split(","),
         long = $('.map-view').data("long").toString().split(",");
 
-    L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg', {
+    L.tileLayer('https://otile{s}-s.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg', {
 	subdomains: '1234',
         maxZoom: 7,
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors. '
