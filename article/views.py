@@ -1,4 +1,5 @@
 import calendar
+from bs4 import BeautifulSoup
 
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
@@ -6,6 +7,7 @@ from django.contrib.sites.requests import RequestSite
 from django.utils import translation
 from django.conf import settings
 from django.http import Http404
+from django.core.cache import caches
 
 from article.models import Article
 from author.models import Author
@@ -31,6 +33,27 @@ class ArticleDetail(DetailView):
         context['translations'] = translations
         context['site'] = RequestSite(self.request)
         return context
+
+    def render_to_response(self, context, **kwargs):
+        response = super(ArticleDetail, self).render_to_response(context, **kwargs)
+        if self.request.user.is_staff or self.request.GET.get("preview"):
+            return response
+        cache = caches['default']
+        if cache.get(context['object'].get_absolute_url()):
+            return cache.get(context['object'].get_absolute_url())
+        content = response.rendered_content
+        bs = BeautifulSoup(content, "html5lib")
+        imgs = bs.find("div", class_="article-content").find_all("img")
+        for img in imgs:
+            if not img.attrs:
+                continue
+            img.attrs["data-original"] = img.attrs["src"]
+            img.attrs["class"] = img.attrs.get("class", []) + ["lazy"]
+            img.attrs.pop("src")
+        content = unicode(bs)
+        response.content = content
+        cache.set(context['object'].get_absolute_url(), response)
+        return response
 
 
 class ArchiveDetail(ListView):
