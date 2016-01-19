@@ -28,11 +28,12 @@
 <link rel="stylesheet" href="{{ STATIC_URL }}font-awesome/css/font-awesome.min.css">
 <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/base.less">
 
+{% block extra_css %}{% endblock %}
+{% endcompress %}
 {% if LANGUAGE_BIDI %}
 <link rel="stylesheet" href="{{ STATIC_URL }}css/rtl.css">
 {% endif %}
-{% block extra_css %}{% endblock %}
-{% endcompress %}
+
 
 {% block extra_head %}{% endblock %}
 

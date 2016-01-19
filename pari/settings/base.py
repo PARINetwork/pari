@@ -205,6 +205,7 @@ LANGUAGES = (
     ("or", _("Oriya")),
     ("te", _("Telugu")),
     ("ta", _("Tamil")),
+    ("ur", _("Urdu")),
 )
 
 SITE_ID = 1
