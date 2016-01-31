@@ -59,10 +59,10 @@ class Article(Page):
     ]
 
     search_fields = Page.search_fields + (
-        index.SearchField('title', partial_match=True, boost=6),
-        index.SearchField('authors', partial_match=True, boost=3),
-        index.SearchField('strap', partial_match=True, boost=5),
-        index.SearchField('content', partial_match=True, boost=4),
+        index.SearchField('title', partial_match=True),
+        index.SearchField('authors', partial_match=True, boost=2),
+        index.SearchField('strap', partial_match=True),
+        index.SearchField('content', partial_match=True),
         index.FilterField('categories'),
         index.SearchField('locations', partial_match=True, boost=2),
         index.FilterField('language'),
@@ -85,6 +85,12 @@ class Article(Page):
         max_results = getattr(settings, "MAX_RELATED_RESULTS", 4)
         es_backend = get_search_backend()
         mapping = ElasticSearchMapping(self.__class__)
+        search_fields = []
+        for ii in self.search_fields:
+            if getattr(ii, "boost", None):
+                search_fields.append("{0}^{1}".format(ii.field_name, ii.boost))
+            else:
+                search_fields.append(ii.field_name)
         query = {
             "query": {
                 "filtered": {
@@ -102,9 +108,10 @@ class Article(Page):
                                 }
                             ],
                             "min_doc_freq": 1,
-                            "min_term_freq": 1,
-                            "max_query_terms": 100,
-                            "fields": [ii.field_name for ii in self.search_fields]
+                            "min_term_freq": 2,
+                            "max_query_terms": 500,
+                            "min_word_length": 4,
+                            "fields": search_fields
                         }
                     }
                 }
