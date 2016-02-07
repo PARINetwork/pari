@@ -69,8 +69,8 @@ $(function() {
 	}
 	$.when(deferred).then(function() {
 	    var fd = new FormData();
-	    fd.append('oauth_token', $("input[name=access_token]").val());
-	    fd.append('format','json');
+	    fd.append('track[oauth_token]', $("input[name=access_token]").val());
+	    fd.append('track[format]','json');
 	    fd.append("track[title]", title);
 	    fd.append("track[asset_data]", assetData);
 
