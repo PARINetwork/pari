@@ -2,10 +2,6 @@ $(function() {
     var recorder, mic, soundFile, filter, inProgress;
     var obj_id = "#" + $("input[name=obj_id]").val();
 
-    SC.initialize({
-	client_id: $("input[name=client_id]").val()
-    });
-
     function interleave(leftChannel, rightChannel) {
 	var length = leftChannel.length + rightChannel.length;
 	var result = new Float32Array(length);
@@ -48,7 +44,7 @@ $(function() {
 	var rightChannel = soundFile.buffer.getChannelData(1);
 	var interleaved = interleave(leftChannel, rightChannel);
 	var buffer = new ArrayBuffer(44 + interleaved.length * 2);
-	return new Blob([buffer]);
+	return new Blob([buffer], {type: 'audio/wav'});
     }
 
     $("body").on("click", "input.download", function() {
@@ -69,14 +65,14 @@ $(function() {
 	}
 	$.when(deferred).then(function() {
 	    var fd = new FormData();
-	    fd.append('track[oauth_token]', $("input[name=access_token]").val());
-	    fd.append('track[format]','json');
-	    fd.append("track[title]", title);
 	    fd.append("track[asset_data]", assetData);
+	    fd.append("track[title]", title);
+	    fd.append('format','json');
+	    fd.append('oauth_token', $("input[name=access_token]").val());
 
 	    if (!inProgress) {
 		$.ajax({
-		    url: 'https://api.soundcloud.com/v1/tracks',
+		    url: 'https://api.soundcloud.com/v1/tracks?client_id=' + $("input[name=client_id]").val(),
 		    type: 'POST',
 		    data: fd,
 		    processData: false,
