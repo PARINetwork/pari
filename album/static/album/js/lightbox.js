@@ -6,7 +6,6 @@ var Album = {
     },
 
     _popup: null,
-    _sound: null,
 
     _initPopup: function() {
         this._popup = $('.popup-gallery').magnificPopup({
@@ -112,31 +111,21 @@ var Album = {
         });
     },
 
+    _player: null,
     _reloadWidget: function(audio, autoplay) {
-        SC.stream("/tracks/" + audio, $.proxy(function(sound){
-            if(this._sound){
-                this._sound.stop();
-            }
-            this._sound = sound;
-            if(autoplay){
-                this._playWidget();
-            }
-        }, this));
-    },
-
-    _playWidget: function() {
-        this._sound.play({
-            onfinish: $.proxy(this._onSoundFinish, this)
-        });
+	var $this = this;
+        SC.stream("/tracks/" + audio).then(function(player) {
+	    $this._player = player;
+	    player.play();
+	    player.on("finish", function() {
+		$this._onSoundFinish();
+	    });
+	});
     },
 
     _toggleWidget: function() {
-        this._togglePlayButton();
-        if(this._sound.playState === 0) {
-            this._playWidget();
-            return;
-        }
-        this._sound.togglePause();
+	this._player.toggle();
+	this._togglePlayButton();
     },
 
     _updateSlideshowButtonIcon: function () {
@@ -148,15 +137,12 @@ var Album = {
         } else {
             slideshowButton.addClass('fa-play');
             slideshowButton.removeClass('fa-pause');
-
         }
-
     },
 
     _stopWidget: function() {
-        if(this._sound){
-            this._sound.stop();
-        }
+	this._player.seek(0);
+	this._player.pause();
     },
 
     _onSoundFinish: function() {
@@ -192,11 +178,11 @@ var Album = {
             slideshow = this._popup.data("slideshow");
 
             this._updateSlideshowButtonIcon();
-            if(this._sound.playState === 0) {
+            if(!this._player.isPlaying()) {
                 this._initAudio();
             }
 
-            if(slideshow && this._sound.paused) {
+            if(slideshow && !this._player.isPlaying()) {
                 this._toggleWidget();
             }
 
