@@ -141,8 +141,10 @@ var Album = {
     },
 
     _stopWidget: function() {
-	this._player.seek(0);
-	this._player.pause();
+	if (this._player) {
+	    this._player.seek(0);
+	    this._player.pause();
+	}
     },
 
     _onSoundFinish: function() {
