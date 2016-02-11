@@ -134,11 +134,11 @@
 	    <a href="{{ related_article.get_absolute_url }}">
 	      {% if related_article.featured_image %}
 	      <div class="article-image">{% image related_article.featured_image fill-512x512 as featured_image %}
-                <img class="img-responsive lazy" data-original="{{ featured_image.url }}" alt="{{ related_article.featured_image.title }}">
+                <img class="img-responsive lazy" data-original="{{ featured_image.url }}" alt="{{ related_article.featured_image.title }}" width="260" height="260">
 	      </div>
 	      {% else %}
 	      <div class="article-image">
-                <img class="img-responsive" src="{{ STATIC_URL }}img/default_featured_image.png" alt="PARI Logo">
+                <img class="img-responsive" src="{{ STATIC_URL }}img/default_featured_image.png" alt="PARI Logo" width="260" height="260">
 	      </div>
 	      {% endif %}
 	      <div class="caption">
