@@ -35,10 +35,12 @@ class LazyImgFormat(Format):
         sizes = "(max-width: 480px) 512w, 100vw"
         srcset = "%s 512w, %s" % (escape(half_rendition.url),
                                   escape(rendition.url))
-        return ('<img %s%s src="data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" '
+        gray_gif = "data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+        return ('<img %s%s src="%s" data-original="%s"'
                 'width="%d" height="%d" '
                 'alt="%s" data-srcset="%s" sizes="%s">') % (
                     extra_attributes, class_attr,
+                    escape(half_rendition.url), gray_gif,
                     rendition.width, rendition.height, alt_text,
                     srcset, sizes
                 )
