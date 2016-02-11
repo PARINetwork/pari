@@ -36,11 +36,10 @@ class LazyImgFormat(Format):
         srcset = "%s 512w, %s" % (escape(half_rendition.url),
                                   escape(rendition.url))
         gray_gif = "data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-        return ('<img %s%s src="%s" data-original="%s"'
+        return ('<img %s%s src="%s" '
                 'width="%d" height="%d" '
                 'alt="%s" data-srcset="%s" sizes="%s">') % (
-                    extra_attributes, class_attr,
-                    escape(half_rendition.url), gray_gif,
+                    extra_attributes, class_attr, gray_gif,
                     rendition.width, rendition.height, alt_text,
                     srcset, sizes
                 )
