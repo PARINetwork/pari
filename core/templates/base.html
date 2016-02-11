@@ -125,7 +125,6 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   {% compress js %}
     <script src="{{ STATIC_URL }}bootstrap-3.1.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="{{STATIC_URL }}js/lazysizes.min.js"></script>
     <script>
     $(function() {
         $('.middleinput:text, textarea').addClass('xlarge');
@@ -139,10 +138,13 @@
 		}
 	    });
 	}
-	window.lazySizesConfig.lazyClass = 'lazy';
-	lazySizesConfig.srcAttr = 'data-original';
     });
+    window.lazySizesConfig = window.lazySizesConfig || {};
+    lazySizesConfig.lazyClass = 'lazy';
+    lazySizesConfig.srcAttr = 'data-original';
+    lazySizesConfig.loadMode = 1;
     </script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/lazysizes.min.js"></script>
     {% block extra_js %}{% endblock %}
     {% endcompress %}
   {% block extra_uncompressed_js %}{% endblock %}
