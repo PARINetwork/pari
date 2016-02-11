@@ -47,6 +47,8 @@ class ArticleDetail(DetailView):
         for img in imgs:
             if not img.attrs:
                 continue
+            if img.attrs.get("class") and "lazy" in img.attrs["class"]:
+                continue
             img.attrs["data-original"] = img.attrs["src"]
             img.attrs["class"] = img.attrs.get("class", []) + ["lazy"]
             img.attrs.pop("src")

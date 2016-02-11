@@ -7,6 +7,7 @@ from django.core.urlresolvers import reverse
 from django.conf import settings
 
 from wagtail.wagtailimages.models import AbstractImage, AbstractRendition
+from wagtail.wagtailimages.formats import get_image_format
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailcore.fields import StreamField
@@ -186,6 +187,15 @@ class AffixImageRendition(AbstractRendition):
         unique_together = (
             ('image', 'filter', 'focal_point_key'),
         )
+
+    def img_tag(self, extra_attributes=''):
+        fw_format = get_image_format("fullwidth")
+        extra_attrs = extra_attributes or ''
+        if fw_format.filter_spec == self.filter.spec:
+            return fw_format.image_to_html(
+                self.image, self.image.title, extra_attrs
+            )
+        return super(AffixImageRendition, self).img_tag(extra_attrs)
 
 
 class Contact(models.Model):
