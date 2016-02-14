@@ -6,6 +6,9 @@ from wagtail.wagtailimages.models import SourceImageIOError
 
 
 class LazyImgFormat(Format):
+    def image_to_editor_html(self, image, alt_text, extra_attributes=''):
+        return super(LazyImgFormat, self).image_to_html(image, alt_text, extra_attributes)
+
     def image_to_html(self, image, alt_text, extra_attributes=''):
         try:
             rendition = image.get_rendition(self.filter_spec)
