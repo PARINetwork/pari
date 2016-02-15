@@ -15,6 +15,8 @@
 
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/categories.less">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}album/css/magnific-popup.css">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}face/css/faces.less">
 {% endblock %}
 
 
@@ -35,12 +37,12 @@
           <div class="grid-column">{% image face.image fill-370x470 as face_image %}
             <img class="img-responsive" src="{{ face_image.url }}" width="370" height="470" alt="{{ face.title }}">
             <div class="caption down-caption dark-caption text-padding">
-              <p>
+              <div class="image-footer">
                 {{ face.district|upper|first }}
 		<span class="pull-right text-red">see more
                   <i class="fa fa-arrow-circle-right arrow-font"></i>
 		</span>
-              </p>
+	      </div>
             </div>
           </div>
         </a>
