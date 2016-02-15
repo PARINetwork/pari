@@ -107,6 +107,10 @@
 	{% if forloop.last or forloop.counter|divisibleby:"3" %}
       </div>
 	{% endif %}
+    {% empty %}
+      <div>
+	<h3 class="text-center text-danger">{% blocktrans %}Sorry! There are no faces on this page. Please consider <a href="/contribute/">contributing</a> one.{% endblocktrans %}</h3>
+      </div>
     {% endfor %}
     </div>
   </div>

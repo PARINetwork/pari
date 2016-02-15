@@ -24,6 +24,7 @@
 
 {% block main %}
   <div class="container content-container">
+    <h3 class="text-center">{% trans "View faces from districts starting with..." %}</h3>
     {% for face in faces %}
     {% if forloop.first or forloop.counter0|divisibleby:"3" %}
     <div class="row">
@@ -33,9 +34,12 @@
         <a href="{% url "face-detail" alphabet=face.location.district|lower|first %}">
           <div class="grid-column">{% image face.image fill-370x470 as face_image %}
             <img class="img-responsive" src="{{ face_image.url }}" width="370" height="470" alt="{{ face.title }}">
-            <div class="label">
+            <div class="caption down-caption dark-caption text-padding">
               <p>
                 {{ face.district|upper|first }}
+		<span class="pull-right text-red">see more
+                  <i class="fa fa-arrow-circle-right arrow-font"></i>
+		</span>
               </p>
             </div>
           </div>
