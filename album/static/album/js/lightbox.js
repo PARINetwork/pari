@@ -35,7 +35,7 @@ var Album = {
                                 '<p class="image-date">' + item.el.attr('data-date') + '</p>' +
                                 '<p class="image-location">' + item.el.attr('data-location') + '</p>' +
                                 '<p class="image-location-description">' + item.el.attr('data-location-description') + '</p>' +
-                                '<p class="image-caption" data-audio="' + item.el.attr('data-audio') + '">' + item.el.attr('title') + '</p>' +
+                                '<div class="image-caption" data-audio="' + item.el.attr('data-audio') + '">' + item.el.parent().find(".hidden").html() + '</div>' +
                                 '<div class="btn-toolbar">'+
                                     '<div class="btn-group">'+
                                         '<a class="btn btn-default btn-slideshow" href="#">Slideshow <i class="fa fa-' + icon + '"></i></a>'+
