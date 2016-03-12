@@ -70,9 +70,9 @@
     <div class="col-lg-4 col-md-4 col-sm-4 center">{% image slide.image max-1024x1024 as slide_image %}
       <a href="{{ slide_image.url }}" title="{{ slide.description|striptags }}" data-audio="{% firstof slide.audio "" %}" data-photographer="{{ album.photographer.name }}" data-location="{% for location in album.locations.all %}{{ location.name }}{% if not forloop.last %},{% endif %} {% endfor %}" data-location-description="{% for location in album.locations.all %}{% if location.district %}{{ location.district }}{% endif %}{% if location.state %}, {{ location.state }}{% endif %}{% if not forloop.last %};{% endif %} {% endfor %}" data-date="{{ album.first_published_at|date:"F Y" }}" data-url="{{ album.get_absolute_url }}" data-allowcomments="false" class="image-tag mfp-image">
 	<div class="grid-column">
-	  <img class="center-block album_image lazy" data-original="{{ slide_image.url }}" alt="{{ slide.description|striptags }}">
+	  <img class="center-block album_image lazy" data-original="{{ slide_image.url }}" alt="{{ slide.description|striptags|safe }}">
 	  <div class="caption">
-	    <p>{{ slide.description|striptags|truncatechars:50 }}</p>
+	    <p>{{ slide.description|striptags|truncatechars:50|safe }}</p>
 	    {% if slide.audio %}
 	    <div class="audio-icon"><i class="fa fa-microphone"></i></div>
 	    {% endif %}
