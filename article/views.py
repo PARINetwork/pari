@@ -87,7 +87,10 @@ class ArticleList(ListView):
     def get_queryset(self):
         url_name = self.request.resolver_match.url_name
         if url_name == "author-detail":
-            qs = Article.objects.live().filter(authors__slug=self.kwargs["slug"])
+            live_articles_by_author = Article.objects.live().filter(
+                authors__slug=self.kwargs["slug"]
+            )
+            qs = live_articles_by_author.order_by("-first_published_at")
         else:
             qs = super(ArticleList, self).get_queryset()
         return qs
