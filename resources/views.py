@@ -1,4 +1,5 @@
 from django.views.generic import DetailView, ListView
+from django.contrib.sites.requests import RequestSite
 
 from .models import Resource
 
@@ -17,8 +18,18 @@ class ResourceDetail(DetailView):
     context_object_name = "resource"
     model = Resource
 
+    def get_context_data(self, **kwargs):
+        context = super(ResourceDetail, self).get_context_data(**kwargs)
+        context['site'] = RequestSite(self.request)
+        return context
+
 
 class ReportDetail(DetailView):
     context_object_name = "resource"
     model = Resource
     template_name = 'resources/report_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ReportDetail, self).get_context_data(**kwargs)
+        context['site'] = RequestSite(self.request)
+        return context
