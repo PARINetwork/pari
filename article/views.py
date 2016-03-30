@@ -49,7 +49,7 @@ class ArticleDetail(DetailView):
                 continue
             if img.attrs.get("class") and "lazy" in img.attrs["class"]:
                 continue
-            img.attrs["data-original"] = img.attrs["src"]
+            img.attrs["data-original"] = img.attrs.get("src")
             img.attrs["class"] = img.attrs.get("class", []) + ["lazy"]
             img.attrs.pop("src")
         content = unicode(bs)
