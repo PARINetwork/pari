@@ -18,7 +18,7 @@ urlpatterns = patterns('core.views',
     url(r'^contact-us/$', 'contact_us', name='contact_us'),
     url(r'^(?P<slug>donate)/$', 'static_page', name='static_page'),
 
-    url(r'^pages/(?P<slug>[\w\-]+)/$', 'static_page', name='static_page'),
+    url(r'^pages/(?P<slug>.+)/$', 'static_page', name='static_page'),
 )
 
 urlpatterns += patterns('',
