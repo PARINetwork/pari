@@ -11,10 +11,30 @@
   .content-container {
       font-size: 12.5pt;
   }
+ .translations ul.dropdown-menu {
+     background-color: #fff;
+     margin: 0px;
+     padding: 0px;
+ }
 </style>
 {% endblock %}
 
 {% block main %}
+<div class="pull-right">
+{% if translations and translations|length > 1 %}
+    <span class="dropdown translations">
+	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+	    {% trans "Choose language" %}
+	    <span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+	    {% for translation in translations %}
+	    <li role="presentation"><a role="menuitem" tabindex="{{ forloop.counter0 }}" href="{{ translation.get_absolute_url }}">{{ translation.get_language_display }}</a></li>
+	    {% endfor %}
+	</ul>
+    </span>
+{% endif %}
+</div>
 <div class="container content-container">
   {{ self.content|richtext }}
 </div>

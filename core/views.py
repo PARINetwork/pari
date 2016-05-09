@@ -12,12 +12,16 @@ from .models import HomePage, StaticPage
 from category.models import Category
 from .forms import ContactForm
 
+from core.utils import get_translations_for_page
+
 
 def home_page(request, slug="home-page"):
     home_page = HomePage.objects.get(slug=slug)
+    translations = get_translations_for_page(home_page)
     return render(request, "core/home_page.html", {
         "page": home_page,
-        "categories": Category.objects.all()[:9]
+        "categories": Category.objects.all()[:9],
+        "translations": translations
     })
 
 def static_page(request, slug=None):
@@ -27,8 +31,10 @@ def static_page(request, slug=None):
         raise Http404
     if page.specific_class == HomePage:
         return home_page(request, page.slug)
+    translations = get_translations_for_page(page.specific)
     return render(request, "core/static_page.html", {
-        "self": page.specific
+        "self": page.specific,
+        "translations": translations
     })
 
 def contribute(request, slug=None):
