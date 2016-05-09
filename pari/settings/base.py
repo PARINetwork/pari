@@ -196,6 +196,7 @@ SOUNDCLOUD_SETTINGS = {
 }
 
 LANGUAGES = (
+    ("as", _("Assamese")),
     ("bn", _("Bengali")),
     ("en", _("English")),
     ("hi", _("Hindi")),
