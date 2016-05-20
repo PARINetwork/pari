@@ -26,7 +26,7 @@ $(function() {
     });
 
     $('.rich-text img').each(function() {
-	var src = $(this).attr("data-original") || $(this).attr("src");
+	var src = $(this).attr("data-original") || $(this).prop("currentSrc") || $(this).attr("src");
     	$(this).wrap('<a class="gallery" href="' + src + '"></a>');
     });
 
