@@ -41,13 +41,15 @@ $(function() {
 	gallery: {
 	    enabled: true,
 	    navigateByImgClick: true,
-	    preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+	    preload: false
 	},
 	callbacks: {
 	    elementParse: function(item) {
-		var $this = $(item.el).find("img");
-		var src = $this.attr("data-original") || $this.prop("currentSrc") || $this.attr("src");
-		item.src = src;
+		var nextItem = $(this.items[this.index + 1]);
+		$(nextItem).find("img").addClass("lazypreload");
+	    	var $this = $(item.el).find("img");
+	    	var src = $this.attr("data-src") || $this.prop("currentSrc") || $this.attr("src");
+	    	item.src = src;
 	    }
 	}
     });

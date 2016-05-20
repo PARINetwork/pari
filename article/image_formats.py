@@ -5,7 +5,7 @@ from wagtail.wagtailimages.formats import register_image_format, \
 from wagtail.wagtailimages.models import SourceImageIOError
 
 
-class LazyImgFormat(Format):
+class FullWidthImgFormat(Format):
     def image_to_editor_html(self, image, alt_text, extra_attributes=''):
         return self.image_to_html(image, alt_text, extra_attributes)
 
@@ -49,4 +49,4 @@ class LazyImgFormat(Format):
 
 register_image_format(Format('halfwidth', 'Half Width (512px)', 'richtext-image half-width', 'max-512x410'))
 unregister_image_format("fullwidth")
-register_image_format(LazyImgFormat('fullwidth', 'Full width', 'richtext-image full-width', 'max-1400x1120'))
+register_image_format(FullWidthImgFormat('fullwidth', 'Full width', 'richtext-image full-width', 'max-1400x1120'))
