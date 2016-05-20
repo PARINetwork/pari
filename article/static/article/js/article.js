@@ -24,4 +24,25 @@ $(function() {
 	    scrollTop: 0
 	}, 1000);
     });
+
+    $('.rich-text img').each(function() {
+	var src = $(this).attr("data-original") || $(this).attr("src");
+    	$(this).wrap('<a class="gallery" href="' + src + '"></a>');
+    });
+
+    $('.rich-text .gallery').magnificPopup({
+	type: 'image',
+	tLoading: 'Loading image #%curr%...',
+	image: {
+	    titleSrc: function(item) {
+		var el = item.el;
+		return item.el.next("p").next("i");
+	    }
+	},
+	gallery: {
+	    enabled: true,
+	    navigateByImgClick: true,
+	    preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+	}
+    });
 });
