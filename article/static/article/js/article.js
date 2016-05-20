@@ -26,8 +26,7 @@ $(function() {
     });
 
     $('.rich-text img').each(function() {
-	var src = $(this).attr("data-original") || $(this).prop("currentSrc") || $(this).attr("src");
-    	$(this).wrap('<a class="gallery" href="' + src + '"></a>');
+    	$(this).wrap('<a class="gallery" href="javascript:void(0)"></a>');
     });
 
     $('.rich-text .gallery').magnificPopup({
@@ -43,6 +42,13 @@ $(function() {
 	    enabled: true,
 	    navigateByImgClick: true,
 	    preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+	},
+	callbacks: {
+	    elementParse: function(item) {
+		var $this = $(item.el).find("img");
+		var src = $this.attr("data-original") || $this.prop("currentSrc") || $this.attr("src");
+		item.src = src;
+	    }
 	}
     });
 });

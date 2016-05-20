@@ -49,9 +49,14 @@ class ArticleDetail(DetailView):
                 continue
             if img.attrs.get("class") and "lazy" in img.attrs["class"]:
                 continue
-            img.attrs["data-original"] = img.attrs.get("src")
             img.attrs["class"] = img.attrs.get("class", []) + ["lazy"]
-            img.attrs.pop("src")
+            if img.attrs.get("src"):
+                img.attrs["data-original"] = img.attrs.get("src")
+            if img.attrs.get("srcset"):
+                img.attrs["data-srcset"] = img.attrs.get("srcset")
+                img.attrs.pop("srcset", "")
+            gray_gif = "data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+            img.attrs["src"] = gray_gif
         content = unicode(bs)
         response.content = content
         cache.set(context['object'].get_absolute_url(), response)

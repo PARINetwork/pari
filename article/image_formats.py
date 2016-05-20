@@ -7,7 +7,7 @@ from wagtail.wagtailimages.models import SourceImageIOError
 
 class LazyImgFormat(Format):
     def image_to_editor_html(self, image, alt_text, extra_attributes=''):
-        return super(LazyImgFormat, self).image_to_html(image, alt_text, extra_attributes)
+        return self.image_to_html(image, alt_text, extra_attributes)
 
     def image_to_html(self, image, alt_text, extra_attributes=''):
         try:
@@ -31,18 +31,17 @@ class LazyImgFormat(Format):
             half_rendition.file.name = 'not-found'
 
         if self.classnames:
-            class_attr = 'class="%s lazy" ' % escape(self.classnames)
+            class_attr = 'class="%s" ' % escape(self.classnames)
         else:
-            class_attr = 'lazy'
+            class_attr = ''
 
         sizes = "(max-width: 480px) 512w, 100vw"
         srcset = "%s 512w, %s" % (escape(half_rendition.url),
                                   escape(rendition.url))
-        gray_gif = "data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-        return ('<img %s%s src="%s" '
+        return ('<img %s%s '
                 'width="%d" height="%d" '
-                'alt="%s" data-srcset="%s" sizes="%s">') % (
-                    extra_attributes, class_attr, gray_gif,
+                'alt="%s" srcset="%s" sizes="%s">') % (
+                    extra_attributes, class_attr,
                     rendition.width, rendition.height, alt_text,
                     srcset, sizes
                 )

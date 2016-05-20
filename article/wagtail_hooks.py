@@ -17,6 +17,12 @@ def whitelist_blockquote():
         'iframe': attribute_rule({
             'style': True, 'src': True,
             'width': True, 'height': True
+        }),
+        'img': attribute_rule({
+            'srcset': True, 'class': True,
+            'data-srcset': True, 'alt': True,
+            'width': True, 'height': True,
+            'sizes': True
         })
     }
 
