@@ -118,7 +118,7 @@ class Article(Page):
             }
         }
         mlt = es_backend.es.search(
-            index=es_backend.es_index,
+            index=es_backend.index_name,
             doc_type=mapping.get_document_type(),
             body=query
         )
