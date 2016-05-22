@@ -35,7 +35,15 @@ $(function() {
 	image: {
 	    titleSrc: function(item) {
 		var el = item.el;
-		return item.el.next("p").next("i");
+		var parent = item.el.closest("p");
+		var sibling = parent.next("p");
+		var ital = sibling.find("i");
+		if (ital.length > 0 && ital.text().trim().length > 0) {
+		    console.log(sibling.html());
+		    return sibling.html();
+		} else {
+		    return null;
+		}
 	    }
 	},
 	gallery: {
