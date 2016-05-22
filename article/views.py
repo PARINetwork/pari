@@ -47,6 +47,10 @@ class ArticleDetail(DetailView):
         for img in imgs:
             if not img.attrs:
                 continue
+            ns_attrs = img.attrs
+            ns_img = bs.new_tag("img", **ns_attrs)
+            img.insert_before(ns_img)
+            ns_img.wrap(bs.new_tag("noscript"))
             if img.attrs.get("class") and "lazyload" in img.attrs["class"]:
                 continue
             img.attrs["class"] = img.attrs.get("class", []) + ["lazyload"]

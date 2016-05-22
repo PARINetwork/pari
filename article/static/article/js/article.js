@@ -1,4 +1,6 @@
 $(function() {
+    $(".lazyload").css("display", "block");
+
     $(".scrollToTop").hide();
 
     $(".full-row .info a").on("click", function() {

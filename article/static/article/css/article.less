@@ -217,20 +217,27 @@
     img {
 	max-width: 100%;
 	height: auto;
+
+	&.left {
+	    float: left;
+	    margin-right: 20px;
+	}
+
+	&.right {
+	    float: right;
+	    margin-left: 20px;
+	}
+
+	&.full-width {
+	    clear: both;
+	}
     }
 
-    img.left {
-	float: left;
-	margin-right: 20px;
-    }
-
-    img.right {
-	float: right;
-	margin-left: 20px;
-    }
-
-    img.full-width {
-	clear: both;
+    a.gallery {
+	.fa.fa-arrows-alt {
+	    color: #000;
+	    font-size: 2em;
+	}
     }
 
     ul {

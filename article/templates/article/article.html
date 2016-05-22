@@ -34,6 +34,12 @@
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/location.less">
 {% endblock %}
 
+{% block extra_uncompressed_css %}
+    <style>
+      .lazyload { display: none; }
+    </style>
+{% endblock %}
+
 {% block extra_js %}
     <script type="text/javascript" src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}article/js/social.js"></script>
