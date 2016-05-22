@@ -136,7 +136,7 @@
 	    <a href="{{ related_article.get_absolute_url }}">
 	      {% if related_article.featured_image %}
 	      <div class="article-image">{% image related_article.featured_image fill-512x512 as featured_image %}
-                <img class="img-responsive lazyload" data-src="{{ featured_image.url }}" alt="{{ related_article.featured_image.title }}" width="260" height="260">
+                <img class="img-responsive lazyload" data-src="{{ featured_image.url }}" alt="{{ related_article.featured_image.title }}" width="260" height="260" src="data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==">
 	      </div>
 	      {% else %}
 	      <div class="article-image">
