@@ -21,7 +21,8 @@ def whitelist_blockquote():
         'img': attribute_rule({
             'srcset': True, 'class': True,
             'alt': True, 'sizes': True,
-            'width': True, 'height': True
+            'width': True, 'height': True,
+            'src': True
         })
     }
 
