@@ -1,5 +1,5 @@
 $(function() {
-    $(".lazyload").css("display", "block");
+    $(".lazyload").css("display", "initial");
 
     $(".scrollToTop").hide();
 
