@@ -11,7 +11,7 @@ $(function() {
 	    toggleClass: "hidden"
 	}, 1000);
     });
-    $(document).on("scroll", function() {co
+    $(document).on("scroll", function() {
 	if ($(window).scrollTop() < 10) {
 	    $(".full-row .info").removeClass("hidden");
 	    $(".scrollToTop").hide();
