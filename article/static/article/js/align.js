@@ -5,10 +5,10 @@ $(function() {
 	      $(".hallotoolbar .hallojustify button[title]").on("click", function() {
 	          var selection = window.getSelection();
 	          var block;
-            if (selection.baseNode.tagName.toLowerCase() === "p") {
-                block = selection.baseNode;
-            } else {
+            if (selection.baseNode.nodeName === "#text") {
                 block = $(selection.baseNode).parents("p");
+            } else {
+                block = selection.baseNode;
             }
 	          var alignment = $(this).attr("title").toLowerCase();
 	          $(block).removeClass("center left right justify");
