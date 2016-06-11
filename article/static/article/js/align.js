@@ -28,6 +28,7 @@ $(function() {
             $(".richtext").attr("dir", "auto");
         }
     });
+    $("#id_language").trigger("change");
 
     var openedWindows = [];
     window._open = window.open;
