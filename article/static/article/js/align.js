@@ -3,18 +3,26 @@ $(function() {
     $(".richtext").on("click", function() {
 	      var $this = $(this);
 	      $(".hallotoolbar .hallojustify button[title]").on("click", function() {
-	          var selection = window.getSelection();
-	          var block;
-            if (selection.baseNode.nodeName === "#text") {
-                block = $(selection.baseNode).parents("p");
-            } else {
-                block = selection.baseNode;
-            }
 	          var alignment = $(this).attr("title").toLowerCase();
-	          $(block).removeClass("center left right justify");
-	          $(block).addClass(alignment);
-	          $this.trigger("hallomodified", [{content: $this.html()}]);
-	          $this.addClass("isModified");
+            var sel = rangy.getSelection();
+            var block, blockElements = [];
+            if (sel.rangeCount) {
+                var range = sel.getRangeAt(0);
+                if (range.collapsed === true) {
+                    blockElements = $(range.startContainer).parents("p");
+                } else {
+                    blockElements = range.getNodes([1], function(el) {
+                        return /p|h[1-6]|blockquote|ol|ul/i.test(el.tagName);
+                    });
+                }
+                for (var ii=0; ii < blockElements.length; ii++) {
+                    block = blockElements[ii];
+	                  $(block).removeClass("center left right justify");
+	                  $(block).addClass(alignment);
+                }
+	              $this.trigger("hallomodified", [{content: $this.html()}]);
+	              $this.addClass("isModified");
+            }
 	      });
     });
 
