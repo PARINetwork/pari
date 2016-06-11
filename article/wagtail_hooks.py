@@ -50,23 +50,27 @@ def editor_css():
         <link rel="stylesheet" href="{0}article/css/hallo-icons.css">
         <style>
         blockquote {{
-	    color: #101010;
-	    font-size: 1.6em;
-	    border: none;
-	    font-style: italic;
-	    font-weight: bold;
-	    margin: 10px 0;
-	    padding: 10px;
-	    text-align: center;
-	    display: block;
+	        color: #101010;
+	        font-size: 1.6em;
+	        border: none;
+	        font-style: italic;
+	        font-weight: bold;
+	        margin: 10px 0;
+	        padding: 10px;
+	        text-align: center;
+	        display: block;
         }}
 
         blockquote::before {{
             content: open-quote;
         }}
-	blockquote::after {{
-	    content: close-quote;
+	    blockquote::after {{
+	        content: close-quote;
         }}
+        .center {{ text-align: center; }}
+        .left {{ text-align: left; }}
+        .right {{ text-align: right; }}
+        .justify {{ text-align: justify; }}
         </style>
         """,
         settings.STATIC_URL
