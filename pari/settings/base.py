@@ -200,7 +200,7 @@ LANGUAGES = (
     ("bn", _("Bengali")),
     ("en", _("English")),
     ("hi", _("Hindi")),
-    ("ka", _("Kannada")),
+    ("kn", _("Kannada")),
     ("ml", _("Malayalam")),
     ("mr", _("Marathi")),
     ("or", _("Oriya")),
