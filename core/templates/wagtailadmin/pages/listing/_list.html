@@ -34,7 +34,8 @@
                         {% include "wagtailadmin/shared/page_status_tag.html" with page=parent_page %}
                     {% endif %}
                 </td>
-		<td></td>
+		            <td></td>
+                <td></td>
                 <td></td>
             </tr>
         {% endif %}
@@ -74,7 +75,8 @@
 		        {{ page.specific.content.0.value|striptags|truncatechars_html:50 }}
 		        {% endif %}
 		      {% endif %}
-		    </td>
+		          </td>
+                    <td class="language">{{ page.get_language_display }}</td>
                     <td class="updated" valign="top">{% if page.latest_revision_created_at %}<div class="human-readable-date" title="{{ page.latest_revision_created_at|date:"d M Y H:i" }}">{{ page.latest_revision_created_at|timesince }} ago</div>{% endif %}</td>
                     <td class="type" valign="top">{{ page.content_type.model_class.get_verbose_name }}</td>
                     <td class="status" valign="top">

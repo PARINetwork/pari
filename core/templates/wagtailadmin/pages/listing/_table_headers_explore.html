@@ -48,6 +48,9 @@ ordering: the current sort parameter
       {% endif %}
       {% endwith %}
     </th>
+    <th class="language">
+      {% trans 'Language' %}
+    </th>
      <th class="updated">
         {% if sortable %}
             <a href="{% url 'wagtailadmin_explore' parent_page.id %}?ordering={% if ordering == "latest_revision_created_at" %}-{% endif %}latest_revision_created_at" class="icon icon-arrow-{% if ordering == "-latest_revision_created_at" %}up-after{% else %}down-after{% endif %} {% if ordering == "latest_revision_created_at" or ordering == "-latest_revision_created_at" %}teal {% endif %}">
@@ -75,5 +78,4 @@ ordering: the current sort parameter
             {% trans 'Status' %}
         {% endif %}
     </th>
-    <th></th>
 </tr>
