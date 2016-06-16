@@ -51,5 +51,6 @@ class Face(Page):
     def get_context(self, request, *args, **kwargs):
         return {
             'faces': [self],
+            'alphabet': self.location.district[0].lower(),
             'request': request
         }
