@@ -72,6 +72,7 @@ INSTALLED_APPS = (
     'wagtail.wagtailsearch',
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
+    'wagtail.contrib.modeladmin',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -195,15 +196,18 @@ SOUNDCLOUD_SETTINGS = {
     "PASSWORD": ""
 }
 
+# https://www.loc.gov/standards/iso639-2/php/code_list.php
 LANGUAGES = (
     ("as", _("Assamese")),
     ("bn", _("Bengali")),
     ("en", _("English")),
+    ("gu", _("Gujarati")),
     ("hi", _("Hindi")),
     ("kn", _("Kannada")),
     ("ml", _("Malayalam")),
     ("mr", _("Marathi")),
-    ("or", _("Oriya")),
+    ("or", _("Odia")),
+    ("pa", _("Punjabi")),
     ("te", _("Telugu")),
     ("ta", _("Tamil")),
     ("ur", _("Urdu")),
