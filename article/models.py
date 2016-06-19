@@ -37,6 +37,9 @@ Page.url = url_property
 
 class Article(Page):
     authors = M2MField("author.Author", related_name="articles_by_author")
+    translators = M2MField("author.Author",
+                           related_name="translations_by_author",
+                           blank=True)
     strap = models.TextField(blank=True)
     content = RichTextField()
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
@@ -50,6 +53,7 @@ class Article(Page):
     content_panels = Page.content_panels + [
         FieldPanel('strap'),
         M2MFieldPanel('authors'),
+        M2MFieldPanel('translators'),
         FieldPanel('language'),
         FieldPanel('original_published_date'),
         FieldPanel('content'),
@@ -61,6 +65,7 @@ class Article(Page):
     search_fields = Page.search_fields + (
         index.SearchField('title', partial_match=True),
         index.SearchField('authors', partial_match=True, boost=2),
+        index.SearchField('translators', partial_match=True, boost=2),
         index.SearchField('strap', partial_match=True),
         index.SearchField('content', partial_match=True),
         index.FilterField('categories'),
