@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.conf import settings
 
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
 
@@ -15,16 +16,19 @@ class Author(models.Model):
     bio = models.TextField(null=True, blank=True)
     image = models.ForeignKey('core.AffixImage', null=True, blank=True)
 
-    panels = [
-        FieldPanel('name'),
-        FieldPanel('email'),
-        FieldPanel('twitter_username'),
-        FieldPanel('facebook_username'),
-        FieldPanel('website'),
-        MultiFieldPanel([
-            FieldPanel('bio'),
-        ], heading="Bio", classname="collapsible"),
-    ]
+
+    def __init__(self, *args, **kwargs):
+        self.__class__.panels = [
+            FieldPanel('name'),
+            FieldPanel('email'),
+            FieldPanel('twitter_username'),
+            FieldPanel('facebook_username'),
+            FieldPanel('website'),
+            MultiFieldPanel([
+                FieldPanel('bio_%s' % ii[0]) for ii in settings.LANGUAGES
+            ], heading="Bio", classname="collapsible"),
+        ]
+        super(Author, self).__init__(*args, **kwargs)
 
     def __str__(self):
         return self.name

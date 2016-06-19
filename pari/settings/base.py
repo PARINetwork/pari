@@ -36,6 +36,7 @@ BASE_URL = 'http://ruralindiaonline.org'
 
 INSTALLED_APPS = (
     'overextends',
+    'modeltranslation',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -196,11 +197,13 @@ SOUNDCLOUD_SETTINGS = {
     "PASSWORD": ""
 }
 
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+
 # https://www.loc.gov/standards/iso639-2/php/code_list.php
 LANGUAGES = (
+    ("en", _("English")),
     ("as", _("Assamese")),
     ("bn", _("Bengali")),
-    ("en", _("English")),
     ("gu", _("Gujarati")),
     ("hi", _("Hindi")),
     ("kn", _("Kannada")),
