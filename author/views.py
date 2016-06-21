@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.utils.text import slugify
 from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 
 from wagtail.wagtailadmin.modal_workflow import render_modal_workflow
 
@@ -25,3 +26,7 @@ def add_author(request):
             "instance": instance
         }
     )
+
+
+def add_translator(request):
+    return HttpResponseRedirect(reverse("author_add"))

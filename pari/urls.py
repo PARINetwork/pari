@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
 
     url(r'^admin/pages/search/$', 'core.views.search'),
+    url(r'^admin/translators/add/$', 'author.views.add_translator'),
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^search/', include(wagtailsearch_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
