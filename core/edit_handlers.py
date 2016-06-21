@@ -3,7 +3,8 @@ from wagtail.wagtailadmin.edit_handlers import BaseFieldPanel, FieldPanel
 
 class BaseM2MFieldPanel(BaseFieldPanel):
     object_template = "core/edit_handlers/single_field_panel.html"
-    
+
+
 class M2MFieldPanel(FieldPanel):
     def bind_to_model(self, model):
         base = {
@@ -20,7 +21,8 @@ class M2MFieldPanel(FieldPanel):
 
 class BaseAudioFieldPanel(BaseFieldPanel):
     field_template = "core/edit_handlers/audio_panel.html"
-    
+
+
 class AudioPanel(FieldPanel):
     def bind_to_model(self, model):
         base = {

@@ -2,15 +2,15 @@ function(modal) {
     {% block instance %}
     {% if instance %}
     $(function() {
-	var instance = {"id": {{ instance.id }}, "name": "{{ instance.name }}"};
-	modal.respond("objectAdded", instance);
-	modal.close();
+	      var instance = {"id": {{ instance.id }}, "name": "{{ instance.name }}"};
+	      modal.respond("objectAdded", instance);
+	      modal.close();
     });
     {% endif %}
     {% endblock %}
 
     $('form.add-object', modal.body).submit(function(ev) {
-	ev.preventDefault();
+	      ev.preventDefault();
 
         var formdata = $(this).serialize();
 
@@ -18,9 +18,9 @@ function(modal) {
             url: this.action,
             data: formdata,
             type: 'POST',
-	    dataType: 'text',
+	          dataType: 'text',
             success: function(response){
-		modal.loadResponseText(response);
+		            modal.loadResponseText(response);
             }
         });
     });

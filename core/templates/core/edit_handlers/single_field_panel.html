@@ -4,7 +4,7 @@
   <ul class="fields">
     <li>
       <div class="field {{ field|fieldtype }} {{ field|widgettype }} {{ field_classes }}">
-	<div class="field-content">
+	      <div class="field-content">
           <div class="input {{ input_classes }} ">
             {% block form_field %}
             {{ field|render_with_errors }}
@@ -24,7 +24,7 @@
             {% endfor %}
           </p>
           {% endif %}
-	</div>
+	      </div>
       </div>
     </li>
   </ul>
