@@ -6,6 +6,7 @@ from django.db.models.signals import post_save, pre_delete
 from django.conf import settings
 from django.dispatch import receiver
 from django.core import mail
+from django.core.cache import caches
 from django.contrib.sites.models import Site
 from django.template import loader, Context
 
@@ -109,3 +110,9 @@ def update_yt_params(sender, instance, **kwargs):
     ytp.feed(instance.html)
     instance.html = ytp.yt_url
     instance.save()
+
+
+@receiver(post_save, sender=Page)
+def clear_caches(sender, instance, **kwargs):
+    cache = caches[settings.CACHE_MIDDLEWARE_ALIAS]
+    cache.clear()
