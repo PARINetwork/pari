@@ -27,6 +27,36 @@
 {% block main %}
   <div class="container content-container">
     <h3 class="text-center">{% trans "View faces from districts starting with..." %}</h3>
+    <div class="paginator face_paginator">
+      <ul>
+        <li><a href="{% url "face-detail" alphabet="a" %}">A</a></li>
+        <li><a href="{% url "face-detail" alphabet="b" %}">B</a></li>
+        <li><a href="{% url "face-detail" alphabet="c" %}">C</a></li>
+        <li><a href="{% url "face-detail" alphabet="d" %}">D</a></li>
+        <li><a href="{% url "face-detail" alphabet="e" %}">E</a></li>
+        <li><a href="{% url "face-detail" alphabet="f" %}">F</a></li>
+        <li><a href="{% url "face-detail" alphabet="g" %}">G</a></li>
+        <li><a href="{% url "face-detail" alphabet="h" %}">H</a></li>
+        <li><a href="{% url "face-detail" alphabet="i" %}">I</a></li>
+        <li><a href="{% url "face-detail" alphabet="j" %}">J</a></li>
+        <li><a href="{% url "face-detail" alphabet="k" %}">K</a></li>
+        <li><a href="{% url "face-detail" alphabet="l" %}">L</a></li>
+        <li><a href="{% url "face-detail" alphabet="m" %}">M</a></li>
+        <li><a href="{% url "face-detail" alphabet="n" %}">N</a></li>
+        <li><a href="{% url "face-detail" alphabet="o" %}">O</a></li>
+        <li><a href="{% url "face-detail" alphabet="p" %}">P</a></li>
+        <li><a href="{% url "face-detail" alphabet="q" %}">Q</a></li>
+        <li><a href="{% url "face-detail" alphabet="r" %}">R</a></li>
+        <li><a href="{% url "face-detail" alphabet="s" %}">S</a></li>
+        <li><a href="{% url "face-detail" alphabet="t" %}">T</a></li>
+        <li><a href="{% url "face-detail" alphabet="u" %}">U</a></li>
+        <li><a href="{% url "face-detail" alphabet="v" %}">V</a></li>
+        <li><a href="{% url "face-detail" alphabet="w" %}">W</a></li>
+        <li><a href="{% url "face-detail" alphabet="x" %}">X</a></li>
+        <li><a href="{% url "face-detail" alphabet="y" %}">Y</a></li>
+        <li><a href="{% url "face-detail" alphabet="z" %}">Z</a></li>
+      </ul>
+    </div>
     {% for face in faces %}
     {% if forloop.first or forloop.counter0|divisibleby:"3" %}
     <div class="row">
