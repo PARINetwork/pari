@@ -12,6 +12,7 @@ from resources.models import Resource
 
 import itertools
 import datetime
+import operator
 
 
 class BaseFeed(Feed):
@@ -63,12 +64,16 @@ class AllFeed(BaseFeed):
 
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
-        return itertools.chain(
-            Article.objects.live().order_by('-first_published_at').filter(first_published_at__gte=x_days_ago),
-            Album.objects.live().order_by('-first_published_at').filter(first_published_at__gte=x_days_ago),
-            Face.objects.live().order_by('-first_published_at').filter(first_published_at__gte=x_days_ago),
-            Resource.objects.live().order_by('-first_published_at').filter(first_published_at__gte=x_days_ago),
+        items_gen = itertools.chain(
+            Article.objects.live().filter(first_published_at__gte=x_days_ago),
+            Album.objects.live().filter(first_published_at__gte=x_days_ago),
+            Face.objects.live().filter(first_published_at__gte=x_days_ago),
+            Resource.objects.live().filter(first_published_at__gte=x_days_ago),
         )
+        return sorted(
+            items_gen,
+            key=operator.attrgetter('first_published_at'),
+            reverse=True)
 
 
 class ArticleFeed(BaseFeed):
