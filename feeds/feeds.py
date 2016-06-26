@@ -36,7 +36,7 @@ class BaseFeed(Feed):
         return super(BaseFeed, self).__call__(request, *args, **kwargs)
 
     def item_pubdate(self, item):
-        return item.latest_revision_created_at
+        return item.first_published_at
 
     def item_author_name(self, item):
         author = getattr(item, 'author', None)
@@ -64,10 +64,10 @@ class AllFeed(BaseFeed):
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
         return itertools.chain(
-            Article.objects.live().filter(latest_revision_created_at__gte=x_days_ago),
-            Album.objects.live().filter(latest_revision_created_at__gte=x_days_ago),
-            Face.objects.live().filter(latest_revision_created_at__gte=x_days_ago),
-            Resource.objects.live().filter(latest_revision_created_at__gte=x_days_ago),
+            Article.objects.live().filter(first_published_at__gte=x_days_ago),
+            Album.objects.live().filter(first_published_at__gte=x_days_ago),
+            Face.objects.live().filter(first_published_at__gte=x_days_ago),
+            Resource.objects.live().filter(first_published_at__gte=x_days_ago),
         )
 
 
@@ -82,7 +82,7 @@ class ArticleFeed(BaseFeed):
 
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
-        return Article.objects.live().filter(latest_revision_created_at__gte=x_days_ago)
+        return Article.objects.live().filter(first_published_at__gte=x_days_ago)
 
 
 class AlbumFeed(BaseFeed):
@@ -96,7 +96,7 @@ class AlbumFeed(BaseFeed):
 
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
-        return Album.objects.live().filter(latest_revision_created_at__gte=x_days_ago)
+        return Album.objects.live().filter(first_published_at__gte=x_days_ago)
 
 
 class FaceFeed(BaseFeed):
@@ -110,7 +110,7 @@ class FaceFeed(BaseFeed):
 
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
-        return Face.objects.live().filter(latest_revision_created_at__gte=x_days_ago)
+        return Face.objects.live().filter(first_published_at__gte=x_days_ago)
 
 
 class ResourceFeed(BaseFeed):
@@ -124,7 +124,7 @@ class ResourceFeed(BaseFeed):
 
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
-        return Resource.objects.live().filter(latest_revision_created_at__gte=x_days_ago)
+        return Resource.objects.live().filter(first_published_at__gte=x_days_ago)
 
 
 def feeds_list_page(request):
