@@ -64,10 +64,10 @@ class AllFeed(BaseFeed):
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
         return itertools.chain(
-            Article.objects.live().filter(first_published_at__gte=x_days_ago),
-            Album.objects.live().filter(first_published_at__gte=x_days_ago),
-            Face.objects.live().filter(first_published_at__gte=x_days_ago),
-            Resource.objects.live().filter(first_published_at__gte=x_days_ago),
+            Article.objects.live().order_by('-first_published_at').filter(first_published_at__gte=x_days_ago),
+            Album.objects.live().order_by('-first_published_at').filter(first_published_at__gte=x_days_ago),
+            Face.objects.live().order_by('-first_published_at').filter(first_published_at__gte=x_days_ago),
+            Resource.objects.live().order_by('-first_published_at').filter(first_published_at__gte=x_days_ago),
         )
 
 
@@ -82,7 +82,7 @@ class ArticleFeed(BaseFeed):
 
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
-        return Article.objects.live().filter(first_published_at__gte=x_days_ago)
+        return Article.objects.live().order_by('-first_published_at').filter(first_published_at__gte=x_days_ago)
 
 
 class AlbumFeed(BaseFeed):
@@ -96,7 +96,7 @@ class AlbumFeed(BaseFeed):
 
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
-        return Album.objects.live().filter(first_published_at__gte=x_days_ago)
+        return Album.objects.live().order_by('-first_published_at').filter(first_published_at__gte=x_days_ago)
 
 
 class FaceFeed(BaseFeed):
@@ -110,7 +110,7 @@ class FaceFeed(BaseFeed):
 
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
-        return Face.objects.live().filter(first_published_at__gte=x_days_ago)
+        return Face.objects.live().order_by('-first_published_at').filter(first_published_at__gte=x_days_ago)
 
 
 class ResourceFeed(BaseFeed):
@@ -124,7 +124,7 @@ class ResourceFeed(BaseFeed):
 
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
-        return Resource.objects.live().filter(first_published_at__gte=x_days_ago)
+        return Resource.objects.live().order_by('-first_published_at').filter(first_published_at__gte=x_days_ago)
 
 
 def feeds_list_page(request):
