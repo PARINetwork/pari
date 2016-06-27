@@ -30,3 +30,6 @@ def add_author(request):
 
 def add_translator(request):
     return HttpResponseRedirect(reverse("author_add"))
+
+def add_photographer(request):
+    return HttpResponseRedirect(reverse("author_add"))
