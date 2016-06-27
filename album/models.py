@@ -20,15 +20,15 @@ from core.edit_handlers import M2MFieldPanel, AudioPanel
 class Album(Page):
     description = RichTextField()
     locations = M2MField("location.Location", related_name="albums_by_location")
-    photographer = models.ForeignKey("author.Author",
-                                     on_delete=models.SET_NULL, null=True)
+    photographers = M2MField("author.Author",
+                             related_name="albums_by_photographer", blank=True)
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
 
     content_panels = Page.content_panels + [
         FieldPanel('language'),
         FieldPanel('description'),
         M2MFieldPanel('locations'),
-        FieldPanel('photographer'),
+        M2MFieldPanel('photographers'),
         InlinePanel('slides', label=_('Slides'), panels=[
             ImageChooserPanel('image'),
             AudioPanel('audio'),
@@ -36,10 +36,10 @@ class Album(Page):
         ]),
     ]
 
-    template = "album/album_detail.html" 
+    template = "album/album_detail.html"
 
     search_fields = Page.search_fields + (
-        index.FilterField('photographer'),
+        index.FilterField('photographers'),
         index.SearchField('description', partial_match=True, boost=2),
         index.FilterField('locations'),
         index.FilterField('language'),

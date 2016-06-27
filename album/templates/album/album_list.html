@@ -43,7 +43,7 @@
 		<div class="caption">
                   <p>{{ album.description|striptags }}</p>
                   <h3>{{ album.title }}</h3>
-                  <p class="pull-right">{{ album.photographer.name }}</p>
+                  <p class="pull-right">{% for photographer in album.photographers.all %}{{ photographer.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
 		</div>
               </a>
             </div>
