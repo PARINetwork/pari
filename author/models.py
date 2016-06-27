@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.conf import settings
+from django.utils.text import slugify
 
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
 
@@ -32,6 +33,11 @@ class Author(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        return super(Author, self).save(**kwargs)
 
     class Meta:
         ordering = ["name"]

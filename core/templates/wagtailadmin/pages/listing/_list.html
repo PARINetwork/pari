@@ -66,8 +66,11 @@
                     {% endif %}
 	            <td class="author">
 		      {% if page.content_type.model_class.get_verbose_name != "Face" and page.content_type.model_class.get_verbose_name != "Resource" %}
-		      {% for author in page.specific.authors.all %}{{ author }}{% if not forloop.last %}, {% endif %}{% endfor %}
+          {% if page.content_type.model_class.get_verbose_name == "Article" %}
+          {% for author in page.specific.authors.all %}{{ author }}{% if not forloop.last %}, {% endif %}{% endfor %}
+          {% else %}
 		      {% for photographer in page.specific.photographers.all %}{{ photographer }}{% if not forloop.last %}, {% endif %}{% endfor %}
+          {% endif %}
 		      {% else %}
 		        {% if page.content_type.model_class.get_verbose_name == "Face" %}
 		        {{ page.specific.location.district }}, {{ page.specific.location.state }}
