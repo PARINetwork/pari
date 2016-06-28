@@ -129,7 +129,7 @@ def donate_form(request):
                 form.cleaned_data["name"],
                 form.cleaned_data["email"],
                 form.cleaned_data["phone"],
-                form.cleaned_data["amount"]
+                str(form.cleaned_data["amount"]),
             ])
             response = requests.post(
                 settings.INSTAMOJO["BASE_URL"],
