@@ -9,4 +9,4 @@ class AuthorAdminForm(forms.ModelForm):
     class Meta:
         model = Author
         # TODO: Ability to add author image
-        exclude = ['image', 'slug']
+        exclude = ['image', 'slug', 'bio']
