@@ -32,7 +32,3 @@ class DonateForm(forms.Form):
     amount = forms.IntegerField(
         widget=forms.TextInput(attrs={"class": "form-control"})
     )
-    purpose = forms.CharField(
-        widget=forms.HiddenInput(),
-        initial="donation"
-    )

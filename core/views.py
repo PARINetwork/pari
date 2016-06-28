@@ -125,11 +125,17 @@ def donate_form(request):
     if request.method == "POST":
         form = DonateForm(request.POST)
         if form.is_valid():
+            purpose = "|".join([
+                form.cleaned_data["name"],
+                form.cleaned_data["email"],
+                form.cleaned_data["phone"],
+                form.cleaned_data["amount"]
+            ])
             response = requests.post(
                 settings.INSTAMOJO["BASE_URL"],
                 data={
                     "amount": form.cleaned_data["amount"],
-                    "purpose": form.cleaned_data["purpose"],
+                    "purpose": purpose,
                     "buyer_name": form.cleaned_data["name"],
                     "email": form.cleaned_data["email"],
                     "phone": form.cleaned_data["phone"],
@@ -140,7 +146,7 @@ def donate_form(request):
                         site.hostname, reverse("donate_webhook")
                     ),
                     "allowed_repeat_payments": False,
-                    "send_email": True,
+                    "send_email": False,
                     "send_sms": False
                 },
                 headers={
@@ -149,10 +155,9 @@ def donate_form(request):
                 }
             )
             if response.ok:
-                longurl = response.json().get("longurl")
-                if longurl:
-                    request.session["donor_info"] = json.dumps(form.cleaned_data)
-                    return HttpResponseRedirect(longurl)
+                longurl = response.json()["payment_request"]["longurl"]
+                request.session["donor_info"] = json.dumps(form.cleaned_data)
+                return HttpResponseRedirect(longurl)
             errors = _("Sorry, an error occurred on the payment gateway. "
                        "Please try again later.")
 
