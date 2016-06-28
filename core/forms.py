@@ -18,7 +18,7 @@ class DonateForm(forms.Form):
     email = forms.EmailField(
         widget=forms.EmailInput(attrs={"class": "form-control"})
     )
-    phone_number = forms.CharField(
+    phone = forms.CharField(
         widget=forms.TextInput(attrs={"class": "form-control"})
     )
     address = forms.CharField(
