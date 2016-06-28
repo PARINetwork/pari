@@ -2,6 +2,7 @@ import hmac
 import json
 import hashlib
 import requests
+import datetime
 
 from django.shortcuts import render
 from django.http import Http404, HttpResponseRedirect, HttpResponse
@@ -125,16 +126,12 @@ def donate_form(request):
     if request.method == "POST":
         form = DonateForm(request.POST)
         if form.is_valid():
-            purpose = "|".join([
-                form.cleaned_data["name"][:10],
-                form.cleaned_data["email"][:10],
-                form.cleaned_data["phone"],
-            ])[:30]
+            now = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
             response = requests.post(
                 settings.INSTAMOJO["BASE_URL"],
                 data={
                     "amount": form.cleaned_data["amount"],
-                    "purpose": purpose,
+                    "purpose": "txnid: {1}".format(now),
                     "buyer_name": form.cleaned_data["name"],
                     "email": form.cleaned_data["email"],
                     "phone": form.cleaned_data["phone"],
@@ -186,7 +183,7 @@ def lower_first_item(item):
 def donate_webhook(request):
     status = 400
     data = request.POST.copy()
-    hook_mac = data.pop("mac", None)
+    hook_mac = data.pop("mac", [None])[0]
     keys = sorted(data.items(), key=lower_first_item)
     vals = "|".join([ii[1] for ii in keys])
     calc_mac = hmac.new(
@@ -204,7 +201,7 @@ def donate_webhook(request):
             send_mail(
                 subject, message,
                 settings.DEFAULT_FROM_EMAIL,
-                settings.CONTACT_EMAIL_RECIPIENTS
+                settings.DONATE_EMAIL_RECIPIENTS
             )
             status = 200
     return HttpResponse("", status=status)
