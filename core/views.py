@@ -134,10 +134,10 @@ def donate_form(request):
                     "email": form.cleaned_data["email"],
                     "phone": form.cleaned_data["phone"],
                     "redirect_url": "https://{0}{1}".format(
-                        site.domain, reverse("donate_success")
+                        site.hostname, reverse("donate_success")
                     ),
                     "webhook": "https://{0}{1}".format(
-                        site.domain, reverse("donate_webhook")
+                        site.hostname, reverse("donate_webhook")
                     ),
                     "allowed_repeat_payments": False,
                     "send_email": True,
