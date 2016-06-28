@@ -131,7 +131,7 @@ def donate_form(request):
                 settings.INSTAMOJO["BASE_URL"],
                 data={
                     "amount": form.cleaned_data["amount"],
-                    "purpose": "txnid: {1}".format(now),
+                    "purpose": "txnid: {0}".format(now),
                     "buyer_name": form.cleaned_data["name"],
                     "email": form.cleaned_data["email"],
                     "phone": form.cleaned_data["phone"],
