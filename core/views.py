@@ -193,7 +193,7 @@ def donate_webhook(request):
         if data["status"] == "Credit":
             donor_info = request.session.get("donor_info", {})
             data.update(donor_info)
-            subject = _("Donation received"))
+            subject = _("Donation received")
             message = ""
             for (kk, vv) in data.items():
                 message += kk + " : " + vv + "\r\n"
