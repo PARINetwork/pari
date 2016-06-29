@@ -24,11 +24,22 @@ class DonateForm(forms.Form):
     address = forms.CharField(
         widget=forms.Textarea(attrs={"class": "form-control"})
     )
-    pan_number = forms.CharField(
+    pan = forms.CharField(
+        label=_("PAN"),
         max_length=10,
         widget=forms.TextInput(attrs={"class": "form-control"}),
-        help_text=_("Required as per government regulations.")
+        help_text=_("PAN is required as per government regulations.")
     )
-    amount = forms.IntegerField(
-        widget=forms.TextInput(attrs={"class": "form-control"})
+    is_indian = forms.BooleanField(
+        initial = False,
+        label=_("I hereby declare that I am an Indian"),
+        widget=forms.CheckboxInput(),
+        help_text=_("At this moment, we can accept donations from Indians only")
     )
+
+    def clean_is_indian(self):
+        data = self.cleaned_data["is_indian"]
+        if data != True:
+            raise forms.ValidationError(_("Sorry, we can accept donations "
+                                          "from Indians only."))
+        return data

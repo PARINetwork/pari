@@ -1,8 +1,7 @@
 import hmac
 import json
+import urllib
 import hashlib
-import requests
-import datetime
 
 from django.shortcuts import render
 from django.http import Http404, HttpResponseRedirect, HttpResponse
@@ -126,37 +125,20 @@ def donate_form(request):
     if request.method == "POST":
         form = DonateForm(request.POST)
         if form.is_valid():
-            now = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
-            response = requests.post(
-                settings.INSTAMOJO["BASE_URL"],
-                data={
-                    "amount": form.cleaned_data["amount"],
-                    "purpose": "txnid: {0}".format(now),
-                    "buyer_name": form.cleaned_data["name"],
-                    "email": form.cleaned_data["email"],
-                    "phone": form.cleaned_data["phone"],
-                    "redirect_url": "https://{0}{1}".format(
-                        site.hostname, reverse("donate_success")
-                    ),
-                    "webhook": "https://{0}{1}".format(
-                        site.hostname, reverse("donate_webhook")
-                    ),
-                    "allowed_repeat_payments": False,
-                    "send_email": False,
-                    "send_sms": False
-                },
-                headers={
-                    "X-Api-Key": settings.INSTAMOJO["API_KEY"],
-                    "X-Auth-Token": settings.INSTAMOJO["AUTH_TOKEN"]
-                }
-            )
-            if response.ok:
-                longurl = response.json()["payment_request"]["longurl"]
-                request.session["donor_info"] = json.dumps(form.cleaned_data)
-                return HttpResponseRedirect(longurl)
-            errors = _("Sorry, an error occurred on the payment gateway. "
-                       "Please try again later.")
-
+            pg_url = settings.INSTAMOJO["DONATE_URL"]
+            params = {
+                "data_name": form.cleaned_data["name"],
+                "data_readonly": "data_name",
+                "data_email": form.cleaned_data["email"],
+                "data_readonly": "data_email",
+                "data_phone": form.cleaned_data["phone"],
+                "data_readonly": "data_phone",
+                "data_Field_90444": form.cleaned_data["pan"],
+                "data_readonly": "data_Field_90444"
+            }
+            pg_url += "?{0}".format(urllib.urlencode(params))
+            request.session["donor_info"] = json.dumps(form.cleaned_data)
+            return HttpResponseRedirect(pg_url)
     return render(request, 'core/donate_form.html', {
         "form": form,
         "errors": errors,

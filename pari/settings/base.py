@@ -247,8 +247,6 @@ TEMPLATES = [
 ]
 
 INSTAMOJO = {
-    "BASE_URL": "https://www.instamojo.com/api/1.1/payment-requests/",
-    "API_KEY": "",
-    "AUTH_TOKEN": "",
+    "DONATE_URL": "",
     "SALT": "",
 }

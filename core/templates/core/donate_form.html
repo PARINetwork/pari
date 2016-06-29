@@ -20,7 +20,8 @@
         <div class="form-group {% if field.errors %}has-error{% endif %}">
           {% if not field.is_hidden %}<label class="control-label" id="{{ field.id_for_label }}">{{ field.label }}</label>{% endif %}
           {{ field }}
-          {{ field.help_text }}
+          <p>{{ field.help_text }}</p>
+          {{ field.errors }}
         </div>
         {% endfor %}
         <p class="bg-info" style="padding: 10px;">You will be redirected to Instamojo where you can complete the donation either through a credit/debit card or bank transfer.</p>
