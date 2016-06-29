@@ -133,7 +133,7 @@ def donate_form(request):
                 "data_Field_90444": form.cleaned_data["pan"],
             }
             pg_url += "?{0}".format(urllib.urlencode(params))
-            request.session["donor_info"] = json.dumps(form.cleaned_data)
+            request.session["donor_info"] = form.cleaned_data
             return HttpResponseRedirect(pg_url)
     return render(request, 'core/donate_form.html', {
         "form": form,
