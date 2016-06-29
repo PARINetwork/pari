@@ -153,7 +153,7 @@ def donate_success(request):
         subject = _("Donation received")
         message = ""
         for (kk, vv) in data.items():
-            message += kk + " : " + vv + "\r\n"
+            message += str(kk) + " : " + str(vv) + "\r\n"
         send_mail(
             subject, message,
             settings.DEFAULT_FROM_EMAIL,
