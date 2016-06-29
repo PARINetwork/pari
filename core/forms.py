@@ -32,7 +32,7 @@ class DonateForm(forms.Form):
     )
     is_indian = forms.BooleanField(
         initial = False,
-        label=_("I hereby declare that I am an Indian"),
+        label=_("I declare that I am an Indian citizen"),
         widget=forms.CheckboxInput(),
         help_text=_("At this moment, we can accept donations from Indians only")
     )
