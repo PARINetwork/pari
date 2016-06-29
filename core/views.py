@@ -151,9 +151,9 @@ def donate_success(request):
     if data:
         data.update(request.GET.copy())
         subject = _("Donation received")
-        message = ""
+        message = u""
         for (kk, vv) in data.items():
-            message += str(kk) + " : " + str(vv) + "\r\n"
+            message += unicode(kk) + u" : " + unicode(vv) + u"\r\n"
         send_mail(
             subject, message,
             settings.DEFAULT_FROM_EMAIL,
