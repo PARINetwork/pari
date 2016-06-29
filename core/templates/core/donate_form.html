@@ -4,6 +4,12 @@
 {% blocktrans with site_name=site.site_name %}Donate to {{ site_name }}{% endblocktrans %}
 {% endblock %}
 
+{% block extra_css %}
+<style>
+  .errorlist { padding: 10px; background-color: #a94442; color: #fff; }
+</style>
+{% endblock %}
+
 {% block main %}
 <div class="content container" style="margin-bottom: 20px;">
   <div class="rich-text">
@@ -19,9 +25,8 @@
         {% for field in form %}
         <div class="form-group {% if field.errors %}has-error{% endif %}">
           {% if not field.is_hidden %}<label class="control-label" id="{{ field.id_for_label }}">{{ field.label }}</label>{% endif %}
-          {{ field }}
+          {{ field }} {{ field.errors }}
           <p>{{ field.help_text }}</p>
-          {{ field.errors }}
         </div>
         {% endfor %}
         <p class="bg-info" style="padding: 10px;">You will be redirected to Instamojo where you can complete the donation either through a credit/debit card or bank transfer.</p>
