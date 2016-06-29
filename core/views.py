@@ -121,7 +121,7 @@ def donate_form(request):
     try:
         site = Site.objects.get(hostname=request.get_host())
     except Site.DoesNotExist:
-        site = Site.objects.all()[0]
+        site = Site.objects.filter(is_default_site=True)[0]
     if request.method == "POST":
         form = DonateForm(request.POST)
         if form.is_valid():
@@ -146,7 +146,7 @@ def donate_success(request):
     try:
         site = Site.objects.get(hostname=request.get_host())
     except Site.DoesNotExist:
-        site = Site.objects.all()[0]
+        site = Site.objects.filter(is_default_site=True)[0]
     data = request.session.get("donor_info", {})
     if data:
         data.update(request.GET.copy())

@@ -3,11 +3,12 @@ from bs4 import BeautifulSoup
 
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-from django.contrib.sites.requests import RequestSite
 from django.utils import translation
 from django.conf import settings
 from django.http import Http404
 from django.core.cache import caches
+
+from wagtail.wagtailcore.models import Site
 
 from article.models import Article
 from author.models import Author
@@ -31,7 +32,10 @@ class ArticleDetail(DetailView):
         context = super(ArticleDetail, self).get_context_data(**kwargs)
         translations = get_translations_for_page(context['object'])
         context['translations'] = translations
-        context['site'] = RequestSite(self.request)
+        try:
+            context['site'] = Site.objects.get(hostname=self.request.get_host())
+        except Site.DoesNotExist:
+            context['site'] = Site.objects.filter(is_default_site=True)[0]
         return context
 
     def render_to_response(self, context, **kwargs):
