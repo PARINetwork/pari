@@ -20,7 +20,7 @@
     </div>
 
     <div class="center col-lg-push-3 col-lg-6 col-md-push-3 col-md-6 col-sm-12">
-      {% if errors %}<h5 class="bg-warning" style="padding:10px;">{{ errors }}</h5>{% endif %}
+      {% if errors %}<h5 class="errorlist">{{ errors }}</h5>{% endif %}
       <form method="post" action="{% url "core.views.donate_form" %}">{% csrf_token %}
         {% for field in form %}
         <div class="form-group {% if field.errors %}has-error{% endif %}">
