@@ -148,16 +148,17 @@ def donate_success(request):
     except Site.DoesNotExist:
         site = Site.objects.all()[0]
     data = request.session.get("donor_info", {})
-    data = data.update(request.GET.copy())
-    subject = _("Donation received")
-    message = ""
-    for (kk, vv) in data.items():
-        message += kk + " : " + vv + "\r\n"
-    send_mail(
-        subject, message,
-        settings.DEFAULT_FROM_EMAIL,
-        settings.DONATE_EMAIL_RECIPIENTS
-    )
+    if data:
+        data = data.update(request.GET.copy())
+        subject = _("Donation received")
+        message = ""
+        for (kk, vv) in data.items():
+            message += kk + " : " + vv + "\r\n"
+        send_mail(
+            subject, message,
+            settings.DEFAULT_FROM_EMAIL,
+            settings.DONATE_EMAIL_RECIPIENTS
+        )
     return render(request, 'core/donate_success.html', {
         "site": site,
     })
