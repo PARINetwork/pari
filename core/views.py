@@ -128,13 +128,9 @@ def donate_form(request):
             pg_url = settings.INSTAMOJO["DONATE_URL"]
             params = {
                 "data_name": form.cleaned_data["name"],
-                "data_readonly": "data_name",
                 "data_email": form.cleaned_data["email"],
-                "data_readonly": "data_email",
                 "data_phone": form.cleaned_data["phone"],
-                "data_readonly": "data_phone",
                 "data_Field_90444": form.cleaned_data["pan"],
-                "data_readonly": "data_Field_90444"
             }
             pg_url += "?{0}".format(urllib.urlencode(params))
             request.session["donor_info"] = json.dumps(form.cleaned_data)
@@ -151,6 +147,17 @@ def donate_success(request):
         site = Site.objects.get(hostname=request.get_host())
     except Site.DoesNotExist:
         site = Site.objects.all()[0]
+    data = request.session.get("donor_info", {})
+    data = data.update(request.GET.copy())
+    subject = _("Donation received")
+    message = ""
+    for (kk, vv) in data.items():
+        message += kk + " : " + vv + "\r\n"
+    send_mail(
+        subject, message,
+        settings.DEFAULT_FROM_EMAIL,
+        settings.DONATE_EMAIL_RECIPIENTS
+    )
     return render(request, 'core/donate_success.html', {
         "site": site,
     })
@@ -174,16 +181,5 @@ def donate_webhook(request):
         hashlib.sha1).hexdigest()
     if hook_mac == calc_mac:
         if data["status"] == "Credit":
-            donor_info = request.session.get("donor_info", {})
-            data.update(donor_info)
-            subject = _("Donation received")
-            message = ""
-            for (kk, vv) in data.items():
-                message += kk + " : " + vv + "\r\n"
-            send_mail(
-                subject, message,
-                settings.DEFAULT_FROM_EMAIL,
-                settings.DONATE_EMAIL_RECIPIENTS
-            )
             status = 200
     return HttpResponse("", status=status)
