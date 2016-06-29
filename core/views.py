@@ -149,7 +149,7 @@ def donate_success(request):
         site = Site.objects.all()[0]
     data = request.session.get("donor_info", {})
     if data:
-        data = data.update(request.GET.copy())
+        data.update(request.GET.copy())
         subject = _("Donation received")
         message = ""
         for (kk, vv) in data.items():
