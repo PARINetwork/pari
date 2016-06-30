@@ -22,7 +22,8 @@ class DonateForm(forms.Form):
         widget=forms.TextInput(attrs={"class": "form-control"})
     )
     address = forms.CharField(
-        widget=forms.Textarea(attrs={"class": "form-control"})
+        widget=forms.Textarea(attrs={"class": "form-control", "rows": 3}),
+        required=False
     )
     pan = forms.CharField(
         label=_("PAN"),

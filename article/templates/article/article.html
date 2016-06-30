@@ -118,7 +118,7 @@
 	</div>
   <div class="translator_bio">
     {% for translator in article.translators.all %}
-	  <p><i>{% if translator.bio %}{{ translator.bio }}.{% endif %}{% if translator.twitter_username %} You can contact the translator here: <a href="https://twitter.com/{{ translator.twitter_username }}">{{ translator.twitter_username }}</a>{% endif %}</i></p>
+	  <p>Translated by: <i>{% if translator.bio %}{{ translator.bio }}.{% endif %}{% if translator.twitter_username %} You can contact the translator here: <a href="https://twitter.com/{{ translator.twitter_username }}">{{ translator.twitter_username }}</a>{% endif %}</i></p>
     {% endfor %}
   </div>
 	<div class="author_bio">
@@ -137,8 +137,8 @@
   </div>
   <div class="row">
     <div class="col-lg-1 col-md-1 col-sm-1"></div>
-    <div class="col-lg-9 col-md-9 col-sm-9">
-      <h4>{{ site.site_name }} is <strong>your</strong> archive. Please consider making a <a href="{% url "static_page" slug="donate" %}">donation</a>.</h4>
+    <div class="col-lg-9 col-md-9 col-sm-9" style="padding:0;">
+      <h4>{{ site.site_name }} is <strong>your</strong> archive. Please consider making a <a href="{% url "donate_form" %}">donation</a>.</h4>
     </div>
   </div>
   <div class="row">
