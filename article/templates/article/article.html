@@ -118,7 +118,7 @@
 	</div>
   <div class="translator_bio">
     {% for translator in article.translators.all %}
-	  <p>{% trans "Translated by:" %} <i>{% if translator.bio %}{{ translator.bio }}.{% endif %}{% if translator.twitter_username %} {% trans "You can contact the translator here:" %} <a href="https://twitter.com/{{ translator.twitter_username }}">{{ translator.twitter_username }}</a>{% endif %}</i></p>
+	  <p><i>{% trans "Translated by:" %} {% if translator.bio %}{{ translator.bio }}.{% endif %}{% if translator.twitter_username %} {% trans "You can contact the translator here:" %} <a href="https://twitter.com/{{ translator.twitter_username }}">{{ translator.twitter_username }}</a>{% endif %}</i></p>
     {% endfor %}
   </div>
 	<div class="author_bio">
