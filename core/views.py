@@ -133,7 +133,6 @@ def donate_form(request):
                 "data_Field_90444": form.cleaned_data["pan"],
             }
             pg_url += "?{0}".format(urllib.urlencode(params))
-            request.session["donor_info"] = form.cleaned_data
             return HttpResponseRedirect(pg_url)
     return render(request, 'core/donate_form.html', {
         "form": form,
@@ -147,18 +146,6 @@ def donate_success(request):
         site = Site.objects.get(hostname=request.get_host())
     except Site.DoesNotExist:
         site = Site.objects.filter(is_default_site=True)[0]
-    data = request.session.get("donor_info", {})
-    if data:
-        data.update(request.GET.copy())
-        subject = _("Donation received")
-        message = u""
-        for (kk, vv) in data.items():
-            message += unicode(kk) + u" : " + unicode(vv) + u"\r\n"
-        send_mail(
-            subject, message,
-            settings.DEFAULT_FROM_EMAIL,
-            settings.DONATE_EMAIL_RECIPIENTS
-        )
     return render(request, 'core/donate_success.html', {
         "site": site,
     })
@@ -183,4 +170,13 @@ def donate_webhook(request):
     if hook_mac == calc_mac:
         if data["status"] == "Credit":
             status = 200
+            subject = _("Donation received")
+            message = u""
+            for (kk, vv) in data.items():
+                message += unicode(kk) + u" : " + unicode(vv) + u"\r\n"
+            send_mail(
+                subject, message,
+                settings.DEFAULT_FROM_EMAIL,
+                settings.DONATE_EMAIL_RECIPIENTS
+            )
     return HttpResponse("", status=status)
