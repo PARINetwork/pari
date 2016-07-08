@@ -12,9 +12,11 @@ class LocationAdmin(GeoModelAdmin):
     max_extent = False
     max_resolution = False
     form = LocationAdminForm
+    search_fields = ["name", "block", "district", "region", "state"]
+    list_filter = ["state"]
 
     def save_model(self, request, obj, form, change):
-        obj.slug = slugify(obj.name)
+        obj.slug = slugify(obj.name[:50])
         obj.save()
 
 admin.site.register(Location, LocationAdmin)
