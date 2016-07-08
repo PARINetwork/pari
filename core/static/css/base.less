@@ -1,7 +1,8 @@
 @import "common.less";
 
 @footerHeight: 70px;
-@anchorHeadingsColor:#E6E6E6;
+@anchorHeadingsColor: #e6e6e6;
+@facesLinkColor: #ee4303;
 
 html {
     height: 100%
@@ -262,20 +263,31 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
             display: inline;
 
             a {
-                float: left;
+                width: calc(100% / 26);
                 color: @headingsColor;
                 font-size: 17.5px;
                 padding: 11px 19px;
                 border: 1px solid #dddddd;
                 text-decoration: none;
 
+                &:hover {
+                    background-color: @facesLinkColor;
+                    color: #fff;
+                }
             }
 
             &.active {
                 a {
-                    color: black;
-                    border: none;
+                    color: #fff;
+                    background-color: @facesLinkColor;
+                    border: 1px solid #ddd;
                     cursor: default;
+
+                    &:hover {
+                        background-color: @facesLinkColor;
+                        color: #fff;
+                        border: 1px solid #ddd;
+                    }
                 }
             }
 
@@ -857,4 +869,16 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
 
 .content-container {
     margin-top: 20px;
+}
+
+@media all and (max-width: 768px) {
+    .paginator ul li a {
+        width: calc(100% / 8);
+    }
+}
+
+@media all and (max-width: 1024px) {
+    #mainnav .container .nav {
+        margin: 5px -3px 0px -3px;
+    }
 }
