@@ -5,15 +5,29 @@ $(function() {
 	      $(".hallotoolbar .hallojustify button[title]").on("click", function() {
 	          var alignment = $(this).attr("title").toLowerCase();
             var sel = rangy.getSelection();
-            var block, blockElements = [];
+            var block, blockElements = [], blockElRegex = /p|h[1-6]|blockquote|ol|ul/i;
             if (sel.rangeCount) {
                 var range = sel.getRangeAt(0);
-                if (range.collapsed === true) {
-                    blockElements = $(range.startContainer).parents("p");
-                } else {
-                    blockElements = range.getNodes([1], function(el) {
-                        return /p|h[1-6]|blockquote|ol|ul/i.test(el.tagName);
-                    });
+                var container = $(range.startContainer);
+                var el = container.get(0);
+                if (el && el.tagName && el.tagName.match(blockElRegex)) {
+                    blockElements.push(el);
+                }
+                if (blockElements.length === 0) {
+                    if (range.collapsed === true) {
+                        var parents = container.parents();
+                        for (var ii=0; ii < parents.length; ii++) {
+                            el = parents[ii];
+                            if (el.tagName.match(blockElRegex)) {
+                                blockElements.push(el);
+                                break;
+                            }
+                        }
+                    } else {
+                        blockElements = range.getNodes([1], function(el) {
+                            return blockElRegex.test(el.tagName);
+                        });
+                    }
                 }
                 for (var ii=0; ii < blockElements.length; ii++) {
                     block = blockElements[ii];
