@@ -7,12 +7,17 @@ from django.utils import translation
 from django.conf import settings
 from django.http import Http404
 from django.core.cache import caches
+from django.contrib.contenttypes.models import ContentType
 
-from wagtail.wagtailcore.models import Site
+from wagtail.wagtailcore.models import Site, Page
 
 from article.models import Article
 from author.models import Author
 from core.utils import get_translations_for_page
+
+from album.models import Album
+from face.models import Face
+from resources.models import Resource
 
 
 class ArticleDetail(DetailView):
@@ -36,6 +41,15 @@ class ArticleDetail(DetailView):
             context['site'] = Site.objects.get(hostname=self.request.get_host())
         except Site.DoesNotExist:
             context['site'] = Site.objects.filter(is_default_site=True)[0]
+        arc = ContentType.objects.get_for_model(Article)
+        alc = ContentType.objects.get_for_model(Album)
+        fac = ContentType.objects.get_for_model(Face)
+        rec = ContentType.objects.get_for_model(Resource)
+        context['new_list'] = Page.objects.live()\
+                                          .filter(content_type__in=[
+                                              arc, alc, fac, rec
+                                          ])\
+                                          .order_by('-first_published_at')[:4]
         return context
 
     def render_to_response(self, context, **kwargs):

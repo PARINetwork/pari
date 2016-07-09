@@ -176,5 +176,46 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        {% for new in new_list %}
+        {% with content=new.specific %}
+        {% if forloop.first %}
+        <div class="related-articles well">
+          <h3><i class="fa fa-exchange"></i>  {% trans "New on PARI" %}...</h3>
+          <div class="row">
+            {% endif %}
+	      <div class="col-lg-3 col-md-3 col-sm-3">
+	        <a href="{{ content.get_absolute_url }}">
+	          {% if content.featured_image %}
+	          <div class="article-image">{% image content.featured_image fill-512x512 as featured_image %}
+              <img class="img-responsive lazyload" data-src="{{ featured_image.url }}" alt="{{ content.featured_image.title }}" width="260" height="260" src="data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==">
+	          </div>
+	          {% else %}
+	          <div class="article-image">
+              <img class="img-responsive" src="{{ STATIC_URL }}img/default_featured_image.png" alt="PARI Logo" width="260" height="260">
+	          </div>
+	          {% endif %}
+	          <div class="caption">
+              <h4> {{ content.title|truncatechars:70 }} </h4>
+              {% for location in content.locations.all %}
+		          {% if forloop.first %}<p>{% trans "Location" %}:{% endif %} {{ location.name }}{% if not forloop.last %},{% endif %}{% if forloop.last %}</p>{% endif %}
+		          {% endfor %}
+              {% if content.specific_class.lower == "article" %}
+              <p>{% trans "Author" %}: {% for author in content.authors.all %}{{ author.name }}{% if not forloop.last %},{% endif %}{% endfor %}</p>
+              {% elif content.specific_class.lower == "album" %}
+              <p>{% trans "Photographer" %}: {% for author in content.photographers.all %}{{ author.name }}{% if not forloop.last %},{% endif %}{% endfor %}</p>
+              {% endif %}
+	          </div>
+	        </a>
+        </div>
+        {% endwith %}
+        {% if forloop.last %}
+          </div>
+        {% endif %}
+	    {% endfor %}
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
