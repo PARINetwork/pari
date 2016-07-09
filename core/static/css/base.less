@@ -254,6 +254,9 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
 .paginator {
 
     text-align: center;
+    display: block;
+    clear: both;
+    margin: 20px;
 
     ul {
 
@@ -567,39 +570,21 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
         .box-sizing(border-box);
         padding: 10px;
         overflow: auto;
+        background: @alternateBgColor;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+        height: 525px;
 
-        &:nth-child(odd){
-            background: @alternateBgColor;
+        .img-responsive {
+            width: 100%;
         }
 
-        .item-image {
-            @media (min-width: 481px) {
-                float: left;
-            }
-
-            @media (max-width: @screen-xs-max) {
-                .media-thumbnail, .image-thumbnail {
-                    img {
-                        max-width: 100%;
-                        display: block;
-                        margin: 0 auto;
-                    }
-                }
-            }
-
+        a {
+            color: @headingsColor;
         }
 
         .caption {
-            @media (min-width: 481px) {
-                margin-left: 298px;
-            }
             .box-sizing(border-box);
-
-            h4 {
-                a {
-                    color: @headingsColor;
-                }
-            }
         }
 
         p {

@@ -30,7 +30,7 @@ def home_page(request, slug="home-page"):
     translations = get_translations_for_page(home_page)
     return render(request, "core/home_page.html", {
         "page": home_page,
-        "categories": Category.objects.all()[:9],
+        "categories": Category.objects.all(),
         "translations": translations
     })
 

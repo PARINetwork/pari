@@ -1,23 +1,22 @@
-<div id="articles" class="heading row">{% load i18n static wagtailimages_tags %}
-    {% if category.name %}
-        <h3 class="col-lg-10">{% trans "Articles for" %} "{{ category.name }}"</h3>
-    {% endif %}
-</div>
+{% load i18n static wagtailimages_tags %}
 <div class="list">
     {% for article in articles %}
-        <div class="item">
-          <div class="item-image">
-	    <div class="image-thumbnail">{% if article.featured_image %}{% image article.featured_image fill-270x270 as featured_image %}
-	      <img class="img-responsive" src="{{ featured_image.url }}" alt="{{ article.featured_image.title }}">
-	      {% else %}
-	      <img class="img-responsive" src="{{ STATIC_URL }}img/default_featured_image.png" alt="{{ article.title }}" width="270">
-	      {% endif %}
-	    </div>
-            </div>
+    <div class="item col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <div class="item-image">
+	      <div class="image-thumbnail">
+          <a href="{{ article.get_absolute_url }}">
+          {% if article.featured_image %}{% image article.featured_image fill-270x270 as featured_image %}
+	        <img class="img-responsive" src="{{ featured_image.url }}" alt="{{ article.featured_image.title }}">
+	        {% else %}
+	        <img class="img-responsive" src="{{ STATIC_URL }}img/default_featured_image.png" alt="{{ article.title }}" width="270">
+	        {% endif %}
+          </a>
+	      </div>
+      </div>
 	    {% include "article/includes/default_atom.html" %}
-        </div>
+    </div>
     {% empty %}
-        {% trans "No articles to display." %}
+    {% trans "No articles to display." %}
     {% endfor %}
     {% include "includes/paginator.html" with results=articles %}
 </div>
