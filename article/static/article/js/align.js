@@ -53,11 +53,13 @@ $(function() {
     $("#id_language").trigger("change");
 
     var openedWindows = [];
-    window._open = window.open;
-    window.open = function(url, name, params) {
-        var win = window._open(url, name, params);
-        openedWindows.push(win);
-        return win;
+    if (typeof window._open === 'undefined') {
+        window._open = window.open;
+        window.open = function(url, name, params) {
+            var win = window._open(url, name, params);
+            openedWindows.push(win);
+            return win;
+        }
     }
     $(".action-preview").on("click", function() {
         var $this = $(this);

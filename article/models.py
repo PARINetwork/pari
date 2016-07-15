@@ -9,7 +9,7 @@ from django.core.urlresolvers import reverse
 
 from modelcluster.fields import M2MField
 
-from wagtail.wagtailcore.models import Page
+from wagtail.wagtailcore.models import Page, Site
 from wagtail.wagtailcore.fields import RichTextField
 
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, \
@@ -74,9 +74,14 @@ class Article(Page):
     )
 
     def get_context(self, request, *args, **kwargs):
+        try:
+            site = Site.objects.get(hostname=request.get_host())
+        except Site.DoesNotExist:
+            site = Site.objects.filter(is_default_site=True)[0]
         return {
             'article': self,
-            'request': request
+            'request': request,
+            'site': site
         }
 
     def get_absolute_url(self):

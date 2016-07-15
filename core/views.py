@@ -9,14 +9,16 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib.messages import success
 from django.core.urlresolvers import reverse
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, activate, get_language
 from django.views.decorators.vary import vary_on_headers
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 from wagtail.wagtailcore.models import Page, Site
 from wagtail.wagtailadmin.forms import SearchForm
+from wagtail.wagtailadmin.views.pages import preview_on_edit
 
 from .models import HomePage, StaticPage
 from category.models import Category
@@ -180,3 +182,20 @@ def donate_webhook(request):
                 settings.DONATE_EMAIL_RECIPIENTS
             )
     return HttpResponse("", status=status)
+
+
+@login_required
+@require_POST
+def page_preview(request, page_id):
+    curr_lang = get_language()
+    rendered_response = None
+    if request.POST.get("language"):
+        activate(request.POST["language"])
+    try:
+        response = preview_on_edit(request, page_id)
+        if getattr(response, "rendered_content", None):
+            rendered_response = response.rendered_content
+            response.content = rendered_response
+    finally:
+        activate(curr_lang)
+    return response
