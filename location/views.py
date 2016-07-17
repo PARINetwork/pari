@@ -61,11 +61,20 @@ class LocationDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super(LocationDetail, self).get_context_data(**kwargs)
         location = context['location']
-        context['pages_in_location'] = itertools.chain(
-            Page.objects.live().filter(article__locations=location),
-            Page.objects.live().filter(album__locations=location),
-            Page.objects.live().filter(face__location=location)
+        articles_qs = Article.objects.live().filter(locations=location)
+        albums_qs = Album.objects.live().filter(locations=location)
+        faces_qs = Face.objects.live().filter(location=location)
+        if self.request.GET.get("lang"):
+            lang = self.request.GET["lang"]
+            articles_qs = articles_qs.filter(language=lang)
+            albums_qs = albums_qs.filter(language=lang)
+            # faces_qs = faces_qs.filter(language=lang)
+        context['articles'] = itertools.chain(
+            articles_qs,
+            albums_qs,
+            faces_qs
         )
+        context['LANGUAGES'] = settings.LANGUAGES
         return context
 
 

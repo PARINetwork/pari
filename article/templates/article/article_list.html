@@ -14,6 +14,10 @@
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}article/css/article.less">
 {% endblock %}
 
+{% block extra_js %}
+<script type="text/javascript" src="{{ STATIC_URL }}article/js/category.js"></script>
+{% endblock %}
+
 {% block main %}
 <div class="container content-container">
   <div class="jumbotron author-header">

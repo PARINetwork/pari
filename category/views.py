@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -19,7 +20,11 @@ class CategoryDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(CategoryDetail, self).get_context_data(**kwargs)
-        qs = Article.objects.filter(categories=context["category"]).live().order_by('-first_published_at')
+        qs = Article.objects.live()
+        qs = qs.filter(categories=context["category"])
+        if self.request.GET.get("lang"):
+            qs = qs.filter(language=self.request.GET["lang"])
+        qs = qs.order_by('-first_published_at')
         paginator = Paginator(qs, self.paginate_by)
         try:
             page_num = self.request.GET.get("page", 1)
@@ -29,4 +34,5 @@ class CategoryDetail(DetailView):
             context["articles"] = paginator.page(page_num)
         except (PageNotAnInteger, EmptyPage):
             raise Http404
+        context["languages"] = settings.LANGUAGES
         return context

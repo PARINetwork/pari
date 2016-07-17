@@ -94,8 +94,11 @@ class ArchiveDetail(ListView):
     def get_queryset(self):
         year = self.kwargs['year']
         month = self.kwargs['month']
-        return Article.objects.live().filter(first_published_at__year=year,
-                                             first_published_at__month=month)
+        qs = Article.objects.live().filter(first_published_at__year=year,
+                                      first_published_at__month=month)
+        if self.request.GET.get("lang"):
+            qs = qs.filter(language=self.request.GET["lang"])
+        return qs
 
     def get_context_data(self, **kwargs):
         context = super(ArchiveDetail, self).get_context_data(**kwargs)
@@ -103,6 +106,7 @@ class ArchiveDetail(ListView):
         context['month'] = self.kwargs["month"]
         context['month_as_name'] = calendar.month_name[int(context["month"])]
         context['title'] = "{0} {1}".format(context['month_as_name'], context["year"])
+        context['LANGAUAGES'] = settings.LANGUAGES
         return context
 
 
@@ -120,6 +124,8 @@ class ArticleList(ListView):
             qs = live_articles_by_author.order_by("-first_published_at")
         else:
             qs = super(ArticleList, self).get_queryset()
+        if self.request.GET.get("lang"):
+            qs = qs.filter(language=self.request.GET["lang"])
         return qs
 
     def get_context_data(self, **kwargs):
@@ -133,4 +139,5 @@ class ArticleList(ListView):
                 raise Http404
             context["title"] = context["author"].name
         context["articles"] = context["page_obj"]
+        context['LANGUAGES'] = settings.LANGUAGES
         return context

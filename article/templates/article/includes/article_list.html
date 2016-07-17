@@ -1,5 +1,10 @@
 {% load i18n static wagtailimages_tags %}
 <div class="list">
+  {% if LANGUAGES %}
+  <div class="row">
+    <h4>{% trans "Filter by language" %}: <select name="lang"><option value="">All</option>{% for lang in LANGUAGES %}<option {% if request.GET.lang == lang.0 %}selected="selected"{% endif %} value="{{ lang.0 }}">{{ lang.1 }}</option>{% endfor %}</select></h4>
+  </div>
+  {% endif %}
     {% for article in articles %}
     <div class="item col-lg-4 col-md-4 col-sm-12 col-xs-12">
       <div class="item-image">
