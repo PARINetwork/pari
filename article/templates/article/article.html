@@ -8,7 +8,7 @@
 {% image article.featured_image max-1400x1120 as featured_image %}
 <meta property="og:title" content="{{ article.title }}">
 <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ article.get_absolute_url }}">
-<meta property="og:image" content="{{ featured_image.file.url }}">
+<meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ featured_image.file.url }}">
 <meta property="og:type" content="article">
 <meta property="og:published_time" content="{% firstof article.original_published_date|date:"c" article.first_published_at|date:"c" %}">
 
@@ -16,7 +16,7 @@
 <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
 <meta name="twitter:title" content="{{ article.title }}" >
 <meta name="twitter:description" content="Read the article on {{ SITE_TITLE }}" >
-<meta name="twitter:image" content="{{ featured_image.file.url }}" >
+<meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ featured_image.file.url }}" >
 <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ article.get_absolute_url }}" >
 {% endif %}
 {% endblock %}
