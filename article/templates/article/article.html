@@ -201,9 +201,9 @@
               {% for location in content.locations.all %}
 		          {% if forloop.first %}<p>{% trans "Location" %}:{% endif %} {{ location.name }}{% if not forloop.last %},{% endif %}{% if forloop.last %}</p>{% endif %}
 		          {% endfor %}
-              {% if content.specific_class.lower == "article" %}
+              {% if content.content_type.model.lower == "article" %}
               <p>{% trans "Author" %}: {% for author in content.authors.all %}{{ author.name }}{% if not forloop.last %},{% endif %}{% endfor %}</p>
-              {% elif content.specific_class.lower == "album" %}
+              {% elif content.content_type.model.lower == "album" %}
               <p>{% trans "Photographer" %}: {% for author in content.photographers.all %}{{ author.name }}{% if not forloop.last %},{% endif %}{% endfor %}</p>
               {% endif %}
 	          </div>
