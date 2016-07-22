@@ -118,12 +118,32 @@
 	</div>
   <div class="translator_bio">
     {% for translator in article.translators.all %}
-	  <p><i>{% trans "Translated by:" %} {% if translator.bio %}{{ translator.bio }}{% endif %}{% if translator.twitter_username %} {% trans "You can contact the translator here:" %} <a href="https://twitter.com/{{ translator.twitter_username }}">{{ translator.twitter_username }}</a>{% else %}{{ translator.name }}{% endif %}</i></p>
+	  <p>
+      <i>
+        {% if translator.bio %}
+        {{ translator.bio }}
+        {% else %}
+        {% trans "Translated by:" %} {{ translator.name }}
+        {% endif %}
+        {% if translator.twitter_username %}
+        {% trans "You can contact the translator here:" %}
+        <a href="https://twitter.com/{{ translator.twitter_username }}">{{ translator.twitter_username }}</a>
+        {% endif %}
+      </i>
+    </p>
     {% endfor %}
   </div>
 	<div class="author_bio">
 	  {% for author in article.authors.all %}
-	  <p><i>{% if author.bio %}{{ author.bio }}{% else %}{% trans "Author:" %} {{ author.name }}{% endif %}{% if author.twitter_username %} You can contact the author here: <a href="https://twitter.com/{{ author.twitter_username }}">{{ author.twitter_username }}</a>{% endif %}</i></p>
+	  <p>
+      <i>
+        {% if author.bio %}
+        {{ author.bio }}
+        {% else %}
+        {% trans "Author:" %} {{ author.name }}
+        {% endif %}
+      </i>
+    </p>
 	  {% endfor %}
 	</div>
       </div>
