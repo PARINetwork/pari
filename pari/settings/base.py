@@ -250,3 +250,5 @@ INSTAMOJO = {
     "DONATE_URL": "",
     "SALT": "",
 }
+
+GOOGLE_MAP_KEY = ""

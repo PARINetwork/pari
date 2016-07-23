@@ -50,6 +50,7 @@ class ArticleDetail(DetailView):
                                               arc, alc, fac, rec
                                           ])\
                                           .order_by('-first_published_at')[:4]
+        context['MAP_KEY'] = settings.GOOGLE_MAP_KEY
         return context
 
     def render_to_response(self, context, **kwargs):
