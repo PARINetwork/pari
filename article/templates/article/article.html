@@ -49,7 +49,7 @@
 {% endblock %}
 
 {% block extra_uncompressed_js %}
-    <script src="{{ STATIC_URL }}location/js/leaflet.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ MAP_KEY }}&callback=initMap" async defer></script>
 {% endblock %}
 
 {% block main_wrapper %}
