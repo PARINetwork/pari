@@ -90,7 +90,7 @@ class HomePage(Page):
         ("column_4", blocks.RichTextBlock()),
     ])
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
-    
+
     content_panels = Page.content_panels + [
         StreamFieldPanel('strap'),
         FieldPanel('announcements'),
