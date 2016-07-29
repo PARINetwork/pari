@@ -113,7 +113,8 @@ class HomePage(Page):
     def get_context(self, request, *args, **kwargs):
         return {
             'page': self,
-            'request': request
+            'request': request,
+            'announcements': self.announcements
         }
 
     def carousel(self):
