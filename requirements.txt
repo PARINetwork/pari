@@ -13,7 +13,7 @@ django-redis==4.3.0
 
 # For M2M Field support.
 # TODO: Remove after M2MField lands into django-modelcluster
--e git+git://github.com/theju/django-modelcluster#egg=django-modelcluster
+-e git+git://github.com/theju/django-modelcluster@pari#egg=django-modelcluster
 
 # Need to upgrade to next version after https://github.com/django-compressor/django-compressor/issues/698 is fixed
 django-compressor==1.6
