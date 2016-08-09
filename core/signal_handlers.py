@@ -59,7 +59,7 @@ def send_contact_mail(sender, instance, **kwargs):
     })
     get_tmpl = loader.get_template
     with mail.get_connection() as connection:
-        subject = "Message from {0}".format(instance.name)
+        subject = u"Message from {0}".format(instance.name)
         body_html = get_tmpl("email/contact_us.html").render(ctx)
         body_txt = get_tmpl("email/contact_us.txt").render(ctx)
         msg = mail.EmailMultiAlternatives(
@@ -69,7 +69,7 @@ def send_contact_mail(sender, instance, **kwargs):
         msg.attach_alternative(body_html, "text/html")
         msg.send()
 
-        auto_reply_subject = "Acknowledgement from {0}".format(site.name)
+        auto_reply_subject = u"Acknowledgement from {0}".format(site.name)
         auto_reply_body_html = get_tmpl("email/auto_reply.html").render(ctx)
         auto_reply_body_txt = get_tmpl("email/auto_reply.txt").render(ctx)
         auto_reply = mail.EmailMultiAlternatives(
