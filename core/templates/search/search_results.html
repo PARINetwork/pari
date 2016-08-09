@@ -19,7 +19,7 @@ Search{% if search_results %} Results{% endif %}
 </div>
 <div class="list">
   {% for result in search_results %}
-  <div class="item">
+  <div class="item col-lg-4 col-md-4 col-sm-12 col-xs-12">
     <div class="item-image">
       {% if result.specific.featured_image %}
       {% image result.specific.featured_image fill-278x225 as featured_image %}
