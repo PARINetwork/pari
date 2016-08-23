@@ -51,6 +51,7 @@ class LocationList(ListView):
         else:
             context["articles_checked"], context["albums_checked"], \
                 context["faces_checked"] = True, True, True
+        context['MAP_KEY'] = settings.GOOGLE_MAP_KEY
         return context
 
 

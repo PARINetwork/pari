@@ -3,19 +3,14 @@
 
 {% block meta_title %}{% trans "Map"  %}{% endblock %}
 
-{% block extra_uncompressed_css %}
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.Default.css"/>
-{% endblock %}
-
 {% block extra_css %}
 <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}map/css/map.less">
 {% endblock %}
 
 {% block extra_uncompressed_js %}
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster.js"></script>
+<script src="https://maps.google.co.in/maps/api/js?key={{ MAP_KEY }}"></script>
 <script type="text/javascript">
+  var staticURL = "{{ STATIC_URL }}";
   var locations = [
   {% for location in locations %}{% if location.slug %}{% url "location-detail" slug=location.slug as location_url %}{"lat": {{ location.point.x }}, "lng": {{ location.point.y }}, "title": "{% trans "View pages from" %} <a href=\"{{ location_url }}\" target=\"_blank\">{{ location.name }}</a>"} {% if not forloop.last %},{% endif %}{% endif %}{% endfor %}
   ];
@@ -23,6 +18,7 @@
 {% endblock %}
 
 {% block extra_js %}
+<script type="text/javascript" src="{{ STATIC_URL }}map/js/markerclusterer.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}map/js/map.js"></script>
 {% endblock %}
 
