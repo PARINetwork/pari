@@ -85,7 +85,7 @@ def add_location(request):
         form = LocationAdminForm(request.POST)
         if form.is_valid():
             instance = form.save(commit=False)
-            instance.slug = slugify(instance.name)
+            instance.slug = slugify(instance.name)[:50]
             instance.save()
     else:
         form = LocationAdminForm()
