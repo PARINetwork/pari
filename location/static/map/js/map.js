@@ -82,4 +82,19 @@ $(function() {
 	          window.location = '/map/?' + checked.join('&');
 	      }
     });
+
+    var boundary;
+    $("select[name=boundary]").on("change", function() {
+        var selectedVal = $(this).find("option:selected").val();
+        if (boundary) {
+            $.each(boundary, function(ii, vv) {
+                map.data.remove(vv);
+            })
+        }
+        if (selectedVal) {
+            map.data.loadGeoJson(staticURL + 'map/js/' + selectedVal + '.json', {}, function(data) {
+                boundary = data;
+            });
+        }
+    });
 });

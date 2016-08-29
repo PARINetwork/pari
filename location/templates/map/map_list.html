@@ -12,7 +12,7 @@
 <script type="text/javascript">
   var staticURL = "{{ STATIC_URL }}";
   var locations = [
-  {% for location in locations %}{% if location.slug %}{% url "location-detail" slug=location.slug as location_url %}{"lat": {{ location.point.x }}, "lng": {{ location.point.y }}, "title": "{% trans "View pages from" %} <a href=\"{{ location_url }}\" target=\"_blank\">{{ location.name }}</a>"} {% if not forloop.last %},{% endif %}{% endif %}{% endfor %}
+  {% for location in locations %}{% if location.slug %}{% url "location-detail" slug=location.slug as location_url %}{"lat": {{ location.point.x }}, "lng": {{ location.point.y }}, "title": "<div><p><strong>{% trans "Name" %}</strong>: <a href=\"{{ location_url }}\" target=\"_blank\">{{ location.name }}</a></p> <p><strong>{% trans "District" %}</strong>: {{ location.district }}</p><p><strong>{% trans "State" %}</strong>: {{ location.state }}</p></div>"} {% if not forloop.last %},{% endif %}{% endif %}{% endfor %}
   ];
 </script>
 {% endblock %}
@@ -32,6 +32,12 @@
       <li><input type="checkbox" name="filter" value="albums" {% if albums_checked %}checked="checked"{% endif %}>{% trans "Albums" %}</li>
       <li><input type="button" value="Filter" id="filter"></li>
     </ul>
+    <h3>{% trans "View" %}</h3>
+    <select name="boundary">
+      <option value="">---</option>
+      <option value="state">State</option>
+      <option value="district">District</option>
+    </select>
   </div>
   <div class="row">
     <div class="col-lg-12 col-md-12" id="map"></div>
