@@ -93,6 +93,13 @@ $(function() {
         }
         if (selectedVal) {
             map.data.loadGeoJson(staticURL + 'map/js/' + selectedVal + '.json', {}, function(data) {
+                map.data.setStyle({
+                    fillColor: 'gray',
+                    fillOpacity: .2,
+                    strokeColor: '#000',
+                    strokeOpacity: 1,
+                    strokeWeight: .5
+                });
                 boundary = data;
             });
         }
