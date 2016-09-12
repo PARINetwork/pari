@@ -94,7 +94,7 @@
       <div class="row">
       {% endif %}
         <div class="categories">{% image face.image fill-1110x1410 as face_image %}
-          <a href="{{ face_image.url }}" data-title="{{ face.title }}" data-district="{{ face.location.district }}" data-description="{{ face.description }}" data-slug="{{ face.slug }}" class="image-tag mfp-image" data-url="{{ face.get_absolute_url }}">
+          <a href="{{ face.get_absolute_url }}" data-title="{{ face.title }}" data-district="{{ face.location.district }}" data-description="{{ face.description }}" data-slug="{{ face.slug }}" class="image-tag mfp-image" data-url="{{ face.get_absolute_url }}">
             <div class="col-lg-4 col-md-4">
               <div class="grid-column">
                 <img class="img-responsive" src="{{ face_image.url }}" width="370" height="470" alt="{{ face_image.title }}">
