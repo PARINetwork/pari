@@ -9,15 +9,8 @@ var Face = {
 
     _initPopup: function() {
         this._popup = $('.popup-gallery').magnificPopup({
+            delegate: '.mfp-image',
             type: 'image',
-            items: (function() {
-                return $.map($(".mfp-image"), function(vv, ii) {
-                    return {
-                        src: $(vv).find("img").attr("src"),
-                        link: $(vv)
-                    }
-                });
-            })(),
 
             tLoading: 'Loading image #%curr%...',
             mainClass: 'mfp-album-popup',
@@ -35,11 +28,10 @@ var Face = {
                 titleSrc: $.proxy(function (item) {
                     var slideshow = this._popup.data('slideshow');
                     var icon = slideshow ? "pause" : "play";
-                    var parent = $(item.data.link);
                     return '<div>'+
-                        '<h4 class="image-heading">'+ parent.attr('data-title') + '</h4>' +
-                        '<p class="image-district">' + parent.attr('data-district') + '</p> <br />' +
-                        '<p class="image-description">' + parent.attr('data-description') + '</p>' +
+                        '<h4 class="image-heading">'+ item.data.el.attr('data-title') + '</h4>' +
+                        '<p class="image-district">' + item.data.el.attr('data-district') + '</p> <br />' +
+                        '<p class="image-description">' + item.data.el.attr('data-description') + '</p>' +
                         '</div>'
                 }, this),
 
@@ -90,6 +82,21 @@ var Face = {
 		            }
             }
         });
+        $.magnificPopup.instance.updateItemHTML = function() {
+            var $this = this;
+            if (!$this.itemsGenerated) {
+                var items = [];
+                $.each($this.items, function(ii, item) {
+                    items.push({
+                        src: $($(".mfp-image img")[ii]).attr("src"),
+                        el: $($(".mfp-image")[ii])
+                    });
+                });
+                $this.items = items;
+                $this.itemsGenerated = true;
+            }
+            $.magnificPopup.proto.updateItemHTML.call($this);
+        }
     },
 
 
