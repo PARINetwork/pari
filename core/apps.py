@@ -16,7 +16,13 @@ class CoreAppConfig(AppConfig):
 
 # Code below is monkey-patching django to support unicode slugs
 # Will have to remove when django supports unicode slugs by default
-slug_re = re.compile(ur'^[-_\w]+', re.U)
+slug_re_str = r'^[-_\w]+'
+try:
+    slug_re_str = slug_re_str.decode("raw_unicode_escape")
+except AttributeError:
+    pass
+slug_re = re.compile(slug_re_str, re.U)
+
 validate_slug = validators.RegexValidator(
     slug_re,
     _("Enter a valid 'slug' consisting of letters, numbers, underscores or hyphens."),

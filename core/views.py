@@ -109,7 +109,7 @@ def search(request):
 	    'pagination_query_params': ('q=%s' % q) if q else ''
 	})
     else:
-	return render(request, "wagtailadmin/pages/search.html", {
+        return render(request, "wagtailadmin/pages/search.html", {
 	    'search_form': form,
 	    'pages': pages,
 	    'query_string': q,
