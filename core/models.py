@@ -22,7 +22,7 @@ class StaticPage(Page):
     content = RichTextField(blank=True)
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     content_panels = Page.content_panels + [
@@ -205,5 +205,5 @@ class Contact(models.Model):
     message = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name

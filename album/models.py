@@ -51,7 +51,7 @@ class Album(Page):
             'request': request
         }
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     def get_absolute_url(self):
@@ -73,7 +73,7 @@ class AlbumSlide(Orderable):
     class Meta:
         ordering = ["sort_order", "created_on"]
 
-    def __unicode__(self):
+    def __str__(self):
         if self.image:
             return self.image.title
         return self.description

@@ -23,7 +23,7 @@ class Face(Page):
     description = RichTextField(blank=True,
                                 default=render_to_string("face/new_face_placeholder.html"))
 
-    def __unicode__(self):
+    def __str__(self):
         return "{0} {1}".format(self.title, self.location.district)
 
     def featured_image(self):
