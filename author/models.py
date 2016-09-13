@@ -3,10 +3,12 @@ from __future__ import unicode_literals
 from django.db import models
 from django.conf import settings
 from django.utils.text import slugify
+from django.utils.encoding import python_2_unicode_compatible
 
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
 
 
+@python_2_unicode_compatible
 class Author(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField()

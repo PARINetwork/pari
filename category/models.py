@@ -2,11 +2,13 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.core.urlresolvers import reverse
+from django.utils.encoding import python_2_unicode_compatible
 
 from modelcluster.fields import ParentalKey
 
 
-class Category(models.Model):    
+@python_2_unicode_compatible
+class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = models.CharField(max_length=100)
     description = models.TextField()

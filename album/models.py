@@ -4,6 +4,7 @@ from django.contrib.gis.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from django.core.urlresolvers import reverse
+from django.utils.encoding import python_2_unicode_compatible
 
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField
@@ -17,6 +18,7 @@ from modelcluster.fields import M2MField, ParentalKey
 from core.edit_handlers import M2MFieldPanel, AudioPanel
 
 
+@python_2_unicode_compatible
 class Album(Page):
     description = RichTextField()
     locations = M2MField("location.Location", related_name="albums_by_location")
@@ -62,6 +64,7 @@ class Album(Page):
         return self.slides.all()[0].image
 
 
+@python_2_unicode_compatible
 class AlbumSlide(Orderable):
     page = ParentalKey("album.Album", related_name="slides")
     image = models.ForeignKey("core.AffixImage", related_name="album_for_image", null=True, blank=True)

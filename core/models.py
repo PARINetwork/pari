@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.core import serializers
 from django.core.urlresolvers import reverse
 from django.conf import settings
+from django.utils.encoding import python_2_unicode_compatible
 
 from wagtail.wagtailimages.models import AbstractImage, AbstractRendition
 from wagtail.wagtailimages.formats import get_image_format
@@ -17,6 +18,7 @@ from wagtail.wagtailadmin.edit_handlers import MultiFieldPanel, \
 from wagtail.wagtailsearch import index
 
 
+@python_2_unicode_compatible
 class StaticPage(Page):
     # TODO: Keep it simple for now.
     content = RichTextField(blank=True)
@@ -34,6 +36,7 @@ class StaticPage(Page):
         return reverse("static_page", kwargs={"slug": self.slug})
 
 
+@python_2_unicode_compatible
 class HomePage(Page):
     # TODO: Carousel is temporary and being phased out
     carousel_0 = models.ForeignKey("wagtailcore.Page",
@@ -129,6 +132,7 @@ class HomePage(Page):
         return reverse("home-page")
 
 
+@python_2_unicode_compatible
 class AffixImage(AbstractImage):
     locations = models.ManyToManyField('location.Location', blank=True,
                                        related_name="locations_for_image")
@@ -181,6 +185,7 @@ class AffixImage(AbstractImage):
         return [category.pk for category in self.categories.all()]
 
 
+@python_2_unicode_compatible
 class AffixImageRendition(AbstractRendition):
     image = models.ForeignKey(AffixImage, related_name='renditions')
 
@@ -199,6 +204,7 @@ class AffixImageRendition(AbstractRendition):
         return super(AffixImageRendition, self).img_tag(extra_attrs)
 
 
+@python_2_unicode_compatible
 class Contact(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField()

@@ -6,6 +6,7 @@ from django.utils.functional import cached_property
 from django.core import serializers
 from django.conf import settings
 from django.core.urlresolvers import reverse
+from django.utils.encoding import python_2_unicode_compatible
 
 from modelcluster.fields import M2MField
 
@@ -35,6 +36,7 @@ def url_property(self):
 Page.url = url_property
 
 
+@python_2_unicode_compatible
 class Article(Page):
     authors = M2MField("author.Author", related_name="articles_by_author")
     translators = M2MField("author.Author",

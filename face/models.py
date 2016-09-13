@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.template.loader import render_to_string
 from django.core.urlresolvers import reverse
+from django.utils.encoding import python_2_unicode_compatible
 
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailcore.fields import RichTextField
@@ -14,6 +15,7 @@ from wagtail.wagtailsearch import index
 from core.edit_handlers import M2MFieldPanel
 
 
+@python_2_unicode_compatible
 class Face(Page):
     image = models.ForeignKey("core.AffixImage",
                               related_name="face_for_image", null=True,

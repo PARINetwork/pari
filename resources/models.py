@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.conf import settings
 from django.core.urlresolvers import reverse
+from django.utils.encoding import python_2_unicode_compatible
 
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailcore.fields import StreamField
@@ -14,6 +15,7 @@ from wagtail.wagtailsearch import index
 from modelcluster.fields import M2MField
 
 
+@python_2_unicode_compatible
 class Resource(Page):
     date = models.DateField(blank=True, null=True)
     content = StreamField([
