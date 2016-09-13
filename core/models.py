@@ -113,6 +113,9 @@ class HomePage(Page):
         FieldPanel('language'),
     ]
 
+    def __str__(self):
+        return _("HomePage")
+
     def get_context(self, request, *args, **kwargs):
         return {
             'page': self,
@@ -161,6 +164,9 @@ class AffixImage(AbstractImage):
         'focal_point_height',
     )
 
+    def __str__(self):
+        return super(AffixImage, self).__str__()
+
     search_fields = AbstractImage.search_fields + (
         index.SearchField('get_locations_index', partial_match=True),
         index.SearchField('people', partial_match=True),
@@ -202,6 +208,9 @@ class AffixImageRendition(AbstractRendition):
                 self.image, self.image.title, extra_attrs
             )
         return super(AffixImageRendition, self).img_tag(extra_attrs)
+
+    def __str__(self):
+        return self.image.title
 
 
 @python_2_unicode_compatible

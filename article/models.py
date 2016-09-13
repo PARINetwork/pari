@@ -75,6 +75,9 @@ class Article(Page):
         index.FilterField('language'),
     )
 
+    class __str__(self):
+        return self.title
+
     def get_context(self, request, *args, **kwargs):
         try:
             site = Site.objects.get(hostname=request.get_host())

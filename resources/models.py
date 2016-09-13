@@ -58,3 +58,6 @@ class Resource(Page):
         FieldPanel('categories'),
         FieldPanel('date'),
     ]
+
+    def __str__(self):
+        return self.title
