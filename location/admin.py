@@ -14,6 +14,7 @@ class LocationAdmin(GeoModelAdmin):
     form = LocationAdminForm
     search_fields = ["name", "block", "district", "region", "state"]
     list_filter = ["state"]
+    list_display = ["name", "block", "district", "region", "state"]
 
     def save_model(self, request, obj, form, change):
         obj.slug = slugify(obj.name[:50])
