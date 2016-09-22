@@ -28,10 +28,11 @@ var Face = {
                 titleSrc: $.proxy(function (item) {
                     var slideshow = this._popup.data('slideshow');
                     var icon = slideshow ? "pause" : "play";
+                    var el = (typeof item.data !== 'undefined') ? item.data.el : item.el;
                     return '<div>'+
-                        '<h4 class="image-heading">'+ item.data.el.attr('data-title') + '</h4>' +
-                        '<p class="image-district">' + item.data.el.attr('data-district') + '</p> <br />' +
-                        '<p class="image-description">' + item.data.el.attr('data-description') + '</p>' +
+                        '<h4 class="image-heading">'+ el.attr('data-title') + '</h4>' +
+                        '<p class="image-district">' + el.attr('data-district') + '</p> <br />' +
+                        '<p class="image-description">' + el.attr('data-description') + '</p>' +
                         '</div>'
                 }, this),
 
