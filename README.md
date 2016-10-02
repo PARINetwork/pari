@@ -19,4 +19,4 @@ $ ansible-playbook -i hosts.yml -l local -u ubuntu -t deploy site.yml
 
 ### Copyright
 
-Licensed under the `MIT License`. Please refer the `LICENSE.txt` for details.
+Licensed under the 3-clause BSD License. Please refer the `LICENSE.txt` for details.
