@@ -142,6 +142,10 @@
         {% else %}
         {% trans "Author:" %} {{ author.name }}
         {% endif %}
+        {% if author.twitter_username %}
+        {% trans "You can contact the author here:" %}
+        <a href="https://twitter.com/{{ author.twitter_username }}">{{ author.twitter_username }}</a>
+        {% endif %}
       </i>
     </p>
 	  {% endfor %}
