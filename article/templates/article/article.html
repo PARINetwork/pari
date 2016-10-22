@@ -3,6 +3,8 @@
 
 {% block meta_title %}{{ article.title }}{% endblock %}
 
+{% block meta_description %}{{ article.title }} - {{ article.strap }}{% endblock %}
+
 {% block opengraph_block %}
 {% if article.featured_image %}
 {% image article.featured_image max-1400x1120 as featured_image %}
