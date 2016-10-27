@@ -6,38 +6,40 @@ Search{% if search_results %} Results{% endif %}
 {% endblock %}
 
 {% block main %}
-<h1>{% trans "Search" %}{% if search_results %} {% trans "Results" %} {% endif %}</h1>
+<div itemscope itemtype="http://schema.org/SearchResultsPage">
+  <h1>{% trans "Search" %}{% if search_results %} {% trans "Results" %} {% endif %}</h1>
 
-<form action="{% url 'wagtailsearch_search' %}" method="get">
-  <input type="text" name="q"{% if query_string %} value="{{ query_string }}"{% endif %}>
-  <input type="submit" value="{% trans "Search" %}">
-</form>
+  <form action="{% url 'wagtailsearch_search' %}" method="get">
+    <input type="text" name="q"{% if query_string %} value="{{ query_string }}"{% endif %}>
+    <input type="submit" value="{% trans "Search" %}">
+  </form>
 
-{% if search_results %}
-<div id="results" class="heading row">
-  <h3 class="col-lg-12 col-md-12 col-sm-12">{% trans "Results for" %} "{{ query }}"</h3>
-</div>
-<div class="list">
-  {% for result in search_results %}
-  <div class="item col-lg-4 col-md-4 col-sm-12 col-xs-12">
-    <div class="item-image">
-      {% if result.specific.featured_image %}
-      {% image result.specific.featured_image fill-278x225 as featured_image %}
-      <img src="{{ featured_image.url }}">
-      {% else %}
-      <img src="{{ STATIC_URL }}img/default_featured_image.png" alt="{{ result.specific.title }}" width="278" height="225">
-      {% endif %}
-    </div>
-    {% include "article/includes/default_atom.html" with article=result.specific %}
+  {% if search_results %}
+  <div id="results" class="heading row">
+    <h3 class="col-lg-12 col-md-12 col-sm-12">{% trans "Results for" %} "{{ query }}"</h3>
   </div>
-  {% endfor %}
-  {% include "includes/paginator.html" with results=search_results %}
+  <div class="list">
+    {% for result in search_results %}
+    <div class="item col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <div class="item-image">
+        {% if result.specific.featured_image %}
+        {% image result.specific.featured_image fill-278x225 as featured_image %}
+        <img src="{{ featured_image.url }}">
+        {% else %}
+        <img src="{{ STATIC_URL }}img/default_featured_image.png" alt="{{ result.specific.title }}" width="278" height="225">
+        {% endif %}
+      </div>
+      {% include "article/includes/default_atom.html" with article=result.specific %}
+    </div>
+    {% endfor %}
+    {% include "includes/paginator.html" with results=search_results %}
+  </div>
+  {% else %}
+  <div class="row">
+    <h3>
+      {% blocktrans %}Sorry, could not find any results for "{{ query }}". Please try a different query.{% endblocktrans %}
+    </h3>
+  </div>
+  {% endif %}
 </div>
-{% else %}
-<div class="row">
-  <h3>
-    {% blocktrans %}Sorry, could not find any results for "{{ query }}". Please try a different query.{% endblocktrans %}
-  </h3>
-</div>
-{% endif %}
 {% endblock %}

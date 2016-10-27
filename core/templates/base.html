@@ -72,13 +72,13 @@
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
 	      {% include "pages/menus/dropdown.html" %}
-	      <li class="dropdown search">
-		<form action="{% url "wagtailsearch_search" %}" class="navbar-form navbar-right" role="search" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
-		  <div class="form-group">
-        <meta itemprop="target" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{% url "wagtailsearch_search" %}?q={q}" />
-		    <input class="form-control" placeholder="{% trans "Search" %}" type="text" name="q" value="{{ request.GET.q }}" itemprop="query-input">
-		  </div>
-		</form>
+	      <li class="dropdown search" itemscope itemtype="http://schema.org/WebSite">
+		      <form action="{% url "wagtailsearch_search" %}" class="navbar-form navbar-right" role="search" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+		        <div class="form-group">
+              <meta itemprop="target" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{% url "wagtailsearch_search" %}?q={q}" />
+		          <input class="form-control" placeholder="{% trans "Search" %}" type="text" name="q" value="{{ request.GET.q }}" itemprop="query-input">
+		        </div>
+		      </form>
 	      </li>
 	      <li class="dropdown social">
 		<a href="https://facebook.com/{{ SOCIAL_FACEBOOK }}">
