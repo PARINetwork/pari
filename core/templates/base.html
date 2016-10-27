@@ -73,6 +73,7 @@
             <ul class="nav navbar-nav" itemscope itemtype="http://schema.org/BreadcrumbList">
 	      {% include "pages/menus/dropdown.html" %}
 	      <li class="dropdown search" itemscope itemtype="http://schema.org/WebSite">
+          <meta itemprop="url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}/" />
 		      <form action="{% url "wagtailsearch_search" %}" class="navbar-form navbar-right" role="search" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
 		        <div class="form-group">
               <meta itemprop="target" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{% url "wagtailsearch_search" %}?q={q}" />
