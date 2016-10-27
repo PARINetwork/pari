@@ -1,118 +1,118 @@
 {% load i18n %}
 
-<li class="dropdown">
-  <a href="{% url "category-list" %}">{% trans "Categories" %}</a>
+<li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+  <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{% url "category-list" %}">
+    <span itemprop="name">{% trans "Categories" %}</span>
+  </a>
 </li>
-<li class="dropdown">
-  <a href="{% url "category-list" %}">
-    {% trans "Gallery" %}
+<li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+  <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{% url "category-list" %}">
+    <span itemprop="name">{% trans "Gallery" %}</span>
     <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu">
-    <li class="dropdown">
-      <a href="{% url "talking-album-list" %}">
-	<span class="glyphicon glyphicon-bullhorn"></span>
-	{% trans "Talking Albums" %}
+  <ul class="dropdown-menu" itemscope itemtype="http://schema.org/BreadcrumbList">
+    <li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{% url "talking-album-list" %}">
+	      <span class="glyphicon glyphicon-bullhorn"></span>
+	      <span itemprop="name">{% trans "Talking Albums" %}</span>
       </a>
     </li>
-    <li class="dropdown">
-      <a href="{% url "other-album-list" %}">
-	<span class="glyphicon glyphicon-picture"></span>
-	{% trans "Albums" %}
+    <li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{% url "other-album-list" %}">
+	      <span class="glyphicon glyphicon-picture"></span>
+	      <span itemprop="name">{% trans "Albums" %}</span>
       </a>
     </li>
-    <li class="dropdown">
-      <a href="{% url "category-detail" slug="faces" %}">
-	<span class="glyphicon glyphicon-user"></span>
-	{% trans "Faces" %}
+    <li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{% url "category-detail" slug="faces" %}">
+	      <span class="glyphicon glyphicon-user"></span>
+	      <span itemprop="name">{% trans "Faces" %}</span>
       </a>
     </li>
-    <li class="dropdown">
-      <a href="{% url "category-detail" slug="videozone" %}">
-	<span class="glyphicon glyphicon-film"></span>
-	{% trans "Video Zone" %}
+    <li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{% url "category-detail" slug="videozone" %}">
+	      <span class="glyphicon glyphicon-film"></span>
+	      <span itemprop="name">{% trans "Video Zone" %}</span>
       </a>
     </li>
-    <li class="dropdown">
-      <a href="{% url "category-detail" slug="audiozone" %}">
-	<span class="glyphicon glyphicon-volume-up"></span>
-	{% trans "Audio Zone" %}
+    <li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{% url "category-detail" slug="audiozone" %}">
+	      <span class="glyphicon glyphicon-volume-up"></span>
+	      <span itemprop="name">{% trans "Audio Zone" %}</span>
       </a>
     </li>
-    <li class="dropdown">
-      <a href="{% url "category-detail" slug="photozone" %}">
-	<span class="glyphicon glyphicon-camera"></span>
-	{% trans "Photo Zone" %}
+    <li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{% url "category-detail" slug="photozone" %}">
+	      <span class="glyphicon glyphicon-camera"></span>
+	      <span itemprop="name">{% trans "Photo Zone" %}</span>
       </a>
     </li>
-    <li class="dropdown">
-      <a href="{% url "category-detail" slug="visible-work-invisible-women" %}">
-	<span class="glyphicon glyphicon-eye-open"></span>
-	{% trans "P Sainath's Online Photo Exhibition" %}
+    <li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{% url "category-detail" slug="visible-work-invisible-women" %}">
+	      <span class="glyphicon glyphicon-eye-open"></span>
+	      <span itemprop="name">{% trans "P Sainath's Online Photo Exhibition" %}</span>
       </a>
     </li>
   </ul>
 </li>
-<li class="dropdown">
-  <a href="{% url "resource-list" %}">
-    {% trans "Resources" %}
+<li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+  <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{% url "resource-list" %}">
+    <span itemprop="name">{% trans "Resources" %}</span>
   </a>
 </li>
-<li class="dropdown">
-  <a href="javascript:void(0);">
-    {% trans "Contribute" %}
+<li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+  <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="javascript:void(0);">
+    <span itemprop="name">{% trans "Contribute" %}</span>
     <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu">
-    <li class="dropdown">
-      <a href="{% url "contribute" slug="contribute" %}">
-	{% trans "Get Involved" %}
+  <ul class="dropdown-menu" itemscope itemtype="http://schema.org/BreadcrumbList">
+    <li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{% url "contribute" slug="contribute" %}">
+	      <span itemprop="name">{% trans "Get Involved" %}</span>
       </a>
     </li>
-    <li class="dropdown">
-      <a href="{% url "static_page" slug="guidelines" %}">
-	{% trans "Guidelines" %}
+    <li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{% url "static_page" slug="guidelines" %}">
+	      <span itemprop="name">{% trans "Guidelines" %}</span>
       </a>
     </li>
   </ul>
 </li>
-<li class="dropdown">
+<li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
   <a href="javascript:void(0);">
     {% trans "About PARI" %}
     <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu">
-    <li class="dropdown">
-      <a href="{% url "static_page" slug="about" %}">
-	{% trans "The story of PARI" %}
+  <ul class="dropdown-menu" itemscope itemtype="http://schema.org/BreadcrumbList">
+    <li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemscope itemtype="http://schema.org/Thing" itemprop="item"  href="{% url "static_page" slug="about" %}">
+	      <span itemprop="name">{% trans "The story of PARI" %}</span>
       </a>
     </li>
-    <li class="dropdown">
-      <a href="{% url "static_page" slug="pari-teachers-students" %}">
-	{% trans "PARI Students & Teachers" %}
+    <li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemscope itemtype="http://schema.org/Thing" itemprop="item"  href="{% url "static_page" slug="pari-teachers-students" %}">
+	      <span itemprop="name">{% trans "PARI Students & Teachers" %}</span>
       </a>
     </li>
-    <li class="dropdown">
-      <a href="{% url "static_page" slug="about-the-editor" %}">
-	{% trans "Founder Editor P Sainath" %}
+    <li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{% url "static_page" slug="about-the-editor" %}">
+	      <span itemprop="name">{% trans "Founder Editor P Sainath" %}</span>
       </a>
     </li>
-    <li class="dropdown">
-      <a href="{% url "static_page" slug="acknowledgements" %}">
-	{% trans "Acknowledgements" %}
+    <li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{% url "static_page" slug="acknowledgements" %}">
+	      <span itemprop="name">{% trans "Acknowledgements" %}</span>
       </a>
     </li>
   </ul>
 </li>
-<li class="dropdown">
-  <a href="{% url "static_page" slug="donate" %}">
-    {% trans "Donate" %}
+<li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+  <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{% url "static_page" slug="donate" %}">
+    <span itemprop="name">{% trans "Donate" %}</span>
   </a>
 </li>
-{% comment %}
-<li class="dropdown">
-  <a href="{% url "map-list" %}">
-    {% trans "Map" %}
+<li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+  <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{% url "map-list" %}">
+    <span itemprop="name">{% trans "Map" %}</span>
   </a>
 </li>
-{% endcomment %}
