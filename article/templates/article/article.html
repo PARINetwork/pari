@@ -3,8 +3,6 @@
 
 {% block meta_title %}{{ article.title }}{% endblock %}
 
-{% block meta_description %}{{ article.title }} - {{ article.strap }}{% endblock %}
-
 {% block opengraph_block %}
 {% if article.featured_image %}
 {% image article.featured_image max-1400x1120 as featured_image %}
@@ -71,14 +69,31 @@
 {% endblock %}
 
 {% block main %}
-<div class="container content-container">
+<div class="container content-container" itemscope itemtype="http://schema.org/Article">
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
       <div class="article-head">
 	{% block title %}
         <div class="page-header">
-          <h1 class="article-title">{{ article.title }}</h1>
-          <div class="article-strap">{% if article.strap %} {{ article.strap }} {% endif %}</div>
+          <h1 class="article-title"><span itemprop="name">{{ article.title }}</span></h1>
+          <div class="hidden">
+            <span itemprop="headline">{{ article.title }}</span>
+            <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+              <span itemprop="url">http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ featured_image.file.url }}</span>
+              <span itemprop="width">{{ featured_image.width }}</span>
+              <span itemprop="height">{{ featured_image.height }}</span>
+            </span>
+            <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+              <span itemscope itemprop="logo" itemtype="http://schema.org/ImageObject">
+                <span itemprop="url">http://{{ site.hostname }}{{ STATIC_URL }}img/logo.png</span>
+                <span itemprop="height">50</span>
+                <span itemprop="width">90</span>
+              </span>
+              <span itemprop="name">{{ site.site_name }}</span>
+              <span itemprop="url">http://{{ site.hostname }}</span>
+            </span>
+          </div>
+          <div class="article-strap">{% if article.strap %} <span itemprop="description">{{ article.strap }}</span> {% endif %}</div>
         </div>
         <div class="article-meta">
           {% if translations and translations|length > 1 %}
@@ -89,18 +104,18 @@
 	    </button>
 	    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 	      {% for translation in translations %}
-	      <li role="presentation"><a role="menuitem" tabindex="{{ forloop.counter0 }}" href="{{ translation.get_absolute_url }}">{{ translation.get_language_display }}</a></li>
+	      <li role="presentation" itemprop="inLanguage" itemscope itemtype="http://schema.org/Language"><a role="menuitem" itemprop="url" tabindex="{{ forloop.counter0 }}" href="{{ translation.get_absolute_url }}"><span itemprop="name">{{ translation.get_language_display }}</span></a></li>
 	      {% endfor %}
 	    </ul>
 	  </span>
 	  |
 	  {% endif %}
 	  {% if article.original_published_date %}
-	  <a href="{% url "archive-detail" year=article.original_published_date.year month=article.original_published_date.month %}"> {{ article.original_published_date|date }}</a>
+	  <a href="{% url "archive-detail" year=article.original_published_date.year month=article.original_published_date.month %}"> <span itemprop="datePublished">{{ article.original_published_date|date }}</span> </a>
 	  {% else %}
-	  {% if article.first_published_at %}<a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month %}"> {{ article.first_published_at|date }}</a>{% endif %}
+	  {% if article.first_published_at %}<a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month %}"> <span itemprop="datePublished">{{ article.first_published_at|date }}</span></a>{% endif %}
 	  {% endif %}
-          |  {% for author in article.authors.all %}<a href="{% url "author-detail" author.slug %}"> {{ author.name }}</a>{% endfor %}
+    |  {% for author in article.authors.all %}<span itemprop="author"> <span itemscope itemtype="http://schema.org/Person"> <a itemprop="url" href="{% url "author-detail" author.slug %}"> <span itemprop="name">{{ author.name }}</span> </a> </span> </span>{% endfor %}
         </div>
 	<div>
           {% if article.live %}{% include "article/includes/social.html" with item=article %}{% endif %}
@@ -115,21 +130,22 @@
     <div class="col-lg-1 col-md-1 col-sm-1"></div>
     <div class="col-lg-9 col-md-9 col-sm-9 article-holder">
       <div class="article-content">
-	<div>
+	<div itemprop="articleBody">
 	  {{ article.content|richtext }}
 	</div>
   <div class="translator_bio">
     {% for translator in article.translators.all %}
-	  <p>
+	  <p itemscope itemtype="http://schema.org/Person" itemprop="translator">
       <i>
         {% if translator.bio %}
-        {{ translator.bio }}
+        <span class="hidden" itemprop="name">{{ translator.name }}</span>
+        <span itemprop="description">{{ translator.bio }}</span>
         {% else %}
-        {% trans "Translated by:" %} {{ translator.name }}
+        {% trans "Translated by:" %} <span itemprop="name">{{ translator.name }}</span>
         {% endif %}
         {% if translator.twitter_username %}
         {% trans "You can contact the translator here:" %}
-        <a href="https://twitter.com/{{ translator.twitter_username }}">{{ translator.twitter_username }}</a>
+        <a itemprop="url" href="https://twitter.com/{{ translator.twitter_username }}">{{ translator.twitter_username }}</a>
         {% endif %}
       </i>
     </p>
@@ -137,16 +153,17 @@
   </div>
 	<div class="author_bio">
 	  {% for author in article.authors.all %}
-	  <p>
+	  <p itemscope itemtype="http://schema.org/Person">
       <i>
         {% if author.bio %}
-        {{ author.bio }}
+        <span class="hidden" itemprop="name">{{ author.name }}</span>
+        <span itemprop="description">{{ author.bio }}</span>
         {% else %}
-        {% trans "Author:" %} {{ author.name }}
+        {% trans "Author:" %} <span itemprop="name">{{ author.name }}</span>
         {% endif %}
         {% if author.twitter_username %}
         {% trans "You can contact the author here:" %}
-        <a href="https://twitter.com/{{ author.twitter_username }}">{{ author.twitter_username }}</a>
+        <a itemprop="url" href="https://twitter.com/{{ author.twitter_username }}">{{ author.twitter_username }}</a>
         {% endif %}
       </i>
     </p>
@@ -154,9 +171,9 @@
 	</div>
       </div>
     </div>
-    <div class="col-lg-2 col-md-2 col-sm-2">
+    <div class="col-lg-2 col-md-2 col-sm-2" itemscope itemtype="http://schema.org/Map">
       {% if article.locations.count %}
-        <p>{% for location in article.locations.all %}<a href="https://www.openstreetmap.org/?mlat={{ location.point.x }}&mlon={{ location.point.y }}#map=14/{{ location.point.x }}/{{ location.point.y }}" target="_blank">{{ location.name }}</a>{% if not forloop.last %},{% endif %}{% endfor %}</p>
+      <p>{% for location in article.locations.all %}<a itemprop="url" href="https://www.openstreetmap.org/?mlat={{ location.point.x }}&mlon={{ location.point.y }}#map=14/{{ location.point.x }}/{{ location.point.y }}" target="_blank"><span itemprop="contentLocation"><span itemprop="name">{{ location.name }}</span></span></a>{% if not forloop.last %},{% endif %}{% endfor %}</p>
         <div id="map" class="map-view" data-lat="{% for location in article.locations.all %}{{ location.point.x }}{% if not forloop.last %},{% endif %}{% endfor %}" data-long="{% for location in article.locations.all %}{{ location.point.y }}{% if not forloop.last %},{% endif %}{% endfor %}"></div>
       {% endif%}
     </div>
