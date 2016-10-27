@@ -78,6 +78,7 @@
           <h1 class="article-title"><span itemprop="name">{{ article.title }}</span></h1>
           <div class="hidden">
             <span itemprop="headline">{{ article.title }}</span>
+            <span itemprop="url">http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ article.get_absolute_url }}</span>
             <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
               <span itemprop="url">http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ featured_image.file.url }}</span>
               <span itemprop="width">{{ featured_image.width }}</span>
@@ -115,7 +116,7 @@
 	  {% else %}
 	  {% if article.first_published_at %}<a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month %}"> <span itemprop="datePublished">{{ article.first_published_at|date }}</span></a>{% endif %}
 	  {% endif %}
-    |  {% for author in article.authors.all %}<span itemprop="author"> <span itemscope itemtype="http://schema.org/Person"> <a itemprop="url" href="{% url "author-detail" author.slug %}"> <span itemprop="name">{{ author.name }}</span> </a> </span> </span>{% endfor %}
+    |  {% for author in article.authors.all %}<span itemprop="author" itemscope itemtype="http://schema.org/Person"> <a itemprop="url" href="{% url "author-detail" author.slug %}"> <span itemprop="name">{{ author.name }}</span> </a> </span> {% endfor %}
         </div>
 	<div>
           {% if article.live %}{% include "article/includes/social.html" with item=article %}{% endif %}
