@@ -28,10 +28,12 @@
 
 
 {% block extra_header %}
-    <div class="jumbotron home-page content-container">
-      <h1>{{ page.title }}</h1>
+    <div class="jumbotron home-page content-container" itemscope itemtype="http://schema.org/WebPage">
+      <h1 itemprop="name">{{ page.title }}</h1>
       <div class="row">
-	<div class="col-lg-12 col-md-12 col-sm-12">{{ page.strap.0.value|richtext }}</div>
+	      <div class="col-lg-12 col-md-12 col-sm-12">
+          <h2 style="padding:0;margin:0;" itemprop="description">{{ page.strap.0.value|richtext }}</h2>
+        </div>
       </div>
     </div>
 
@@ -95,23 +97,23 @@
 <div id="homepage">
     <section id="mainsection">
         <div class="main-section">
-            <div class="container-fluid">
+            <div class="container-fluid" itemscope itemtype="http://schema.org/BreadcrumbList">
                 <div class="category-heading">
-                    {% trans "Categories" %}
+                  <h5>{% trans "Categories" %}</h5>
                 </div>
                 {% for category in categories %}
 		{% if forloop.first or forloop.counter0|divisibleby:"3" %}
 		<div class="row">
 		{% endif %}
-                  <div class="categories">
-                    <a href="{{ category.get_absolute_url}}">
+                  <div class="categories" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                    <a href="{{ category.get_absolute_url}}" itemprop="url">
                       <div class="col-lg-4 col-md-4 col-xs-12">
                         <div class="grid-column">
 
-                          {% image category.image fill-512x512 as category_image %}<img data-src="{{ category_image.url }}" alt="{{ category.name }}" style="width:370px;margin:0 auto;" class="img-responsive lazyload">
+                          {% image category.image fill-512x512 as category_image %}<img data-src="{{ category_image.url }}" alt="{{ category.name }}" style="width:370px;margin:0 auto;" class="img-responsive lazyload" itemprop="image">
                           <div class="caption">
-                            <h4>{{ category.name }}</h4>
-                            <p class="description">{{ category.description }}</p>
+                            <h6 itemprop="name">{{ category.name }}</h6>
+                            <p class="description" itemprop="description">{{ category.description }}</p>
                           </div>
                         </div>
                       </div>
