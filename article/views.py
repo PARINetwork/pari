@@ -9,7 +9,7 @@ from django.http import Http404
 from django.core.cache import caches
 from django.contrib.contenttypes.models import ContentType
 
-from wagtail.wagtailcore.models import Site, Page
+from wagtail.wagtailcore.models import Page
 
 from article.models import Article
 from author.models import Author
@@ -37,10 +37,6 @@ class ArticleDetail(DetailView):
         context = super(ArticleDetail, self).get_context_data(**kwargs)
         translations = get_translations_for_page(context['object'])
         context['translations'] = translations
-        try:
-            context['site'] = Site.objects.get(hostname=self.request.get_host())
-        except Site.DoesNotExist:
-            context['site'] = Site.objects.filter(is_default_site=True)[0]
         arc = ContentType.objects.get_for_model(Article)
         alc = ContentType.objects.get_for_model(Album)
         fac = ContentType.objects.get_for_model(Face)
