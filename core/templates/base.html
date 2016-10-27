@@ -73,9 +73,10 @@
             <ul class="nav navbar-nav">
 	      {% include "pages/menus/dropdown.html" %}
 	      <li class="dropdown search">
-		<form action="{% url "wagtailsearch_search" %}" class="navbar-form navbar-right" role="search">
+		<form action="{% url "wagtailsearch_search" %}" class="navbar-form navbar-right" role="search" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
 		  <div class="form-group">
-		    <input class="form-control" placeholder="{% trans "Search" %}" type="text" name="q" value="{{ request.GET.q }}">
+        <meta itemprop="target" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{% url "wagtailsearch_search" %}?q={q}" />
+		    <input class="form-control" placeholder="{% trans "Search" %}" type="text" name="q" value="{{ request.GET.q }}" itemprop="query-input">
 		  </div>
 		</form>
 	      </li>
