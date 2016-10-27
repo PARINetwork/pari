@@ -34,6 +34,16 @@
 <link rel="stylesheet" href="{{ STATIC_URL }}css/rtl.css">
 {% endif %}
 
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "{{ site.site_name }}",
+        "alternateName": "PARI",
+        "url": "http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}",
+        "logo": "http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ STATIC_URL }}img/logo.png"
+    }
+</script>
 
 {% block extra_head %}{% endblock %}
 
