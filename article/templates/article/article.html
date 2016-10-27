@@ -85,12 +85,12 @@
             </span>
             <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
               <span itemscope itemprop="logo" itemtype="http://schema.org/ImageObject">
-                <span itemprop="url">http://{{ site.hostname }}{{ STATIC_URL }}img/logo.png</span>
+                <span itemprop="url">http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ STATIC_URL }}img/logo.png</span>
                 <span itemprop="height">50</span>
                 <span itemprop="width">90</span>
               </span>
               <span itemprop="name">{{ site.site_name }}</span>
-              <span itemprop="url">http://{{ site.hostname }}</span>
+              <span itemprop="url">http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}</span>
             </span>
           </div>
           <div class="article-strap">{% if article.strap %} <span itemprop="description">{{ article.strap }}</span> {% endif %}</div>
