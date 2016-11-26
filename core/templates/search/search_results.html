@@ -21,14 +21,16 @@ Search{% if search_results %} Results{% endif %}
   <div class="list">
     {% for result in search_results %}
     <div class="item col-lg-4 col-md-4 col-sm-12 col-xs-12">
-      <div class="item-image">
-        {% if result.specific.featured_image %}
-        {% image result.specific.featured_image fill-278x225 as featured_image %}
-        <img src="{{ featured_image.url }}">
-        {% else %}
-        <img src="{{ STATIC_URL }}img/default_featured_image.png" alt="{{ result.specific.title }}" width="278" height="225">
-        {% endif %}
-      </div>
+      <a href="{{ result.specific.get_absolute_url }}">
+        <div class="item-image">
+          {% if result.specific.featured_image %}
+          {% image result.specific.featured_image fill-278x225 as featured_image %}
+          <img src="{{ featured_image.url }}">
+          {% else %}
+          <img src="{{ STATIC_URL }}img/default_featured_image.png" alt="{{ result.specific.title }}" width="278" height="225">
+          {% endif %}
+        </div>
+      </a>
       {% include "article/includes/default_atom.html" with article=result.specific %}
     </div>
     {% endfor %}
