@@ -61,12 +61,11 @@ class BaseFeed(Feed):
             url = item.featured_image
         else:
             url = item.featured_image.file.url
-            if url.find(settings.MEDIA_URL) < 0:
-                url = "{0}://{1}{2}".format(
-                    "http" + ("s" if self.request.is_secure() else ""),
-                    Site.find_for_request(self.request).hostname,
-                    url
-                )
+            url = "{0}://{1}{2}".format(
+                "http" + ("s" if self.request.is_secure() else ""),
+                Site.find_for_request(self.request).hostname,
+                url
+            )
         return url
 
     def item_enclosure_length(self, item):
