@@ -59,7 +59,11 @@ class BaseFeed(Feed):
             return author.get_absolute_url()
 
     def item_enclosure_url(self, item):
-        return item.featured_image
+        if not getattr(item.featured_image, 'file', None):
+            url = item.featured_image
+        else:
+            url = item.featured_image.file.url
+        return url
 
 
 class AllFeed(BaseFeed):
