@@ -49,17 +49,12 @@ class BaseFeed(Feed):
         return item.first_published_at
 
     def item_author_name(self, item):
-        author = getattr(item, 'author', None)
-        if author:
-            return author.title
-        user = getattr(item, 'user', None)
-        if user:
-            return item.user.get_full_name() or item.user.username
-
-    def item_author_link(self, item):
-        author = getattr(item, 'author', None)
-        if author:
-            return author.get_absolute_url()
+        authors = ""
+        if item.__class__.__name__.lower() == "article":
+            authors = ",".join(list(item.authors.values_list("name", flat=True)))
+        elif item.__class__.__name__.lower() == "album":
+            authors = ",".join(list(item.photographers.values_list("name", flat=True)))
+        return authors
 
     def item_enclosure_url(self, item):
         if not getattr(item.featured_image, 'file', None):
@@ -98,6 +93,7 @@ class AllFeed(BaseFeed):
 
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
+        x_days_ago = "2016-09-01"
         kwargs = {
             "first_published_at__gte": x_days_ago,
         }
