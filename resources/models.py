@@ -59,5 +59,9 @@ class Resource(Page):
         FieldPanel('date'),
     ]
 
+    @property
+    def featured_image(self):
+        return self.embed_thumbnail
+
     def __str__(self):
         return self.title

@@ -60,6 +60,7 @@ class Album(Page):
         name = "album-detail"
         return reverse(name, kwargs={"slug": self.slug})
 
+    @property
     def featured_image(self):
         return self.slides.all()[0].image
 

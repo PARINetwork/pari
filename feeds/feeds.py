@@ -34,6 +34,12 @@ class BaseFeed(Feed):
                 self.feed_type = Atom1Feed
             else:
                 self.feed_type = Rss201rev2Feed
+
+        self.language = settings.LANGUAGE_CODE
+        if request.META.get("HTTP_ACCEPT_LANGUAGE"):
+            self.language = request.META["HTTP_ACCEPT_LANGUAGE"]
+        if request.GET.get("hl"):
+            self.language = request.GET["hl"]
         return super(BaseFeed, self).__call__(request, *args, **kwargs)
 
     def item_pubdate(self, item):
@@ -52,6 +58,9 @@ class BaseFeed(Feed):
         if author:
             return author.get_absolute_url()
 
+    def item_enclosure_url(self, item):
+        return item.featured_image
+
 
 class AllFeed(BaseFeed):
     title = _("PARI consolidated feed")
@@ -64,16 +73,21 @@ class AllFeed(BaseFeed):
 
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
+        kwargs = {
+            "first_published_at__gte": x_days_ago,
+            "language": self.language
+        }
         items_gen = itertools.chain(
-            Article.objects.live().filter(first_published_at__gte=x_days_ago),
-            Album.objects.live().filter(first_published_at__gte=x_days_ago),
-            Face.objects.live().filter(first_published_at__gte=x_days_ago),
-            Resource.objects.live().filter(first_published_at__gte=x_days_ago),
+            Article.objects.live().filter(**kwargs),
+            Album.objects.live().filter(**kwargs),
+            Face.objects.live().filter(**kwargs),
+            Resource.objects.live().filter(**kwargs),
         )
         return sorted(
             items_gen,
             key=operator.attrgetter('first_published_at'),
             reverse=True)
+
 
 
 class ArticleFeed(BaseFeed):
@@ -87,7 +101,11 @@ class ArticleFeed(BaseFeed):
 
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
-        return Article.objects.live().order_by('-first_published_at').filter(first_published_at__gte=x_days_ago)
+        kwargs = {
+            "first_published_at__gte": x_days_ago,
+            "language": self.language
+        }
+        return Article.objects.live().order_by('-first_published_at').filter(**kwargs)
 
 
 class AlbumFeed(BaseFeed):
@@ -101,7 +119,11 @@ class AlbumFeed(BaseFeed):
 
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
-        return Album.objects.live().order_by('-first_published_at').filter(first_published_at__gte=x_days_ago)
+        kwargs = {
+            "first_published_at__gte": x_days_ago,
+            "language": self.language
+        }
+        return Album.objects.live().order_by('-first_published_at').filter(**kwargs)
 
 
 class FaceFeed(BaseFeed):
@@ -115,7 +137,11 @@ class FaceFeed(BaseFeed):
 
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
-        return Face.objects.live().order_by('-first_published_at').filter(first_published_at__gte=x_days_ago)
+        kwargs = {
+            "first_published_at__gte": x_days_ago,
+            "language": self.language
+        }
+        return Face.objects.live().order_by('-first_published_at').filter(**kwargs)
 
 
 class ResourceFeed(BaseFeed):
@@ -129,7 +155,11 @@ class ResourceFeed(BaseFeed):
 
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
-        return Resource.objects.live().order_by('-first_published_at').filter(first_published_at__gte=x_days_ago)
+        kwargs = {
+            "first_published_at__gte": x_days_ago,
+            "language": self.language
+        }
+        return Resource.objects.live().order_by('-first_published_at').filter(**kwargs)
 
 
 def feeds_list_page(request):
