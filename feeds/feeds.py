@@ -5,6 +5,8 @@ from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
+from wagtail.wagtailcore.models import Site
+
 from article.models import Article
 from album.models import Album
 from face.models import Face
@@ -13,6 +15,7 @@ from resources.models import Resource
 import itertools
 import datetime
 import operator
+import mimetypes
 
 
 class BaseFeed(Feed):
@@ -38,6 +41,8 @@ class BaseFeed(Feed):
         self.language = None
         if request.GET.get("hl"):
             self.language = request.GET["hl"]
+
+        self.request = request
         return super(BaseFeed, self).__call__(request, *args, **kwargs)
 
     def item_pubdate(self, item):
@@ -61,7 +66,25 @@ class BaseFeed(Feed):
             url = item.featured_image
         else:
             url = item.featured_image.file.url
+            if url.find(settings.MEDIA_URL) < 0:
+                url = "{0}://{1}{2}".format(
+                    "http" + ("s" if self.request.is_secure() else ""),
+                    Site.find_for_request(self.request).hostname,
+                    url
+                )
         return url
+
+    def item_enclosure_length(self, item):
+        if not getattr(item.featured_image, 'file', None):
+            return 0
+        try:
+            return item.featured_image.file.size
+        except IOError:
+            return 0
+
+    def item_enclosure_mime_type(self, item):
+        url = self.item_enclosure_url(item)
+        return mimetypes.guess_type(url)[0] or "application/octet-stream"
 
 
 class AllFeed(BaseFeed):
