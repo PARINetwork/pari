@@ -165,7 +165,7 @@ class AffixImage(AbstractImage):
     )
 
     def __str__(self):
-        return super(AffixImage, self).__str__()
+        return self.title
 
     search_fields = AbstractImage.search_fields + (
         index.SearchField('get_locations_index', partial_match=True),
