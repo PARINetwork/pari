@@ -36,8 +36,6 @@ class BaseFeed(Feed):
                 self.feed_type = Rss201rev2Feed
 
         self.language = settings.LANGUAGE_CODE
-        if request.META.get("HTTP_ACCEPT_LANGUAGE"):
-            self.language = request.META["HTTP_ACCEPT_LANGUAGE"]
         if request.GET.get("hl"):
             self.language = request.GET["hl"]
         return super(BaseFeed, self).__call__(request, *args, **kwargs)
@@ -92,6 +90,13 @@ class AllFeed(BaseFeed):
             key=operator.attrgetter('first_published_at'),
             reverse=True)
 
+    def item_description(self, item):
+        if item.__class__.__name__.lower() == "article":
+            return item.strap
+        elif item.__class__.__name__.lower() == "album":
+            return item.slides.all()[0].description
+        return item.description or ""
+
 
 
 class ArticleFeed(BaseFeed):
@@ -111,6 +116,9 @@ class ArticleFeed(BaseFeed):
         }
         return Article.objects.live().order_by('-first_published_at').filter(**kwargs)
 
+    def item_description(self, item):
+        return item.strap
+
 
 class AlbumFeed(BaseFeed):
     title = _("PARI album feed")
@@ -128,6 +136,9 @@ class AlbumFeed(BaseFeed):
             "language": self.language
         }
         return Album.objects.live().order_by('-first_published_at').filter(**kwargs)
+
+    def item_description(self, item):
+        return item.description
 
 
 class FaceFeed(BaseFeed):
@@ -147,6 +158,9 @@ class FaceFeed(BaseFeed):
         }
         return Face.objects.live().order_by('-first_published_at').filter(**kwargs)
 
+    def item_description(self, item):
+        return item.description
+
 
 class ResourceFeed(BaseFeed):
     title = _("PARI resource feed")
@@ -164,6 +178,9 @@ class ResourceFeed(BaseFeed):
             "language": self.language
         }
         return Resource.objects.live().order_by('-first_published_at').filter(**kwargs)
+
+    def item_description(self, item):
+        return item.title
 
 
 def feeds_list_page(request):
