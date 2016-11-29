@@ -35,7 +35,7 @@ class BaseFeed(Feed):
             else:
                 self.feed_type = Rss201rev2Feed
 
-        self.language = settings.LANGUAGE_CODE
+        self.language = None
         if request.GET.get("hl"):
             self.language = request.GET["hl"]
         return super(BaseFeed, self).__call__(request, *args, **kwargs)
@@ -77,8 +77,9 @@ class AllFeed(BaseFeed):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
         kwargs = {
             "first_published_at__gte": x_days_ago,
-            "language": self.language
         }
+        if self.language:
+            kwargs["language"] = self.language
         items_gen = itertools.chain(
             Article.objects.live().filter(**kwargs),
             Album.objects.live().filter(**kwargs),
@@ -112,8 +113,9 @@ class ArticleFeed(BaseFeed):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
         kwargs = {
             "first_published_at__gte": x_days_ago,
-            "language": self.language
         }
+        if self.language:
+            kwargs["language"] = self.language
         return Article.objects.live().order_by('-first_published_at').filter(**kwargs)
 
     def item_description(self, item):
@@ -133,8 +135,9 @@ class AlbumFeed(BaseFeed):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
         kwargs = {
             "first_published_at__gte": x_days_ago,
-            "language": self.language
         }
+        if self.language:
+            kwargs["language"] = self.language
         return Album.objects.live().order_by('-first_published_at').filter(**kwargs)
 
     def item_description(self, item):
@@ -154,8 +157,9 @@ class FaceFeed(BaseFeed):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
         kwargs = {
             "first_published_at__gte": x_days_ago,
-            "language": self.language
         }
+        if self.language:
+            kwargs["language"] = self.language
         return Face.objects.live().order_by('-first_published_at').filter(**kwargs)
 
     def item_description(self, item):
@@ -175,8 +179,9 @@ class ResourceFeed(BaseFeed):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
         kwargs = {
             "first_published_at__gte": x_days_ago,
-            "language": self.language
         }
+        if self.language:
+            kwargs["language"] = self.language
         return Resource.objects.live().order_by('-first_published_at').filter(**kwargs)
 
     def item_description(self, item):
