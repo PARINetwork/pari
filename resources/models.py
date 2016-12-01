@@ -61,7 +61,7 @@ class Resource(Page):
 
     @property
     def featured_image(self):
-        return self.embed_thumbnail
+        return None
 
     def __str__(self):
         return self.title
