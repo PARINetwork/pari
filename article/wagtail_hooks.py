@@ -5,9 +5,24 @@ from wagtail.wagtailcore import hooks
 from wagtail.wagtailcore.whitelist import attribute_rule
 
 
+def blacklist_tag():
+    def fn(tag):
+        return ""
+    return fn
+
+
+def unwrap_tag():
+    def fn(tag):
+        return tag.unwrap()
+    return fn
+
+
 @hooks.register('construct_whitelister_element_rules')
 def whitelist_blockquote():
     return {
+        'style': blacklist_tag(),
+        'font': unwrap_tag(),
+        'span': unwrap_tag(),
         'blockquote': attribute_rule({'class': True}),
         'p': attribute_rule({'class': True}),
         'h2': attribute_rule({'class': True}),
@@ -33,7 +48,7 @@ def editor_js():
         <script>
         registerHalloPlugin('hallojustify');
         registerHalloPlugin('halloblock', {{ "elements": ["blockquote"] }});
-        registerHalloPlugin('hallorequireparagraphs', {{ "blockElements": ['dd', 'div', 'dl', 'figure', 'form', 'ul', 'ol', 'table', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote'] }}); 
+        registerHalloPlugin('hallorequireparagraphs', {{ "blockElements": ['dd', 'div', 'dl', 'figure', 'form', 'ul', 'ol', 'table', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote'] }});
         registerHalloPlugin('hallohtml');
         </script>
         <script src="{0}article/js/slug.js"></script>
