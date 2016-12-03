@@ -21,6 +21,7 @@ def unwrap_tag():
 def whitelist_blockquote():
     return {
         'style': blacklist_tag(),
+        'br': blacklist_tag(),
         'font': unwrap_tag(),
         'span': unwrap_tag(),
         'blockquote': attribute_rule({'class': True}),
