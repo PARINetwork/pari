@@ -419,3 +419,61 @@
     animation-name: bounce;
     transform-origin: center bottom;
 }
+
+@media print {
+    .container {
+        width: 100%;
+    }
+    .article-holder {
+        width: 100%;
+    }
+    .rich-text {
+        width: 100%;
+
+        h1 {
+            font-size: 16px;
+        }
+        .article-strap {
+            font-size: 14px;
+        }
+        p {
+            font-size: 12px;
+        }
+        embed, iframe, .responsive-object {
+            display: none;
+        }
+        .responsive-object {
+            margin: 0;
+            padding: 0;
+        }
+        .img-hover {
+            display: none;
+        }
+        img {
+            page-break-before: auto;
+            page-break-after: auto;
+            page-break-inside: avoid;
+        }
+    }
+    .translations {
+        display: none;
+    }
+    .map-holder {
+       display: none;
+    }
+    .social {
+        display: none;
+    }
+    .announcement {
+        display: none;
+    }
+    .scrollToTop {
+        display: none !important;
+    }
+    .related-articles {
+        display: none;
+    }
+    #footer {
+        display: none;
+    }
+}

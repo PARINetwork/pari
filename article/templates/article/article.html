@@ -172,7 +172,7 @@
 	</div>
       </div>
     </div>
-    <div class="col-lg-2 col-md-2 col-sm-2" itemscope itemtype="http://schema.org/Map">
+    <div class="col-lg-2 col-md-2 col-sm-2 map-holder" itemscope itemtype="http://schema.org/Map">
       {% if article.locations.count %}
       <p>{% for location in article.locations.all %}<a itemprop="url" href="https://www.openstreetmap.org/?mlat={{ location.point.x }}&mlon={{ location.point.y }}#map=14/{{ location.point.x }}/{{ location.point.y }}" target="_blank"><span itemprop="contentLocation"><span itemprop="name">{{ location.name }}</span></span></a>{% if not forloop.last %},{% endif %}{% endfor %}</p>
         <div id="map" class="map-view" data-lat="{% for location in article.locations.all %}{{ location.point.x }}{% if not forloop.last %},{% endif %}{% endfor %}" data-long="{% for location in article.locations.all %}{{ location.point.y }}{% if not forloop.last %},{% endif %}{% endfor %}"></div>
