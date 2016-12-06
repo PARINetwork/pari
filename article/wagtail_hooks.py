@@ -7,7 +7,7 @@ from wagtail.wagtailcore.whitelist import attribute_rule
 
 def blacklist_tag():
     def fn(tag):
-        return ""
+        return tag.decompose()
     return fn
 
 
