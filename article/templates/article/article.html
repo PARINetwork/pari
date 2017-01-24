@@ -116,8 +116,15 @@
 	  {% else %}
 	  {% if article.first_published_at %}<a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month %}"> <span itemprop="datePublished">{{ article.first_published_at|date }}</span></a>{% endif %}
 	  {% endif %}
-    |  {% for author in article.authors.all %}<span itemprop="author" itemscope itemtype="http://schema.org/Person"> <a itemprop="url" href="{% url "author-detail" author.slug %}"> <span itemprop="name">{{ author.name }}</span> </a> </span> {% endfor %}
-        </div>
+    |
+      {% for author in article.authors.all %}
+      <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <a itemprop="url" href="{% url "author-detail" author.slug %}">
+              <span itemprop="name">{{ author.name }}</span>
+          </a>
+      </span>{% if not forloop.last %},{% endif %}
+      {% endfor %}
+    </div>
 	<div>
           {% if article.live %}{% include "article/includes/social.html" with item=article %}{% endif %}
 	  <div class="scrollToTop"><a href="javascript:void(0);"><i class="fa fa-angle-double-up"></i>Scroll to Top</a></div>

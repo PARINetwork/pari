@@ -211,6 +211,7 @@ LANGUAGES = (
     ("kn", _("Kannada")),
     ("ml", _("Malayalam")),
     ("mr", _("Marathi")),
+    ("lus", _("Mizo")),
     ("or", _("Odia")),
     ("pa", _("Punjabi")),
     ("te", _("Telugu")),
