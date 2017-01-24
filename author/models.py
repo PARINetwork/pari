@@ -40,6 +40,3 @@ class Author(models.Model):
         if not self.slug:
             self.slug = slugify(self.name)
         return super(Author, self).save(**kwargs)
-
-    class Meta:
-        ordering = ["name"]

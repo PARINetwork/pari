@@ -9,7 +9,7 @@
             {% block form_field %}
             {{ field|render_with_errors }}
             {% endblock %}
-            
+
             {# This span only used on rare occasions by certain types of input #}
             <span></span>
           </div>
@@ -36,9 +36,6 @@
   <script type="text/javascript" src="{% get_static_prefix %}js/add_object.js"></script>
   <script type="text/javascript" src="{% get_static_prefix %}js/chosen.jquery.min.js"></script>
   <script type="text/javascript">
-    $("select[name={{ field.name }}]").on("change", function() {
-        $(this).trigger("chosen:updated");
-    });
     $("select[name={{ field.name }}]").chosen();
   </script>
 </fieldset>
