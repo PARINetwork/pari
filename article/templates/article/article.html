@@ -122,6 +122,9 @@
           <a itemprop="url" href="{% url "author-detail" author.slug %}">
               <span itemprop="name">{{ author.name }}</span>
           </a>
+          <span class="hidden" itemprop="homeLocation" itemtype="http://schema.org/Place">
+              <span itemprop="address">{{ author.twitter_username }}</span>
+          </span>
       </span>{% if not forloop.last %},{% endif %}
       {% endfor %}
     </div>
