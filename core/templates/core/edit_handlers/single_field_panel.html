@@ -36,6 +36,9 @@
   <script type="text/javascript" src="{% get_static_prefix %}js/add_object.js"></script>
   <script type="text/javascript" src="{% get_static_prefix %}js/chosen.jquery.min.js"></script>
   <script type="text/javascript">
+    $("select[name={{ field.name }}]").on("change", function() {
+        $(this).trigger("chosen:updated");
+    });
     $("select[name={{ field.name }}]").chosen();
   </script>
 </fieldset>
