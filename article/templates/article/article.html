@@ -156,6 +156,7 @@
 	</div>
   <div class="translator_bio">
     {% for translator in article.translators.all %}
+    {% if translator not in article.authors.all %}
 	  <p itemscope itemtype="http://schema.org/Person" itemprop="translator">
       <i>
         {% if translator.bio %}
@@ -170,6 +171,7 @@
         {% endif %}
       </i>
     </p>
+    {% endif %}
     {% endfor %}
   </div>
 	<div class="author_bio">
