@@ -125,6 +125,9 @@
 	  {% endif %}
     |
       {% for author in article.authors.all %}
+      {% if not forloop.first %}
+        {% if not forloop.last %},{% else %}{% trans "and" %}{% endif %}
+      {% endif %}
       <span itemprop="author" itemscope itemtype="http://schema.org/Person">
           <a itemprop="url" href="{% url "author-detail" author.slug %}">
               <span itemprop="name">{{ author.name }}</span>
@@ -132,7 +135,7 @@
           <span class="hidden" itemprop="homeLocation" itemtype="http://schema.org/Place">
               <span itemprop="address">{{ author.twitter_username }}</span>
           </span>
-      </span>{% if not forloop.last %},{% endif %}
+      </span>
       {% endfor %}
     </div>
 	<div>
