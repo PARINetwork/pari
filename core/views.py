@@ -216,7 +216,7 @@ def sitemap_index(request):
     return render(request, "sitemaps/sitemap.xml", {
         "site": site,
         "years": zip(years, last_upd)
-    })
+    }, content_type="text/xml")
 
 @cache_page(86400)
 def sitemap_year(request, year=None):
@@ -226,4 +226,4 @@ def sitemap_year(request, year=None):
     return render(request, "sitemaps/sitemap-year.xml", {
         "site": site,
         "pages": pages
-    })
+    }, content_type="text/xml")
