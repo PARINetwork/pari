@@ -10,7 +10,7 @@
     <span itemprop="name">{% trans "Gallery" %}</span>
     <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu" itemscope itemtype="http://schema.org/BreadcrumbList">
+  <ul class="dropdown-menu" itemscope itemtype="http://schema.org/ItemList">
     <li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
       <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{% url "talking-album-list" %}">
 	      <span class="glyphicon glyphicon-bullhorn"></span>
@@ -65,7 +65,7 @@
     <span itemprop="name">{% trans "Contribute" %}</span>
     <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu" itemscope itemtype="http://schema.org/BreadcrumbList">
+  <ul class="dropdown-menu" itemscope itemtype="http://schema.org/ItemList">
     <li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
       <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{% url "contribute" slug="contribute" %}">
 	      <span itemprop="name">{% trans "Get Involved" %}</span>
@@ -83,7 +83,7 @@
     {% trans "About PARI" %}
     <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu" itemscope itemtype="http://schema.org/BreadcrumbList">
+  <ul class="dropdown-menu" itemscope itemtype="http://schema.org/ItemList">
     <li class="dropdown" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
       <a itemscope itemtype="http://schema.org/Thing" itemprop="item"  href="{% url "static_page" slug="about" %}">
 	      <span itemprop="name">{% trans "The story of PARI" %}</span>
