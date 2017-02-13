@@ -5,18 +5,18 @@
   <span class="hidden" itemprop="url">https://{{ site.hostname }}/</span>
   <div class="footer-left">
     <a itemprop="sameAs" href="https://blog.ruralindiaonline.org/">
-      <h6>{% trans "Blog" %}</h6>
+      <h6 itemprop="name">{% trans "Blog" %}</h6>
     </a>
-    <a href="{% url "static_page" slug="terms-and-conditions" %}">
-      <h6>{% trans "Terms & Conditions" %}</h6>
+    <a itemscope itemtype="http://schema.org/ItemPage" itemprop="url"  href="{% url "static_page" slug="terms-and-conditions" %}">
+      <h6 itemprop="name">{% trans "Terms & Conditions" %}</h6>
     </a>
-    <a href="{% url "static_page" slug="copyright" %}">
-      <h6>{% trans "Copyright" %}</h6>
+    <a itemscope itemtype="http://schema.org/ItemPage" itemprop="url" href="{% url "static_page" slug="copyright" %}">
+      <h6 itemprop="name">{% trans "Copyright" %}</h6>
     </a>
   </div>
   <div class="footer-right">
-    <a href="{% url "contact_us" %}"><h6>{% trans "Contact Us" %}</h6></a>
-    <a href="{% url "static_page" slug="donate" %}"><h6>{% trans "Donate" %}</h6></a>
+      <a itemscope itemtype="http://schema.org/ContactPage" itemprop="url" href="{% url "contact_us" %}"><h6 itemprop="name">{% trans "Contact Us" %}</h6></a>
+      <a itemscope itemtype="http://schema.org/ItemPage" itemprop="url" href="{% url "static_page" slug="donate" %}"><h6 itemprop="name">{% trans "Donate" %}</h6></a>
   </div>
   <ul>
     <li><a itemprop="sameAs" href="https://facebook.com/{{ SOCIAL_FACEBOOK }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
