@@ -3,6 +3,7 @@ import json
 import urllib
 import hashlib
 
+from django.db.models import Max
 from django.shortcuts import render
 from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.conf import settings
@@ -15,6 +16,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.views.decorators.cache import cache_page
 
 from wagtail.wagtailcore.models import Page, Site
 from wagtail.wagtailadmin.forms import SearchForm
@@ -199,3 +201,29 @@ def page_preview(request, page_id):
     finally:
         activate(curr_lang)
     return response
+
+
+@cache_page(86400)
+def sitemap_index(request):
+    site = Site.objects.get(hostname=request.get_host())
+    pages = Page.objects.filter(live=True).exclude(title="Translations")
+    years = pages.datetimes("first_published_at", "year")\
+                 .order_by("-datetimefield")
+    last_upd = []
+    for year in years:
+        last_upd.append(pages.filter(first_published_at__year=year.year)\
+                        .aggregate(dt=Max("latest_revision_created_at")))
+    return render(request, "sitemaps/sitemap.xml", {
+        "site": site,
+        "years": zip(years, last_upd)
+    })
+
+@cache_page(86400)
+def sitemap_year(request, year=None):
+    site = Site.objects.get(hostname=request.get_host())
+    pages = Page.objects.filter(live=True).exclude(title="Translations")
+    pages = pages.filter(first_published_at__year=year)
+    return render(request, "sitemaps/sitemap-year.xml", {
+        "site": site,
+        "pages": pages
+    })

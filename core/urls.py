@@ -23,6 +23,9 @@ urlpatterns = patterns('core.views',
     url(r'^(?P<slug>donate)/$', 'static_page', name='static_page'),
 
     url(r'^pages/(?P<slug>.+)/$', 'static_page', name='static_page'),
+
+    url(r'^sitemap\.xml$', 'sitemap_index', name='sitemap_index'),
+    url(r'^sitemap-(?P<year>\d+)\.xml', 'sitemap_year', name='sitemap_year'),
 )
 
 urlpatterns += patterns('',
