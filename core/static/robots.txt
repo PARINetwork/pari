@@ -1,1 +1,1 @@
-Sitemap: /sitemap.xml
+Sitemap: https://ruralindiaonline.org/sitemap.xml
