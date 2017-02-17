@@ -15,6 +15,11 @@ class Location(models.Model):
     district = models.CharField(max_length=100)
     state = models.CharField(max_length=50)
     region = models.CharField(max_length=100, null=True, blank=True)
+    sub_district = models.CharField(max_length=100, null=True, blank=True)
+    taluka = models.CharField(max_length=100, null=True, blank=True)
+    tehsil = models.CharField(max_length=100, null=True, blank=True)
+    mandapam = models.CharField(max_length=100, null=True, blank=True)
+    others = models.CharField(max_length=100, null=True, blank=True)
 
     objects = models.GeoManager()
 

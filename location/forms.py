@@ -24,4 +24,4 @@ class LocationAdminForm(forms.ModelForm):
 
     class Meta:
         model = Location
-        fields = ["point", "name", "block", "district", "region", "state"]
+        fields = ["point", "name", "block", "district", "sub_district", "region", "state", "taluka","tehsil","mandapam","others"]
