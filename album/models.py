@@ -21,7 +21,6 @@ from core.edit_handlers import M2MFieldPanel, AudioPanel
 @python_2_unicode_compatible
 class Album(Page):
     description = RichTextField()
-    locations = M2MField("location.Location", related_name="albums_by_location")
     photographers = M2MField("author.Author",
                              related_name="albums_by_photographer", blank=True)
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
@@ -29,7 +28,6 @@ class Album(Page):
     content_panels = Page.content_panels + [
         FieldPanel('language'),
         FieldPanel('description'),
-        M2MFieldPanel('locations'),
         M2MFieldPanel('photographers'),
         InlinePanel('slides', label=_('Slides'), panels=[
             ImageChooserPanel('image'),
@@ -43,7 +41,6 @@ class Album(Page):
     search_fields = Page.search_fields + (
         index.FilterField('photographers'),
         index.SearchField('description', partial_match=True, boost=2),
-        index.FilterField('locations'),
         index.FilterField('language'),
     )
 
