@@ -20,6 +20,9 @@ $(function() {
 	if ($(sel).attr("name") === "locations") {
 	    $(sel).parents("li").append('<div class="addbutton"><a href="javascript:void(0);" onclick="addObject(\'locations\', \'#id_locations\');" class="button bicolor icon icon-plus">Add locations</a></div>');
 	}
+	if ($(sel).attr("name") === "photographers") {
+	    $(sel).parents("li").append('<div class="addbutton"><a href="javascript:void(0);" onclick="addObject(\'photographers\', \'#id_photographers\');" class="button bicolor icon icon-plus">Add photographers</a></div>');
+	}
     });
 });
 </script>

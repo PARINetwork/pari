@@ -139,6 +139,8 @@ class HomePage(Page):
 class AffixImage(AbstractImage):
     locations = models.ManyToManyField('location.Location', blank=True,
                                        related_name="locations_for_image")
+    photographers = models.ManyToManyField("author.Author",
+                             related_name="images_of_photographer", blank=True)
     people = models.TextField(blank=True)
     photographer = models.TextField(blank=True)
     event = models.TextField(blank=True)
@@ -153,6 +155,7 @@ class AffixImage(AbstractImage):
         'locations',
         'people',
         'photographer',
+        'photographers',
         'event',
         'categories',
         'arrival_date',

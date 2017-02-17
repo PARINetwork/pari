@@ -4,7 +4,7 @@ from album.models import Album
 
 from django.db import migrations, models
 
-def dummy(apps, schema_editor):
+def add_location_to_album_image(apps, schema_editor):
     Album = apps.get_model('album.album')
     Image = apps.get_model('core.AffixImage')
     for album in Album.objects.all():
@@ -22,5 +22,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(dummy),
+        migrations.RunPython(add_location_to_album_image),
     ]
