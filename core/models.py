@@ -148,6 +148,8 @@ class AffixImage(AbstractImage):
                                         related_name="categories_for_image")
     arrival_date = models.DateTimeField(null=True, blank=True)
     published_date = models.DateTimeField(null=True, blank=True)
+    date = models.DateTimeField(null=True, blank=True)
+    camera = models.CharField(max_length=50,null=True, blank=True)
 
     admin_form_fields = (
         'title',
@@ -158,6 +160,8 @@ class AffixImage(AbstractImage):
         'photographers',
         'event',
         'categories',
+        'date',
+        'camera',
         'arrival_date',
         'published_date',
         'tags',
@@ -178,6 +182,7 @@ class AffixImage(AbstractImage):
         index.FilterField('get_categories_index'),
         index.FilterField('arrival_date'),
         index.FilterField('published_date'),
+        index.FilterField('camera'),
     )
 
     def get_locations_index(self):
