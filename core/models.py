@@ -142,7 +142,6 @@ class AffixImage(AbstractImage):
     photographers = models.ManyToManyField("author.Author",
                              related_name="images_of_photographer", blank=True)
     people = models.TextField(blank=True)
-    photographer = models.TextField(blank=True)
     event = models.TextField(blank=True)
     categories = models.ManyToManyField('category.Category', blank=True,
                                         related_name="categories_for_image")
@@ -156,7 +155,6 @@ class AffixImage(AbstractImage):
         'file',
         'locations',
         'people',
-        'photographer',
         'photographers',
         'event',
         'categories',
@@ -177,7 +175,6 @@ class AffixImage(AbstractImage):
     search_fields = AbstractImage.search_fields + (
         index.SearchField('get_locations_index', partial_match=True),
         index.SearchField('people', partial_match=True),
-        index.SearchField('photographer', partial_match=True),
         index.SearchField('event', partial_match=True),
         index.FilterField('get_categories_index'),
         index.FilterField('arrival_date'),

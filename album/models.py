@@ -21,14 +21,11 @@ from core.edit_handlers import M2MFieldPanel, AudioPanel
 @python_2_unicode_compatible
 class Album(Page):
     description = RichTextField()
-    photographers = M2MField("author.Author",
-                             related_name="albums_by_photographer", blank=True)
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
 
     content_panels = Page.content_panels + [
         FieldPanel('language'),
         FieldPanel('description'),
-        M2MFieldPanel('photographers'),
         InlinePanel('slides', label=_('Slides'), panels=[
             ImageChooserPanel('image'),
             AudioPanel('audio'),
@@ -39,7 +36,6 @@ class Album(Page):
     template = "album/album_detail.html"
 
     search_fields = Page.search_fields + (
-        index.FilterField('photographers'),
         index.SearchField('description', partial_match=True, boost=2),
         index.FilterField('language'),
     )
@@ -56,6 +52,9 @@ class Album(Page):
     def get_absolute_url(self):
         name = "album-detail"
         return reverse(name, kwargs={"slug": self.slug})
+
+    def photographers(self):
+        print "a"
 
     @property
     def featured_image(self):
