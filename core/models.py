@@ -140,7 +140,7 @@ class AffixImage(AbstractImage):
     locations = models.ManyToManyField('location.Location', blank=True,
                                        related_name="locations_for_image")
     photographers = models.ManyToManyField("author.Author",
-                             related_name="images_of_photographer", blank=True)
+                                           related_name="images_of_photographer", blank=True)
     people = models.TextField(blank=True)
     event = models.TextField(blank=True)
     categories = models.ManyToManyField('category.Category', blank=True,
@@ -148,7 +148,7 @@ class AffixImage(AbstractImage):
     arrival_date = models.DateTimeField(null=True, blank=True)
     published_date = models.DateTimeField(null=True, blank=True)
     date = models.DateTimeField(null=True, blank=True)
-    camera = models.CharField(max_length=50,null=True, blank=True)
+    camera = models.CharField(max_length=50, null=True, blank=True)
 
     admin_form_fields = (
         'title',
