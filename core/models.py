@@ -180,7 +180,14 @@ class AffixImage(AbstractImage):
         index.FilterField('arrival_date'),
         index.FilterField('published_date'),
         index.FilterField('camera'),
+        index.FilterField('get_all_photographers'),
     )
+
+    def get_all_photographers(self):
+        photographers = []
+        for photographer in self.photographers.all():
+            photographers.append(" ".join([photographer.name or ""]))
+        return " ".join(photographers)
 
     def get_locations_index(self):
         locations = []
