@@ -37,7 +37,6 @@ BASE_URL = 'http://ruralindiaonline.org'
 INSTALLED_APPS = (
     'overextends',
     'modeltranslation',
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -61,7 +60,6 @@ INSTALLED_APPS = (
     'feeds',
     'resources',
     'news',
-
     'wagtail.wagtailcore',
     'wagtail.wagtailadmin',
     'wagtail.wagtaildocs',

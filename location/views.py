@@ -31,9 +31,9 @@ class LocationList(ListView):
             if "articles" in location_filter:
                 articles = Article.objects.live()
                 location_ids.extend(articles.values_list('locations', flat=True).distinct())
-            if "albums" in location_filter:
-                albums = Album.objects.live()
-                location_ids.extend(albums.values_list('locations', flat=True).distinct())
+            # if "albums" in location_filter:
+            #     albums = Album.objects.live()
+            #     location_ids.extend(albums.values_list('locations', flat=True).distinct())
             if "faces" in location_filter:
                 faces = Face.objects.live()
                 location_ids.extend(faces.values_list('location', flat=True).distinct())
@@ -63,16 +63,16 @@ class LocationDetail(DetailView):
         context = super(LocationDetail, self).get_context_data(**kwargs)
         location = context['location']
         articles_qs = Article.objects.live().filter(locations=location)
-        albums_qs = Album.objects.live().filter(locations=location)
+        # albums_qs = Album.objects.live().filter(locations=location)
         faces_qs = Face.objects.live().filter(location=location)
         if self.request.GET.get("lang"):
             lang = self.request.GET["lang"]
             articles_qs = articles_qs.filter(language=lang)
-            albums_qs = albums_qs.filter(language=lang)
+            # albums_qs = albums_qs.filter(language=lang)
             # faces_qs = faces_qs.filter(language=lang)
         context['articles'] = itertools.chain(
             articles_qs,
-            albums_qs,
+            # albums_qs,
             faces_qs
         )
         context['LANGUAGES'] = settings.LANGUAGES

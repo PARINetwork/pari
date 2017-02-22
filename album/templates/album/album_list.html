@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n wagtailimages_tags %}
-
+{% load filters %}
 {% block feed_block %}
 <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "album_feeds" %}">
 <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "album_feeds" %}">
@@ -43,7 +43,7 @@
 		<div class="caption">
                   <p>{{ album.description|striptags }}</p>
                   <h3>{{ album.title }}</h3>
-                  <p class="pull-right">{% for photographer in album.slides.image.photographers.all %}{{ photographer.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+                  <p class="pull-right">{% for photographer in photographers|get_item:album.id  %}{{ photographer.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
 		</div>
               </a>
             </div>

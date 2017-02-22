@@ -8,6 +8,7 @@ from django.core.cache import cache
 from wagtail.wagtailadmin.modal_workflow import render_modal_workflow
 
 from album.models import Album, AlbumSlide
+from django.template.defaulttags import register
 
 
 class AlbumList(ListView):
@@ -19,8 +20,12 @@ class AlbumList(ListView):
         return qs
 
     def get_context_data(self, *args, **kwargs):
+        print "+++++++++++++++++++++++++++++++++++++++++++++++++++"
+
         context = super(AlbumList, self).get_context_data(*args, **kwargs)
+
         filter_param = self.kwargs['filter']
+        print filter_param
         if filter_param == "talking":
             slide_id = AlbumSlide.objects.exclude(audio='').values_list('page__id')
             qs = self.get_queryset().filter(id__in=slide_id)
@@ -31,6 +36,15 @@ class AlbumList(ListView):
             context['albums'] = qs
         else:
             context['albums'] = self.get_queryset()
+        photographers = {}
+        for album in context["albums"]:
+            slide_photo_graphers= []
+            for slide in album.slides.all():
+                slide_photo_graphers.extend(slide.image.photographers.all())
+            photographers[album.id] = set(slide_photo_graphers)
+        print photographers
+        print "+++++++++++++++++++++++++++++++++++++++++++++++++++"
+        context["photographers"] = photographers
         return context
 
 

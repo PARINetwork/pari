@@ -54,7 +54,7 @@ class Album(Page):
         return reverse(name, kwargs={"slug": self.slug})
 
     def photographers(self):
-        print "a"
+        return "a"
 
     @property
     def featured_image(self):
