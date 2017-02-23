@@ -1,28 +1,106 @@
 {% load i18n %}
 {% spaceless %}
-<div class="social-icons" itemscope itemtype="http://schema.org/Organization">
-  <span class="hidden" itemprop="name">{{ site.site_name }}</span>
-  <span class="hidden" itemprop="url">https://{{ site.hostname }}/</span>
-  <div class="footer-left">
-    <a itemprop="sameAs" href="https://blog.ruralindiaonline.org/">
-      <h6 itemprop="name">{% trans "Blog" %}</h6>
-    </a>
-    <a href="{% url "static_page" slug="terms-and-conditions" %}">
-      <h6 itemprop="name">{% trans "Terms & Conditions" %}</h6>
-    </a>
-    <a href="{% url "static_page" slug="copyright" %}">
-      <h6 itemprop="name">{% trans "Copyright" %}</h6>
-    </a>
-  </div>
-  <div class="footer-right">
-      <a href="{% url "contact_us" %}"><h6 itemprop="name">{% trans "Contact Us" %}</h6></a>
-      <a href="{% url "static_page" slug="donate" %}"><h6 itemprop="name">{% trans "Donate" %}</h6></a>
-  </div>
-  <ul>
-    <li><a itemprop="sameAs" href="https://facebook.com/{{ SOCIAL_FACEBOOK }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
-    <li><a itemprop="sameAs" href="https://twitter.com/{{ SOCIAL_TWITTER }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
-    <li><a itemprop="sameAs" href="{% url "feeds_list_page" %}"><i class="fa fa-rss"></i></a></li>
-    <li><a itemprop="sameAs" href="https://github.com/{{ SOCIAL_GITHUB_REPO }}" target="_blank"><i class="fa fa-github"></i></a></li>
-  </ul>
-</div>
+<footer class="footer">
+    <div class="container" itemscope itemtype="http://schema.org/Organization">
+        <div class="row"><!-- row -->
+            <div class="col-lg-2 col-md-2 col-sm-4"><!-- widgets column left -->
+                <h4 class="title-widget">Explore</h4>
+                <ul class="list-unstyled clear-margins">
+                <li><a  href="#">Categories</a></li>
+                <li><a  href="#">Stories on a map</li>
+                <li><a  href="#">By Authors</a></li>
+                <li><a  href="#">By Photographers</a></li>
+                <li><a  href="#">By Tongues</a></li>
+            </ul>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-4"><!-- widgets column left -->
+            <h4 class="title-widget">Gallery</h4>
+            <ul class="list-unstyled clear-margins">
+                <li><a  href="#">Photos</a></li>
+                <li><a  href="#">Videos</li>
+                <li><a  href="#">Audios</a></li>
+                <li><a  href="#">Talking Albums Faces</a></li>
+            </ul>
+        </div>
+            <div class="col-lg-2 col-md-2 col-sm-4"><!-- widgets column left -->
+            <h4 class="title-widget">About</h4>
+            <ul class="list-unstyled clear-margins">
+                <li><a  href="#">About PARI</a></li>
+                <li><a  href="#">Story of PARI</li>
+                <li>
+                    <a itemprop="sameAs" href="https://blog.ruralindiaonline.org/">
+                        <span itemprop="name">{% trans "Blog" %}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url "contact_us" %}">
+                        <span itemprop="name">{% trans "Contact Us" %}</span>
+                    </a>
+                </li>
+                <li><a  href="#">Acknowledgements</a></li>
+                <li><a  href="#">Usage Guidelines</a></li>
+            </ul>
+        </div>
+            <div class="col-lg-2 col-md-2 col-sm-4"><!-- widgets column left -->
+            <h4 class="title-widget">Get Involved</h4>
+            <ul class="list-unstyled clear-margins">
+                <li>
+                    <a href="{% url "static_page" slug="donate" %}">
+                        <span itemprop="name">{% trans "Donate to PARI" %}</span>
+                    </a>
+                </li>
+                <li><a  href="#">Volunteer to PARI</a></li>
+            </ul>
+        </div>
+            <div class="col-lg-2 col-md-2 col-sm-4"><!-- widgets column left -->
+            <h4 class="title-widget">More</h4>
+            <ul class="list-unstyled clear-margins">
+                <li>
+                    <a href="{% url "static_page" slug="terms-and-conditions" %}">
+                        <span itemprop="name">{% trans "Terms & Conditions" %}</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url "static_page" slug="copyright" %}">
+                        <span itemprop="name">{% trans "Copyright" %}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+            <div class="col-lg-2 col-md-2 col-sm-4"><!-- widgets column left -->
+            <ul class="list-unstyled clear-margins">
+                <li>
+                    <select class="form-control m-1">
+                        <option value="English">English</option>
+                        <option value="Tamil">Tamil</option>
+                        <option value="Hindi">Hindi</option>
+                    </select>
+                </li>
+                <li><a  href="#">Stories on a map</li>
+                <li><a  href="#">By Authors</a></li>
+                <li><a  href="#">By Photographers</a></li>
+                <li><a  href="#">By Tongues</a></li>
+            </ul>
+        </div>
+        </div>
+        <div class="row footer-social-icons">
+            <div class="col-lg-12">
+                <h4>Connect</h4>
+                <span><a itemprop="sameAs" href="https://facebook.com/{{ SOCIAL_FACEBOOK }}" target="_blank"><i class="fa fa-facebook-official"></i></a></span>
+                <span><a itemprop="sameAs" href="https://twitter.com/{{ SOCIAL_TWITTER }}" target="_blank"><i class="fa fa-twitter"></i></a></span>
+                <span><a itemprop="sameAs" href="{% url "feeds_list_page" %}"><i class="fa fa-rss"></i></a></span>
+                <span><a itemprop="sameAs" href="https://github.com/{{ SOCIAL_GITHUB_REPO }}" target="_blank"><i class="fa fa-github"></i></a></span>
+            </div>
+        </div>
+        <div class="row">
+            <span class="hidden" itemprop="name">{{ site.site_name }}</span>
+            <span class="hidden" itemprop="url">https://{{ site.hostname }}/</span>
+        </div>
+    </div>
+</footer>
+
+
 {% endspaceless %}
+
+

@@ -10,7 +10,6 @@ Vagrantfile.local
 /db.sqlite3
 *~
 .idea/
-
 # Files created due to vagrant in local
 gunicorn_conf.py
 node-v4.5.0.tar.gz
@@ -19,3 +18,4 @@ pari/gunicorn_conf.py
 pari_env/
 pari_sql_*.sql
 scripts/
+

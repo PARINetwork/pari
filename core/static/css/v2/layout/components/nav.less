@@ -1,0 +1,224 @@
+#mainnav {
+  background: @bg-primary-nav;
+  &.navbar-inverse {
+    border: none;
+    .navbar-nav {
+      .dropdown {
+        .dropdown-toggle {
+          padding-top: 30px;
+          padding-bottom: 30px;
+          color: @text-color-primary-nav;
+          &:hover {
+            color: @text-color-primary-nav-hover;
+          }
+          .fa-chevron-down {
+            color: @text-color-primary-nav-hover;
+            font-size: 10px;
+          }
+          .fa-search {
+            color: @icon-color-search;
+            font-size: 16px;
+          }
+        }
+        .dropdown-menu {
+          margin: 0;
+          &.mega-nav{
+            padding: 30px;
+            h5{
+              color: @text-color-dropdown-title;
+              font-size: 12px;
+              margin-bottom: 20px;
+              font-weight: 400;
+            }
+            ul{
+              li{
+                margin-bottom: 10px;
+                a{
+                  color: @text-color-dropdown-pri-link;
+                  font-size: 18px;
+                  &:hover{
+                    color: @text-color-dropdown-pri-link-hover;
+                  }
+                }
+              }
+              &.with-out-title{
+                margin-top: 43px;
+              }
+            }
+            .page-nav-link{
+              font-size: 14px;
+              color: @text-color-dropdown-sec-link;
+              &:hover{
+                color: @text-color-dropdown-sec-link-hover;
+              }
+            }
+            .image-link{
+              h5{
+                font-size: 16px;
+                color: @text-color-dropdown-image-link-title;
+              }
+
+            }
+          }
+        }
+        //&:hover{
+        //  .dropdown-menu {
+        //    display: block;
+        //  }
+        //}
+        &.open{
+          .dropdown-toggle{
+            background: @bg-primary-nav-hover;
+            color: @text-color-primary-nav-hover;
+          }
+        }
+      }
+    }
+  }
+  .navbar-header {
+    width: 100%;
+    .navbar-brand {
+      margin-top: 24px;
+      margin-bottom: 24px;
+      padding: 0;
+      float: left;
+      height: 37px;
+      width: 67px;
+      img {
+        height: 37px;
+        width: 67px;
+      }
+    }
+    .navbar-brand-title {
+      &:extend(.title);
+      color: @text-color-brand-title;
+      font-size: 16px;
+      margin: 30px 0 0 20px;
+      float: left;
+    }
+  }
+
+
+
+  .map-img{
+    background: url("http://www.namastevoyages.com/gifs/zoom/central_india_map.jpg") no-repeat;
+    background-size: 100% 100px;
+    height: 100px;
+    width: 100%;
+  }
+}
+
+
+
+@media (min-width: 768px) {
+  //.dropdown {
+  //  a:hover + ul {
+  //    display: block;
+  //  }
+  //}
+  .stories{
+    .dropdown-menu{
+      min-width: 500px;
+      right: -350px;
+      ul{
+        height: 140px;
+      }
+    }
+  }
+  .gallery{
+    .dropdown-menu{
+      min-width: 500px;
+      right: -250px;
+      ul{
+        height: 160px;
+      }
+    }
+  }
+  .about-pari{
+    .col-lg-4{
+      padding: 0;
+    }
+    .dropdown-menu{
+      min-width: 640px;
+      right: -100px;
+      ul{
+        height: 140px;
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  //.dropdown {
+  //  a:hover + ul {
+  //    display: block;
+  //  }
+  //}
+  .stories{
+    .dropdown-menu{
+      min-width: 500px;
+      right: -230px;
+      ul{
+        height: 140px;
+      }
+    }
+  }
+  .about-pari{
+    .dropdown-menu{
+      min-width: 800px;
+      right: -294px;
+    }
+  }
+  .gallery{
+    .dropdown-menu{
+      min-width: 500px;
+      right: -294px;
+      ul{
+        height: 140px;
+      }
+    }
+  }
+  .about-pari{
+    .col-lg-4{
+      padding: 0;
+    }
+    .dropdown-menu{
+      min-width: 640px;
+      right: 0px;
+      ul{
+        height: 160px;
+      }
+    }
+  }
+
+}
+@media (min-width: 1200px) {
+  //.dropdown {
+  //  &:hover > .dropdown-menu {
+  //    display: block;
+  //  }
+  //}
+
+  .stories{
+    .dropdown-menu{
+      min-width: 900px;
+      right: -330px;
+    }
+  }
+  .about-pari{
+    .col-lg-4{
+      padding: 0;
+    }
+    .dropdown-menu{
+      min-width: 1100px;
+      right: -130px;
+    }
+  }
+  .gallery{
+    .dropdown-menu{
+      min-width: 1100px;
+      right: -330px;
+    }
+  }
+}
+

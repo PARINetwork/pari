@@ -1,40 +1,45 @@
 <!DOCTYPE html>
-<html lang="{{ LANGUAGE_CODE }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+<html lang="{{ LANGUAGE_CODE }}" {% if LANGUAGE_BIDI %}dir="rtl" {% endif %}>
 {% load i18n compress wagtailcore_tags %}
 {% load static from staticfiles %}
 <head>
 
-<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="keywords" content="rural india, archive, online archive, pari, p sainath, sainath, {% block meta_keywords %}{% endblock %}">
-<meta name="description" content="{% block meta_description %}{% endblock %}">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>{% block meta_title %}{% endblock %}</title>
-<link rel="shortcut icon" href="/favicon.ico">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords"
+          content="rural india, archive, online archive, pari, p sainath, sainath, {% block meta_keywords %}{% endblock %}">
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block meta_title %}{% endblock %}</title>
+    <link rel="shortcut icon" href="/favicon.ico">
 
-<meta property="og:site_name" content="{{ SITE_TITLE }}">
-{% block opengraph_block %}{% endblock %}
+    <meta property="og:site_name" content="{{ SITE_TITLE }}">
+    {% block opengraph_block %}{% endblock %}
 
-<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "all_feeds" %}">
-<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "all_feeds" %}">
-{% block feed_block %}{% endblock %}
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url " all_feeds
+    " %}">
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url " all_feeds
+    " %}">
+    {% block feed_block %}{% endblock %}
 
-<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=Merriweather" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:200,300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Crete+Round:400,400i" rel="stylesheet">
 
-{% block extra_uncompressed_css %}{% endblock %}
-{% compress css %}
-<link rel="stylesheet" href="{{ STATIC_URL }}bootstrap-3.1.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="{{ STATIC_URL }}font-awesome/css/font-awesome.min.css">
-<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/base.less">
+    {% block extra_uncompressed_css %}{% endblock %}
+    {% compress css %}
 
-{% block extra_css %}{% endblock %}
-{% endcompress %}
-{% if LANGUAGE_BIDI %}
-<link rel="stylesheet" href="{{ STATIC_URL }}css/rtl.css">
-{% endif %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}font-awesome/css/font-awesome.min.css">
+    <!--<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/base.less">-->
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/main.less">
 
-<script type="application/ld+json">
+    {% block extra_css %}{% endblock %}
+    {% endcompress %}
+    {% if LANGUAGE_BIDI %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/rtl.css">
+    {% endif %}
+
+    <script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "Organization",
@@ -43,123 +48,114 @@
         "url": "http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}",
         "logo": "http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ STATIC_URL }}img/logo.png"
     }
-</script>
 
-{% include "includes/header_scripts.html" %}
+    </script>
 
-{% block extra_head %}{% endblock %}
+    {% include "includes/header_scripts.html" %}
+
+    {% block extra_head %}{% endblock %}
 
 </head>
 
 <body id="{% block body_id %}body{% endblock %}" data-spy="scroll" data-target="#subnav">
-  <!--[if lt IE 9]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
-  <!--[if lt IE 9]>
-    <script src="{{ STATIC_URL }}js/html5shiv.js"></script>
-  <![endif]-->
-  <div id="holder">
+<!--[if lt IE 9]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+<!--[if lt IE 9]>
+<script src="{{ STATIC_URL }}js/html5shiv.js"></script>
+<![endif]-->
+<div id="holder">
     <div id="header" itemscope itemtype="http://schema.org/WPHeader">
-      <nav id="mainnav" class="navbar navbar-inverse navbar-static-top" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/"><img src="{{ STATIC_URL }}img/logo.png" title="{{ page.title }}" alt="{{ page.title }}" class="logo"></a>
-          </div>
-
-          <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
-	      {% include "pages/menus/dropdown.html" %}
-	      <li class="dropdown search" itemscope itemtype="http://schema.org/WebSite">
-          <meta itemprop="url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}/" />
-		      <form action="{% url "wagtailsearch_search" %}" class="navbar-form navbar-right" role="search" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
-		        <div class="form-group">
-              <meta itemprop="target" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{% url "wagtailsearch_search" %}?q={q}" />
-		          <input class="form-control" placeholder="{% trans "Search" %}" type="text" name="q" value="{{ request.GET.q }}" itemprop="query-input">
-		        </div>
-		      </form>
-	      </li>
-	      <li class="dropdown social">
-		<a href="https://facebook.com/{{ SOCIAL_FACEBOOK }}">
-		  <i class="fa fa-facebook"></i>
-		</a>
-	      </li>
-	      <li class="dropdown social">
-		<a href="https://twitter.com/{{ SOCIAL_TWITTER }}">
-		  <i class="fa fa-twitter"></i>
-		</a>
-	      </li>
-	    </ul>
-          </div>
+        <nav id="mainnav" class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-2">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/"><img src="{{ STATIC_URL }}img/logo.png" title="{{ page.title }}"
+                                                                  alt="{{ page.title }}" class="logo"></a>
+                            <div class="navbar-brand-title hidden-sm">Peoples Archive of Rural India</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-10">
+                        <div class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav navbar-right" itemscope itemtype="http://schema.org/SiteNavigationElement">
+                                {% include "pages/menus/dropdown.html" %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        {% comment %}
+        <div class="user">
+            <a href="{% url 'pari-news' %}" class="btn btn-lg btn-homepage">
+                {% trans "PARI news" %}
+            </a>
         </div>
-      </nav>
-      {% comment %}
-      <div class="user">
-        <a href="{% url 'pari-news' %}" class="btn btn-lg btn-homepage">
-	  {% trans "PARI news" %}
-        </a>
-      </div>
-      {% endcomment %}
-      {% if messages %}
-      <div class="container messages">
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}" data-alert="alert">
-          <a class="close" href="#" onclick="$(this).parent().fadeOut('fast'); return false;">×</a>{{ message }}
+        {% endcomment %}
+        {% if messages %}
+        <div class="container messages">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" data-alert="alert">
+                <a class="close" href="#" onclick="$(this).parent().fadeOut('fast'); return false;">×</a>{{ message }}
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-      </div>
-      {% endif %}
+        {% endif %}
 
-      {% if announcements %}
-      <div class="announcement" >
-        {{ announcements|richtext }}
-      </div>
-      {% endif %}
+        {% if announcements %}
+        <div class="announcement">
+            {{ announcements|richtext }}
+        </div>
+        {% endif %}
 
-      {% block extra_header %}{% endblock %}
+        {% block extra_header %}{% endblock %}
     </div>
     {% block main_wrapper %}
     <div id="main_content" class="container">
-      {% block main %}{% endblock %}
+        {% block main %}{% endblock %}
     </div>
     {% endblock %}
     <div id="push"></div>
-  </div>
-  <div id="footer" itemscope itemtype="http://schema.org/WPFooter">
+</div>
+<div id="footer" itemscope itemtype="http://schema.org/WPFooter">
     <div class="container">
-      <div class="footer-row">
-        {% include "pages/menus/footer.html" %}
-      </div>
+        <div class="footer-row">
+            {% include "pages/menus/footer.html" %}
+        </div>
     </div>
-  </div>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  {% compress js %}
-    <script src="{{ STATIC_URL }}bootstrap-3.1.1/js/bootstrap.min.js"></script>
-    <script>
-    $(function() {
+</div>
+
+<script src="{{ STATIC_URL }}/js/vendor/jquery-3.1.1.min.js"></script>
+{% compress js %}
+<script src="{{ STATIC_URL }}bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<script>
+    $(function () {
         $('.middleinput:text, textarea').addClass('xlarge');
         $('.control-group label').addClass('control-label');
         if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
-	    $('.dropdown').on('click', function(ev) {
-		if ($(this).children('.dropdown-menu').length > 0 && !$(this).hasClass('active')) {
-		    $('.dropdown').removeClass('active');
-		    $(this).addClass('active');
-		    ev.preventDefault();
-		}
-	    });
-	}
+            $('.dropdown').on('click', function (ev) {
+                if ($(this).children('.dropdown-menu').length > 0 && !$(this).hasClass('active')) {
+                    $('.dropdown').removeClass('active');
+                    $(this).addClass('active');
+                    ev.preventDefault();
+                }
+            });
+        }
     });
     window.lazySizesConfig = window.lazySizesConfig || {};
     lazySizesConfig.loadMode = 1;
-    </script>
-    <script type="text/javascript" src="{{ STATIC_URL }}js/lazysizes.min.js"></script>
-    {% block extra_js %}{% endblock %}
-    {% endcompress %}
-  {% block extra_uncompressed_js %}{% endblock %}
-  {% include "includes/footer_scripts.html" %}
+</script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/lazysizes.min.js"></script>
+{% block extra_js %}{% endblock %}
+{% endcompress %}
+{% block extra_uncompressed_js %}{% endblock %}
+{% include "includes/footer_scripts.html" %}
 </body>
 </html>
