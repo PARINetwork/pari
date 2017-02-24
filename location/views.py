@@ -1,21 +1,19 @@
 import itertools
 
-from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
-from django.utils.text import slugify
 from django.conf import settings
 from django.core.urlresolvers import reverse
-from django.http import HttpResponse
-
-from wagtail.wagtailcore.models import Page
+from django.utils.text import slugify
+from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 from wagtail.wagtailadmin.modal_workflow import render_modal_workflow
 
-from article.models import Article
 from album.models import Album
+from album.models import AlbumSlide
+from article.models import Article
+from core.models import AffixImage
 from face.models import Face
-
-from .models import Location
 from .forms import LocationAdminForm
+from .models import Location
 
 
 class LocationList(ListView):
@@ -63,16 +61,19 @@ class LocationDetail(DetailView):
         context = super(LocationDetail, self).get_context_data(**kwargs)
         location = context['location']
         articles_qs = Article.objects.live().filter(locations=location)
-        # albums_qs = Album.objects.live().filter(locations=location)
+        images_qs = AffixImage.objects.filter(locations=location)
+        albums_slides = AlbumSlide.objects.filter(image__in=images_qs)
+        albums_qs = Album.objects.live().filter(slides=albums_slides)
         faces_qs = Face.objects.live().filter(location=location)
+
         if self.request.GET.get("lang"):
             lang = self.request.GET["lang"]
             articles_qs = articles_qs.filter(language=lang)
-            # albums_qs = albums_qs.filter(language=lang)
+            albums_qs = albums_qs.filter(language=lang)
             # faces_qs = faces_qs.filter(language=lang)
         context['articles'] = itertools.chain(
             articles_qs,
-            # albums_qs,
+            albums_qs,
             faces_qs
         )
         context['LANGUAGES'] = settings.LANGUAGES
