@@ -89,9 +89,10 @@
               <li><a href="#">Movies</a></li>
               <li><a href="#">Youtube</a></li>
               <li>
-                <a class="page-nav-link" itemprop="url" href="{% url "category-list" %}">
-                  <span itemprop="name">{% trans "View gallery »" %}</span>
+                <a class="page-nav-link" itemprop="url" href="{% url "category-detail" slug="videozone" %}">
+                  <span itemprop="name">{% trans "View all videos »" %}</span>
                 </a>
+              </li>
             </ul>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4">
@@ -100,6 +101,11 @@
               <li><a href="#">Music</a></li>
               <li><a href="#">Tongues</a></li>
               <li><a href="#">Soundcloud</a></li>
+              <li>
+                <a class="page-nav-link" itemprop="url" href="{% url "category-list" %}">
+                <span itemprop="name">{% trans "View gallery »" %}</span>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
