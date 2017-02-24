@@ -114,7 +114,9 @@
               </li>
               <li>
                 <span>Explore the facial diversity of India. </span>
-                <a class="page-nav-link" href="#">View all categories »</a>
+                <a class="page-nav-link" itemprop="url" href="{% url "category-detail" slug="faces" %}">
+                  <span itemprop="name">{% trans "View Faces »" %}</span>
+                </a>
               </li>
             </ul>
           </div>
