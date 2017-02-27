@@ -20,7 +20,6 @@ class AlbumList(ListView):
         return qs
 
     def get_context_data(self, *args, **kwargs):
-        print "+++++++++++++++++++++++++++++++++++++++++++++++++++"
 
         context = super(AlbumList, self).get_context_data(*args, **kwargs)
 
@@ -42,8 +41,6 @@ class AlbumList(ListView):
             for slide in album.slides.all():
                 slide_photo_graphers.extend(slide.image.photographers.all())
             photographers[album.id] = set(slide_photo_graphers)
-        print photographers
-        print "+++++++++++++++++++++++++++++++++++++++++++++++++++"
         context["photographers"] = photographers
         return context
 

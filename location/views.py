@@ -29,9 +29,10 @@ class LocationList(ListView):
             if "articles" in location_filter:
                 articles = Article.objects.live()
                 location_ids.extend(articles.values_list('locations', flat=True).distinct())
-            # if "albums" in location_filter:
-            #     albums = Album.objects.live()
-            #     location_ids.extend(albums.values_list('locations', flat=True).distinct())
+            if "albums" in location_filter:
+                albums = Album.objects.live()
+                for album in albums:
+                    location_ids.append(album.slides.first().image.locations.first().id)
             if "faces" in location_filter:
                 faces = Face.objects.live()
                 location_ids.extend(faces.values_list('location', flat=True).distinct())
