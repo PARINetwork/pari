@@ -1,0 +1,21 @@
+.pagination {
+  li {
+    a{
+      font-size: 16px;
+      color: @light-grey;
+      background: none;
+      border: none;
+      &:first-child, &:last-child{
+        border-radius: 0;
+      }
+      &:hover{
+        color: @link-primary;
+      }
+    }
+    &.active{
+      a{
+        background: @link-primary;
+      }
+    }
+  }
+}

@@ -10,28 +10,62 @@
 
 {% block extra_css %}
     <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}album/css/magnific-popup.css">
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/category.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/article.less">
 {% endblock %}
+
+
 
 {% block breadcrumb_menu %}
     <li class="active">{% trans "{{ category.name }}" %}</li>
 {% endblock %}
-
 {% block main %}
-    <div class="jumbotron category-header">
-        <div class="row">
-          <div class="col-lg-9 col-md-9 col-sm-9">
-            <div class="category-title">
-              {{ category.name }}
-            </div>
-            <div class="category-description">
-              {{ category.description }}
-            </div>
-          </div>
+    <div class="row gallery-title">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <span class="prev">
+            <a class="link-dark" itemprop="url" href="{% url "category-list" %}">
+                <i class="fa fa-chevron-left"></i>
+                <span itemprop="name">{% trans "Gallery" %}</span>
+            </a>
+        </span>
+
+    </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div>
+            <h1 class="title-dark text-center">{{ category.name }}</h1>
+            <div class="paragraph-dark text-center">{{ category.description }}</div>
         </div>
     </div>
-    <div class="filter-list-container" data-title="{{ category.name }}" data-filter-endpoint="category_article_filter" data-filter-required-args-category="{{ category.id }}">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <div class="text-right">
+            <span class="gallery-social-icon">
+                <a href="#" class="link-dark">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+                <a href="#" class="link-dark">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+            </span>
+        </div>
+    </div>
+    </div>
 
-      {% include "article/includes/article_list.html" with articles=articles category=category %}
+    <!--<div class="jumbotron category-header">-->
+        <!--<div class="row">-->
+          <!--<div class="col-lg-9 col-md-9 col-sm-9">-->
+            <!--<div class="category-title">-->
+              <!--{{ category.name }}-->
+            <!--</div>-->
+            <!--<div class="category-description">-->
+              <!--{{ category.description }}-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="filter-list-container" data-title="{{ category.name }}" data-filter-endpoint="category_article_filter" data-filter-required-args-category="{{ category.id }}">
+        <div class="gallery-tile-row">
+            <div class="row">
+                {% include "article/includes/article_list.html" with articles=articles category=category %}
+            </div>
+        </div>
     </div>
 {% endblock %}
