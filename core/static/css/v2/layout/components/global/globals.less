@@ -1,0 +1,32 @@
+@import "alignment";
+@import "font";
+.title{
+  font-family: 'Crete Round', serif;
+  font-weight: 500;
+}
+.subtitle{
+  font-family: 'Fira Sans', 'Open Sans', sans-serif;
+}
+.link{
+  color: @link;
+}
+.title-dark{
+  font-family: 'Crete Round', serif;
+  font-weight: 500;
+  color: @text-title-dark;
+}
+.link-dark{
+  color: @text-link-dark;
+  &:hover{
+    color: @link-primary;
+  }
+}
+.link-dark-primary{
+  color: @link-primary;
+  &:hover{
+    color: @link-primary;
+  }
+}
+.paragraph-dark{
+  color: @text-paragraph-dark;
+}

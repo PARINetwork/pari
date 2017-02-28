@@ -1,27 +1,31 @@
 {% load i18n static wagtailimages_tags %}
-<div class="list">
   {% if LANGUAGES %}
-  <div class="row">
-    <h4>{% trans "Filter by language" %}: <select name="lang"><option value="">{% trans "All" %}</option>{% for lang in LANGUAGES %}<option {% if request.GET.lang == lang.0 %}selected="selected"{% endif %} value="{{ lang.0 }}">{% blocktrans with tlang=lang.1 %}{{ tlang }}{% endblocktrans %}</option>{% endfor %}</select></h4>
+  <div class="col-lg-12 margin-btm-30px filter-lang">
+      <div class="row">
+          <div class="col-lg-4">
+              <span class="filter-label">{% trans "Filter by language" %}:</span>
+              <span class="filter-value"><select class="form-control" name="lang"><option value="">{% trans "All" %}</option>{% for lang in LANGUAGES %}<option {% if request.GET.lang == lang.0 %}selected="selected"{% endif %} value="{{ lang.0 }}">{% blocktrans with tlang=lang.1 %}{{ tlang }}{% endblocktrans %}</option>{% endfor %}</select></span>
+          </div>
+      </div>
   </div>
   {% endif %}
     {% for article in articles %}
-    <div class="item col-lg-4 col-md-4 col-sm-12 col-xs-12">
-      <div class="item-image">
-	      <div class="image-thumbnail">
-          <a href="{{ article.get_absolute_url }}">
-          {% if article.featured_image %}{% image article.featured_image fill-270x270 as featured_image %}
-	        <img class="img-responsive" src="{{ featured_image.url }}" alt="{{ article.featured_image.title }}">
-	        {% else %}
-	        <img class="img-responsive" src="{{ STATIC_URL }}img/default_featured_image.png" alt="{{ article.title }}" width="270">
-	        {% endif %}
-          </a>
-	      </div>
-      </div>
-	    {% include "article/includes/default_atom.html" %}
-    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 grid-list">
+            <div class="video-image-container">
+                <a href="{{ article.get_absolute_url }}">
+                    {% if article.featured_image %}{% image article.featured_image fill-270x270 as featured_image %}
+                    <img class="img-responsive" src="{{ featured_image.url }}" alt="{{ article.featured_image.title }}">
+                    {% else %}
+                    <img class="img-responsive" src="{{ STATIC_URL }}img/default_featured_image.png" alt="{{ article.title }}" width="270">
+                    {% endif %}
+                </a>
+            </div>
+            {% include "article/includes/default_atom.html" %}
+        </div>
     {% empty %}
     {% trans "No articles to display." %}
     {% endfor %}
+<div class="col-lg-12">
     {% include "includes/paginator.html" with results=articles %}
 </div>
+

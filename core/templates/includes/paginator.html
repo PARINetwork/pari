@@ -1,5 +1,5 @@
-<div class="paginator">
-  <ul>
+<nav aria-label="Page navigation" class="text-center">
+  <ul class="pagination">
     {% if results.has_previous %}
     <li class="page-nav" data-page="1"><a href="?page=1{% if query %}&q={{ query }}{% endif %}"><i class="fa fa-angle-double-left"></i></a></li>
     <li class="page-nav" data-page="{{ results.previous_page_number }}"><a href="?page={{ results.previous_page_number }}{% if query %}&q={{ query }}{% endif %}"><i class="fa fa-angle-left"></i></a></li>
@@ -14,4 +14,4 @@
     <li class="page-nav" data-page="{{ results.paginator.num_pages }}"><a href="?page={{ results.paginator.num_pages }}{% if query %}&q={{ query }}{% endif %}"><i class="fa fa-angle-double-right"></i></a></li>
     {% endif %}
   </ul>
-</div>
+</nav>

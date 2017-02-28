@@ -1,14 +1,20 @@
 {% load i18n wagtailcore_tags %}
 <div class="caption">
-    <h4><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h4>
-    <p>
-      {% for location in article.locations.all %}<a href="{% url "location-detail" slug=location.slug %}">{{ location.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
-    </p>
-    {% if article.authors.count %}
-    <p>by {% for author in article.authors.all %}<a href="{% url "author-detail" slug=author.slug %}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</p>
-    {% endif %}
-    <p>{{ article.search_description|truncatechars_html:"50" }}</p>
-    {% with article.full_url as url and article.title as title %}
-    {% include "article/includes/share.html" %}
-    {% endwith %}
+
+    <h3>
+        <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+    </h3>
+    <div class="margin-top-20px">
+        {% if article.authors.count %}
+        {% for author in article.authors.all %}<a class="link-dark-primary" href="{% url "author-detail" slug=author.slug %}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
+        {% endif %}
+    </div>
+    <div class="margin-top-20px">
+        {% for location in article.locations.all %}<a class="link-dark" href="{% url "location-detail" slug=location.slug %}">{{ location.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
+    </div>
+
+    <!--<p>{{ article.search_description|truncatechars_html:"50" }}</p>-->
+    <!--{% with article.full_url as url and article.title as title %}-->
+    <!--{% include "article/includes/share.html" %}-->
+    <!--{% endwith %}-->
 </div>
