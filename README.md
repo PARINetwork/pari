@@ -95,13 +95,13 @@ And you can participate in the IPM's and showcase for the PARI project.
 
 ## Roadmap of features
 ---
-### Goals
+
 ### Goals
 - Increase discoverability of Pari's content
 - Increase interactions on social media
 - Increase donations on the site
 - Increasing content contributed by existing volunteers
-- Sign up of new volunteers who contribute content  
+- Sign up of new volunteers who contribute content
 
 ### Roadmap
 
