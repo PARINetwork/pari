@@ -38,7 +38,18 @@ class Album(Page):
     search_fields = Page.search_fields + (
         index.SearchField('description', partial_match=True, boost=2),
         index.FilterField('language'),
+        index.SearchField('get_slides_index'),
     )
+
+    def get_slides_index(self):
+        slides_index = []
+        for slide in self.slides.all():
+            image = slide.image
+            if(image):
+                locations = image.get_locations_index()
+                photographers = image.get_all_photographers()
+                slides_index.append(" ".join([locations, photographers]))
+        return " ".join(slides_index)
 
     def get_context(self, request, *args, **kwargs):
         return {
@@ -52,9 +63,6 @@ class Album(Page):
     def get_absolute_url(self):
         name = "album-detail"
         return reverse(name, kwargs={"slug": self.slug})
-
-    def photographers(self):
-        return "a"
 
     @property
     def featured_image(self):
