@@ -38,13 +38,13 @@
           </li>
         </ul>
       </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <h5>CONTRIBUTORS</h5>
-        <ul class="list-unstyled clear-margins">
-          <li><a href="#">Authors</a></li>
-          <li><a href="#">Photographers</a></li>
-        </ul>
-      </div>
+{#      <div class="col-lg-3 col-md-6 col-sm-6">#}
+{#        <h5>CONTRIBUTORS</h5>#}
+{#        <ul class="list-unstyled clear-margins">#}
+{#          <li><a href="#">Authors</a></li>#}
+{#          <li><a href="#">Photographers</a></li>#}
+{#        </ul>#}
+{#      </div>#}
       <div class="col-lg-3 col-md-6 col-sm-6 image-link">
         <h5>MAPS</h5>
         <ul class="list-unstyled clear-margins">
@@ -54,7 +54,9 @@
           <li>
             <div>Stories from near you.</div>
 
-            <a class="page-nav-link" href="#">View all categories »</a>
+            <a class="page-nav-link" href="{% url "map-list" %}">
+            <span itemprop="name">{% trans "The archive on a map »" %}</span>
+            </a>
           </li>
         </ul>
       </div>
@@ -77,17 +79,29 @@
                   <span itemprop="name">{% trans "Albums" %}</span>
                 </a>
               </li>
-              <li><a href="#">Exhibitions</a></li>
-              <li><a href="#">PARI Pics</a></li>
-              <li><a href="#">Instagram</a></li>
+              <li>
+                <a itemprop="url" href="{% url "category-detail" slug="visible-work-invisible-women" %}">
+                  <span itemprop="name">{% trans "Exhibitions" %}</span>
+                </a>
+              </li>
+              <li>
+                  <a itemprop="url" href="{% url "category-detail" slug="photozone" %}">
+                    <span itemprop="name">{% trans "PARI Pics" %}</span>
+                  </a>
+              </li>
+{#              <li><a href="#">Instagram</a></li>#}
             </ul>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4">
             <h5>VIDEOS</h5>
             <ul class="list-unstyled clear-margins">
-              <li><a href="#">Little Takes</a></li>
-              <li><a href="#">Movies</a></li>
-              <li><a href="#">Youtube</a></li>
+{#              <li><a href="#">Little Takes</a></li>#}
+              <li>
+                <a itemprop="url" href="{% url "category-detail" slug="videozone" %}">
+                  <span itemprop="name">{% trans "Movies" %}</span>
+                </a>
+              </li>
+{#              <li><a href="#">Youtube</a></li>#}
               <li>
                 <a class="page-nav-link" itemprop="url" href="{% url "category-detail" slug="videozone" %}">
                   <span itemprop="name">{% trans "View all videos »" %}</span>
