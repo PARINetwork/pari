@@ -38,7 +38,15 @@ def whitelist_blockquote():
             'alt': True, 'sizes': True,
             'width': True, 'height': True,
             'src': True
-        })
+        }),
+        'audio': attribute_rule({
+            'class': True, 'src': True,
+            'controls': True,
+        }),
+        'source': attribute_rule({
+            'class': True,'src': True,
+            'type': True,
+        }),
     }
 
 @hooks.register('insert_editor_js')
