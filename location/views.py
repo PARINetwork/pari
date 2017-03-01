@@ -6,6 +6,7 @@ from django.utils.text import slugify
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from wagtail.wagtailadmin.modal_workflow import render_modal_workflow
+from itertools import chain
 
 from album.models import Album
 from album.models import AlbumSlide
@@ -30,9 +31,9 @@ class LocationList(ListView):
                 articles = Article.objects.live()
                 location_ids.extend(articles.values_list('locations', flat=True).distinct())
             if "albums" in location_filter:
-                albums = Album.objects.live()
-                for album in albums:
-                    location_ids.append(album.slides.first().image.locations.first().id)
+                slides = AlbumSlide.objects.all().select_related('image').filter(page__in=Album.objects.live(), image__isnull=False)
+                locations_of_live_albums = map((lambda slide: slide.image.locations.values_list('id', flat=True)), slides)
+                location_ids.extend(chain(*locations_of_live_albums))
             if "faces" in location_filter:
                 faces = Face.objects.live()
                 location_ids.extend(faces.values_list('location', flat=True).distinct())

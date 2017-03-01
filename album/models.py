@@ -38,18 +38,17 @@ class Album(Page):
     search_fields = Page.search_fields + (
         index.SearchField('description', partial_match=True, boost=2),
         index.FilterField('language'),
-        index.SearchField('get_slides_index'),
+        index.SearchField('get_locations_index'),
+        index.SearchField('get_photographers_index'),
     )
 
-    def get_slides_index(self):
-        slides_index = []
-        for slide in self.slides.all():
-            image = slide.image
-            if(image):
-                locations = image.get_locations_index()
-                photographers = image.get_all_photographers()
-                slides_index.append(" ".join([locations, photographers]))
-        return " ".join(slides_index)
+    def get_locations_index(self):
+        locations_index = map(lambda slide: slide.image.get_locations_index(), self.slides.filter(image__isnull=False))
+        return " ".join(locations_index)
+
+    def get_photographers_index(self):
+        photographers_index = map(lambda slide: slide.image.get_all_photographers(), self.slides.filter(image__isnull=False))
+        return " ".join(photographers_index)
 
     def get_context(self, request, *args, **kwargs):
         return {
