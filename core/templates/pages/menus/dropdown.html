@@ -16,9 +16,21 @@
       <div class="col-lg-3 col-md-6 col-sm-6">
         <h5>CATEGORIES</h5>
         <ul class="list-unstyled clear-margins">
-          <li><a href="#">Things we make</a></li>
-          <li><a href="#">Things we do</a></li>
-          <li><a href="#">Things we wear</a></li>
+          <li>
+              <a itemprop="url" href="{% url "category-detail" slug="things-we-make" %}">
+                  <span itemprop="name">{% trans "Things we make" %}</span>
+              </a>
+          </li>
+          <li>
+              <a itemprop="url" href="{% url "category-detail" slug="things-we-do" %}">
+                  <span itemprop="name">{% trans "Things we do" %}</span>
+              </a>
+          </li>
+          <li>
+               <a itemprop="url" href="{% url "category-detail" slug="headgear" %}">
+                  <span itemprop="name">{% trans "Things we wear" %}</span>
+              </a>
+          </li>
           <li>
             <a class="page-nav-link" itemprop="url" href="{% url "category-list" %}">
               <span itemprop="name">{% trans "View all categories »" %}</span>
@@ -28,9 +40,21 @@
       </div>
       <div class="col-lg-3 col-md-6 col-sm-6">
         <ul class="list-unstyled clear-margins with-out-title">
-          <li><a href="#">Farming & its crisis</a></li>
-          <li><a href="#">Resource Conflicts</a></li>
-          <li><a href="#">Dalits</a></li>
+          <li>
+               <a itemprop="url" href="{% url "category-detail" slug="farming-and-its-crisis" %}">
+                  <span itemprop="name">{% trans "Farming & its crisis" %}</span>
+              </a>
+          </li>
+            <li>
+               <a itemprop="url" href="{% url "category-detail" slug="resource-conflicts" %}">
+                  <span itemprop="name">{% trans "Resource Conflicts" %}</span>
+              </a>
+          </li>
+          <li>
+              <a itemprop="url" href="{% url "category-detail" slug="dalits" %}">
+                  <span itemprop="name">{% trans "Dalits" %}</span>
+              </a>
+          </li>
           <li>
             <a class="page-nav-link" itemprop="url" href="{% url "category-list" %}">
               <span itemprop="name">{% trans "View all stories »" %}</span>
@@ -49,7 +73,9 @@
         <h5>MAPS</h5>
         <ul class="list-unstyled clear-margins">
           <li>
-            <div class="map-img"></div>
+             <div >
+                 <img class="img-responsive" src = "/media/images/nav_header_images/map.png" >
+             </div>
           </li>
           <li>
             <div>Stories from near you.</div>
@@ -95,13 +121,17 @@
           <div class="col-lg-4 col-md-4 col-sm-4">
             <h5>VIDEOS</h5>
             <ul class="list-unstyled clear-margins">
-{#              <li><a href="#">Little Takes</a></li>#}
               <li>
-                <a itemprop="url" href="{% url "category-detail" slug="videozone" %}">
-                  <span itemprop="name">{% trans "Movies" %}</span>
-                </a>
+                  <a itemprop="url" href="{% url "category-detail" slug="Little takes" %}">
+                    <span itemprop="name">{% trans "Little Takes" %}</span>
+                  </a>
               </li>
-{#              <li><a href="#">Youtube</a></li>#}
+{#              <li>#}
+{#                <a itemprop="url" href="{% url "category-detail" slug="videozone" %}">#}
+{#                  <span itemprop="name">{% trans "Movies" %}</span>#}
+{#                </a>#}
+{#              </li>#}
+              <li><a href="https://www.youtube.com/user/PARInetwork">Youtube</a></li>
               <li>
                 <a class="page-nav-link" itemprop="url" href="{% url "category-detail" slug="videozone" %}">
                   <span itemprop="name">{% trans "View all videos »" %}</span>
@@ -112,9 +142,17 @@
           <div class="col-lg-4 col-md-4 col-sm-4">
             <h5>AUDIO</h5>
             <ul class="list-unstyled clear-margins">
-              <li><a href="#">Music</a></li>
-              <li><a href="#">Tongues</a></li>
-              <li><a href="#">Soundcloud</a></li>
+              <li>
+                <a itemprop="url" href="{% url "category-detail" slug="audiozone" %}">
+                  <span itemprop="name">{% trans "Music" %}</span>
+                </a>
+              </li>
+              <li>
+                <a itemprop="url" href="{% url "category-detail" slug="tongues" %}">
+                  <span itemprop="name">{% trans "Tongues" %}</span>
+                </a>
+              </li>
+              <li><a href="https://soundcloud.com/ruralindia">Soundcloud</a></li>
               <li>
                 <a class="page-nav-link" itemprop="url" href="{% url "category-list" %}">
                 <span itemprop="name">{% trans "View gallery »" %}</span>
@@ -130,7 +168,9 @@
           <div class="col-lg-6 col-md-6 col-sm-6 image-link">
             <ul class="list-unstyled clear-margins">
               <li>
-                <div class="map-img"></div>
+                <div >
+                    <img class="img-responsive" src = "/media/images/nav_header_images/face.png">
+                </div>
               </li>
               <li>
                 <span>Explore the facial diversity of India. </span>
@@ -143,7 +183,9 @@
           <div class="col-lg-6 col-md-6 col-sm-6 image-link">
             <ul class="list-unstyled clear-margins">
               <li>
-                <div class="map-img"></div>
+                <div >
+                      <img class="img-responsive" src = "/media/images/nav_header_images/talking_album.png" >
+                </div>
               </li>
               <li>
                 <span>Pictures and their spoken story. </span>
@@ -238,27 +280,45 @@
                 <span itemprop="name">{% trans "The story of PARI" %}</span>
               </a>
             </li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li>
+                <a href="https://blog.ruralindiaonline.org/">Blog</a>
+            </li>
+              <li>
+                  <a href="{% url "contact_us" %}">
+                      <span itemprop="name">{% trans "Contact Us" %}</span>
+                  </a>
+              </li>
           </ul>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4">
           <h5>GET INVOLVED</h5>
           <ul class="list-unstyled clear-margins">
-            <li><a href="#">Contribute</a></li>
-            <li><a href="#">Donate</a></li>
+              <li>
+               <a  href="{% url "contribute" slug="contribute" %}">
+                      <span itemprop="name">{% trans "Contribute" %}</span>
+               </a>
+              </li>
+             <li>
+                 <a href="{% url "static_page" slug="donate" %}">
+                     <span itemprop="name">{% trans "Donate" %}</span>
+                 </a>
+             </li>
           </ul>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4">
           <h5>MORE</h5>
           <ul class="list-unstyled clear-margins">
-            <li><a href="#">PARI in other languages</a></li>
+{#            <li><a href="#">PARI in other languages</a></li>#}
             <li>
               <a itemprop="url" href="{% url "static_page" slug="acknowledgements" %}">
                 <span itemprop="name">{% trans "Acknowledgements" %}</span>
               </a>
             </li>
-            <li><a href="#">Usage Guidelines</a></li>
+            <li>
+                <a itemprop="url" href="{% url "static_page" slug="guidelines" %}">
+	                <span itemprop="name">{% trans "Usage Guidelines" %}</span>
+                </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -269,7 +329,9 @@
         <div class="col-lg-6 col-md-6 col-sm-6 image-link">
           <ul class="list-unstyled clear-margins">
             <li>
-              <div class="map-img"></div>
+              <div >
+                  <img class="img-responsive" src = "/media/images/nav_header_images/students_teachers.png">
+              </div>
             </li>
             <li>
               <span>PARI for Students & Teachers. </span>
@@ -282,7 +344,9 @@
         <div class="col-lg-6 col-md-6 col-sm-6 image-link">
           <ul class="list-unstyled clear-margins">
             <li>
-              <div class="map-img"></div>
+              <div >
+                  <img class="img-responsive" src = "/media/images/nav_header_images/sainath.png">
+              </div>
             </li>
             <li>
 
