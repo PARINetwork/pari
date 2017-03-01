@@ -6,27 +6,59 @@
             <div class="col-lg-2 col-md-2 col-sm-4"><!-- widgets column left -->
                 <h4 class="title-widget">Explore</h4>
                 <ul class="list-unstyled clear-margins">
-                <li><a  href="#">Categories</a></li>
-                <li><a  href="#">Stories on a map</li>
-                <li><a  href="#">By Authors</a></li>
-                <li><a  href="#">By Photographers</a></li>
-                <li><a  href="#">By Tongues</a></li>
-            </ul>
+                    <li>
+                        <a class="page-nav-link" itemprop="url" href="{% url "category-list" %}">
+                           <span itemprop="name">{% trans "Categories" %}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="page-nav-link" itemprop="url" href="{% url "map-list" %}"">
+                            <span itemprop="name">{% trans "Stories on a map" %}</span>
+                        </a>
+                    </li>
+{#                <li><a  href="#">By Authors</a></li>#}
+{#                <li><a  href="#">By Photographers</a></li>#}
+{#                <li><a  href="#">By Tongues</a></li>#}
+                </ul>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-4"><!-- widgets column left -->
             <h4 class="title-widget">Gallery</h4>
             <ul class="list-unstyled clear-margins">
-                <li><a  href="#">Photos</a></li>
-                <li><a  href="#">Videos</li>
-                <li><a  href="#">Audios</a></li>
-                <li><a  href="#">Talking Albums Faces</a></li>
+                <li>
+                    <a itemprop="url" href="{% url "category-detail" slug="photozone" %}">
+                        <span itemprop="name">{% trans "Photos" %}</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="page-nav-link" itemprop="url" href="{% url "category-detail" slug="videozone" %}">
+                        <span itemprop="name">{% trans "Videos" %}</span>
+                    </a>
+                </li>
+                <li>
+                    <a itemprop="url" href="{% url "category-detail" slug="audiozone" %}">
+                        <span itemprop="name">{% trans "Audios" %}</span>
+                    </a>
+                </li>
+                <li>
+                     <a itemprop="url" href="{% url "talking-album-list" %}">
+                        <span itemprop="name">{% trans "Talking Albums" %}</span>
+                    </a>
+                <li>
+                    <a class="page-nav-link" itemprop="url" href="{% url "category-detail" slug="faces" %}">
+                        <span itemprop="name">{% trans "Faces" %}</span>
+                    </a>
+                </li>
             </ul>
         </div>
             <div class="col-lg-2 col-md-2 col-sm-4"><!-- widgets column left -->
             <h4 class="title-widget">About</h4>
             <ul class="list-unstyled clear-margins">
-                <li><a  href="#">About PARI</a></li>
-                <li><a  href="#">Story of PARI</li>
+{#                <li><a  href="#">About PARI</a></li>#}
+                <li>
+                     <a itemprop="url"  href="{% url "static_page" slug="about" %}">
+                        <span itemprop="name">{% trans "Story of PARI" %}</span>
+                    </a>
+                </li>
                 <li>
                     <a itemprop="sameAs" href="https://blog.ruralindiaonline.org/">
                         <span itemprop="name">{% trans "Blog" %}</span>
@@ -37,8 +69,16 @@
                         <span itemprop="name">{% trans "Contact Us" %}</span>
                     </a>
                 </li>
-                <li><a  href="#">Acknowledgements</a></li>
-                <li><a  href="#">Usage Guidelines</a></li>
+                <li>
+                    <a itemprop="url" href="{% url "static_page" slug="acknowledgements" %}">
+                        <span itemprop="name">{% trans "Acknowledgements" %}</span>
+                    </a>
+                </li>
+                <li>
+                     <a itemprop="url" href="{% url "static_page" slug="guidelines" %}">
+	                    <span itemprop="name">{% trans "Usage Guidelines" %}</span>
+                    </a>
+                </li>
             </ul>
         </div>
             <div class="col-lg-2 col-md-2 col-sm-4"><!-- widgets column left -->
@@ -49,7 +89,7 @@
                         <span itemprop="name">{% trans "Donate to PARI" %}</span>
                     </a>
                 </li>
-                <li><a  href="#">Volunteer to PARI</a></li>
+{#                <li><a  href="#">Volunteer to PARI</a></li>#}
             </ul>
         </div>
             <div class="col-lg-2 col-md-2 col-sm-4"><!-- widgets column left -->
@@ -71,16 +111,23 @@
             <div class="col-lg-2 col-md-2 col-sm-4"><!-- widgets column left -->
             <ul class="list-unstyled clear-margins">
                 <li>
-                    <select class="form-control m-1">
+                    <select class="form-control m-1 drop-down-lang">
                         <option value="English">English</option>
                         <option value="Tamil">Tamil</option>
                         <option value="Hindi">Hindi</option>
                     </select>
                 </li>
-                <li><a  href="#">Stories on a map</li>
-                <li><a  href="#">By Authors</a></li>
-                <li><a  href="#">By Photographers</a></li>
-                <li><a  href="#">By Tongues</a></li>
+                <li>
+                    <span ><p class = "drop-down-descr">Changing the language will show only those stories which are available in the chosen language<p></span>
+                </li>
+{#                <li>#}
+{#                    <a class="page-nav-link" itemprop="url" href="{% url "map-list" %}"">#}
+{#                        <span  itemprop="name">{% trans "Stories on a map" %}</span>#}
+{#                    </a>#}
+{#                </li>#}
+{#                <li><a  href="#">By Authors</a></li>#}
+{#                <li><a  href="#">By Photographers</a></li>#}
+{#                <li><a  href="#">By Tongues</a></li>#}
             </ul>
         </div>
         </div>
