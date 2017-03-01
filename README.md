@@ -11,41 +11,33 @@ $ git clone https://github.com/PARINetwork/pari-ansible.git
 $ git clone https://github.com/PARINetwork/pari.git
 ```
 #### Setup the Vagrant Box
-Setup the vagrant box in your machine. You can download th e-vagrant box from [here.](https://releases.hashicorp.com/vagrant/1.9.1/vagrant_1.9.1.dmg)
-After downloading and installing the Vagrant box, run the ansible_playbook commands from  **pari_ansible** folder,
+Install vagrant in your machine.
+Proper package for your operating system and architecture can be found here - https://www.vagrantup.com/downloads.html
+After downloading and installing Vagrant, get the Vagrant box up and running as below:
 
-**Note**
-    Replace the **--private-key** in the ansible-playbook command given below with the value of **IdentityFile** , you will get your         IdentityFile by runnig this commnd.
-
-```sh
-$ cd pari
-$ sudo vagrant ssh-config
-```
-Commands to run the ansible script,
-```sh
-$ cd pari-ansible
-$ ansible-playbook --private-key=<../pari/.vagrant/machines/default/virtualbox/private_key> -l vagrant -u vagrant -i hosts.yml site.yml
-```
-The ansible-playbook command will setup all the dependencies and create a environment.
-
-Now get the Vagrant box up and running as below:
 ```sh
 $ cd pari
 $ sudo vagrant up
-$ sudo vagrant ssh
 ```
-Go to your virtual environment
-```sh
-$ cd /vagrant
-$ source pari_env/bin/activate
-```
-**Note**
-To come out from the environment you can run
-```sh
-$ deactivate
-```
-All dependencies like gunicorn, elasticSearch and nginx are up and running in the virtual box.
 
+To get the private key of the vagrant box, use the following command. From the console output, note the value of IdentityFile, which is the private key of vagrant box.
+
+```sh
+$ sudo vagrant ssh-config
+```
+
+Now to install the application in the vagrant box, run the ansible_playbook commands from  **pari_ansible** folder,
+Commands to run the set up the application,
+```sh
+$ cd pari-ansible
+$ pip install ansible
+Create a file local.py
+$ touch roles/django/templates/local.py
+Add a single line "DEBUG=True" in the file local.py
+$ ansible-playbook --private-key=path-of-private-key -l vagrant -u vagrant -i hosts.yml site.yml
+```
+
+The ansible-playbook command will setup all the dependencies and create a environment.
 ### Open pari admin and local web console
 Now you can open pari admin user web console ,
 
@@ -59,18 +51,46 @@ and user face of the pari web page
 
     http://0.0.0.0
 
-### Accessing database
-From your vagrant machine run,
+
+Lets look at how to use the vagrant box.
+
+Get into the vagrant box from the pari project folder.
 ```sh
-$ sudo su postgress
-$ psql
+$ cd pari
+$ sudo vagrant ssh
+
+From within the vagrant box, to access shell,
+
+$ cd /vagrant
+$ source pari_env/bin/activate
+$ python manage.py shell
 ```
+
+To access database
+```sh
+$ cd /vagrant
+$ source pari_env/bin/activate
+$ python manage.py dbshell
+Password: pari
+```
+
 **Basic command for psql**
 > **\c**  -   to connect db
 > **\dt**   -   list tables
 > **\x**    -   for turning on the Expanded display
 
-
+**Note**
+To come out from the environment you can run
+```sh
+$ deactivate
+```
+All dependencies like gunicorn, elasticSearch and nginx are up and running in the virtual box.
+```sh
+To restart gunicorn
+$ sudo supervisorctl restart pari:gunicorn_pari
+To restart nginx
+$ sudo service nginx restart
+```
 ### Tech stack:
 
 * [Django](https://www.djangoproject.com/) - Ease the creation of complex, database-driven websites.
