@@ -23,6 +23,9 @@ $(function() {
 		    if ($(sel).attr("name").search(/locations/) > -1) {
 			$(sel).parents("li").append('<div class="addbutton"><a href="javascript:void(0);" onclick="addObject(\'locations\', \'#' + $(sel).attr('id') + '\');" class="button bicolor icon icon-plus">Add locations</a></div>');
 		    }
+		    if ($(sel).attr("name").search(/photographers/) > -1) {
+			$(sel).parents("li").append('<div class="addbutton"><a href="javascript:void(0);" onclick="addObject(\'photographers\', \'#' + $(sel).attr('id') + '\');" class="button bicolor icon icon-plus">Add photographers</a></div>');
+		    }
 		}
 	    });
 	});

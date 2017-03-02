@@ -22,11 +22,12 @@ class Face(Page):
                               related_name="face_for_image", null=True,
                               on_delete=models.SET_NULL)
     location = models.ForeignKey("location.Location", null=True,
-                                 on_delete=models.SET_NULL)
+                                 on_delete=models.SET_NULL, verbose_name="Place of Origin")
     description = RichTextField(blank=True)
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
 
-    occupation = models.CharField(max_length=50, null=True, blank=True)
+    occupation = models.CharField(max_length=50, null=True, blank=True,
+                                  help_text="Enter the occupation of the parent if this is the face of a child")
     adivasi = models.CharField(max_length=50, null=True, blank=True)
     quote = RichTextField(blank=True)
     child = models.BooleanField(default=False)
@@ -50,11 +51,27 @@ class Face(Page):
         index.FilterField('image'),
         index.SearchField('description', partial_match=True, boost=2),
         index.FilterField('location'),
-        index.FilterField('occupation'),
-        index.FilterField('adivasi'),
-        index.FilterField('age'),
-        index.FilterField('gender'),
+        index.RelatedFields('location', [
+            index.SearchField('name'),
+            index.SearchField('block'),
+            index.SearchField('district'),
+            index.SearchField('state'),
+        ]),
+        index.SearchField('occupation'),
+        index.SearchField('quote'),
+        index.SearchField('get_locations_index'),
+        index.SearchField('get_photographers_index'),
+        index.SearchField('get_adivasi_index'),
     )
+
+    def get_locations_index(self):
+        return self.image.get_locations_index()
+
+    def get_photographers_index(self):
+        return self.image.get_all_photographers()
+
+    def get_adivasi_index(self):
+        return "adivasi" if self.adivasi else ""
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('image'),

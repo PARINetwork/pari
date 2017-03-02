@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from django.utils.text import slugify
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
+from django.db.models import Q
 from wagtail.wagtailadmin.modal_workflow import render_modal_workflow
 from itertools import chain
 
@@ -32,11 +33,13 @@ class LocationList(ListView):
                 location_ids.extend(articles.values_list('locations', flat=True).distinct())
             if "albums" in location_filter:
                 slides = AlbumSlide.objects.all().select_related('image').filter(page__in=Album.objects.live(), image__isnull=False)
-                locations_of_live_albums = map((lambda slide: slide.image.locations.values_list('id', flat=True)), slides)
-                location_ids.extend(chain(*locations_of_live_albums))
+                locations_of_images_of_live_albums = map((lambda slide: slide.image.locations.values_list('id', flat=True)), slides)
+                location_ids.extend(chain(*locations_of_images_of_live_albums))
             if "faces" in location_filter:
                 faces = Face.objects.live()
                 location_ids.extend(faces.values_list('location', flat=True).distinct())
+                locations_of_image_of_live_faces = map((lambda face: face.image.locations.values_list('id', flat=True)), faces)
+                location_ids.extend(chain(*locations_of_image_of_live_faces))
             qs = qs.filter(id__in=location_ids)
         return qs
 
@@ -66,7 +69,8 @@ class LocationDetail(DetailView):
         images_qs = AffixImage.objects.filter(locations=location)
         albums_slides = AlbumSlide.objects.filter(image__in=images_qs)
         albums_qs = Album.objects.live().filter(slides=albums_slides)
-        faces_qs = Face.objects.live().filter(location=location)
+        live_faces = Face.objects.live()
+        faces_qs = live_faces.filter(Q(location=location) | Q(image__in=images_qs))
 
         if self.request.GET.get("lang"):
             lang = self.request.GET["lang"]
