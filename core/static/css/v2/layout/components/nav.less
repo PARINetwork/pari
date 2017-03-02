@@ -27,16 +27,17 @@
           padding-top: 30px;
           padding-bottom: 30px;
           color: @text-color-primary-nav;
-          &:hover {
+          .font-size(14);
+          &:hover, &:focus {
             color: @text-color-primary-nav-hover;
           }
           .fa-chevron-down {
             color: @text-color-primary-nav-hover;
-            font-size: 10px;
+            .font-size(12);
           }
           .fa-search {
             color: @icon-color-search;
-            font-size: 16px;
+            .font-size(16);
           }
         }
         .dropdown-menu {
@@ -45,7 +46,7 @@
             padding: 30px;
             h5{
               color: @text-color-dropdown-title;
-              font-size: 12px;
+              .font-size(14);
               margin-bottom: 20px;
               font-weight: 400;
             }
@@ -54,7 +55,7 @@
                 margin-bottom: 10px;
                 a{
                   color: @text-color-dropdown-pri-link;
-                  font-size: 18px;
+                  .font-size(14);
                   &:hover{
                     color: @text-color-dropdown-pri-link-hover;
                   }
@@ -65,7 +66,7 @@
               }
             }
             .page-nav-link{
-              font-size: 14px;
+              .font-size(14);
               color: @text-color-dropdown-sec-link;
               &:hover{
                 color: @text-color-dropdown-sec-link-hover;
@@ -73,7 +74,7 @@
             }
             .image-link{
               h5{
-                font-size: 16px;
+                .font-size(16);
                 color: @text-color-dropdown-image-link-title;
               }
               ul{
@@ -115,7 +116,7 @@
     .navbar-brand-title {
       &:extend(.title);
       color: @text-color-brand-title;
-      font-size: 16px;
+      .font-size(16);
       margin: 30px 0 0 20px;
       float: left;
     }
