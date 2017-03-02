@@ -131,7 +131,7 @@
 {#                  <span itemprop="name">{% trans "Movies" %}</span>#}
 {#                </a>#}
 {#              </li>#}
-              <li><a href="https://www.youtube.com/user/PARInetwork">Youtube</a></li>
+              <li><a href="https://www.youtube.com/{{ SOCIAL_YOUTUBE }}" target="_blank">Youtube</a></li>
               <li>
                 <a class="page-nav-link" itemprop="url" href="{% url "category-detail" slug="videozone" %}">
                   <span itemprop="name">{% trans "View all videos »" %}</span>
@@ -152,7 +152,7 @@
                   <span itemprop="name">{% trans "Tongues" %}</span>
                 </a>
               </li>
-              <li><a href="https://soundcloud.com/ruralindia">Soundcloud</a></li>
+              <li><a href="https://soundcloud.com/{{ SOCIAL_SOUND_CLOUD }}" target="_blank">Soundcloud</a></li>
               <li>
                 <a class="page-nav-link" itemprop="url" href="{% url "category-list" %}">
                 <span itemprop="name">{% trans "View gallery »" %}</span>

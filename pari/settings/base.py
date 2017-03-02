@@ -197,6 +197,55 @@ SOUNDCLOUD_SETTINGS = {
     "PASSWORD": ""
 }
 
+
+STATE_CHOICES = (
+    (_("Andaman and Nicobar Islands"), _("Andaman and Nicobar Islands")),
+    (_("Andhra Pradesh"), _("Andhra Pradesh")),
+    (_("Arunachal Pradesh"), _("Arunachal Pradesh")),
+    (_("Assam"), _("Assam")),
+    (_("Bihar"), _("Bihar")),
+    (_("Chandigarh"), _("Chandigarh")),
+    (_("Chhattisgarh"), _("Chhattisgarh")),
+    (_("Dadra and Nagar Haveli"), _("Dadra and Nagar Haveli")),
+    (_("Daman and Diu"), _("Daman and Diu")),
+    (_("National Capital Territory of Delhi"), _("National Capital Territory of Delhi")),
+    (_("Goa"), _("Goa")),
+    (_("Gujarat"), _("Gujarat")),
+    (_("Haryana"), _("Haryana")),
+    (_("Himachal Pradesh"), _("Himachal Pradesh")),
+    (_("Jammu and Kashmir"), _("Jammu and Kashmir")),
+    (_("Jharkhand"), _("Jharkhand")),
+    (_("Karnataka"), _("Karnataka")),
+    (_("Kerala"), _("Kerala")),
+    (_("Lakshadweep"), _("Lakshadweep")),
+    (_("Madhya Pradesh"), _("Madhya Pradesh")),
+    (_("Maharashtra"), _("Maharashtra")),
+    (_("Manipur"), _("Manipur")),
+    (_("Meghalaya"), _("Meghalaya")),
+    (_("Mizoram"), _("Mizoram")),
+    (_("Nagaland"), _("Nagaland")),
+    (_("Odisha"), _("Odisha")),
+    (_("Puducherry"), _("Puducherry")),
+    (_("Punjab"), _("Punjab")),
+    (_("Rajasthan"), _("Rajasthan")),
+    (_("Sikkim"), _("Sikkim")),
+    (_("Tamil Nadu"), _("Tamil Nadu")),
+    (_("Telangana"), _("Telangana")),
+    (_("Tripura"), _("Tripura")),
+    (_("Uttar Pradesh"), _("Uttar Pradesh")),
+    (_("Uttarakhand"), _("Uttarakhand")),
+    (_("West Bengal"), _("West Bengal")),
+)
+
+SOCIAL = {
+   "FACEBOOK": "PARINetwork",
+   "TWITTER": "PARINetwork",
+   "GITHUB_REPO": "PARINetwork/pari",
+   "GOOGLE_ANALYTICS_ID": "UA-49439949-1",
+   "YOUTUBE" : "PARInetwork",
+   "SOUND_CLOUD" : "ruralindia"
+}
+
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 
 # https://www.loc.gov/standards/iso639-2/php/code_list.php
