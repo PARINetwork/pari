@@ -1,0 +1,138 @@
+@import "../../colors/colors";
+@import "config";
+
+#main_content {
+  margin-top: 0;
+}
+
+#mainnav {
+  margin: 0;
+}
+
+.banner-container {
+  position: relative;
+  margin-bottom: 40px;
+  .banner-info {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    .row-1 {
+      font-size: 16px;
+      .tag {
+        color: @text-color-tag;
+        text-transform: uppercase;
+      }
+      .date {
+        color: @text-light;
+      }
+    }
+    h2 {
+      font-size: 56px;
+      color: @text-light;
+    }
+    p {
+      font-size: 24px;
+      color: @text-light;
+      font-weight: 300;
+    }
+    select {
+      background: none;
+      border: none;
+      outline: none;
+    }
+    .banner-label{
+      color: @text-color-banner-lang;
+    }
+    ul {
+      margin: 0 0 20px 0;
+      color: @text-light;
+      li {
+        float: left;
+        padding: 10px 20px;
+        border-top: 1px solid @border-banner;
+        border-right: 1px solid @border-banner;
+        &:last-child {
+          border-right: none;
+        }
+
+        a{
+          color: @text-light;
+          &:hover{
+            color: @link-primary;
+          }
+        }
+      }
+      .social-icon{
+        padding: 6px 20px 4px 20px;
+        a{
+          border: 1px solid @border-light;
+          border-radius: 20px;
+          display: inline-block;
+          height: 30px;
+          width: 30px;
+          text-align: center;
+          padding-top: 5px;
+          &:hover{
+            text-decoration: none;
+            border: 1px solid @link-primary;
+          }
+        }
+      }
+    }
+  }
+}
+
+.article-container{
+  .content-map{
+    .subtitle{
+      color: @title;
+      font-size: 16px;
+      line-height: 30px;
+    }
+    i{
+      float: right;
+      font-size: 12px;
+      line-height: 30px;
+    }
+    a{
+      font-size: 18px;
+      border-top: 2px solid @primary-color;
+      display: inline-block;
+      width: 100%;
+      margin-top: 10px;
+      padding-top: 10px;
+    }
+  }
+  a{
+    color: @link-primary;
+    &:hover{
+      color: @link;
+    }
+  }
+  p{
+    line-height: 40px;
+    font-size: 16px;
+    margin: 20px 0;
+  }
+  .image-desc{
+    color: @text-color-image-desc;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: center;
+  }
+  .quote{
+    border-top: 1px solid @primary-color;
+    border-bottom: 1px solid @primary-color;
+    line-height: 60px;
+    font-size: 32px;
+    color: @title;
+    padding: 20px 0;
+  }
+  .faces{
+    border-top: 3px solid @light-grey;
+    padding: 20px 0;
+    margin: 0;
+    color: @grey;
+    &:extend(.subtitle);
+  }
+}
