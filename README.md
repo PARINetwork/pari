@@ -3,7 +3,6 @@
 **[PARI](https://ruralindiaonline.org/)** is a digital journalism platform in India, founded by veteran journalist and former rural affairs editor of 'The Hindu', **Palagummi Sainath**. **PARI** is a volunteer-run rural journalism platform.
 
 ## Dev Setup
-***
 #### Clone Repositories
 To start with the dev box setup, clone the pari_ansible repository.
 ```sh
@@ -99,22 +98,20 @@ $ sudo service nginx restart
 * [Bootstrap](http://getbootstrap.com/) - Great UI boilerplate for modern web apps
 * [jQuery](https://jquery.com/)
 
-## How to contribute ?
-***
+## How to Contribute?
+#### Sign up for stories
+Choose any card in **Ready for Dev** lane from [Github Projects](https://github.com/PARINetwork/pari/projects/1) and assign it to yourself. Move it to **In Dev** lane. Add Dev tasks to that story briefly so that others who want to understand the work being done can get a overview. 
 
-##### Sign up for stories
-Pickup stories from  [Pari Projects](https://github.com/PARINetwork/pari/projects/1) and sign up. Choose the stories that are **ready for Dev**. Drag and drop the story you picked in to **In Dev** column. Make sure that, task you done on the story staisfies the acceptance criteria(In scope) of the story. If you want to sign up for specific stories feel free to ask through the **Collaboration channels**.
+Use the **Collaboration Channels** to get any questions clarified.
 
-##### Completion of stories
-After you completes stories you can drag and drop the story to **Ready For QA** column.
+#### Completion of stories
+Once done, check if all the **In Scope** items are covered and make a commit with the issue number. Also move the issue to **Ready For QA** column.
 
 ## Collaboration channels
-----
 To keep in tech with technical team and the pari team,you can use the [**google group**](). If you thought of contributing to **PARI** this is one of the media that you can use. In the case of doubts and queries you can use the group.
 And you can participate in the IPM's and showcase for the PARI project.
 
 ## Roadmap of features
----
 
 ### Goals
 - Increase discoverability of Pari's content
@@ -169,5 +166,5 @@ And you can participate in the IPM's and showcase for the PARI project.
 
 
 ### Copyright
----
+
 Licensed under the 3-clause BSD License. Please refer the LICENSE.txt for details.
