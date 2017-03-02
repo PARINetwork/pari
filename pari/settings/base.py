@@ -267,7 +267,7 @@ LANGUAGES = (
 )
 
 # Mapping of state with state codes.
-STATE_CHOICES = []
+# STATE_CHOICES = []
 
 SITE_ID = 1
 
