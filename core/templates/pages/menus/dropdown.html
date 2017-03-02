@@ -13,7 +13,7 @@
     </a>
   <div class="dropdown-menu mega-nav">
     <div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="col-lg-4 col-md-6 col-sm-6">
         <h5>CATEGORIES</h5>
         <ul class="list-unstyled clear-margins">
           <li>
@@ -38,7 +38,7 @@
           </li>
         </ul>
       </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="col-lg-4 col-md-6 col-sm-6">
         <ul class="list-unstyled clear-margins with-out-title">
           <li>
                <a itemprop="url" href="{% url "category-detail" slug="farming-and-its-crisis" %}">
@@ -69,12 +69,12 @@
 {#          <li><a href="#">Photographers</a></li>#}
 {#        </ul>#}
 {#      </div>#}
-      <div class="col-lg-3 col-md-6 col-sm-6 image-link">
+      <div class="col-lg-4 col-md-6 col-sm-6 image-link">
         <h5>MAPS</h5>
         <ul class="list-unstyled clear-margins">
           <li>
-             <div >
-                 <img class="img-responsive" src = "/media/images/nav_header_images/map.png" >
+              <div >
+                 <img class="img-responsive" src = "{{ STATIC_URL }}img/nav_header_images/map.png" >
              </div>
           </li>
           <li>
@@ -169,7 +169,7 @@
             <ul class="list-unstyled clear-margins">
               <li>
                 <div >
-                    <img class="img-responsive" src = "/media/images/nav_header_images/face.png">
+                    <img class="img-responsive" src = "{{ STATIC_URL }}img/nav_header_images/face.png">
                 </div>
               </li>
               <li>
@@ -184,7 +184,7 @@
             <ul class="list-unstyled clear-margins">
               <li>
                 <div >
-                      <img class="img-responsive" src = "/media/images/nav_header_images/talking_album.png" >
+                      <img class="img-responsive" src = "{{ STATIC_URL }}img/nav_header_images/talking_album.png" >
                 </div>
               </li>
               <li>
@@ -330,7 +330,7 @@
           <ul class="list-unstyled clear-margins">
             <li>
               <div >
-                  <img class="img-responsive" src = "/media/images/nav_header_images/students_teachers.png">
+                  <img class="img-responsive" src = "{{ STATIC_URL }}img/nav_header_images/students_teachers.png">
               </div>
             </li>
             <li>
@@ -345,7 +345,7 @@
           <ul class="list-unstyled clear-margins">
             <li>
               <div >
-                  <img class="img-responsive" src = "/media/images/nav_header_images/sainath.png">
+                  <img class="img-responsive" src = "{{ STATIC_URL }}img/nav_header_images/sainath.png">
               </div>
             </li>
             <li>
