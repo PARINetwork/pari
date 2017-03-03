@@ -2,6 +2,13 @@
 
 **[PARI](https://ruralindiaonline.org/)** is a digital journalism platform in India, founded by veteran journalist and former rural affairs editor of 'The Hindu', **Palagummi Sainath**. **PARI** is a volunteer-run rural journalism platform.
 
+
+##UX Mockups
+Download PARI mockup from following [google drive link](https://drive.google.com/drive/folders/0B4TMsel2baWuY1otS0hUM3NxQ2c?usp=sharing). Drive contains visual designs in three formats
+Images, PDF and Sketch files. Use [Sketch](https://www.sketchapp.com/) application(Only for mac) to open .sketch files.
+ ```sh
+https://drive.google.com/drive/folders/0B4TMsel2baWuY1otS0hUM3NxQ2c?usp=sharing
+```
 ## Dev Setup
 #### Clone Repositories
 To start with the dev box setup, clone the pari_ansible repository.
