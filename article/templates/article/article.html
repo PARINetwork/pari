@@ -81,7 +81,6 @@
  <div class="row">
         <div class="col-lg-12">
             <div class="banner-container">
-                <img class="img-responsive" src="{{ STATIC_URL }}img/stories-1.jpg" alt="sample content">
                 <div class="container">
                     <div class="banner-info">
                         <div class="row-1">
@@ -114,11 +113,16 @@
                                 <span class="banner-label">Language</span>
                                 <span class="lang-value">
                                   {% if translations and translations|length > 1 %}
-                                    <select  role="menu" aria-labelledby="dropdownMenu1">
+                                    <ul  role="menu" aria-labelledby="dropdownMenu1">
                                       {% for translation in translations %}
-                                      <option role="presentation" itemprop="inLanguage" itemscope itemtype="http://schema.org/Language"><a role="menuitem" itemprop="url" tabindex="{{ forloop.counter0 }}" href="{{ translation.get_absolute_url }}"><span itemprop="name">{{ translation.get_language_display }}</span></a></option>
+                                        <li role="presentation" itemprop="inLanguage" itemscope itemtype="http://schema.org/Language">
+                                            <a role="menuitem" itemprop="url" tabindex="{{ forloop.counter0 }}" href="{{ translation.get_absolute_url }}">
+                                                <span itemprop="name">{{ translation.get_language_display }}</span>
+                                            </a>
+                                        </li>
+
                                       {% endfor %}
-                                    </select>
+                                    </ul>
 {#                                  </span>#}
                                   {% endif %}
                                 </span>
@@ -126,17 +130,19 @@
                             <li>
                                 <a href="#">
                                     <i class="fa fa-photo"></i>
-                                    <span>Read the story in pictures</span>
+                                    <span class = "preview">Read the story in pictures</span>
                                 </a></li>
-                            <li class="social-icon">
+                            {% with request.build_absolute_uri as url and item.title as title %}
+                            <li class="social-icon" data-url="{{ url }}">
                                 <span class="banner-label">Share</span>
-                                <a href="#">
+                                 <a target="_blank" href="https://twitter.com/home?status={{ title|urlencode }}+{{ url|urlencode }}">
                                     <i class="fa fa-twitter"></i>
                                 </a>
-                                <a href="#">
+                                <a target="_blank" href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}">
                                     <i class="fa fa-facebook"></i>
                                 </a>
                             </li>
+                        {% endwith %}
                             <li>
                                 <a class="#" onclick="window.print()">Print this story</a>
                             </li>
@@ -146,76 +152,7 @@
             </div>
         </div>
     </div>
-{#  <div class="row">#}
-{#    <div class="col-lg-12 col-md-12 col-sm-12">#}
-{#      <div class="article-head">#}
-{#	{% block title %}#}
-{#        <div class="page-header">#}
-{#          <h1 class="article-title"><span itemprop="name">{{ article.title }}</span></h1>#}
-{#          <div class="hidden">#}
-{#            <span itemprop="headline">{{ article.title }}</span>#}
-{#            <span itemprop="url">http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ article.get_absolute_url }}</span>#}
-{#            <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">#}
-{#              <span itemprop="url">http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ featured_image.file.url }}</span>#}
-{#              <span itemprop="width">{{ featured_image.width }}</span>#}
-{#              <span itemprop="height">{{ featured_image.height }}</span>#}
-{#            </span>#}
-{#            <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">#}
-{#              <span itemscope itemprop="logo" itemtype="http://schema.org/ImageObject">#}
-{#                <span itemprop="url">http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ STATIC_URL }}img/logo.png</span>#}
-{#                <span itemprop="height">50</span>#}
-{#                <span itemprop="width">90</span>#}
-{#              </span>#}
-{#              <span itemprop="name">{{ site.site_name }}</span>#}
-{#              <span itemprop="url">http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}</span>#}
-{#            </span>#}
-{#          </div>#}
-{#          <div class="article-strap">{% if article.strap %} <span itemprop="description">{{ article.strap }}</span> {% endif %}</div>#}
-{#        </div>#}
-{#        <div class="article-meta">#}
-{#          {% if translations and translations|length > 1 %}#}
-{#	  <span class="dropdown translations">#}
-{#	    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">#}
-{#	      {% trans "Choose language" %}#}
-{#	      <span class="caret"></span>#}
-{#	    </button>#}
-{#	    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">#}
-{#	      {% for translation in translations %}#}
-{#	      <li role="presentation" itemprop="inLanguage" itemscope itemtype="http://schema.org/Language"><a role="menuitem" itemprop="url" tabindex="{{ forloop.counter0 }}" href="{{ translation.get_absolute_url }}"><span itemprop="name">{{ translation.get_language_display }}</span></a></li>#}
-{#	      {% endfor %}#}
-{#	    </ul>#}
-{#	  </span>#}
-{#	  |#}
-{#	  {% endif %}#}
-{#	  {% if article.original_published_date %}#}
-{#	  <a href="{% url "archive-detail" year=article.original_published_date.year month=article.original_published_date.month %}"> <span itemprop="datePublished">{{ article.original_published_date|date }}</span> </a>#}
-{#	  {% else %}#}
-{#	  {% if article.first_published_at %}<a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month %}"> <span itemprop="datePublished">{{ article.first_published_at|date }}</span></a>{% endif %}#}
-{#	  {% endif %}#}
-{#    |#}
-{#      {% for author in article.authors.all %}#}
-{#      {% if not forloop.first %}#}
-{#        {% if not forloop.last %},{% else %}{% trans "and" %}{% endif %}#}
-{#      {% endif %}#}
-{#      <span itemprop="author" itemscope itemtype="http://schema.org/Person">#}
-{#          <a itemprop="url" href="{% url "author-detail" author.slug %}">#}
-{#              <span itemprop="name">{{ author.name }}</span>#}
-{#          </a>#}
-{#          <span class="hidden" itemprop="homeLocation" itemtype="http://schema.org/Place">#}
-{#              <span itemprop="address">{{ author.twitter_username }}</span>#}
-{#          </span>#}
-{#      </span>#}
-{#      {% endfor %}#}
-{#    </div>#}
-{#	<div>#}
-{#          {% if article.live %}{% include "article/includes/social.html" with item=article %}{% endif %}#}
-{#	  <div class="scrollToTop"><a href="javascript:void(0);"><i class="fa fa-angle-double-up"></i>Scroll to Top</a></div>#}
-{#	</div>#}
-{#	{% endblock %}#}
-{##}
-{#      </div>#}
-{#    </div>#}
-{#  </div>#}
+
   <div class="row">
     <div class="col-lg-1 col-md-1 col-sm-1"></div>
       <div class="container article-container">
@@ -251,12 +188,6 @@
                 {{ article.content|richtext }}
 	        </div>
     </div>
-
-{#    <div class="col-lg-9 col-md-9 col-sm-9 article-holder">#}
-{#      <div class="article-content">#}
-{#	<div itemprop="articleBody">#}
-{#	  {{ article.content|richtext }}#}
-{#	</div>#}
   <div class="translator_bio">
     {% for translator in article.translators.all %}
     {% if translator not in article.authors.all %}
@@ -297,94 +228,65 @@
 	</div>
       </div>
     </div>
-{#    <div class="col-lg-2 col-md-2 col-sm-2 map-holder" itemscope itemtype="http://schema.org/Map">#}
-{#      {% if article.locations.count %}#}
-{#      <p>{% for location in article.locations.all %}<a itemprop="url" href="https://www.openstreetmap.org/?mlat={{ location.point.x }}&mlon={{ location.point.y }}#map=14/{{ location.point.x }}/{{ location.point.y }}" target="_blank"><span itemprop="contentLocation"><span itemprop="name">{{ location.name }}</span></span></a>{% if not forloop.last %},{% endif %}{% endfor %}</p>#}
-{#        <div id="map" class="map-view" data-lat="{% for location in article.locations.all %}{{ location.point.x }}{% if not forloop.last %},{% endif %}{% endfor %}" data-long="{% for location in article.locations.all %}{{ location.point.y }}{% if not forloop.last %},{% endif %}{% endfor %}"></div>#}
-{#      {% endif%}#}
-{#    </div>#}
-{#  </div>#}
   <div class="row">
     <div class="col-lg-1 col-md-1 col-sm-1"></div>
     <div class="col-lg-9 col-md-9 col-sm-9 donate_cta">
       <h4>{{ site.site_name }} is <strong>your</strong> archive. Please consider making a <a href="{% url "donate_form" %}">donation</a>.</h4>
     </div>
   </div>
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-      {% for related_article in article.related_articles %}
-      {% if forloop.first %}
-      <div class="related-articles well">
-        <h3><i class="fa fa-exchange"></i>  {% trans "You may also like" %}...</h3>
+    <div class="container article-grid">
+        <h4>RELATED STORIES</h4>
         <div class="row">
-          {% endif %}
-	  <div class="col-lg-3 col-md-3 col-sm-3">
-	    <a href="{{ related_article.get_absolute_url }}">
-	      {% if related_article.featured_image %}
-	      <div class="article-image">{% image related_article.featured_image fill-512x512 as featured_image %}
-                <img class="img-responsive lazyload" data-src="{{ featured_image.url }}" alt="{{ related_article.featured_image.title }}" width="260" height="260" src="data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==">
-	      </div>
-	      {% else %}
-	      <div class="article-image">
-                <img class="img-responsive" src="{{ STATIC_URL }}img/default_featured_image.png" alt="PARI Logo" width="260" height="260">
-	      </div>
-	      {% endif %}
-	      <div class="caption">
-                <h4> {{ related_article.title|truncatechars:70 }} </h4>
-                {% for location in related_article.locations.all %}
-		{% if forloop.first %}<p>{% trans "Location" %}:{% endif %} {{ location.name }}{% if not forloop.last %},{% endif %}{% if forloop.last %}</p>{% endif %}
-		{% endfor %}
-                <p>{% trans "Author" %}: {% for author in related_article.authors.all %}{{ author.name }}{% if not forloop.last %},{% endif %}{% endfor %}</p>
-	      </div>
-	    </a>
-          </div>
-          {% if forloop.last %}
-        </div>
-        {% endif %}
-	{% endfor %}
-      </div>
+           {% for related_article in article.related_articles %}
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-6">
+                        {% if related_article.featured_image %}
+                            <div class="article-image">{% image related_article.featured_image fill-512x512 as featured_image %}
+                                <a href="{{ related_article.get_absolute_url }}">
+                                    <img class="img-responsive lazyload" data-src="{{ featured_image.url }}"
+                                     alt="{{ related_article.featured_image.title }}" width="260" height="260"
+                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==">
+                                </a>
+                            </div>
+                        {% else %}
+                            <div class="article-image">
+                            <a href="{{ related_article.get_absolute_url }}">
+                                <img class="img-responsive" src="{{ STATIC_URL }}img/default_featured_image.png"
+                                     alt="PARI Logo" width="260" height="260">
+                            </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-lg-6">
+                        <a href="{{ related_article.get_absolute_url }}"> <h3> {{ related_article.title|truncatechars:70 }}</h3></a>
+                        <div>
+                            <i class="fa fa-pencil"></i>
+                            <span>{% for author in related_article.authors.all %}
+                                <a href="{% url "author-detail" author.slug %}">{{ author.name }}</a>
+                                {% if not forloop.last %},{% endif %}{% endfor %}</span>
+                                <span>
+                                    {% for location in related_article.locations.all %}
+                                        <i class="fa fa-map-marker"></i>
+                                        <a class="title" href="{% url "location-detail" location.slug %}">
+                                            <span>{{  location.name }}</span>
+                                            <i class="fa fa-chevron-right"></i>
+                                        </a>
+                                    {%  endfor %}
+                                </span>
+                            </a>
+                        </div>
+                        <div class="date">
+                                 {% if related_article.original_published_date %}
+	                                <a href="{% url "archive-detail" year=related_article.original_published_date.year month=related_article.original_published_date.month %}"> <span itemprop="datePublished">{{ related_article.original_published_date|date }}</span> </a>
+	                             {% else %}
+	                             {% if related_article.first_published_at %}<a href="{% url "archive-detail" year=related_article.first_published_at.year month=related_article.first_published_at.month %}"> <span itemprop="datePublished">{{ related_article.first_published_at|date }}</span></a>{% endif %}
+	                             {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+           {% endfor %}
     </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-        {% for new in new_list %}
-        {% with content=new.specific %}
-        {% if forloop.first %}
-        <div class="related-articles well">
-          <h3><i class="fa fa-exchange"></i>  {% trans "New on PARI" %}...</h3>
-          <div class="row">
-            {% endif %}
-	      <div class="col-lg-3 col-md-3 col-sm-3">
-	        <a href="{{ content.get_absolute_url }}">
-	          {% if content.featured_image %}
-	          <div class="article-image">{% image content.featured_image fill-512x512 as featured_image %}
-              <img class="img-responsive lazyload" data-src="{{ featured_image.url }}" alt="{{ content.featured_image.title }}" width="260" height="260" src="data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==">
-	          </div>
-	          {% else %}
-	          <div class="article-image">
-              <img class="img-responsive" src="{{ STATIC_URL }}img/default_featured_image.png" alt="PARI Logo" width="260" height="260">
-	          </div>
-	          {% endif %}
-	          <div class="caption">
-              <h4> {{ content.title|truncatechars:70 }} </h4>
-              {% for location in content.locations.all %}
-		          {% if forloop.first %}<p>{% trans "Location" %}:{% endif %} {{ location.name }}{% if not forloop.last %},{% endif %}{% if forloop.last %}</p>{% endif %}
-		          {% endfor %}
-              {% if content.content_type.model.lower == "article" %}
-              <p>{% trans "Author" %}: {% for author in content.authors.all %}{{ author.name }}{% if not forloop.last %},{% endif %}{% endfor %}</p>
-              {% elif content.content_type.model.lower == "album" %}
-              <p>{% trans "Photographer" %}: {% for author in content.photographers.all %}{{ author.name }}{% if not forloop.last %},{% endif %}{% endfor %}</p>
-              {% endif %}
-	          </div>
-	        </a>
-        </div>
-        {% endwith %}
-        {% if forloop.last %}
-          </div>
-        {% endif %}
-	    {% endfor %}
-      </div>
-    </div>
-  </div>
 </div>
 {% endblock %}
