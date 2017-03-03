@@ -79,8 +79,8 @@ class Face(Page):
         FieldPanel('adivasi'),
         MultiFieldPanel(
             [
-                FieldPanel('occupation'),
                 FieldPanel('child'),
+                FieldPanel('occupation'),
                 FieldPanel('age'),
                 FieldPanel('gender'),
             ],
