@@ -2,13 +2,6 @@
 
 **[PARI](https://ruralindiaonline.org/)** is a digital journalism platform in India, founded by veteran journalist and former rural affairs editor of 'The Hindu', **Palagummi Sainath**. **PARI** is a volunteer-run rural journalism platform.
 
-
-##UX Mockups
-Download PARI mockup from following [google drive link](https://drive.google.com/drive/folders/0B4TMsel2baWuY1otS0hUM3NxQ2c?usp=sharing). Drive contains visual designs in three formats
-Images, PDF and Sketch files. Use [Sketch](https://www.sketchapp.com/) application(Only for mac) to open .sketch files.
- ```sh
-https://drive.google.com/drive/folders/0B4TMsel2baWuY1otS0hUM3NxQ2c?usp=sharing
-```
 ## Dev Setup
 #### Clone Repositories
 To start with the dev box setup, clone the pari_ansible repository.
@@ -111,8 +104,18 @@ Choose any card in **Ready for Dev** lane from [Github Projects](https://github.
 
 Use the **Collaboration Channels** to get any questions clarified.
 
+In case of UI stories, follow **UX Mockups** instructions below.
+
 #### Completion of stories
 Once done, check if all the **In Scope** items are covered and make a commit with the issue number. Also move the issue to **Ready For QA** column.
+
+
+##UX Mockups
+Download PARI mockup from following [google drive link](https://drive.google.com/drive/folders/0B4TMsel2baWuY1otS0hUM3NxQ2c?usp=sharing). Drive contains visual designs in three formats
+Images, PDF and Sketch files. Use [Sketch](https://www.sketchapp.com/) application(Only for mac) to open .sketch files.
+ ```sh
+https://drive.google.com/drive/folders/0B4TMsel2baWuY1otS0hUM3NxQ2c?usp=sharing
+```
 
 ## Collaboration channels
 To keep in tech with technical team and the pari team,you can use the [**google group**](). If you thought of contributing to **PARI** this is one of the media that you can use. In the case of doubts and queries you can use the group.
