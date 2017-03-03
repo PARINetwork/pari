@@ -22,7 +22,7 @@
     <div class="row gallery-title">
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 gallery-title-icon">
         <span class="prev">
-            <a class="link-dark" itemprop="url" href="{% url "category-list" %}">
+            <a class="link-light" itemprop="url" href="{% url "category-list" %}">
                 <i class="fa fa-chevron-left"></i>
                 <span itemprop="name">{% trans "GALLERY" %}</span>
             </a>
@@ -31,17 +31,17 @@
     </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
         <div>
-            <h1 class="title-dark text-center title-size">{{ category.name }}</h1>
+            <h1 class="title-light text-center title-size">{{ category.name }}</h1>
             <div class="paragraph-dark text-center">{{ category.description }}</div>
         </div>
     </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 gallery-title-icon">
         <div class="text-right">
             <span class="gallery-social-icon">
-                <a href="#" class="link-dark">
+                <a href="https://twitter.com/{{ SOCIAL_TWITTER }}" target="_blank" class="link-light">
                 <i class="fa fa-twitter" aria-hidden="true"></i>
             </a>
-                <a href="#" class="link-dark">
+                <a href="https://facebook.com/{{ SOCIAL_FACEBOOK }}" target="_blank" class="link-light">
                 <i class="fa fa-facebook" aria-hidden="true"></i>
             </a>
             </span>

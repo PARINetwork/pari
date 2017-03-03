@@ -109,17 +109,23 @@
             </ul>
         </div>
             <div class="col-lg-2 col-md-2 col-sm-4"><!-- widgets column left -->
-            <ul class="list-unstyled clear-margins">
-                <li>
-                    <select class="form-control m-1 drop-down-lang">
-                        <option value="English">English</option>
-                        <option value="Tamil">Tamil</option>
-                        <option value="Hindi">Hindi</option>
-                    </select>
-                </li>
-                <li>
-                    <span ><p class = "drop-down-descr">Changing the language will show only those stories which are available in the chosen language<p></span>
-                </li>
+                <h4 class="title-widget">Resources</h4>
+                <ul class="list-unstyled clear-margins">
+                    <li>
+                        <a class="dropdown-toggle" itemprop="url" href="{% url "resource-list" %}">
+                            <span itemprop="name">{% trans "Resources" %}</span>
+                        </a>
+                    </li>
+{#                <li>#}
+{#                    <select class="form-control m-1 drop-down-lang">#}
+{#                        <option value="English">English</option>#}
+{#                        <option value="Tamil">Tamil</option>#}
+{#                        <option value="Hindi">Hindi</option>#}
+{#                    </select>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <span ><p class = "drop-down-descr">Changing the language will show only those stories which are available in the chosen language<p></span>#}
+{#                </li>#}
 {#                <li>#}
 {#                    <a class="page-nav-link" itemprop="url" href="{% url "map-list" %}"">#}
 {#                        <span  itemprop="name">{% trans "Stories on a map" %}</span>#}
