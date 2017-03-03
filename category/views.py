@@ -19,6 +19,8 @@ class CategoryDetail(DetailView):
     paginate_by = 12
 
     def get_context_data(self, **kwargs):
+        category_title = {'VideoZone': 'Videos',
+                          'AudioZone': 'Audios'}
         context = super(CategoryDetail, self).get_context_data(**kwargs)
         qs = Article.objects.live()
         qs = qs.filter(categories=context["category"])
@@ -35,4 +37,6 @@ class CategoryDetail(DetailView):
         except (PageNotAnInteger, EmptyPage):
             raise Http404
         context["languages"] = settings.LANGUAGES
+        category_name = context["category"].name
+        context["title"] = category_title.get(category_name, category_name)
         return context
