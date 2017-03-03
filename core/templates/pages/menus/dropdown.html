@@ -187,9 +187,11 @@
                       <img class="img-responsive" src = "{{ STATIC_URL }}img/nav_header_images/talking_album.png" >
                 </div>
               </li>
-              <li>
-                <span>Pictures and their spoken story. </span>
-                <a class="page-nav-link" href="#">View all categories »</a>
+                <li>
+                    <span>Pictures and their spoken story. </span>
+                    <a class="page-nav-link" itemprop="url" href="{% url "talking-album-list"%}">
+                      <span itemprop="name">{% trans "View talking albums »" %}</span>
+                    </a>
               </li>
             </ul>
           </div>
@@ -295,7 +297,7 @@
           <ul class="list-unstyled clear-margins">
               <li>
                <a  href="{% url "contribute" slug="contribute" %}">
-                      <span itemprop="name">{% trans "Contribute" %}</span>
+                   <span itemprop="name">{% trans "Contribute" %}</span>
                </a>
               </li>
              <li>

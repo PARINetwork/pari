@@ -4,12 +4,20 @@
       <div class="row">
           <div class="col-lg-4">
               <span class="filter-label">{% trans "Filter by language" %}:</span>
-              <span class="filter-value"><select class="form-control" name="lang"><option value="">{% trans "All" %}</option>{% for lang in LANGUAGES %}<option {% if request.GET.lang == lang.0 %}selected="selected"{% endif %} value="{{ lang.0 }}">{% blocktrans with tlang=lang.1 %}{{ tlang }}{% endblocktrans %}</option>{% endfor %}</select></span>
+              <span class="filter-value">
+                  <select class="form-control" name="lang"><option value="">{% trans "All" %}</option>
+                  {% for lang in LANGUAGES %}
+                      <option {% if request.GET.lang == lang.0 %}selected="selected"{% endif %} value="{{ lang.0 }}">
+                          {% blocktrans with tlang=lang.1 %}{{ tlang }}{% endblocktrans %}
+                      </option>
+                  {% endfor %}
+                  </select>
+              </span>
           </div>
       </div>
   </div>
   {% endif %}
-    {% for article in articles %}
+  {% for article in articles %}
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 grid-list">
             <div class="video-image-container">
                 <a href="{{ article.get_absolute_url }}">
@@ -23,9 +31,24 @@
             {% include "article/includes/default_atom.html" %}
         </div>
     {% empty %}
-    {% trans "No articles to display." %}
-    {% endfor %}
-<div class="col-lg-12">
-    {% include "includes/paginator.html" with results=articles %}
-</div>
+        <div class="no-article-text-center">
+            <h3>{% trans "No articles available for " %}
+                {% for lang in LANGUAGES %}
+                      {% if request.GET.lang == lang.0 %}
+                          {% blocktrans with tlang=lang.1 %}{{ tlang }}.{% endblocktrans %}
+                      {% endif %}
+                {% endfor %}
+                Please help us
+                <a  href="{% url "contribute" slug="contribute" %}">
+                      <span itemprop="name">{% trans "translate." %}</span>
+               </a>
+            {{ tlang }}
+            </h3>
+        </div>
 
+    {% endfor %}
+{%if articles %}
+    <div class="col-lg-12">
+                {% include "includes/paginator.html" with results=articles %}
+    </div>
+{% endif %}
