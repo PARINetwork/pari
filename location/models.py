@@ -11,15 +11,14 @@ class Location(models.Model):
     point = models.PointField(srid=4326)
 
     # Below points are to prevent reverse caching
-    block = models.CharField(max_length=100, null=True, blank=True)
     district = models.CharField(max_length=100)
     state = models.CharField(max_length=50)
     region = models.CharField(max_length=100, null=True, blank=True)
-    sub_district = models.CharField(max_length=100, null=True, blank=True)
-    taluka = models.CharField(max_length=100, null=True, blank=True)
-    tehsil = models.CharField(max_length=100, null=True, blank=True)
-    mandapam = models.CharField(max_length=100, null=True, blank=True)
-    others = models.CharField(max_length=100, null=True, blank=True)
+
+    sub_district_type = models.ForeignKey("SubDistrictType",
+                                             related_name="location", null=True, blank=True)
+
+    sub_district_type_value = models.CharField(max_length=100, null=True, blank=True)
 
     objects = models.GeoManager()
 
@@ -31,7 +30,7 @@ class Location(models.Model):
     @property
     def address(self):
         addr = self.name
-        addr += ", " + self.block if self.block else ""
+        addr += ", " + self.sub_district_type_value if self.sub_district_type_value else ""
         addr += ", " + self.district if self.district else ""
         addr += ", " + self.state if self.state else ""
         return addr
@@ -39,3 +38,10 @@ class Location(models.Model):
     class Meta:
         unique_together = ["name", "district", "state"]
         ordering = ["name"]
+
+@python_2_unicode_compatible
+class SubDistrictType(models.Model):
+    name = models.CharField(max_length=100, null=True, blank=True)
+
+    def __str__(self):
+        return self.name

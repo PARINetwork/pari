@@ -147,7 +147,7 @@ class AffixImage(AbstractImage):
                                         related_name="categories_for_image")
     arrival_date = models.DateTimeField(null=True, blank=True)
     published_date = models.DateTimeField(null=True, blank=True)
-    date = models.DateTimeField(null=True, blank=True)
+    date = models.DateTimeField(null=True, blank=True, verbose_name="captured date")
     camera = models.CharField(max_length=50, null=True, blank=True)
 
     admin_form_fields = (
@@ -193,7 +193,7 @@ class AffixImage(AbstractImage):
         locations = []
         for location in self.locations.all():
             locations.append(" ".join([location.name or "",
-                                       location.block or "",
+                                       location.sub_district_type_value or "",
                                        location.district or "",
                                        location.region or "",
                                        location.state or ""]))

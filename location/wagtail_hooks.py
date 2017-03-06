@@ -36,7 +36,7 @@ class LocationAdmin(ModelAdmin):
     edit_view_class = LocationEditView
     menu_label = _("Locations")
     menu_icon = "home"
-    list_display = ('name', 'block', 'district', 'state')
-    search_fields = ('name', 'block', 'district', 'state', )
+    list_display = ('name', 'district', 'state')
+    search_fields = ('name', 'district', 'state')
 
 # modeladmin_register(LocationAdmin)
