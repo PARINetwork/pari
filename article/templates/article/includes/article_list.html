@@ -3,15 +3,16 @@
   <div class="col-lg-12 margin-btm-30px filter-lang">
       <div class="row">
           <div class="col-lg-4">
-              <span class="filter-label">{% trans "Filter by language" %}:</span>
+              <span class="filter-label">{% trans "Languages" %}:</span>
               <span class="filter-value">
-                  <select class="form-control" name="lang"><option value="">{% trans "All" %}</option>
+                  <select class="select-no-style pull-left" name="lang"><option value="">{% trans "All" %}</option>
                   {% for lang in LANGUAGES %}
                       <option {% if request.GET.lang == lang.0 %}selected="selected"{% endif %} value="{{ lang.0 }}">
                           {% blocktrans with tlang=lang.1 %}{{ tlang }}{% endblocktrans %}
                       </option>
                   {% endfor %}
                   </select>
+                  <i class="Chevron"></i>
               </span>
           </div>
       </div>
@@ -19,6 +20,7 @@
   {% endif %}
   {% for article in articles %}
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 grid-list">
+        <div class="grid-container">
             <div class="video-image-container">
                 <a href="{{ article.get_absolute_url }}">
                     {% if article.featured_image %}{% image article.featured_image fill-270x270 as featured_image %}
@@ -29,23 +31,25 @@
                 </a>
             </div>
             {% include "article/includes/default_atom.html" %}
+
+        </div>
         </div>
     {% empty %}
-        <div class="no-article-text-center">
-            <h3>{% trans "No articles available for " %}
-                {% for lang in LANGUAGES %}
-                      {% if request.GET.lang == lang.0 %}
-                          {% blocktrans with tlang=lang.1 %}{{ tlang }}.{% endblocktrans %}
-                      {% endif %}
-                {% endfor %}
-                Please help us
-                <a  href="{% url "contribute" slug="contribute" %}">
-                      <span itemprop="name">{% trans "translate." %}</span>
-               </a>
-            {{ tlang }}
-            </h3>
-        </div>
-
+        <div class="col-lg-12">
+    <p class="bg-danger font-l pad-20px">
+        {% trans "No articles available for " %}
+        {% for lang in LANGUAGES %}
+        {% if request.GET.lang == lang.0 %}
+        {% blocktrans with tlang=lang.1 %}{{ tlang }}.{% endblocktrans %}
+        {% endif %}
+        {% endfor %}
+        Please help us
+        <a class="font-l" href="{% url "contribute" slug="contribute" %}">
+        <span itemprop="name">{% trans "translate." %}</span>
+        </a>
+        {{ tlang }}
+    </p>
+</div>
     {% endfor %}
 {%if articles %}
     <div class="col-lg-12">

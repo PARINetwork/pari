@@ -6,30 +6,30 @@
 
 .filter-lang{
   .filter-label{
-    .font-size(14);
-    color: @grey;
+    .font-size(13);
+    color: @text-link-light;
     float: left;
     margin-right: 20px;
   }
   .filter-value{
     float: left;
     width: 60%;
+    color: @grey;
+    .font-size(13);
   }
 }
 .gallery-title {
-  .title-size{
-    letter-spacing: -1px;
-    font-size: 45px;
-  }
   margin-bottom: 80px;
   h1 {
-    margin: -6px;
-    line-height: 54px;
+    .font-size(72);
+    line-height: 40px;
+    margin: 0;
   }
   .paragraph-dark {
     letter-spacing: 4px;
     color: @text-subtitle-gallery-light;
     .font-size(12);
+    text-transform: uppercase;
   }
 
   a.link-dark {
@@ -44,6 +44,29 @@
 
   }
   .prev {
+    .Chevron-left {
+      position: relative;
+      height: 5px;
+      width: 5px;
+      float: left;
+      margin: 9px 0 0 5px;
+      transform: rotate(90deg);
+    }
+    .Chevron-left:before,
+    .Chevron-left:after {
+      position: absolute;
+      display: block;
+      content: "";
+      border: 5px solid transparent;
+    }
+    .Chevron-left:before {
+      top: 0;
+      border-top-color: @primary-color;
+    }
+    .Chevron-left:after {
+      top: -2px;
+      border-top-color: @bg-light;
+    }
     i {
       margin-right: 10px;
       color: @link-primary;
@@ -54,6 +77,10 @@
     border-right: 1px solid @text-title-light;
     line-height: 30px;
     display: inline-block;
+    .font-size(14);
+    span{
+      margin-left: 20px;
+    }
   }
   .gallery-social-icon {
     border-left: 1px solid @text-title-light;
@@ -70,32 +97,39 @@
 }
 
 .gallery-tile-row {
-  a{
-    .font-size(11);
-  }
   .video-image-container {
     a {
       display: inline-block;
-      min-height:270px;
+      height: 194px;
       word-break: break-all;
+      overflow: hidden;
     }
     img{
       word-break: break-all;
     }
   }
   h3 {
+    text-decoration: none;
     a {
       color: @text-dark;
       .font-size(24);
-      &:hover {
-        color: @link-primary;
-        text-decoration: none;
-      }
     }
   }
   > .row > .grid-list {
-    margin-bottom: 60px;
-    min-height: 480px;
+    padding: 10px 5px 20px 5px;
+    .grid-container{
+      border: 1px solid @border;
+      min-height: 480px;
+      padding: 10px;
+
+      &:hover{
+        border-color: @primary-color;
+        h3{
+          text-decoration: underline;
+        }
+      }
+
+    }
   }
 }
 

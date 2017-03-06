@@ -6,11 +6,11 @@
     </h3>
     <div class="margin-top-20px">
         {% if article.authors.count %}
-        {% for author in article.authors.all %}<a class="link-dark-primary" href="{% url "author-detail" slug=author.slug %}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
+        {% for author in article.authors.all %}<a class="link-dark-primary font-xs" href="{% url "author-detail" slug=author.slug %}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
         {% endif %}
     </div>
     <div class="margin-top-20px">
-        {% for location in article.locations.all %}<a class="link-dark" href="{% url "location-detail" slug=location.slug %}">{{ location.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
+        {% for location in article.locations.all %}<a class="link-dark font-xs" href="{% url "location-detail" slug=location.slug %}">{{ location.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
     </div>
 
     <!--<p>{{ article.search_description|truncatechars_html:"50" }}</p>-->

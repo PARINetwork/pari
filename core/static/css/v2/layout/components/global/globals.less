@@ -1,8 +1,8 @@
 @import "alignment";
 @import "font";
 .title{
-  font-family: 'Crete Round', serif;
-  font-weight: 500;
+  font-family: 'Amiri', serif;
+  font-weight: 700;
 }
 .subtitle{
   font-family: 'Fira Sans', 'Open Sans', sans-serif;
@@ -11,13 +11,13 @@
   color: @link;
 }
 .title-dark{
-  font-family: 'Crete Round', serif;
-  font-weight: 500;
+  font-family: 'Amiri', serif;
+  font-weight: 700;
   color: @text-title-dark;
 }
 .title-light{
-  font-family: 'Crete Round', serif;
-  font-weight: 500;
+  font-family: 'Amiri', serif;
+  font-weight: 700;
   color: @text-title-light;
 }
 .link-dark{
@@ -40,4 +40,31 @@
 }
 .paragraph-dark{
   color: @text-paragraph-dark;
+}
+
+#main_content {
+  min-height: 400px;
+}
+
+.Chevron {
+  position: relative;
+  height: 5px;
+  width: 5px;
+  float: left;
+  margin: 7px 0 0 5px;
+}
+.Chevron:before,
+.Chevron:after {
+  position: absolute;
+  display: block;
+  content: "";
+  border: 5px solid transparent;
+}
+.Chevron:before {
+  top: 0;
+  border-top-color: @grey;
+}
+.Chevron:after {
+  top: -2px;
+  border-top-color: @bg-light;
 }

@@ -89,6 +89,11 @@
                         <span itemprop="name">{% trans "Donate to PARI" %}</span>
                     </a>
                 </li>
+                <li>
+                    <a class="dropdown-toggle" itemprop="url" href="{% url "resource-list" %}">
+                    <span itemprop="name">{% trans "Resources" %}</span>
+                    </a>
+                </li>
 {#                <li><a  href="#">Volunteer to PARI</a></li>#}
             </ul>
         </div>
@@ -109,42 +114,38 @@
             </ul>
         </div>
             <div class="col-lg-2 col-md-2 col-sm-4"><!-- widgets column left -->
-                <h4 class="title-widget">Resources</h4>
+                <h4 class="title-widget">Connect</h4>
                 <ul class="list-unstyled clear-margins">
-                    <li>
-                        <a class="dropdown-toggle" itemprop="url" href="{% url "resource-list" %}">
-                            <span itemprop="name">{% trans "Resources" %}</span>
-                        </a>
+                    <li class="footer-social-icons">
+                        <span>
+                            <span><a itemprop="sameAs" href="https://facebook.com/{{ SOCIAL_FACEBOOK }}" target="_blank"><i class="fa fa-facebook-official"></i></a></span>
+                            <span><a itemprop="sameAs" href="https://twitter.com/{{ SOCIAL_TWITTER }}" target="_blank"><i class="fa fa-twitter"></i></a></span>
+                            <span><a itemprop="sameAs" href="{% url "feeds_list_page" %}"><i class="fa fa-rss"></i></a></span>
+                            <span><a itemprop="sameAs" href="https://github.com/{{ SOCIAL_GITHUB_REPO }}" target="_blank"><i class="fa fa-github"></i></a></span>
+                        </span>
                     </li>
-{#                <li>#}
-{#                    <select class="form-control m-1 drop-down-lang">#}
-{#                        <option value="English">English</option>#}
-{#                        <option value="Tamil">Tamil</option>#}
-{#                        <option value="Hindi">Hindi</option>#}
-{#                    </select>#}
-{#                </li>#}
-{#                <li>#}
-{#                    <span ><p class = "drop-down-descr">Changing the language will show only those stories which are available in the chosen language<p></span>#}
-{#                </li>#}
-{#                <li>#}
-{#                    <a class="page-nav-link" itemprop="url" href="{% url "map-list" %}"">#}
-{#                        <span  itemprop="name">{% trans "Stories on a map" %}</span>#}
-{#                    </a>#}
-{#                </li>#}
-{#                <li><a  href="#">By Authors</a></li>#}
-{#                <li><a  href="#">By Photographers</a></li>#}
-{#                <li><a  href="#">By Tongues</a></li>#}
+
+
+<!--{#                <li>#}-->
+<!--{#                    <select class="form-control m-1 drop-down-lang">#}-->
+<!--{#                        <option value="English">English</option>#}-->
+<!--{#                        <option value="Tamil">Tamil</option>#}-->
+<!--{#                        <option value="Hindi">Hindi</option>#}-->
+<!--{#                    </select>#}-->
+<!--{#                </li>#}-->
+<!--{#                <li>#}-->
+<!--{#                    <span ><p class = "drop-down-descr">Changing the language will show only those stories which are available in the chosen language<p></span>#}-->
+<!--{#                </li>#}-->
+<!--{#                <li>#}-->
+<!--{#                    <a class="page-nav-link" itemprop="url" href="{% url "map-list" %}"">#}-->
+<!--{#                        <span  itemprop="name">{% trans "Stories on a map" %}</span>#}-->
+<!--{#                    </a>#}-->
+<!--{#                </li>#}-->
+<!--{#                <li><a  href="#">By Authors</a></li>#}-->
+<!--{#                <li><a  href="#">By Photographers</a></li>#}-->
+<!--{#                <li><a  href="#">By Tongues</a></li>#}-->
             </ul>
         </div>
-        </div>
-        <div class="row footer-social-icons">
-            <div class="col-lg-12">
-                <h4>Connect</h4>
-                <span><a itemprop="sameAs" href="https://facebook.com/{{ SOCIAL_FACEBOOK }}" target="_blank"><i class="fa fa-facebook-official"></i></a></span>
-                <span><a itemprop="sameAs" href="https://twitter.com/{{ SOCIAL_TWITTER }}" target="_blank"><i class="fa fa-twitter"></i></a></span>
-                <span><a itemprop="sameAs" href="{% url "feeds_list_page" %}"><i class="fa fa-rss"></i></a></span>
-                <span><a itemprop="sameAs" href="https://github.com/{{ SOCIAL_GITHUB_REPO }}" target="_blank"><i class="fa fa-github"></i></a></span>
-            </div>
         </div>
         <div class="row">
             <span class="hidden" itemprop="name">{{ site.site_name }}</span>
