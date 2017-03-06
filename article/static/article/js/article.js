@@ -29,7 +29,7 @@ $(function() {
 
     $('.rich-text img').each(function() {
     	  $(this).wrap('<a class="gallery" href="javascript:void(0)"></a>');
-        $(this).parents('p').first().append('<i class="fa fa-arrows-alt fa-inverse img-hover"></i>').css("position", "relative");
+        $(this).parents('a').first().prepend('<i class="fa fa-expand fa-invert"></i>').css("position", "relative");
     });
 
     $('.rich-text .gallery').magnificPopup({
