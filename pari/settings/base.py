@@ -266,9 +266,6 @@ LANGUAGES = (
     ("ur", _("Urdu")),
 )
 
-# Mapping of state with state codes.
-# STATE_CHOICES = []
-
 SITE_ID = 1
 
 SITE_TITLE = ""

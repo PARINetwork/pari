@@ -61,7 +61,7 @@ class Face(Page):
         index.SearchField('quote'),
         index.SearchField('get_locations_index'),
         index.SearchField('get_photographers_index'),
-        index.SearchField('get_adivasi_index'),
+        index.SearchField('adivasi'),
     )
 
     def get_locations_index(self):
@@ -69,9 +69,6 @@ class Face(Page):
 
     def get_photographers_index(self):
         return self.image.get_all_photographers()
-
-    def get_adivasi_index(self):
-        return "adivasi" if self.adivasi else ""
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('image'),
