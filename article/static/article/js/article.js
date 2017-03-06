@@ -63,4 +63,10 @@ $(function() {
 	          }
 	      }
     });
+
+    $('.preview').on('click', function (event) {
+		event.preventDefault();
+		$('.rich-text .gallery').magnificPopup('open');
+    });
+
 });
