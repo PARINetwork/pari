@@ -193,7 +193,7 @@
                      data-long="
                              {% for location in article.locations.all %}{{ location.point.y }}{% if not forloop.last %},{% endif %}{% endfor %}"></div>
             {% endif %}
-            <div itemprop="articleBody">
+            <div itemprop="articleBody" class="article-content">
                 {{ article.content|richtext }}
 	        </div>
     </div>
