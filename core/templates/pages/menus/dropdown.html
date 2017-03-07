@@ -2,7 +2,7 @@
 
 <li class="dropdown stories">
     <a class="dropdown-toggle" data-toggle="dropdown" itemprop="url" href="#">
-        <span itemprop="name">{% trans "Stories" %}</span>
+        <span itemprop="name" {% if "stories" in tab %} class="active-tab" {%endif%}>{% trans "Stories" %}</span>
         <i class="Chevron"></i>
     </a>
     <div class="dropdown-menu mega-nav">
@@ -11,17 +11,17 @@
                 <h5>CATEGORIES</h5>
                 <ul class="list-unstyled clear-margins">
                     <li>
-                        <a itemprop="url" href="{% url "category-detail" slug="things-we-make" %}">
+                        <a itemprop="url" href="{% url "story-detail" slug="things-we-make" %}">
                         <span itemprop="name">{% trans "Things we make" %}</span>
                         </a>
                     </li>
                     <li>
-                        <a itemprop="url" href="{% url "category-detail" slug="things-we-do" %}">
+                        <a itemprop="url" href="{% url "story-detail" slug="things-we-do" %}">
                         <span itemprop="name">{% trans "Things we do" %}</span>
                         </a>
                     </li>
                     <li>
-                        <a itemprop="url" href="{% url "category-detail" slug="headgear" %}">
+                        <a itemprop="url" href="{% url "story-detail" slug="headgear" %}">
                         <span itemprop="name">{% trans "Things we wear" %}</span>
                         </a>
                     </li>
@@ -35,17 +35,17 @@
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <ul class="list-unstyled clear-margins with-out-title">
                     <li>
-                        <a itemprop="url" href="{% url "category-detail" slug="farming-and-its-crisis" %}">
+                        <a itemprop="url" href="{% url "story-detail" slug="farming-and-its-crisis" %}">
                         <span itemprop="name">{% trans "Farming & its crisis" %}</span>
                         </a>
                     </li>
                     <li>
-                        <a itemprop="url" href="{% url "category-detail" slug="resource-conflicts" %}">
+                        <a itemprop="url" href="{% url "story-detail" slug="resource-conflicts" %}">
                         <span itemprop="name">{% trans "Resource Conflicts" %}</span>
                         </a>
                     </li>
                     <li>
-                        <a itemprop="url" href="{% url "category-detail" slug="dalits" %}">
+                        <a itemprop="url" href="{% url "story-detail" slug="dalits" %}">
                         <span itemprop="name">{% trans "Dalits" %}</span>
                         </a>
                     </li>
@@ -85,7 +85,7 @@
 </li>
 <li class="dropdown gallery">
     <a class="dropdown-toggle" data-toggle="dropdown" itemprop="url" href="#">
-        <span itemprop="name">{% trans "Gallery" %}</span>
+        <span itemprop="name" {% if 'gallery' in tab %} class="active-tab" {%endif%}>{% trans "Gallery" %}</span>
         <i class="Chevron"></i>
     </a>
     <div class="dropdown-menu mega-nav">
@@ -100,12 +100,12 @@
                             </a>
                         </li>
                         <li>
-                            <a itemprop="url" href="{% url "category-detail" slug="visible-work-invisible-women" %}">
+                            <a itemprop="url" href="{% url "gallery-detail" slug="visible-work-invisible-women" %}">
                             <span itemprop="name">{% trans "Exhibitions" %}</span>
                             </a>
                         </li>
                         <li>
-                            <a itemprop="url" href="{% url "category-detail" slug="photozone" %}">
+                            <a itemprop="url" href="{% url "gallery-detail" slug="photozone" %}">
                             <span itemprop="name">{% trans "PARI Pics" %}</span>
                             </a>
                         </li>
@@ -116,7 +116,7 @@
                     <h5>VIDEOS</h5>
                     <ul class="list-unstyled clear-margins">
                         <li>
-                            <a itemprop="url" href="{% url "category-detail" slug="Little takes" %}">
+                            <a itemprop="url" href="{% url "gallery-detail" slug="Little takes" %}">
                             <span itemprop="name">{% trans "Little Takes" %}</span>
                             </a>
                         </li>
@@ -127,7 +127,7 @@
                         {#              </li>#}
                         <li><a href="https://www.youtube.com/{{ SOCIAL_YOUTUBE }}" target="_blank">Youtube</a></li>
                         <li>
-                            <a class="page-nav-link" itemprop="url" href="{% url "category-detail" slug="videozone" %}">
+                            <a class="page-nav-link" itemprop="url" href="{% url "gallery-detail" slug="videozone" %}">
                             <span itemprop="name">{% trans "View all videos »" %}</span>
                             </a>
                         </li>
@@ -137,12 +137,12 @@
                     <h5>AUDIO</h5>
                     <ul class="list-unstyled clear-margins">
                         <li>
-                            <a itemprop="url" href="{% url "category-detail" slug="audiozone" %}">
+                            <a itemprop="url" href="{% url "gallery-detail" slug="audiozone" %}">
                             <span itemprop="name">{% trans "Music" %}</span>
                             </a>
                         </li>
                         <li>
-                            <a itemprop="url" href="{% url "category-detail" slug="tongues" %}">
+                            <a itemprop="url" href="{% url "gallery-detail" slug="tongues" %}">
                             <span itemprop="name">{% trans "Tongues" %}</span>
                             </a>
                         </li>
@@ -168,7 +168,7 @@
                         </li>
                         <li>
                             <span>Explore the facial diversity of India. </span>
-                            <a class="page-nav-link" itemprop="url" href="{% url "category-detail" slug="faces" %}">
+                            <a class="page-nav-link" itemprop="url" href="{% url "gallery-detail" slug="faces" %}">
                             <span itemprop="name">{% trans "View Faces »" %}</span>
                             </a>
                         </li>
@@ -183,7 +183,9 @@
                         </li>
                         <li>
                             <span>Pictures and their spoken story. </span>
-                            <a class="page-nav-link" href="#">View all categories »</a>
+                             <a class="page-nav-link" itemprop="url" href="{% url "talking-album-list" %}">
+                                <span itemprop="name">{% trans "View talking albums »" %}</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -204,33 +206,33 @@
     <!--</a>-->
     <!--</li>-->
     <!--<li class="dropdown">-->
-    <!--<a itemprop="url" href="{% url "category-detail" slug="faces" %}">-->
+{#    <!--<a itemprop="url" href="{% url "category-detail" slug="faces" %}">-->#}
     <!--<span class="glyphicon glyphicon-user"></span>-->
-    <!--<span itemprop="name">{% trans "Faces" %}</span>-->
+{#    <!--<span itemprop="name">{% trans "Faces" %}</span>-->#}
     <!--</a>-->
     <!--</li>-->
     <!--<li class="dropdown">-->
-    <!--<a itemprop="url" href="{% url "category-detail" slug="videozone" %}">-->
+{#    <!--<a itemprop="url" href="{% url "category-detail" slug="videozone" %}">-->#}
     <!--<span class="glyphicon glyphicon-film"></span>-->
     <!--<span itemprop="name">{% trans "Video Zone" %}</span>-->
     <!--</a>-->
     <!--</li>-->
     <!--<li class="dropdown">-->
-    <!--<a itemprop="url" href="{% url "category-detail" slug="audiozone" %}">-->
+{#    <!--<a itemprop="url" href="{% url "category-detail" slug="audiozone" %}">-->#}
     <!--<span class="glyphicon glyphicon-volume-up"></span>-->
-    <!--<span itemprop="name">{% trans "Audio Zone" %}</span>-->
+{#    <!--<span itemprop="name">{% trans "Audio Zone" %}</span>-->#}
     <!--</a>-->
     <!--</li>-->
     <!--<li class="dropdown">-->
-    <!--<a itemprop="url" href="{% url "category-detail" slug="photozone" %}">-->
+{#    <!--<a itemprop="url" href="{% url "category-detail" slug="photozone" %}">-->#}
     <!--<span class="glyphicon glyphicon-camera"></span>-->
-    <!--<span itemprop="name">{% trans "Photo Zone" %}</span>-->
+{#    <!--<span itemprop="name">{% trans "Photo Zone" %}</span>-->#}
     <!--</a>-->
     <!--</li>-->
     <!--<li class="dropdown">-->
-    <!--<a itemprop="url" href="{% url "category-detail" slug="visible-work-invisible-women" %}">-->
+{#    <!--<a itemprop="url" href="{% url "category-detail" slug="visible-work-invisible-women" %}">-->#}
     <!--<span class="glyphicon glyphicon-eye-open"></span>-->
-    <!--<span itemprop="name">{% trans "P Sainath's Online Photo Exhibition" %}</span>-->
+{#    <!--<span itemprop="name">{% trans "P Sainath's Online Photo Exhibition" %}</span>-->#}
     <!--</a>-->
     <!--</li>-->
     <!--</ul>-->

@@ -55,6 +55,7 @@ class LocationList(ListView):
             context["articles_checked"], context["albums_checked"], \
                 context["faces_checked"] = True, True, True
         context['MAP_KEY'] = settings.GOOGLE_MAP_KEY
+        context['tab'] = 'stories'
         return context
 
 
