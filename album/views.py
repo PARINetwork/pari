@@ -24,7 +24,6 @@ class AlbumList(ListView):
         context = super(AlbumList, self).get_context_data(*args, **kwargs)
 
         filter_param = self.kwargs['filter']
-        print filter_param
         if filter_param == "talking":
             slide_id = AlbumSlide.objects.exclude(audio='').values_list('page__id')
             qs = self.get_queryset().filter(id__in=slide_id)
@@ -43,6 +42,7 @@ class AlbumList(ListView):
                 slide_photo_graphers.extend(slide.image.photographers.all())
             photographers[album.id] = set(slide_photo_graphers)
         context["photographers"] = photographers
+        context["title"] = "Albums"
         return context
 
 

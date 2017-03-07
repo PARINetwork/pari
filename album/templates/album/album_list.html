@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block extra_css %}
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}album/css/album_list.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/article.less">
 {% endblock %}
 
 {% block extra_head %}
@@ -23,35 +23,37 @@
 {% block breadcrumb_menu %}
     <li class="active">{% trans "Albums" %}</li>
 {% endblock %}
-
 {% block main %}
-    <div class="content-container container">
-      <div class="album-grid">
-	{% for album in albums %}
-	{% if forloop.first or forloop.counter0|divisibleby:"3" %}
-	<div class="row">
-	{% endif %}
-          <div class="col-lg-4 col-md-4 col-sm-4">
-            <div class="album">
-              <a href="{{ album.get_absolute_url }}">
-		<div class="stack">
-                  <div class="ribbon-wrapper">
-                    <div class="ribbon">{{ album.slides.count }}</div>
-                  </div>{% with album.slides.all|random as random_cover %}{% image random_cover.image fill-300x250 as cover_image %}
-                  <img class="img-responsive" src="{{ cover_image.url }}" alt="{{ cover_image.description|striptags }}">{% endwith %}
-		</div>
-		<div class="caption">
-                  <p>{{ album.description|striptags }}</p>
-                  <h3>{{ album.title }}</h3>
-                  <p class="pull-right">{% for photographer in photographers|get_item:album.id  %}{{ photographer.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
-		</div>
-              </a>
+    {% include "includes/grid_title.html" %}
+    <div class="filter-list-container">
+        <div class="gallery-tile-row">
+            <div class="row">
+                {% include "includes/language_filter.html" %}
+                {% for album in albums %}
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 grid-list">
+                        <div class="grid-container">
+                            <div class="video-image-container">
+                                <a href="{{ album.get_absolute_url }}">
+    {#                            <div class="stack">#}
+    {#                                <div class="ribbon-wrapper">#}
+    {#                                    <div class="ribbon">{{ album.slides.count }}</div>#}
+    {#                                </div>#}
+                                    {% with album.slides.all|random as random_cover %}{% image random_cover.image fill-300x250 as cover_image %}
+                                        <img class="img-responsive" src="{{ cover_image.url }}" alt="{{ cover_image.title }}">
+                                    {% endwith %}
+    {#                            </div>#}
+                                </a>
+                            </div>
+                                <div class="caption">
+                                    <p>{{ album.description|striptags }}</p>
+                                    <h3>{{ album.title }}</h3>
+                                    <p class="pull-right">{% for photographer in photographers|get_item:album.id  %}{{ photographer.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-          </div>
-	{% if forloop.last or forloop.counter|divisibleby:"3" %}
-	</div>
-	{% endif %}
-	{% endfor %}
-      </div>
+        </div>
     </div>
 {% endblock %}
