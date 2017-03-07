@@ -14,6 +14,7 @@
 
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/article.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/album/home.less">
 {% endblock %}
 
 {% block extra_head %}
@@ -32,11 +33,13 @@
                 {% for album in albums %}
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 grid-list">
                         <div class="grid-container">
-                            <div class="video-image-container">
+                            <div class="gallery-image-container">
                                 <a href="{{ album.get_absolute_url }}">
     {#                            <div class="stack">#}
     {#                                <div class="ribbon-wrapper">#}
-    {#                                    <div class="ribbon">{{ album.slides.count }}</div>#}
+                                    <div class="images-count">
+                                        <span>{{ album.slides.count }}</span>
+                                    </div>
     {#                                </div>#}
                                     {% with album.slides.all|random as random_cover %}{% image random_cover.image fill-300x250 as cover_image %}
                                         <img class="img-responsive" src="{{ cover_image.url }}" alt="{{ cover_image.title }}">
@@ -45,9 +48,16 @@
                                 </a>
                             </div>
                                 <div class="caption">
-                                    <p>{{ album.description|striptags }}</p>
                                     <h3>{{ album.title }}</h3>
-                                    <p class="pull-right">{% for photographer in photographers|get_item:album.id  %}{{ photographer.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+                                    <div class="margin-top-20px">
+                                        {% for photographer in photographers|get_item:album.id  %}
+                                            <span class="link-dark-primary">{{ photographer.name }}</span>
+                                            {% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="margin-top-20px">
+                                        <span class="link-dark font-xs">{{ album.description|striptags }}</span>
+                                    </div>
                                 </div>
                             </a>
                         </div>

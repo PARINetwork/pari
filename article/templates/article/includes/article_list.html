@@ -4,7 +4,7 @@
 {% for article in articles %}
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 grid-list">
         <div class="grid-container">
-            <div class="video-image-container">
+            <div class="gallery-image-container">
                 <a href="{{ article.get_absolute_url }}">
                     {% if article.featured_image %}{% image article.featured_image fill-270x270 as featured_image %}
                     <img class="img-responsive" src="{{ featured_image.url }}" alt="{{ article.featured_image.title }}">
