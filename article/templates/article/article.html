@@ -65,12 +65,6 @@
 {% image article.featured_image max-1400x1120 as featured_image %}
 <div class="full-row">
   {% image article.featured_image max-1400x1120 %}
-  <div class="info visible-lg-12">
-    <a href="javascript:void(0);" class="animated infinite bounce">
-      <i class="fa fa-angle-double-down"></i>
-      <p>Scroll down to view the article</p>
-    </a>
-  </div>
 </div>
 {% endif %}
 {{ block.super }}
@@ -94,18 +88,20 @@
                                     {% endfor %}
                                 {%  endif %}
                             </span>
-                            <span class="date">
-                                 {% if article.original_published_date %}
-	                                <a href="{% url "archive-detail" year=article.original_published_date.year month=article.original_published_date.month %}"> <span itemprop="datePublished">{{ article.original_published_date|date }}</span> </a>
-	                             {% else %}
-	                             {% if article.first_published_at %}<a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month %}"> <span itemprop="datePublished">  {{ article.first_published_at|date }}</span></a>{% endif %}
-	                             {% endif %}
-                            </span>
+                            {% if article.original_published_date %}
+                                <a href="{% url "archive-detail" year=article.original_published_date.year month=article.original_published_date.month %}">
+                                    <span itemprop="datePublished" class="date  ">{{ article.original_published_date|date }}</span>
+                                </a>
+                            {% else %}
+                                {% if article.first_published_at %}
+                                    <a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month %}">
+                                        <span itemprop="datePublished" class="date">  {{ article.first_published_at|date }}</span></a>{% endif %}
+                            {% endif %}
                         </div>
                         <h2><span itemprop="headline">{{ article.title }}</span></h2>
                         <p>{{ article.strap }}</p>
                         <ul class="clearfix">
-                            <li><{% for author in article.authors.all %}
+                            <li>{% for author in article.authors.all %}
                                     {% if not forloop.first %}
         {% if not forloop.last %},{% else %}{% trans "and" %}{% endif %}
       {% endif %}
@@ -188,10 +184,7 @@
                     </div>
                 {% endfor %}
                 </p>
-                <div id="map" class="map-view" data-lat="
-                        {% for location in article.locations.all %}{{ location.point.x }}{% if not forloop.last %},{% endif %}{% endfor %}"
-                     data-long="
-                             {% for location in article.locations.all %}{{ location.point.y }}{% if not forloop.last %},{% endif %}{% endfor %}"></div>
+
             {% endif %}
             <div itemprop="articleBody" class="article-content">
                 {{ article.content|richtext }}
@@ -237,13 +230,7 @@
 	</div>
       </div>
     </div>
-  <div class="row">
-    <div class="col-lg-1 col-md-1 col-sm-1"></div>
-    <div class="col-lg-9 col-md-9 col-sm-9 donate_cta">
-      <h4>{{ site.site_name }} is <strong>your</strong> archive. Please consider making a <a href="{% url "donate_form" %}">donation</a>.</h4>
-    </div>
-  </div>
-    <div class="container article-grid">
+    <div class="container article-grid related-stories">
         <h4>RELATED STORIES</h4>
         <div class="row">
            {% for related_article in article.related_articles %}
@@ -277,9 +264,8 @@
                                 <span>
                                     {% for location in related_article.locations.all %}
                                         <i class="fa fa-map-marker"></i>
-                                        <a class="title" href="{% url "location-detail" location.slug %}">
+                                        <a  href="{% url "location-detail" location.slug %}">
                                             <span>{{  location.name }}</span>
-                                            <i class="fa fa-chevron-right"></i>
                                         </a>
                                     {%  endfor %}
                                 </span>
