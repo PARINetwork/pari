@@ -13,6 +13,12 @@ class ResourceList(ListView):
         qs = super(ResourceList, self).get_queryset(*args, **kwargs)
         return qs.order_by('-first_published_at')
 
+    def get_context_data(self, **kwargs):
+        context = super(ResourceList, self).get_context_data(**kwargs)
+        context['tab'] = 'resources'
+        return context
+
+
 
 class ResourceDetail(DetailView):
     context_object_name = "resource"

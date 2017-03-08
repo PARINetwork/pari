@@ -15,6 +15,9 @@ class CategoriesList(ListView):
     def get_context_data(self, **kwargs):
         context = super(CategoriesList, self).get_context_data(**kwargs)
         context["tab"] = 'stories'
+        context["gallery"] = ['audiozone', 'Little takes',
+                              'tongues', 'visible-work-invisible-women',
+                              'photozone', 'videozone']
         return context
 
 
@@ -49,6 +52,7 @@ class GalleryDetail(DetailView):
         context["title"] = category_title.get(category_name, category_name)
         context["tab"] = 'gallery'
         return context
+
 
 class StoryDetail(DetailView):
     context_object_name = "category"

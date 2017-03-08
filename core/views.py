@@ -38,6 +38,7 @@ def home_page(request, slug="home-page"):
         "translations": translations
     })
 
+
 def static_page(request, slug=None):
     try:
         page = Page.objects.get(slug=slug)
@@ -48,14 +49,18 @@ def static_page(request, slug=None):
     translations = get_translations_for_page(page.specific)
     return render(request, "core/static_page.html", {
         "self": page.specific,
-        "translations": translations
+        "translations": translations,
+        "tab": 'about-pari',
     })
+
 
 def contribute(request, slug=None):
     page = StaticPage.objects.get(slug=slug)
     return render(request, "core/contribute.html", {
-        "self": page
+        "self": page,
+        "tab": 'about-pari'
     })
+
 
 def contact_us(request):
     if request.method == "POST":
@@ -67,13 +72,16 @@ def contact_us(request):
     else:
         form = ContactForm()
     return render(request, "core/contact_us.html", {
-        "contact_form": form
+        "contact_form": form,
+        "tab": "about-pari"
+
     })
 
 
 # TODO: Remove the below two functions when we migrate to wagtail 1.2
 
 DEFAULT_PAGE_KEY = 'p'
+
 
 def paginate(request, items, page_key=DEFAULT_PAGE_KEY, per_page=20):
     page = request.GET.get(page_key, 1)
@@ -108,15 +116,15 @@ def search(request):
         return render(request, "wagtailadmin/pages/search_results.html", {
             'pages': pages,
             'query_string': q,
-	    'pagination_query_params': ('q=%s' % q) if q else ''
-	})
+            'pagination_query_params': ('q=%s' % q) if q else ''
+        })
     else:
         return render(request, "wagtailadmin/pages/search.html", {
-	    'search_form': form,
-	    'pages': pages,
-	    'query_string': q,
-	    'pagination_query_params': ('q=%s' % q) if q else ''
-	})
+            'search_form': form,
+            'pages': pages,
+            'query_string': q,
+            'pagination_query_params': ('q=%s' % q) if q else ''
+        })
 
 
 def donate_form(request):
@@ -207,16 +215,17 @@ def page_preview(request, page_id):
 def sitemap_index(request):
     site = Site.objects.get(hostname=request.get_host())
     pages = Page.objects.filter(live=True).exclude(title="Translations")
-    years = pages.datetimes("first_published_at", "year")\
-                 .order_by("-datetimefield")
+    years = pages.datetimes("first_published_at", "year") \
+        .order_by("-datetimefield")
     last_upd = []
     for year in years:
-        last_upd.append(pages.filter(first_published_at__year=year.year)\
+        last_upd.append(pages.filter(first_published_at__year=year.year) \
                         .aggregate(dt=Max("latest_revision_created_at")))
     return render(request, "sitemaps/sitemap.xml", {
         "site": site,
         "years": zip(years, last_upd)
     }, content_type="text/xml")
+
 
 @cache_page(86400)
 def sitemap_year(request, year=None):

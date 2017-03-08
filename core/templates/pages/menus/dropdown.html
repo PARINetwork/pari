@@ -239,12 +239,12 @@
 </li>
 <li class="dropdown">
     <a class="dropdown-toggle" itemprop="url" href="{% url "resource-list" %}">
-    <span itemprop="name">{% trans "Resources" %}</span>
+    <span itemprop="name" {% if "resources" in tab %} class="active-tab" {%endif%}>{% trans "Resources" %}</span>
     </a>
 </li>
 <li class="dropdown about-pari">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-        <span>{% trans "About PARI" %}</span>
+        <span {% if "about-pari" in tab %} class="active-tab" {%endif%}>{% trans "About PARI" %}</span>
         <i class="fa fa-angle-down"></i>
     </a>
     <div class="dropdown-menu mega-nav">

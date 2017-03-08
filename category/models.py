@@ -26,4 +26,4 @@ class Category(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("gallery-detail", kwargs={"slug": self.slug})
+        return reverse("story-detail", kwargs={"slug": self.slug})

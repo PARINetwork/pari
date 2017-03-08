@@ -28,6 +28,7 @@ class AlbumList(ListView):
             slide_id = AlbumSlide.objects.exclude(audio='').values_list('page__id')
             qs = self.get_queryset().filter(id__in=slide_id)
             context['albums'] = qs
+            context['tab'] = 'gallery'
         elif filter_param == "other":
             slide_id = AlbumSlide.objects.filter(audio='').values_list('page__id')
             qs = self.get_queryset().filter(id__in=slide_id)
