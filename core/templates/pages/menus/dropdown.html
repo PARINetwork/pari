@@ -363,7 +363,7 @@
 </li>
 <li class="dropdown">
     <a class="dropdown-toggle" itemprop="url" href="{% url "static_page" slug="donate" %}">
-    <span itemprop="name">{% trans "Donate to PARI" %}</span>
+    <span itemprop="name"  {% if "donate" in tab %} class="active-tab" {%endif%}>{% trans "Donate to PARI" %} </span>
     </a>
 </li>
 <li class="dropdown">

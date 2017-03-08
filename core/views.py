@@ -46,11 +46,14 @@ def static_page(request, slug=None):
         raise Http404
     if page.specific_class == HomePage:
         return home_page(request, page.slug)
+    active_tab = 'about-pari'
+    if 'donate' in slug:
+        active_tab = 'donate'
     translations = get_translations_for_page(page.specific)
     return render(request, "core/static_page.html", {
         "self": page.specific,
         "translations": translations,
-        "tab": 'about-pari',
+        "tab": active_tab,
     })
 
 
