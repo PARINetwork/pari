@@ -126,21 +126,25 @@
 }
 
 @media (max-width: 767px) {
-
-  #mainnav.navbar-inverse .navbar-nav .dropdown{
-    .dropdown-menu.mega-nav{
-     padding: 0;
-    }
-    .dropdown-toggle{
-      padding: 20px;
-      border-bottom: 1px solid @light-grey;
-      .fa-angle-down{
-        float: right;
+  #mainnav .navbar-header .navbar-brand-title{
+    .font-size(12);
+  }
+  #mainnav.navbar-inverse{
+    .navbar-nav .dropdown{
+      .dropdown-menu.mega-nav{
+        padding: 0;
       }
-    }
-    &:last-child{
-      a{
-        border: none;
+      .dropdown-toggle{
+        padding: 20px;
+        border-bottom: 1px solid @light-grey;
+        .fa-angle-down{
+          float: right;
+        }
+      }
+      &:last-child{
+        a{
+          border: none;
+        }
       }
     }
   }
