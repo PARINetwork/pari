@@ -16,21 +16,18 @@
           background: @primary-color;
         }
       }
-
     }
     .navbar-collapse {
       border-color: @border;
     }
     .navbar-nav {
       .dropdown {
-        float: left;
         .dropdown-toggle {
           padding-top: 30px;
           padding-bottom: 30px;
           color: @text-color-primary-nav;
           .font-size(14);
           span {
-            float: left;
           }
           &:hover, &:focus {
             color: @text-color-primary-nav-hover;
@@ -39,34 +36,12 @@
             color: @text-color-primary-nav-hover;
             .font-size(12);
           }
-          .Chevron {
-            position: relative;
-            height: 5px;
-            width: 10px;
-            float: left;
-            margin: 7px 0 0 5px;
-          }
-          .Chevron:before,
-          .Chevron:after {
-            position: absolute;
-            display: block;
-            content: "";
-            border: 5px solid transparent;
-          }
-          .Chevron:before {
-            top: 0;
-            border-top-color: @primary-color;
-          }
-          .Chevron:after {
-            top: -2px;
-            border-top-color: @bg-primary-nav;
-          }
           .fa-search {
             color: @icon-color-search;
             .font-size(16);
           }
         }
-        &.open {
+        &.open, &.active {
           .dropdown-toggle {
             background: @bg-primary-nav-hover;
             color: @text-color-primary-nav-hover;
@@ -133,25 +108,40 @@
     }
   }
   .navbar-header {
-    width: 100%;
+
     .navbar-brand {
-      margin-top: 24px;
-      margin-bottom: 24px;
-      padding: 0;
-      float: left;
-      height: 37px;
-      width: 67px;
+      margin-top: 5px;
       img {
-        height: 37px;
-        width: 67px;
+        max-width: 67px;
       }
     }
     .navbar-brand-title {
       &:extend(.title);
       color: @text-color-brand-title;
       .font-size(16);
-      margin: 30px 0 0 20px;
-      float: left;
+      display: inline-block;
+      margin: 30px 0;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+
+  #mainnav.navbar-inverse .navbar-nav .dropdown{
+    .dropdown-menu.mega-nav{
+     padding: 0;
+    }
+    .dropdown-toggle{
+      padding: 20px;
+      border-bottom: 1px solid @light-grey;
+      .fa-angle-down{
+        float: right;
+      }
+    }
+    &:last-child{
+      a{
+        border: none;
+      }
     }
   }
 }
@@ -252,7 +242,7 @@
   //}
   .stories {
     .dropdown-menu {
-      min-width: 900px;
+      min-width: 700px;
       right: -330px;
     }
   }
