@@ -122,30 +122,70 @@
 }
 
 @media (max-width: @screen-xs-max) {
+  #mainnav{
+    .navbar-header{
+      .navbar-brand{
+        float: right;
+        padding: 7px 20px 7px 0;
+        img{
+          width: 57px;
+        }
+      }
+      .navbar-brand-title{
+        display: none;
+      }
+    }
+    &.navbar-inverse .navbar-toggle{
+      margin-top: 20px;
+    }
+  }
   #main_content {
     margin-top: 0px;
     margin-bottom: 0px;
   }
+  .filter-lang .filter-label{
+    margin-right: 5px;
+  }
+  .filter-list-container{
+    margin-top: 20px;
+  }
   .gallery-title{
     margin-bottom: 0;
+    h1{
+      .font-size(54);
+      line-height: 54px;
+    }
     .gallery-title-icon{
       padding-top: 0;
+      position: absolute;
+      top: 10px;
+      z-index: 99999999;
+
+      &.go-back{
+        width: auto;
+        left: 0px;
+
+      }
+      &.share-icon{
+        width: auto;
+        left: 100px;
+      }
     }
     .prev{
-      border: none;
       margin-bottom: 10px;
+      padding: 0 10px 0 0;
+      border-color: @light-grey;
+      i{
+        margin: 0;
+      }
     }
     .gallery-social-icon{
       border: none;
-      margin-top: 10px;
+      margin-top: 4px;
       i{
         padding-left: 0;
         padding-right: 20px;
       }
     }
-    .text-right, .text-center{
-      text-align: left;
-    }
-
   }
 }
