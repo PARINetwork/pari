@@ -1,5 +1,6 @@
 @import "../../colors/colors";
 @import "../../layout/mixins";
+@import "../../layout/responsive";
 @import "config";
 
 #main_content {
@@ -17,6 +18,9 @@
     position: absolute;
     z-index: 1;
     bottom: 0;
+    width: 100%;
+    background: @bg-dark-transparent;
+    padding: 30px 0 0 0;
     .row-1 {
       .font-size(16);
       .tag {
@@ -43,15 +47,49 @@
     }
     .banner-label{
       color: @text-color-banner-lang;
+      padding-right: 8px;
+    }
+    .banner-dropdown {
+      ul {
+        margin: 0 0 20px 0;
+        color: @text-light;
+        li {
+          float: none;
+          padding: 0;
+          border-top: none;
+          border-right: none;
+          margin: 0 0 20px 0;
+          color: #FFF;
+          float: none;
+          position: relative;
+          background: rgba(0,0,0,0.3);
+          a {
+            color: @text-light;
+            &:hover {
+              color: @link-primary;
+            }
+          }
+        }
+      }
+    }
+    .fa-angle-down:before{
+      margin-left: auto;
+      margin-top: 0.1em;
+      color: @primary-color;
+      font-size: 1.2em;
+    }
+    .banner-language-list{
+      position: relative;
     }
     ul {
+
       margin: 0 0 20px 0;
       color: @text-light;
       li {
-        float: left;
-        padding: 10px 20px;
-        border-top: 1px solid @border-banner;
-        border-right: 1px solid @border-banner;
+          float: left;
+          padding: 10px 20px;
+          border-top: 1px solid @border-banner;
+          border-right: 1px solid @border-banner;
         &:last-child {
           border-right: none;
         }
@@ -180,5 +218,14 @@
     border: none;
     color: @text-light;
     margin-right: 20px;
+  }
+}
+
+
+@media (max-width: @screen-xs-max) {
+  .banner-container .banner-info{
+    position: static;
+    background: @bg-dark;
+
   }
 }

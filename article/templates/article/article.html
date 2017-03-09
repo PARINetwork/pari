@@ -64,7 +64,94 @@
 {% if article.featured_image %}
 {% image article.featured_image max-1400x1120 as featured_image %}
 <div class="full-row">
-  {% image article.featured_image max-1400x1120 %}
+    <div class="banner-container">
+        {% image article.featured_image max-1400x1120 %}
+        <div class="banner-info">
+        <div class="container">
+            <div class="row-1">
+                <span class="tag">
+                        {% if article.categories.count %}
+                            {% for category in article.categories.all %}
+                                {{ category }}
+                                {% if not forloop.last %} ,
+                                {% else %} •
+                                {%  endif  %}
+                            {% endfor %}
+                        {%  endif %}
+                    </span>
+                    {% if article.original_published_date %}
+                        <a href="{% url "archive-detail" year=article.original_published_date.year month=article.original_published_date.month %}">
+                            <span itemprop="datePublished" class="date  ">{{ article.original_published_date|date }}</span>
+                        </a>
+                    {% else %}
+                        {% if article.first_published_at %}
+                            <a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month %}">
+                                <span itemprop="datePublished" class="date">  {{ article.first_published_at|date }}</span>
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+             <h2><span itemprop="headline">{{ article.title }}</span></h2>
+             <p>{{ article.strap }}</p>
+             <ul class="clearfix">
+                 <li>{% for author in article.authors.all %}
+                        {% if not forloop.first %}
+                            {% if not forloop.last %},{% else %}{% trans "and" %}{% endif %}
+                        {% endif %}
+                        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                 <a itemprop="url" href="{% url "author-detail" author.slug %}">
+      <span itemprop="name">{{ author.name }}</span>
+  </a>
+  <span class="hidden" itemprop="homeLocation" itemtype="http://schema.org/Place">
+      <span itemprop="address">{{ author.twitter_username }}</span>
+  </span>
+</span>
+                    {% endfor %}</li>
+                 <li >
+                    {% if translations and translations|length > 1 %}
+                    <span class="filter-value">
+                        <span class="banner-label">Language</span>
+                        <i class="fa fa-angle-down pull-right" aria-hidden="true"></i>
+                      <select class="select-no-style pull-right" name="lang" onchange="location = this.value;">
+                      {% for translation in translations %}
+                          <option class = "banner-language-list"{% if translation.get_absolute_url == request.get_full_path %} selected="selected"{% endif %} value="{{ translation.get_absolute_url }}" >
+                          <a >{{ translation.get_language_display }}</a>
+{#                               {% blocktrans%}{{ translation.get_language_display }}{% endblocktrans %}#}
+                          </option>
+                      {% endfor %}
+                      </select>
+                    </span>
+                    {% endif %}
+
+
+                 </li>
+                 <li>
+                     <a href="#">
+                         <i class="fa fa-photo"></i>
+                         <span class="preview">Read the story in pictures</span>
+                     </a>
+                 </li>
+                 {% with request.build_absolute_uri as url and item.title as title %}
+                     <li class="social-icon" data-url="{{ url }}">
+                            <span class="banner-label">Share</span>
+                            <a target="_blank"
+                               href="https://twitter.com/home?status={{ title|urlencode }}+{{ url|urlencode }}">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a target="_blank"
+                               href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                 {% endwith %}
+                 <li>
+                     <a class="#" onclick="window.print()">Print this story</a>
+                 </li>
+             </ul>
+         </div>
+        </div>
+     </div>
+
 </div>
 {% endif %}
 {{ block.super }}
@@ -72,91 +159,7 @@
 
 {% block main %}
 <div class="container content-container" itemscope itemtype="http://schema.org/Article">
- <div class="row">
-        <div class="col-lg-12">
-            <div class="banner-container">
-                <div class="container">
-                    <div class="banner-info">
-                        <div class="row-1">
-                            <span class="tag">
-                                {% if article.categories.count %}
-                                    {% for category in article.categories.all %}
-                                        {{ category }}
-                                        {% if not forloop.last %} ,
-                                        {% else %} •
-                                        {%  endif  %}
-                                    {% endfor %}
-                                {%  endif %}
-                            </span>
-                            {% if article.original_published_date %}
-                                <a href="{% url "archive-detail" year=article.original_published_date.year month=article.original_published_date.month %}">
-                                    <span itemprop="datePublished" class="date  ">{{ article.original_published_date|date }}</span>
-                                </a>
-                            {% else %}
-                                {% if article.first_published_at %}
-                                    <a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month %}">
-                                        <span itemprop="datePublished" class="date">  {{ article.first_published_at|date }}</span></a>{% endif %}
-                            {% endif %}
-                        </div>
-                        <h2><span itemprop="headline">{{ article.title }}</span></h2>
-                        <p>{{ article.strap }}</p>
-                        <ul class="clearfix">
-                            <li>{% for author in article.authors.all %}
-                                    {% if not forloop.first %}
-        {% if not forloop.last %},{% else %}{% trans "and" %}{% endif %}
-      {% endif %}
-      <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <a itemprop="url" href="{% url "author-detail" author.slug %}">
-              <span itemprop="name">{{ author.name }}</span>
-          </a>
-          <span class="hidden" itemprop="homeLocation" itemtype="http://schema.org/Place">
-              <span itemprop="address">{{ author.twitter_username }}</span>
-          </span>
-      </span>
-      {% endfor %}</li>
-                            <li>
-                                <span class="banner-label">Language</span>
-                                <span class="lang-value">
-                                  {% if translations and translations|length > 1 %}
-                                    <ul  role="menu" aria-labelledby="dropdownMenu1">
-                                      {% for translation in translations %}
-                                        <li role="presentation" itemprop="inLanguage" itemscope itemtype="http://schema.org/Language">
-                                            <a role="menuitem" itemprop="url" tabindex="{{ forloop.counter0 }}" href="{{ translation.get_absolute_url }}">
-                                                <span itemprop="name">{{ translation.get_language_display }}</span>
-                                            </a>
-                                        </li>
 
-                                      {% endfor %}
-                                    </ul>
-{#                                  </span>#}
-                                  {% endif %}
-                                </span>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-photo"></i>
-                                    <span class = "preview">Read the story in pictures</span>
-                                </a></li>
-                            {% with request.build_absolute_uri as url and item.title as title %}
-                            <li class="social-icon" data-url="{{ url }}">
-                                <span class="banner-label">Share</span>
-                                 <a target="_blank" href="https://twitter.com/home?status={{ title|urlencode }}+{{ url|urlencode }}">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                                <a target="_blank" href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                            </li>
-                        {% endwith %}
-                            <li>
-                                <a class="#" onclick="window.print()">Print this story</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
   <div class="row">
     <div class="col-lg-1 col-md-1 col-sm-1"></div>
