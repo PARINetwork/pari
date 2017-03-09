@@ -8,6 +8,8 @@
 {% block extra_js %}
 {{ block.super }}
 <script type="text/javascript" src="{% get_static_prefix %}wagtailadmin/js/modal-workflow.js"></script>
+    <script type="text/javascript" src="{% get_static_prefix %}wagtailadmin/js/page-editor.js"></script>
+<script type="text/javascript" src="{% get_static_prefix %}wagtailadmin/js/vendor/mousetrap.min.js"></script>
 <script type="text/javascript" src="{% get_static_prefix %}js/add_object.js"></script>
 <script type="text/javascript" src="{% get_static_prefix %}js/chosen.jquery.min.js"></script>
 <script type="text/javascript">
@@ -21,14 +23,18 @@ $(function() {
 			$(this).trigger("chosen:updated");
 		    });
 		    if ($(sel).attr("name").search(/locations/) > -1) {
-			$(sel).parents("li").append('<div class="addbutton"><a href="javascript:void(0);" onclick="addObject(\'locations\', \'#' + $(sel).attr('id') + '\');" class="button bicolor icon icon-plus">Add locations</a></div>');
+			$(sel).closest("li").append('<div class="addbutton"><a href="javascript:void(0);" onclick="addObject(\'locations\', \'#' + $(sel).attr('id') + '\');" class="button bicolor icon icon-plus">Add locations</a></div>');
 		    }
 		    if ($(sel).attr("name").search(/photographers/) > -1) {
-			$(sel).parents("li").append('<div class="addbutton"><a href="javascript:void(0);" onclick="addObject(\'photographers\', \'#' + $(sel).attr('id') + '\');" class="button bicolor icon icon-plus">Add photographers</a></div>');
+			$(sel).closest("li").append('<div class="addbutton"><a href="javascript:void(0);" onclick="addObject(\'photographers\', \'#' + $(sel).attr('id') + '\');" class="button bicolor icon icon-plus">Add photographers</a></div>');
 		    }
 		}
 	    });
 	});
+        $("input[id^=id_image][id$=date]").each(function(key, id_date) {
+                console.log(id_date.id);
+                initDateChooser(id_date.id, {"dayOfWeekStart": 0});
+        });
     });
 
     observer.observe(document.querySelector("#upload-list"), {childList: true, subtree: true});

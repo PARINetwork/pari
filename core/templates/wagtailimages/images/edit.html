@@ -8,6 +8,8 @@
 {% block extra_js %}
 {{ block.super }}
 <script type="text/javascript" src="{% get_static_prefix %}wagtailadmin/js/modal-workflow.js"></script>
+<script type="text/javascript" src="{% get_static_prefix %}wagtailadmin/js/page-editor.js"></script>
+<script type="text/javascript" src="{% get_static_prefix %}wagtailadmin/js/vendor/mousetrap.min.js"></script>
 <script type="text/javascript" src="{% get_static_prefix %}js/add_object.js"></script>
 <script type="text/javascript" src="{% get_static_prefix %}js/chosen.jquery.min.js"></script>
 <script type="text/javascript">
@@ -23,6 +25,9 @@ $(function() {
 	if ($(sel).attr("name") === "photographers") {
 	    $(sel).parents("li").append('<div class="addbutton"><a href="javascript:void(0);" onclick="addObject(\'photographers\', \'#id_photographers\');" class="button bicolor icon icon-plus">Add photographers</a></div>');
 	}
+    });
+    $("input[id^=id_][id$=date]").each(function(key, id_date) {
+        initDateChooser(id_date.id, {"dayOfWeekStart": 0});
     });
 });
 </script>
