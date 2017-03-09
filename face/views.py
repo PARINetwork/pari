@@ -17,6 +17,10 @@ class FaceList(ListView):
             'ORDER BY substr(district, 1, 1), first_published_at DESC')
         return qs
 
+    def get_context_data(self):
+        context = super(FaceList, self).get_context_data()
+        context["tab"] = 'gallery'
+        return context
 
 class FaceDetail(ListView):
     context_object_name = "faces"
