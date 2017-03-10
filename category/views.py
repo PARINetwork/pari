@@ -3,7 +3,9 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import Http404
+from django.shortcuts import render
 
+from album.models import Album
 from category.models import Category
 from article.models import Article
 
@@ -83,3 +85,35 @@ class StoryDetail(DetailView):
         context["title"] = category_name
         context["tab"] = 'stories'
         return context
+
+
+def gallery_home_page(request, slug=None):
+    albums = Album.objects.live()
+    articles = Article.objects.live()
+    photographers, talking_album = get_album_and_photographers(albums)
+    video = get_video(articles)
+
+    return render(request, "category/gallery_home_page.html", {
+        'talking_album': talking_album,
+        'photographers': set(photographers),
+        'video': video,
+    })
+
+
+def get_album_and_photographers(albums):
+    talking_album = None
+    for album in albums:
+        if album.slides.first().audio is not '':
+            talking_album = album
+            break
+    photographers = []
+    for slide in album.slides.all():
+        photographers.extend(slide.image.photographers.all())
+    return photographers, talking_album
+
+
+def get_video(articles):
+    for article in articles:
+        if article.categories.filter(name='VideoZone'):
+            return article
+    return None

@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% load i18n wagtailcore_tags wagtailimages_tags %}
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/gallery/gallery.less">
+{% endblock %}
+{% block main %}
+    <div id="main_content">
+        <div class="row">
+            <div class="banner-container gallery-banner">
+                <img class="img-responsive" src="{{ STATIC_URL }}img/stories-1.jpg" alt="sample content">
+                <div class="banner-info">
+                    <div class="container">
+                        <div class="info">
+                            <div>from</div>
+                            <h3>Bahurupi: a family of many faces</h3>
+                            <p>Ankan Roy & Sagarika Basu</p>
+                            <div><a href="#">Read the full story <i class="fa fa-angle-right"></i></a></div>
+                        </div>
+                        <div class="go-full-screen">
+                            <a class="#"><i class="fa fa-arrows-alt"></i> Full Screen</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row gallery-tile">
+                <div class="col-lg-6 col-md-6">
+                    <h4>Pictures in the voice of the beholder</h4>
+                    {% with talking_album.slides.first as first_slide %}
+                        <img class="img-responsive center-align" src="{{ first_slide.image.file.url }}"
+                             alt="sample content">
+                    {% endwith %}
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="gallery-tile-info">
+                        <h1>{{ talking_album.title }}</h1>
+                        <p> {{ talking_album.description|richtext }}</p>
+                        <div class="name-primary">
+                            {% for photographer in photographers %}
+                                <a href="{% url "author-detail" photographer.slug %}"><span>{{ photographer.name }}</span></a>
+                                {% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </div>
+                        <a href="{{ talking_album.get_absolute_url }}">
+                            <span>View this talking album</span>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="view-all">
+                        <a href="{% url "talking-album-list" %}">
+                            <i class="fa  fa-music" aria-hidden="true"></i>
+                            <span>View all Talking Albums</span>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row gallery-tile">
+                <div class="col-lg-6 col-md-6">
+                    <h4>Video stories that speak for themselves</h4>
+                    <img class="img-responsive center-align" src="{{ STATIC_URL }}img/gallery-1.jpg"
+                         alt="sample content">
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="gallery-tile-info">
+                        <h1>{{ video.title }}</h1>
+                        <p>{{ video.strap }}</p>
+                        <div class="name-primary">
+                            {% for author in video.authors.all %}
+                                <a href="{% url "author-detail" author.slug %}">{{ author.name }}</a>
+                                    {% if not forloop.last %},{% endif %}
+                            {% endfor %}
+                        </div>
+                        <a href="#">
+                            <span>Watch this video</span>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="view-all">
+                        <a href="#">
+                            <i class="fa  fa-music" aria-hidden="true"></i>
+                            <span>Watch all videos</span>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row gallery-tile">
+                <div class="col-lg-6 col-md-6">
+                    <h4>Pictures in the voice of the beholder</h4>
+                    <img class="img-responsive center-align" src="{{ STATIC_URL }}img/gallery-1.jpg"
+                         alt="sample content">
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="gallery-tile-info">
+                        <h1>The hill women of Himanchal</h1>
+                        <p>From sunrise to sunset, and sometimes more - a day in the life of the hard-working hill-women
+                            of the Himalayas.</p>
+                        <div class="name-primary">Aparna Karthikeyan</div>
+                        <a href="#">
+                            <span>View this Photo Album</span>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="view-all">
+                        <a href="#">
+                            <i class="fa  fa-music" aria-hidden="true"></i>
+                            <span>View all photo albums</span>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 faces-tile">
+                    <!--<img class="img-responsive" src="{{ STATIC_URL }}img/faces-tile.jpg" alt="sample content">-->
+                    <div class="face-tile-info">
+                        <div class="top-link">
+                            <a href="#" class="name-primary-bold">Photo Albums</a>
+                        </div>
+                        <h2>The facial diversity of India in one place</h2>
+                        <div class="bottom-link">
+                            <a href="#" class="">
+                                <span>View all faces</span>
+                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
