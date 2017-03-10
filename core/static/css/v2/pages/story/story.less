@@ -229,3 +229,46 @@
 
   }
 }
+
+@media print {
+  #header{
+    display: none;
+  }
+  img{
+    max-height: 510px;
+    text-align: left;
+    margin: 0 20px 20px 0;
+    float: left;
+  }
+  .content-map{
+    display: none;
+  }
+  .banner-container{
+    max-height: auto;
+    overflow: visible;
+    position: static;
+    .banner-info{
+      float: left;
+      position: static;
+      background: @bg-dark;
+      h2{
+        color: black;
+      }
+      ul{
+        display: none;
+      }
+    }
+  }
+  .faces{
+    display: none;
+    + img{
+      display: none;
+    }
+  }
+  .related-stories, .article-grid{
+    display: none;
+  }
+  footer{
+    display: none;
+  }
+}
