@@ -69,7 +69,7 @@ class LocationDetail(DetailView):
         articles_qs = Article.objects.live().filter(locations=location)
         images_qs = AffixImage.objects.filter(locations=location)
         albums_slides = AlbumSlide.objects.filter(image__in=images_qs)
-        albums_qs = Album.objects.live().filter(slides=albums_slides)
+        albums_qs = Album.objects.live().filter(slides=albums_slides).distinct()
         live_faces = Face.objects.live()
         faces_qs = live_faces.filter(Q(location=location) | Q(image__in=images_qs))
 
