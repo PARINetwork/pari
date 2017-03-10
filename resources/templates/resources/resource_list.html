@@ -13,8 +13,9 @@
 {% endblock %}
 
 {% block extra_css %}
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/resources.less">
+{#    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/resources.less">#}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/article.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/resources/home.less">
 {% endblock %}
 
 {% block breadcrumb_menu %}
@@ -23,25 +24,28 @@
 
 {% block main %}
     {% trans "Resources" as title %}
-    {% include "includes/grid_title.html" with title=title %}
+    {% trans "All offical and independent reports on rural india" as sub_heading %}
+    {% include "includes/grid_title.html" with title=title sub_heading=sub_heading %}
 
     <div class="filter-list-container">
         <div class="gallery-tile-row">
             <div class="row">
                 {% include "includes/language_filter.html" %}
                 {% for resource in object_list %}
-                    <a href="{{ resource.get_absolute_url }}">
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                      <div class="grid-column">
-                        <div class="image-container">
-                          <img src="{{ resource.embed_thumbnail }}" alt="{{ resource.title }}" width="250" height="240">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 grid-list">
+                        <div class="grid-container">
+                            <div class="gallery-image-container">
+                                <a href="{{ resource.get_absolute_url }}">
+                                    <div class="image-container">
+                                      <img src="{{ resource.embed_thumbnail }}" alt="{{ resource.title }}" width="250" height="240">
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                        <div class="caption">
-                          {{ resource.title|truncatechars:50 }}
+                        <div class="caption margin-top-10px">
+                            {{ resource.title|truncatechars:50 }}
                         </div>
-                      </div>
                     </div>
-                    </a>
                 {% endfor %}
             </div>
         </div>

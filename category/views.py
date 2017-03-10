@@ -30,8 +30,8 @@ class GalleryDetail(DetailView):
     #     return reverse("gallery-detail", kwargs={"slug": self.slug})
     def get_context_data(self, **kwargs):
 
-        category_title = {'VideoZone': 'Videos',
-                          'AudioZone': 'Audios'}
+        category_heading_options = {'VideoZone': {'title': 'Videos', 'sub_heading': 'stories told in moving pictures'},
+                          'AudioZone': {'title': 'Audios', 'sub_heading': 'you could listen all day'}}
         context = super(GalleryDetail, self).get_context_data(**kwargs)
         qs = Article.objects.live()
         qs = qs.filter(categories=context["category"])
@@ -49,7 +49,8 @@ class GalleryDetail(DetailView):
             raise Http404
         context["languages"] = settings.LANGUAGES
         category_name = context["category"].name
-        context["title"] = category_title.get(category_name, category_name)
+        context["title"] = category_heading_options.get(category_name, {'title': category_name}).get('title')
+        context["sub_heading"] = category_heading_options.get(category_name, {'sub_heading': ''}).get('sub_heading')
         context["tab"] = 'gallery'
         return context
 
@@ -62,9 +63,6 @@ class StoryDetail(DetailView):
     # def get_absolute_url(self):
     #     return reverse("gallery-detail", kwargs={"slug": self.slug})
     def get_context_data(self, **kwargs):
-
-        category_title = {'VideoZone': 'Videos',
-                          'AudioZone': 'Audios'}
         context = super(StoryDetail, self).get_context_data(**kwargs)
         qs = Article.objects.live()
         qs = qs.filter(categories=context["category"])
@@ -82,6 +80,6 @@ class StoryDetail(DetailView):
             raise Http404
         context["languages"] = settings.LANGUAGES
         category_name = context["category"].name
-        context["title"] = category_title.get(category_name, category_name)
+        context["title"] = category_name
         context["tab"] = 'stories'
         return context
