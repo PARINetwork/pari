@@ -43,7 +43,9 @@
                             </div>
                         </div>
                         <div class="caption margin-top-10px">
-                            {{ resource.title|truncatechars:50 }}
+                            <h5>
+                                <a href="{{ resource.get_absolute_url }}">{{ resource.title|truncatechars:50 }}</a>
+                            </h5>
                         </div>
                     </div>
                 {% endfor %}

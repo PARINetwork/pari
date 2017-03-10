@@ -35,28 +35,26 @@
                         <div class="grid-container">
                             <div class="gallery-image-container">
                                 <a href="{{ album.get_absolute_url }}">
-    {#                            <div class="stack">#}
-    {#                                <div class="ribbon-wrapper">#}
                                     <div class="images-count">
                                         <span>{{ album.slides.count }}</span>
                                     </div>
-    {#                                </div>#}
                                     {% with album.slides.all|random as random_cover %}{% image random_cover.image fill-300x250 as cover_image %}
                                         <img class="img-responsive" src="{{ cover_image.url }}" alt="{{ cover_image.title }}">
                                     {% endwith %}
-    {#                            </div>#}
                                 </a>
                             </div>
                                 <div class="caption">
-                                    <h3>{{ album.title }}</h3>
-                                    <div class="margin-top-20px">
-                                        {% for photographer in photographers|get_item:album.id  %}
-                                            <span class="link-dark-primary">{{ photographer.name }}</span>
-                                            {% if not forloop.last %}, {% endif %}
-                                        {% endfor %}
-                                    </div>
+                                    <h3>
+                                        <a href="{{ album.get_absolute_url }}">{{ album.title }}</a>
+                                    </h3>
                                     <div class="margin-top-20px">
                                         <span class="link-dark font-xs">{{ album.description|striptags }}</span>
+                                    </div>
+                                    <div class="margin-top-20px">
+                                        {% for photographer in photographers|get_item:album.id  %}
+                                            <a class="link-dark-primary font-xs" href="{% url "author-detail" slug=photographer.slug %}">{{ photographer.name }}</a>
+                                            {% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </a>
