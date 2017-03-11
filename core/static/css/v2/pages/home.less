@@ -2,55 +2,55 @@
 @import "../layout/mixins";
 @import "../layout/responsive";
 
-.home-feature-corousel{
-            position: relative;
-            max-height: 100%;
-            overflow: hidden;
-            margin-bottom: 40px;
-  .img-responsive{
-            width: 100%;
+.home-feature-corousel {
+  position: relative;
+  max-height: 100%;
+  overflow: hidden;
+  margin-bottom: 40px;
+  .img-responsive {
+    width: 100%;
   }
-  .banner-info{
-            position: absolute;
-            z-index: 1;
-            width: 100%;
-            height: 100%;
-            top: 0;
-    .info{
-            display: inline-block;
-            float: left;
-            background: @bg-dark-transparent;
-            padding: 20px;
-            margin-top: 40%;
-            color: @light-grey;
+  .banner-info {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    .info {
+      display: inline-block;
+      float: left;
+      background: @bg-dark-transparent;
+      padding: 20px;
+      margin-top: 40%;
+      color: @light-grey;
       h2 {
-            .font-size(56);
-            color: @text-light;
+        .font-size(56);
+        color: @text-light;
       }
-      .banner-info-heading{
-            background-color:  @lighter-grey;
-            color: @darker-grey;
-            width: 25%;
-            margin-left: 35%;
-            text-align: center;
-            border-style: solid;
-            border-color: @text-color-footer;
-            border-width: .5px;
+      .banner-info-heading {
+        background-color: @lighter-grey;
+        color: @darker-grey;
+        width: 25%;
+        margin-left: 35%;
+        text-align: center;
+        border-style: solid;
+        border-color: @text-color-footer;
+        border-width: .5px;
       }
-      .banner-info-category{
-            border-bottom: @light-grey;
-            border-bottom-width: 1px;
-            border-top: @light-grey;
-            border-bottom-style: solid;
-            border-top-style: solid;
-            border-top-width: 1px;
-            padding-bottom: 5px;
-            padding-top: 5px;
-            text-align: center;
-        a{
-            font-size:2rem;
-            text-decoration: none;
-            color: @light-grey;
+      .banner-info-category {
+        border-bottom: @light-grey;
+        border-bottom-width: 1px;
+        border-top: @light-grey;
+        border-bottom-style: solid;
+        border-top-style: solid;
+        border-top-width: 1px;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        text-align: center;
+        a {
+          font-size: 2rem;
+          text-decoration: none;
+          color: @light-grey;
 
         }
       }
@@ -59,48 +59,62 @@
   }
 }
 
-.home-story-corousel{
-            padding-bottom: 20px;
-      .block-title{
-            padding-bottom: 20px;
-            & h4{
-              color: @title;
-              font-weight: 400;
+.home-story-corousel {
+  padding-bottom: 20px;
+  .block-title {
+    padding-bottom: 20px;
+    & h4 {
+      color: @title;
+      font-weight: 400;
 
-            }
+    }
+  }
+  .home-title-info {
+    .district-primary {
+      margin-top: 15px;
+      color: @text-color-brand-title;
+    }
+    p {
+      color: @grey;
+      font-size: 1rem;
+      width: 90%;
+      margin: 0 0 10px;
+      word-break: break-word;
+
+    }
+    .story-link {
+      .fa {
+        padding-left: 5px;
+        color: @primary-color;
+        font-size: 1em;
       }
-      .home-title-info{
-        .district-primary{
-              margin-top: 15px;
-              color: @text-color-brand-title;
-        }
-        p{
-              color: @grey;
-              font-size: 1rem;
-              width: 90%;
-              margin: 0 0 10px;
-              word-break: break-word;
-
-          }
-        .story-link{
-          .fa{
-            padding-left: 5px;
-            color:@primary-color;
-            font-size: 1em;
-          }
-          a{
-            text-decoration: none;
-            color: @darker-grey;
-            &:hover{
-              color: @primary-color;
-            }
-          }
-          font-size: large;
-          border-top: black;
-          border-top-style: solid;
-          border-top-width: .8px;
-          padding-top: 15px;
-          margin-top: 15px;
+      a {
+        text-decoration: none;
+        color: @darker-grey;
+        &:hover {
+          color: @primary-color;
         }
       }
+      font-size: large;
+      border-top: black;
+      border-top-style: solid;
+      border-top-width: .8px;
+      padding-top: 15px;
+      margin-top: 15px;
+    }
+  }
+}
+
+#main_content {
+  margin-top: 0;
+}
+
+#mainnav {
+  margin: 0;
+}
+
+#myCarousel-1 {
+  .carousel {
+
+  }
 }
