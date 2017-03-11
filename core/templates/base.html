@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}font-awesome/css/font-awesome.min.css">
     <!--<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/base.less">-->
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/main.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/home.less">
 
     {% block extra_css %}{% endblock %}
     {% endcompress %}
@@ -93,35 +94,148 @@
                 </div>
             </div>
         </nav>
-        {% comment %}
-        <div class="user">
-            <a href="{% url 'pari-news' %}" class="btn btn-lg btn-homepage">
-                {% trans "PARI news" %}
-            </a>
-        </div>
-        {% endcomment %}
-        {% if messages %}
-        <div class="container messages">
-            {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}" data-alert="alert">
-                <a class="close" href="#" onclick="$(this).parent().fadeOut('fast'); return false;">×</a>{{ message }}
-            </div>
-            {% endfor %}
-        </div>
-        {% endif %}
+        <!--{% comment %}-->
+        <!--<div class="user">-->
+            <!--<a href="{% url 'pari-news' %}" class="btn btn-lg btn-homepage">-->
+                <!--{% trans "PARI news" %}-->
+            <!--</a>-->
+        <!--</div>-->
+        <!--{% endcomment %}-->
+        <!--{% if messages %}-->
+        <!--<div class="container messages">-->
+            <!--{% for message in messages %}-->
+            <!--<div class="alert alert-{{ message.tags }}" data-alert="alert">-->
+                <!--<a class="close" href="#" onclick="$(this).parent().fadeOut('fast'); return false;">×</a>{{ message }}-->
+            <!--</div>-->
+            <!--{% endfor %}-->
+        <!--</div>-->
+        <!--{% endif %}-->
 
-{#        {% if announcements %}#}
-{#        <div class="announcement">#}
-{#            {{ announcements|richtext }}#}
-{#        </div>#}
-{#        {% endif %}#}
+<!--{#        {% if announcements %}#}-->
+<!--{#        <div class="announcement">#}-->
+<!--{#            {{ announcements|richtext }}#}-->
+<!--{#        </div>#}-->
+<!--{#        {% endif %}#}-->
 
-        {% block extra_header %}{% endblock %}
+        <!--{% block extra_header %}{% endblock %}-->
     </div>
     {% block main_wrapper %}
-    <div id="main_content" class="container">
-        {% block main %}{% endblock %}
+    <!--<div id="main_content" class="container">-->
+        <!--{% block main %}{% endblock %}-->
+    <!--</div>-->
+
+    <div id="main_content" class="gallery-home">
+        <div class="row">
+            <div class="banner-container gallery-banner">
+                <img class="img-responsive" src="{{ STATIC_URL }}img/stories-1.jpg" alt="sample content">
+                <div class="banner-info">
+                    <div class="container">
+                        <div class="info">
+                            <div>from</div>
+                            <h3>Bahurupi: a family of many faces</h3>
+                            <p>Ankan Roy & Sagarika Basu</p>
+                            <div><a href="#">Read the full story <i class="fa fa-angle-right"></i></a></div>
+                        </div>
+                        <div class="go-full-screen">
+                            <a class="#"><i class="fa fa-arrows-alt"></i> Full Screen</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row gallery-tile">
+                <div class="col-lg-6 col-md-6">
+                    <h4>Pictures in the voice of the beholder</h4>
+                    <img class="img-responsive center-align" src="{{ STATIC_URL }}img/gallery-1.jpg" alt="sample content">
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="gallery-tile-info">
+                        <h1>Toddy Tapper</h1>
+                        <p>Meet Karukavel Nadar – a  man who, each season,  climbs close to 5,000 feet daily for a living.</p>
+                        <div class="name-primary">P. Sainath</div>
+                        <a href="#">
+                            <span>View this talking album</span>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="view-all">
+                        <a href="#">
+                            <i class="fa  fa-music" aria-hidden="true"></i>
+                            <span>View all Talking Albums</span>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row gallery-tile">
+                <div class="col-lg-6 col-md-6">
+                    <h4>Pictures in the voice of the beholder</h4>
+                    <img class="img-responsive center-align" src="{{ STATIC_URL }}img/gallery-1.jpg" alt="sample content">
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="gallery-tile-info">
+                        <h1>Toddy Tapper</h1>
+                        <p>Meet Karukavel Nadar – a  man who, each season,  climbs close to 5,000 feet daily for a living.</p>
+                        <div class="name-primary">P. Sainath</div>
+                        <a href="#">
+                            <span>View this talking album</span>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="view-all">
+                        <a href="#">
+                            <i class="fa  fa-music" aria-hidden="true"></i>
+                            <span>View all Talking Albums</span>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row gallery-tile">
+                <div class="col-lg-6 col-md-6">
+                    <h4>Pictures in the voice of the beholder</h4>
+                    <img class="img-responsive center-align" src="{{ STATIC_URL }}img/gallery-1.jpg" alt="sample content">
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="gallery-tile-info">
+                        <h1>Toddy Tapper</h1>
+                        <p>Meet Karukavel Nadar – a  man who, each season,  climbs close to 5,000 feet daily for a living.</p>
+                        <div class="name-primary">P. Sainath</div>
+                        <a href="#">
+                            <span>View this talking album</span>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="view-all">
+                        <a href="#">
+                            <i class="fa  fa-music" aria-hidden="true"></i>
+                            <span>View all Talking Albums</span>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 faces-tile">
+                    <!--<img class="img-responsive" src="{{ STATIC_URL }}img/faces-tile.jpg" alt="sample content">-->
+                    <div class="face-tile-info">
+                        <div class="top-link">
+                            <a href="#" class="name-primary-bold">Photo Albums</a>
+                        </div>
+                        <h2>The facial diversity of India in one place</h2>
+                        <div class="bottom-link">
+                            <a href="#" class="">
+                                <span>View all photo albums</span>
+                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
     {% endblock %}
     <div id="push"></div>
 </div>
