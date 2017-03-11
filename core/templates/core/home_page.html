@@ -9,9 +9,11 @@
 {% endblock %}
 
 {% block extra_css %}
-  <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/homepage.less">
-  <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/categories.less">
-  <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/carousel.less">
+{#  <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/homepage.less">#}
+{#  <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/categories.less">#}
+{#  <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/carousel.less">#}
+{#    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/gallery/gallery.less">#}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/home.less">
 {% endblock %}
 
 {% block extra_js %}
@@ -28,101 +30,258 @@
 
 
 {% block extra_header %}
-    <div class="jumbotron home-page content-container" itemscope itemtype="http://schema.org/WebPage">
-      <h1 itemprop="name">{{ page.title }}</h1>
-      <div class="row">
-	      <div class="col-lg-12 col-md-12 col-sm-12">
-          <h2 style="padding:0;margin:0;" itemprop="description">{{ page.strap.0.value|richtext|striptags }}</h2>
+
+
+
+
+
+
+    <div id="main_content">
+    <div class="full-row">
+        <div class="home-feature-corousel">
+            <img class="img-responsive" src="{{ STATIC_URL }}img/edited_g007_25.max-1400x1120.jpg" alt="sample content">
+            <div class="banner-info">
+                <div class="container">
+                    <div class="info">
+                        <div class="banner-info-heading">FEATURED</div>
+                        <h2 >to market,
+                        to market… </h2>
+                        <p>Ankan Roy & Sagarika Basu</p>
+                        <div class="banner-info-category">
+                            <a href="#">Read the full story <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
-        <div id="homeCarousel" class="carousel slide carousel-thin-controls container" data-interval="8000" data-ride="carousel">
-            <div class="carousel-inner">
-              {% for item in page.carousel %}
-              <div class="{% if forloop.first %}active{% endif %} item">
-		<a href="{{ item.specific.get_absolute_url }}">
-		  {% if item.specific.content_type.app_label == "resources" and item.specific.content_type.model == "resource" %}
-		  <img class="img-responsive lazyload" src="{{ STATIC_URL }}img/1_1.png" data-src="{{ item.specific.embed_thumbnail }}" alt="{{ item.specific.title }}">
-		  <noscript>
-		    <img class="img-responsive" src="{{ item.specific.embed_thumbnail }}" alt="{{ item.specific.title }}">
-		  </noscript>
-		  {% else %}
-		  {% image item.specific.featured_image max-800x800 as featured_image %}
-		  <img class="img-responsive lazyload" src="{{ STATIC_URL }}img/1_1.png" data-src="{{ featured_image.url }}" alt="{{ featured_image.title }}">
-		  <noscript>
-		    <img class="img-responsive" src="{{ featured_image.url }}" alt="{{ featured_image.title }}">
-		  </noscript>
-		  {% endif %}
-                  <div class="custom-carousel-caption">
-                      <h4>{{ item.title }}</h4>
-                      <h5>{% for location in item.specific.locations.all %}{{ location.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</h5>
-                      <h5>{% if item.specific.strap %} {{ item.specific.strap }}{% else %}&nbsp;{% endif %}</h5>
-                  </div>
-                </a>
-              </div>
-              {% endfor%}
+    <div class="container">
+        <div class="row     home-story-corousel">
+            <div class="col-lg-12 col-md-12 block-title">
+                <h4>Latest Stories On PARI</h4>
             </div>
-	    {% if page.carousel %}
-            <a class="carousel-control left" href="#homeCarousel" data-slide="prev">&lsaquo;</a>
-            <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
-            <ol class="carousel-indicators">
-                {% for count in page.carousel %}
-                    <li data-target="#homeCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
-                {% endfor %}
-            </ol>
-	    {% endif %}
+            <div class="col-lg-4 col-md-6">
+                <div class="home-title-info">
+                    <h2>Toddy Tapper</h2>
+                    <p>Meet Karukavel Nadar – a  man who, each season,  climbs close to 5,000 feet daily for a living.</p>
+                    <div class="name-primary">P. Sainath</div>
+                    <div class="district-primary">
+                        <span id="district">Telangana,A.P : Dec 13,2013</span>
+                    </div>
+                    <div class="story-link">
+                        <a href="#">
+                            <span>Read the story</span>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-6 ">
+                <img class="img-responsive center-align" src="{{ STATIC_URL }}img/to-market.jpg" alt="sample content">
+            </div>
+
         </div>
-
-    <hr class="line-divider">
-        <div class="container">
-          <div class="row">
-	    {% for col in page.about %}
-            <div class="col-lg-3 col-md-3 col-sm-3">
-              <div class="grid-column about">
-                <div>
-		  {{ col.value|richtext }}
-                </div>
-              </div>
+        <div class="row home-block">
+            <div class="col-lg  -6 col-md-6">
+                <h4>Pictures in the voice of the beholder</h4>
+                <img class="img-responsive center-align" src="{{ STATIC_URL }}img/gallery-1.jpg" alt="sample content">
             </div>
-	    {% endfor %}
-          </div>
-	</div>
-	<hr class="line-divider">
-{% endblock %}
-
-{% block main %}
-<div id="homepage">
-    <section id="mainsection">
-        <div class="main-section">
-            <div class="container-fluid" itemscope itemtype="http://schema.org/BreadcrumbList">
-                <div class="category-heading">
-                  <h5>{% trans "Categories" %}</h5>
-                </div>
-                {% for category in categories %}
-		{% if forloop.first or forloop.counter0|divisibleby:"3" %}
-		<div class="row">
-		{% endif %}
-                  <div class="categories" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                    <a href="{{ category.get_absolute_url}}" itemprop="url">
-                      <div class="col-lg-4 col-md-4 col-xs-12">
-                        <div class="grid-column">
-
-                          {% image category.image fill-512x512 as category_image %}<img src="{{ STATIC_URL }}img/1_1.png" data-src="{{ category_image.url }}" alt="{{ category.name }}" style="width:370px;margin:0 auto;" class="img-responsive lazyload" itemprop="image">
-                          <div class="caption">
-                            <h6 itemprop="name">{{ category.name }}</h6>
-                            <p class="description" itemprop="description">{{ category.description }}</p>
-                          </div>
-                        </div>
-                      </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="gallery-tile-info">
+                    <h1>Toddy Tapper</h1>
+                    <p>Meet Karukavel Nadar – a  man who, each season,  climbs close to 5,000 feet daily for a living.</p>
+                    <div class="name-primary">P. Sainath</div>
+                    <a href="#">
+                        <span>View this talking album</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </a>
-                  </div>
-		{% if forloop.last or forloop.counter|divisibleby:"3" %}
-		</div>
-		{% endif %}
-		{% endfor %}
+                </div>
+                <div class="view-all">
+                    <a href="#">
+                        <i class="fa  fa-music" aria-hidden="true"></i>
+                        <span>View all Talking Albums</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
-         </div>
-    </section>
- </div>
+        </div>
+        <div class="row gallery-tile">
+            <div class="col-lg-6 col-md-6">
+                <h4>Pictures in the voice of the beholder</h4>
+                <img class="img-responsive center-align" src="{{ STATIC_URL }}img/gallery-1.jpg" alt="sample content">
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="gallery-tile-info">
+                    <h1>Toddy Tapper</h1>
+                    <p>Meet Karukavel Nadar – a  man who, each season,  climbs close to 5,000 feet daily for a living.</p>
+                    <div class="name-primary">P. Sainath</div>
+                    <a href="#">
+                        <span>View this talking album</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="view-all">
+                    <a href="#">
+                        <i class="fa  fa-music" aria-hidden="true"></i>
+                        <span>View all Talking Albums</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 faces-tile">
+                <!--<img class="img-responsive" src="{{ STATIC_URL }}img/faces-tile.jpg" alt="sample content">-->
+                <div class="face-tile-info">
+                    <div class="top-link">
+                        <a href="#" class="name-primary-bold">Photo Albums</a>
+                    </div>
+                    <h2>The facial diversity of India in one place</h2>
+                    <div class="bottom-link">
+                        <a href="#" class="">
+                            <span>View all photo albums</span>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#    <div class="jumbotron home-page content-container" itemscope itemtype="http://schema.org/WebPage">#}
+{#      <h1 itemprop="name">{{ page.title }}</h1>#}
+{#      <div class="row">#}
+{#	      <div class="col-lg-12 col-md-12 col-sm-12">#}
+{#          <h2 style="padding:0;margin:0;" itemprop="description">{{ page.strap.0.value|richtext|striptags }}</h2>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+{##}
+{#        <div id="homeCarousel" class="carousel slide carousel-thin-controls container" data-interval="8000" data-ride="carousel">#}
+{#            <div class="carousel-inner">#}
+{#              {% for item in page.carousel %}#}
+{#              <div class="{% if forloop.first %}active{% endif %} item">#}
+{#		<a href="{{ item.specific.get_absolute_url }}">#}
+{#		  {% if item.specific.content_type.app_label == "resources" and item.specific.content_type.model == "resource" %}#}
+{#		  <img class="img-responsive lazyload" src="{{ STATIC_URL }}img/1_1.png" data-src="{{ item.specific.embed_thumbnail }}" alt="{{ item.specific.title }}">#}
+{#		  <noscript>#}
+{#		    <img class="img-responsive" src="{{ item.specific.embed_thumbnail }}" alt="{{ item.specific.title }}">#}
+{#		  </noscript>#}
+{#		  {% else %}#}
+{#		  {% image item.specific.featured_image max-800x800 as featured_image %}#}
+{#		  <img class="img-responsive lazyload" src="{{ STATIC_URL }}img/1_1.png" data-src="{{ featured_image.url }}" alt="{{ featured_image.title }}">#}
+{#		  <noscript>#}
+{#		    <img class="img-responsive" src="{{ featured_image.url }}" alt="{{ featured_image.title }}">#}
+{#		  </noscript>#}
+{#		  {% endif %}#}
+{#                  <div class="custom-carousel-caption">#}
+{#                      <h4>{{ item.title }}</h4>#}
+{#                      <h5>{% for location in item.specific.locations.all %}{{ location.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</h5>#}
+{#                      <h5>{% if item.specific.strap %} {{ item.specific.strap }}{% else %}&nbsp;{% endif %}</h5>#}
+{#                  </div>#}
+{#                </a>#}
+{#              </div>#}
+{#              {% endfor%}#}
+{#            </div>#}
+{#	    {% if page.carousel %}#}
+{#            <a class="carousel-control left" href="#homeCarousel" data-slide="prev">&lsaquo;</a>#}
+{#            <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>#}
+{#            <ol class="carousel-indicators">#}
+{#                {% for count in page.carousel %}#}
+{#                    <li data-target="#homeCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>#}
+{#                {% endfor %}#}
+{#            </ol>#}
+{#	    {% endif %}#}
+{#        </div>#}
+{##}
+{#    <hr class="line-divider">#}
+{#        <div class="container">#}
+{#          <div class="row">#}
+{#	    {% for col in page.about %}#}
+{#            <div class="col-lg-3 col-md-3 col-sm-3">#}
+{#              <div class="grid-column about">#}
+{#                <div>#}
+{#		  {{ col.value|richtext }}#}
+{#                </div>#}
+{#              </div>#}
+{#            </div>#}
+{#	    {% endfor %}#}
+{#          </div>#}
+{#	</div>#}
+{#	<hr class="line-divider">#}
+{#{% endblock %}#}
+{##}
+{#{% block main %}#}
+{#<div id="homepage">#}
+{#    <section id="mainsection">#}
+{#        <div class="main-section">#}
+{#            <div class="container-fluid" itemscope itemtype="http://schema.org/BreadcrumbList">#}
+{#                <div class="category-heading">#}
+{#                  <h5>{% trans "Categories" %}</h5>#}
+{#                </div>#}
+{#                {% for category in categories %}#}
+{#		{% if forloop.first or forloop.counter0|divisibleby:"3" %}#}
+{#		<div class="row">#}
+{#		{% endif %}#}
+{#                  <div class="categories" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">#}
+{#                    <a href="{{ category.get_absolute_url}}" itemprop="url">#}
+{#                      <div class="col-lg-4 col-md-4 col-xs-12">#}
+{#                        <div class="grid-column">#}
+{##}
+{#                          {% image category.image fill-512x512 as category_image %}<img src="{{ STATIC_URL }}img/1_1.png" data-src="{{ category_image.url }}" alt="{{ category.name }}" style="width:370px;margin:0 auto;" class="img-responsive lazyload" itemprop="image">#}
+{#                          <div class="caption">#}
+{#                            <h6 itemprop="name">{{ category.name }}</h6>#}
+{#                            <p class="description" itemprop="description">{{ category.description }}</p>#}
+{#                          </div>#}
+{#                        </div>#}
+{#                      </div>#}
+{#                    </a>#}
+{#                  </div>#}
+{#		{% if forloop.last or forloop.counter|divisibleby:"3" %}#}
+{#		</div>#}
+{#		{% endif %}#}
+{#		{% endfor %}#}
+{#            </div>#}
+{#         </div>#}
+{#    </section>#}
+{# </div>#}
 {% endblock %}
