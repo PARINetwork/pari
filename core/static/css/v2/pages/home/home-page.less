@@ -1,0 +1,437 @@
+@import "../../colors/colors";
+@import "../../layout/mixins";
+@import "../../layout/responsive";
+
+#main_content {
+  margin-top: 0;
+}
+
+#mainnav {
+  margin: 0;
+}
+
+#myCarousel-1 {
+  margin-bottom: 60px;
+  .item{
+    max-height: 930px;
+    .item-container{
+      position: absolute;
+      z-index: 9999999999;
+      top: 25%;
+      div:first-child{
+        margin: 0px auto;
+        text-align: center;
+        span{
+          background: @bg-light;
+          padding: 2px 10px;
+          letter-spacing: 2px;
+        }
+        + h1{
+          .font-size(50);
+          color: @text-light;
+          padding: 40px 0;
+          max-width: 320px;
+          margin: 0;
+
+          +div{
+            text-align: center;
+            a{
+              padding: 15px 20px;
+              .font-size(16);
+              color: @text-light;
+              border-top: 1px solid @border-light;
+              border-bottom: 1px solid @border-light;
+              &:hover{
+                color: @primary-color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .carousel-control-container {
+    border: 1px solid @lighter-grey;
+    height: 40px;
+    width: 90px;
+    position: absolute;
+    top: 80%;
+    margin-left: 100px;
+  }
+  .carousel-control {
+    &.left, &.right{
+      background: none;
+      width: 44px;
+      color: @lighter-grey;
+      opacity: 1;
+      background: @bg-lighter-transparent;
+      &:hover{
+        opacity: 0.6;
+      }
+      i{
+        .font-size(34);
+      }
+    }
+    &.right{
+      border-left: 1px solid @bg-light;
+    }
+  }
+}
+#myCarousel-2 {
+  margin-bottom: 60px;
+  .carousel-control-container {
+    border: 1px solid @light-grey;
+    height: 40px;
+    width: 90px;
+    position: absolute;
+    bottom: 0;
+    margin-left: 100px;
+    left: 0;
+  }
+  .carousel-control {
+    &.left, &.right{
+      background: none;
+      width: 44px;
+      color: @light-grey;
+      opacity: 1;
+      background: @bg-lighter-transparent;
+      text-shadow: none;
+      &:hover{
+        opacity: 0.6;
+      }
+      i{
+        .font-size(34);
+      }
+    }
+    &.right{
+      border-left: 1px solid @light-grey;
+    }
+  }
+  .gallery-tile{
+    margin-bottom: 0;
+    .gallery-tile-info{
+      min-height: auto;
+      h2{
+        .font-size(36);
+      }
+      p{
+        .font-size(16);
+        margin-bottom: 20px;
+      }
+      .name-primary{
+        .font-size(16);
+        margin-bottom: 20px;
+        + a{
+          .font-size(16);
+          color: @grey;
+          padding-bottom: 40px;
+        }
+      }
+    }
+  }
+  .carousel-inner{
+    .view-all{
+      margin-top: 30px;
+      text-align: left;
+      a{
+        span{
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+  }
+  .carousel-control-container{
+    margin-left: 0;
+  }
+}
+
+.home-article-grid-1{
+  background: @lighter-grey;
+  border-top: 1px solid @border-dark;
+  border-bottom: 1px solid @border-dark;
+  padding: 40px 0 20px 0;
+  margin-bottom: 60px;
+  .grid{
+    margin-bottom: 0;
+    img{
+    }
+  }
+  .link-dark{
+    color: @darker-grey;
+    .font-size(14 );
+  }
+}
+.home-article-grid-2{
+  .view-article{
+    border-top: 1px solid @light-grey;
+    margin-top: 20px;
+    padding-top: 20px;
+    a{
+      .font-size(16);
+      color: @dark-grey;
+      i{
+        color: @link-primary;
+      }
+      &:hover{
+        i{
+          text-decoration: none;
+        }
+      }
+      span{
+        padding: 0 10px;
+      }
+    }
+  }
+  .article-image-icon{
+    position: relative;
+    div{
+      position: absolute;
+      background: @bg-dark-transparent;
+      padding: 5px 10px;
+      color: @light-grey;
+      .font-size(16);
+    }
+    img{
+      + div{
+        top: 0;
+        left: 15px;
+        border-radius: 0 0 5px 0;
+        + div{
+          bottom: 23px;
+          left: 18px;
+          border-radius: 0 5px 0 0;
+        }
+      }
+    }
+  }
+}
+.home-article-grid-3{
+  .grid{
+    &.share{
+      h1{
+        min-height: 265px;
+      }
+    }
+    h4{
+      .font-size(32);
+      color: @text-title-light;
+    }
+    .subtitle{
+      .font-size(58);
+      margin: 0;
+      color: @text-title-light;
+    }
+    .mid-link{
+      border-top: 1px solid @grey;
+      border-bottom: 1px solid @grey;
+      padding: 15px 0;
+      a{
+        color: @darker-grey;
+      }
+    }
+    h6{
+      color: @grey;
+    }
+    p{
+      color: @text-title-light;
+    }
+    a{
+      color: @grey;
+      &:hover{
+        color: @link-primary;
+      }
+    }
+  }
+}
+
+.faces-tile-1{
+  margin-bottom: 30px;
+  position: relative;
+  .faces-container{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 40px;
+    .row{
+      margin-bottom: 40px;
+    }
+    h2{
+      color: @text-light;
+      border-right: 1px solid @border-light;
+      padding: 20px 0;
+    }
+    button{
+      color: @text-light;
+      background: @bg-lighter-transparent;
+      border: 1px solid @border-light;
+      margin: 20px 0px;
+    }
+    p{
+      color: @grey;
+      a{
+        color: @grey;
+        &:hover{
+          color: @primary-color;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: @screen-xs-max) {
+  #myCarousel-1 .carousel-control-container{
+    top: 37%;
+    margin: 0;
+    left: 0;
+    .left, .right{
+
+    }
+  }
+  .home-article-grid-3 .grid.share h1{
+    min-height: auto;
+  }
+  .home-article-grid-1{
+    margin-bottom: 20px;
+  }
+  #myCarousel-2{
+    margin-bottom: 20px;
+  }
+  #myCarousel-1{
+    margin-bottom: 20px;
+    .item .item-container{
+      padding-bottom: 20px;
+      border-bottom: 1px solid @grey;
+      position: static;
+      div:first-child{
+        margin-top: 20px;
+        span{
+          background: @bg-light;
+          padding: 2px 10px;
+          letter-spacing: 2px;
+        }
+        + h1{
+          .font-size(50);
+          color: @text-dark;
+          padding: 10px 0;
+          max-width: 320px;
+          margin: 0;
+
+          +div{
+            text-align: center;
+            a{
+              padding: 15px 20px;
+              .font-size(16);
+              color: @text-dark;
+              border-top: 1px solid @border-light;
+              border-bottom: 1px solid @border-light;
+              &:hover{
+                color: @primary-color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .faces-tile-1{
+    margin-bottom: 0px;
+    .faces-container{
+      position: static;
+      width: 100%;
+      padding: 0;
+      .row{
+        margin-bottom: 0px;
+      }
+      h2{
+        color: @text-dark;
+        border-right: none;
+        padding: 0;
+        margin: 0;
+      }
+      button{
+        color: @text-dark;
+        background: @bg-lighter-transparent;
+        border: 1px solid @border-dark;
+        margin: 20px 0;
+      }
+      p{
+        color: @grey;
+        a{
+          color: @grey;
+          &:hover{
+            color: @primary-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+  .faces-tile-1{
+    margin-bottom: 0px;
+    .faces-container{
+      position: static;
+      width: 100%;
+      padding: 0;
+      .row{
+        margin-bottom: 0px;
+      }
+      h2{
+        color: @text-dark;
+        border-right: none;
+        padding: 0;
+        margin: 0;
+      }
+      button{
+        color: @text-dark;
+        background: @bg-lighter-transparent;
+        border: 1px solid @border-dark;
+        margin: 20px 0;
+      }
+      p{
+        color: @grey;
+        a{
+          color: @grey;
+          &:hover{
+            color: @primary-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+  .faces-tile-1{
+    .faces-container{
+      width: 100%;
+      padding: 40;
+      .row{
+        margin-bottom: 20px;
+      }
+      h2{
+        color: @text-light;
+        border-right: none;
+        padding: 0;
+        margin: 0;
+      }
+      button{
+        color: @text-light;
+        background: @bg-lighter-transparent;
+        border: 1px solid @border-light;
+        margin: 20px 0;
+      }
+      p{
+        color: @grey;
+        a{
+          color: @grey;
+          &:hover{
+            color: @primary-color;
+          }
+        }
+      }
+    }
+  }
+}

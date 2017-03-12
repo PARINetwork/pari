@@ -1,30 +1,89 @@
-<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/gallery/gallery.less">
-<div id="main_content">
+<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/home/home-page.less">
+<div id="main_content" class="home-page">
     <div id="myCarousel-1" class="carousel slide" data-ride="carousel">
-
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
                 <img class="img-responsive center-align" src="{{ STATIC_URL }}img/stories-1.jpg" alt="sample content">
-                <div class="item-container">
-                    <div>FEATURED</div>
-                    <div>to market, to market…</div>
-                    <div>Visible Work, Invisible Women</div>
+                <div class="container">
+                    <div class="item-container">
+                        <div>
+                            <span>FEATURED</span>
+                        </div>
+                        <h1>to market, to market…</h1>
+                        <div>
+                            <a href="#">Visible Work, Invisible Women <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="item">
                 <img class="img-responsive center-align" src="{{ STATIC_URL }}img/stories-1.jpg" alt="sample content">
+                <div class="container">
+                    <div class="item-container">
+                        <div>
+                            <span>FEATURED</span>
+                        </div>
+                        <h1>to market, to market…</h1>
+                        <div>
+                            <a href="#">Visible Work, Invisible Women <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img class="img-responsive center-align" src="{{ STATIC_URL }}img/stories-1.jpg" alt="sample content">
+                <div class="container">
+                    <div class="item-container">
+                        <div>
+                            <span>FEATURED</span>
+                        </div>
+                        <h1>to market, to market…</h1>
+                        <div>
+                            <a href="#">Visible Work, Invisible Women <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img class="img-responsive center-align" src="{{ STATIC_URL }}img/stories-1.jpg" alt="sample content">
+                <div class="container">
+                    <div class="item-container">
+                        <div>
+                            <span>FEATURED</span>
+                        </div>
+                        <h1>to market, to market…</h1>
+                        <div>
+                            <a href="#">Visible Work, Invisible Women <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img class="img-responsive center-align" src="{{ STATIC_URL }}img/stories-1.jpg" alt="sample content">
+                <div class="container">
+                    <div class="item-container">
+                        <div>
+                            <span>FEATURED</span>
+                        </div>
+                        <h1>to market, to market…</h1>
+                        <div>
+                            <a href="#">Visible Work, Invisible Women <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
         <!-- Left and right controls -->
-        <div class="carousel-control-container">
-            <a class="left carousel-control" href="#myCarousel-1" role="button" data-slide="prev">
-                <i class="fa fa-angle-left"></i>
-            </a>
-            <a class="right carousel-control" href="#myCarousel-1" role="button" data-slide="next">
-                <i class="fa fa-angle-right"></i>
-            </a>
+        <div class="container">
+            <div class="carousel-control-container">
+                <a class="left carousel-control" href="#myCarousel-1" role="button" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="right carousel-control" href="#myCarousel-1" role="button" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
         </div>
     </div>
     <div class="container">
@@ -32,122 +91,336 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <div class="col-lg-6 col-md-6">
-                        <h4>Pictures in the voice of the beholder</h4>
-                        <img class="img-responsive center-align" src="{{ STATIC_URL }}img/stories-1.jpg" alt="sample content">
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="gallery-tile-info">
-                            <h1>Toddy Tapper</h1>
-                            <p>Meet Karukavel Nadar – a  man who, each season,  climbs close to 5,000 feet daily for a living.</p>
-                            <div class="name-primary">P. Sainath</div>
-                            <a href="#">
-                                <span>View this talking album</span>
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                            </a>
+                    <div class="row gallery-tile">
+                        <div class="col-lg-4 col-md-4">
+                            <div class="gallery-tile-info">
+                                <h4>Pictures in the voice of the beholder</h4>
+                                <h2>Toddy Tapper</h2>
+                                <p>Meet Karukavel Nadar – a  man who, each season,  climbs close to 5,000 feet daily for a living.</p>
+                                <div class="name-primary">P. Sainath</div>
+                                <a href="#">
+                                    <span>View this talking album</span>
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            <div class="view-all">
+                                <a href="#">
+                                    <span>View all Talking Albums</span>
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </a>
+                            </div>
                         </div>
-                        <div class="view-all">
-                            <a href="#">
-                                <i class="fa  fa-music" aria-hidden="true"></i>
-                                <span>View all Talking Albums</span>
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                            </a>
+                        <div class="col-lg-8 col-md-8">
+                            <img class="img-responsive center-align" src="{{ STATIC_URL }}img/home-1.jpg" alt="sample content">
                         </div>
                     </div>
                 </div>
                 <div class="item">
-                    <div class="col-lg-6 col-md-6">
-                        <h4>Pictures in the voice of the beholder</h4>
-                        <img class="img-responsive center-align" src="{{ STATIC_URL }}img/gallery-1.jpg" alt="sample content">
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="gallery-tile-info">
-                            <h1>Toddy Tapper</h1>
-                            <p>Meet Karukavel Nadar – a  man who, each season,  climbs close to 5,000 feet daily for a living.</p>
-                            <div class="name-primary">P. Sainath</div>
-                            <a href="#">
-                                <span>View this talking album</span>
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                            </a>
+                    <div class="row gallery-tile">
+                        <div class="col-lg-4 col-md-4">
+                            <div class="gallery-tile-info">
+                                <h4>Pictures in the voice of the beholder</h4>
+                                <h2>Toddy Tapper</h2>
+                                <p>Meet Karukavel Nadar – a  man who, each season,  climbs close to 5,000 feet daily for a living.</p>
+                                <div class="name-primary">P. Sainath</div>
+                                <a href="#">
+                                    <span>View this talking album</span>
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            <div class="view-all">
+                                <a href="#">
+                                    <span>View all Talking Albums</span>
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </a>
+                            </div>
                         </div>
-                        <div class="view-all">
-                            <a href="#">
-                                <i class="fa  fa-music" aria-hidden="true"></i>
-                                <span>View all Talking Albums</span>
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                            </a>
+                        <div class="col-lg-8 col-md-8">
+                            <img class="img-responsive center-align" src="{{ STATIC_URL }}img/home-1.jpg" alt="sample content">
                         </div>
                     </div>
                 </div>
             </div>
-
             <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarousel-2" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel-2" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
-                <div class="row">
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                        <img class="img-responsive" src="{{ STATIC_URL }}img/stories-9.jpg" alt="sample content">
-                    </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                        <h3>BPL XI: they’re mobile, their money isn’t</h3>
-                        <div>
-                            <a href="#">
-                                <i class="fa fa-pencil"></i>
-                                <span>P. Sainath</span>
-                            </a>
-                            <a href="#">
-                                <i class="fa fa-map-marker"></i>
-                                <span>Adul</span>
-                            </a>
-                        </div>
-                        <div class="date">23 NOV 2015</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
-                <div class="row">
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                        <img class="img-responsive" src="{{ STATIC_URL }}img/stories-9.jpg" alt="sample content">
-                    </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                        <h3>BPL XI: they’re mobile, their money isn’t</h3>
-                        <div>
-                            <a href="#">
-                                <i class="fa fa-pencil"></i>
-                                <span>P. Sainath</span>
-                            </a>
-                            <a href="#">
-                                <i class="fa fa-map-marker"></i>
-                                <span>Adul</span>
-                            </a>
-                        </div>
-                        <div class="date">23 NOV 2015</div>
-                    </div>
+            <div class="container">
+                <div class="carousel-control-container">
+                    <a class="left carousel-control" href="#myCarousel-2" role="button" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel-2" role="button" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12 faces-tile">
-                <!--<img class="img-responsive" src="{{ STATIC_URL }}img/faces-tile.jpg" alt="sample content">-->
-                <div class="face-tile-info">
-                    <div class="top-link">
-                        <a href="#" class="name-primary-bold">Photo Albums</a>
+    </div>
+    <div class="article-grid home-article-grid-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 margin-btm-20px">
+                    <span class="tags-label">IN FOCUS</span>
+                    <span class="subtitle-primary font-l">Stories of a demonetised India</span>
+                </div>
+                <div class="col-lg-6 text-right margin-btm-20px">
+                    <a href="#" class="link-dark">All stories about demonetisation <i class="fa fa-angle-right"></i></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <img class="img-responsive" src="{{ STATIC_URL }}img/stories-9.jpg" alt="sample content">
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <h3>BPL XI: they’re mobile, their money isn’t</h3>
+                            <div>
+                                <a href="#">
+                                    <i class="fa fa-pencil"></i>
+                                    <span>P. Sainath</span>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-map-marker"></i>
+                                    <span>Adul</span>
+                                </a>
+                            </div>
+                            <div class="date">23 NOV 2015</div>
+                        </div>
                     </div>
-                    <h2>The facial diversity of India in one place</h2>
-                    <div class="bottom-link">
-                        <a href="#" class="">
-                            <span>View all photo albums</span>
-                            <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        </a>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <img class="img-responsive" src="{{ STATIC_URL }}img/stories-9.jpg" alt="sample content">
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <h3>BPL XI: they’re mobile, their money isn’t</h3>
+                            <div>
+                                <a href="#">
+                                    <i class="fa fa-pencil"></i>
+                                    <span>P. Sainath</span>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-map-marker"></i>
+                                    <span>Adul</span>
+                                </a>
+                            </div>
+                            <div class="date">23 NOV 2015</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="story-grid home-article-grid-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid large">
+                    <img class="img-responsive" src="{{ STATIC_URL }}img/gallery-1.jpg" alt="sample content">
+                    <div class="grid-container">
+                        <h3>Musafir</h3>
+                        <div class="title-grid">
+                            <div class="border-link"></div>
+                            <div>Travellers tales, everyday life</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid share">
+                    <h1 class="subtitle">…and a wonderful one’</h1>
+                    <div class="align-bottom">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
+                                <h4>Stories from all over in all languages</h4>
+                                <h5 class="mid-link">
+                                    <a href="#">Browse stories in all categories <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                                </h5>
+                                <h6>Translate for PARI</h6>
+                                <p>Translate the content for PARI in the languages that you can. <a href="#">Learn more <i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
+                                <img class="img-responsive" src="http://localhost:8000/static/img/stories-cat-1@2x.jpg" alt="sample content" width="263" height="263">
+                                <div class="grid-container">
+                                    <h3>Musafir</h3>
+                                    <div class="title-grid">
+                                        <div class="border-link"></div>
+                                        <div>Travellers tales, everyday life</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid">
+                            <img class="img-responsive" src="{{ STATIC_URL }}img/stories-cat-1.jpg" alt="sample content">
+                            <div class="grid-container">
+                                <h3>Musafir</h3>
+                                <div class="title-grid">
+                                    <div class="border-link"></div>
+                                    <div>Travellers tales, everyday life</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid">
+                            <h1 class="subtitle">…and a wonderful one’</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid">
+                            <img class="img-responsive" src="{{ STATIC_URL }}img/stories-cat-1.jpg" alt="sample content">
+                            <div class="grid-container">
+                                <h3>Musafir</h3>
+                                <div class="title-grid">
+                                    <div class="border-link"></div>
+                                    <div>Travellers tales, everyday life</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid">
+                            <h4>Stories from all over in all languages</h4>
+                            <h5 class="mid-link">
+                                <a href="#">Browse stories in all categories <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                            </h5>
+                            <h6>Translate for PARI</h6>
+                            <p>Translate the content for PARI in the languages that you can. <a href="#">Learn more <i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container faces-tile-1">
+        <img class="img-responsive" src="{{ STATIC_URL }}img/faces-tile-1.jpg" alt="sample content">
+        <div class="faces-container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4 class="subtitle-primary">View faces from across India</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="title-light margin-0">PARI is capturing the facial diversity of the people of India</h2>
+                </div>
+                <div class="col-lg-6">
+                    <div><button class="btn">View all faces</button></div>
+                    <p class="text"><a href="#">Contribute faces</a> to the faces database</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="article-grid home-article-grid-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 article-image-icon">
+                            <img class="img-responsive" src="{{ STATIC_URL }}img/stories-9.jpg" alt="sample content">
+                            <div><i class="fa fa-music" aria-hidden="true"></i></div>
+                            <div>16</div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <h3>BPL XI: they’re mobile, their money isn’t</h3>
+                            <div>
+                                <a href="#">
+                                    <i class="fa fa-pencil"></i>
+                                    <span>P. Sainath</span>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-map-marker"></i>
+                                    <span>Adul</span>
+                                </a>
+                            </div>
+                            <div class="view-article">
+                                <a href="#">
+                                    <i class="fa  fa-music" aria-hidden="true"></i><span>View all Talking Albums</span><i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 article-image-icon">
+                            <img class="img-responsive" src="{{ STATIC_URL }}img/stories-9.jpg" alt="sample content">
+                            <div><i class="fa fa-music" aria-hidden="true"></i></div>
+                            <div>16</div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <h3>BPL XI: they’re mobile, their money isn’t</h3>
+                            <div>
+                                <a href="#">
+                                    <i class="fa fa-pencil"></i>
+                                    <span>P. Sainath</span>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-map-marker"></i>
+                                    <span>Adul</span>
+                                </a>
+                            </div>
+                            <div class="view-article">
+                                <a href="#">
+                                    <i class="fa  fa-music" aria-hidden="true"></i><span>View all Talking Albums</span><i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 article-image-icon">
+                            <img class="img-responsive" src="{{ STATIC_URL }}img/stories-9.jpg" alt="sample content">
+                            <div><i class="fa fa-music" aria-hidden="true"></i></div>
+                            <div>16</div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <h3>BPL XI: they’re mobile, their money isn’t</h3>
+                            <div>
+                                <a href="#">
+                                    <i class="fa fa-pencil"></i>
+                                    <span>P. Sainath</span>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-map-marker"></i>
+                                    <span>Adul</span>
+                                </a>
+                            </div>
+                            <div class="view-article">
+                                <a href="#">
+                                    <i class="fa  fa-music" aria-hidden="true"></i><span>View all Talking Albums</span><i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 article-image-icon">
+                            <img class="img-responsive" src="{{ STATIC_URL }}img/stories-9.jpg" alt="sample content">
+                            <div><i class="fa fa-music" aria-hidden="true"></i></div>
+                            <div>16</div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <h3>BPL XI: they’re mobile, their money isn’t</h3>
+                            <div>
+                                <a href="#">
+                                    <i class="fa fa-pencil"></i>
+                                    <span>P. Sainath</span>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-map-marker"></i>
+                                    <span>Adul</span>
+                                </a>
+                            </div>
+                            <div class="view-article">
+                                <a href="#">
+                                    <i class="fa  fa-music" aria-hidden="true"></i><span>View all Talking Albums</span><i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

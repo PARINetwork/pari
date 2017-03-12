@@ -1,3 +1,77 @@
+.gallery-tile{
+  margin-bottom: 40px;
+  h4{
+    color: @primary-color;
+    margin: 0 0 20px 0;
+  }
+  h1{
+    margin-top: 60px;
+    .font-size(54);
+  }
+  p{
+    .font-size(20);
+    color: @grey;
+  }
+  .name-primary{
+    .font-size(20);
+  }
+  a{
+    color: @dark-grey;
+    .font-size(16);
+    &:hover{
+      color: @primary-color;
+    }
+  }
+  .gallery-tile-info{
+    min-height: 480px;
+  }
+  .view-all{
+    border-top: 1px solid @grey;
+    text-align: right;
+    padding: 30px 0 0 0;
+    span{
+      padding: 0 10px;
+    }
+    a{
+      &:hover{
+        i{
+          text-decoration: none;
+        }
+      }
+
+    }
+  }
+}
+.faces-tile{
+  background: url("../../img/faces-tile.jpg") no-repeat;
+  background-size: 100%;
+  height: 383px;
+  .top-link{
+    padding: 30px 0 0 0;
+    a{
+      .font-size(16);
+    }
+  }
+  h2{
+    margin: 20px 0 40px 0;
+    .font-size(42);
+  }
+  .bottom-link{
+    padding: 20px 0;
+    border-top: 1px solid @dark-grey;
+    a{
+      .font-size(16);
+    }
+  }
+  .face-tile-info{
+    background: @bg-light-transparent;
+    margin: 65px 30px;
+    text-align: center;
+    a{
+
+    }
+  }
+}
 .gallery-home{
   .banner-container{
     position: relative;
@@ -43,81 +117,6 @@
       }
     }
   }
-  .gallery-tile{
-    margin-bottom: 40px;
-    h4{
-      color: @primary-color;
-      margin: 0 0 20px 0;
-    }
-    h1{
-      margin-top: 60px;
-      .font-size(54);
-    }
-    p{
-      .font-size(20);
-      color: @grey;
-    }
-    .name-primary{
-      .font-size(20);
-    }
-    a{
-      color: @dark-grey;
-      .font-size(16);
-      &:hover{
-        color: @primary-color;
-      }
-    }
-    .gallery-tile-info{
-      min-height: 480px;
-    }
-    .view-all{
-      border-top: 1px solid @grey;
-      text-align: right;
-      padding: 30px 0 0 0;
-      span{
-        padding: 0 10px;
-      }
-      a{
-        &:hover{
-          i{
-            text-decoration: none;
-          }
-        }
-
-      }
-    }
-  }
-  .faces-tile{
-    background: url("../../img/faces-tile.jpg") no-repeat;
-    background-size: 100%;
-    height: 383px;
-    .top-link{
-      padding: 30px 0 0 0;
-      a{
-        .font-size(16);
-      }
-    }
-    h2{
-      margin: 20px 0 40px 0;
-      .font-size(42);
-    }
-    .bottom-link{
-      padding: 20px 0;
-      border-top: 1px solid @dark-grey;
-      a{
-        .font-size(16);
-      }
-    }
-    .face-tile-info{
-      background: @bg-light-transparent;
-      margin: 65px 30px;
-      text-align: center;
-      a{
-
-      }
-    }
-  }
-
   @media (max-width: @screen-xs-max) {
     .gallery-tile .gallery-tile-info{
       min-height: auto;

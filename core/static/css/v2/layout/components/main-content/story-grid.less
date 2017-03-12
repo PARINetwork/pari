@@ -3,11 +3,45 @@
     margin-bottom: 30px;
     position: relative;
 
+    &.large{
+      .grid-container{
+        width: 95%;
+      }
+    }
+    //&.share{
+    //  position: relative;
+    //  .align-bottom{
+    //    position: absolute;
+    //    bottom: 0;
+    //  }
+    //}
+
+
     .grid-container{
       position: absolute;
-      bottom: 0;
+      height: 100%;
       color: white;
       text-align: center;
+      width: 90%;
+      top: 0;
+      h3{
+        position: absolute;
+        top: 44%;
+        margin: 0;
+        width: 100%;
+      }
+      .title-grid{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 20px 0;
+        .border-link{
+          border-top: 1px solid @light-grey;
+          opacity: 0.5;
+          padding-bottom: 20px;
+          margin: 0 40%;
+        }
+      }
     }
   }
 }
