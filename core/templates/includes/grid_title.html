@@ -17,14 +17,16 @@
         </div>
         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 gallery-title-icon share-icon">
             <div class="text-right">
-            <span class="gallery-social-icon">
-                <a href="https://twitter.com/{{ SOCIAL_TWITTER }}" target="_blank" class="link-light">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-            </a>
-                <a href="https://facebook.com/{{ SOCIAL_FACEBOOK }}" target="_blank" class="link-light">
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-            </a>
-            </span>
+                {% with request.build_absolute_uri as url %}
+                    <span class="gallery-social-icon">
+                        <a href="https://twitter.com/home?status={{ title|urlencode }}+{{ url|urlencode }}" target="_blank" class="link-light">
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}" target="_blank" class="link-light">
+                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </a>
+                    </span>
+                {% endwith %}
             </div>
         </div>
     </div>
