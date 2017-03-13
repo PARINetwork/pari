@@ -2,12 +2,44 @@
 {% load i18n wagtailcore_tags wagtailimages_tags %}
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/gallery/gallery.less">
+    <link rel="stylesheet" href="{{ STATIC_URL }}category/css/magnific-popup.css" />
 {% endblock %}
+{% block extra_js %}
+    <script type="text/javascript" src="{{ STATIC_URL }}category/js/popup.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}category/js/magnific-popup.js"></script>
+{% endblock %}
+
 {% block main %}
-    <div id="main_content">
+    <div id="main_content" class="gallery-home">
+    <div class ="gallery-title gallery-home-title">
+        <div class="row ">
+            <div class="col-lg-9 col-md-9 col-sm-10 col-xs-12">
+                <h1> Gallery</h1>
+                <div class="paragraph-dark font-xxs">AN EVER-GROWING VIBRANT ARCHIVE OF LIFE IN THE COUNTRYSIDE</div>
+            </div>
+
+            <div class="text-right col-lg-3 col-md-3 col-sm-2 col-xs-12 gallery-title-icon share-icon">
+            <span class="gallery-social-icon">
+                <a href="https://twitter.com/PARINetwork" target="_blank" class="link-light">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+                <a href="https://facebook.com/PARINetwork" target="_blank" class="link-light">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+            </span>
+            </div>
+        </div>
+    </div>
         <div class="row">
-            <div class="banner-container gallery-banner">
+            <div class="banner-container gallery-banner gallery">
                 <img class="img-responsive" src="{{ STATIC_URL }}img/stories-1.jpg" alt="sample content">
+                <div class="banner-info">
+                    <div class="container">
+                        <div class=" info photo-of-the-week">
+                            <p>Photo of the week</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="banner-info">
                     <div class="container">
                         <div class="info">
@@ -16,8 +48,8 @@
                             <p>Ankan Roy & Sagarika Basu</p>
                             <div><a href="#">Read the full story <i class="fa fa-angle-right"></i></a></div>
                         </div>
-                        <div class="go-full-screen">
-                            <a class="#"><i class="fa fa-arrows-alt"></i> Full Screen</a>
+                        <div class="go-full-screen preview">
+                            <a class="preview" ><i class="fa fa-arrows-alt"></i> Full Screen</a>
                         </div>
                     </div>
                 </div>
@@ -37,14 +69,14 @@
                         <h1>{{ talking_album.title }}</h1>
                         <p> {{ talking_album.description|richtext }}</p>
                         <div class="name-primary">
-                            {% for photographer in photographers %}
+                            {% for photographer in talking_album_photographers %}
                                 <a href="{% url "author-detail" photographer.slug %}"><span>{{ photographer.name }}</span></a>
                                 {% if not forloop.last %}, {% endif %}
                             {% endfor %}
                         </div>
                         <a href="{{ talking_album.get_absolute_url }}">
                             <span>View this talking album</span>
-                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            <i class="fa fa-angle-right element-nav" aria-hidden="true"></i>
                         </a>
                     </div>
                     <div class="view-all">
@@ -59,7 +91,7 @@
             <div class="row gallery-tile">
                 <div class="col-lg-6 col-md-6">
                     <h4>Video stories that speak for themselves</h4>
-                    <img class="img-responsive center-align" src="{{ STATIC_URL }}img/gallery-1.jpg"
+                     <img class="img-responsive center-align" src="{{ video.featured_image.file.url }}"
                          alt="sample content">
                 </div>
                 <div class="col-lg-6 col-md-6">
@@ -72,14 +104,14 @@
                                     {% if not forloop.last %},{% endif %}
                             {% endfor %}
                         </div>
-                        <a href="#">
+                        <a href="{{ video.get_absolute_url }}">
                             <span>Watch this video</span>
-                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            <i class="fa fa-angle-right element-nav" aria-hidden="true"></i>
                         </a>
                     </div>
                     <div class="view-all">
-                        <a href="#">
-                            <i class="fa  fa-music" aria-hidden="true"></i>
+                        <a href="{% url "gallery-detail" slug="videozone" %}">
+                            <i class="fa  fa-youtube-play" aria-hidden="true" ></i>
                             <span>Watch all videos</span>
                             <i class="fa fa-angle-right" aria-hidden="true"></i>
                         </a>
@@ -88,23 +120,29 @@
             </div>
             <div class="row gallery-tile">
                 <div class="col-lg-6 col-md-6">
-                    <h4>Pictures in the voice of the beholder</h4>
-                    <img class="img-responsive center-align" src="{{ STATIC_URL }}img/gallery-1.jpg"
-                         alt="sample content">
+                    <h4>Video stories that speak for themselves</h4>
+                    {% with photo_album.slides.first as first_slide %}
+                        <img class="img-responsive center-align" src="{{ first_slide.image.file.url }}"
+                             alt="sample content">
+                    {% endwith %}
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="gallery-tile-info">
-                        <h1>The hill women of Himanchal</h1>
-                        <p>From sunrise to sunset, and sometimes more - a day in the life of the hard-working hill-women
-                            of the Himalayas.</p>
-                        <div class="name-primary">Aparna Karthikeyan</div>
-                        <a href="#">
+                        <h1>{{ photo_album.title }}</h1>
+                        <p>{{ photo_album.description|richtext }}</p>
+                        <div class="name-primary">
+                            {% for photographer in photo_album_photographers %}
+                                <a href="{% url "author-detail" photographer.slug %}"><span>{{ photographer.name }}</span></a>
+                                {% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </div>
+                        <a href="{{ photo_album.get_absolute_url }}">
                             <span>View this Photo Album</span>
-                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            <i class="fa fa-angle-right element-nav" aria-hidden="true"></i>
                         </a>
                     </div>
                     <div class="view-all">
-                        <a href="#">
+                        <a href="{% url "other-album-list" %}">
                             <i class="fa  fa-music" aria-hidden="true"></i>
                             <span>View all photo albums</span>
                             <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -117,13 +155,13 @@
                     <!--<img class="img-responsive" src="{{ STATIC_URL }}img/faces-tile.jpg" alt="sample content">-->
                     <div class="face-tile-info">
                         <div class="top-link">
-                            <a href="#" class="name-primary-bold">Photo Albums</a>
+{#                            <a href="{% url "other-album-list" %}" class="name-primary-bold">Photo Albums</a>#}
                         </div>
                         <h2>The facial diversity of India in one place</h2>
                         <div class="bottom-link">
-                            <a href="#" class="">
+                            <a href="{% url "face-list" %}" class="">
                                 <span>View all faces</span>
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <i class="fa fa-angle-right element-nav" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>

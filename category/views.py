@@ -33,7 +33,7 @@ class GalleryDetail(DetailView):
     def get_context_data(self, **kwargs):
 
         category_heading_options = {'VideoZone': {'title': 'Videos', 'sub_heading': 'stories told in moving pictures'},
-                          'AudioZone': {'title': 'Audios', 'sub_heading': 'you could listen all day'}}
+                                    'AudioZone': {'title': 'Audios', 'sub_heading': 'you could listen all day'}}
         context = super(GalleryDetail, self).get_context_data(**kwargs)
         qs = Article.objects.live()
         qs = qs.filter(categories=context["category"])
@@ -90,26 +90,44 @@ class StoryDetail(DetailView):
 def gallery_home_page(request, slug=None):
     albums = Album.objects.live()
     articles = Article.objects.live()
-    photographers, talking_album = get_album_and_photographers(albums)
+    album_details = get_album_and_photographers(albums)
     video = get_video(articles)
 
     return render(request, "category/gallery_home_page.html", {
-        'talking_album': talking_album,
-        'photographers': set(photographers),
+        'talking_album': album_details['talking_album'][0],
+        'talking_album_photographers': album_details['talking_album'][1],
+        'photo_album': album_details['photo_album'][0],
+        'photo_album_photographers': album_details['photo_album'][1],
         'video': video,
     })
 
 
 def get_album_and_photographers(albums):
     talking_album = None
+    photo_album = None
     for album in albums:
-        if album.slides.first().audio is not '':
+        if len(album.slides.first().audio) > 0: #talking album has audio
             talking_album = album
-            break
+            if photo_album is not None:
+                break
+        else:
+            photo_album = album
+            if talking_album is not None:
+                break
+    talking_album_photographers = get_unique_photographers(talking_album)
+    photo_album_photographers = get_unique_photographers(photo_album)
+    album_details = {}
+    album_details['talking_album'] = [talking_album, talking_album_photographers]
+    album_details['photo_album'] = [photo_album, photo_album_photographers]
+
+    return album_details
+
+
+def get_unique_photographers(talking_album):
     photographers = []
-    for slide in album.slides.all():
+    for slide in talking_album.slides.all():
         photographers.extend(slide.image.photographers.all())
-    return photographers, talking_album
+    return set(photographers)
 
 
 def get_video(articles):

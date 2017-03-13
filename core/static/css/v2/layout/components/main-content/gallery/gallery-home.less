@@ -8,12 +8,18 @@
     margin-top: 60px;
     .font-size(54);
   }
+
   p{
     .font-size(20);
     color: @grey;
   }
   .name-primary{
     .font-size(20);
+    padding-bottom: 25px;
+    padding-top: 10px;
+    a{
+     color: @link-primary;
+    }
   }
   a{
     color: @dark-grey;
@@ -43,7 +49,7 @@
   }
 }
 .faces-tile{
-  background: url("../../img/faces-tile.jpg") no-repeat;
+  background: url("../../img/faces-tile-1.jpg") no-repeat;
   background-size: 100%;
   height: 383px;
   .top-link{
@@ -73,6 +79,29 @@
   }
 }
 .gallery-home{
+
+  .gallery-home-title {
+    color: @title;
+    margin-bottom: 0px;
+    margin-top: 40px;
+    h1{
+      .font-size(72);
+    }
+
+
+    &.share-icon {
+      width: auto;
+      left: 100px;
+    }
+    .paragraph-dark {
+      font-size: 12px;
+      letter-spacing: 4px;
+      margin-bottom: 30px;
+    }
+    .gallery-title-icon {
+      padding-top: 20px;
+    }
+  }
   .banner-container{
     position: relative;
     max-height: 500px;
@@ -100,6 +129,15 @@
             padding-left: 10px;
             color: @light-grey;
           }
+        }
+      }
+
+      .photo-of-the-week{
+        float: left;
+        font-weight: 700;
+        padding: 5px;
+        p{
+          margin: 0px;
         }
       }
       .go-full-screen{
@@ -172,4 +210,10 @@
       }
     }
   }
+}
+.element-nav{
+  padding-left: 10px;
+}
+.fa-angle-right{
+  color: @link-primary;
 }
