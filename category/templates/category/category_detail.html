@@ -4,6 +4,20 @@
 {% block meta_title %}{{ category.name }}{% if filter %} - {{ filter }}{% endif %} - {% trans "Page" %} {{ articles.number }}{% endblock %}
 {% block title %}{{ category.name }}{% endblock %}
 
+{% block opengraph_block %}
+    <meta property="og:title" content="{{ category.name }}">
+    <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
+    <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ category.image.file.url }}">
+    <meta property="og:type" content="article">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
+    <meta name="twitter:title" content="{{ category.name }}" >
+    <meta name="twitter:description" content="{{ category.name }} - description" >
+    <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ category.image.file.url }}" >
+    <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
+{% endblock %}
+
 {% block extra_js %}
 <script type="text/javascript" src="{{ STATIC_URL }}article/js/category.js"></script>
 {% endblock %}

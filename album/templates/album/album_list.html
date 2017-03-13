@@ -9,6 +9,20 @@
 {% block meta_title %}{% trans "Albums" %}{% endblock %}
 {% block title %}{% trans "Albums" %}{% endblock %}
 
+{% block opengraph_block %}
+    <meta property="og:title" content="{% trans "PARI Albums" %}">
+    <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
+    <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ MEDIA_URL }}images/savitamundal_photozone2.2e16d0ba.fill-370x300.jpg">
+    <meta property="og:type" content="article">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
+    <meta name="twitter:title" content="{% trans "PARI Albums" %}" >
+    <meta name="twitter:description" content="{% trans "PARI Albums" %} - description" >
+    <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ MEDIA_URL }}images/savitamundal_photozone2.2e16d0ba.fill-370x300.jpg" >
+    <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
+{% endblock %}
+
 {% block extra_js %}
 {% endblock %}
 

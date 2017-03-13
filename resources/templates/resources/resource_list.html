@@ -9,6 +9,20 @@
 {% block meta_title %}{% trans "Resources" %}{% endblock %}
 {% block title %}{% trans "Resources" %}{% endblock %}
 
+{% block opengraph_block %}
+    <meta property="og:title" content="{% trans "PARI Resources" %}">
+    <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}" >
+    <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ STATIC_URL }}img/logo.png" >
+    <meta property="og:type" content="article">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
+    <meta name="twitter:title" content="{% trans "PARI Resources" %}" >
+    <meta name="twitter:description" content="{% trans "PARI Resources" %} - description" >
+    <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ STATIC_URL }}img/logo.png" >
+    <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
+{% endblock %}
+
 {% block extra_js %}
 {% endblock %}
 
