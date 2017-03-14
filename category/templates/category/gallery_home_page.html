@@ -3,6 +3,12 @@
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/gallery/gallery.less">
 {% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{{ STATIC_URL }}category/js/popup.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
+{% endblock %}
+
 {% block main %}
     <div id="main_content" class="gallery-home">
     <div class ="gallery-title gallery-home-title">
@@ -26,11 +32,15 @@
     </div>
         <div class="row">
             <div class="banner-container gallery-banner gallery">
-                <img class="img-responsive" src="{{ STATIC_URL }}img/stories-1.jpg" alt="sample content">
+                <div class="pop-up">
+                    <a href="{{ STATIC_URL }}img/stories-1.jpg">
+                        <img class="img-responsive" src="{{ STATIC_URL }}img/stories-1.jpg" alt="sample content">
+                    </a>
+                </div>
                 <div class="banner-info">
                     <div class="container">
                         <div class=" info photo-of-the-week">
-                            <p>Photo of the week</p>
+                            <p href="{{ STATIC_URL }}img/stories-1.jpg">Photo of the week</p>
                         </div>
                     </div>
                 </div>
