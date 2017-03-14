@@ -2,13 +2,7 @@
 {% load i18n wagtailcore_tags wagtailimages_tags %}
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/gallery/gallery.less">
-    <link rel="stylesheet" href="{{ STATIC_URL }}category/css/magnific-popup.css" />
 {% endblock %}
-{% block extra_js %}
-    <script type="text/javascript" src="{{ STATIC_URL }}category/js/popup.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}category/js/magnific-popup.js"></script>
-{% endblock %}
-
 {% block main %}
     <div id="main_content" class="gallery-home">
     <div class ="gallery-title gallery-home-title">
@@ -48,8 +42,8 @@
                             <p>Ankan Roy & Sagarika Basu</p>
                             <div><a href="#">Read the full story <i class="fa fa-angle-right"></i></a></div>
                         </div>
-                        <div class="go-full-screen preview">
-                            <a class="preview" ><i class="fa fa-arrows-alt"></i> Full Screen</a>
+                        <div class="go-full-screen">
+                            <a ><i class="fa fa-arrows-alt"></i> Full Screen</a>
                         </div>
                     </div>
                 </div>

@@ -13,6 +13,4 @@ $(function() {
         }
         window.location = window.location.pathname + "?" + ss.join("&");
     });
-
-
 });

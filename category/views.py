@@ -99,6 +99,7 @@ def gallery_home_page(request, slug=None):
         'photo_album': album_details['photo_album'][0],
         'photo_album_photographers': album_details['photo_album'][1],
         'video': video,
+        'tab': 'gallery',
     })
 
 

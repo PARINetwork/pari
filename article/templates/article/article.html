@@ -110,7 +110,7 @@
 {#                    {% if translations and translations|length > 1 %}#}
                     <span class="filter-value">
                         <span class="banner-label">Language</span>
-                        <i class="fa fa-angle                   -down pull-right" aria-hidden="true"></i>
+                        <i class="fa fa-angle-down pull-right" aria-hidden="true"></i>
                       <select class="select-no-style pull-right" name="lang" onchange="location = this.value;">
                       {% for translation in translations %}
                           <option class = "banner-language-list"{% if translation.get_absolute_url == request.get_full_path %} selected="selected"{% endif %} value="{{ translation.get_absolute_url }}" >
