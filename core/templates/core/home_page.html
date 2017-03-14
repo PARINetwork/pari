@@ -5,283 +5,512 @@
 {% block meta_description %}{{ page.strap.0.value|striptags }}{% endblock %}
 
 {% block breadcrumb_menu %}
-<li class="active">{% trans "Home" %}</li>
+    <li class="active">{% trans "Home" %}</li>
 {% endblock %}
 
 {% block extra_css %}
-{#  <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/homepage.less">#}
-{#  <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/categories.less">#}
-{#  <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/carousel.less">#}
-{#    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/gallery/gallery.less">#}
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/home.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/home/home-page.less">
 {% endblock %}
 
 {% block extra_js %}
-  <script type="text/javascript">
-    $(function() {
-	$("#homeCarousel").on('slide.bs.carousel', function() {
-	    setTimeout(function() {
-		$(window).trigger("scroll");
-	    }, 1000);
-	});
-    });
-  </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#homeCarousel").on('slide.bs.carousel', function () {
+                setTimeout(function () {
+                    $(window).trigger("scroll");
+                }, 1000);
+            });
+        });
+    </script>
 {% endblock %}
 
-
 {% block extra_header %}
-
-
-
-
-
-
-    <div id="main_content">
-    <div class="full-row">
-        <div class="home-feature-corousel">
-            <img class="img-responsive" src="{{ STATIC_URL }}img/edited_g007_25.max-1400x1120.jpg" alt="sample content">
-            <div class="banner-info">
+    <div id="main_content" class="home-page">
+        <div id="myCarousel-1" class="carousel slide" data-ride="carousel">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img class="img-responsive center-align" src="{{ STATIC_URL }}img/edited_g007_25.max-1400x1120.jpg"
+                         alt="sample content">
+                    <div class="container">
+                        <div class="item-container">
+                            <div>
+                                <span>FEATURED</span>
+                            </div>
+                            <h1>to market, to market…</h1>
+                            <div>
+                                <a href="#">Visible Work, Invisible Women <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="img-responsive center-align" src="{{ STATIC_URL }}img/edited_g007_25.max-1400x1120.jpg"
+                         alt="sample content">
+                    <div class="container">
+                        <div class="item-container">
+                            <div>
+                                <span>FEATURED</span>
+                            </div>
+                            <h1>to market, to market…</h1>
+                            <div>
+                                <a href="#">Visible Work, Invisible Women <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="img-responsive center-align" src="{{ STATIC_URL }}img/edited_g007_25.max-1400x1120.jpg"
+                         alt="sample content">
+                    <div class="container">
+                        <div class="item-container">
+                            <div>
+                                <span>FEATURED</span>
+                            </div>
+                            <h1>to market, to market…</h1>
+                            <div>
+                                <a href="#">Visible Work, Invisible Women <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="img-responsive center-align" src="{{ STATIC_URL }}img/edited_g007_25.max-1400x1120.jpg"
+                         alt="sample content">
+                    <div class="container">
+                        <div class="item-container">
+                            <div>
+                                <span>FEATURED</span>
+                            </div>
+                            <h1>to market, to market…</h1>
+                            <div>
+                                <a href="#">Visible Work, Invisible Women <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="img-responsive center-align" src="{{ STATIC_URL }}img/edited_g007_25.max-1400x1120.jpg"
+                         alt="sample content">
+                    <div class="container">
+                        <div class="item-container">
+                            <div>
+                                <span>FEATURED</span>
+                            </div>
+                            <h1>to market, to market…</h1>
+                            <div>
+                                <a href="#">Visible Work, Invisible Women <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Left and right controls -->
+            <div class="container">
+                <div class="carousel-control-container">
+                    <a class="left carousel-control" href="#myCarousel-1" role="button" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel-1" role="button" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div id="myCarousel-2" class="carousel slide" data-ride="carousel">
+                <div class="carousel-title"><h4>Latest Stories on PARI</h4></div>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    {% for item in page.carousel %}
+                        <div class="{% if forloop.first %}active{% endif %} item">
+                            <div class="row gallery-tile">
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="gallery-tile-info">
+                                        <h2>{{ item.title }}</h2>
+                                        <p>{% if item.specific.strap %} {{ item.specific.strap }}{% else %}
+                                            &nbsp;{% endif %}</p>
+                                        <div class="name-primary">
+                                            {% for author in item.specific.authors.all %}{{ author.name }}
+                                                {% if not forloop.last %}, {% endif %}{% endfor %}
+                                        </div>
+                                        <div class="date">
+                                            {% for location in item.specific.locations.all %}{{ location.name }}
+                                                {% if not forloop.last %}, {% endif %}{% endfor %}
+                                            • {{ item.specific.latest_revision_created_at|date }} </div>
+                                    </div>
+                                    <div class="view-all">
+                                        <a href="{{ item.specific.get_absolute_url }}">
+                                            <span>Read the Story</span>
+                                            <i class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-8">
+                                    <a href="{{ item.specific.get_absolute_url }}">
+                                        {% if item.specific.content_type.app_label == "resources" and item.specific.content_type.model == "resource" %}
+                                            <img class="img-responsive lazyload" src="{{ STATIC_URL }}img/1_1.png"
+                                                 data-src="{{ item.specific.embed_thumbnail }}"
+                                                 alt="{{ item.specific.title }}">
+                                            <noscript>
+                                                <img class="img-responsive" src="{{ item.specific.embed_thumbnail }}"
+                                                     alt="{{ item.specific.title }}">
+                                            </noscript>
+                                        {% else %}
+                                            {% image item.specific.featured_image max-800x800 as featured_image %}
+                                            <img class="img-responsive lazyload" src="{{ STATIC_URL }}img/1_1.png"
+                                                 data-src="{{ featured_image.url }}" alt="{{ featured_image.title }}">
+                                            <noscript>
+                                                <img class="img-responsive" src="{{ featured_image.url }}"
+                                                     alt="{{ featured_image.title }}">
+                                            </noscript>
+                                        {% endif %}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- Left and right controls -->
                 <div class="container">
-                    <div class="info">
-                        <div class="banner-info-heading">FEATURED</div>
-                        <h2 >to market,
-                        to market… </h2>
-                        <p>Ankan Roy & Sagarika Basu</p>
-                        <div class="banner-info-category">
-                            <a href="#">Read the full story <i class="fa fa-angle-right"></i></a>
+                    <div class="carousel-control-container">
+                        <a class="left carousel-control" href="#myCarousel-2" role="button" data-slide="prev">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel-2" role="button" data-slide="next">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="article-grid home-article-grid-1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 margin-btm-20px">
+                        <span class="tags-label">IN FOCUS</span>
+                        <span class="subtitle-primary font-l">Stories of a demonetised India</span>
+                    </div>
+                    <div class="col-lg-6 text-right margin-btm-20px">
+                        <a href="#" class="link-dark">All stories about demonetisation <i class="fa fa-angle-right red-angle-right"></i></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <img class="img-responsive" src="{{ STATIC_URL }}img/stories-9.jpg"
+                                     alt="sample content">
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <h3>BPL XI: they’re mobile, their money isn’t</h3>
+                                <div>
+                                    <a href="#">
+                                        <i class="fa fa-pencil"></i>
+                                        <span>P. Sainath</span>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-map-marker"></i>
+                                        <span>Adul</span>
+                                    </a>
+                                </div>
+                                <div class="date">23 NOV 2015</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <img class="img-responsive" src="{{ STATIC_URL }}img/stories-9.jpg"
+                                     alt="sample content">
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <h3>BPL XI: they’re mobile, their money isn’t</h3>
+                                <div>
+                                    <a href="#">
+                                        <i class="fa fa-pencil"></i>
+                                        <span>P. Sainath</span>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-map-marker"></i>
+                                        <span>Adul</span>
+                                    </a>
+                                </div>
+                                <div class="date">23 NOV 2015</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="container">
-        <div class="row     home-story-corousel">
-            <div class="col-lg-12 col-md-12 block-title">
-                <h4>Latest Stories On PARI</h4>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="home-title-info">
-                    <h2>Toddy Tapper</h2>
-                    <p>Meet Karukavel Nadar – a  man who, each season,  climbs close to 5,000 feet daily for a living.</p>
-                    <div class="name-primary">P. Sainath</div>
-                    <div class="district-primary">
-                        <span id="district">Telangana,A.P : Dec 13,2013</span>
-                    </div>
-                    <div class="story-link">
-                        <a href="#">
-                            <span>Read the story</span>
-                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+        <div class="story-grid home-article-grid-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid large">
+                        {% image categories.16.image fill-512x512 as category_image %}
+                        <a href="{{ categories.16.get_absolute_url }}" itemprop="url">
+                            <img src="{{ STATIC_URL }}img/1_1.png" data-src="{{ category_image.url }}"
+                                 alt="{{ categories.16.name }}" style="width:370px;margin:0 auto;"
+                                 class="img-responsive lazyload" itemprop="image">
+                            <div class="grid-container">
+                                <h3>{{ categories.16.name }}</h3>
+                                <div class="title-grid">
+                                    <div class="border-link"></div>
+                                    <div>{{ categories.16.description }}</div>
+                                </div>
+                            </div>
                         </a>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-8 col-md-6 ">
-                <img class="img-responsive center-align" src="{{ STATIC_URL }}img/to-market.jpg" alt="sample content">
-            </div>
-
-        </div>
-        <div class="row home-block">
-            <div class="col-lg  -6 col-md-6">
-                <h4>Pictures in the voice of the beholder</h4>
-                <img class="img-responsive center-align" src="{{ STATIC_URL }}img/gallery-1.jpg" alt="sample content">
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="gallery-tile-info">
-                    <h1>Toddy Tapper</h1>
-                    <p>Meet Karukavel Nadar – a  man who, each season,  climbs close to 5,000 feet daily for a living.</p>
-                    <div class="name-primary">P. Sainath</div>
-                    <a href="#">
-                        <span>View this talking album</span>
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </a>
-                </div>
-                <div class="view-all">
-                    <a href="#">
-                        <i class="fa  fa-music" aria-hidden="true"></i>
-                        <span>View all Talking Albums</span>
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="row gallery-tile">
-            <div class="col-lg-6 col-md-6">
-                <h4>Pictures in the voice of the beholder</h4>
-                <img class="img-responsive center-align" src="{{ STATIC_URL }}img/gallery-1.jpg" alt="sample content">
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="gallery-tile-info">
-                    <h1>Toddy Tapper</h1>
-                    <p>Meet Karukavel Nadar – a  man who, each season,  climbs close to 5,000 feet daily for a living.</p>
-                    <div class="name-primary">P. Sainath</div>
-                    <a href="#">
-                        <span>View this talking album</span>
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </a>
-                </div>
-                <div class="view-all">
-                    <a href="#">
-                        <i class="fa  fa-music" aria-hidden="true"></i>
-                        <span>View all Talking Albums</span>
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 faces-tile">
-                <!--<img class="img-responsive" src="{{ STATIC_URL }}img/faces-tile.jpg" alt="sample content">-->
-                <div class="face-tile-info">
-                    <div class="top-link">
-                        <a href="#" class="name-primary-bold">Photo Albums</a>
-                    </div>
-                    <h2>The facial diversity of India in one place</h2>
-                    <div class="bottom-link">
-                        <a href="#" class="">
-                            <span>View all photo albums</span>
-                            <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        </a>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid share">
+                        <h1 class="subtitle">‘PARI is an insane project...</h1>
+                        <div class="align-bottom">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
+                                    <h4>Rural India — a living journal, a breathing archive</h4>
+                                    <h5 class="mid-link">
+                                        <a href="{% url "static_page" slug="about" %}">The story of PARI <i
+                                                class="fa fa-angle-right red-angle-right"
+                                                aria-hidden="true"></i></a>
+                                    </h5>
+                                    <h5 class="mid-below-link">
+                                        <a href="{% url "contribute" slug="contribute" %}">Learn how you can contribute
+                                            <i class="fa fa-angle-right red-angle-right" aria-hidden="true"></i></a></h5>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
+                                    {% image categories.4.image fill-512x512 as category_image %}
+                                    <a href="{{ categories.4.get_absolute_url }}" itemprop="url">
+                                        <img src="{{ STATIC_URL }}img/1_1.png" data-src="{{ category_image.url }}"
+                                             alt="{{ categories.4.name }}" style="width:370px;margin:0 auto;"
+                                             class="img-responsive lazyload" itemprop="image">
+                                        <div class="grid-container">
+                                            <h3>{{ categories.4.name }}</h3>
+                                            <div class="title-grid">
+                                                <div class="border-link"></div>
+                                                <div>{{ categories.4.description }}</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid">
+                                {% image categories.12.image fill-512x512 as category_image %}
+                                <a href="{{ categories.12.get_absolute_url }}" itemprop="url">
+                                    <img src="{{ STATIC_URL }}img/1_1.png" data-src="{{ category_image.url }}"
+                                         alt="{{ categories.12.name }}" style="width:370px;margin:0 auto;"
+                                         class="img-responsive lazyload" itemprop="image">
+                                    <div class="grid-container">
+                                        <h3>{{ categories.12.name }}</h3>
+                                        <div class="title-grid">
+                                            <div class="border-link"></div>
+                                            <div>{{ categories.12.description }}</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid">
+                                <h1 class="subtitle">…and a wonderful one’</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid">
+                                {% image categories.14.image fill-512x512 as category_image %}
+                                <a href="{{ category.get_absolute_url }}" itemprop="url">
+                                    <img src="{{ STATIC_URL }}img/1_1.png" data-src="{{ category_image.url }}"
+                                         alt="{{ categories.14.name }}" style="width:370px;margin:0 auto;"
+                                         class="img-responsive lazyload" itemprop="image">
+                                    <div class="grid-container">
+                                        <h3>{{ categories.14.name }}</h3>
+                                        <div class="title-grid">
+                                            <div class="border-link"></div>
+                                            <div>{{ categories.14.description }}</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid">
+                                <h4>Stories from all over in all languages</h4>
+                                <h5 class="mid-link">
+                                    <a href="{% url "category-list" %}">Browse stories in all categories <i
+                                            class="fa fa-angle-right red-angle-right"
+                                            aria-hidden="true"></i></a>
+                                </h5>
+                                <h6>Translate for PARI</h6>
+                                <p>Translate the content for PARI in the languages that you can. <a href="#">Learn more
+                                    <i class="fa fa-angle-right red-angle-right" aria-hidden="true"></i></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container faces-tile-1">
+            <img class="img-responsive" src="{{ STATIC_URL }}img/faces-tile-1.jpg" alt="sample content">
+            <div class="faces-container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4 class="subtitle-primary">View faces from across India</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2 class="title-light margin-0">PARI is capturing the facial diversity of the people of
+                            India</h2>
+                    </div>
+                    <div class="col-lg-6">
+                        <div>
+                            <button class="btn" onclick="location.href='{% url "face-list" %}'">View all faces</button>
+                        </div>
+                        <p class="text"><a
+                                href="/pages/send-us-photos-help-pari-capture-the-sheer-facial-diversity-of-the-indian-people/"><u>{% trans "Contribute faces" %}</u></a>
+                            to the faces database</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="article-grid home-article-grid-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 article-image-icon">
+                                <img class="img-responsive" src="{{ STATIC_URL }}img/stories-9.jpg"
+                                     alt="sample content">
+                                <div><i class="fa fa-music" aria-hidden="true"></i></div>
+                                <div>16</div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <h3>BPL XI: they’re mobile, their money isn’t</h3>
+                                <div>
+                                    <a href="#">
+                                        <i class="fa fa-pencil"></i>
+                                        <span>P. Sainath</span>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-map-marker"></i>
+                                        <span>Adul</span>
+                                    </a>
+                                </div>
+                                <div class="view-article">
+                                    <a href="#">
+                                        <i class="fa  fa-music"
+                                           aria-hidden="true"></i><span>View all Talking Albums</span><i
+                                            class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 article-image-icon">
+                                <img class="img-responsive" src="{{ STATIC_URL }}img/stories-9.jpg"
+                                     alt="sample content">
+                                <div><i class="fa fa-music" aria-hidden="true"></i></div>
+                                <div>16</div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <h3>BPL XI: they’re mobile, their money isn’t</h3>
+                                <div>
+                                    <a href="#">
+                                        <i class="fa fa-pencil"></i>
+                                        <span>P. Sainath</span>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-map-marker"></i>
+                                        <span>Adul</span>
+                                    </a>
+                                </div>
+                                <div class="view-article">
+                                    <a href="#">
+                                        <i class="fa  fa-music"
+                                           aria-hidden="true"></i><span>View all Talking Albums</span><i
+                                            class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 article-image-icon">
+                                <img class="img-responsive" src="{{ STATIC_URL }}img/stories-9.jpg"
+                                     alt="sample content">
+                                <div><i class="fa fa-music" aria-hidden="true"></i></div>
+                                <div>16</div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <h3>BPL XI: they’re mobile, their money isn’t</h3>
+                                <div>
+                                    <a href="#">
+                                        <i class="fa fa-pencil"></i>
+                                        <span>P. Sainath</span>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-map-marker"></i>
+                                        <span>Adul</span>
+                                    </a>
+                                </div>
+                                <div class="view-article">
+                                    <a href="#">
+                                        <i class="fa  fa-music"
+                                           aria-hidden="true"></i><span>View all Talking Albums</span><i
+                                            class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 article-image-icon">
+                                <img class="img-responsive" src="{{ STATIC_URL }}img/stories-9.jpg"
+                                     alt="sample content">
+                                <div><i class="fa fa-music" aria-hidden="true"></i></div>
+                                <div>16</div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <h3>BPL XI: they’re mobile, their money isn’t</h3>
+                                <div>
+                                    <a href="#">
+                                        <i class="fa fa-pencil"></i>
+                                        <span>P. Sainath</span>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-map-marker"></i>
+                                        <span>Adul</span>
+                                    </a>
+                                </div>
+                                <div class="view-article">
+                                    <a href="#">
+                                        <i class="fa  fa-music"
+                                           aria-hidden="true"></i><span>View all Talking Albums</span><i
+                                            class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pari-doing-block ">
+            <div class="container">
+                <h1>Like what PARI is doing?</h1>
+                <div class="pari-do-link"><a href="{% url "static_page" slug="donate" %}">Donate to PARI
+                    <i class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
+                </a></div>
+                <div class=" pari-do-link"><a href="{% url "contribute" slug="contribute" %}">Contribute to PARI
+                    <i class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
+                </a></div>
             </div>
         </div>
     </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{#    <div class="jumbotron home-page content-container" itemscope itemtype="http://schema.org/WebPage">#}
-{#      <h1 itemprop="name">{{ page.title }}</h1>#}
-{#      <div class="row">#}
-{#	      <div class="col-lg-12 col-md-12 col-sm-12">#}
-{#          <h2 style="padding:0;margin:0;" itemprop="description">{{ page.strap.0.value|richtext|striptags }}</h2>#}
-{#        </div>#}
-{#      </div>#}
-{#    </div>#}
-{##}
-{#        <div id="homeCarousel" class="carousel slide carousel-thin-controls container" data-interval="8000" data-ride="carousel">#}
-{#            <div class="carousel-inner">#}
-{#              {% for item in page.carousel %}#}
-{#              <div class="{% if forloop.first %}active{% endif %} item">#}
-{#		<a href="{{ item.specific.get_absolute_url }}">#}
-{#		  {% if item.specific.content_type.app_label == "resources" and item.specific.content_type.model == "resource" %}#}
-{#		  <img class="img-responsive lazyload" src="{{ STATIC_URL }}img/1_1.png" data-src="{{ item.specific.embed_thumbnail }}" alt="{{ item.specific.title }}">#}
-{#		  <noscript>#}
-{#		    <img class="img-responsive" src="{{ item.specific.embed_thumbnail }}" alt="{{ item.specific.title }}">#}
-{#		  </noscript>#}
-{#		  {% else %}#}
-{#		  {% image item.specific.featured_image max-800x800 as featured_image %}#}
-{#		  <img class="img-responsive lazyload" src="{{ STATIC_URL }}img/1_1.png" data-src="{{ featured_image.url }}" alt="{{ featured_image.title }}">#}
-{#		  <noscript>#}
-{#		    <img class="img-responsive" src="{{ featured_image.url }}" alt="{{ featured_image.title }}">#}
-{#		  </noscript>#}
-{#		  {% endif %}#}
-{#                  <div class="custom-carousel-caption">#}
-{#                      <h4>{{ item.title }}</h4>#}
-{#                      <h5>{% for location in item.specific.locations.all %}{{ location.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</h5>#}
-{#                      <h5>{% if item.specific.strap %} {{ item.specific.strap }}{% else %}&nbsp;{% endif %}</h5>#}
-{#                  </div>#}
-{#                </a>#}
-{#              </div>#}
-{#              {% endfor%}#}
-{#            </div>#}
-{#	    {% if page.carousel %}#}
-{#            <a class="carousel-control left" href="#homeCarousel" data-slide="prev">&lsaquo;</a>#}
-{#            <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>#}
-{#            <ol class="carousel-indicators">#}
-{#                {% for count in page.carousel %}#}
-{#                    <li data-target="#homeCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>#}
-{#                {% endfor %}#}
-{#            </ol>#}
-{#	    {% endif %}#}
-{#        </div>#}
-{##}
-{#    <hr class="line-divider">#}
-{#        <div class="container">#}
-{#          <div class="row">#}
-{#	    {% for col in page.about %}#}
-{#            <div class="col-lg-3 col-md-3 col-sm-3">#}
-{#              <div class="grid-column about">#}
-{#                <div>#}
-{#		  {{ col.value|richtext }}#}
-{#                </div>#}
-{#              </div>#}
-{#            </div>#}
-{#	    {% endfor %}#}
-{#          </div>#}
-{#	</div>#}
-{#	<hr class="line-divider">#}
-{#{% endblock %}#}
-{##}
-{#{% block main %}#}
-{#<div id="homepage">#}
-{#    <section id="mainsection">#}
-{#        <div class="main-section">#}
-{#            <div class="container-fluid" itemscope itemtype="http://schema.org/BreadcrumbList">#}
-{#                <div class="category-heading">#}
-{#                  <h5>{% trans "Categories" %}</h5>#}
-{#                </div>#}
-{#                {% for category in categories %}#}
-{#		{% if forloop.first or forloop.counter0|divisibleby:"3" %}#}
-{#		<div class="row">#}
-{#		{% endif %}#}
-{#                  <div class="categories" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">#}
-{#                    <a href="{{ category.get_absolute_url}}" itemprop="url">#}
-{#                      <div class="col-lg-4 col-md-4 col-xs-12">#}
-{#                        <div class="grid-column">#}
-{##}
-{#                          {% image category.image fill-512x512 as category_image %}<img src="{{ STATIC_URL }}img/1_1.png" data-src="{{ category_image.url }}" alt="{{ category.name }}" style="width:370px;margin:0 auto;" class="img-responsive lazyload" itemprop="image">#}
-{#                          <div class="caption">#}
-{#                            <h6 itemprop="name">{{ category.name }}</h6>#}
-{#                            <p class="description" itemprop="description">{{ category.description }}</p>#}
-{#                          </div>#}
-{#                        </div>#}
-{#                      </div>#}
-{#                    </a>#}
-{#                  </div>#}
-{#		{% if forloop.last or forloop.counter|divisibleby:"3" %}#}
-{#		</div>#}
-{#		{% endif %}#}
-{#		{% endfor %}#}
-{#            </div>#}
-{#         </div>#}
-{#    </section>#}
-{# </div>#}
 {% endblock %}

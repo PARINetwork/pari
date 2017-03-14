@@ -4,6 +4,7 @@
 
 #main_content {
   margin-top: 0;
+  min-height: 0;
 }
 
 #mainnav {
@@ -79,6 +80,11 @@
 }
 #myCarousel-2 {
   margin-bottom: 60px;
+  .carousel-title{
+    h4{
+      color: @primary-color;
+    }
+  }
   .carousel-control-container {
     border: 1px solid @light-grey;
     height: 40px;
@@ -110,6 +116,12 @@
   .gallery-tile{
     margin-bottom: 0;
     .gallery-tile-info{
+      .date{
+        color: @text-title-light;
+        font-size: 1em;
+        letter-spacing: 1px;
+        font-weight: 300;
+      }
       min-height: auto;
       h2{
         .font-size(36);
@@ -206,7 +218,7 @@
     }
   }
 }
-.home-article-grid-3{
+.home-article-grid-3 {
   .grid{
     &.share{
       h1{
@@ -221,6 +233,13 @@
       .font-size(58);
       margin: 0;
       color: @text-title-light;
+    }
+    .mid-below-link {
+      padding: 15px 0;
+
+      a {
+        color: @darker-grey;
+      }
     }
     .mid-link{
       border-top: 1px solid @grey;
@@ -368,6 +387,34 @@
   }
 }
 
+.red-angle-right {
+  color: @primary-color;
+  padding-left: 5px;
+  font-weight: 700;
+}
+
+.pari-doing-block{
+  border-top: 1px solid @border-dark;
+  margin-top: 30px;
+  padding-top: 40px;
+  .pari-do-link{
+    padding-bottom: 10px;
+  }
+  a{
+    text-decoration: none;
+    color: @dark-grey;
+    letter-spacing: 1px;
+    font-size: 1.5em;
+    &:hover{
+      cursor: pointer;
+      color: @primary-color;
+    }
+  }
+  h1{
+    color: @primary-color;
+    padding-bottom: 20px;
+  }
+}
 @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
   .faces-tile-1{
     margin-bottom: 0px;
