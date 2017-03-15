@@ -202,6 +202,10 @@ class AffixImage(AbstractImage):
     def get_categories_index(self):
         return [category.pk for category in self.categories.all()]
 
+    @property
+    def alt_text(self):
+        return self.event
+
 
 @python_2_unicode_compatible
 class AffixImageRendition(AbstractRendition):

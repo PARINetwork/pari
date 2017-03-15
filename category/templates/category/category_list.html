@@ -23,7 +23,7 @@
         <a href="{% if category.slug in gallery %}{% url "gallery-detail" slug=category.slug %} {% else %}{% url "story-detail" slug=category.slug%}{% endif %}">
           <div class="col-lg-4 col-md-4 col-xs-12">
             <div class="grid-column">{% image category.image fill-370x300 as category_image %}
-              <img class="img-responsive lazyload" data-src="{{ category_image.url }}" alt="{{ category.name }}" style="width:100%;">
+              <img class="img-responsive lazyload" data-src="{{ category_image.url }}" alt="{{ category.image.alt_text }}" style="width:100%;">
               <div class="caption">
                 <h4>{{ category.name }}</h4>
                 <p class="description">{{ category.description }}</p>

@@ -7,7 +7,7 @@
             <div class="gallery-image-container">
                 <a href="{{ article.get_absolute_url }}">
                     {% if article.featured_image %}{% image article.featured_image fill-270x270 as featured_image %}
-                    <img class="img-responsive" src="{{ featured_image.url }}" alt="{{ article.featured_image.title }}">
+                    <img class="img-responsive" src="{{ featured_image.url }}" alt="{{ article.featured_image.alt_text }}">
                     {% else %}
                     <img class="img-responsive" src="{{ STATIC_URL }}img/default_featured_image.png" alt="{{ article.title }}" width="270">
                     {% endif %}

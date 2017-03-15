@@ -68,7 +68,7 @@
       <div class="col-lg-4 col-md-4">
         <a href="{% url "face-detail" alphabet=face.location.district|lower|first %}">
           <div class="grid-column">{% image face.image fill-370x470 as face_image %}
-            <img class="img-responsive" src="{{ face_image.url }}" width="370" height="470" alt="{{ face.title }}">
+            <img class="img-responsive" src="{{ face_image.url }}" width="370" height="470" alt="{{ face.image.alt_text }}">
             <div class="caption down-caption dark-caption text-padding">
               <div class="image-footer">
                 {{ face.district|upper|first }}

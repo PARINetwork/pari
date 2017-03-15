@@ -64,7 +64,8 @@
 {% image article.featured_image max-1400x1120 as featured_image %}
 <div class="full-row">
     <div class="banner-container">
-        {% image article.featured_image max-1400x1120 %}
+        <img src="{{ featured_image.url }}" alt="{{ article.featured_image.alt_text }}" width="{{ featured_image.width }}" height="{{ featured_image.height }}">
+
         <div class="banner-info">
         <div class="container">
             <div class="row-1">
@@ -243,7 +244,7 @@
                             <div class="article-image">{% image related_article.featured_image fill-512x512 as featured_image %}
                                 <a href="{{ related_article.get_absolute_url }}">
                                     <img class="img-responsive lazyload" data-src="{{ featured_image.url }}"
-                                     alt="{{ related_article.featured_image.title }}" width="260" height="260"
+                                     alt="{{ related_article.featured_image.alt_text }}" width="260" height="260"
                                      src="data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==">
                                 </a>
                             </div>
@@ -251,7 +252,7 @@
                             <div class="article-image">
                             <a href="{{ related_article.get_absolute_url }}">
                                 <img class="img-responsive" src="{{ STATIC_URL }}img/default_featured_image.png"
-                                     alt="PARI Logo" width="260" height="260">
+                                     alt="{{ related_article.title }}" width="260" height="260">
                             </a>
                             </div>
                         {% endif %}
