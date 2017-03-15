@@ -206,6 +206,10 @@ class AffixImage(AbstractImage):
     def alt_text(self):
         return self.event
 
+    @property
+    def default_alt_text(self):
+        return self.alt_text
+
 
 @python_2_unicode_compatible
 class AffixImageRendition(AbstractRendition):
