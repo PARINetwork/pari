@@ -1,0 +1,32 @@
+{% load i18n wagtailcore_tags wagtailimages_tags %}
+
+<div class="row gallery-tile">
+    <div class="col-lg-6 col-md-6">
+        <h4>{{ section_title }}</h4>
+        <img class="img-responsive center-align" src="{{ section_context.image.file.url }}"
+             alt="{{ section_context.image.alt_text }}">
+    </div>
+    <div class="col-lg-6 col-md-6">
+        <div class="gallery-tile-info">
+            <h1>{{ section_context.section_model.title }}</h1>
+            <p> {{ section_context.section_model.description|richtext }}</p>
+            <div class="name-primary">
+                {% for photographer in section_context.photographers %}
+                    <a href="{% url "author-detail" photographer.slug %}"><span>{{ photographer.name }}</span></a>
+                    {% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </div>
+            <a href="{{ section_context.section_model.get_absolute_url }}">
+                <span>{{ link_text }} </span>
+                <i class="fa fa-angle-right element-nav" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div class="view-all">
+            <a href="{% url "talking-album-list" %}">
+                <i class="fa {{ icon }}" aria-hidden="true"></i>
+                <span>{{ all_links_text }}</span>
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+</div>

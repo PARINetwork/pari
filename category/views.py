@@ -92,15 +92,27 @@ def gallery_home_page(request, slug=None):
     articles = Article.objects.live()
     album_details = get_album_and_photographers(albums)
     video = get_video(articles)
-
-    return render(request, "category/gallery_home_page.html", {
-        'talking_album': album_details['talking_album'][0],
-        'talking_album_photographers': album_details['talking_album'][1],
-        'photo_album': album_details['photo_album'][0],
-        'photo_album_photographers': album_details['photo_album'][1],
-        'video': video,
+    talking_album = album_details['talking_album'][0]
+    photo_album = album_details['photo_album'][0]
+    gallery_context = {
+        'talking_album': {
+            'image': talking_album.slides.first().image,
+            'photographers': album_details['talking_album'][1],
+            'section_model': talking_album,
+        },
+        'photo_album': {
+            'image': photo_album.slides.first().image,
+            'photographers': album_details['photo_album'][1],
+            'section_model': photo_album,
+        },
+        'video': {
+            'image': video.featured_image,
+            'photographers': video.authors.all(),
+            'section_model': video,
+        },
         'tab': 'gallery',
-    })
+    }
+    return render(request, "category/gallery_home_page.html", gallery_context)
 
 
 def get_album_and_photographers(albums):
