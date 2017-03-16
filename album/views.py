@@ -36,7 +36,7 @@ class AlbumList(ListView):
             qs = self.get_queryset().filter(id__in=slide_id)
             context['albums'] = qs
             context['tab'] = 'gallery'
-            context["title"] = "Albums"
+            context["title"] = "Photo Albums"
             context["sub_heading"] = 'pictures, through the author\'s eyes'
         else:
             context['albums'] = self.get_queryset()

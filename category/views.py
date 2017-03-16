@@ -50,9 +50,10 @@ class GalleryDetail(DetailView):
         except (PageNotAnInteger, EmptyPage):
             raise Http404
         context["languages"] = settings.LANGUAGES
-        category_name = context["category"].name
-        context["title"] = category_heading_options.get(category_name, {'title': category_name}).get('title')
-        context["sub_heading"] = category_heading_options.get(category_name, {'sub_heading': ''}).get('sub_heading')
+        category = context["category"]
+        context["title"] = category_heading_options.get(category.name, {'title': category.name}).get('title')
+        context["sub_heading"] = category_heading_options.get(category.name,
+                                                              {'sub_heading': category.description}).get('sub_heading')
         context["tab"] = 'gallery'
         return context
 
@@ -81,8 +82,9 @@ class StoryDetail(DetailView):
         except (PageNotAnInteger, EmptyPage):
             raise Http404
         context["languages"] = settings.LANGUAGES
-        category_name = context["category"].name
-        context["title"] = category_name
+        category = context['category']
+        context["title"] = category.name
+        context["sub_heading"] = category.description
         context["tab"] = 'stories'
         return context
 
