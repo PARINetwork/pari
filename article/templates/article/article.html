@@ -236,14 +236,14 @@
         <h4>RELATED STORIES</h4>
         <div class="row">
            {% for related_article in article.related_articles %}
-            <div class="col-lg-6 col-md-6">
+            <div class="col-lg-6 col-md-6 related-tile">
                 <div class="row">
                     <div class="col-lg-6">
                         {% if related_article.featured_image %}
-                            <div class="article-image">{% image related_article.featured_image fill-512x512 as featured_image %}
-                                <a href="{{ related_article.get_absolute_url }}">
+                            <div class="article-image">{% image related_article.featured_image fill-270x270 as featured_image %}
+                                <a class="article-image" href="{{ related_article.get_absolute_url }}">
                                     <img class="img-responsive lazyload" data-src="{{ featured_image.url }}"
-                                     alt="{{ related_article.featured_image.alt_text }}" width="260" height="260"
+                                     alt="{{ related_article.featured_image.alt_text }}" width="270" height="192"
                                      src="data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==">
                                 </a>
                             </div>
