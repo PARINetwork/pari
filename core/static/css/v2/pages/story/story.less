@@ -27,6 +27,14 @@
       .tag {
         color: @text-color-tag;
         text-transform: uppercase;
+        .tag-space{
+          padding-right: 2px;
+        }
+        .tag-space-both{
+          padding-right: 10px;
+          padding-left: 10px;
+          color: @text-light;
+        }
       }
       .date {
         color: @text-light;
@@ -123,7 +131,9 @@
 }
 
 .article-container{
+  text-align: left;
   .content-map{
+    margin-right: 30px;
     .subtitle{
       color: @title;
       line-height: 30px;
@@ -182,6 +192,31 @@
 }
 
 .related-stories{
+    .related-title{
+      &:hover{
+        color: black;
+      }
+    }
+
+  .related-sub-data{
+    width: auto;
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    .fa.fa-map-marker{
+        color: @text-title-light;
+    }
+    .fa.fa-pencil{
+        color: @text-title-light;
+    }
+    span{
+      margin-right: 0px;
+    }
+    a{
+      margin-right: 2px;
+    }
+  }
+
   h3{
     color: @text-dark;
   }
@@ -258,6 +293,9 @@
         display: none;
       }
     }
+  }
+  .fa-expand{
+    display: none;
   }
   .faces{
     display: none;

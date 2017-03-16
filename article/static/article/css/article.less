@@ -236,17 +236,29 @@
 	      }
     }
 
-
+      .paragraph-holder{
+        width: 80%;
+        padding-left: 20%;
+      }
+      .rich-text-image-holder{
+        max-width:100%;
+      }
     p {
-      .fa-expand {
-        font-size: 2em;
-        color: white;
-        background-color: #151414;
-        opacity: 0.6;
-        float: right;
-        position: absolute;
-        right: 0;
-        padding: 10px;
+      text-align: left;
+      i{
+        margin-top: 2px;
+      }
+      i{
+        &.fa-expand {
+          font-size: 2em;
+          color: white;
+          background-color: #151414;
+          opacity: 0.6;
+          float: right;
+          position: absolute;
+          right: 0;
+          padding: 10px;
+        }
       }
     }
 
@@ -255,9 +267,12 @@
     }
 
     .center {
-	      text-align: center;
-          color: #8F8F8F;
-          font-size: small;
+      text-align: center;
+      color: @grey;
+      font-size: small;
+      i{
+        font-style: normal;
+      }
     }
 
     .left {

@@ -27,6 +27,15 @@ $(function() {
 	      }, 1000);
     });
 
+
+    $('.rich-text p').each(function() {
+    	if ($(this).find('img').length > 0){
+        $(this).addClass("rich-text-image-holder");
+    } else {
+        $(this).addClass("paragraph-holder");
+    }
+    });
+
     $('.rich-text img').each(function() {
     	  $(this).wrap('<a class="gallery" href="javascript:void(0)"></a>');
         $(this).parents('a').first().prepend('<i class="fa fa-expand fa-invert"></i>').css("position", "relative");

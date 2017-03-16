@@ -65,16 +65,15 @@
 <div class="full-row">
     <div class="banner-container">
         <img src="{{ featured_image.url }}" alt="{{ article.featured_image.alt_text }}" width="{{ featured_image.width }}" height="{{ featured_image.height }}">
-
         <div class="banner-info">
         <div class="container">
             <div class="row-1">
                 <span class="tag">
                         {% if article.categories.count %}
                             {% for category in article.categories.all %}
-                                {{ category }}
-                                {% if not forloop.last %} ,
-                                {% else %} •
+                                <span class="tag-space">{{ category }}
+                                {% if not forloop.last %},</span>
+                                {% else %}  <span class="tag-space-both">•</span>
                                 {%  endif  %}
                             {% endfor %}
                         {%  endif %}
@@ -86,7 +85,7 @@
                     {% else %}
                         {% if article.first_published_at %}
                             <a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month %}">
-                                <span itemprop="datePublished" class="date">  {{ article.first_published_at|date }}</span>
+                                <span itemprop="datePublished" class="date"> {{ article.first_published_at|date }}</span>
                             </a>
                         {% endif %}
                     {% endif %}
@@ -237,7 +236,7 @@
         <h4>RELATED STORIES</h4>
         <div class="row">
            {% for related_article in article.related_articles %}
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-md-6">
                 <div class="row">
                     <div class="col-lg-6">
                         {% if related_article.featured_image %}
@@ -257,28 +256,35 @@
                             </div>
                         {% endif %}
                     </div>
-                    <div class="col-lg-6">
-                        <a href="{{ related_article.get_absolute_url }}"> <h3> {{ related_article.title|truncatechars:70 }}</h3></a>
+                    <div class="col-lg-6 related-info">
+                        <a class="related-title" href="{{ related_article.get_absolute_url }}"> <h3> {{ related_article.title|truncatechars:70 }}</h3></a>
                         <div>
+                            <div class="related-sub-data">
                             <i class="fa fa-pencil"></i>
-                            <span>{% for author in related_article.authors.all %}
-                                <a href="{% url "author-detail" author.slug %}">{{ author.name }}</a>
-                                {% if not forloop.last %},{% endif %}{% endfor %}</span>
-                                <span>
-                                    {% for location in related_article.locations.all %}
-                                        <i class="fa fa-map-marker"></i>
-                                        <a  href="{% url "location-detail" location.slug %}">
-                                            <span>{{  location.name }}</span>
-                                        </a>
-                                    {%  endfor %}
-                                </span>
-                            </a>
+                                {% for author in related_article.authors.all %}
+                                    <span class="tag-space">
+                                    <a href="{% url "author-detail" author.slug %}">{{ author.name }}</a>
+                                    {% if not forloop.last %}, {% endif %}
+                                    </span>
+                                {% endfor %}
+                            </div>
+                            <div class="related-sub-data">
+                                <i class="fa fa-map-marker"></i>
+                                {% for location in related_article.locations.all %}
+                                    <span>
+                                        <a  href="{% url "location-detail" location.slug %}">{{  location.name }}{% if not forloop.last %},{% endif %}</a>
+                                    </span>
+                                {%  endfor %}
+                            </div>
                         </div>
                         <div class="date">
                                  {% if related_article.original_published_date %}
-	                                <a href="{% url "archive-detail" year=related_article.original_published_date.year month=related_article.original_published_date.month %}"> <span itemprop="datePublished">{{ related_article.original_published_date|date }}</span> </a>
+	                                <a href="{% url "archive-detail" year=related_article.original_published_date.year month=related_article.original_published_date.month %}">
+                                        <span itemprop="datePublished">{{ related_article.original_published_date|date }}</span>
+                                    </a>
 	                             {% else %}
-	                             {% if related_article.first_published_at %}<a href="{% url "archive-detail" year=related_article.first_published_at.year month=related_article.first_published_at.month %}"> <span itemprop="datePublished">{{ related_article.first_published_at|date }}</span></a>{% endif %}
+	                             {% if related_article.first_published_at %}<a href="{% url "archive-detail" year=related_article.first_published_at.year month=related_article.first_published_at.month %}">
+                                     <span itemprop="datePublished">{{ related_article.first_published_at|date }}</span></a>{% endif %}
 	                             {% endif %}
                         </div>
                     </div>
