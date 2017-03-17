@@ -247,6 +247,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid large">
+                         <span class="subtitle-primary font-l">All that you can read on PARI</span>
                         {% image categories.16.image fill-512x512 as category_image %}
                         <a href="{{ categories.16.get_absolute_url }}" itemprop="url">
                             <img src="{{ STATIC_URL }}img/1_1.png" data-src="{{ category_image.url }}"
@@ -322,7 +323,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid">
                                 {% image categories.14.image fill-512x512 as category_image %}
-                                <a href="{{ category.get_absolute_url }}" itemprop="url">
+                                <a href="{{ categories.14.get_absolute_url }}" itemprop="url">
                                     <img src="{{ STATIC_URL }}img/1_1.png" data-src="{{ category_image.url }}"
                                          alt="{{ categories.14.name }}" style="width:370px;margin:0 auto;"
                                          class="img-responsive lazyload" itemprop="image">
