@@ -22,7 +22,11 @@
             </a>
         </div>
         <div class="view-all">
-            <a href="{% url "talking-album-list" %}">
+            {% if all_links_slug %}
+                <a href="{% url all_links_url slug=all_links_slug %}">
+            {% else %}
+                <a href="{% url all_links_url %}">
+            {% endif %}
                 <i class="fa {{ icon }}" aria-hidden="true"></i>
                 <span>{{ all_links_text }}</span>
                 <i class="fa fa-angle-right" aria-hidden="true"></i>

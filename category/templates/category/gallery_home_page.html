@@ -9,7 +9,25 @@
     <script type="text/javascript" src="{{ STATIC_URL }}category/js/popup.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
 {% endblock %}
+{% block opengraph_block %}
+    <meta property="og:title" content="{% trans "PARI Gallery" %}">
+    <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
+    <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ MEDIA_URL }}images/savitamundal_photozone2.2e16d0ba.fill-370x300.jpg">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="PARI hosts and combines video, still photo, audio and text archives.
+    There is content we already have and content we are newly generating. Both will take time and effort to organise and load.
+    The videos generated specifically for PARI record the lives and livelihoods of poor and everyday Indians.">
+    <meta property="og:published_time" content={{ talking_album.first.first_published_at|date:"c" }}>
 
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
+    <meta name="twitter:title" content="{% trans "PARI Gallery" %}" >
+    <meta name="twitter:description" content="PARI hosts and combines video, still photo, audio and text archives.
+    There is content we already have and content we are newly generating. Both will take time and effort to organise and load.
+    The videos generated specifically for PARI record the lives and livelihoods of poor and everyday Indians." >
+    <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ MEDIA_URL }}images/savitamundal_photozone2.2e16d0ba.fill-370x300.jpg" >
+    <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
+{% endblock %}
 {% block main %}
     <div id="main_content" class="gallery-home">
     <div class ="gallery-title gallery-home-title">
@@ -18,21 +36,22 @@
                 <h1> Gallery</h1>
                 <div class="paragraph-dark font-xxs">AN EVER-GROWING VIBRANT ARCHIVE OF LIFE IN THE COUNTRYSIDE</div>
             </div>
-
-            <div class="text-right col-lg-3 col-md-3 col-sm-2 col-xs-12 gallery-title-icon share-icon">
-            <span class="gallery-social-icon">
-                <a href="https://twitter.com/PARINetwork" target="_blank" class="link-light">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-            </a>
-                <a href="https://facebook.com/PARINetwork" target="_blank" class="link-light">
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-            </a>
-            </span>
-            </div>
+            {% with request.build_absolute_uri as url %}
+                <div class="text-right col-lg-3 col-md-3 col-sm-2 col-xs-12 gallery-title-icon share-icon">
+                <span class="gallery-social-icon">
+                    <a href="https://twitter.com/home?status=Gallery+{{ url|urlencode }}" target="_blank" class="link-light">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+                    <a href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t=Gallery" target="_blank" class="link-light">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+                </span>
+                </div>
+            {% endwith %}
         </div>
     </div>
         <div class="row">
-            <div class="banner-container gallery-banner gallery">
+            <div class="banner-container gallery-banner ">
                 <div class="pop-up">
                     <a href="{{ STATIC_URL }}img/stories-1.jpg">
                         <img class="img-responsive" src="{{ STATIC_URL }}img/stories-1.jpg" alt="sample content">
@@ -66,12 +85,11 @@
             </div>
         </div>
         <div class="container">
-            {% include "includes/gallery_home_section.html" with section_title="Pictures in the voice of the beholder" icon="fa-music" section_context=talking_album link_text="View this talking album" all_links_text="View all Talking Albums" %}
-            {% include "includes/gallery_home_section.html" with section_title="Video stories that speak for themselves" icon="fa-youtube-play" section_context=video link_text="Watch this video" all_links_text="Watch all videos" %}
-            {% include "includes/gallery_home_section.html" with section_title="Video stories that speak for themselves" icon="fa-picture-o" section_context=photo_album link_text="View this Photo Album" all_links_text="View all photo albums" %}
+            {% include "includes/gallery_home_section.html" with section_title="Pictures in the voice of the beholder" icon="fa-music" section_context=talking_album link_text="View this talking album" all_links_text="View all Talking Albums" all_links_url="talking-album-list" %}
+            {% include "includes/gallery_home_section.html" with section_title="Video stories that speak for themselves" icon="fa-youtube-play" section_context=video link_text="Watch this video" all_links_text="Watch all videos"  all_links_url="gallery-detail" all_links_slug="videozone" %}
+            {% include "includes/gallery_home_section.html" with section_title="Video stories that speak for themselves" icon="fa-picture-o" section_context=photo_album link_text="View this Photo Album" all_links_text="View all photo albums" all_links_url="other-album-list" %}
             <div class="row">
                 <div class="col-lg-12 faces-tile">
-                    <!--<img class="img-responsive" src="{{ STATIC_URL }}img/faces-tile.jpg" alt="sample content">-->
                     <div class="face-tile-info">
                         <div class="top-link">
 {#                            <a href="{% url "other-album-list" %}" class="name-primary-bold">Photo Albums</a>#}
