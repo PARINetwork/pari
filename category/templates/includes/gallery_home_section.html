@@ -8,7 +8,7 @@
     </div>
     <div class="col-lg-6 col-md-6">
         <div class="gallery-tile-info">
-            <h1>{{ section_context.section_model.title }}</h1>
+            <h2>{{ section_context.section_model.title }}</h2>
             <p> {{ section_context.section_model.description|richtext }}</p>
             <div class="name-primary">
                 {% for photographer in section_context.photographers %}
@@ -16,6 +16,7 @@
                     {% if not forloop.last %}, {% endif %}
                 {% endfor %}
             </div>
+
             <a href="{{ section_context.section_model.get_absolute_url }}">
                 <span>{{ link_text }} </span>
                 <i class="fa fa-angle-right element-nav" aria-hidden="true"></i>
