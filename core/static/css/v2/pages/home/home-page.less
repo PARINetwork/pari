@@ -118,13 +118,25 @@
     img{
       max-height: 80%;
       max-width: 100%;
+      height: 80%;
     }
     .gallery-tile-info{
-      .date{
-        color: @text-title-light;
-        font-size: 1em;
-        letter-spacing: 1px;
-        font-weight: 300;
+      .date {
+        .dot-seperator{
+          padding: 0px 5px 2px 5px;
+          font-weight: 800;
+          color: @text-title-light;
+        }
+          a{
+            &:hover{
+              color: @primary-color;
+            }
+            color: @text-title-light;
+            font-weight: 300;
+            font-size: 1em;
+            letter-spacing: 1px;
+          }
+
       }
       min-height: auto;
       h2{
@@ -223,6 +235,14 @@
   }
 }
 .home-article-grid-3 {
+  .large {
+    a {
+      img {
+        width: 100% !important;
+        margin: 0 auto;
+      }
+    }
+  }
   .grid{
     &.share{
       h1{

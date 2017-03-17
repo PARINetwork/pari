@@ -131,13 +131,21 @@
                                         <p>{% if item.specific.strap %} {{ item.specific.strap }}{% else %}
                                             &nbsp;{% endif %}</p>
                                         <div class="name-primary">
-                                            {% for author in item.specific.authors.all %}{{ author.name }}
-                                                {% if not forloop.last %}, {% endif %}{% endfor %}
+                                            {% for author in item.specific.authors.all %}
+                                                <a href="{% url "author-detail" author.slug %}"><span>{{ author.name }}</span></a>
+                                                {% if not forloop.last %}, {% endif %}
+                                            {% endfor %}
                                         </div>
                                         <div class="date">
-                                            {% for location in item.specific.locations.all %}{{ location.name }}
-                                                {% if not forloop.last %}, {% endif %}{% endfor %}
-                                            • {{ item.specific.latest_revision_created_at|date }} </div>
+                                            {% for location in item.specific.locations.all %}
+                                                <a href="{% url "location-detail" location.slug %}">
+                                                {{ location.name }}
+                                                </a>
+                                                {% if not forloop.last %}, {% endif %}{% endfor %} <span class ="dot-seperator">•</span>
+                                            <a href="{% url "archive-detail" year=item.specific.latest_revision_created_at.year month=item.specific.latest_revision_created_at.month %}">
+                                                {{ item.specific.latest_revision_created_at|date }}
+                                            </a>
+                                        </div>
                                     </div>
                                     <div class="view-all">
                                         <a href="{{ item.specific.get_absolute_url }}">
