@@ -45,41 +45,43 @@
     <li class="active">{% trans "Albums" %}</li>
 {% endblock %}
 {% block main %}
-    {% include "includes/grid_title.html" %}
-    <div class="filter-list-container">
-        <div class="gallery-tile-row">
-            <div class="row">
-                {% for album in albums %}
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 grid-list">
-                        <div class="grid-container">
-                            <div class="gallery-image-container">
-                                <a href="{{ album.get_absolute_url }}">
-                                    <div class="images-count">
-                                        <span>{{ album.slides.count }}</span>
+    <div class="container">
+        {% include "includes/grid_title.html" %}
+        <div class="filter-list-container">
+            <div class="gallery-tile-row">
+                <div class="row">
+                    {% for album in albums %}
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 grid-list">
+                            <div class="grid-container">
+                                <div class="gallery-image-container">
+                                    <a href="{{ album.get_absolute_url }}">
+                                        <div class="images-count">
+                                            <span>{{ album.slides.count }}</span>
+                                        </div>
+                                        {% with album.slides.all|random as random_cover %}{% image random_cover.image fill-300x250 as cover_image %}
+                                            <img class="img-responsive" src="{{ cover_image.url }}" alt="{{ random_cover.image.alt_text }}">
+                                        {% endwith %}
+                                    </a>
+                                </div>
+                                    <div class="caption">
+                                        <h3>
+                                            <a href="{{ album.get_absolute_url }}">{{ album.title }}</a>
+                                        </h3>
+                                        <div class="margin-top-20px">
+                                            <span class="link-dark font-xs">{{ album.description|striptags }}</span>
+                                        </div>
+                                        <div class="margin-top-20px">
+                                            {% for photographer in photographers|get_item:album.id  %}
+                                                <a class="link-dark-primary font-xs" href="{% url "author-detail" slug=photographer.slug %}">{{ photographer.name }}</a>
+                                                {% if not forloop.last %}, {% endif %}
+                                            {% endfor %}
+                                        </div>
                                     </div>
-                                    {% with album.slides.all|random as random_cover %}{% image random_cover.image fill-300x250 as cover_image %}
-                                        <img class="img-responsive" src="{{ cover_image.url }}" alt="{{ random_cover.image.alt_text }}">
-                                    {% endwith %}
                                 </a>
                             </div>
-                                <div class="caption">
-                                    <h3>
-                                        <a href="{{ album.get_absolute_url }}">{{ album.title }}</a>
-                                    </h3>
-                                    <div class="margin-top-20px">
-                                        <span class="link-dark font-xs">{{ album.description|striptags }}</span>
-                                    </div>
-                                    <div class="margin-top-20px">
-                                        {% for photographer in photographers|get_item:album.id  %}
-                                            <a class="link-dark-primary font-xs" href="{% url "author-detail" slug=photographer.slug %}">{{ photographer.name }}</a>
-                                            {% if not forloop.last %}, {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                            </a>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>

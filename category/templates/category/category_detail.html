@@ -39,24 +39,26 @@
     <li class="active">{% trans "{{ category.name }}" %}</li>
 {% endblock %}
 {% block main %}
-    {% include "includes/grid_title.html" %}
+    <div class="container">
+        {% include "includes/grid_title.html" %}
 
-    <!--<div class="jumbotron category-header">-->
-        <!--<div class="row">-->
-          <!--<div class="col-lg-9 col-md-9 col-sm-9">-->
-            <!--<div class="category-title">-->
-              <!--{{ category.name }}-->
+        <!--<div class="jumbotron category-header">-->
+            <!--<div class="row">-->
+              <!--<div class="col-lg-9 col-md-9 col-sm-9">-->
+                <!--<div class="category-title">-->
+                  <!--{{ category.name }}-->
+                <!--</div>-->
+                <!--<div class="category-description">-->
+                  <!--{{ category.description }}-->
+                <!--</div>-->
+              <!--</div>-->
             <!--</div>-->
-            <!--<div class="category-description">-->
-              <!--{{ category.description }}-->
-            <!--</div>-->
-          <!--</div>-->
         <!--</div>-->
-    <!--</div>-->
-    <div class="filter-list-container" data-title="{{ category.name }}" data-filter-endpoint="category_article_filter" data-filter-required-args-category="{{ category.id }}">
-        <div class="gallery-tile-row">
-            <div class="row">
-                {% include "article/includes/article_list.html" with articles=articles category=category title=title%}
+        <div class="filter-list-container" data-title="{{ category.name }}" data-filter-endpoint="category_article_filter" data-filter-required-args-category="{{ category.id }}">
+            <div class="gallery-tile-row">
+                <div class="row">
+                    {% include "article/includes/article_list.html" with articles=articles category=category title=title%}
+                </div>
             </div>
         </div>
     </div>
