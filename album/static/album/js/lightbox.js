@@ -52,20 +52,7 @@ var Album = {
 
                     return returnedHTMLElement
                 }, this),
-
-                markup: '<div class="mfp-figure">'+
-                            '<div class="mfp-close"></div>'+
-                            '<div class="mfp-img-holder">'+
-                                '<div class="mfp-img"></div>'+
-                                '<div class="mfp-controls">'+
-                                    '<i class="fa fa-volume-off"></i><i class="fa fa-play audio"></i><i class="fa fa-pause audio" style="display:none"></i>'+
-                                '</div>'+
-                            '</div>'+
-                            '<div class="mfp-bottom-bar">'+
-                                '<div class="mfp-title"></div>'+
-                                '<div class="mfp-counter"></div>'+
-                            '</div>'+
-                        '</div>'
+                markup: $("#slide-template").html()
             },
             closeBtnInside: true,
             callbacks: {
@@ -161,6 +148,7 @@ var Album = {
         $('.album-controls').click($.proxy(function () {
             this._popup.data('slideshow', 'true');
             this._popup.magnificPopup('open');
+            $('.mfp-container').addClass('mfp-container-fullscreen');
         }, this));
     },
 
@@ -191,8 +179,13 @@ var Album = {
             return false;
         }, this));
 
-        $('.mfp-figure').on('click', function() {
-            $('.mfp-container').removeClass('mfp-container-fullscreen');
+        $('.popup-info').on('click', function() {
+            $('.mfp-container').toggleClass('mfp-container-fullscreen');
+            $('.popup-info').toggleClass('fa-info-circle fa-angle-right');
+        });
+
+        $('.back-to-albums').on('click', function () {
+           $.magnificPopup.close();
         });
     },
 
