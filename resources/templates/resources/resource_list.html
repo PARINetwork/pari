@@ -43,35 +43,37 @@
 {% endblock %}
 
 {% block main %}
-    {% trans "Resources" as title %}
-    {% trans "All offical and independent reports on rural india" as sub_heading %}
-    {% include "includes/grid_title.html" with title=title sub_heading=sub_heading %}
+    <div class="container">
+        {% trans "Resources" as title %}
+        {% trans "All offical and independent reports on rural india" as sub_heading %}
+        {% include "includes/grid_title.html" with title=title sub_heading=sub_heading %}
 
-    <div class="filter-list-container">
-        <div class="gallery-tile-row">
-            <div class="row">
-                {% for resource in object_list %}
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 grid-list">
-                        <div class="grid-container">
-                            <div class="gallery-image-container">
-                                <a href="{{ resource.get_absolute_url }}">
-                                    <div class="image-container">
-                                      <img src="{{ resource.embed_thumbnail }}" alt="{{ resource.title }}" width="250" height="240">
-                                    </div>
-                                </a>
+        <div class="filter-list-container">
+            <div class="gallery-tile-row">
+                <div class="row">
+                    {% for resource in object_list %}
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 grid-list">
+                            <div class="grid-container">
+                                <div class="gallery-image-container">
+                                    <a href="{{ resource.get_absolute_url }}">
+                                        <div class="image-container">
+                                          <img src="{{ resource.embed_thumbnail }}" alt="{{ resource.title }}" width="250" height="240">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="caption margin-top-10px">
+                                <h5>
+                                    <a href="{{ resource.get_absolute_url }}">{{ resource.title|truncatechars:50 }}</a>
+                                </h5>
                             </div>
                         </div>
-                        <div class="caption margin-top-10px">
-                            <h5>
-                                <a href="{{ resource.get_absolute_url }}">{{ resource.title|truncatechars:50 }}</a>
-                            </h5>
-                        </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-      {% include "includes/paginator.html" with results=page_obj %}
+        <div class="row">
+          {% include "includes/paginator.html" with results=page_obj %}
+        </div>
     </div>
 {% endblock %}
