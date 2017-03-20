@@ -1,0 +1,192 @@
+@import "../../colors/colors";
+@import "../../layout/mixins";
+
+@sidebarWidth: 18%;
+@gutterWidth: 2.5%;
+@sidebarLocation: 100% - @sidebarWidth;
+@imageLocation: 2.5%;
+@imageWidth: 100% - @sidebarWidth - @imageLocation - @gutterWidth;
+@arrowRightLocation: @sidebarWidth;
+@switchOver: 979px;
+
+.mfp-bg {
+    opacity: 1.0;
+}
+
+.mfp-content {
+
+    width: 100%;
+    height: 100%;
+
+    .mfp-bottom-bar {
+        //.transition (0.4s);
+        top: 50px;
+        width: @sidebarWidth;
+        left: @sidebarLocation;
+        .box-sizing(border-box);
+        padding: 40px 12px;
+        margin-top: 0;
+        height: 100%;
+        background-color: #fff;
+
+        .mfp-title {
+            color: #000;
+            padding: 0;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .image-heading {
+            margin-bottom: 4px;
+            text-align: center;
+        }
+
+        .image-date, .image-location, .image-location-description {
+            font-size: 13px;
+            line-height: 18px;
+            text-align: center;
+        }
+
+        .image-caption {
+            margin-top: 36px;
+        }
+
+        @media (max-width: @switchOver) {
+            left: 0;
+            top: @sidebarLocation;
+            width: 100%;
+            height: @sidebarWidth;
+            padding: 8px;
+        }
+    }
+
+    .mfp-img-holder {
+        //.transition (0.4s);
+        position: relative;
+        left: @imageLocation;
+        width: @imageWidth;
+
+        @media (max-width: @switchOver) {
+            width: 100%;
+            height: @imageWidth;
+            img {
+                height: @imageWidth;
+            }
+        }
+
+        .mfp-controls {
+            position: absolute;
+            .box-sizing(content-box);
+
+            bottom: 15%;
+            right: 10%;
+            min-width: 70px;
+            max-width: 70px;
+            min-height: 50px;
+            max-height: 50px;
+            margin: 10px;
+            .border-radius (5px, 5px, 5px, 5px);
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.74902);
+
+          i.fa-volume-off {
+            font-size: 45px;
+            margin-right: 5%;
+          }
+
+          i.audio{
+            &:hover {
+                    //color: @headingsColor;
+                }
+          }
+
+            i {
+                color: #000000;
+                font-size: 20px;
+                line-height: 50px;
+                vertical-align: middle;
+
+            }
+        }
+    }
+}
+
+.mfp-container {
+    padding: 0;
+
+    .mfp-figure {
+        background: #000;
+        &:after {
+            background: #000;
+        }
+        .navbar-collapse{
+            padding: 0;
+        }
+        .header-controls {
+            width: 100%;
+            li {
+                color: white;
+                &.back-to-albums{
+                    font-size: 42px;
+                }
+                &.slide-grid {
+                    font-size: 25px;
+                }
+                &.slide-pause {
+                    font-size: 21px;
+                }
+                &.slide-status {
+                    font-size: 20px;
+                }
+                &.mfp-counter {
+                    position: inherit;
+                }
+                &.popup-info{
+                    font-size: 20px;
+                }
+            }
+            .close-popup {
+                //.transition (0.4s);
+                right: @sidebarWidth;
+                @media (max-width: @switchOver) {
+                    right: 0;
+                }
+            }
+            .fa-angle-left {
+                right: 6%;
+            }
+            height: 50px;
+            background: darkred;
+        }
+    }
+
+    .mfp-arrow {
+        &.mfp-arrow-right {
+            right: @arrowRightLocation;
+            @media (max-width: @switchOver) {
+                right: 0;
+            }
+        }
+    }
+
+    &-fullscreen {
+        .mfp-figure {
+            .mfp-img-holder {
+                left: 0;
+                width: 100%;
+            }
+            .mfp-bottom-bar {
+                left: 100%;
+            }
+        }
+
+        .mfp-arrow {
+            //.transition (0.4s);
+            &.mfp-arrow-right {
+                right: 1%;
+            }
+        }
+    }
+}
