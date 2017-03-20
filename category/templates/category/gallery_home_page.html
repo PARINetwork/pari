@@ -33,21 +33,25 @@
     <div class ="gallery-title gallery-home-title container">
         <div class="row ">
             <div class="col-lg-9 col-md-9 col-sm-10 col-xs-12">
-                <h1> Gallery</h1>
-                <div class="paragraph-dark font-xxs">AN EVER-GROWING VIBRANT ARCHIVE OF LIFE IN THE COUNTRYSIDE</div>
-            </div>
-            {% with request.build_absolute_uri as url %}
-                <div class="text-right col-lg-3 col-md-3 col-sm-2 col-xs-12 gallery-title-icon share-icon">
-                <span class="gallery-social-icon">
-                    <a href="https://twitter.com/home?status=Gallery+{{ url|urlencode }}" target="_blank" class="link-light">
-                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-                    <a href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t=Gallery" target="_blank" class="link-light">
-                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-                </span>
+                <div>
+                    <h1> Gallery</h1>
+                    <div class="paragraph-dark font-xxs">AN EVER-GROWING VIBRANT ARCHIVE OF LIFE IN THE COUNTRYSIDE</div>
                 </div>
-            {% endwith %}
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-12 gallery-title-icon share-icon">
+                <div class="text-right">
+                    {% with request.build_absolute_uri as url %}
+                        <span class="gallery-social-icon">
+                            <a href="https://twitter.com/home?status=Gallery+{{ url|urlencode }}" target="_blank" class="link-light">
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                            <a href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t=Gallery" target="_blank" class="link-light">
+                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                            </a>
+                        </span>
+                    {% endwith %}
+                </div>
+            </div>
         </div>
     </div>
         <div class="row">

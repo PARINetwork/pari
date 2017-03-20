@@ -55,7 +55,7 @@
 }
 .faces-tile{
   background: url("../../img/faces-tile-1.jpg") no-repeat;
-  background-size: 100%;
+  background-size: auto;
   height: 383px;
   .top-link{
     padding: 30px 0 0 0;
@@ -97,7 +97,6 @@
     h1{
       .font-size(72);
     }
-
 
     &.share-icon {
       width: auto;
@@ -223,6 +222,17 @@
         margin: 0;
         h2{
           margin: 0;
+        }
+      }
+    }
+  }
+
+  @media (max-width: @screen-sm-min) {
+    .gallery-home-title {
+      .gallery-title-icon {
+        padding-top: 0;
+        &.share-icon {
+          left: 0;
         }
       }
     }
