@@ -29,12 +29,20 @@
     <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
 {% endblock %}
 
+{% block extra_uncompressed_js %}
+    <script src="//connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
+{% endblock %}
+
 {% block extra_js %}
+    <script type="text/javascript" src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}album/js/lightbox.js"></script>
 {% endblock %}
 
 {% block extra_css %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}album/css/magnific-popup.css">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/article.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/album/home.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/album/slide_show.less">
 {% endblock %}
 
 {% block extra_head %}
@@ -45,7 +53,7 @@
     <li class="active">{% trans "Albums" %}</li>
 {% endblock %}
 {% block main %}
-    <div class="container">
+    <div class="container popup-gallery">
         {% include "includes/grid_title.html" %}
         <div class="filter-list-container">
             <div class="gallery-tile-row">
@@ -85,4 +93,28 @@
             </div>
         </div>
     </div>
+    <div id="author" data-hide-title="true">
+        <h2 style="color: white">Hi all</h2>
+    </div>
+
+    <script type="text/template" id="slide-template">
+        <div class="mfp-figure">
+            <ul class="header-controls list-inline">
+             <li class="fa fa-angle-left back-to-albums"></li>
+             <li class="fa fa-th-large slide-grid"></li>
+             <li class="fa fa-pause slide-pause"></li>
+             <li class="slide-status mfp-counter"></li>
+             <li class="fa fa-info-circle popup-info"></li>
+            </ul>
+            <div class="mfp-img-holder">
+                <div class="mfp-img"></div>
+                <div class="mfp-controls">
+                    <i class="fa fa-volume-off"></i><i class="fa fa-play audio"></i><i class="fa fa-pause audio" style="display:none"></i>
+                </div>
+            </div>
+            <div class="mfp-bottom-bar">
+                <div class="mfp-title"></div>
+            </div>
+        </div>
+    </script>
 {% endblock %}

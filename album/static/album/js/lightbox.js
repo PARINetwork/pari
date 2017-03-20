@@ -10,8 +10,10 @@ var Album = {
     _initPopup: function() {
         this._popup = $('.popup-gallery').magnificPopup({
 
-            delegate: '.mfp-image',
-            type: 'image',
+            // delegate: '.mfp-image',
+            // type: 'image',
+
+            items: this._dummy(),
             
             tLoading: 'Loading image #%curr%...',
             mainClass: 'mfp-album-popup',
@@ -27,31 +29,36 @@ var Album = {
                 tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
 
                 titleSrc: $.proxy(function (item) {
-                    isCommentsAllowed = item.el.attr('data-allowcomments') == "True" ? true : false;
-                    var slideshow = this._popup.data('slideshow');
-                    var icon = slideshow ? "pause" : "play";
-                    var returnedHTMLElement='<div>'+
-                                '<h4 class="image-heading">'+ item.el.attr('data-photographer') + '</h4>' +
-                                '<p class="image-date">' + item.el.attr('data-date') + '</p>' +
-                                '<p class="image-location">' + item.el.attr('data-location') + '</p>' +
-                                '<p class="image-location-description">' + item.el.attr('data-location-description') + '</p>' +
-                                '<div class="image-caption" data-audio="' + item.el.attr('data-audio') + '">' + item.el.parent().find(".hidden").html() + '</div>' +
-                                '<div class="btn-toolbar">'+
-                                    '<div class="btn-group">'+
-                                        '<a class="btn btn-default btn-slideshow" href="#">Slideshow <i class="fa fa-' + icon + '"></i></a>'+
-                                        '<a class="btn btn-default btn-fullscreen" href="#"><i class="fa fa-arrows-alt"></i></a>';
+                    console.log(item.data.hide_title);
+                    if(!item.data.hide_title) {
+                        // isCommentsAllowed = item.el.attr('data-allowcomments') == "True" ? true : false;
+                        // var slideshow = this._popup.data('slideshow');
+                        // var icon = slideshow ? "pause" : "play";
+                        var returnedHTMLElement = '<div>' +
+                            // '<h4 class="image-heading">' + item.el.attr('data-photographer') + '</h4>' +
+                            // '<p class="image-date">' + item.el.attr('data-date') + '</p>' +
+                            // '<p class="image-location">' + item.el.attr('data-location') + '</p>' +
+                            '<p class="image-location-description"> description </p>';
+                            // '<div class="image-caption" data-audio="' + item.el.attr('data-audio') + '">' + item.el.parent().find(".hidden").html() + '</div>' +
+                            // '<div class="btn-toolbar">' +
+                            // '<div class="btn-group">' +
+                            // '<a class="btn btn-default btn-slideshow" href="#">Slideshow <i class="fa fa-' + icon + '"></i></a>' +
+                            // '<a class="btn btn-default btn-fullscreen" href="#"><i class="fa fa-arrows-alt"></i></a>';
 
-                                        if( isCommentsAllowed){
-                                                    returnedHTMLElement+='<a class="btn btn-default" id="disqus-comments-for-talking-albums" href="' + item.el.attr('data-url') +'"><i class="fa fa-share-square-o"></i></a>'+
-                                                      '<a class="btn btn-default" href="' + item.el.attr('data-url') +'#comments"><i class="fa fa-comment-o"></i></a>';
-                                        }
+                        // if (isCommentsAllowed) {
+                        //     returnedHTMLElement += '<a class="btn btn-default" id="disqus-comments-for-talking-albums" href="' + item.el.attr('data-url') + '"><i class="fa fa-share-square-o"></i></a>' +
+                        //         '<a class="btn btn-default" href="' + item.el.attr('data-url') + '#comments"><i class="fa fa-comment-o"></i></a>';
+                        // }
 
-                                        returnedHTMLElement+= '</div>'+
-                                            '</div>'+
-                                '</div>';
-
+                        returnedHTMLElement += '</div>' +
+                            '</div>' +
+                            '</div>';
+                    }
                     return returnedHTMLElement
                 }, this),
+                markup: $("#slide-template").html()
+            },
+            inline: {
                 markup: $("#slide-template").html()
             },
             closeBtnInside: true,
@@ -90,6 +97,21 @@ var Album = {
 		}
             }
         });
+    },
+
+    _dummy: function() {
+         return [
+                {
+                    src: '/static/img/stories-4.jpg',
+                    type: 'image',
+                    hide_title: false
+                },
+                {
+                    src: '#author',
+                    type: 'inline',
+                    hide_title: true
+                }
+            ]
     },
 
     _initSoundCloudWidget: function() {
@@ -145,7 +167,7 @@ var Album = {
     },
 
     _initControls: function() {
-        $('.album-controls').click($.proxy(function () {
+        $('.grid-container').click($.proxy(function () {
             this._popup.data('slideshow', 'true');
             this._popup.magnificPopup('open');
             $('.mfp-container').addClass('mfp-container-fullscreen');
