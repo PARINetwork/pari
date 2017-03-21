@@ -5,7 +5,8 @@
 {% block title %}{% trans "Categories" %}{% endblock %}
 
 {% block extra_css %}
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/categories.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/layout/components/main-content/story-grid.less">
+
 {% endblock %}
 
 
@@ -13,28 +14,84 @@
     <li class="active">{% trans "Categories" %}</li>
 {% endblock %}
 
+{#{% block main %}#}
+{#    <div class="content-container container">#}
+{#    {% for category in categories %}#}
+{#    {% if forloop.first or forloop.counter0|divisibleby:"4" %}#}
+{#    <div class="row">#}
+{#    {% endif %}#}
+{#      <div class="categories">#}
+{#        <a href="{% if category.slug in gallery %}{% url "gallery-detail" slug=category.slug %} {% else %}{% url "story-detail" slug=category.slug%}{% endif %}">#}
+{#          <div class="col-lg-4 col-md-4 col-xs-12">#}
+{#            <div class="grid-column">{% image category.image fill-370x300 as category_image %}#}
+{#              <img class="img-responsive lazyload" data-src="{{ category_image.url }}" alt="{{ category.image.alt_text }}" style="width:100%;">#}
+{#              <div class="caption">#}
+{#                <h4>{{ category.name }}</h4>#}
+{#                <p class="description">{{ category.description }}</p>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+{#        </a>#}
+{#      </div>#}
+{#    {% if forloop.last or forloop.counter|divisibleby:"3" %}#}
+{#    </div>#}
+{#    {% endif %}#}
+{#    {% endfor %}#}
+{#    </div>#}
+{#{% endblock %}#}
+
 {% block main %}
-    <div class="content-container container">
-    {% for category in categories %}
-    {% if forloop.first or forloop.counter0|divisibleby:"3" %}
-    <div class="row">
-    {% endif %}
-      <div class="categories">
-        <a href="{% if category.slug in gallery %}{% url "gallery-detail" slug=category.slug %} {% else %}{% url "story-detail" slug=category.slug%}{% endif %}">
-          <div class="col-lg-4 col-md-4 col-xs-12">
-            <div class="grid-column">{% image category.image fill-370x300 as category_image %}
-              <img class="img-responsive lazyload" data-src="{{ category_image.url }}" alt="{{ category.image.alt_text }}" style="width:100%;">
-              <div class="caption">
-                <h4>{{ category.name }}</h4>
-                <p class="description">{{ category.description }}</p>
-              </div>
+    <div class="container story-grid">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                <h3>Categories</h3>
             </div>
-          </div>
-        </a>
-      </div>
-    {% if forloop.last or forloop.counter|divisibleby:"3" %}
+        </div>
+        <div class="row">
+            {% for category in categories %}
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 grid">
+                        {% image category.image fill-512x512 as category_image %}
+                        <a href="{% if category.slug in gallery %}{% url "gallery-detail" slug=category.slug %} {% else %}{% url "story-detail" slug=category.slug%}{% endif %}">
+                        <img class="img-responsive timepass" style="width:370px;margin:0 auto;" src="{{ STATIC_URL }}img/timepass1_512.jpg" alt="{{ category.image.alt_text}}">
+                        <div class="grid-container">
+                            <div class="tp">
+                                <h3>{{ category.name }}</h3>
+                            </div>
+                            <div class="title-grid">
+                                    <div class="border-link"></div>
+                                    <div>{{ category.description }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
     </div>
-    {% endif %}
-    {% endfor %}
-    </div>
+
+
+
+
+
+{#    <div class="container story-grid">#}
+{#    {% for category in categories %}#}
+{#    {% if forloop.first or forloop.counter0|divisibleby:"3" %}#}
+{#    <div class="row">#}
+{#    {% endif %}#}
+{#        <a href="{% if category.slug in gallery %}{% url "gallery-detail" slug=category.slug %} {% else %}{% url "story-detail" slug=category.slug%}{% endif %}">#}
+{#        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 grid">#}
+{#            <div class="grid-column">{% image category.image fill-370x300 as category_image %}#}
+{#              <img class="img-responsive " data-src="{{ category_image.url }}" alt="{{ category.image.alt_text }}">#}
+{#                <div class="grid-container">#}
+{#                <h4>{{ category.name }}</h4>#}
+{#                <p class="title-grid">{{ category.description }}</p>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+{#        </a>#}
+{#    {% if forloop.last or forloop.counter|divisibleby:"3" %}#}
+{#    </div>#}
+{#    {% endif %}#}
+{#    {% endfor %}#}
+{#    </div>#}
 {% endblock %}
+
