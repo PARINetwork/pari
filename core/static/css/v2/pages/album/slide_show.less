@@ -1,5 +1,6 @@
 @import "../../colors/colors";
 @import "../../layout/mixins";
+@import "../../layout/responsive";
 
 @sidebarWidth: 18%;
 @gutterWidth: 2.5%;
@@ -14,6 +15,35 @@
 }
 
 .mfp-content {
+    .navbar.navbar-default{
+        padding: 0 15px;
+        border-radius: 0px;
+        background-color: @slide-show-bar;
+        border: 0px;
+    }
+    .navbar-default .navbar-brand {
+        background-color: @slide-show-bar-band;
+        font-size: 20px;
+    }
+
+    .nav.navbar-nav {
+        li {
+            font-size: 20px;
+        }
+
+        li {
+            .back-to-albums {
+                font-size: 47px;
+            }
+        }
+    }
+
+    @media (max-width: @screen-xs-max) {
+        .mfp-counter {
+            position: absolute;
+            left: 50%;
+        }
+    }
 
     width: 100%;
     height: 100%;
@@ -112,7 +142,27 @@
         }
     }
 }
+@media screen and (min-width:768px){
+    .navbar-brand-centered {
+        position: absolute;
+        display: block;
+        max-width: 75px;
+        text-align: center;
+        background-color: #eee;
 
+        &.mfp-counter {
+            left: 50%;
+        }
+
+        &.back-to-albums {
+            left: 0;
+        }
+    }
+    .navbar>.container .navbar-brand-centered,
+    .navbar>.container-fluid .navbar-brand-centered {
+        margin-left: -80px;
+    }
+}
 .mfp-container {
     padding: 0;
 
@@ -125,7 +175,7 @@
             padding: 0;
         }
         .header-controls {
-            width: 100%;
+            //width: 100%;
             li {
                 color: white;
                 &.back-to-albums{
@@ -157,7 +207,7 @@
             .fa-angle-left {
                 right: 6%;
             }
-            height: 50px;
+            //height: 50px;
             background: darkred;
         }
     }

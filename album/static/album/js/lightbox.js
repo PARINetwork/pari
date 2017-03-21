@@ -28,7 +28,7 @@ var Album = {
                 tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
 
                 titleSrc: $.proxy(function (item) {
-                    if(item.data.show_title) {
+                    // if(item.data.show_title) {
                         // isCommentsAllowed = item.el.attr('data-allowcomments') == "True" ? true : false;
                         // var slideshow = this._popup.data('slideshow');
                         // var icon = slideshow ? "pause" : "play";
@@ -51,12 +51,9 @@ var Album = {
                         returnedHTMLElement += '</div>' +
                             '</div>' +
                             '</div>';
-                    }
+                    // }
                     return returnedHTMLElement
                 }, this),
-                markup: $("#slide-template").html()
-            },
-            inline: {
                 markup: $("#slide-template").html()
             },
             closeBtnInside: true,
@@ -151,17 +148,32 @@ var Album = {
 
     _initControls: function() {
         $('.grid-container').click($.proxy(function (element) {
-            var slug = $(element.currentTarget).data('slug');
-            $.get("/albums/"+slug+".json/", $.proxy(function(response) {
-                data = response.data;
-                author = data[data.length - 1];
-                author['src'] = "<div>Dynamically created element</div>";
-                this._initPopup(response.data);
+            // var slug = $(element.currentTarget).data('slug');
+            // $.get("/albums/"+slug+".json/", $.proxy(function(response) {
+            //     data = response.data;
+            //     author = data[data.length - 1];
+            //     author['src'] = "<div>Dynamically created element</div>";
+                this._initPopup(this._dummy());
                 this._popup.data('slideshow', 'true');
                 this._popup.magnificPopup('open');
                 $('.mfp-container').addClass('mfp-container-fullscreen');
-            }, this));
+            // }, this));
         }, this));
+    },
+
+  _dummy: function() {
+     return [
+            {
+                src: '/static/img/stories-4.jpg',
+                type: 'image',
+                hide_title: false
+            },
+            {
+                src: '#author',
+                type: 'inline',
+                hide_title: true
+            }
+        ]
     },
 
     _initImage: function() {
