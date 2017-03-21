@@ -1,19 +1,18 @@
 var Album = {
     init: function() {
         this._initSoundCloudWidget();
-        this._initPopup();
         this._initControls();
     },
 
     _popup: null,
 
-    _initPopup: function() {
+    _initPopup: function(itemsData) {
         this._popup = $('.popup-gallery').magnificPopup({
 
             // delegate: '.mfp-image',
             // type: 'image',
 
-            items: this._dummy(),
+            items: itemsData,
             
             tLoading: 'Loading image #%curr%...',
             mainClass: 'mfp-album-popup',
@@ -29,8 +28,7 @@ var Album = {
                 tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
 
                 titleSrc: $.proxy(function (item) {
-                    console.log(item.data.hide_title);
-                    if(!item.data.hide_title) {
+                    if(item.data.show_title) {
                         // isCommentsAllowed = item.el.attr('data-allowcomments') == "True" ? true : false;
                         // var slideshow = this._popup.data('slideshow');
                         // var icon = slideshow ? "pause" : "play";
@@ -99,21 +97,6 @@ var Album = {
         });
     },
 
-    _dummy: function() {
-         return [
-                {
-                    src: '/static/img/stories-4.jpg',
-                    type: 'image',
-                    hide_title: false
-                },
-                {
-                    src: '#author',
-                    type: 'inline',
-                    hide_title: true
-                }
-            ]
-    },
-
     _initSoundCloudWidget: function() {
         SC.initialize({
             client_id: "d129911dd3c35ec537c30a06990bd902"
@@ -167,10 +150,17 @@ var Album = {
     },
 
     _initControls: function() {
-        $('.grid-container').click($.proxy(function () {
-            this._popup.data('slideshow', 'true');
-            this._popup.magnificPopup('open');
-            $('.mfp-container').addClass('mfp-container-fullscreen');
+        $('.grid-container').click($.proxy(function (element) {
+            var slug = $(element.currentTarget).data('slug');
+            $.get("/albums/"+slug+".json/", $.proxy(function(response) {
+                data = response.data;
+                author = data[data.length - 1];
+                author['src'] = "<div>Dynamically created element</div>";
+                this._initPopup(response.data);
+                this._popup.data('slideshow', 'true');
+                this._popup.magnificPopup('open');
+                $('.mfp-container').addClass('mfp-container-fullscreen');
+            }, this));
         }, this));
     },
 

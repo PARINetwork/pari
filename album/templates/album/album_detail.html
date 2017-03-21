@@ -27,7 +27,7 @@
 	{% if album.slides.count %}
         {% with album.slides.all|random as cover %}
 	{% image cover.image fill-360x300 as cover_image %}
-        <img class="img-responsive" src="{{ STATIC_URL }}img/stories-4.jpg" alt="{{ cover.image.alt_text|striptags }}">
+        <img class="img-responsive" src="{{ cover_image.url }}" alt="{{ cover.image.alt_text|striptags }}">
         {% endwith %}
 	{% endif %}
       </div>
@@ -62,9 +62,9 @@
   {% endif %}
   <div class="album-images">
     <div class="col-lg-4 col-md-4 col-sm-4 center">{% image slide.image max-1024x1024 as slide_image %}
-      <a href="{{ STATIC_URL }}img/stories-4.jpg" title="{{ slide.description|striptags }}" data-audio="{% firstof slide.audio "" %}" data-photographer="{% for photographer in slide.image.photographers.all %}{{ photographer.name }}{% if not forloop.last %}, {% endif %}{% endfor %}" data-location="{% for location in slide.image.locations.all %}{{ location.name }}{% if not forloop.last %},{% endif %} {% endfor %}" data-location-description="{% for location in slide.image.locations.all %}{% if location.district %}{{ location.district }}{% endif %}{% if location.state %}, {{ location.state }}{% endif %}{% if not forloop.last %};{% endif %} {% endfor %}" data-date="{{ album.first_published_at|date:"F Y" }}" data-url="{{ album.get_absolute_url }}" data-allowcomments="false" class="image-tag mfp-image">
+      <a href="{{ slide_image.url }}" title="{{ slide.description|striptags }}" data-audio="{% firstof slide.audio "" %}" data-photographer="{% for photographer in slide.image.photographers.all %}{{ photographer.name }}{% if not forloop.last %}, {% endif %}{% endfor %}" data-location="{% for location in slide.image.locations.all %}{{ location.name }}{% if not forloop.last %},{% endif %} {% endfor %}" data-location-description="{% for location in slide.image.locations.all %}{% if location.district %}{{ location.district }}{% endif %}{% if location.state %}, {{ location.state }}{% endif %}{% if not forloop.last %};{% endif %} {% endfor %}" data-date="{{ album.first_published_at|date:"F Y" }}" data-url="{{ album.get_absolute_url }}" data-allowcomments="false" class="image-tag mfp-image">
 	<div class="grid-column">
-	  <img class="center-block album_image lazyload" data-src="{{ STATIC_URL }}img/stories-4.jpg" alt="{{ slide.image.alt_text|striptags|safe }}">
+	  <img class="center-block album_image lazyload" data-src="{{ slide_image.url }}" alt="{{ slide.image.alt_text|striptags|safe }}">
 	  <div class="caption">
 	    <p>{{ slide.description|striptags|truncatechars:50|safe }}</p>
 	    {% if slide.audio %}

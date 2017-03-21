@@ -60,7 +60,7 @@
                 <div class="row">
                     {% for album in albums %}
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 grid-list">
-                            <div class="grid-container">
+                            <div class="grid-container" data-slug="{{ album.slug }}">
                                 <div class="gallery-image-container">
                                     <a href="{{ album.get_absolute_url }}">
                                         <div class="images-count">
@@ -92,9 +92,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div id="author" data-hide-title="true">
-        <h2 style="color: white">Hi all</h2>
     </div>
 
     <script type="text/template" id="slide-template">

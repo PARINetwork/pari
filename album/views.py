@@ -4,10 +4,12 @@ from django.views.generic import DetailView, ListView
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.core.cache import cache
+from django.http import JsonResponse
 
 from wagtail.wagtailadmin.modal_workflow import render_modal_workflow
 
 from album.models import Album, AlbumSlide
+from author.models import Author
 from django.template.defaulttags import register
 
 
@@ -61,6 +63,18 @@ class AlbumDetail(DetailView):
             names.insert(0, "album/albumslide_list.html")
         return names
 
+def get_slide_detail(request, slug):
+    album = Album.objects.get(slug=slug)
+    response_data = []
+    for slide in album.slides.all():
+        slide_dict = dict([('type', 'image'), ('show_title', True)])
+        slide_dict['src']=slide.image.file.url
+        slide_dict['description']=slide.description
+        response_data.append(slide_dict)
+
+    author = Author.objects.first()
+    response_data.append(dict([('type', 'inline'), ('show_title', False), ('name', author.name), ('bio', author.bio)]))
+    return JsonResponse(dict(data=response_data))
 
 def add_audio(request):
     sc = settings.SOUNDCLOUD_SETTINGS
