@@ -20,6 +20,11 @@ class CategoriesList(ListView):
         context["gallery"] = ['audiozone', 'Little takes',
                               'tongues', 'visible-work-invisible-women',
                               'photozone', 'videozone']
+        filteredList = ['videozone', 'audiozone', 'faces', 'photozone', 'pari-for-schools']
+        context['filtered_categories']=[]
+        for category in context['categories']:
+            if category.slug not in filteredList:
+                context['filtered_categories'].append(category)
         return context
 
 
