@@ -9,12 +9,10 @@ var Album = {
     _initPopup: function(itemsData) {
         this._popup = $('.popup-gallery').magnificPopup({
 
-            // delegate: '.mfp-image',
-            // type: 'image',
-
             items: itemsData,
             
             tLoading: 'Loading image #%curr%...',
+
             mainClass: 'mfp-album-popup',
             
             gallery: {
@@ -54,18 +52,25 @@ var Album = {
                     // }
                     return returnedHTMLElement
                 }, this),
+
                 markup: $("#slide-template").html()
             },
+
             closeBtnInside: true,
+
             callbacks: {
                 updateStatus: $.proxy(function () {
                     this._initImage();
                     this._initAudio();
                 }, this),
+                markupParse: function(template, values, item) {
+                    $(template).find('a.open-in-new-tab').attr('href', values.src);
+                },
                 close: $.proxy(function () {
                     this._stopWidget();
                     this._popup.removeData('slideshow');
                 }, this),
+
 		open: function() {
 		    var mfp = $.magnificPopup.instance;
 		    var proto = $.magnificPopup.proto;
@@ -148,22 +153,62 @@ var Album = {
 
     _initControls: function() {
         $('.grid-container').click($.proxy(function (element) {
-            // var slug = $(element.currentTarget).data('slug');
-            // $.get("/albums/"+slug+".json/", $.proxy(function(response) {
-            //     data = response.data;
-            //     author = data[data.length - 1];
-            //     author['src'] = "<div>Dynamically created element</div>";
-                this._initPopup(this._dummy());
-                this._popup.data('slideshow', 'true');
+            var slug = $(element.currentTarget).data('slug');
+            $.get("/albums/"+slug+".json/", $.proxy(function(response) {
+                this._initPopup(response.data);
                 this._popup.magnificPopup('open');
+                this._playSlideShow();
                 $('.mfp-container').addClass('mfp-container-fullscreen');
-            // }, this));
+                $('.slide-show').click($.proxy(function () {
+                   this._handleSlideShow();
+                }, this));
+            }, this));
         }, this));
     },
 
-  _dummy: function() {
-     return [
+    _handleSlideShow: function () {
+        var slideShow = this._popup.data("slide_show");
+        if(slideShow) {
+            this._pauseSlideShow();
+        } else {
+            this._playSlideShow();
+        }
+    },
+
+    _playSlideShow: function () {
+        $('.slide-show').addClass('fa-pause').removeClass('fa-play');
+        this._popup.data('slide_show', 'true');
+        var slideShowTimer = setInterval(function() {
+            $.magnificPopup.instance.next();
+        }, 3000);
+        this._popup.data('slide-show-timer', slideShowTimer);
+    },
+
+    _pauseSlideShow: function () {
+        $('.slide-show').addClass('fa-play').removeClass('fa-pause');
+        this._popup.removeData('slide_show');
+        clearInterval(this._popup.data('slide-show-timer'));
+    },
+
+    _dummy: function() {
+        return [
             {
+                src: '/static/img/stories-1.jpg',
+                type: 'image',
+                hide_title: false
+            },{
+                src: '/static/img/stories-2.jpg',
+                type: 'image',
+                hide_title: false
+            },{
+                src: '/static/img/stories-3-1.jpg',
+                type: 'image',
+                hide_title: false
+            },{
+                src: '/static/img/stories-3-2.jpg',
+                type: 'image',
+                hide_title: false
+            },{
                 src: '/static/img/stories-4.jpg',
                 type: 'image',
                 hide_title: false
@@ -244,7 +289,7 @@ var Album = {
         $('.fa-play', '.mfp-controls').hide();
         $('.fa-pause', '.mfp-controls').show();
     }
-}
+};
 
 $(function() {
     Album.init();
