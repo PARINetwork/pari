@@ -6,7 +6,6 @@
 
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/layout/components/main-content/story-grid.less">
-
 {% endblock %}
 
 
@@ -18,7 +17,9 @@
     <div class="container story-grid">
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                <h3>Categories</h3>
+                <div class="categories-title">
+                    <h2>Categories</h2>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -26,7 +27,7 @@
                     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 grid">
                         {% image category.image fill-512x512 as category_image %}
                         <a href="{% if category.slug in gallery %}{% url "gallery-detail" slug=category.slug %} {% else %}{% url "story-detail" slug=category.slug%}{% endif %}">
-                        <img class="img-responsive timepass" style="width:370px;margin:0 auto;" src="{{ STATIC_URL }}img/timepass1_512.jpg" alt="{{ category.image.alt_text}}">
+                        <img class="img-responsive grid-image" src="{{ category_image.url }}" alt="{{ category.image.alt_text}}">
                         <div class="grid-container">
                             <div class="category-name">
                                 <h3>{{ category.name }}</h3>
