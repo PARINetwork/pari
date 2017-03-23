@@ -21,14 +21,20 @@
             border-radius: 0px;
             background-color: @slide-show-bar;
             border: 0px;
-            .navbar-brand {
-                background-color: @slide-show-bar-band;
-                font-size: 20px;
+            .navbar-header {
+                .navbar-toggle {
+                    z-index: 1;
+                }
+                .navbar-brand {
+                    background-color: @slide-show-bar-band;
+                    font-size: 20px;
 
-                &.back-to-albums {
-                    font-size: 40px;
-                    left: 2px;
-                    padding-top: 3px;
+                    &.back-to-albums {
+                        font-size: 40px;
+                        left: 2px;
+                        padding-top: 3px;
+                        z-index: 1;
+                    }
                 }
             }
             .nav {
