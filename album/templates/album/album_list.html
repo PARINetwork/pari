@@ -93,9 +93,33 @@
             </div>
         </div>
     </div>
-    <div id="author">
-        <h2 style="color: white">Hi all</h2>
+
+    <div id="author-template" class="hide">
+        <div>
+            <div class="author" id="author">
+                <nav class="navbar navbar-default" role="navigation">
+                  <div>
+                    <div class="collapse navbar-collapse" id="navbar-brand-centeredsdf">
+                      <ul class="nav navbar-nav">
+                        <li><a href="#" class="fa fa-angle-left back-to-albums"></a></li>
+                        <li><a href="#" class="fa fa-th-large slide-grid"></a></li>
+                        <li><a href="#" class="fa slide-show"></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </nav>
+            </div>
+        </div>
     </div>
+    {% verbatim %}
+        <script id="authorTmpl" type="text/x-jsrender">
+            <div class="author-details">
+                <span itemprop="name">{{:name}}</span>
+                <span itemprop="description">{{:bio}}</span>
+                <a itemprop="url" href="https://twitter.com/@journohardy">@journohardy</a>
+            </div>
+        </script>
+    {% endverbatim %}
 
     <script type="text/template" id="slide-template">
         <div class="mfp-figure">

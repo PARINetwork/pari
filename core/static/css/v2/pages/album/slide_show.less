@@ -57,6 +57,38 @@
             }
         }
     }
+    .author {
+        .navbar {
+            &.navbar-default {
+                padding-left: 0;
+                .navbar-collapse {
+                    padding-left: 0;
+                }
+
+                .nav {
+                    &.navbar-nav {
+                        li {
+                            .back-to-albums {
+                                font-size: 40px;
+                                left: 2px;
+                                //padding-top: 3px;
+                                z-index: 1;
+                            }
+                            .slide-grid {
+                                padding-left: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .author-details {
+            padding-top: 10%;
+            text-align: center;
+            color: white;
+        }
+    }
 
     @media (max-width: @screen-xs-max) {
         .mfp-counter {
