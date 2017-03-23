@@ -23,7 +23,19 @@
             border: 0px;
             .navbar-header {
                 .navbar-toggle {
+                    border: 0px;
                     z-index: 1;
+                    margin: 0px;
+                    margin-top: 7%;
+                    padding: 0px;
+                    &:hover{
+                        background-color: transparent ;
+                    }
+                    .button-collapse:after {
+                        color: white;
+                          content: '\2807';
+                          font-size: 30px;
+                      }
                 }
                 .navbar-brand {
                     background-color: @slide-show-bar-band;
