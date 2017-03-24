@@ -95,8 +95,8 @@
                   <select class="select-no-style pull-left"  selected="District Names" name="lang" onchange="location =this.value">
                       <option value="">{% trans "District Names" %}</option>
                       {% for face in faces %}
-                          <option class = "banner-language-list" name="{% url "face-detail" alphabet=face.location.district|lower|first %}" >
-                          <a class="distric-alphabet">{{ face.district|upper|first }}</a>
+                          <option class = "banner-language-list" value="{% url "face-detail" alphabet=face.location.district|lower|first %}" >
+                          <a class="distric-alphabet">{{ face.district|lower|first }}</a>
                           </option>
                       {% endfor %}
                   </select>
