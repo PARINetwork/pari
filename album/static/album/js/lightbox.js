@@ -26,31 +26,11 @@ var Album = {
                 tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
 
                 titleSrc: $.proxy(function (item) {
-                    if(item.data.show_title) {
-                        // isCommentsAllowed = item.el.attr('data-allowcomments') == "True" ? true : false;
-                        // var slideshow = this._popup.data('slideshow');
-                        // var icon = slideshow ? "pause" : "play";
-                        var returnedHTMLElement = '<div>' +
-                            // '<h4 class="image-heading">' + item.el.attr('data-photographer') + '</h4>' +
-                            // '<p class="image-date">' + item.el.attr('data-date') + '</p>' +
-                            // '<p class="image-location">' + item.el.attr('data-location') + '</p>' +
-                            '<p class="image-location-description"> description </p>';
-                            // '<div class="image-caption" data-audio="' + item.el.attr('data-audio') + '">' + item.el.parent().find(".hidden").html() + '</div>' +
-                            // '<div class="btn-toolbar">' +
-                            // '<div class="btn-group">' +
-                            // '<a class="btn btn-default btn-slideshow" href="#">Slideshow <i class="fa fa-' + icon + '"></i></a>' +
-                            // '<a class="btn btn-default btn-fullscreen" href="#"><i class="fa fa-arrows-alt"></i></a>';
-
-                        // if (isCommentsAllowed) {
-                        //     returnedHTMLElement += '<a class="btn btn-default" id="disqus-comments-for-talking-albums" href="' + item.el.attr('data-url') + '"><i class="fa fa-share-square-o"></i></a>' +
-                        //         '<a class="btn btn-default" href="' + item.el.attr('data-url') + '#comments"><i class="fa fa-comment-o"></i></a>';
-                        // }
-
-                        returnedHTMLElement += '</div>' +
-                            '</div>' +
-                            '</div>';
+                    if(item.data.type == "image") {
+                        var sideInfoTmpl = $.templates("#sideInfoTmpl");
+                        var sideInfo = sideInfoTmpl.render(item.data);
                     }
-                    return returnedHTMLElement
+                    return sideInfo;
                 }, this),
 
                 markup: $("#slide-template").html()
@@ -67,8 +47,6 @@ var Album = {
                     $(template).find('a.open-in-new-tab').attr('href', values.src);
                 },
                 change: function() {
-                    console.log('Content changed');
-                    console.log(this.content); // Direct reference to your popup element
                     if(this.currItem.data.type == "inline") {
                         var slideshowElement = this.content.find(".slide-show");
                         Album._initBackToAlbums(this.content.find(".back-to-albums"));
@@ -169,6 +147,13 @@ var Album = {
                 this._playSlideShow($('.slide-show'));
                 $('.mfp-container').addClass('mfp-container-fullscreen');
                 this._initSlideShow($('.slide-show'));
+
+                 $('.popup-info').on('click', function() {
+                    $('.mfp-container').toggleClass('mfp-container-fullscreen');
+                    $('.popup-info').toggleClass('fa-info-circle fa-angle-right');
+                });
+
+                this._initBackToAlbums($('.back-to-albums'));
             }, this));
         // }, this));
     },
@@ -221,23 +206,28 @@ var Album = {
                 {
                     src: '/static/img/stories-1.jpg',
                     type: 'image',
-                    show_title: true
-                }, {
-                    src: '/static/img/stories-2.jpg',
-                    type: 'image',
-                    show_title: true
-                }, {
-                    src: '/static/img/stories-3-1.jpg',
-                    type: 'image',
-                    show_title: true
-                }, {
-                    src: '/static/img/stories-3-2.jpg',
-                    type: 'image',
-                    show_title: true
+                    description: "Currently, image is being stored along with alt tags as single content. While doing this feature, we need to separate html & content. Hence we get the ability to add alt tags to images for SEO purposes",
+                    album_title: "Weavers of walagpet",
+                    slide_photographer: "vinod",
+                    image_captured_date: "20 May 2017",
+                    slide_location: "Madurai"
+                // }, {
+                //     src: '/static/img/stories-2.jpg',
+                //     type: 'image',
+                // }, {
+                //     src: '/static/img/stories-3-1.jpg',
+                //     type: 'image',
+                // }, {
+                //     src: '/static/img/stories-3-2.jpg',
+                //     type: 'image',
                 }, {
                     src: '/static/img/stories-4.jpg',
                     type: 'image',
-                    show_title: true
+                    description: "Featured image is random. Should have an option to select one. Featured image is random. Should have an option to select one. ",
+                    album_title: "Weavers of walagpet",
+                    slide_photographer: "deepthi",
+                    image_captured_date: "30 May 2017",
+                    slide_location: "Chennai"
                 }],
 
             authors: [
@@ -280,13 +270,6 @@ var Album = {
         //
         //     return false;
         // }, this));
-
-        $('.popup-info').on('click', function() {
-            $('.mfp-container').toggleClass('mfp-container-fullscreen');
-            $('.popup-info').toggleClass('fa-info-circle fa-angle-right');
-        });
-
-        this._initBackToAlbums($('.back-to-albums'));
     },
 
     _initBackToAlbums: function(element) {
