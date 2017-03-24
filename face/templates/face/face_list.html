@@ -88,19 +88,24 @@
 {#      </ul>#}
 {#    </div>#}
 
-    <div class="row margin-btm-30px filter-lang">
-          <span class="filter-label">{% trans "Languages" %}:</span>
-          <span class="filter-value">
-              <select class="select-no-style pull-left" name="lang"><option value="">{% trans "All" %}</option>
-              {% for face in faces %}
-                  <option {% if request.GET.lang == lang.0 %}selected="selected"{% endif %} value="{{ lang.0 }}">
-                      {% blocktrans with tlang=lang.1 %}{{ tlang }}{% endblocktrans %}
-                  </option>
-              {% endfor %}
-              </select>
-              <i class="Chevron"></i>
-          </span>
+    <div class="row filter-lang">
+            <li >
+                <span  class="filter-label">Alphabetical order</span>
+                <span class="filter-value">
+                  <select class="select-no-style pull-left"  selected="District Names" name="lang" onchange="location =this.value">
+                      <option value="">{% trans "District Names" %}</option>
+                      {% for face in faces %}
+                          <option class = "banner-language-list" name="{% url "face-detail" alphabet=face.location.district|lower|first %}" >
+                          <a class="distric-alphabet">{{ face.district|upper|first }}</a>
+                          </option>
+                      {% endfor %}
+                  </select>
+                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </span>
+            </li>
     </div>
+
+
     <ul>
         <div class="story-grid">
                 {% for face in faces %}
