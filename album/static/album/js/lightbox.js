@@ -66,6 +66,16 @@ var Album = {
                 markupParse: function(template, values, item) {
                     $(template).find('a.open-in-new-tab').attr('href', values.src);
                 },
+                change: function() {
+                    console.log('Content changed');
+                    console.log(this.content); // Direct reference to your popup element
+                    if(this.currItem.data.type == "inline") {
+                        var slideshowElement = this.content.find(".slide-show");
+                        Album._initBackToAlbums(this.content.find(".back-to-albums"));
+                        Album._initSlideShow(slideshowElement);
+                        Album._updateSlideshowButtonIcon(slideshowElement);
+                    }
+                  },
                 close: $.proxy(function () {
                     // this._stopWidget();
                     this._popup.removeData('slide-show');
@@ -123,17 +133,14 @@ var Album = {
     // this._togglePlayButton();
     // },
 
-    // _updateSlideshowButtonIcon: function () {
-    //     var slideshow = this._popup.data('slideshow');
-    //     var slideshowButton = $('.btn-slideshow i');
-    //     if(slideshow) {
-    //         slideshowButton.addClass('fa-pause');
-    //         slideshowButton.removeClass('fa-play');
-    //     } else {
-    //         slideshowButton.addClass('fa-play');
-    //         slideshowButton.removeClass('fa-pause');
-    //     }
-    // },
+    _updateSlideshowButtonIcon: function (element) {
+        var slideshow = this._popup.data('slide_show');
+        if(slideshow) {
+            $(element).addClass('fa-pause').removeClass('fa-play');
+        } else {
+            $(element).addClass('fa-play').removeClass('fa-pause');
+        }
+    },
 
     // _stopWidget: function() {
     // if (this._player) {
@@ -159,11 +166,9 @@ var Album = {
                 var slidesWithAuthor = this._constructAuthorItem(this._dummy());
                 this._initPopup(slidesWithAuthor);
                 this._popup.magnificPopup('open');
-                this._playSlideShow();
+                this._playSlideShow($('.slide-show'));
                 $('.mfp-container').addClass('mfp-container-fullscreen');
-                $('.slide-show').click($.proxy(function () {
-                   this._handleSlideShow();
-                }, this));
+                this._initSlideShow($('.slide-show'));
             }, this));
         // }, this));
     },
@@ -180,17 +185,17 @@ var Album = {
         return itemsJson['slides'].concat(authorItem);
     },
 
-    _handleSlideShow: function () {
+    _handleSlideShow: function (element) {
         var slideShow = this._popup.data("slide_show");
         if(slideShow) {
-            this._pauseSlideShow();
+            this._pauseSlideShow(element);
         } else {
-            this._playSlideShow();
+            this._playSlideShow(element);
         }
     },
 
-    _playSlideShow: function () {
-        $('.slide-show').addClass('fa-pause').removeClass('fa-play');
+    _playSlideShow: function (element) {
+        $(element).addClass('fa-pause').removeClass('fa-play');
         this._popup.data('slide_show', 'true');
         var _this = this;
         var slideShowTimer = setInterval(function() {
@@ -204,8 +209,8 @@ var Album = {
         this._popup.data('slide-show-timer', slideShowTimer);
     },
 
-    _pauseSlideShow: function () {
-        $('.slide-show').addClass('fa-play').removeClass('fa-pause');
+    _pauseSlideShow: function (element) {
+        $(element).addClass('fa-play').removeClass('fa-pause');
         this._popup.removeData('slide_show');
         clearInterval(this._popup.data('slide-show-timer'));
     },
@@ -281,9 +286,19 @@ var Album = {
             $('.popup-info').toggleClass('fa-info-circle fa-angle-right');
         });
 
-        $('.back-to-albums').on('click', function () {
+        this._initBackToAlbums($('.back-to-albums'));
+    },
+
+    _initBackToAlbums: function(element) {
+         $(element).on('click', function () {
            $.magnificPopup.close();
         });
+    },
+
+    _initSlideShow: function (element) {
+        $(element).click($.proxy(function () {
+           this._handleSlideShow(element);
+        }, this));
     }
 
     // _initAudio: function() {
