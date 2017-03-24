@@ -20,7 +20,7 @@ class CategoriesList(ListView):
         context["gallery"] = ['audiozone', 'Little takes',
                               'tongues', 'visible-work-invisible-women',
                               'photozone', 'videozone']
-        filteredList = ['videozone', 'audiozone', 'faces', 'photozone', 'pari-for-schools']
+        filteredList = ['videozone', 'audiozone', 'faces', 'photozone']
         context['filtered_categories']=[]
         for category in context['categories']:
             if category.slug not in filteredList:
@@ -32,6 +32,7 @@ class GalleryDetail(DetailView):
     context_object_name = "category"
     model = Category
     paginate_by = 12
+    template_name = 'category/gallery_detail.html'
 
     # def get_absolute_url(self):
     #     return reverse("gallery-detail", kwargs={"slug": self.slug})
@@ -60,6 +61,11 @@ class GalleryDetail(DetailView):
         context["sub_heading"] = category_heading_options.get(category.name,
                                                               {'sub_heading': category.description}).get('sub_heading')
         context["tab"] = 'gallery'
+
+        categories_in_gallery = ['Little takes', 'tongues', 'visible-work-invisible-women']
+        if context["category"].slug in categories_in_gallery:
+            self.template_name = 'category/category_detail.html'
+
         return context
 
 

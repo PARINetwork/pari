@@ -1,0 +1,164 @@
+@import "../../colors/colors";
+@import "../../layout/mixins";
+@import "../../layout/responsive";
+@import "config";
+
+
+.cover-image{
+  .faded-sepia {
+    -webkit-filter: sepia(100%);
+    filter: sepia(100%) opacity(20%);
+  }
+    height:270px;
+    overflow: hidden;
+  img{
+    width:100%;
+  }
+}
+
+.banner-container {
+  position: relative;
+  margin-bottom: 40px;
+  .banner-info {
+    position: absolute;
+    z-index: 1;
+    bottom: 30px;
+    width: 100%;
+    padding: 30px 0 0 0;
+    .back-to-categories{
+      float:right;
+    }
+
+    h2 {
+      .font-size(56);
+      color: @link-primary;
+    }
+    p {
+      .font-size(24);
+      color: @grey;
+      font-weight: 400;
+    }
+    .social-icon{
+        padding: 0px 0px 4px 0px;
+        i {
+          color: @grey;
+        }
+        a{
+          border: 1px solid @grey;
+          border-radius: 20px;
+          display: inline-block;
+          height: 30px;
+          width: 30px;
+          text-align: center;
+          padding-top: 5px;
+          &:hover{
+            text-decoration: none;
+            border: 1px solid @link-primary;
+            i{
+              color: @link-primary
+            }
+          }
+        }
+      }
+    .filter-lang {
+      .filter-label {
+        color: @grey;
+      }
+      .filter-value{
+        width:40%;
+      }
+      i{
+        width:auto;
+      }
+    }
+  }
+}
+
+.article-tile{
+  margin-bottom: 40px;
+}
+
+.share-and-language {
+
+}
+.article-image{
+    a {
+      display: inline-block;
+      height: 193px;
+      word-break: break-all;
+      overflow: hidden;
+      width: 100%;
+    }
+    img{
+      word-break: break-all;
+      width: 100%;
+    }
+  }
+
+.article-tile-info {
+  .article-tile-title{
+      a{
+        h3{
+        margin-top: 0;
+        color: @text-dark;
+        }
+        &:hover{
+          color: @text-dark;
+        }
+      }
+    }
+
+  .sub-data{
+    width: auto;
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    span{
+      margin-right: 0px;
+    }
+
+    .sub-data-author{
+      a{
+        color: @link-primary;
+      }
+    }
+
+    .sub-data-location{
+      a{
+        color: @grey;
+      }
+    }
+
+    a{
+      margin-right: 2px;
+      .font-size(16);
+      &:hover{
+        color: @link;
+        i{
+          color: @link;
+        }
+      }
+    }
+  }
+  p{
+    color: @grey;
+    font-weight: 300;
+    .font-size(16);
+    line-height: 38px;
+  }
+  strong{
+    font-weight: 400;
+    color: @text-light;
+  }
+
+  .date a{
+    color: @grey;
+  }
+  button{
+    background: @link-primary;
+    padding: 10px 20px;
+    border: none;
+    color: @text-light;
+    margin-right: 20px;
+  }
+}

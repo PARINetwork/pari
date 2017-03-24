@@ -1,0 +1,38 @@
+{% load i18n wagtailcore_tags %}
+
+<div class="col-lg-6 article-tile-info">
+    <div class="article-tile-title">
+        <a href="{{ article.get_absolute_url }}">
+            <h3>{{ article.title|truncatechars:70 }}</h3>
+        </a>
+    </div>
+        <div class="sub-data">
+            <div class="sub-data-author">
+                {% for author in article.authors.all %}
+                    <span class="tag-space">
+                        <a href="{% url "author-detail" author.slug %}">{{ author.name }}</a>
+                        {% if not forloop.last %}, {% endif %}
+                    </span>
+                {% endfor %}
+            </div>
+            <div class="sub-data-location">
+                {% for location in article.locations.all %}
+                    <span>
+                        <a href="{% url "location-detail" location.slug %}">{{ location.name }}
+                            {% if not forloop.last %},{% endif %}</a>
+                    </span>
+                {% endfor %}
+            </div>
+        </div>
+    <div class="date">
+        {% if article.original_published_date %}
+            <a href="{% url "archive-detail" year=article.original_published_date.year month=article.original_published_date.month %}">
+                <span itemprop="datePublished">{{ article.original_published_date|date }}</span>
+            </a>
+        {% else %}
+            {% if article.first_published_at %}
+                <a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month %}">
+                    <span itemprop="datePublished">{{ article.first_published_at|date }}</span></a>{% endif %}
+        {% endif %}
+    </div>
+</div>

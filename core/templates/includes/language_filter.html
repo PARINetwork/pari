@@ -4,16 +4,17 @@
         <div class="row">
           <div class="col-lg-4">
               <span class="filter-label">{% trans "Languages" %}:</span>
-              <span class="filter-value">
-                  <select class="select-no-style pull-left" name="lang"><option value="">{% trans "All" %}</option>
-                  {% for lang in LANGUAGES %}
-                      <option {% if request.GET.lang == lang.0 %}selected="selected"{% endif %} value="{{ lang.0 }}">
-                          {% blocktrans with tlang=lang.1 %}{{ tlang }}{% endblocktrans %}
-                      </option>
-                  {% endfor %}
-                  </select>
-                  <i class="Chevron"></i>
-              </span>
+<span class="filter-value">
+      <select class="select-no-style pull-left" name="lang"><option value="">{% trans "All" %}</option>
+          {% for lang in LANGUAGES %}
+              <option {% if request.GET.lang == lang.0 %}selected="selected"{% endif %}
+                      value="{{ lang.0 }}">
+              {% blocktrans with tlang=lang.1 %}{{ tlang }}{% endblocktrans %}
+          </option>
+          {% endfor %}
+      </select>
+      <i class="Chevron"></i>
+</span>
           </div>
         </div>
     </div>

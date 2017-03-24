@@ -31,18 +31,21 @@
 {% block extra_css %}
     <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}album/css/magnific-popup.css">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/article.less">
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/story/category.less">
 {% endblock %}
+
+
 
 {% block breadcrumb_menu %}
     <li class="active">{% trans "{{ category.name }}" %}</li>
 {% endblock %}
 {% block main %}
-    {% include "includes/category_cover_image.html" with category=category%}
     <div class="container">
+        {% include "includes/grid_title.html" %}
         <div class="filter-list-container" data-title="{{ category.name }}" data-filter-endpoint="category_article_filter" data-filter-required-args-category="{{ category.id }}">
-            <div class="row">
-                    {% include "article/includes/article_list.html" with articles=articles category=category title=title%}
+            <div class="gallery-tile-row">
+                <div class="row">
+                    {% include "article/includes/gallery_article_list.html" with articles=articles category=category title=title%}
+                </div>
             </div>
         </div>
     </div>

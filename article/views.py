@@ -138,3 +138,37 @@ class ArticleList(ListView):
         context["articles"] = context["page_obj"]
         context['LANGUAGES'] = settings.LANGUAGES
         return context
+
+
+class GalleryArticleList(ListView):
+    context_object_name = "articles"
+    model = Article
+    paginate_by = 12
+    template_name = 'includes/gallery_article_list.html'
+
+    def get_queryset(self):
+        url_name = self.request.resolver_match.url_name
+        if url_name == "author-detail":
+            live_articles_by_author = Article.objects.live().filter(
+                authors__slug=self.kwargs["slug"]
+            )
+            qs = live_articles_by_author.order_by("-first_published_at")
+        else:
+            qs = super(GalleryArticleList, self).get_queryset()
+        if self.request.GET.get("lang"):
+            qs = qs.filter(language=self.request.GET["lang"])
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super(GalleryArticleList, self).get_context_data(**kwargs)
+        url_name = self.request.resolver_match.url_name
+        context['title'] = "All articles"
+        if url_name == "author-detail":
+            try:
+                context["author"] = Author.objects.get(slug=self.kwargs["slug"])
+            except Author.DoesNotExist:
+                raise Http404
+            context["title"] = context["author"].name
+        context["articles"] = context["page_obj"]
+        context['LANGUAGES'] = settings.LANGUAGES
+        return context

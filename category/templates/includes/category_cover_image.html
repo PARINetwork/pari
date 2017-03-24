@@ -1,0 +1,62 @@
+{% load i18n wagtailcore_tags wagtailimages_tags %}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="banner-container">
+            <div class="cover-image">
+                <img class="img-responsive faded-sepia" src="{{ category.image.file.url }}"
+                     alt="{{ category.image.alt_text }}">
+            </div>
+            <div class="banner-info">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <span class="back-to-categories">
+                                <a class="link-dark font-m" itemprop="url" href="{% url "category-list" %}">
+                                    <i class="fa fa-angle-left"></i>
+                                    <span itemprop="name">{% trans "All Categories" %}</span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <h2><span itemprop="headline">{{ category.name }}</span></h2>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <p>{{ category.description }}</p>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 share-and-language">
+                            <span class=" filter-lang">
+                                <span class="filter-label">{% trans "Languages" %}:</span>
+                                    <span class="filter-value">
+                                          <select class="select-no-style pull-left" name="lang"><option value="">{% trans "All" %}</option>
+                                              {% for lang in LANGUAGES %}
+                                                  <option {% if request.GET.lang == lang.0 %}selected="selected"{% endif %}
+                                                          value="{{ lang.0 }}">
+                                                  {% blocktrans with tlang=lang.1 %}{{ tlang }}{% endblocktrans %}
+                                              </option>
+                                              {% endfor %}
+                                          </select>
+                                          <i class="Chevron"></i>
+                                    </span>
+                            </span>
+                            <span>
+                                {% with request.build_absolute_uri as url and category.title as title %}
+                                    <div class="social-icon" data-url="{{ url }}">
+                                        <a target="_blank"
+                                           href="https://twitter.com/home?status={{ title|urlencode }}+{{ url|urlencode }}">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                        <a target="_blank"
+                                           href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </div>
+                                {% endwith %}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

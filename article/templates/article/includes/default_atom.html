@@ -13,8 +13,4 @@
         {% for location in article.locations.all %}<a class="link-dark font-xs" href="{% url "location-detail" slug=location.slug %}">{{ location.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
     </div>
 
-    <!--<p>{{ article.search_description|truncatechars_html:"50" }}</p>-->
-    <!--{% with article.full_url as url and article.title as title %}-->
-    <!--{% include "article/includes/share.html" %}-->
-    <!--{% endwith %}-->
 </div>
