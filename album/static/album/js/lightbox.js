@@ -149,7 +149,7 @@ var Album = {
                 this._initSlideShow($('.slide-show'));
 
                  $('.popup-info').on('click', function() {
-                    $('.mfp-container').toggleClass('mfp-container-fullscreen');
+                        $('.mfp-container').toggleClass('mfp-container-fullscreen');
                     $('.popup-info').toggleClass('fa-info-circle fa-angle-right');
                 });
 

@@ -15,6 +15,8 @@
 }
 
 .mfp-content {
+    width: 100%;
+    height: 100%;
     .navbar {
         &.navbar-default {
             padding: 0 15px;
@@ -107,9 +109,24 @@
             .mfp-title {
                 color: white;
                 padding: 10px;
+                .bottom-info{
+                    border-top: 1px solid @line-lighter-transparent;
+                    padding-top: 25px;
+                    .top-container{
+                        color: @grey;
+                        .album-title {
+                            font-weight: 500;
+                            font-size: 13px;
+                        }
+                    }
+                    .bottom-container{
+                        margin-top: 10px;
+                        color: @dark-grey;
+                    }
+                }
                 .description {
                     font-weight: 100;
-                    font-size: 16px;
+                    font-size: 14px;
                     line-height: 22px;
                     min-height: 500px;
                 }
@@ -125,10 +142,28 @@
             position: absolute;
             left: 50%;
         }
+
     }
 
-    width: 100%;
-    height: 100%;
+    @media (max-width: 979px) {
+         .mfp-content .mfp-img-holder {
+                width: 100%;
+                height: 100%;
+                height: 100%;
+                position : absolute;
+            }
+            .mfp-content .mfp-img-holder img {
+                height: 100%;
+            }
+
+        .mfp-content .mfp-figure .info-bar {
+            position: absolute;
+            background-color: black !important;
+        }
+        .description{
+            background-color: black ;
+        }
+    }
 
     .mfp-bottom-bar {
         //.transition (0.4s);

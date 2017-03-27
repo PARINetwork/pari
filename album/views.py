@@ -64,17 +64,31 @@ class AlbumDetail(DetailView):
         return names
 
 def get_slide_detail(request, slug):
+    # src: '/static/img/stories-1.jpg',
+    # type: 'image',
+    # description: "Currently, image is being stored along with alt tags as single content. While doing this feature, we need to separate html & content. Hence we get the ability to add alt tags to images for SEO purposes",
+    # album_title: "Weavers of walagpet",
+    # slide_photographer: "vinod",
+    # image_captured_date: "20 May 2017",
+    # slide_location: "Madurai"
+    #
+
     album = Album.objects.get(slug=slug)
-    response_data = []
+    response_data = {}
+    response_data['images']=[]
     for slide in album.slides.all():
-        slide_dict = dict([('type', 'image'), ('show_title', True)])
+        slide_dict = dict([('type', 'image'), ('show_title', True), ('album_title', album.title)])
         slide_dict['src']=slide.image.file.url
         slide_dict['description']=slide.description
-        response_data.append(slide_dict)
+        slide_dict['slide_photographer']=str(map(lambda photographer_name: photographer_name.name, slide.image.photographers.all()))
+        slide_dict['image_captured_date']=slide.image.date
+        slide_dict['slide_location']=slide.image.locations.all().first().district
 
+        response_data['images'].append(slide_dict)
+    response_data['author']=set()
     author = Author.objects.first()
-    response_data.append(dict([('type', 'inline'), ('show_title', False), ('name', author.name), ('bio', author.bio)]))
-    return JsonResponse(dict(data=response_data))
+    response_data['author']=dict([('type', 'inline'), ('show_title', False), ('name', author.name), ('bio', author.bio)])
+    return JsonResponse(response_data)
 
 def add_audio(request):
     sc = settings.SOUNDCLOUD_SETTINGS
