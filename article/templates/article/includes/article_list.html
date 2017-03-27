@@ -1,11 +1,11 @@
 {% load i18n static wagtailimages_tags %}
 
 {% for article in articles %}
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 article-tile">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 article-tile">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 article-image">
                         {% if article.featured_image %}
-                            <div class="article-image">{% image article.featured_image fill-270x270 as featured_image %}
+                            <div>{% image article.featured_image fill-270x270 as featured_image %}
                                 <a class="article-image" href="{{ article.get_absolute_url }}">
                                     <img class="img-responsive lazyload" data-src="{{ featured_image.url }}"
                                      alt="{{ article.featured_image.alt_text }}" width="270" height="192"

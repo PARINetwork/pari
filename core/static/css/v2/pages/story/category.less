@@ -18,7 +18,7 @@
 
 .banner-container {
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: 75px;
   .banner-info {
     position: absolute;
     z-index: 1;
@@ -65,7 +65,7 @@
         color: @grey;
       }
       .filter-value{
-        width:40%;
+        width:30%;
       }
       i{
         width:auto;
@@ -75,16 +75,16 @@
 }
 
 .article-tile{
-  margin-bottom: 40px;
-}
-
-.share-and-language {
-
+  margin-bottom: 10px;
+  position: relative;
+  padding: 20px 20px 20px 20px;
+  overflow: hidden;
 }
 .article-image{
+    padding: 0;
     a {
       display: inline-block;
-      height: 193px;
+      height: 181px;
       word-break: break-all;
       overflow: hidden;
       width: 100%;
@@ -96,6 +96,8 @@
   }
 
 .article-tile-info {
+  height: 193px;
+  padding-left: 5px;
   .article-tile-title{
       a{
         h3{
@@ -118,12 +120,14 @@
     }
 
     .sub-data-author{
+      padding-top: 10px;
       a{
         color: @link-primary;
       }
     }
 
     .sub-data-location{
+      padding-top: 10px;
       a{
         color: @grey;
       }
@@ -131,7 +135,7 @@
 
     a{
       margin-right: 2px;
-      .font-size(16);
+      .font-size(10);
       &:hover{
         color: @link;
         i{
@@ -151,8 +155,12 @@
     color: @text-light;
   }
 
-  .date a{
-    color: @grey;
+  .date {
+      padding-top: 10px;
+    a {
+      .font-size(12);
+      color: @grey;
+    }
   }
   button{
     background: @link-primary;
@@ -161,4 +169,20 @@
     color: @text-light;
     margin-right: 20px;
   }
+}
+
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+ .article-tile {
+   .article-image {
+     padding: 0;
+     a {
+       height: 250px;
+
+     }
+   }
+
+   .article-tile-info {
+     height: 250px;
+   }
+ }
 }

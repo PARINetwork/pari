@@ -25,7 +25,19 @@
                             <p>{{ category.description }}</p>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 share-and-language">
-                            <span class=" filter-lang">
+                             {% with request.build_absolute_uri as url and category.title as title %}
+                                    <div class="social-icon pull-right" data-url="{{ url }}">
+                                        <a target="_blank"
+                                           href="https://twitter.com/home?status={{ title|urlencode }}+{{ url|urlencode }}">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                        <a target="_blank"
+                                           href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </div>
+                                {% endwith %}
+                            <div class=" filter-lang pull-right">
                                 <span class="filter-label">{% trans "Languages" %}:</span>
                                     <span class="filter-value">
                                           <select class="select-no-style pull-left" name="lang"><option value="">{% trans "All" %}</option>
@@ -38,21 +50,8 @@
                                           </select>
                                           <i class="Chevron"></i>
                                     </span>
-                            </span>
-                            <span>
-                                {% with request.build_absolute_uri as url and category.title as title %}
-                                    <div class="social-icon" data-url="{{ url }}">
-                                        <a target="_blank"
-                                           href="https://twitter.com/home?status={{ title|urlencode }}+{{ url|urlencode }}">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                        <a target="_blank"
-                                           href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </div>
-                                {% endwith %}
-                            </span>
+                            </div>
+
                         </div>
                     </div>
                 </div>

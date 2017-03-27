@@ -27,7 +27,7 @@
     <div class="date">
         {% if article.original_published_date %}
             <a href="{% url "archive-detail" year=article.original_published_date.year month=article.original_published_date.month %}">
-                <span itemprop="datePublished">{{ article.original_published_date|date }}</span>
+                <div itemprop="datePublished">{{ article.original_published_date|date }}</div>
             </a>
         {% else %}
             {% if article.first_published_at %}
