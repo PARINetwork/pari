@@ -16,64 +16,6 @@
   }
 }
 
-.banner-container {
-  position: relative;
-  margin-bottom: 75px;
-  .banner-info {
-    position: absolute;
-    z-index: 1;
-    bottom: 30px;
-    width: 100%;
-    padding: 30px 0 0 0;
-    .back-to-categories{
-      float:right;
-    }
-
-    h2 {
-      .font-size(56);
-      color: @link-primary;
-    }
-    p {
-      .font-size(24);
-      color: @grey;
-      font-weight: 400;
-    }
-    .social-icon{
-        padding: 0px 0px 4px 0px;
-        i {
-          color: @grey;
-        }
-        a{
-          border: 1px solid @grey;
-          border-radius: 20px;
-          display: inline-block;
-          height: 30px;
-          width: 30px;
-          text-align: center;
-          padding-top: 5px;
-          &:hover{
-            text-decoration: none;
-            border: 1px solid @link-primary;
-            i{
-              color: @link-primary
-            }
-          }
-        }
-      }
-    .filter-lang {
-      .filter-label {
-        color: @grey;
-      }
-      .filter-value{
-        width:30%;
-      }
-      i{
-        width:auto;
-      }
-    }
-  }
-}
-
 .article-tile{
   margin-bottom: 10px;
   position: relative;
@@ -97,7 +39,7 @@
 
 .article-tile-info {
   height: 193px;
-  padding-left: 5px;
+  padding-left: 15px;
   .article-tile-title{
       a{
         h3{
@@ -171,18 +113,74 @@
   }
 }
 
-@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
- .article-tile {
-   .article-image {
-     padding: 0;
-     a {
-       height: 250px;
+.clear-fix:after {
+  content: " ";
+  display: block;
+  clear: both;
+  float: none;
+}
 
-     }
-   }
+.left {
+  float: left;
+}
 
-   .article-tile-info {
-     height: 250px;
-   }
- }
+.right {
+  float: right;
+}
+
+.banner-container {
+    margin-bottom: 60px;
+}
+
+.banner-content {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 90px;
+  h2 {
+    .font-size(56);
+    color: @link-primary;
+  }
+
+  .category-description {
+    .left {
+      font-size: 2rem;
+      color: @grey;
+      font-weight: 400;
+    }
+
+    .right {
+      ul li {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 15px;
+        color: @grey;
+        &.icon {
+          border: 1px solid #8F8F8F;
+          border-radius: 20px;
+          padding: 5px;
+          width: 28px;
+          height: 28px;
+          text-align: center;
+        }
+        a {
+          color: @grey;
+        }
+        .select-no-style{
+          float: left;
+        }
+      }
+    }
+  }
+}
+@media (max-width: @screen-xs-max) {
+  .banner-container {
+    margin-bottom: 30px;
+  }
+  .article-tile {
+    padding-bottom: 0px;
+  }
+  .right{
+    display:none;
+  }
 }
