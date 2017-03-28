@@ -16,6 +16,7 @@ from wagtail.wagtailcore import blocks
 from wagtail.wagtailadmin.edit_handlers import MultiFieldPanel, \
     StreamFieldPanel, PageChooserPanel, FieldPanel
 from wagtail.wagtailsearch import index
+from wagtail.wagtailcore.blocks import StructBlock
 
 
 @python_2_unicode_compatible
@@ -134,6 +135,46 @@ class HomePage(Page):
     def get_absolute_url(self):
         return reverse("home-page")
 
+
+class SubSectionBlock(StructBlock):
+    heading = blocks.CharBlock()
+    content = blocks.RichTextBlock(required=True)
+
+    class Meta:
+        icon = 'user'
+
+@python_2_unicode_compatible
+class GuidelinesPage(Page):
+    types_of_articles = StreamField([
+        ("sub_section", SubSectionBlock()),
+    ])
+    essential_writing_requirements = StreamField([
+        ("sub_section", SubSectionBlock()),
+    ])
+    writing_tips = StreamField([
+        ("sub_section", blocks.RichTextBlock(required=True)),
+    ])
+    mailing_tips = StreamField([
+        ("sub_section", blocks.RichTextBlock(required=True)),
+    ])
+    photo_guidelines = StreamField([
+        ("sub_section", blocks.RichTextBlock(required=True)),
+    ])
+    video_guidelines = StreamField([
+        ("sub_section", SubSectionBlock()),
+    ])
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('types_of_articles'),
+        StreamFieldPanel('essential_writing_requirements'),
+        StreamFieldPanel('writing_tips'),
+        StreamFieldPanel('mailing_tips'),
+        StreamFieldPanel('photo_guidelines'),
+        StreamFieldPanel('video_guidelines'),
+    ]
+
+    def __str__(self):
+        return _("GuidelinesPage")
 
 @python_2_unicode_compatible
 class AffixImage(AbstractImage):
