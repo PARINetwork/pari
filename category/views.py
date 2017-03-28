@@ -41,7 +41,7 @@ class GalleryDetail(DetailView):
         category_heading_options = {'VideoZone': {'title': 'Videos', 'sub_heading': 'stories told in moving pictures'},
                                     'AudioZone': {'title': 'Audios', 'sub_heading': 'you could listen all day'}}
         context = super(GalleryDetail, self).get_context_data(**kwargs)
-        qs = Article.objects.live()
+        qs = Article.objects.live().select_related('featured_image')
         qs = qs.filter(categories=context["category"])
         if self.request.GET.get("lang"):
             qs = qs.filter(language=self.request.GET["lang"])
@@ -78,7 +78,7 @@ class StoryDetail(DetailView):
     #     return reverse("gallery-detail", kwargs={"slug": self.slug})
     def get_context_data(self, **kwargs):
         context = super(StoryDetail, self).get_context_data(**kwargs)
-        qs = Article.objects.live()
+        qs = Article.objects.live().select_related('featured_image')
         qs = qs.filter(categories=context["category"])
         if self.request.GET.get("lang"):
             qs = qs.filter(language=self.request.GET["lang"])

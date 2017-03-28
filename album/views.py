@@ -26,22 +26,24 @@ class AlbumList(ListView):
         context = super(AlbumList, self).get_context_data(*args, **kwargs)
 
         filter_param = self.kwargs['filter']
+        album_qs = self.get_queryset().prefetch_related('slides')
+
         if filter_param == "talking":
             slide_id = AlbumSlide.objects.exclude(audio='').values_list('page__id')
-            qs = self.get_queryset().filter(id__in=slide_id)
+            qs = album_qs.filter(id__in=slide_id)
             context['albums'] = qs
             context['tab'] = 'gallery'
             context["title"] = "Talking Albums"
             context["sub_heading"] = 'pictures, through the author\'s eyes'
         elif filter_param == "other":
             slide_id = AlbumSlide.objects.filter(audio='').values_list('page__id')
-            qs = self.get_queryset().filter(id__in=slide_id)
+            qs = album_qs.filter(id__in=slide_id)
             context['albums'] = qs
             context['tab'] = 'gallery'
             context["title"] = "Photo Albums"
             context["sub_heading"] = 'pictures, through the author\'s eyes'
         else:
-            context['albums'] = self.get_queryset()
+            context['albums'] = album_qs
         photographers = {}
         for album in context["albums"]:
             slide_photo_graphers= []
