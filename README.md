@@ -45,9 +45,10 @@ $ deactivate                                    # Exit from project virtualenv
 * [Python](https://www.python.org/) - Features a dynamic type system and automatic memory management and supports multiple programming paradigms.
 * [Django](https://www.djangoproject.com/) - Ease the creation of complex, database-driven websites.
 * [Wagtail](https://wagtail.io/) - CMS on top of Django framework
+* [PostgreSQL](https://www.postgresql.org/) - Database system
 * [Nginx](https://www.nginx.com/) - High performance web server and a reverse proxy
 * [Gunicorn](http://gunicorn.org/) - WSGI HTTP Server
-* [Supervisor](http://supervisord.org/) - A Process Control System
+* [Supervisor](http://supervisord.org/) - Process Control System
 * [Elasticsearch](https://www.elastic.co/) - Search engine
 * [Bootstrap](http://getbootstrap.com/) - Great UI boilerplate for modern web apps
 * [jQuery](https://jquery.com/)
