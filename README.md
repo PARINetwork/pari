@@ -2,99 +2,53 @@
 
 **[PARI](https://ruralindiaonline.org/)** is a digital journalism platform in India, founded by veteran journalist and former rural affairs editor of 'The Hindu', **Palagummi Sainath**. **PARI** is a volunteer-run rural journalism platform.
 
-## Dev Setup
-#### Clone Repositories
-To start with the dev box setup, clone the pari_ansible repository.
+## Development setup
+
+To start with local development setup, clone both pari.git and pari-ansible.git repositories in a directory.
 ```sh
-$ git clone https://github.com/PARINetwork/pari-ansible.git
 $ git clone https://github.com/PARINetwork/pari.git
+$ git clone https://github.com/PARINetwork/pari-ansible.git
 ```
-#### Setup the Vagrant Box
-Install vagrant in your machine.
-Proper package for your operating system and architecture can be found here - https://www.vagrantup.com/downloads.html
-After downloading and installing Vagrant, get the Vagrant box up and running as below:
+
+Make sure you have [Vagrant](https://www.vagrantup.com/downloads.html) and [Ansible](http://docs.ansible.com/ansible/intro_installation.html) installed in your machine.
+Also make sure you have internet connectivity. Then, you can get the vagrant box up and provisioned by:
 
 ```sh
 $ cd pari
-$ sudo vagrant up
+$ vagrant up   # This would take a while to complete. You'll be prompted for SUDO password of your host machine for the first time.
 ```
 
-To get the private key of the vagrant box, use the following command. From the console output, note the value of IdentityFile, which is the private key of vagrant box.
+Once after the initial provisioning is completed, local development instance of PARI can be accessed in the browser. 
+
+    # To access home page
+    
+    http://development.ruralindiaonline.org/
+             
+    # To access admin console
+    # Username: pari
+    # Password: !abcd1234
+    
+    http://development.ruralindiaonline.org/admin/
+
+Few basic commands to help development,
 
 ```sh
-$ sudo vagrant ssh-config
+$ vagrant ssh                                   # Login to vagrant box
+$ cd /vagrant && source pari_env/bin/activate   # Change to project directory and activate project virtualenv   
+$ python manage.py shell                        # Access django shell
+$ python manage.py dbshell                      # Access postgres DB. Password: pari
+$ python manage.py test --keepdb                # Run all the tests
+$ deactivate                                    # Exit from project virtualenv
 ```
+## Tech stack:
 
-Now to install the application in the vagrant box, run the ansible_playbook commands from  **pari_ansible** folder,
-Commands to run the set up the application,
-```sh
-$ cd pari-ansible
-$ pip install ansible
-Create a file local.py
-$ touch roles/django/templates/local.py
-Add a single line "DEBUG=True" in the file local.py
-$ ansible-playbook --private-key=path-of-private-key -l vagrant -u vagrant -i hosts.yml site.yml
-```
-
-The ansible-playbook command will setup all the dependencies and create a environment.
-### Open pari admin and local web console
-Now you can open pari admin user web console ,
-
-    http://0.0.0.0/admin/
-**Username and Password**
-
-    username: pari
-    pass: !abcd1234
-
-and user face of the pari web page
-
-    http://0.0.0.0
-
-
-Lets look at how to use the vagrant box.
-
-Get into the vagrant box from the pari project folder.
-```sh
-$ cd pari
-$ sudo vagrant ssh
-
-From within the vagrant box, to access shell,
-
-$ cd /vagrant
-$ source pari_env/bin/activate
-$ python manage.py shell
-```
-
-To access database
-```sh
-$ cd /vagrant
-$ source pari_env/bin/activate
-$ python manage.py dbshell
-Password: pari
-```
-
-**Basic command for psql**
-> **\c**  -   to connect db
-> **\dt**   -   list tables
-> **\x**    -   for turning on the Expanded display
-
-**Note**
-To come out from the environment you can run
-```sh
-$ deactivate
-```
-All dependencies like gunicorn, elasticSearch and nginx are up and running in the virtual box.
-```sh
-To restart gunicorn
-$ sudo supervisorctl restart pari:gunicorn_pari
-To restart nginx
-$ sudo service nginx restart
-```
-### Tech stack:
-
+* [Python](https://www.python.org/) - Features a dynamic type system and automatic memory management and supports multiple programming paradigms.
 * [Django](https://www.djangoproject.com/) - Ease the creation of complex, database-driven websites.
 * [Wagtail](https://wagtail.io/) - CMS on top of Django framework
-* [Python](https://www.python.org/) - Features a dynamic type system and automatic memory management and supports multiple programming paradigms.
+* [Nginx](https://www.nginx.com/) - High performance web server and a reverse proxy
+* [Gunicorn](http://gunicorn.org/) - WSGI HTTP Server
+* [Supervisor](http://supervisord.org/) - A Process Control System
+* [Elasticsearch](https://www.elastic.co/) - Search engine
 * [Bootstrap](http://getbootstrap.com/) - Great UI boilerplate for modern web apps
 * [jQuery](https://jquery.com/)
 
