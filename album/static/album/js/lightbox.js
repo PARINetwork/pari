@@ -139,9 +139,9 @@ var Album = {
 
     _initControls: function() {
         $('.grid-container').click($.proxy(function (element) {
-            // var slug = $(element.currentTarget).data('slug');
-            // $.get("/albums/"+slug+".json/", $.proxy(function(response) {
-                var slidesWithAuthor = this._constructAuthorItem(this._dummy());
+             var slug = $(element.currentTarget).data('slug');
+             $.get("/albums/"+slug+".json/", $.proxy(function(response) {
+                var slidesWithAuthor = this._constructAuthorItem(response);
                 this._initPopup(slidesWithAuthor);
                 this._popup.magnificPopup('open');
                 this._playSlideShow($('.slide-show'));
@@ -155,7 +155,7 @@ var Album = {
 
                 this._initBackToAlbums($('.back-to-albums'));
             }, this));
-        // }, this));
+         }, this));
     },
 
     _constructAuthorItem: function(itemsJson){
@@ -202,15 +202,15 @@ var Album = {
 
     _dummy: function() {
         return {
-            slides: [
+                "slides": [
                 {
-                    src: '/static/img/stories-1.jpg',
-                    type: 'image',
-                    description: "Currently, image is being stored along with alt tags as single content. While doing this feature, we need to separate html & content. Hence we get the ability to add alt tags to images for SEO purposes",
-                    album_title: "Weavers of walagpet",
-                    slide_photographer: "vinod",
-                    image_captured_date: "20 May 2017",
-                    slide_location: "Madurai"
+                    "src": '/static/img/stories-1.jpg',
+                    "type": 'image',
+                    "description": "Currently, image is being stored along with alt tags as single content. While doing this feature, we need to separate html & content. Hence we get the ability to add alt tags to images for SEO purposes",
+                    "album_title": "Weavers of walagpet",
+                    "slide_photographer": "vinod",
+                    "image_captured_date": "20 May 2017",
+                    "slide_location": "Madurai"
                 // }, {
                 //     src: '/static/img/stories-2.jpg',
                 //     type: 'image',
@@ -221,29 +221,29 @@ var Album = {
                 //     src: '/static/img/stories-3-2.jpg',
                 //     type: 'image',
                 }, {
-                    src: '/static/img/stories-4.jpg',
-                    type: 'image',
-                    description: "Featured image is random. Should have an option to select one. Featured image is random. Should have an option to select one. ",
-                    album_title: "Weavers of walagpet",
-                    slide_photographer: "deepthi",
-                    image_captured_date: "30 May 2017",
-                    slide_location: "Chennai"
+                    "src": '/static/img/stories-4.jpg',
+                    "type": 'image',
+                    "description": "Featured image is random. Should have an option to select one. Featured image is random. Should have an option to select one. ",
+                    "album_title": "Weavers of walagpet",
+                    "slide_photographer": "deepthi",
+                    "image_captured_date": "30 May 2017",
+                    "slide_location": "Chennai"
                 }],
 
-            authors: [
+            "authors": [
                 {
                     // src: '.author',
                     // type: 'inline',
                     // show_title: false,
-                    name: 'name1',
-                    bio: 'bio1'
+                    "name": 'name1',
+                    "bio": 'bio1'
                 },
                 {
                     // src: '.author',
                     // type: 'inline',
                     // show_title: false,
-                    name: 'name2',
-                    bio: 'bio2'
+                    "name": 'name2',
+                    "bio": 'bio2'
                 }
             ]
         }

@@ -1,4 +1,5 @@
 import requests
+import datetime
 
 from django.views.generic import DetailView, ListView
 from django.core.urlresolvers import reverse
@@ -66,30 +67,37 @@ class AlbumDetail(DetailView):
         return names
 
 def get_slide_detail(request, slug):
-    # src: '/static/img/stories-1.jpg',
-    # type: 'image',
-    # description: "Currently, image is being stored along with alt tags as single content. While doing this feature, we need to separate html & content. Hence we get the ability to add alt tags to images for SEO purposes",
-    # album_title: "Weavers of walagpet",
-    # slide_photographer: "vinod",
-    # image_captured_date: "20 May 2017",
-    # slide_location: "Madurai"
-    #
+    # {
+    #     "src": '/static/img/stories-4.jpg',
+    #     "type": 'image',
+    #     "description": "Featured image is random. Should have an option to select one. Featured image is random. Should have an option to select one. ",
+    #     "album_title": "Weavers of walagpet",
+    #     "slide_photographer": "deepthi",
+    #     "image_captured_date": "30 May 2017",
+    #     "slide_location": "Chennai"
+    # }
 
     album = Album.objects.get(slug=slug)
     response_data = {}
-    response_data['images']=[]
+    response_data['slides']=[]
+    photographers = []
     for slide in album.slides.all():
-        slide_dict = dict([('type', 'image'), ('show_title', True), ('album_title', album.title)])
+        slide_dict = dict([('type', 'image'), ('show_title', "True"), ('album_title', album.title)])
         slide_dict['src']=slide.image.file.url
         slide_dict['description']=slide.description
-        slide_dict['slide_photographer']=str(map(lambda photographer_name: photographer_name.name, slide.image.photographers.all()))
-        slide_dict['image_captured_date']=slide.image.date
-        slide_dict['slide_location']=slide.image.locations.all().first().district
+        slide_dict['slide_photographer']=(map(lambda photographer_name: photographer_name.name.encode('UTF-8'), slide.image.photographers.all()))
 
-        response_data['images'].append(slide_dict)
-    response_data['author']=set()
-    author = Author.objects.first()
-    response_data['author']=dict([('type', 'inline'), ('show_title', False), ('name', author.name), ('bio', author.bio)])
+        photographers.extend(set(slide.image.photographers.all()))
+        d=datetime.datetime.strptime(str(album.first_published_at)[:10],"%Y-%m-%d")
+        date = d.strftime('%d %b,%Y')
+        slide_dict['image_captured_date']=date
+        slide_dict['slide_location']=slide.image.locations.all().first().district
+        response_data['slides'].append(slide_dict)
+
+    response_data['authors']=[]
+    for photographer in set(photographers):
+        photographer_dict=dict([('type', 'inline'), ('show_title', "False"), ('name', photographer.name), ('bio', photographer.bio), ('twitter', photographer.twitter_username)])
+        response_data['authors'].append(photographer_dict)
     return JsonResponse(response_data)
 
 def add_audio(request):
