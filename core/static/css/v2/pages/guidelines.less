@@ -45,6 +45,23 @@
         border-bottom: thin solid @text-color-brand-title;
         padding-bottom: 10px;
         padding-top: 10px;
+        cursor: pointer;
+    }
+
+    h4 {
+      display: inline-block;
+    }
+
+    div[aria-expanded=true] .fa-caret-right, .fa-caret-right{
+      display: none;
+    }
+    div[aria-expanded=false] {
+      .fa-caret-down {
+        display: none;
+      }
+      .fa-caret-right {
+        display: inline;
+      }
     }
   }
 
@@ -65,7 +82,10 @@
         display: inline;
       }
     }
-    ol { counter-reset: item }
+    ol {
+      counter-reset: item;
+      padding-left: 0;
+    }
     li { display: block }
     li:before { content: counters(item, ".") " "; counter-increment: item }
   }
