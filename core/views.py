@@ -22,7 +22,7 @@ from wagtail.wagtailcore.models import Page, Site
 from wagtail.wagtailadmin.forms import SearchForm
 from wagtail.wagtailadmin.views.pages import preview_on_edit
 
-from .models import HomePage, StaticPage
+from .models import HomePage, StaticPage, GuidelinesPage
 from category.models import Category
 from .forms import ContactForm, DonateForm
 
@@ -56,6 +56,13 @@ def static_page(request, slug=None):
         "tab": active_tab,
     })
 
+def guidelines(request):
+    guideline = GuidelinesPage.objects.first()
+    active_tab = 'about-pari'
+    return render(request, "core/guidelines.html", {
+        "page": guideline,
+        "tab": active_tab,
+    })
 
 def contribute(request, slug=None):
     page = StaticPage.objects.get(slug=slug)

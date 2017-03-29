@@ -1,0 +1,72 @@
+@import "../colors/colors";
+
+.guidelines-page {
+  color: @dark-grey;
+  line-height: 35px;
+  h1 {
+    font-weight: 500;
+    font-size: 40px;
+    margin-bottom: 0;
+  }
+
+  h3 {
+    border-bottom: thick solid @text-color-brand-title;
+    color: @dark-grey;
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+  }
+
+  h3, h4 {
+    font-family: 'Fira Sans', 'Open Sans', sans-serif;
+    font-weight: 500;
+  }
+
+  .guideline-title {
+    padding-bottom: 30px;
+  }
+
+  .subtitle {
+    color: @text-color-brand-title;
+  }
+
+  ol.sub-section {
+    padding-left: 1px;
+  }
+
+  .index {
+    color: @text-color-brand-title;
+    a {
+      color: @text-color-brand-title;
+      text-decoration: none;
+      display: block;
+    }
+
+    .section-index {
+        border-bottom: thin solid @text-color-brand-title;
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+  }
+
+  .content {
+    line-height: 35px;
+    h4 {
+      color: @darker-grey;
+      display: inline;
+    }
+    li {
+      p:first-of-type {
+        display: inline;
+      }
+    }
+    .rich-text {
+      display: inline;
+      p:first-child {
+        display: inline;
+      }
+    }
+    ol { counter-reset: item }
+    li { display: block }
+    li:before { content: counters(item, ".") " "; counter-increment: item }
+  }
+}

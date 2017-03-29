@@ -165,12 +165,12 @@ class GuidelinesPage(Page):
     ])
 
     content_panels = Page.content_panels + [
-        StreamFieldPanel('types_of_articles'),
-        StreamFieldPanel('essential_writing_requirements'),
-        StreamFieldPanel('writing_tips'),
-        StreamFieldPanel('mailing_tips'),
-        StreamFieldPanel('photo_guidelines'),
-        StreamFieldPanel('video_guidelines'),
+        MultiFieldPanel([StreamFieldPanel('types_of_articles')], heading="Types of Articles", classname="collapsible "),
+        MultiFieldPanel([StreamFieldPanel('essential_writing_requirements')], heading="Essential Writing Requirements", classname="collapsible "),
+        MultiFieldPanel([StreamFieldPanel('writing_tips')], heading="Writing Tips", classname="collapsible "),
+        MultiFieldPanel([StreamFieldPanel('mailing_tips')], heading="Mailing Tips", classname="collapsible "),
+        MultiFieldPanel([StreamFieldPanel('photo_guidelines')], heading="Photo Guidelines", classname="collapsible "),
+        MultiFieldPanel([StreamFieldPanel('video_guidelines')], heading="Video Guidelines", classname="collapsible "),
     ]
 
     def __str__(self):

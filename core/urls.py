@@ -22,6 +22,7 @@ urlpatterns = patterns('core.views',
     url(r'^contact-us/$', 'contact_us', name='contact_us'),
     url(r'^(?P<slug>donate)/$', 'static_page', name='static_page'),
 
+    url(r'^pages/guidelines/$', 'guidelines', name='guidelines'),
     url(r'^pages/(?P<slug>.+)/$', 'static_page', name='static_page'),
 
     url(r'^sitemap\.xml$', 'sitemap_index', name='sitemap_index'),
