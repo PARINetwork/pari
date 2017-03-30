@@ -58,11 +58,28 @@ def static_page(request, slug=None):
 
 def guidelines(request):
     guideline = GuidelinesPage.objects.first()
+    page_content = construct_guidelines(guideline.content)
     active_tab = 'about-pari'
     return render(request, "core/guidelines.html", {
-        "page": guideline,
+        "page_content": page_content,
         "tab": active_tab,
     })
+
+def construct_guidelines(guideline_content):
+    guideline_dict = {}
+    for content in guideline_content:
+        if content.block_type == "heading_title":
+            current_heading = content.value
+            guideline_dict[current_heading] = {"sub_section": []}
+        if content.block_type == "heading_content":
+            guideline_dict[current_heading]["heading_content"] = content.value
+        if content.block_type == "sub_section_with_heading":
+            guideline_dict[current_heading]["has_sub_section_with_heading"] = True
+            guideline_dict[current_heading]["sub_section"].append(content.value)
+        if content.block_type == "sub_section_without_heading":
+            guideline_dict[current_heading]["has_sub_section_with_heading"] = False
+            guideline_dict[current_heading]["sub_section"].append({"content": content.value})
+    return guideline_dict
 
 def contribute(request, slug=None):
     page = StaticPage.objects.get(slug=slug)

@@ -10,128 +10,52 @@
 {% block main %}
     <div class="container guidelines-page font-xl">
         <div class="guideline-title">
-            <h1>Guidelines for PARI contributors</h1>
-            <div class="subtitle">Writers, photographers, filmmakers and others</div>
+            <h1>{{ page.title }}</h1>
+            <div class="subtitle">{{ page.strap }}</div>
         </div>
         <div class="index col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <h3>Index of contents</h3>
-            <div class="section-index">
-                <div data-toggle="collapse" data-target="#section-1">
-                    <span class="fa fa-caret-down"></span>
-                    <span class="fa fa-caret-right"></span>
-                    <h4>TYPES OF ARTICLES</h4>
+            {% for heading_title, heading_block in page_content.items %}
+                <div class="section-index">
+                    <div data-toggle="collapse" data-target="#section-{{ forloop.counter }}">
+                        {% if heading_block.has_sub_section_with_heading %}
+                            <span class="fa fa-caret-down"></span>
+                            <span class="fa fa-caret-right"></span>
+                            <h4>{{ heading_title }}</h4>
+                        {% else %}
+                            <h4>
+                                <a href="#section-{{ forloop.counter }}">{{ heading_title }}</a>
+                            </h4>
+                        {% endif %}
+                    </div>
+                    {% if heading_block.has_sub_section_with_heading %}
+                        <div id="section-{{ forloop.counter }}" class="collapse in pad-left-20px">
+                            {% for sub_section_item in heading_block.sub_section %}
+                                <a href="#section-{{ forloop.parentloop.counter }}-{{ forloop.counter }}">{{ sub_section_item.heading }}</a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
-                <div id="section-1" class="collapse in pad-left-20px">
-                    {% for block in page.types_of_articles %}
-                        <a href="#section-1-{{ forloop.counter }}">{{ block.value.heading }}</a>
-                    {%  endfor %}
-                </div>
-            </div>
-            <div class="section-index">
-                <div data-toggle="collapse" data-target="#section-2">
-                    <span class="fa fa-caret-down"></span>
-                    <span class="fa fa-caret-right"></span>
-                    <h4>ESSENTIAL WRITING REQUIREMENTS</h4>
-                </div>
-                <div id="section-2" class="collapse in pad-left-20px">
-                    {% for block in page.essential_writing_requirements %}
-                        <a href="#section-2-{{ forloop.counter }}">{{ block.value.heading }}</a>
-                    {%  endfor %}
-                </div>
-            </div>
-            <div class="section-index">
-                <h4>
-                    <a href="#section-3"> WRITING TIPS </a>
-                </h4>
-            </div>
-            <div class="section-index">
-                <h4>
-                    <a href="#section-4"> MAILING TIPS </a>
-                </h4>
-            </div>
-            <div class="section-index">
-                <h4>
-                    <a href="#section-5"> PHOTO GUIDELINES </a>
-                </h4>
-            </div>
-            <div class="section-index">
-                <div data-toggle="collapse" data-target="#section-6">
-                    <span class="fa fa-caret-down"></span>
-                    <span class="fa fa-caret-right"></span>
-                    <h4 data-toggle="collapse" data-target="#section-6">VIDEO GUIDELINES</h4>
-                </div>
-                <div id="section-6" class="collapse in pad-left-20px">
-                    {% for block in page.video_guidelines %}
-                        <a href="#section-6-{{ forloop.counter }}">{{ block.value.heading }}</a>
-                    {%  endfor %}
-                </div>
-            </div>
+            {% endfor %}
         </div>
+
         <div class="content col-lg-8 col-md-8 col-sm-12 col-xs-12">
             <ol>
-                <li>
-                    <h4>TYPES OF ARTICLES AND OTHER CONTENT</h4>
-                    <ol class="sub-section">
-                        {% for block in page.types_of_articles %}
-                            <li>
-                                <h4 id="section-1-{{ forloop.counter }}">{{ block.value.heading }}:</h4>
-                                <p>{{ block.value.content }}</p>
-                            </li>
-                        {%  endfor %}
-                    </ol>
-                </li>
-                <li>
-                    <h4>ESSENTIAL WRITING REQUIREMENTS</h4>
-                    <ol class="sub-section">
-                        {% for block in page.essential_writing_requirements %}
-                            <li>
-                                <h4 id="section-2-{{ forloop.counter }}">{{ block.value.heading }}:</h4>
-                                <p>{{ block.value.content }}</p>
-                            </li>
-                        {%  endfor %}
-                    </ol>
-                </li>
-                <li>
-                    <h4 id="section-3">WRITING TIPS</h4>
-                    <ol class="sub-section">
-                        {% for block in page.writing_tips %}
-                            <li>
-                                <p>{{ block.value }}</p>
-                            </li>
-                        {%  endfor %}
-                    </ol>
-                </li>
-                <li>
-                    <h4 id="section-4">MAILING TIPS</h4>
-                    <ol class="sub-section">
-                        {% for block in page.mailing_tips %}
-                            <li>
-                                <p>{{ block.value }}</p>
-                            </li>
-                        {%  endfor %}
-                    </ol>
-                </li>
-                <li>
-                    <h4 id="section-5">PHOTO GUIDELINES</h4>
-                    <ol class="sub-section">
-                        {% for block in page.photo_guidelines %}
-                            <li>
-                                <p>{{ block.value }}</p>
-                            </li>
-                        {%  endfor %}
-                    </ol>
-                </li>
-                <li>
-                    <h4>VIDEO GUIDELINES</h4>
-                    <ol class="sub-section">
-                    {% for block in page.video_guidelines %}
-                        <li>
-                            <h4 id="section-6-{{ forloop.counter }}">{{ block.value.heading }}:</h4>
-                            <p>{{ block.value.content }}</p>
-                        </li>
-                    {%  endfor %}
-                    </ol>
-                </li>
+                {% for heading_title, heading_block in page_content.items %}
+                    <li>
+                        <h4 id="section-{{ forloop.counter }}">{{ heading_title }}</h4>
+                        <ol class="sub-section">
+                            {% for sub_section_item in heading_block.sub_section %}
+                                <li>
+                                    {% if heading_block.has_sub_section_with_heading %}
+                                        <h4 id="section-{{ forloop.parentloop.counter }}-{{ forloop.counter }}">{{ sub_section_item.heading }}:</h4>
+                                    {% endif %}
+                                    <p>{{ sub_section_item.content }}</p>
+                                </li>
+                            {%  endfor %}
+                        </ol>
+                    </li>
+                {%  endfor %}
             </ol>
         </div>
     </div>

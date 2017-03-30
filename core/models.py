@@ -138,39 +138,21 @@ class HomePage(Page):
 
 class SubSectionBlock(StructBlock):
     heading = blocks.CharBlock()
-    content = blocks.RichTextBlock(required=True)
-
-    class Meta:
-        icon = 'user'
+    content = blocks.RichTextBlock()
 
 @python_2_unicode_compatible
 class GuidelinesPage(Page):
-    types_of_articles = StreamField([
-        ("sub_section", SubSectionBlock()),
-    ])
-    essential_writing_requirements = StreamField([
-        ("sub_section", SubSectionBlock()),
-    ])
-    writing_tips = StreamField([
-        ("sub_section", blocks.RichTextBlock(required=True)),
-    ])
-    mailing_tips = StreamField([
-        ("sub_section", blocks.RichTextBlock(required=True)),
-    ])
-    photo_guidelines = StreamField([
-        ("sub_section", blocks.RichTextBlock(required=True)),
-    ])
-    video_guidelines = StreamField([
-        ("sub_section", SubSectionBlock()),
-    ])
+    strap = models.TextField(blank=True)
+    content = StreamField([
+        ("heading_title", blocks.CharBlock()),
+        ("heading_content", blocks.RichTextBlock()),
+        ("sub_section_with_heading", SubSectionBlock()),
+        ("sub_section_without_heading", blocks.RichTextBlock()),
+    ], blank=True)
 
     content_panels = Page.content_panels + [
-        MultiFieldPanel([StreamFieldPanel('types_of_articles')], heading="Types of Articles", classname="collapsible "),
-        MultiFieldPanel([StreamFieldPanel('essential_writing_requirements')], heading="Essential Writing Requirements", classname="collapsible "),
-        MultiFieldPanel([StreamFieldPanel('writing_tips')], heading="Writing Tips", classname="collapsible "),
-        MultiFieldPanel([StreamFieldPanel('mailing_tips')], heading="Mailing Tips", classname="collapsible "),
-        MultiFieldPanel([StreamFieldPanel('photo_guidelines')], heading="Photo Guidelines", classname="collapsible "),
-        MultiFieldPanel([StreamFieldPanel('video_guidelines')], heading="Video Guidelines", classname="collapsible "),
+        FieldPanel('strap'),
+        MultiFieldPanel([StreamFieldPanel('content')], heading="Content", classname="collapsible "),
     ]
 
     def __str__(self):
