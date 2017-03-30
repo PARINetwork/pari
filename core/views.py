@@ -61,6 +61,7 @@ def guidelines(request):
     page_content = construct_guidelines(guideline.content)
     active_tab = 'about-pari'
     return render(request, "core/guidelines.html", {
+        "page": guideline,
         "page_content": page_content,
         "tab": active_tab,
     })

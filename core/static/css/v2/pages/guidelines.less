@@ -40,6 +40,11 @@
       color: @text-color-brand-title;
       text-decoration: none;
       display: block;
+
+      &.current-link {
+        color: @dark-grey;
+        font-weight: 500;
+      }
     }
 
     .section-index {
@@ -90,11 +95,26 @@
         display: inline;
       }
     }
-    ol {
-      counter-reset: item;
+    ol.section {
+      counter-reset: section-item;
       padding-left: 0;
     }
-    li { display: block }
-    li:before { content: counters(item, ".") " "; counter-increment: item }
+
+    ol.sub-section {
+      counter-reset: sub-section-item;
+      padding-left: 0;
+    }
+
+    li {
+      display: block;
+    }
+
+    li:before {
+      color:@darker-grey;
+      font-weight: bold;
+    }
+
+    li.section:before { content: counter(section-item) "."; counter-increment: section-item }
+    li.sub-section:before { content: counter(section-item) "." counter(sub-section-item); counter-increment: sub-section-item }
   }
 }

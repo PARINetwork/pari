@@ -4,7 +4,11 @@
 {% block meta_description %}PARI Guidelines page{% endblock %}
 
 {% block extra_css %}
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/guidelines.less">
+   <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/guidelines.less">
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/guidelines.js"></script>
 {% endblock %}
 
 {% block main %}
@@ -24,14 +28,14 @@
                             <h4>{{ heading_title }}</h4>
                         {% else %}
                             <h4>
-                                <a href="#section-{{ forloop.counter }}">{{ heading_title }}</a>
+                                <a class="index-link" href="#section-{{ forloop.counter }}">{{ heading_title }}</a>
                             </h4>
                         {% endif %}
                     </div>
                     {% if heading_block.has_sub_section_with_heading %}
                         <div id="section-{{ forloop.counter }}" class="collapse in pad-left-20px">
                             {% for sub_section_item in heading_block.sub_section %}
-                                <a href="#section-{{ forloop.parentloop.counter }}-{{ forloop.counter }}">{{ sub_section_item.heading }}</a>
+                                <a class="index-link" href="#section-{{ forloop.parentloop.counter }}-{{ forloop.counter }}">{{ sub_section_item.heading }}</a>
                             {% endfor %}
                         </div>
                     {% endif %}
@@ -40,13 +44,14 @@
         </div>
 
         <div class="content col-lg-8 col-md-8 col-sm-12 col-xs-12">
-            <ol>
+            <ol class="section">
                 {% for heading_title, heading_block in page_content.items %}
-                    <li>
+                    <li class="section">
                         <h4 id="section-{{ forloop.counter }}">{{ heading_title }}</h4>
+                        <p>{{ heading_block.heading_content }}</p>
                         <ol class="sub-section">
                             {% for sub_section_item in heading_block.sub_section %}
-                                <li>
+                                <li class="sub-section">
                                     {% if heading_block.has_sub_section_with_heading %}
                                         <h4 id="section-{{ forloop.parentloop.counter }}-{{ forloop.counter }}">{{ sub_section_item.heading }}:</h4>
                                     {% endif %}
