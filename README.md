@@ -10,7 +10,7 @@ $ git clone https://github.com/PARINetwork/pari.git
 $ git clone https://github.com/PARINetwork/pari-ansible.git
 ```
 
-Make sure you have [Vagrant](https://www.vagrantup.com/downloads.html) and [Ansible](http://docs.ansible.com/ansible/intro_installation.html) installed in your machine.
+Make sure you have [Vagrant](https://www.vagrantup.com/downloads.html), [Virtualbox](https://www.virtualbox.org/wiki/Downloads) and [Ansible](http://docs.ansible.com/ansible/intro_installation.html) installed in your machine.
 Also make sure you have internet connectivity. Then, you can get the vagrant box up and provisioned by:
 
 ```sh
