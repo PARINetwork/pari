@@ -4,16 +4,16 @@
   color: @dark-grey;
   line-height: 35px;
   h1 {
-    font-weight: 500;
     font-size: 40px;
     margin-bottom: 0;
   }
 
   h3 {
     border-bottom: thick solid @text-color-brand-title;
-    color: @dark-grey;
     padding-bottom: 5px;
-    margin-bottom: 25px;
+    margin-bottom: 5px;
+    color: @dark-grey;
+
   }
 
   h3, h4 {
@@ -35,6 +35,7 @@
 
   .index {
     color: @text-color-brand-title;
+    padding-left: 0;
     a {
       color: @text-color-brand-title;
       text-decoration: none;
@@ -51,6 +52,11 @@
     h4 {
       display: inline-block;
       text-transform: uppercase;
+      color: @text-color-brand-title;
+    }
+
+    .fa {
+      margin-right: 6px;
     }
 
     div[aria-expanded=true] .fa-caret-right, .fa-caret-right{
@@ -67,6 +73,7 @@
   }
 
   .content {
+    padding-top: 40px;
     line-height: 35px;
     h4 {
       color: @darker-grey;
