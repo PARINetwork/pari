@@ -14,7 +14,9 @@
 
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/resources.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/resources/resource_detail.less">
 {% endblock %}
+
 
 {% block opengraph_block %}
 <meta property="og:title" content="{{ resource.title }}">
@@ -32,58 +34,72 @@
 {% endblock %}
 
 {% block main %}
+
+  <div class="row row-side pdf-container ">
+      <div class="embed-container embed-container-tall ">
+          <iframe src="{{ resource.embed_url }}" frameborder="0"  marginwidth="0" marginheight="0" scrolling="no" onload="resizeIframe(this)" style="border:1px solid #CCC;border-width:1px 1px 0;" allowFullscreen="true" allowfullscreen="true"  webkitallowfullscreen mozallowfullscreen> </iframe>
+      </div>
+  </div>
 <div class="container content-container">
-  <div class="row row-side">
-    <div class="col-lg-6 col-md-6 col-sm-6">
-      <div class="embed-container embed-container-tall">
-	<iframe src="{{ resource.embed_url }}" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowFullscreen="true" allowfullscreen="true"  webkitallowfullscreen mozallowfullscreen> </iframe>
-      </div>
+    <div>
+        <div class="col-lg-8 col-md-8 col-sm-8 left-plane">
+            <div class="title-container">
+                <h2>{{ resource.title }}</h2>
+                <h4>{{ resource.date | date:"M , Y"}}</h4>
+                    <div class="category-share">
+                        <ul >
+                            <li>
+                                <h6>Share</h6>
+                            </li>
+                            {% with request.build_absolute_uri as url and category.title as title %}
+                                <li class="share-icons">
+                                    <a target="_blank"
+                                   href="https://twitter.com/home?status={{ title|urlencode }}+{{ url|urlencode }}">
+                                    <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li class="share-icons">
+                                    <a target="_blank"
+                                   href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                                </li>
+                            {% endwith %}
+                        </ul>
+                    </div>
+            </div>
+            <hr>
+            <div class="factoid-container">
+                <ol>
+                <h4 class="title-factoid">{% trans "FACTOIDS" %}</h4>
+                {% for block in resource.content %}
+                  {% if block.block_type == "factoids" and block.value > 0 %}
+                        <li>
+                            <div class="factoid-point">
+                                {{ block.value }}
+                            </div>
+                        </li>
+                  {% endif %}
+                {% endfor %}
+                </ol>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 right-plane">
+            <hr>
+            <div class="category-focus">
+                <h4>FOCUS</h4>
+                <p>{{ resource.content.2 }}</p>
+            </div>
+            <hr>
+            <div class="category-author">
+                <h4>AUTHOR</h4>
+                <p>{{ resource.content.0 }}</p>
+            </div>
+            <hr>
+            <div class="category-copyright">
+                    <h4>COPYRIGHT</h4>
+                <p>{{ resource.content.1 }}</p>
+            </div>
+        </div>
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-6">
-      <div class="well resources-side">
-        <table>
-          <colgroup>
-            <col style="width:20%;">
-            <col style="width:80%">
-          </colgroup>
-          <tr class="factoids-title">
-            <td>{% trans "Title" %}:</td>
-            <td>{{ resource.title }}</td>
-          </tr>
-          {% if resource.date %}
-          <tr>
-            <td class="factoids-title">{% trans "Date" %}:</td>
-            <td>{{ resource.date | date:"M , Y"}}</td>
-          </tr>
-          {% endif %}
-	  {% for block in resource.content %}
-	  {% if not block.block_type == "factoids" %}
-	  <tr>
-	    <td class="factoids-title">{{ block.block_type|capfirst }}</td>
-	    <td>{{ block.render }}</td>
-	  </tr>
-	  {% endif %}
-	  {% endfor %}
-        </table>
-        <p text-align="center">
-          <a href="{{ resource.get_absolute_url }}report">
-            {% trans "Click to open synopsis in  a separate page" %}
-          </a>
-        </p>
-      </div>
-    </div>
-  </div>
-  {% for block in resource.content %}
-  {% if block.block_type == "factoids" and block.value %}
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-      <div class="factoids">
-        <h3 class="section-header" align="center">{% trans "Factoids" %}</h3>
-	<p>{{ block.render }}</p>
-      </div>
-    </div>
-  </div>
-  {% endif %}
-  {% endfor %}
-</div>
 {% endblock %}
