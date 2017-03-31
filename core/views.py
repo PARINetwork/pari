@@ -27,7 +27,7 @@ from category.models import Category
 from .forms import ContactForm, DonateForm
 
 from core.utils import get_translations_for_page
-
+from collections import OrderedDict
 
 def home_page(request, slug="home-page"):
     home_page = HomePage.objects.get(slug=slug)
@@ -67,7 +67,7 @@ def guidelines(request):
     })
 
 def construct_guidelines(guideline_content):
-    guideline_dict = {}
+    guideline_dict = OrderedDict()
     for content in guideline_content:
         if content.block_type == "heading_title":
             current_heading = content.value
