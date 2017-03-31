@@ -1,4 +1,17 @@
 @import "../colors/colors";
+@import "../layout/responsive";
+
+@media (min-width: @screen-md-min) {
+  .index {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+
+  .content {
+    overflow: auto;
+    max-height: 450px;
+  }
+}
 
 .guidelines-page {
   color: @dark-grey;
@@ -54,7 +67,7 @@
     }
 
     h4 {
-      display: inline-block;
+      display: inline;
       text-transform: uppercase;
       color: @text-color-brand-title;
     }
@@ -77,7 +90,7 @@
   }
 
   .content {
-    padding-top: 40px;
+    margin-top: 40px;
     line-height: 35px;
     h4 {
       color: @darker-grey;
