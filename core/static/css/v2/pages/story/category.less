@@ -135,8 +135,33 @@
   float: right;
 }
 
+.alternate-filter{
+  float: left;
+  display: none;
+}
+
 .banner-container {
     margin-bottom: 60px;
+
+    .alternate-filter {
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      ul li {
+         display: inline-block;
+         vertical-align: middle;
+
+         color: @grey;
+         .Chevron {
+           background-color: transparent;
+         }
+         .select-no-style{
+           float: left;
+           width: 15px;
+           margin-top: 1px;
+         }
+       }
+    }
 }
 
 .banner-content {
@@ -197,5 +222,8 @@
   }
   .right{
     display:none;
+  }
+  .alternate-filter{
+    display: inline;
   }
 }
