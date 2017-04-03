@@ -14,7 +14,7 @@
 }
 
 .guidelines-page {
-  color: @dark-grey;
+  color: black;
   line-height: 35px;
   h1 {
     font-size: 40px;
@@ -100,9 +100,18 @@
       p:first-of-type {
         display: inline;
       }
+
+      &.sub-section {
+        border-bottom: thin solid @text-color-brand-title;
+        margin-bottom: 25px;
+        padding-bottom: 25px;
+      }
     }
     .rich-text {
       display: inline;
+      p {
+        margin-top: 25px;
+      }
       p:first-child {
         display: inline;
       }

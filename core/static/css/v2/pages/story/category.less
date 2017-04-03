@@ -30,7 +30,6 @@
   overflow: hidden;
 }
 .article-image{
-    padding: 0;
     a {
       display: inline-block;
       height: 181px;
@@ -146,7 +145,7 @@
     .alternate-filter {
       position: absolute;
       left: 0px;
-      right: 0px;
+      bottom: 25px;
       ul li {
          display: inline-block;
          vertical-align: middle;
@@ -225,5 +224,11 @@
   }
   .alternate-filter{
     display: inline;
+  }
+}
+
+@media (min-width: @screen-lg-min) {
+  .article-image {
+    padding: 0;
   }
 }
