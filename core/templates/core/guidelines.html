@@ -48,7 +48,7 @@
                 {% for heading_title, heading_block in page_content.items %}
                     <li class="section">
                         <h4 id="section-{{ forloop.counter }}">{{ heading_title }}</h4>
-                        <p>{{ heading_block.heading_content }}</p>
+                        <div>{{ heading_block.heading_content }}</div>
                         <ol class="sub-section">
                             {% for sub_section_item in heading_block.sub_section %}
                                 <li class="sub-section">
