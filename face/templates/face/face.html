@@ -42,9 +42,9 @@
 {% endblock %}
 
 {% block extra_css %}
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/categories.less">
     <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}album/css/magnific-popup.css">
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}face/css/faces.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/faces/faces.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/layout/components/main-content/story-grid.less">
 {% endblock %}
 
 
@@ -54,68 +54,73 @@
 
 {% block main %}
   <div class="container content-container">
-    <div class="bg-info text-center" style="padding: 5px;">
-      <h4>{% trans "Help PARI capture the sheer facial diversity of the people of India. Send us photos." %} <a href="/pages/send-us-photos-help-pari-capture-the-sheer-facial-diversity-of-the-indian-people/">{% trans "Click here" %}</a></h4>
-    </div>
-    <h3 class="text-center">{% trans "View faces from districts starting with..." %}</h3>
-    <div class="paginator face_paginator">
-      <ul class="pagination">
-        <li {% if alphabet == "a" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="a" %}">A</a></li>
-        <li {% if alphabet == "b" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="b" %}">B</a></li>
-        <li {% if alphabet == "c" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="c" %}">C</a></li>
-        <li {% if alphabet == "d" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="d" %}">D</a></li>
-        <li {% if alphabet == "e" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="e" %}">E</a></li>
-        <li {% if alphabet == "f" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="f" %}">F</a></li>
-        <li {% if alphabet == "g" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="g" %}">G</a></li>
-        <li {% if alphabet == "h" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="h" %}">H</a></li>
-        <li {% if alphabet == "i" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="i" %}">I</a></li>
-        <li {% if alphabet == "j" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="j" %}">J</a></li>
-        <li {% if alphabet == "k" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="k" %}">K</a></li>
-        <li {% if alphabet == "l" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="l" %}">L</a></li>
-        <li {% if alphabet == "m" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="m" %}">M</a></li>
-        <li {% if alphabet == "n" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="n" %}">N</a></li>
-        <li {% if alphabet == "o" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="o" %}">O</a></li>
-        <li {% if alphabet == "p" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="p" %}">P</a></li>
-        <li {% if alphabet == "q" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="q" %}">Q</a></li>
-        <li {% if alphabet == "r" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="r" %}">R</a></li>
-        <li {% if alphabet == "s" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="s" %}">S</a></li>
-        <li {% if alphabet == "t" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="t" %}">T</a></li>
-        <li {% if alphabet == "u" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="u" %}">U</a></li>
-        <li {% if alphabet == "v" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="v" %}">V</a></li>
-        <li {% if alphabet == "w" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="w" %}">W</a></li>
-        <li {% if alphabet == "x" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="x" %}">X</a></li>
-        <li {% if alphabet == "y" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="y" %}">Y</a></li>
-        <li {% if alphabet == "z" %}class="active"{% endif %}><a href="{% url "face-detail" alphabet="z" %}">Z</a></li>
-      </ul>
-    </div>
-    <div class="popup-gallery" data-url="{% url "face-detail" alphabet=alphabet %}">
-      {% for face in faces %}
-      {% if forloop.first or forloop.counter0|divisibleby:"3" %}
-      <div class="row">
-      {% endif %}
-        <div class="categories">{% image face.image fill-1110x1410 as face_image %}
-          <a href="{{ face.get_absolute_url }}" data-title="{{ face.title }}" data-district="{{ face.location.district }}" data-description="{{ face.description }}" data-slug="{{ face.slug }}" class="image-tag mfp-image" data-url="{{ face.get_absolute_url }}">
-            <div class="col-lg-4 col-md-4">
-              <div class="grid-column">
-                <img class="img-responsive" src="{{ face_image.url }}" width="370" height="470" alt="{{ face.image.alt_text }}">
-                <div class="caption down-caption dark-caption text-padding">
-                  <div class="image-footer">{{face.title }}, {{ face.location.district }}</div>
-                  <span class="pull-right text-red">know more
-                    <i class="fa fa-arrow-circle-right arrow-font"></i>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </a>
+
+    <div class="gallery-title">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 gallery-title-icon go-back-faces">
+            <span class="prev">
+                <a class="link-light" itemprop="url" href="{% url "face-list" %}">
+                    <i class="fa fa-angle-left"></i>
+                    <span itemprop="name">{% trans "FACES DIRECTORY" %}</span>
+                </a>
+            </span>
         </div>
-	{% if forloop.last or forloop.counter|divisibleby:"3" %}
-      </div>
-	{% endif %}
+        <div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
+            {% include "includes/page_content_header/heading.html" %}
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 gallery-title-icon face-upload-share">
+            <span class="face-upload">
+                <a class="link-light" href="/pages/send-us-photos-help-pari-capture-the-sheer-facial-diversity-of-the-indian-people/">
+                    <i class="fa fa-upload" aria-hidden="true"></i>
+                    <span class="link-text" itemprop="name">{% trans "Upload face" %}</span>
+                </a>
+            </span>
+            {% with request.build_absolute_uri as url %}
+                <span class="gallery-social-icon">
+                    <a href="https://twitter.com/home?status={{ title|urlencode }}+{{ url|urlencode }}" target="_blank" class="link-light">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}" target="_blank" class="link-light">
+                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                    </a>
+                </span>
+            {% endwith %}
+        </div>
+    </div>
+    </div>
+
+    <div class="row filter-lang">
+        <span  class="filter-label">Faces of district names starting with</span>
+        <span class="filter-value">
+            <select class="select-no-style pull-left" name="lang" onchange="location =this.value">
+                {% for letter in "abcdefghijklmnopqrstuvwxyz" %}
+                  <option class="banner-language-list" {% ifequal alphabet letter %}selected='selected'{% endifequal %} value="{% url "face-detail" alphabet=letter %}" >
+                    <a class="distric-alphabet">{{ letter|capfirst }}</a>
+                  </option>
+                {% endfor %}
+            </select>
+            <i class="fa fa-angle-down" aria-hidden="true"></i>
+        </span>
+    </div>
+
+    <ul>
+      <div class="popup-gallery story-grid" data-url="{% url "face-detail" alphabet=alphabet %}">
+      {% for face in faces %}
+        <li class="tile">{% image face.image fill-514x514 as face_image %}
+          <a href="{{ face.get_absolute_url }}" data-title="{{ face.title }}" data-district="{{ face.location.district }}" data-description="{{ face.description }}" data-slug="{{ face.slug }}" class="image-tag mfp-image" data-url="{{ face.get_absolute_url }}">
+            <img class="img-responsive grid-image no-border" src="{{ face_image.url }}" alt="{{ face.image.alt_text }}">
+          </a>
+            <div class="caption">
+                <div class="name">{{face.title|capfirst }}</div>
+                <div class="district">{{ face.location.district|capfirst }}</div>
+            </div>
+        </li>
     {% empty %}
       <div>
 	<h3 class="text-center text-danger">{% blocktrans %}Sorry! There are no faces on this page. Please consider <a href="/contribute/">contributing</a> one.{% endblocktrans %}</h3>
       </div>
     {% endfor %}
     </div>
+    </ul>
   </div>
 {% endblock %}

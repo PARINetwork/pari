@@ -14,7 +14,6 @@
 {% endblock %}
 
 {% block extra_css %}
-{#    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/categories.less">#}
     <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}album/css/magnific-popup.css">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/faces/faces.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/layout/components/main-content/story-grid.less">
@@ -56,54 +55,21 @@
             </div>
         </div>
       </div>
-{#    <div class="paginator face_paginator">#}
-{#      <ul class="pagination">#}
-{#        <li><a href="{% url "face-detail" alphabet="a" %}">A</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="b" %}">B</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="c" %}">C</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="d" %}">D</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="e" %}">E</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="f" %}">F</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="g" %}">G</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="h" %}">H</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="i" %}">I</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="j" %}">J</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="k" %}">K</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="l" %}">L</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="m" %}">M</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="n" %}">N</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="o" %}">O</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="p" %}">P</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="q" %}">Q</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="r" %}">R</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="s" %}">S</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="t" %}">T</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="u" %}">U</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="v" %}">V</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="w" %}">W</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="x" %}">X</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="y" %}">Y</a></li>#}
-{#        <li><a href="{% url "face-detail" alphabet="z" %}">Z</a></li>#}
-{#      </ul>#}
-{#    </div>#}
 
     <div class="row filter-lang">
-            <li >
-                <span  class="filter-label">Alphabetical order</span>
-                <span class="filter-value">
-                  <select class="select-no-style pull-left"  selected="District Names" name="lang" onchange="location =this.value">
-                      <option value="">{% trans "District Names" %}</option>
-                      {% for face in faces %}
-                          <option class = "banner-language-list" value="{% url "face-detail" alphabet=face.location.district|lower|first %}" >
-                          <a class="distric-alphabet">{{ face.district|lower|first }}</a>
-                          </option>
-                      {% endfor %}
-                  </select>
-                <i class="fa fa-angle-down" aria-hidden="true"></i>
-                </span>
-            </li>
+        <span  class="filter-label">Alphabetical order</span>
+        <span class="filter-value">
+          <select class="select-no-style pull-left"  selected="District Names" name="lang" onchange="location =this.value">
+              <option value="">{% trans "District Names" %}</option>
+              {% for face in faces %}
+                  <option class = "banner-language-list" value="{% url "face-detail" alphabet=face.location.district|lower|first %}" >
+                  <a class="distric-alphabet">{{ face.district|lower|first|capfirst }}</a>
+                  </option>
+              {% endfor %}
+          </select>
+            <i class="fa fa-angle-down" aria-hidden="true"></i>
+        </span>
     </div>
-
 
     <ul>
         <div class="story-grid">
