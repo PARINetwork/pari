@@ -12,5 +12,5 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RunSQL(
-            "INSERT INTO location_subdistricttype (name) VALUES ('block'), ('sub_district'), ('taluka'), ('tehsil'), ('mandapam'), ('mandil')")
+            "INSERT INTO location_subdistricttype (name) VALUES ('block'), ('sub_district'), ('taluka'), ('tehsil'), ('mandapam'), ('mandal')")
     ]
