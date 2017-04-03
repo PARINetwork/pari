@@ -22,19 +22,19 @@ class LocationAdminForm(forms.ModelForm):
     state = forms.CharField(max_length=50,
                             widget=forms.Select(choices=settings.STATE_CHOICES))
     point = PointField(widget=LeafletMapWidget())
-    sub_district_type_value = forms.CharField(
-        label=_("Sub district type value"),
+    sub_district_value = forms.CharField(
+        label=_("Sub district value"),
         max_length=20,
         widget=forms.TextInput(attrs={"class": "form-control"}),
         required=False)
 
-    def clean_sub_district_type_value(self):
-        sub_district_type_value = self.cleaned_data["sub_district_type_value"]
+    def clean_sub_district_value(self):
+        sub_district_value = self.cleaned_data["sub_district_value"]
         sub_district_type = self.cleaned_data["sub_district_type"]
-        if not sub_district_type and sub_district_type_value:
+        if not sub_district_type and sub_district_value:
             raise forms.ValidationError(_("Sub district type has to be chosen first"))
-        return sub_district_type_value
+        return sub_district_value
 
     class Meta:
         model = Location
-        fields = ["point", "name", "district", "region", "state", "sub_district_type", "sub_district_type_value"]
+        fields = ["point", "name", "district", "region", "state", "panchayat", "sub_district_type", "sub_district_value"]
