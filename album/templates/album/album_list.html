@@ -54,6 +54,7 @@
     <li class="active">{% trans "Albums" %}</li>
 {% endblock %}
 {% block main %}
+
     <div class="container popup-gallery">
         {% include "includes/grid_title.html" %}
         <div class="filter-list-container">
@@ -156,50 +157,6 @@
       {% endverbatim %}
       <!--  photo album ends here -->
 
-    <div id="author-template" class="hide">
-        <div>
-            <div class="author" id="author">
-                <nav class="navbar navbar-default" role="navigation">
-                  <div>
-                    <div class="collapse navbar-collapse" id="navbar-brand-centeredsdf">
-                      <ul class="nav navbar-nav">
-                        <li><a href="#" class="fa fa-angle-left back-to-albums"></a></li>
-                        <li><a href="#" class="fa fa-th-large slide-grid"></a></li>
-                        <li><a href="#" class="fa slide-show"></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </nav>
-            </div>
-        </div>
-    </div>
-    {% verbatim %}
-        <script id="authorTmpl" type="text/x-jsrender">
-            <div class="author-details">
-                <span itemprop="name">{{:name}}</span>
-                <span itemprop="description">{{:bio}}</span>
-            </div>
-        </script>
-    {% endverbatim %}
-
-    {% verbatim %}
-        <script id="sideInfoTmpl" type="text/x-jsrender">
-            <div>
-                <div class="description">{{:description}}</div>
-                <div class="bottom-info">
-                    <div class="top-container">
-                        <div class="album-title">{{:album_title}}</div>
-                        <div class="slide-photographer">{{:slide_photographer}}</div>
-                    </div>
-                    <div class ="bottom-container">
-                        <div class="image-captured-date">{{:image_captured_date}}</div>
-                        <div class="slide-location">{{for slide_location}}{{:}}{{/for}}</div>
-                    </div>
-                </div>
-            </div>
-        </script>
-    {% endverbatim %}
-
     {% verbatim %}
       <script id="carouselPage" type="text/x-jsrender">
         <li class="{{:carouselPageClass}}">
@@ -220,45 +177,6 @@
 
       </script>
     {% endverbatim %}
-
-
-    <script type="text/template" id="slide-template">
-        <div class="mfp-figure">
-            <nav class="navbar navbar-default" role="navigation">
-                  <div>
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-brand-centered">
-                        <div class="button-collapse">
-
-                        </div>
-                      </button>
-                      <div class="navbar-brand navbar-brand-centered mfp-counter"></div>
-                      <div class="navbar-brand navbar-brand-centered fa fa-angle-left back-to-albums"></div>
-{#                      <div class="navbar-brand navbar-brand-centered">Brand</div>#}
-                    </div>
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="navbar-brand-centered">
-                      <ul class="nav navbar-nav">
-                        <li><a href="#" class="fa fa-th-large slide-grid"></a></li>
-                        <li><a href="#" class="fa slide-show"></a></li>
-                      </ul>
-                      <ul class="nav navbar-nav navbar-right">
-                          <li><a href="#" class="fa fa-external-link open-in-new-tab" target="_blank"></a></li>
-                          <li><a href="#" class="fa fa-info-circle popup-info"></a></li>
-                      </ul>
-                    </div><!-- /.navbar-collapse -->
-                  </div><!-- /.container-fluid -->
-                </nav>
-            <div class="mfp-img-holder">
-                <div class="mfp-img"></div>
-            </div>
-            <div class="mfp-bottom-bar info-bar">
-                <div class="mfp-title"></div>
-            </div>
-        </div>
-    </script>
 
     {% if albums %}
 

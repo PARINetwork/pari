@@ -156,19 +156,19 @@ var Album = {
     generateCarousel: function(data) {
       this.carouselData = data;
 
-
-
-
-
       data.slides.forEach(function(slide, index) {
         slide.carouselPageClass = index === 0 ? "item image-container active" : "item image-container";
         var carouselPage = $.templates("#carouselPage");
         var carouselPageHtml = carouselPage.render(slide);
         $(".carousel-items").append(carouselPageHtml);
+
+        if(index === 0) {
+            $(".carousel-items .item:first-child .wrapper").append('<div class="floating-text"><h1 class="title">'+slide.album_title+'</h1><p class="description"></p><div class="place">'+slide.slide_location+'</div><div class="social-icons"></div></div>');
+            $(".carousel-items .item:first-child .description").append(slide.description);
+        }
+
         $(".thumbnail-list").append('<li class="thumbnail left box"><img src='+slide.src+' /></li>');
       });
-
-
 
       data.authors.forEach(function(author) {
         var carouselAuthor = $.templates("#carouselAuthor");
@@ -182,6 +182,13 @@ var Album = {
 
       // _initializeCarousel()
       handleCarouselEvents(this.carouselData);
+      setTimeout(function() {
+        positionFloatingText();
+      }, 500);
+
+      $( window ).resize(function() {
+        positionFloatingText();
+      });
 
 
 
@@ -353,12 +360,29 @@ $(function() {
     Album.init();
 });
 
+function positionFloatingText() {
+  if($(".floating-text").length === 0) {
+    return;
+  }
+  var image = $('.carousel-items .item:first-child img');
+  var contentHeight = image.get(0).offsetHeight * 0.4,
+      contentWidth = image.get(0).offsetWidth * 0.5,
+      top = image.get(0).offsetTop + (image.get(0).offsetHeight - contentHeight)/2;
+
+  $(".floating-text").css({
+    left: image.get(0).offsetLeft + (image.get(0).offsetLeft * 0.15) + 40,
+    top: top,
+    height: contentHeight,
+    width: contentWidth
+  });
+}
+
 function handleCarouselEvents(carouselData) {
   var totalItems = $('.carousel-items .item').length,
       currentIndex = 0,
       isPlaying = true;
 
-  updateIndex();
+  updateCurrentPageData();
 
   $("#carousel").carousel({
     interval: 2000,
@@ -386,12 +410,16 @@ function handleCarouselEvents(carouselData) {
       $(this).removeClass("fa-info-circle").removeClass("fa-angle-right");
       $(this).addClass($(this).hasClass("selected") ? "fa-angle-right" : "fa-info-circle")
       $(".photo-album").toggleClass("show-slide-info");
+
+      setTimeout(function() {
+        positionFloatingText();
+      }, 500);
   });
 
   $('.thumbnail-list li').click(function(event) {
     var index = $(event.currentTarget).index('.thumbnail-list li');
     $("#carousel").carousel(index);
-      toggleThumbnail();
+    toggleThumbnail();
   });
 
   $('.close-thumbnail').click(function(event) {
@@ -408,17 +436,19 @@ function handleCarouselEvents(carouselData) {
 
   function updateIndexOnSlide() {
     currentIndex = getSelectedCarouselIndex();
-    updateIndex();
+    updateCurrentPageData();
   }
 
   function getSelectedCarouselIndex() {
     return $('.photo-album .carousel-items li.active').index('.photo-album .carousel-items li.item');
   }
 
-  function updateIndex() {
+  function updateCurrentPageData() {
     updateSlideInfo();
     totalItems = $('.carousel-items .item').length;
     $('.carousel-index').html((currentIndex + 1) + " / " + totalItems);
+    $(".thumbnail-list li").removeClass("selected");
+    $(".thumbnail-list li:nth-child("+(currentIndex + 1)+")").addClass("selected");
   }
 
   function updateSlideInfo() {
