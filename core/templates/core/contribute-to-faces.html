@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load i18n wagtailcore_tags %}
+{% block meta_description %}Contribute to faces{% endblock %}
+
+{% block extra_css %}
+   <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/contribute_faces.less">
+{% endblock %}
+
+{% block main %}
+    <div class="container" >
+        <div class="contribute-title">
+            <div class="col-lg-9 col-md-9 col-sm-12 make-left">
+                <h1>Contribute to Faces</h1>
+                <p class="title-strap" >Welcome to India and PARI’s Indian FACES endeavour – an ambitious attempt to create a facial map of the most diverse societies on earth, those across rural India.</p>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 make-left">
+                <a href="{{ link }}"><div class="upload-button top-button">
+                    <i class="fa fa-upload"></i>
+                    <span>Upload a face photo</span>
+                </div></a>
+            </div>
+        </div>
+        <div class="full-row image-holder">
+            <img src="/media/faces/faces-contr-banner.png" alt="" />
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12 contribute-description make-left">
+            <h4><span><u>Tami</u></span> in Kalahandi, Odisha, has a very Indian face. So does <span><u>Rajendran</u></span> of Kanchipuram in Tamil Nadu. So too, <span><u>Ohame</u></span> of the Andamans and Michi Yaring of Arunachal Pradesh. And not one of them resembles the other in the slightest.</h4>
+            <p>PARI aims to record Indian faces from every single block and district in the country. That’s right — thousands and thousands of FACES, capturing the astonishing diversity of how Indians look. From every single district (and each block of every district) we aim to put up portraits of at least one adult male, one adult female and one child or adolescent. This is a gigantic exercise that will take years to complete and demands the widest participation. Anyone can take part in it provided the photograph is good enough.</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 how-to-contri make-left ">
+            <hr>
+            <h5 class="primary-contr-heading">HOW YOU CAN CONTRIBUTE</h5>
+            <h5 class="sub-contr-heading">Upload Photos</h5>
+            <p class="sub-contr-desc">It is also very important that the photo you send in is accompanied by the details of the person in the picture.</p>
+            <p class="primary-contr-link">Please read the <a itemprop="url" href="{% url "static_page" slug="guidelines" %}"><u>content guidelines</u></a> to contribute to Faces.</p>
+            <a href="{{ link }}">
+                <div class="upload-button bottom-button">
+                    <i class="fa fa-upload"></i>
+                    <span>Upload a face photo</span>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endblock %}

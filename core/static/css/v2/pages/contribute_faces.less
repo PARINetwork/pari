@@ -1,0 +1,105 @@
+@import "../colors/colors";
+@import "../layout/responsive";
+
+.make-left {
+  padding-left: 0px;
+}
+
+.contribute-title, .how-to-contri {
+  .title-strap {
+    color: grey;
+    line-height: 25px;
+    margin-top: 0px;
+    padding-right: 10px;
+  }
+  .upload-button {
+    width: 270px;
+    height: 60px;
+    border: solid;
+    border-color: black;
+    display: inline-block;
+    font-size: large;
+    border-width: 2px;
+    i.fa.fa-upload {
+      padding: 20px 12px 0 25px;
+      color: #FF3D08;
+    }
+    span {
+      font-weight: 500;
+      color: @dark-grey;
+    }
+  }
+
+  .top-button {
+    margin-top: 51px;
+  }
+}
+
+.contribute-description {
+  margin-top: 20px;
+
+  h4 {
+    font-size: x-large;
+    line-height: 33px;
+    padding-right: 30px;
+    span {
+      color: rgb(33, 171, 252);
+      u {
+        text-decoration: none;
+        border-bottom: 3px solid;
+        border-bottom-color: rgb(33, 171, 252);;
+      }
+    }
+  }
+  p {
+    line-height: 30px;
+    padding-right: 30px;
+  }
+}
+
+.how-to-contri {
+
+  hr {
+    width: 100%;
+    border: 2px solid #E4E4E4;
+    margin: 30px 10px 0 0;
+  }
+  .primary-contr-heading {
+    color: @grey;
+  }
+  .sub-contr-heading {
+    margin-top: 25px;
+    font-weight: 600;
+  }
+  .sub-contr-desc {
+    line-height: 25px;
+    margin: 10px 0;
+  }
+  .primary-contr-link {
+    font-size: small;
+    color: darkgrey;
+    margin: 0 0 20px;
+  }
+}
+
+.image-holder {
+  display: inline-block;
+  width: 100%;
+  .fill {
+
+  }
+  img {
+    max-height: 100%;
+    max-width: 100%;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: @screen-sm-max) {
+  .contribute-title {
+    .top-button {
+      margin-top: 0px;
+    }
+  }
+
+}
