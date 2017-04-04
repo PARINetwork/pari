@@ -383,6 +383,8 @@ function handleCarouselEvents(carouselData) {
 
   $('#showSlideInfo').click(function() {
       $(this).toggleClass("selected");
+      $(this).removeClass("fa-info-circle").removeClass("fa-angle-right");
+      $(this).addClass($(this).hasClass("selected") ? "fa-angle-right" : "fa-info-circle")
       $(".photo-album").toggleClass("show-slide-info");
   });
 
@@ -399,6 +401,7 @@ function handleCarouselEvents(carouselData) {
   $('.back-to-albums').click(function(){
     $(".photo-album-popup").remove();
   })
+
   $('#carousel').on('slid.bs.carousel', function() {
       updateIndexOnSlide();
   });
