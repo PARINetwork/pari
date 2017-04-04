@@ -2,14 +2,15 @@ $(function() {
     var direction = "bottom";
     $(document).scroll(function(event) {
         var pdfContainerBottom = $(".pdf-container").offset().top + $(".pdf-container").height();
+
         if($(this).scrollTop() >= pdfContainerBottom) {
             direction = "top";
-            $("i", this).removeClass("fa-arrow-circle-down");
+            $(".bottom-arr", this).removeClass("fa-arrow-circle-down");
         } else {
             direction = "bottom";
         }
         if($(this).scrollTop() == 0) {
-            $("i", this).addClass("fa-arrow-circle-down");
+            $(".bottom-arr", this).addClass("fa-arrow-circle-down");
         }
     });
 
