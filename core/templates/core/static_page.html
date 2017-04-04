@@ -25,6 +25,8 @@
 {% endif %}
 </div>
 <div class="container">
-  {{ self.content|richtext }}
+    <div class="special-bullets">
+        {{ self.content|richtext }}
+    </div>
 </div>
 {% endblock %}

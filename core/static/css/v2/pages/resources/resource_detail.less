@@ -20,6 +20,16 @@
       height: 100%;
     }
   }
+  .bottom-arrow {
+    position: fixed;
+    bottom: 0px;
+    right: 5%;
+    font-size: 40px;
+    cursor: pointer;
+  }
+  .fa{
+    color: @lighter-grey;
+  }
 }
 
 .navbar {
@@ -47,35 +57,6 @@
   .factoid-container {
     .title-factoid {
       color: @primary-color;
-    }
-    .factoid-point {
-      padding-left: 35px;
-      font-weight: 400;
-      p {
-        font-size: larger;
-      }
-    }
-    ol {
-      padding-left: 0px;
-      list-style: none;
-    }
-    li {
-      counter-increment: item;
-      margin-bottom: 5px;
-      font-weight: 300;
-    }
-    li:before {
-      margin-right: 10px;
-      content: counter(item);
-      background: #FF3D08;
-      border-radius: 100%;
-      color: white;
-      width: 23px;
-      font-weight: 900;
-      text-align: center;
-      display: inline-block;
-      position: absolute;
-      margin-top: 3px;
     }
   }
   .category-share {
@@ -110,9 +91,6 @@
     margin: 30px 10px 0 0;
   }
   .title-container {
-    h1 {
-      color: @darker-grey;
-    }
     h4 {
       font-weight: 400;
     }
@@ -142,7 +120,11 @@
   #holder .row-side {
     height: ~"calc(70vh - 81px)";
   }
-
+  .pdf-container{
+    .bottom-arrow{
+      display: none;
+    }
+  }
   .container .right-plane {
     padding-left: 50px;
   }
