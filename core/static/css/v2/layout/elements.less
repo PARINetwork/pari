@@ -33,3 +33,41 @@ p{
 h1, h3, h4 {
   color: @darker-grey;
 }
+
+.special-bullets {
+  ol {
+    padding-left: 0px;
+    list-style: none;
+  }
+  li {
+    position: relative;
+    counter-increment: item;
+    font-weight: 400;
+    padding-left: 35px;
+    line-height: 40px;
+    .font-size(16);
+    margin: 20px 0;
+
+    .rich-text {
+      p {
+        line-height: inherit;
+        margin: 0;
+      }
+    }
+  }
+  li:before {
+    margin-right: 10px;
+    content: counter(item);
+    background: #FF3D08;
+    border-radius: 100%;
+    color: white;
+    width: 23px;
+    font-weight: 900;
+    text-align: center;
+    display: inline-block;
+    position: absolute;
+    margin-top: 10px;
+    left: 0;
+    line-height: 22px;
+  }
+}

@@ -75,7 +75,7 @@
                     </div>
             </div>
             <hr>
-            <div class="factoid-container">
+            <div class="factoid-container special-bullets">
                 <ol>
                     {% if heading == 'yes' %}
                         <h4 class="title-factoid">{% trans "FACTOIDS" %}</h4>
@@ -83,9 +83,7 @@
                 {% for block in resource.content %}
                   {% if block.block_type == "factoids" and block.value > 0 %}
                         <li>
-                            <div class="factoid-point">
-                                {{ block.value }}
-                            </div>
+                            {{ block.value }}
                         </li>
                   {% endif %}
                 {% endfor %}
