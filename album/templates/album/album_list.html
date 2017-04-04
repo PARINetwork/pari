@@ -43,6 +43,7 @@
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/article.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/album/home.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/album/slide_show.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/album/photo-album.less">
 {% endblock %}
 
 {% block extra_head %}
@@ -94,6 +95,67 @@
         </div>
     </div>
 
+
+
+    <!--  photo album starts here -->
+
+    {% verbatim %}
+        <script id="photoAlbumTemplate" type="text/x-jsrender">
+
+          <div class="photo-album-popup popup hide">
+            <div class="photo-album">
+                <header class="header clear-fix">
+                    <div class="left left-icons">
+                        <i class="fa fa-angle-left back-to-albums"></i>
+                        <i id="playPause" href="#" class="fa fa-play"></i>
+                        <i id="showThumbnail" href="#" class="fa fa-th-large"></i>
+                    </div>
+                    <div class="right right-icons">
+                        <a href="#" class="fa fa-external-link open-in-new-tab" target="_blank"></a>
+                        <i id="showSlideInfo" href="#" class="fa fa-info-circle show-slide-info"></i>
+                    </div>
+                    <div class="carousel-index"></div>
+                </header>
+
+                <section class="carousel-area clear-fix">
+                  <div id="carousel" class="carousel-container slide left">
+                      <ul class="carousel-items carousel-inner" role="list-box">
+                        <!-- slides will come here -->
+                      </ul>
+                      <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+                          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                          <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+                          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                      </a>
+                  </div>
+                  <div class="right slide-info">
+                      <div class="description info"></div>
+                      <div class="title-meta-data">
+                        <div class="album-title info"></div>
+                        <div class="slide-photographer info"></div>
+                        <div class="image-captured-date info"></div>
+                        <div class="slide-location info"></div>
+                      </div>
+                  </div>
+                  <div class="thumbnails">
+                    <header>
+                      <i class=" fa fa-close close-thumbnail"></i>
+                    </header>
+                    <section class="box">
+                      <ul class="thumbnail-list clear-fix">
+                      </ul>
+                    </section>
+                  </div>
+                </section>
+            </div>
+          </div>
+          </script>
+      {% endverbatim %}
+      <!--  photo album ends here -->
+
     <div id="author-template" class="hide">
         <div>
             <div class="author" id="author">
@@ -116,7 +178,6 @@
             <div class="author-details">
                 <span itemprop="name">{{:name}}</span>
                 <span itemprop="description">{{:bio}}</span>
-                <a itemprop="url" href="https://twitter.com/@journohardy">@journohardy</a>
             </div>
         </script>
     {% endverbatim %}
@@ -138,6 +199,28 @@
             </div>
         </script>
     {% endverbatim %}
+
+    {% verbatim %}
+      <script id="carouselPage" type="text/x-jsrender">
+        <li class="{{:carouselPageClass}}">
+            <div class="wrapper">
+                <img src="{{:src}}" />
+            </div>
+        </li>
+      </script>
+    {% endverbatim %}
+
+    {% verbatim %}
+      <script id="carouselAuthor" type="text/x-jsrender">
+        <li class="item author-container">
+          <p class="description">{{:bio}}</p>
+          <span itemprop="name">{{:name}}</span>
+          <a itemprop="url" href="https://twitter.com/@journohardy">@journohardy</a>
+        </li>
+
+      </script>
+    {% endverbatim %}
+
 
     <script type="text/template" id="slide-template">
         <div class="mfp-figure">
@@ -176,4 +259,8 @@
             </div>
         </div>
     </script>
+
+    {% if albums %}
+
+    {% endif %}
 {% endblock %}

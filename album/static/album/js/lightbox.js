@@ -139,23 +139,55 @@ var Album = {
 
     _initControls: function() {
         $('.grid-container').click($.proxy(function (element) {
+
+          var photoAlbum = $.templates("#photoAlbumTemplate");
+          var photoAlbumHtml = photoAlbum.render({});
+          $("#main_content").append(photoAlbumHtml);
+
+
+
              var slug = $(element.currentTarget).data('slug');
              $.get("/albums/"+slug+".json/", $.proxy(function(response) {
-                var slidesWithAuthor = this._constructAuthorItem(response);
-                this._initPopup(slidesWithAuthor);
-                this._popup.magnificPopup('open');
-                this._playSlideShow($('.slide-show'));
-                $('.mfp-container').addClass('mfp-container-fullscreen');
-                this._initSlideShow($('.slide-show'));
-
-                 $('.popup-info').on('click', function() {
-                        $('.mfp-container').toggleClass('mfp-container-fullscreen');
-                    $('.popup-info').toggleClass('fa-info-circle fa-angle-right');
-                });
-
-                this._initBackToAlbums($('.back-to-albums'));
+               this.generateCarousel(response);
             }, this));
          }, this));
+    },
+
+    generateCarousel: function(data) {
+      this.carouselData = data;
+
+
+
+
+
+      data.slides.forEach(function(slide, index) {
+        slide.carouselPageClass = index === 0 ? "item image-container active" : "item image-container";
+        var carouselPage = $.templates("#carouselPage");
+        var carouselPageHtml = carouselPage.render(slide);
+        $(".carousel-items").append(carouselPageHtml);
+        $(".thumbnail-list").append('<li class="thumbnail left box"><img src='+slide.src+' /></li>');
+      });
+
+
+
+      data.authors.forEach(function(author) {
+        var carouselAuthor = $.templates("#carouselAuthor");
+        var carouselAuthorHtml = carouselAuthor.render(author);
+        $(".carousel-items").append(carouselAuthorHtml);
+      });
+
+      $(".photo-album-popup").removeClass("hide");
+      $(".carousel-container").addClass("carousel");
+      $(".carousel-container").attr("data-ride", "carousel");
+
+      // _initializeCarousel()
+      handleCarouselEvents(this.carouselData);
+
+
+
+    },
+    _initializeCarousel: function(){
+
     },
 
     _constructAuthorItem: function(itemsJson){
@@ -320,3 +352,93 @@ var Album = {
 $(function() {
     Album.init();
 });
+
+function handleCarouselEvents(carouselData) {
+  var totalItems = $('.carousel-items .item').length,
+      currentIndex = 0,
+      isPlaying = true;
+
+  updateIndex();
+
+  $("#carousel").carousel({
+    interval: 2000,
+    pause: false
+  });
+
+  $('#playPause').click(function() {
+      isPlaying = !isPlaying;
+      $(this).toggleClass("selected");
+      $(this).removeClass("fa-play").removeClass("fa-pause");
+      $(this).addClass(isPlaying ? "fa-play" : "fa-pause");
+      $("#carousel").carousel(isPlaying ? "cycle" : "pause");
+  });
+
+  $('#showThumbnail').click(function() {
+      toggleThumbnail();
+  });
+
+  // $('.show-slide-info').click(function () {
+  //   $('.show-slide-info').toggleClass('fa-info-circle fa-chevron-circle-right');
+  // })
+
+  $('#showSlideInfo').click(function() {
+      $(this).toggleClass("selected");
+      $(".photo-album").toggleClass("show-slide-info");
+  });
+
+  $('.thumbnail-list li').click(function(event) {
+    var index = $(event.currentTarget).index('.thumbnail-list li');
+    $("#carousel").carousel(index);
+      toggleThumbnail();
+  });
+
+  $('.close-thumbnail').click(function(event) {
+    toggleThumbnail();
+  });
+
+  $('.back-to-albums').click(function(){
+    $(".photo-album-popup").remove();
+  })
+  $('#carousel').on('slid.bs.carousel', function() {
+      updateIndexOnSlide();
+  });
+
+  function updateIndexOnSlide() {
+    currentIndex = getSelectedCarouselIndex();
+    updateIndex();
+  }
+
+  function getSelectedCarouselIndex() {
+    return $('.photo-album .carousel-items li.active').index('.photo-album .carousel-items li.item');
+  }
+
+  function updateIndex() {
+    updateSlideInfo();
+    totalItems = $('.carousel-items .item').length;
+    $('.carousel-index').html((currentIndex + 1) + " / " + totalItems);
+  }
+
+  function updateSlideInfo() {
+    if(currentIndex === totalItems - 1) {
+      $(".slide-info .info").html("");
+      return;
+    }
+
+    var data = carouselData.slides[currentIndex];
+    if (currentIndex <= carouselData.slides.length ){
+      $(".description").html(data.description);
+      $(".album-title").text(data.album_title);
+      $(".slide-photographer").text(data.slide_photographer.join(", "));
+      $(".image-captured-date").text(data.image_captured_date);
+      $(".slide-location").text(data.slide_location);
+      $(".open-in-new-tab").attr("href", data.src);
+    }
+
+  }
+
+  function toggleThumbnail() {
+    $('#showThumbnail').toggleClass("selected");
+    $(".photo-album").toggleClass("show-thumbnail");
+  }
+
+}
