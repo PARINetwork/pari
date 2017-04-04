@@ -27,6 +27,10 @@ class ResourceDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super(ResourceDetail, self).get_context_data(**kwargs)
         context['site'] = RequestSite(self.request)
+        context['heading'] = 'no'
+        for data in context['resource'].content:
+            if data.block_type == 'factoids':
+                context['heading']='yes'
         return context
 
 
