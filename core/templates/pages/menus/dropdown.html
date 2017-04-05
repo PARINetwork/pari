@@ -25,11 +25,6 @@
                         <span itemprop="name">{% trans "Things we wear" %}</span>
                         </a>
                     </li>
-                    <li>
-                        <a class="page-nav-link" itemprop="url" href="{% url "category-list" %}">
-                        <span itemprop="name">{% trans "View all categories" %} <i class="fa fa-angle-double-right"></i></span>
-                        </a>
-                    </li>
                 </ul>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
@@ -47,6 +42,11 @@
                     <li>
                         <a itemprop="url" href="{% url "story-detail" slug="dalits" %}">
                         <span itemprop="name">{% trans "Dalits" %}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="page-nav-link" itemprop="url" href="{% url "category-list" %}">
+                        <span itemprop="name">{% trans "View all categories" %} <i class="fa fa-angle-double-right"></i></span>
                         </a>
                     </li>
                 </ul>
