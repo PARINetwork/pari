@@ -17,7 +17,8 @@
 {% block extra_css %}
     <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}album/css/magnific-popup.css">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/faces/faces.less">
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/layout/components/main-content/story-grid.less">
+    <link type="text/less" rel="stylesheet"
+          href="{{ STATIC_URL }}css/v2/layout/components/main-content/story-grid.less">
 {% endblock %}
 
 
@@ -26,67 +27,77 @@
 {% endblock %}
 
 {% block main %}
-  <div class="container content-container">
+    <div class="container content-container">
 
-      <div class="gallery-title">
-        <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 gallery-title-icon go-back">
-                {% include "includes/page_content_header/gallery_back_button.html" %}
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
-                {% include "includes/page_content_header/heading.html" %}
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 gallery-title-icon face-upload-share">
+        <div class="gallery-title">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 gallery-title-icon go-back">
+                    {% include "includes/page_content_header/gallery_back_button.html" %}
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
+                    {% include "includes/page_content_header/heading.html" %}
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 gallery-title-icon face-upload-share">
                 <span class="face-upload">
                     <a class="link-light" href="{% url "static_page" slug="contribute-to-faces" %}">
                         <i class="fa fa-upload" aria-hidden="true"></i>
                         <span class="link-text" itemprop="name">{% trans "Upload face" %}</span>
                     </a>
                 </span>
-                {% with request.build_absolute_uri as url %}
-                    <span class="gallery-social-icon">
-                        <a href="https://twitter.com/home?status={{ title|urlencode }}+{{ url|urlencode }}" target="_blank" class="link-light">
+                    {% with request.build_absolute_uri as url %}
+                        <span class="gallery-social-icon">
+                        <a href="https://twitter.com/home?status={{ title|urlencode }}+{{ url|urlencode }}"
+                           target="_blank" class="link-light">
                             <i class="fa fa-twitter" aria-hidden="true"></i>
                         </a>
-                        <a href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}" target="_blank" class="link-light">
+                        <a href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}"
+                           target="_blank" class="link-light">
                             <i class="fa fa-facebook" aria-hidden="true"></i>
                         </a>
                     </span>
-                {% endwith %}
+                    {% endwith %}
+                </div>
             </div>
         </div>
-      </div>
 
-    <div class="row filter-lang">
-        <span  class="filter-label">Alphabetical order</span>
-        <span class="filter-value">
-          <select class="select-no-style pull-left"  selected="District Names" name="lang" onchange="location =this.value">
+        <div class="row filter-lang">
+            <span class="filter-label">Alphabetical order</span>
+            <span class="filter-value">
+          <select class="select-no-style pull-left" selected="District Names" name="lang"
+                  onchange="location =this.value">
               <option value="">{% trans "District Names" %}</option>
               {% for face in faces %}
-                  <option class = "banner-language-list" value="{% url "face-detail" alphabet=face.location.district|lower|first %}" >
+                  <option class="banner-language-list"
+                          value="{% url "face-detail" alphabet=face.location.district|lower|first %}">
                   <a class="distric-alphabet">{{ face.district|lower|first|capfirst }}</a>
                   </option>
               {% endfor %}
           </select>
             <i class="fa fa-angle-down" aria-hidden="true"></i>
         </span>
-    </div>
-
-    <ul>
-        <div class="story-grid">
-                {% for face in faces %}
-                      <li class="tile">
-                          <a href="{% url "face-detail" alphabet=face.location.district|lower|first %}">
-                              {% image face.image fill-514x514 as face_image %}
-                              <img class="img-responsive grid-image" src="{{ face_image.url }}" alt="{{ face|alt_text }}">
-                              <div class="alphabat-holder">
-                                  <h4 class="alphabat">{{ face.district|lower|first }}</h4>
-                              </div>
-                          </a>
-                      </li>
-                {% endfor %}
         </div>
-    </ul>
-  </div>
+
+        <ul>
+            <div class="story-grid">
+                {% for face in faces %}
+                    <li class="tile">
+                        <a href="{% url "face-detail" alphabet=face.location.district|lower|first %}">
+                            {% image face.image fill-514x514 as face_image %}
+                            <img class="img-responsive grid-image" src="{{ face_image.url }}"
+                                 alt="{{ face.image.alt_text }}">
+                            <div class="alphabat-holder">
+                                <h4 class="alphabat">{{ face.district|lower|first }}</h4>
+                            </div>
+                        </a>
+                    </li>
+                    {% empty %}
+                    <div class="error-message-holder">
+                        <p class="text-center text-danger">Sorry! There are no faces on this page. Please consider <a
+                                href="{% url "static_page" slug="contribute-to-faces" %}">contributing</a> one.</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </ul>
+    </div>
 {% endblock %}
 

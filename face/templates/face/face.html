@@ -118,7 +118,7 @@
         </li>
     {% empty %}
       <div class="error-message-holder">
-	    <h3 class="text-center text-danger">Sorry! There are no faces on this page. Please consider <a href="{% url "static_page" slug="contribute-to-faces" %}">contributing</a> one.</h3>
+	    <p class="text-center text-danger">Sorry! There are no faces on this page. Please consider <a href="{% url "static_page" slug="contribute-to-faces" %}">contributing</a> one.</p>
       </div>
     {% endfor %}
     </div>
