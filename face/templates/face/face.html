@@ -44,7 +44,7 @@
 {% block extra_css %}
     <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}album/css/magnific-popup.css">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/faces/faces.less">
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/layout/components/main-content/story-grid.less">
+{#    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/layout/components/main-content/story-grid.less">#}
 {% endblock %}
 
 
@@ -70,7 +70,7 @@
         </div>
         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 gallery-title-icon face-upload-share">
             <span class="face-upload">
-                <a class="link-light" href="/pages/contribute-to-faces/">
+                <a class="link-light" href="{% url "static_page" slug="contribute-to-faces" %}">
                     <i class="fa fa-upload" aria-hidden="true"></i>
                     <span class="link-text" itemprop="name">{% trans "Upload face" %}</span>
                 </a>
@@ -90,12 +90,12 @@
     </div>
 
     <div class="row filter-lang">
-        <span  class="filter-label">Faces of district names starting with</span>
+        <span  class="filter-label">Faces of <b>district names</b> starting with</span>
         <span class="filter-value">
             <select class="select-no-style pull-left" name="lang" onchange="location =this.value">
                 {% for letter in "abcdefghijklmnopqrstuvwxyz" %}
                   <option class="banner-language-list" {% ifequal alphabet letter %}selected='selected'{% endifequal %} value="{% url "face-detail" alphabet=letter %}" >
-                    <a class="distric-alphabet">{{ letter|capfirst }}</a>
+                    <a class="distric-alphabet">{{ letter|lower }}</a>
                   </option>
                 {% endfor %}
             </select>
@@ -116,8 +116,8 @@
             </div>
         </li>
     {% empty %}
-      <div>
-	<h3 class="text-center text-danger">{% blocktrans %}Sorry! There are no faces on this page. Please consider <a href="/contribute/">contributing</a> one.{% endblocktrans %}</h3>
+      <div class="error-message-holder">
+	    <h3 class="text-center text-danger">Sorry! There are no faces on this page. Please consider <a href="{% url "static_page" slug="contribute-to-faces" %}">contributing</a> one.</h3>
       </div>
     {% endfor %}
     </div>
