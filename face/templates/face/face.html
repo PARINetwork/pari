@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n wagtailimages_tags %}
+{% load face_filters %}
 
 {% block feed_block %}
 <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "face_feeds" %}">
@@ -108,7 +109,7 @@
       {% for face in faces %}
         <li class="tile">{% image face.image fill-514x514 as face_image %}
           <a href="{{ face.get_absolute_url }}" data-title="{{ face.title }}" data-district="{{ face.location.district }}" data-description="{{ face.description }}" data-slug="{{ face.slug }}" class="image-tag mfp-image" data-url="{{ face.get_absolute_url }}">
-            <img class="img-responsive grid-image no-border" src="{{ face_image.url }}" alt="{{ face.image.alt_text }}">
+            <img class="img-responsive grid-image no-border" src="{{ face_image.url }}" alt="{{ face|alt_text }}">
           </a>
             <div class="caption">
                 <div class="name">{{face.title|capfirst }}</div>

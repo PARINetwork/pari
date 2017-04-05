@@ -23,9 +23,8 @@ class Location(models.Model):
     objects = models.GeoManager()
 
     def __str__(self):
-        return "{0}, {1}, {2} ({3}, {4})".format(self.name, self.district,
-                                                 self.state,
-                                                 self.point.x, self.point.y)
+        return "{0}, {1}, {2}".format(self.name, self.district,
+                                                 self.state)
 
     @property
     def address(self):
