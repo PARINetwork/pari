@@ -37,11 +37,10 @@
 
 .contribute-description {
   margin-top: 20px;
-
+  padding-right: 85px;
   h4 {
-    font-size: x-large;
+    font-size: 20px;
     line-height: 33px;
-    padding-right: 30px;
     span {
       color: rgb(33, 171, 252);
       u {
@@ -58,7 +57,9 @@
 }
 
 .how-to-contri {
-
+  .upload-button {
+    margin-bottom: 15px;
+  }
   hr {
     width: 100%;
     border: 2px solid #E4E4E4;
@@ -79,6 +80,12 @@
     font-size: small;
     color: darkgrey;
     margin: 0 0 20px;
+    a{
+      color: @grey;
+      u{
+        padding-bottom: 10px;
+      }
+    }
   }
 }
 
@@ -92,6 +99,12 @@
     max-height: 100%;
     max-width: 100%;
     margin-top: 30px;
+  }
+}
+
+@media (max-width: @screen-sm-max ) {
+  .contribute-description {
+    padding-right: 30px;
   }
 }
 
