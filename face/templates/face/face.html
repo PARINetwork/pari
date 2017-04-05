@@ -96,7 +96,7 @@
             <select class="select-no-style pull-left" name="lang" onchange="location =this.value">
                 {% for letter in "abcdefghijklmnopqrstuvwxyz" %}
                   <option class="banner-language-list" {% ifequal alphabet letter %}selected='selected'{% endifequal %} value="{% url "face-detail" alphabet=letter %}" >
-                    <a class="distric-alphabet">{{ letter|lower }}</a>
+                    <a class="distric-alphabet">{{ letter|capfirst }}</a>
                   </option>
                 {% endfor %}
             </select>
