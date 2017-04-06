@@ -396,7 +396,7 @@ function handleCarouselEvents(carouselData) {
       isPlaying = !isPlaying;
       $(this).toggleClass("selected");
       $(this).removeClass("fa-play").removeClass("fa-pause");
-      $(this).addClass(isPlaying ? "fa-play" : "fa-pause");
+      $(this).addClass(isPlaying ? "fa-pause" : "fa-play");
       $("#carousel").carousel(isPlaying ? "cycle" : "pause");
   });
 
@@ -477,14 +477,14 @@ function handleCarouselEvents(carouselData) {
   function pauseSlide() {
       $("#playPause").toggleClass("selected");
       $("#playPause").removeClass("fa-play").removeClass("fa-pause");
-      $("#playPause").addClass("fa-pause");
+      $("#playPause").addClass("fa-play");
       $("#carousel").carousel("pause");
 
   }
   function playSlide() {
       $("#playPause").toggleClass("selected");
       $("#playPause").removeClass("fa-play").removeClass("fa-pause");
-      $("#playPause").addClass("fa-play");
+      $("#playPause").addClass("fa-pause");
       $("#carousel").carousel("cycle");
 
   }
