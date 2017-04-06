@@ -1,5 +1,6 @@
 @import "../colors/colors";
 @import "../layout/mixins";
+@import "../layout/responsive";
 
 #main_content {
   margin-top: 0px;
@@ -25,9 +26,12 @@
     }
     height: 370px;
     overflow: hidden;
-    img {
-      width: 100%;
-    }
+    background-color: yellow;
+    background: url("../../../img/pari_for_schools.jpg") no-repeat center;
+    background-position: 0 20%;
+    background-size: 100%;
+    width: 100%;
+    filter: grayscale(100%) brightness(80%);
   }
 
   .banner-container {
@@ -35,11 +39,19 @@
 
     .banner-content {
       position: absolute;
-      top: 100px;
+      top: 150px;
       left: 135px;
       h1 {
         color: white;
         font-weight: 500;
+      }
+    }
+  }
+
+  @media (max-width: @screen-xs-max) {
+    .banner-container {
+      .banner-content {
+        left: initial;
       }
     }
   }
