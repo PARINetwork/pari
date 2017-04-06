@@ -398,6 +398,7 @@ function handleCarouselEvents(carouselData) {
   });
 
   $('#showThumbnail').click(function() {
+      pauseSlide();
       toggleThumbnail();
   });
 
@@ -420,10 +421,12 @@ function handleCarouselEvents(carouselData) {
     var index = $(event.currentTarget).index('.thumbnail-list li');
     $("#carousel").carousel(index);
     toggleThumbnail();
+    playSlide();
   });
 
   $('.close-thumbnail').click(function(event) {
     toggleThumbnail();
+    playSlide();
   });
 
   $('.back-to-albums').click(function(){
@@ -468,10 +471,23 @@ function handleCarouselEvents(carouselData) {
     }
 
   }
+  function pauseSlide() {
+      $("#playPause").toggleClass("selected");
+      $("#playPause").removeClass("fa-play").removeClass("fa-pause");
+      $("#playPause").addClass("fa-pause");
+      $("#carousel").carousel("pause");
 
+  }
+  function playSlide() {
+      $("#playPause").toggleClass("selected");
+      $("#playPause").removeClass("fa-play").removeClass("fa-pause");
+      $("#playPause").addClass("fa-play");
+      $("#carousel").carousel("cycle");
+
+  }
   function toggleThumbnail() {
-    $('#showThumbnail').toggleClass("selected");
-    $(".photo-album").toggleClass("show-thumbnail");
+      $('#showThumbnail').toggleClass("selected");
+      $(".photo-album").toggleClass("show-thumbnail");
   }
 
 }
