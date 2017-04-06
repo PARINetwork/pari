@@ -19,7 +19,7 @@ class Location(models.Model):
     sub_district_type = models.ForeignKey("SubDistrictType",
                                              related_name="location", null=True, blank=True)
 
-    sub_district_value = models.CharField(max_length=100, null=True, blank=True)
+    sub_district_name = models.CharField(max_length=100, null=True, blank=True)
 
     objects = models.GeoManager()
 
@@ -30,7 +30,7 @@ class Location(models.Model):
     @property
     def address(self):
         addr = self.name
-        addr += ", " + self.sub_district_value if self.sub_district_value else ""
+        addr += ", " + self.sub_district_name if self.sub_district_name else ""
         addr += ", " + self.district if self.district else ""
         addr += ", " + self.state if self.state else ""
         return addr

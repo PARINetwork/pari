@@ -14,11 +14,11 @@ class Migration(migrations.Migration):
         migrations.RenameField(
             model_name='location',
             old_name='sub_district_type_value',
-            new_name='panchayat',
+            new_name='sub_district_name',
         ),
         migrations.AddField(
             model_name='location',
-            name='sub_district_value',
+            name='panchayat',
             field=models.CharField(max_length=100, null=True, blank=True),
         ),
     ]

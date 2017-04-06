@@ -12,9 +12,9 @@ class LocationAdmin(GeoModelAdmin):
     max_extent = False
     max_resolution = False
     form = LocationAdminForm
-    search_fields = ["name", "district", "panchayat", "region", "state", "sub_district_value"]
+    search_fields = ["name", "district", "panchayat", "region", "state", "sub_district_name"]
     list_filter = ["state"]
-    list_display = ["name", "district", "panchayat", "region", "state", "sub_district_value"]
+    list_display = ["name", "district", "panchayat", "region", "state", "sub_district_name"]
 
     def save_model(self, request, obj, form, change):
         obj.slug = slugify(obj.name[:50])
