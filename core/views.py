@@ -71,6 +71,13 @@ def contribute_to_faces(request,slug=None):
     link = 'https://script.google.com/macros/s/AKfycbzMQwyY8P1t7CT0_ylmPfSDz7WiSTVHWtL-Yf0UhtoYOIWQfMf5/exec'
     return render(request, "core/contribute-to-faces.html", {"tab": active_tab, "link": link})
 
+def pari_teachers_students(request):
+    active_tab = 'about-pari'
+    return render(request, "core/pari_teachers_students.html", {
+        "tab": active_tab,
+    })
+
+
 def construct_guidelines(guideline_content):
     guideline_dict = OrderedDict()
     for content in guideline_content:

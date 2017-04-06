@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% load i18n wagtailcore_tags %}
+{% block meta_title %}PARI for students, teachers and researchers{% endblock %}
+{% block meta_description %}At PARI, we’re writing the textbooks of the future.  That’s happening with the numerous
+    stories, photos, videos and audio material going up every week on our site.{% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/pari_teachers_students.less">
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% block main %}
+    <div class="pari_teachers_students">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="banner-container">
+                    <div class="cover-image">
+                        <img class="img-responsive faded-sepia" src="{{ STATIC_URL }}img/pari_for_schools.jpg"/>
+                    </div>
+                    <div class="banner-content container">
+                        <h1 class="category-title" itemprop="headline"> PARI for students, teachers and researchers </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="special-bullets">
+                <h4 class="page-title">{% trans "REDEFINING LEARNING" %}</h4>
+                <ol>
+                    <li>
+                        <h4> Creating the textbooks of the future </h4>
+                        <p> At PARI, we’re writing the textbooks of the future. That’s happening with the numerous
+                            stories,
+                            photos, videos and audio material going up every week on our site. It’s important that, over
+                            time,
+                            quite a bit of that is produced by students and teachers themselves.
+                        </p>
+                        <p>
+                            PARI aims to help create informative and lively stories on rural India for students,
+                            teachers,
+                            schools, colleges and universities. And for learners outside such formal institutions as
+                            well.
+                            We
+                            believe teaching and learning materials, including textbooks, will increasingly move online
+                            in
+                            the
+                            next few years. That's a process already on in some parts of the world. Done right, it could
+                            mean
+                            'textbooks' or teaching material that can be added to, amended, updated or widened. As
+                            broadband
+                            access grows, it should also mean lower costs for many students, as PARI is a
+                            free-access-to-public
+                            site.
+                        </p>
+                    </li>
+                    <li>
+                        <h4> Helping students to develop course content </h4>
+                        <p>We have already added a vital element to this process: on PARI, students participate in the
+                            creation
+                            of their own textbooks. If a teacher or an institution wants to set up learning resources
+                            for a
+                            course or part of a course, we will work with them to create the course content. Let’s say
+                            that's on
+                            rural labour or migrants or agriculture or artisans – we will try and involve the students
+                            in
+                            creating living knowledge on their topics through field trips.
+                        </p>
+                        <p>
+                            So videos, audio recordings, photos and text articles of and by students could not only be
+                            fetching
+                            them marks or grades in their courses, but also become part of a flexible and open textbook.
+                            Also, a
+                            video on, say, agricultural labourers where the workers themselves are the narrators, where
+                            they'd
+                            be addressing audiences themselves, sharing and explaining their lives, work and world –
+                            that
+                            will
+                            make for far more compelling learning resources. These should certainly hold the attention
+                            of
+                            students, teachers, researchers and general viewers alike, far better than printed textbooks
+                            dated
+                            by some years. Especially since PARI’s approach will combine the power of text articles,
+                            research
+                            papers, video, audio and still photographs.
+                        </p>
+                    </li>
+                    <li>
+                        <h4> Unleashing a powerful source of learning </h4>
+                        <p>PARI has specific guidelines for videos generated for and by us, which ensure recognition of
+                            primary
+                            authorship of the narrators. Meanwhile, just the interaction of students with the people
+                            whose
+                            lives
+                            they're trying to study, and their joint effort with communities to produce authentic
+                            material
+                            from
+                            the field, is also a powerful source of learning. It’s already happening on PARI.
+                        </p>
+                        <p>
+                            There's another thing: each year, countless students produce valuable output on India. In
+                            the
+                            form
+                            of research papers, articles, videos, documentaries, magazines, photographs and more.
+                            Excellent
+                            though some of this material is, it mostly disappears into departmental libraries, exam
+                            paper
+                            cupboards or the uncharted cemeteries of cyberspace. But for institutions that link up with
+                            us,
+                            PARI
+                            offers a platform that will preserve, even showcase, the best of that output and make it
+                            accessible
+                            and easy to view from anywhere in the world. In turn, knowing that their work can be viewed
+                            across
+                            the globe would be an incentive for students to raise the level and quality of their work.
+                        </p>
+                    </li>
+                    <li>
+                        <h4> A one-stop library for researchers </h4>
+                        <p>Besides this, there are students in universities, colleges and high schools working on text
+                            articles,
+                            audio and video, independently of their course work, for PARI. Some very young students have
+                            even
+                            produced newspapers for us.
+                        </p>
+                        <p>
+                            And in our Resources section, we aim to put up (in full text and not just via links), all
+                            official
+                            (and unofficial but credible) reports related to rural India. For instance, every report of
+                            the
+                            National Commission for Enterprises in the Unorganised Sector, reports of the Planning
+                            Commission
+                            (now NITI Aayog) and ministries, the United Nations and much more. Researchers will not have
+                            to
+                            surf
+                            multiple sites to access important documents and studies from different sources.
+                        </p>
+                        <p>
+                            PARI is a one-stop library for students, teachers and all other learners.
+                        </p>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+{% endblock %}

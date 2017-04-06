@@ -1,0 +1,46 @@
+@import "../colors/colors";
+@import "../layout/mixins";
+
+#main_content {
+  margin-top: 0px;
+}
+
+.navbar {
+  margin-bottom: 0px;
+}
+
+.pari_teachers_students {
+  .page-title {
+    color: @primary-color;
+  }
+
+  .special-bullets li:before {
+    margin-top: 0;
+  }
+
+  .cover-image {
+    .faded-sepia {
+      -webkit-filter: sepia(100%);
+      filter: grayscale(100%);
+    }
+    height: 370px;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+  }
+
+  .banner-container {
+    margin-bottom: 60px;
+
+    .banner-content {
+      position: absolute;
+      top: 100px;
+      left: 135px;
+      h1 {
+        color: white;
+        font-weight: 500;
+      }
+    }
+  }
+}
