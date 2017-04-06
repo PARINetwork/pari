@@ -64,7 +64,7 @@
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 grid-list">
                             <div class="grid-container" data-slug="{{ album.slug }}">
                                 <div class="gallery-image-container">
-                                    <a href="{{ album.get_absolute_url }}">
+                                    <a href="#">
                                         <div class="images-count">
                                             <span>{{ album.slides.count }}</span>
                                         </div>
@@ -75,7 +75,7 @@
                                 </div>
                                     <div class="caption">
                                         <h3>
-                                            <a href="{{ album.get_absolute_url }}">{{ album.title }}</a>
+                                            <a href="#">{{ album.title }}</a>
                                         </h3>
                                         <div class="margin-top-20px">
                                             <span class="link-dark font-xs">{{ album.description|striptags }}</span>
@@ -176,6 +176,21 @@
         </li>
 
       </script>
+    {% endverbatim %}
+
+    {% verbatim %}
+        <script id="carouselStartingIntro" type="text/x-jsrender">
+            <div class="floating-text">
+                <h1 class="title">{{:album_title}}</h1>
+                <div class="description">{{:album_description}}</div>
+                <div class="photographer">{{:slide_photographer}}</div>
+                <div class="place">{{:slide_location}}</div>
+                <div class="social-icons">
+                    <i class="fa fa-twitter"></i>
+                    <i class="fa fa-facebook"></i>
+                </div>
+            </div>
+        </script>
     {% endverbatim %}
 
     {% if albums %}

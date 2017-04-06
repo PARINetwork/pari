@@ -1,3 +1,5 @@
+@import "../../colors/colors";
+
 html, body {
   margin: 0px;
   padding: 0px;
@@ -52,7 +54,7 @@ html, body {
 }
 
 .photo-album header {
-  background-color: rgba(51,51,51,0.44);
+  background-color: rgba(51, 51, 51, 0.44);
   height: 50px;
   position: relative;
 }
@@ -117,8 +119,6 @@ html, body {
   overflow: auto;
 }
 
-
-
 .photo-album section .slide-info .title-meta-data {
   margin: 20px;
 }
@@ -160,23 +160,43 @@ html, body {
   overflow: hidden;
   h1 {
     color: white;
+    font-size: 41px;
   }
 }
 
-.photo-album section .carousel-container ul li.item:first-child .floating-text p.description {
+.photo-album section .carousel-container ul li.item:first-child .floating-text .description p {
   line-height: normal;
-  margin: 0px;
+  margin: 15px 0 15px;
   height: 20px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+.photo-album section .carousel-container ul li.item:first-child .floating-text .photographer {
+  line-height: 30px;
+  padding: 20px 0 0 0;
+  margin: 20px 0px 0px 0px;
+  border-top: 1px solid #b8b8b8;
+
+}
+
 .photo-album section .carousel-container ul li.item:first-child .floating-text .place {
   line-height: 30px;
-  padding: 20px 0px 20px 0px;
-  margin: 20px 0px 20px 0px;
-  border-top: 1px solid #b8b8b8;
+  padding: 0px 0px 20px 0px;
+  margin: 5px 0px 20px 0px;
   border-bottom: 1px solid #b8b8b8;
+}
+
+.photo-album section .carousel-container ul li.item:first-child .floating-text .social-icons i {
+  font-size: 22px;
+  margin-left: 10px;
+  padding: 8px;
+  border: 1px solid;
+  border-radius: 100%;
+  border-color: #E4E4E4;
+  width: 38px;
+  height: 38px;
+  text-align: center;
 }
 
 .photo-album section .carousel-container .author-container {
@@ -214,18 +234,18 @@ html, body {
 }
 
 .photo-album .thumbnails {
-    position: fixed;
-    left: 0px;
-    right: 0px;
-    top: 100%;
-    bottom: 0px;
-    z-index: 10;
-    -webkit-transition: top linear 300ms;
-    -moz-transition: top linear 300ms;
-    -ms-transition: top linear 300ms;
-    transition: top linear 300ms;
-    background: #000;
-    overflow: hidden;
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 100%;
+  bottom: 0px;
+  z-index: 10;
+  -webkit-transition: top linear 300ms;
+  -moz-transition: top linear 300ms;
+  -ms-transition: top linear 300ms;
+  transition: top linear 300ms;
+  background: #000;
+  overflow: hidden;
 }
 
 .photo-album .thumbnails header {
@@ -261,19 +281,20 @@ html, body {
   border: 1px solid rgb(253, 188, 44);
 }
 
- .photo-album .thumbnails li img {
-   width: auto;
-   max-width: 100%;
-   height: auto;
-   max-height: 100%;
-   display: block;
-   margin: 0 auto;
- }
+.photo-album .thumbnails li img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  display: block;
+  margin: 0 auto;
+}
 
 .photo-album.show-thumbnail .thumbnails {
   top: 0px;
 }
- /* common carousel styles */
+
+/* common carousel styles */
 
 .carousel-container {
   height: 100%;
@@ -316,8 +337,8 @@ html, body {
 @media only screen and (max-width: 500px) {
 
   .photo-album section {
-      width: 100%;
-      height: 100%;
+    width: 100%;
+    height: 100%;
   }
 
   .photo-album section .slide-info, .photo-album section .carousel-container {
@@ -368,6 +389,5 @@ html, body {
     padding: 10px 0px 10px 0px;
     margin: 10px 0px 10px 0px;
   }
-
 
 }

@@ -85,6 +85,7 @@ def get_slide_detail(request, slug):
         slide_dict = dict([('type', 'image'), ('show_title', "True"), ('album_title', album.title)])
         slide_dict['src']=slide.image.file.url
         slide_dict['description']=slide.description
+        slide_dict['album_description']=album.description
         slide_dict['slide_photographer']=(map(lambda photographer_name: photographer_name.name.encode('UTF-8'), slide.image.photographers.all()))
 
         photographers.extend(set(slide.image.photographers.all()))

@@ -163,8 +163,11 @@ var Album = {
         $(".carousel-items").append(carouselPageHtml);
 
         if(index === 0) {
-            $(".carousel-items .item:first-child .wrapper").append('<div class="floating-text"><h1 class="title">'+slide.album_title+'</h1><p class="description"></p><div class="place">'+slide.slide_location+'</div><div class="social-icons"></div></div>');
-            $(".carousel-items .item:first-child .description").append(slide.description);
+            var carouselInfoBox = $.templates("#carouselStartingIntro");
+            var carouselInfoBoxHtml=carouselInfoBox.render(slide);
+            console.log(carouselInfoBoxHtml);
+            $(".carousel-items .item:first-child .wrapper").append(carouselInfoBoxHtml);
+            // $(".carousel-items .item:first-child .description").append(slide.description);
         }
 
         $(".thumbnail-list").append('<li class="thumbnail left box"><img src='+slide.src+' /></li>');
@@ -365,7 +368,7 @@ function positionFloatingText() {
     return;
   }
   var image = $('.carousel-items .item:first-child img');
-  var contentHeight = image.get(0).offsetHeight * 0.4,
+  var contentHeight = image.get(0).offsetHeight * 0.5,
       contentWidth = image.get(0).offsetWidth * 0.5,
       top = image.get(0).offsetTop + (image.get(0).offsetHeight - contentHeight)/2;
 
@@ -462,11 +465,11 @@ function handleCarouselEvents(carouselData) {
 
     var data = carouselData.slides[currentIndex];
     if (currentIndex <= carouselData.slides.length ){
-      $(".description").html(data.description);
-      $(".album-title").text(data.album_title);
-      $(".slide-photographer").text(data.slide_photographer.join(", "));
-      $(".image-captured-date").text(data.image_captured_date);
-      $(".slide-location").text(data.slide_location);
+      $(".slide-info .description").html(data.description);
+      $(".slide-info .album-title").text(data.album_title);
+      $(".slide-info .slide-photographer").text(data.slide_photographer.join(", "));
+      $(".slide-info .image-captured-date").text(data.image_captured_date);
+      $(".slide-info .slide-location").text(data.slide_location);
       $(".open-in-new-tab").attr("href", data.src);
     }
 
