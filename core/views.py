@@ -35,7 +35,8 @@ def home_page(request, slug="home-page"):
     return render(request, "core/home_page.html", {
         "page": home_page,
         "categories": Category.objects.all(),
-        "translations": translations
+        "translations": translations,
+        "current_page": 'home-page',
     })
 
 
@@ -54,6 +55,7 @@ def static_page(request, slug=None):
         "self": page.specific,
         "translations": translations,
         "tab": active_tab,
+        "current_page": slug,
     })
 
 def guidelines(request):
@@ -69,12 +71,17 @@ def guidelines(request):
 def contribute_to_faces(request,slug=None):
     active_tab = 'about-pari'
     link = 'https://script.google.com/macros/s/AKfycbzMQwyY8P1t7CT0_ylmPfSDz7WiSTVHWtL-Yf0UhtoYOIWQfMf5/exec'
-    return render(request, "core/contribute-to-faces.html", {"tab": active_tab, "link": link})
+    return render(request, "core/contribute-to-faces.html",
+                  {"tab": active_tab,
+                   "link": link,
+                   "current_page": 'contribute_to_faces',
+                   })
 
 def pari_teachers_students(request):
     active_tab = 'about-pari'
     return render(request, "core/pari_teachers_students.html", {
         "tab": active_tab,
+        "current_page": 'pari_teachers_students',
     })
 
 
@@ -98,7 +105,8 @@ def contribute(request, slug=None):
     page = StaticPage.objects.get(slug=slug)
     return render(request, "core/contribute.html", {
         "self": page,
-        "tab": 'about-pari'
+        "tab": 'about-pari',
+        "current_page": 'contribute',
     })
 
 
@@ -113,8 +121,8 @@ def contact_us(request):
         form = ContactForm()
     return render(request, "core/contact_us.html", {
         "contact_form": form,
-        "tab": "about-pari"
-
+        "tab": "about-pari",
+        "current_page": 'contact_us',
     })
 
 
@@ -190,6 +198,7 @@ def donate_form(request):
         "form": form,
         "errors": errors,
         "site": site,
+        "current_page": 'donate_form',
     })
 
 
@@ -200,6 +209,7 @@ def donate_success(request):
         site = Site.objects.filter(is_default_site=True)[0]
     return render(request, 'core/donate_success.html', {
         "site": site,
+        "current_page": 'donate_success',
     })
 
 

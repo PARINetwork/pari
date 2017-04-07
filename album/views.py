@@ -52,6 +52,7 @@ class AlbumList(ListView):
                 slide_photo_graphers.extend(slide.image.photographers.all())
             photographers[album.id] = set(slide_photo_graphers)
         context["photographers"] = photographers
+        context["current_page"] = 'album-list'
         return context
 
 

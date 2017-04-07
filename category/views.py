@@ -25,6 +25,7 @@ class CategoriesList(ListView):
         for category in context['categories']:
             if category.slug not in filteredList:
                 context['filtered_categories'].append(category)
+        context['current_page'] = 'categories-list'
         return context
 
 
@@ -65,7 +66,7 @@ class GalleryDetail(DetailView):
         categories_in_gallery = ['Little takes', 'tongues', 'visible-work-invisible-women']
         if context["category"].slug in categories_in_gallery:
             self.template_name = 'category/category_detail.html'
-
+        context['current_page'] = category.name
         return context
 
 
@@ -97,6 +98,7 @@ class StoryDetail(DetailView):
         context["title"] = category.name
         context["sub_heading"] = category.description
         context["tab"] = 'stories'
+        context["current_page"] = 'single-category'
         return context
 
 
@@ -124,6 +126,7 @@ def gallery_home_page(request, slug=None):
             'section_model': video,
         },
         'tab': 'gallery',
+        'current_page': 'gallery-home',
     }
     return render(request, "category/gallery_home_page.html", gallery_context)
 
