@@ -1,6 +1,5 @@
 var Album = {
     init: function() {
-        // this._initSoundCloudWidget();
         this._initControls();
     },
 
@@ -88,28 +87,6 @@ var Album = {
         });
     },
 
-    // _initSoundCloudWidget: function() {
-    //     SC.initialize({
-    //         client_id: "d129911dd3c35ec537c30a06990bd902"
-    //     });
-    // },
-
-    // _player: null,
-    // _reloadWidget: function(audio, autoplay) {
-    // var $this = this;
-    //     SC.stream("/tracks/" + audio).then(function(player) {
-	 //    $this._player = player;
-	 //    player.play();
-	 //    player.on("finish", function() {
-		// $this._onSoundFinish();
-	 //    });
-    // });
-    // },
-
-    // _toggleWidget: function() {
-    // this._player.toggle();
-    // this._togglePlayButton();
-    // },
 
     _updateSlideshowButtonIcon: function (element) {
         var slideshow = this._popup.data('slide_show');
@@ -120,25 +97,12 @@ var Album = {
         }
     },
 
-    // _stopWidget: function() {
-    // if (this._player) {
-	 //    this._player.seek(0);
-	 //    this._player.pause();
-    // }
-    // },
 
-    // _onSoundFinish: function() {
-    //     var slideshow = this._popup.data('slideshow');
-    //     if(slideshow) {
-    //         var magnificPopup = $.magnificPopup.instance;
-    //         magnificPopup.next();
-    //         return;
-    //     }
-    //     this._initPlayButton();
-    // },
 
     _initControls: function() {
-        $('.grid-container').click($.proxy(function (element) {
+        // if(event.target.tagName === "A" && $(event.target).hasClass("link-dark-primary")) {
+        //     return;
+        // }
 
           var photoAlbum = $.templates("#photoAlbumTemplate");
           var photoAlbumHtml = photoAlbum.render({});
@@ -146,11 +110,10 @@ var Album = {
 
 
 
-             var slug = $(element.currentTarget).data('slug');
+             var slug = $("div#slug-identifier").text();
              $.get("/albums/"+slug+".json/", $.proxy(function(response) {
                this.generateCarousel(response);
             }, this));
-         }, this));
     },
 
     generateCarousel: function(data) {
@@ -165,7 +128,6 @@ var Album = {
         if(index === 0) {
             var carouselInfoBox = $.templates("#carouselStartingIntro");
             var carouselInfoBoxHtml=carouselInfoBox.render(slide);
-            console.log(carouselInfoBoxHtml);
             $(".carousel-items .item:first-child .wrapper").append(carouselInfoBoxHtml);
             // $(".carousel-items .item:first-child .description").append(slide.description);
         }
@@ -192,8 +154,6 @@ var Album = {
       $( window ).resize(function() {
         positionFloatingText();
       });
-
-
 
     },
     _initializeCarousel: function(){
@@ -242,77 +202,6 @@ var Album = {
         clearInterval(this._popup.data('slide-show-timer'));
     },
 
-    _dummy: function() {
-        return {
-                "slides": [
-                {
-                    "src": '/static/img/stories-1.jpg',
-                    "type": 'image',
-                    "description": "Currently, image is being stored along with alt tags as single content. While doing this feature, we need to separate html & content. Hence we get the ability to add alt tags to images for SEO purposes",
-                    "album_title": "Weavers of walagpet",
-                    "slide_photographer": "vinod",
-                    "image_captured_date": "20 May 2017",
-                    "slide_location": "Madurai"
-                // }, {
-                //     src: '/static/img/stories-2.jpg',
-                //     type: 'image',
-                // }, {
-                //     src: '/static/img/stories-3-1.jpg',
-                //     type: 'image',
-                // }, {
-                //     src: '/static/img/stories-3-2.jpg',
-                //     type: 'image',
-                }, {
-                    "src": '/static/img/stories-4.jpg',
-                    "type": 'image',
-                    "description": "Featured image is random. Should have an option to select one. Featured image is random. Should have an option to select one. ",
-                    "album_title": "Weavers of walagpet",
-                    "slide_photographer": "deepthi",
-                    "image_captured_date": "30 May 2017",
-                    "slide_location": "Chennai"
-                }],
-
-            "authors": [
-                {
-                    // src: '.author',
-                    // type: 'inline',
-                    // show_title: false,
-                    "name": 'name1',
-                    "bio": 'bio1'
-                },
-                {
-                    // src: '.author',
-                    // type: 'inline',
-                    // show_title: false,
-                    "name": 'name2',
-                    "bio": 'bio2'
-                }
-            ]
-        }
-    },
-
-    _initImage: function() {
-        // $('.btn-slideshow').on('click', $.proxy(function() {
-        //     var slideshow = this._popup.data("slideshow");
-        //     if(slideshow) {
-        //        this._popup.removeData('slideshow');
-        //     } else {
-        //         this._popup.data('slideshow', 'true');
-        //     }
-        //     slideshow = this._popup.data("slideshow");
-        //
-        //     this._updateSlideshowButtonIcon();
-        //     if(!this._player.isPlaying()) {
-        //         this._initAudio();
-        //     }
-        //
-        //     if(slideshow && !this._player.isPlaying()) {
-        //         this._toggleWidget();
-        //     }
-        //
-        //     return false;
-        // }, this));
-    },
 
     _initBackToAlbums: function(element) {
          $(element).on('click', function () {
@@ -388,7 +277,7 @@ function handleCarouselEvents(carouselData) {
   updateCurrentPageData();
 
   $("#carousel").carousel({
-    interval: 2000,
+    interval: 5000,
     pause: false
   });
 
@@ -404,10 +293,7 @@ function handleCarouselEvents(carouselData) {
       pauseSlide();
       toggleThumbnail();
   });
-
-  // $('.show-slide-info').click(function () {
-  //   $('.show-slide-info').toggleClass('fa-info-circle fa-chevron-circle-right');
-  // })
+    
 
   $('#showSlideInfo').click(function() {
       $(this).toggleClass("selected");
@@ -431,10 +317,6 @@ function handleCarouselEvents(carouselData) {
     toggleThumbnail();
     playSlide();
   });
-
-  $('.back-to-albums').click(function(){
-    $(".photo-album-popup").remove();
-  })
 
   $('#carousel').on('slid.bs.carousel', function() {
       updateIndexOnSlide();
