@@ -27,9 +27,10 @@
 {% endblock %}
 
 {% block opengraph_block %}
-    <meta property="og:title" content="{% trans "PARI Albums" %}">
+    {% with album.slides.all|random as random_cover %}{% image random_cover.image fill-300x250 as cover_image %}
+    <meta property="og:title" content="{{ album.title }}">
     <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
-    <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ MEDIA_URL }}images/savitamundal_photozone2.2e16d0ba.fill-370x300.jpg">
+    <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ cover_image.url }}">
     <meta property="og:type" content="article">
     <meta property="og:description" content="PARI hosts and combines video, still photo, audio and text archives.
     There is content we already have and content we are newly generating. Both will take time and effort to organise and load.
@@ -42,8 +43,9 @@
     <meta name="twitter:description" content="PARI hosts and combines video, still photo, audio and text archives.
     There is content we already have and content we are newly generating. Both will take time and effort to organise and load.
     The videos generated specifically for PARI record the lives and livelihoods of poor and everyday Indians." >
-    <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ MEDIA_URL }}images/savitamundal_photozone2.2e16d0ba.fill-370x300.jpg" >
+    <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ cover_image.url }}" >
     <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
+    {% endwith %}
 {% endblock %}
 
 {% block main %}
