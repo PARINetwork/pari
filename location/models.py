@@ -24,8 +24,8 @@ class Location(models.Model):
     objects = models.GeoManager()
 
     def __str__(self):
-        return "{0}, {1}, {2}".format(self.name, self.district,
-                                                 self.state)
+        location = filter(lambda x: x, [self.name, self.panchayat, self.region, self.sub_district_name, self.district, self.state])
+        return ", ".join(location)
 
     @property
     def address(self):
