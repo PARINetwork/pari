@@ -97,10 +97,23 @@ var Album = {
         }
     },
 
+    stopAudioPlayer: function() {
+
+      if(this._player) {
+        this._player.seek(0);
+        this._player.pause(0);
+        this._player.dispose();
+      }
+    },
 
     prepareSoundCloudWidget: function(trackId) {
-        trackId = trackId || "/tracks/109687709";
+
         var mediaPlayer = new MediaPlayerControl(".audio-player-controls");
+        if(this._player) {
+          this._player.seek(0);
+          this._player.play();
+        }
+
         SC.initialize({
             client_id: "d129911dd3c35ec537c30a06990bd902"
         });
@@ -144,31 +157,12 @@ var Album = {
 
     },
 
-    // _reloadWidget: function(audio, autoplay) {
-    //     var $this = this;
-    //     SC.stream("/tracks/" + audio).then(function(player) {
-    //         $this._player = player;
-    //         player.play();
-    //         player.on("finish", function() {
-    //             $this._onSoundFinish();
-    //         });
-    //     });
-    // },
-    //
-    // _toggleWidget: function() {
-    //     this._player.toggle();
-    //     this._togglePlayButton();
-    // },
-
     _initControls: function() {
         $('.grid-container').click($.proxy(function(element) {
 
             var photoAlbum = $.templates("#photoAlbumTemplate");
             var photoAlbumHtml = photoAlbum.render({});
             $("#main_content").append(photoAlbumHtml);
-
-            this.prepareSoundCloudWidget();
-
             var slug = $(element.currentTarget).data('slug');
             $.get("/albums/" + slug + ".json/", $.proxy(function(response) {
                 this.generateCarousel(response);
@@ -446,6 +440,7 @@ function handleCarouselEvents(carouselData) {
     });
 
     $('.back-to-albums').click(function() {
+        Album.stopAudioPlayer();
         $(".photo-album-popup").remove();
     })
 
@@ -456,7 +451,9 @@ function handleCarouselEvents(carouselData) {
     function updateIndexOnSlide() {
         currentIndex = getSelectedCarouselIndex();
         updateCurrentPageData();
-        Album.prepareSoundCloudWidget();
+        var data = carouselData.slides[currentIndex];
+        trackId = data.trackId || "/tracks/109687709";
+        Album.prepareSoundCloudWidget(trackId);
     }
 
     function getSelectedCarouselIndex() {
