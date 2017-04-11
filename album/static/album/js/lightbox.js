@@ -88,29 +88,6 @@ var Album = {
         });
     },
 
-    // _initSoundCloudWidget: function() {
-    //     SC.initialize({
-    //         client_id: "d129911dd3c35ec537c30a06990bd902"
-    //     });
-    // },
-
-    // _player: null,
-    // _reloadWidget: function(audio, autoplay) {
-    // var $this = this;
-    //     SC.stream("/tracks/" + audio).then(function(player) {
-    //    $this._player = player;
-    //    player.play();
-    //    player.on("finish", function() {
-    // $this._onSoundFinish();
-    //    });
-    // });
-    // },
-
-    // _toggleWidget: function() {
-    // this._player.toggle();
-    // this._togglePlayButton();
-    // },
-
     _updateSlideshowButtonIcon: function(element) {
         var slideshow = this._popup.data('slide_show');
         if (slideshow) {
@@ -120,22 +97,6 @@ var Album = {
         }
     },
 
-    // _stopWidget: function() {
-    // if (this._player) {
-    //    this._player.seek(0);
-    //    this._player.pause();
-    // }
-    // },
-
-    // _onSoundFinish: function() {
-    //     var slideshow = this._popup.data('slideshow');
-    //     if(slideshow) {
-    //         var magnificPopup = $.magnificPopup.instance;
-    //         magnificPopup.next();
-    //         return;
-    //     }
-    //     this._initPlayButton();
-    // },
 
     prepareSoundCloudWidget: function(trackId) {
         trackId = trackId || "/tracks/109687709";
@@ -154,7 +115,7 @@ var Album = {
 
             player.on("state-change", function(e) {
               if(e === "playing") {
-                  mediaPlayer.setVolume(player.getVolume());
+                mediaPlayer.setVolume(player.getVolume());
               }
             });
 
@@ -208,8 +169,6 @@ var Album = {
 
             this.prepareSoundCloudWidget();
 
-
-
             var slug = $(element.currentTarget).data('slug');
             $.get("/albums/" + slug + ".json/", $.proxy(function(response) {
                 this.generateCarousel(response);
@@ -253,8 +212,6 @@ var Album = {
         $(window).resize(function() {
             positionFloatingText();
         });
-
-
 
     },
     _initializeCarousel: function() {

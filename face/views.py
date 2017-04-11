@@ -22,6 +22,7 @@ class FaceList(ListView):
         context["title"] = 'Faces'
         context["sub_heading"] = 'FACIAL DIVERSITY FROM EVERY INDIAN DISTRICT'
         context["tab"] = 'gallery'
+        context["current_page"] = 'face-list'
         return context
 
 class FaceDetail(ListView):
@@ -45,4 +46,5 @@ class FaceDetail(ListView):
                 context["face"] = self.get_queryset().get(slug=context["slug"])
             except Face.DoesNotExist:
                 pass
+        context["current_page"] = 'face-district'
         return context

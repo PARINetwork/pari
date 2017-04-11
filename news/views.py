@@ -12,4 +12,5 @@ class PariNewsView(TemplateView):
         page_content_type = ContentType.objects.get_for_model(Page)
         qs = Page.objects.live().exclude(content_type=page_content_type).order_by('-first_published_at')[:10]
         context['new_pages'] = qs
+        context['current_page'] = 'pari-news'
         return context

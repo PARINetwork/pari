@@ -16,8 +16,8 @@ class ResourceList(ListView):
     def get_context_data(self, **kwargs):
         context = super(ResourceList, self).get_context_data(**kwargs)
         context['tab'] = 'resources'
+        context['current_page'] = 'resource-list'
         return context
-
 
 
 class ResourceDetail(DetailView):
@@ -30,7 +30,8 @@ class ResourceDetail(DetailView):
         context['heading'] = 'no'
         for data in context['resource'].content:
             if data.block_type == 'factoids':
-                context['heading']='yes'
+                context['heading'] = 'yes'
+        context['current_page'] = 'resource-detail'
         return context
 
 
@@ -42,4 +43,5 @@ class ReportDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super(ReportDetail, self).get_context_data(**kwargs)
         context['site'] = RequestSite(self.request)
+        context['current_page'] = 'report-detail'
         return context

@@ -56,6 +56,7 @@ class LocationList(ListView):
                 context["faces_checked"] = True, True, True
         context['MAP_KEY'] = settings.GOOGLE_MAP_KEY
         context['tab'] = 'stories'
+        context['current_page'] = 'map-list'
         return context
 
 
@@ -84,6 +85,7 @@ class LocationDetail(DetailView):
             faces_qs
         )
         context['LANGUAGES'] = settings.LANGUAGES
+        context['current_page'] = 'location-detail'
         return context
 
 

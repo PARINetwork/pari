@@ -10,7 +10,7 @@
 {% block title %}{% trans "Albums" %}{% endblock %}
 
 {% block opengraph_block %}
-    <meta property="og:title" content="{% trans "PARI Albums" %}">
+    <meta property="og:title" content="{{ album.title }}">
     <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
     <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ MEDIA_URL }}images/savitamundal_photozone2.2e16d0ba.fill-370x300.jpg">
     <meta property="og:type" content="article">
@@ -21,7 +21,7 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
-    <meta name="twitter:title" content="{% trans "PARI Albums" %}" >
+    <meta name="twitter:title" content="{{ album.title }}" >
     <meta name="twitter:description" content="PARI hosts and combines video, still photo, audio and text archives.
     There is content we already have and content we are newly generating. Both will take time and effort to organise and load.
     The videos generated specifically for PARI record the lives and livelihoods of poor and everyday Indians." >
@@ -33,11 +33,15 @@
     <script src="//connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
 {% endblock %}
 
+<<<<<<< HEAD
 {% block extra_js %}
     <script type="text/javascript" src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}album/js/media-player.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}album/js/lightbox.js"></script>
 {% endblock %}
+=======
+
+>>>>>>> 6cb7d828ef6a6bf9686fea430d4205850fedbd26
 
 {% block extra_css %}
     <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}album/css/magnific-popup.css">
@@ -99,6 +103,7 @@
 
 
 
+<<<<<<< HEAD
     <!--  photo album starts here -->
 
     {% verbatim %}
@@ -209,4 +214,6 @@
     {% if albums %}
 
     {% endif %}
+=======
+>>>>>>> 6cb7d828ef6a6bf9686fea430d4205850fedbd26
 {% endblock %}

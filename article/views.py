@@ -47,6 +47,7 @@ class ArticleDetail(DetailView):
                                           ])\
                                           .order_by('-first_published_at')[:4]
         context['MAP_KEY'] = settings.GOOGLE_MAP_KEY
+        context['current_page'] = 'article-detail'
         return context
 
     def render_to_response(self, context, **kwargs):
@@ -104,6 +105,7 @@ class ArchiveDetail(ListView):
         context['month_as_name'] = calendar.month_name[int(context["month"])]
         context['title'] = "{0} {1}".format(context['month_as_name'], context["year"])
         context['LANGAUAGES'] = settings.LANGUAGES
+        context['current_page'] = 'archive-detail'
         return context
 
 
@@ -137,6 +139,7 @@ class ArticleList(ListView):
             context["title"] = context["author"].name
         context["articles"] = context["page_obj"]
         context['LANGUAGES'] = settings.LANGUAGES
+        context['current_page'] = 'article-list'
         return context
 
 
@@ -171,4 +174,5 @@ class GalleryArticleList(ListView):
             context["title"] = context["author"].name
         context["articles"] = context["page_obj"]
         context['LANGUAGES'] = settings.LANGUAGES
+        context['current_page'] = 'gallery-article-list'
         return context

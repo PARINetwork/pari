@@ -84,7 +84,7 @@
                         <a href="{% url "face-detail" alphabet=face.location.district|lower|first %}">
                             {% image face.image fill-514x514 as face_image %}
                             <img class="img-responsive grid-image" src="{{ face_image.url }}"
-                                 alt="{{ face.image.alt_text }}">
+                                 alt="{{ face|alt_text }}">
                             <div class="alphabat-holder">
                                 <h4 class="alphabat">{{ face.district|lower|first }}</h4>
                             </div>
