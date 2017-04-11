@@ -60,6 +60,16 @@ class AlbumDetail(DetailView):
     context_object_name = "album"
     model = Album
 
+    def get_context_data(self, *args, **kwargs):
+        context = super(AlbumDetail, self).get_context_data(*args, **kwargs)
+        slug = self.kwargs.get("slug")
+        album = Album.objects.get(slug=slug)
+        if album.slides.last().audio != '':
+            context['album_type'] = 'talking_album'
+        else:
+            context['album_type'] = 'photo_album'
+        return context
+
     def get_template_names(self):
         names = super(AlbumDetail, self).get_template_names()
         if self.request.path == reverse("image-collection-image-list",

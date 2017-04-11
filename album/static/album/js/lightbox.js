@@ -158,16 +158,19 @@ var Album = {
     },
 
     _initControls: function() {
-        $('.grid-container').click($.proxy(function(element) {
 
             var photoAlbum = $.templates("#photoAlbumTemplate");
             var photoAlbumHtml = photoAlbum.render({});
             $("#main_content").append(photoAlbumHtml);
-            var slug = $(element.currentTarget).data('slug');
+            var type = $("div#type-identifier").text();
+            if (type == 'talking_album'){
+                $(".volume-control").removeClass("hidden");
+                $(".seek-bar-control").removeClass("hidden");
+            }
+            var slug = $("div#slug-identifier").text();
             $.get("/albums/" + slug + ".json/", $.proxy(function(response) {
                 this.generateCarousel(response);
             }, this));
-        }, this));
     },
 
     generateCarousel: function(data) {
@@ -180,8 +183,10 @@ var Album = {
             $(".carousel-items").append(carouselPageHtml);
 
             if (index === 0) {
-                $(".carousel-items .item:first-child .wrapper").append('<div class="floating-text"><h1 class="title">' + slide.album_title + '</h1><p class="description"></p><div class="place">' + slide.slide_location + '</div><div class="social-icons"></div></div>');
-                $(".carousel-items .item:first-child .description").append(slide.description);
+                var carouselInfoBox = $.templates("#carouselStartingIntro");
+                var carouselInfoBoxHtml=carouselInfoBox.render(slide);
+
+                $(".carousel-items .item:first-child .wrapper").append(carouselInfoBoxHtml);
             }
 
             $(".thumbnail-list").append('<li class="thumbnail left box"><img src=' + slide.src + ' /></li>');
@@ -398,7 +403,7 @@ function handleCarouselEvents(carouselData) {
     updateCurrentPageData();
 
     $("#carousel").carousel({
-        interval: 2000,
+        interval: 5000,
         pause: false
     });
 
@@ -406,7 +411,7 @@ function handleCarouselEvents(carouselData) {
         isPlaying = !isPlaying;
         $(this).toggleClass("selected");
         $(this).removeClass("fa-play").removeClass("fa-pause");
-        $(this).addClass(isPlaying ? "fa-play" : "fa-pause");
+        $(this).addClass(isPlaying ? "fa-pause" : "fa-play");
         $("#carousel").carousel(isPlaying ? "cycle" : "pause");
     });
 
@@ -441,19 +446,21 @@ function handleCarouselEvents(carouselData) {
 
     $('.back-to-albums').click(function() {
         Album.stopAudioPlayer();
-        $(".photo-album-popup").remove();
     })
 
     $('#carousel').on('slid.bs.carousel', function() {
         updateIndexOnSlide();
+        if ($("div#type-identifier").text() == "talking_album") {
+            var data = carouselData.slides[currentIndex];
+            trackId = data.trackId || "/tracks/109687709";
+            Album.prepareSoundCloudWidget(trackId);
+        }
     });
 
     function updateIndexOnSlide() {
         currentIndex = getSelectedCarouselIndex();
         updateCurrentPageData();
-        var data = carouselData.slides[currentIndex];
-        trackId = data.trackId || "/tracks/109687709";
-        Album.prepareSoundCloudWidget(trackId);
+
     }
 
     function getSelectedCarouselIndex() {
