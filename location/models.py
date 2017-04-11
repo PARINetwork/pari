@@ -36,7 +36,7 @@ class Location(models.Model):
         return addr
 
     class Meta:
-        unique_together = ["name", "district", "state"]
+        unique_together = ["name", "district", "state", "panchayat", "sub_district_name"]
         ordering = ["name"]
 
 @python_2_unicode_compatible
