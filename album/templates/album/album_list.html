@@ -35,6 +35,7 @@
 
 {% block extra_js %}
     <script type="text/javascript" src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}album/js/media-player.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}album/js/lightbox.js"></script>
 {% endblock %}
 
@@ -110,6 +111,33 @@
                         <i class="fa fa-angle-left back-to-albums"></i>
                         <i id="playPause" href="#" class="fa fa-play"></i>
                         <i id="showThumbnail" href="#" class="fa fa-th-large"></i>
+
+                        <ul class="audio-player-controls">
+                          <li class="play-pause fa fa-play"></li>
+                          <li class="volume-control control">
+                            <div class="volume-symbol fa fa-volume-up"></div>
+                            <div class="seek-bar toggle-tooltip">
+                              <div class="seekbar-max-length">
+                                <div class="seekbar-filled">
+                                  <div class="seeker"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="seek-bar-control control">
+                            <div class="current-length">0.00</div>
+                            <div class="total-length">0.00</div>
+                            <div class="seek-bar">
+                              <div class="seekbar-max-length">
+                                <div class="seekbar-filled">
+                                  <div class="seeker"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+
+
                     </div>
                     <div class="right right-icons">
                         <a href="#" class="fa fa-external-link open-in-new-tab" target="_blank"></a>

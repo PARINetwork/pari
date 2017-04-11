@@ -106,7 +106,7 @@
         }
 
         &:after {
-            top: 5px; 
+            top: 5px;
             left: 0px;
         }
     }
@@ -191,7 +191,7 @@
 
             .stack5{
                 .stack-effect-grey (@beforeRotation: -4deg; @afterRotation: 1deg);
-            }            
+            }
         }
 
         &:hover {
@@ -206,4 +206,110 @@
             }
         }
     }
+}
+
+
+
+ul.audio-player-controls, ul.audio-player-controls li, .audio-player-controls ul, .audio-player-controls li {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+
+.audio-player-controls li {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+.audio-player-controls {
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 3px;
+}
+
+.audio-player-controls .fa {
+  font-size: 22px !important;
+  cursor: pointer;
+  color: #b0b0b0;
+}
+
+.audio-player-controls .play-pause {
+  cursor: pointer;
+}
+
+.audio-player-controls .selected {
+  color: #FFF;
+}
+
+/* volume control */
+
+.volume-control, .seek-bar-control {
+  position: relative;
+}
+
+.volume-control .seek-bar {
+  position: absolute;
+  top: 34px;
+  width: 150px;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.seek-bar-control {
+  width: 150px;
+  height: 30px;
+}
+
+.seek-bar-control .seek-bar {
+  position: absolute;
+  left: 0px;
+  top: 20px;
+  padding: 0px;
+}
+
+.seek-bar-control .current-length,
+.seek-bar-control .total-length {
+  position: absolute;
+  top: 0px;
+  color: #ddb016;
+  font-size: 12px;
+}
+.seek-bar-control .current-length {
+  left: 0px;
+}
+.seek-bar-control .total-length {
+  right: 0px;
+}
+
+
+
+.seek-bar {
+  width: 100%;
+  padding: 20px;
+}
+
+.seek-bar .seekbar-max-length {
+  height: 4px;
+  background: #b0b0b0;
+  cursor: pointer;
+}
+
+.seek-bar .seekbar-max-length .seekbar-filled {
+  position: relative;
+  width: 0%;
+  height: 4px;
+  background: #ddb016;
+}
+
+.seek-bar .seekbar-max-length .seeker {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 7px;
+  background: #FFF;
+  border-radius: 100%;
+  top: -6px;
+  left: 0px;
+  z-index: 10;
+  cursor: pointer;
 }
