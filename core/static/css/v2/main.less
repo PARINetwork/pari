@@ -1,1 +1,53 @@
 @import "layout/layout";
+
+#header {
+  position: relative;
+  ul.header-social-icons {
+    position: absolute;
+    left: 125px;
+    top: 14px;
+    z-index: 9999;
+    display: none;
+
+    li {
+     list-style-type: none;
+     display: inline-block;
+     vertical-align: middle;
+     padding: 0px 5px;
+
+     .fa {
+       font-size: 25px;
+     }
+
+     &.link-light {
+       display: none;
+     }
+   }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .album-list, .single-category, .Visible, .PhotoZone, .Little, .VideoZone, .AudioZone, .Tongues, .gallery-home,
+  .face-list, .resource-list {
+
+    #header ul.header-social-icons {
+      display: block;
+    }
+
+    .gallery-title-icon.share-icon, .gallery-title-icon.face-upload-share {
+      display: none;
+    }
+  }
+
+  .single-category, .Visible, .Little, .Tongues, .gallery-home {
+    #header ul.header-social-icons {
+      left: 20px;
+    }
+  }
+
+  .face-list {
+    #header ul.header-social-icons li.link-light {
+      display: inline-block;
+    }
+  }
+}
