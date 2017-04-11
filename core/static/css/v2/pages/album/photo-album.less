@@ -60,7 +60,7 @@ html, body {
 }
 
 .photo-album header .fa {
-  padding: 13px;
+  padding: 14px;
   font-size: 24px;
   color: rgb(102, 102, 102);
   cursor: pointer;
@@ -368,7 +368,6 @@ ul.audio-player-controls, ul.audio-player-controls li, .audio-player-controls ul
 
 .audio-player-controls {
   padding: 10px;
-  background: rgba(0, 0, 0, 0.8);
   border-radius: 3px;
 }
 
@@ -395,10 +394,10 @@ ul.audio-player-controls, ul.audio-player-controls li, .audio-player-controls ul
 
 .volume-control .seek-bar {
   position: absolute;
-  top: 34px;
+  top: 50px;
   width: 150px;
   z-index: 10;
-  background: rgba(0, 0, 0, 0.8);
+  background: #2b2b2b;;
 }
 
 .seek-bar-control {
@@ -518,4 +517,10 @@ ul.audio-player-controls, ul.audio-player-controls li, .audio-player-controls ul
     margin: 10px 0px 10px 0px;
   }
 
+}
+
+@media only screen and (max-width: 768px) {
+  .seek-bar-control {
+      display: none !important;
+  }
 }
