@@ -47,7 +47,7 @@ class AlbumList(ListView):
             context['albums'] = album_qs
         photographers = {}
         for album in context["albums"]:
-            slide_photo_graphers= []
+            slide_photo_graphers = []
             for slide in album.slides.all():
                 slide_photo_graphers.extend(slide.image.photographers.all())
             photographers[album.id] = set(slide_photo_graphers)
@@ -77,6 +77,7 @@ class AlbumDetail(DetailView):
             names.insert(0, "album/albumslide_list.html")
         return names
 
+
 def get_slide_detail(request, slug):
     # {
     #     "src": '/static/img/stories-4.jpg',
@@ -90,28 +91,39 @@ def get_slide_detail(request, slug):
 
     album = Album.objects.get(slug=slug)
     response_data = {}
-    response_data['slides']=[]
+    response_data['slides'] = []
     photographers = []
+    slide_photo_graphers = []
     for slide in album.slides.all():
+        slide_photo_graphers.extend(map(lambda photographer_name: photographer_name.name.encode('UTF-8'),
+                                               slide.image.photographers.all()))
+    photographers_of_album = list(set(slide_photo_graphers))
+    for index,slide in enumerate(album.slides.all(),start=0):
         slide_dict = dict([('type', 'image'), ('show_title', "True"), ('album_title', album.title)])
-        slide_dict['src']=slide.image.file.url
-        slide_dict['description']=slide.description
-        slide_dict['album_description']=album.description
-        slide_dict['url']=request.build_absolute_uri().replace(".json","")
-        slide_dict['slide_photographer']=(map(lambda photographer_name: photographer_name.name.encode('UTF-8'), slide.image.photographers.all()))
-
+        slide_dict['src'] = slide.image.file.url
+        slide_dict['description'] = slide.description
+        slide_dict['album_description'] = album.description
+        slide_dict['url'] = request.build_absolute_uri().replace(".json", "")
+        slide_dict['slide_photographer'] = map(lambda photographer_name: photographer_name.name.encode('UTF-8'),
+                                               slide.image.photographers.all())
+        if index == 0:
+            slide_dict['slide_photographer'] =photographers_of_album
+            print index
         photographers.extend(set(slide.image.photographers.all()))
-        d=datetime.datetime.strptime(str(album.first_published_at)[:10],"%Y-%m-%d")
+        d = datetime.datetime.strptime(str(album.first_published_at)[:10], "%Y-%m-%d")
         date = d.strftime('%d %b,%Y')
-        slide_dict['image_captured_date']=date
-        slide_dict['slide_location']=slide.image.locations.all().first().district
+        slide_dict['image_captured_date'] = date
+        slide_dict['slide_location'] = slide.image.locations.all().first().district
         response_data['slides'].append(slide_dict)
 
-    response_data['authors']=[]
+    response_data['authors'] = []
     for photographer in set(photographers):
-        photographer_dict=dict([('type', 'inline'), ('show_title', "False"), ('name', photographer.name), ('bio', photographer.bio), ('twitter', photographer.twitter_username)])
+        photographer_dict = dict(
+            [('type', 'inline'), ('show_title', "False"), ('name', photographer.name), ('bio', photographer.bio),
+             ('twitter', photographer.twitter_username)])
         response_data['authors'].append(photographer_dict)
     return JsonResponse(response_data)
+
 
 def add_audio(request):
     sc = settings.SOUNDCLOUD_SETTINGS
@@ -125,7 +137,7 @@ def add_audio(request):
                                      "password": sc["PASSWORD"],
                                      "grant_type": "password"
                                  }
-        )
+                                 )
         if response.ok:
             access_token = response.json()["access_token"]
             cache.set("sc_access_token",
@@ -135,7 +147,7 @@ def add_audio(request):
         access_token = cache.get("sc_access_token")
     obj_id = request.GET.get("id")
     return render_modal_workflow(
-        request, "album/add_audio.html", None,  {
+        request, "album/add_audio.html", None, {
             "add_object_url": reverse("audio_add"),
             "name": "Audio",
             "obj_id": obj_id,

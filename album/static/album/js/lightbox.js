@@ -389,11 +389,11 @@ function positionFloatingText() {
 
     var top = image.get(0).offsetTop + (image.get(0).offsetHeight - contentHeight) / 2;
 
+
     $(".floating-text").css({
         left: image.get(0).offsetLeft + (image.get(0).offsetLeft * 0.15) + 40,
         top: top,
-        height: contentHeight,
-        width: contentWidth
+
     });
 }
 
@@ -454,16 +454,10 @@ function handleCarouselEvents(carouselData) {
     })
 
     function pauseSlide() {
-        $("#playPause").toggleClass("selected");
-        $("#playPause").removeClass("fa-play").removeClass("fa-pause");
-        $("#playPause").addClass("fa-pause");
         $("#carousel").carousel("pause");
     }
 
     function playSlide() {
-        $("#playPause").toggleClass("selected");
-        $("#playPause").removeClass("fa-play").removeClass("fa-pause");
-        $("#playPause").addClass("fa-play");
         $("#carousel").carousel("cycle");
 
     }
