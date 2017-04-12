@@ -119,11 +119,13 @@
     .pop-up{
       .banner-image{
         height: 100vh;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
     .banner-info{
       position: absolute;
-      z-index: 1;
       height: 100%;
       top: 0;
       width: 100%;
@@ -143,9 +145,16 @@
         color: @light-grey;
         h3{
           margin: 10px 0 5px 0;
+          color: @light-grey;
         }
         a{
-          color: @link-primary;
+          &.photographer {
+            color: @light-grey;
+          }
+          &.read_full_story {
+            color: @link-primary;
+
+          }
           i{
             padding-left: 10px;
             color: @light-grey;
@@ -164,13 +173,14 @@
       .go-full-screen{
         position: absolute;
         bottom: 20%;
-        left: 50%;
+        left: 48%;
         a{
           .font-size(22px);
           text-align: center;
           color: @light-grey;
           i{
             .font-size(19);
+            margin-right: 7px;
           }
         }
       }
