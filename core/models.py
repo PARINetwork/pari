@@ -1,23 +1,27 @@
 from __future__ import unicode_literals
 
-from django.db import models
-from django.utils.translation import ugettext_lazy as _
-from django.core import serializers
-from django.core.urlresolvers import reverse
+from django import forms
 from django.conf import settings
+from django.core.urlresolvers import reverse
+from django.db import models
+from django.db.models import Q
 from django.utils.encoding import python_2_unicode_compatible
-
-from wagtail.wagtailimages.models import AbstractImage, AbstractRendition
-from wagtail.wagtailimages.formats import get_image_format
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailcore.fields import StreamField
-from wagtail.wagtailcore import blocks
+from django.utils.translation import ugettext_lazy as _
 from wagtail.wagtailadmin.edit_handlers import MultiFieldPanel, \
     StreamFieldPanel, PageChooserPanel, FieldPanel
-from wagtail.wagtailsearch import index
+from wagtail.wagtailadmin.forms import WagtailAdminPageForm
+from wagtail.wagtailcore import blocks
 from wagtail.wagtailcore.blocks import StructBlock
+from wagtail.wagtailcore.fields import RichTextField
+from wagtail.wagtailcore.fields import StreamField
+from wagtail.wagtailcore.models import Page
+from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
+from wagtail.wagtailimages.formats import get_image_format
+from wagtail.wagtailimages.models import AbstractImage, AbstractRendition
+from wagtail.wagtailsearch import index
 
+from album.models import Album
+from article.models import Article
 
 @python_2_unicode_compatible
 class StaticPage(Page):
@@ -157,6 +161,67 @@ class GuidelinesPage(Page):
 
     def __str__(self):
         return _("GuidelinesPage")
+
+class GalleryHomePageAdminForm(WagtailAdminPageForm):
+    photo_title = forms.CharField(required=True)
+    photo_link = forms.CharField(required=False)
+
+    def __init__(self, *args, **kwargs):
+        super(GalleryHomePageAdminForm, self).__init__(*args, **kwargs)
+        self.fields['talking_album'] = forms.CharField(max_length=50,
+                                    widget=forms.Select(
+                                    choices=Album.objects.filter(~Q(slides__audio='')).distinct().values_list('page_ptr_id', 'title')))
+        self.fields['photo_album'] = forms.CharField(max_length=50,
+                                  widget=forms.Select(choices=Album.objects.filter(Q(slides__audio='')).distinct().values_list('page_ptr_id', 'title')))
+        self.fields['video'] = forms.CharField(max_length=50,
+                            widget=forms.Select(choices=Article.objects.filter(Q(categories__name='VideoZone')).values_list('page_ptr_id', 'title')))
+
+    def clean_photo_of_the_week(self):
+        photo_of_the_week = self.cleaned_data["photo_of_the_week"]
+        if photo_of_the_week and photo_of_the_week.photographers.count() == 0:
+            raise forms.ValidationError(_('Please add photographers to the image'))
+        return self.cleaned_data["photo_of_the_week"]
+
+    def clean_talking_album(self):
+        talking_album = Album.objects.get(page_ptr_id=self.cleaned_data['talking_album'])
+        return talking_album
+
+    def clean_photo_album(self):
+        photo_album = Album.objects.get(page_ptr_id=self.cleaned_data['photo_album'])
+        return photo_album
+
+    def clean_video(self):
+        video = Article.objects.get(page_ptr_id=self.cleaned_data['video'])
+        return video
+
+@python_2_unicode_compatible
+class GalleryHomePage(Page):
+    photo_of_the_week = models.ForeignKey("core.AffixImage", null=False, blank=False, on_delete=models.PROTECT)
+    photo_title = models.TextField(blank=False, null=False)
+    photo_link = models.TextField(blank=True, null=True)
+    talking_album = models.ForeignKey("album.Album",
+                                      null=False, blank=False, related_name='talking', on_delete=models.PROTECT)
+    photo_album = models.ForeignKey("album.Album",
+                                    null=False, blank=False, related_name='photo', on_delete=models.PROTECT)
+    video = models.ForeignKey("article.Article",
+                              null=False, blank=False, on_delete=models.PROTECT)
+
+
+    content_panels = Page.content_panels + [
+        MultiFieldPanel([
+            ImageChooserPanel('photo_of_the_week'),
+            FieldPanel('photo_title'),
+            FieldPanel('photo_link'),
+        ]),
+        FieldPanel('talking_album'),
+        FieldPanel('photo_album'),
+        FieldPanel('video'),
+    ]
+
+    base_form_class = GalleryHomePageAdminForm
+
+    def __str__(self):
+        return _("GalleryHomePage")
 
 @python_2_unicode_compatible
 class AffixImage(AbstractImage):

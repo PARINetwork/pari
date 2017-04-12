@@ -57,14 +57,14 @@
         <div class="row">
             <div class="banner-container gallery-banner ">
                 <div class="pop-up">
-                    <a href="{{ STATIC_URL }}img/stories-1.jpg">
-                        <img class="img-responsive banner-image" src="{{ STATIC_URL }}img/stories-1.jpg" alt="sample content">
+                    <a href="{{ page.photo_of_the_week.file.url }}">
+                        <img class="img-responsive banner-image" src="{{ page.photo_of_the_week.file.url }}" alt="sample content">
                     </a>
                 </div>
                 <div class="banner-info">
                     <div class="container">
                         <div class=" info photo-of-the-week">
-                            <p href="{{ STATIC_URL }}img/stories-1.jpg">Photo of the week</p>
+                            <p href="{{ page.photo_of_the_week.file.url }}">Photo of the week</p>
                         </div>
                     </div>
                 </div>
@@ -72,9 +72,16 @@
                     <div class="container">
                         <div class="info">
                             <div>from</div>
-                            <h3>Bahurupi: a family of many faces</h3>
-                            <p>Ankan Roy & Sagarika Basu</p>
-                            <div><a href="#">Read the full story <i class="fa fa-angle-right"></i></a></div>
+                            <h3>{{ page.photo_title }}</h3>
+                            <p>
+                                {% for photographer in page.photo_of_the_week.photographers.all %}
+                                    {{ photographer.name }}
+                                    {% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                            </p>
+                            {% if page.photo_link %}
+                                <a href="{{ page.photo_link }}">Read the full story <i class="fa fa-angle-right"></i></a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

@@ -1,13 +1,13 @@
 from django.conf import settings
-from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import Http404
 from django.shortcuts import render
+from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 
-from album.models import Album
-from category.models import Category
 from article.models import Article
+from category.models import Category
+from core.models import GalleryHomePage
 
 
 class CategoriesList(ListView):
@@ -102,22 +102,20 @@ class StoryDetail(DetailView):
         return context
 
 
-def gallery_home_page(request, slug=None):
-    albums = Album.objects.live()
-    articles = Article.objects.live()
-    album_details = get_album_and_photographers(albums)
-    video = get_video(articles)
-    talking_album = album_details['talking_album'][0]
-    photo_album = album_details['photo_album'][0]
+def gallery_home_page(request, slug="gallery"):
+    gallery_page = GalleryHomePage.objects.get(slug=slug)
+    video = gallery_page.video
+    talking_album = gallery_page.talking_album
+    photo_album = gallery_page.photo_album
     gallery_context = {
         'talking_album': {
             'image': talking_album.slides.first().image,
-            'photographers': album_details['talking_album'][1],
+            'photographers': get_unique_photographers(talking_album),
             'section_model': talking_album,
         },
         'photo_album': {
             'image': photo_album.slides.first().image,
-            'photographers': album_details['photo_album'][1],
+            'photographers': get_unique_photographers(photo_album),
             'section_model': photo_album,
         },
         'video': {
@@ -125,42 +123,14 @@ def gallery_home_page(request, slug=None):
             'photographers': video.authors.all(),
             'section_model': video,
         },
+        'page': gallery_page,
         'tab': 'gallery',
         'current_page': 'gallery-home',
     }
     return render(request, "category/gallery_home_page.html", gallery_context)
-
-
-def get_album_and_photographers(albums):
-    talking_album = None
-    photo_album = None
-    for album in albums:
-        if len(album.slides.first().audio) > 0: #talking album has audio
-            talking_album = album
-            if photo_album is not None:
-                break
-        else:
-            photo_album = album
-            if talking_album is not None:
-                break
-    talking_album_photographers = get_unique_photographers(talking_album)
-    photo_album_photographers = get_unique_photographers(photo_album)
-    album_details = {}
-    album_details['talking_album'] = [talking_album, talking_album_photographers]
-    album_details['photo_album'] = [photo_album, photo_album_photographers]
-
-    return album_details
-
 
 def get_unique_photographers(talking_album):
     photographers = []
     for slide in talking_album.slides.all():
         photographers.extend(slide.image.photographers.all())
     return set(photographers)
-
-
-def get_video(articles):
-    for article in articles:
-        if article.categories.filter(name='VideoZone'):
-            return article
-    return None
