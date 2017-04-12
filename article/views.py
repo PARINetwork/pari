@@ -129,6 +129,7 @@ class ArticleList(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ArticleList, self).get_context_data(**kwargs)
+        current_page_type = self.kwargs['filter']
         url_name = self.request.resolver_match.url_name
         context['title'] = "All articles"
         if url_name == "author-detail":
@@ -139,7 +140,7 @@ class ArticleList(ListView):
             context["title"] = context["author"].name
         context["articles"] = context["page_obj"]
         context['LANGUAGES'] = settings.LANGUAGES
-        context['current_page'] = 'article-list'
+        context['current_page'] = current_page_type
         return context
 
 
