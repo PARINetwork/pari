@@ -383,8 +383,11 @@ function positionFloatingText() {
     }
     var image = $('.carousel-items .item:first-child img');
     var contentHeight = image.get(0).offsetHeight * 0.4,
-        contentWidth = image.get(0).offsetWidth * 0.5,
-        top = image.get(0).offsetTop + (image.get(0).offsetHeight - contentHeight) / 2;
+        contentWidth = image.get(0).offsetWidth * 0.5;
+
+    contentHeight = contentHeight < 240 ? 240 : contentHeight;
+
+    var top = image.get(0).offsetTop + (image.get(0).offsetHeight - contentHeight) / 2;
 
     $(".floating-text").css({
         left: image.get(0).offsetLeft + (image.get(0).offsetLeft * 0.15) + 40,
@@ -472,12 +475,16 @@ function handleCarouselEvents(carouselData) {
             trackId = data.trackId || "/tracks/109687709";
             Album.prepareSoundCloudWidget(trackId);
         }
+        if(currentIndex === 0) {
+          setTimeout(function() {
+            positionFloatingText();
+          }, 500);
+        }
     });
 
     function updateIndexOnSlide() {
         currentIndex = getSelectedCarouselIndex();
         updateCurrentPageData();
-
     }
 
     function getSelectedCarouselIndex() {

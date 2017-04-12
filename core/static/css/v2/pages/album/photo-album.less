@@ -60,7 +60,7 @@ html, body {
 }
 
 .photo-album header .fa {
-  padding: 14px;
+  padding: 13px;
   font-size: 24px;
   color: rgb(102, 102, 102);
   cursor: pointer;
@@ -163,30 +163,33 @@ html, body {
 
 .photo-album section .carousel-container ul li.item:first-child .floating-text {
   position: absolute;
-  color: white;
-  padding-left: 30px;
+  color: #FFF;
+  padding: 0px 30px;
   background: rgba(0, 0, 0, 0.3);
   overflow: hidden;
   h1 {
     color: white;
-    font-size: 41px;
+    font-size: 30px;
+    height: 65px;
+    overflow: hidden;
+    margin: 10px 0px;
   }
 }
 
 .photo-album section .carousel-container ul li.item:first-child .floating-text .description p {
   line-height: normal;
-  margin: 15px 0 15px;
-  height: 20px;
+  margin: 0px;
+  height: 25px;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .photo-album section .carousel-container ul li.item:first-child .floating-text .photographer {
-  line-height: 30px;
-  padding: 20px 0 0 0;
-  margin: 20px 0px 0px 0px;
+  line-height: normal;
+  margin: 10px 0px 0px 0px;
+  padding-top: 10px;
   border-top: 1px solid #b8b8b8;
-
 }
 
 .photo-album section .carousel-container ul li.item:first-child .floating-text a {
@@ -195,8 +198,8 @@ html, body {
 
 .photo-album section .carousel-container ul li.item:first-child .floating-text .place {
   line-height: 30px;
-  padding: 0px 0px 20px 0px;
-  margin: 5px 0px 20px 0px;
+  padding: 0px;
+  margin: 0px 0px 15px 0px;
   border-bottom: 1px solid #b8b8b8;
 }
 
@@ -371,7 +374,6 @@ ul.audio-player-controls, ul.audio-player-controls li, .audio-player-controls ul
 }
 
 .audio-player-controls .fa {
-  font-size: 22px !important;
   cursor: pointer;
   color: #b0b0b0;
 }
@@ -459,6 +461,9 @@ ul.audio-player-controls, ul.audio-player-controls li, .audio-player-controls ul
 }
 
 @media only screen and (max-width: 500px) {
+  .photo-album header .fa {
+    padding: 13px 7px;
+  }
 
   .photo-album section {
     width: 100%;
