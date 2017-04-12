@@ -64,7 +64,7 @@
             <div class="photo-album">
                 <header class="header clear-fix">
                     <div class="left left-icons">
-                        <a {% endverbatim %}href={% url "other-album-list" %} {% verbatim %}><i class="fa fa-angle-left back-to-albums" ></i></a>
+                        <a {% endverbatim %}{% if album_type == 'talking_album' %} href="{% url "talking-album-list" %}" {% else %} href={% url "other-album-list" %}{% endif %}{% verbatim %}><i class="fa fa-angle-left back-to-albums" ></i></a>
                         <i id="playPause" href="#" class="fa fa-pause"></i>
                         <i id="showThumbnail" href="#" class="fa fa-th-large"></i>
 
