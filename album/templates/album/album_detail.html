@@ -17,6 +17,10 @@
     <script type="text/javascript" src="{{ STATIC_URL }}album/js/lightbox.js"></script>
 {% endblock %}
 
+{% block extra_uncompressed_js %}
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+{% endblock %}
+
 {% block extra_css %}
     <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}album/css/magnific-popup.css">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}album/css/album.less">
