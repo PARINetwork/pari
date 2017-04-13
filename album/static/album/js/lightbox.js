@@ -3,102 +3,7 @@ var Album = {
         this._initControls();
     },
 
-    _popup: null,
-    soundcloudPlayer: null,
-
-    _initPopup: function (itemsData) {
-        this._popup = $('.popup-gallery').magnificPopup({
-
-            items: itemsData,
-
-            tLoading: 'Loading image #%curr%...',
-
-            mainClass: 'mfp-album-popup',
-
-            gallery: {
-                enabled: true,
-                navigateByImgClick: true,
-                preload: [0, 2]
-            },
-
-            image: {
-                cursor: null,
-                tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-
-                titleSrc: $.proxy(function (item) {
-                    if (item.data.type == "image") {
-                        var sideInfoTmpl = $.templates("#sideInfoTmpl");
-                        var sideInfo = sideInfoTmpl.render(item.data);
-                    }
-                    return sideInfo;
-                }, this),
-
-                markup: $("#slide-template").html()
-            },
-
-            closeBtnInside: true,
-
-            callbacks: {
-                updateStatus: $.proxy(function () {
-                    this._initImage();
-                    // this._initAudio();
-                }, this),
-                markupParse: function (template, values, item) {
-                    $(template).find('a.open-in-new-tab').attr('href', values.src);
-                },
-                change: function () {
-                    if (this.currItem.data.type == "inline") {
-                        var slideshowElement = this.content.find(".slide-show");
-                        Album._initBackToAlbums(this.content.find(".back-to-albums"));
-                        Album._initSlideShow(slideshowElement);
-                        Album._updateSlideshowButtonIcon(slideshowElement);
-                    }
-                },
-                close: $.proxy(function () {
-                    // this._stopWidget();
-                    this._popup.removeData('slide-show');
-                    clearInterval(this._popup.data('slide-show-timer'));
-                }, this),
-
-                open: function () {
-                    var mfp = $.magnificPopup.instance;
-                    var proto = $.magnificPopup.proto;
-
-                    // extend function that moves to next item
-                    mfp.next = function () {
-
-                        // if index is not last, call parent method
-                        if (mfp.index < mfp.items.length - 1) {
-                            proto.next.call(mfp);
-                        } else {
-                            // otherwise do whatever you want, e.g. hide "next" arrow
-                            proto.close();
-                        }
-                    };
-
-                    // same with prev method
-                    mfp.prev = function () {
-                        if (mfp.index > 0) {
-                            proto.prev.call(mfp);
-                        }
-                    };
-
-                }
-            }
-        });
-    },
-
-    _updateSlideshowButtonIcon: function (element) {
-        var slideshow = this._popup.data('slide_show');
-        if (slideshow) {
-            $(element).addClass('fa-pause').removeClass('fa-play');
-        } else {
-            $(element).addClass('fa-play').removeClass('fa-pause');
-        }
-    },
-
     stopAudioPlayer: function () {
-
         if (this._player) {
             this._player.seek(0);
             this._player.pause(0);
@@ -107,7 +12,6 @@ var Album = {
     },
 
     prepareSoundCloudWidget: function (trackId) {
-
         var mediaPlayer = new MediaPlayerControl(".audio-player-controls");
         if (this._player) {
             this._player.seek(0);
@@ -132,6 +36,10 @@ var Album = {
                 }
             });
 
+            player.on("finish", function () {
+                $("#carousel").carousel("next");
+            });
+
             $(".audio-player-controls").on("volume-seekbar-click", function (event, data) {
                 player.setVolume(data.volume / 100);
             });
@@ -152,12 +60,9 @@ var Album = {
                 player.play(seekTime);
             });
         });
-
-
     },
 
     _initControls: function () {
-
         var photoAlbum = $.templates("#photoAlbumTemplate");
         var photoAlbumHtml = photoAlbum.render({});
         $("#main_content").append(photoAlbumHtml);
@@ -186,6 +91,10 @@ var Album = {
                 var carouselInfoBoxHtml = carouselInfoBox.render(slide);
 
                 $(".carousel-items .item:first-child .wrapper").append(carouselInfoBoxHtml);
+                if ($("div#type-identifier").text() == "talking_album") {
+                    var trackId = slide.track_id;
+                    Album.prepareSoundCloudWidget("/tracks/"+trackId);
+                }
             }
 
             $(".thumbnail-list").append('<li class="thumbnail left box"><img src=' + slide.src + ' /></li>');
@@ -212,50 +121,9 @@ var Album = {
         });
 
     },
+
     _initializeCarousel: function () {
 
-    },
-
-    _constructAuthorItem: function (itemsJson) {
-        var authorTmpl = $.templates("#authorTmpl");
-        var authors = authorTmpl.render(itemsJson['authors']);
-        var authorSrc = $($("#author-template").html()).find("#author").append(authors).parent().html();
-        var authorItem = {
-            src: authorSrc,
-            type: 'inline',
-            show_title: false
-        };
-        return itemsJson['slides'].concat(authorItem);
-    },
-
-    _handleSlideShow: function (element) {
-        var slideShow = this._popup.data("slide_show");
-        if (slideShow) {
-            this._pauseSlideShow(element);
-        } else {
-            this._playSlideShow(element);
-        }
-    },
-
-    _playSlideShow: function (element) {
-        $(element).addClass('fa-pause').removeClass('fa-play');
-        this._popup.data('slide_show', 'true');
-        var _this = this;
-        var slideShowTimer = setInterval(function () {
-            var slidePaused = !_this._popup.data('slide_show');
-            if (slidePaused) {
-                clearInterval(slideShowTimer);
-            } else {
-                $.magnificPopup.instance.next();
-            }
-        }, 3000);
-        this._popup.data('slide-show-timer', slideShowTimer);
-    },
-
-    _pauseSlideShow: function (element) {
-        $(element).addClass('fa-play').removeClass('fa-pause');
-        this._popup.removeData('slide_show');
-        clearInterval(this._popup.data('slide-show-timer'));
     },
 
     _dummy: function () {
@@ -303,74 +171,7 @@ var Album = {
                 }
             ]
         }
-    },
-
-    _initImage: function () {
-        // $('.btn-slideshow').on('click', $.proxy(function() {
-        //     var slideshow = this._popup.data("slideshow");
-        //     if(slideshow) {
-        //        this._popup.removeData('slideshow');
-        //     } else {
-        //         this._popup.data('slideshow', 'true');
-        //     }
-        //     slideshow = this._popup.data("slideshow");
-        //
-        //     this._updateSlideshowButtonIcon();
-        //     if(!this._player.isPlaying()) {
-        //         this._initAudio();
-        //     }
-        //
-        //     if(slideshow && !this._player.isPlaying()) {
-        //         this._toggleWidget();
-        //     }
-        //
-        //     return false;
-        // }, this));
-    },
-
-    _initBackToAlbums: function (element) {
-        $(element).on('click', function () {
-            $.magnificPopup.close();
-        });
-    },
-
-    _initSlideShow: function (element) {
-        $(element).click($.proxy(function () {
-            this._handleSlideShow(element);
-        }, this));
     }
-
-    // _initAudio: function() {
-    //     var audio = $('.mfp-title .image-caption').data('audio');
-    //     var controls = $('.mfp-controls');
-    //     var slideshow = this._popup.data('slideshow');
-    //
-    //     if(audio && audio != "") {
-    //         slideshow ? this._initPauseButton() : this._initPlayButton();
-    //
-    //         controls.show();
-    //         controls.off('click');
-    //         controls.on('click', $.proxy(this._toggleWidget, this));
-    //
-    //         this._reloadWidget(audio, slideshow);
-    //     } else {
-    //         controls.hide();
-    //     }
-    // },
-
-    // _togglePlayButton: function() {
-    //     $('.audio').toggle();
-    // },
-    //
-    // _initPlayButton: function(){
-    //     $('.fa-play', '.mfp-controls').show();
-    //     $('.fa-pause', '.mfp-controls').hide();
-    // },
-    //
-    // _initPauseButton: function(){
-    //     $('.fa-play', '.mfp-controls').hide();
-    //     $('.fa-pause', '.mfp-controls').show();
-    // }
 };
 
 $(function () {
@@ -412,12 +213,13 @@ function handleCarouselEvents(carouselData) {
         pause: false
     });
 
+    if ($("div#type-identifier").text() == "talking_album") {
+        pauseSlide();
+    }
+
     $('#playPause').click(function () {
-        isPlaying = !isPlaying;
+        isPlaying ? pauseSlide() : playSlide();
         $(this).toggleClass("selected");
-        $(this).removeClass("fa-play").removeClass("fa-pause");
-        $(this).addClass(isPlaying ? "fa-pause" : "fa-play");
-        $("#carousel").carousel(isPlaying ? "cycle" : "pause");
     });
 
     $('#showThumbnail').click(function () {
@@ -458,28 +260,35 @@ function handleCarouselEvents(carouselData) {
 
     $('.back-to-albums').click(function () {
         Album.stopAudioPlayer();
-    })
+    });
 
     function pauseSlide() {
+        isPlaying = false;
+        $('#playPause').removeClass("fa-pause").addClass("fa-play");
         $("#carousel").carousel("pause");
     }
 
     function playSlide() {
+        isPlaying = true;
+        $('#playPause').removeClass("fa-play").addClass("fa-pause");
         $("#carousel").carousel("cycle");
+    }
 
+    function nextSlide() {
     }
 
     $('#carousel').on('slid.bs.carousel', function () {
+        pauseSlide();
         updateIndexOnSlide();
         if ($("div#type-identifier").text() == "talking_album") {
             var data = carouselData.slides[currentIndex];
-            trackId = data.trackId || "/tracks/109687709";
-            Album.prepareSoundCloudWidget(trackId);
+            var trackId = data.track_id;
+            Album.prepareSoundCloudWidget("/tracks/"+trackId);
         }
-        if(currentIndex === 0) {
-          setTimeout(function() {
-            positionFloatingText();
-          }, 500);
+        if (currentIndex === 0) {
+            setTimeout(function () {
+                positionFloatingText();
+            }, 500);
         }
     });
 

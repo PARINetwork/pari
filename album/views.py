@@ -113,7 +113,8 @@ def get_slide_detail(request, slug):
         d = datetime.datetime.strptime(str(album.first_published_at)[:10], "%Y-%m-%d")
         date = d.strftime('%d %b,%Y')
         slide_dict['image_captured_date'] = date
-        slide_dict['slide_location'] = slide.image.locations.all().first().district
+        slide_dict['slide_location'] = ",".join(slide.image.locations.all().values_list('district', flat=True))
+        slide_dict['track_id'] = slide.audio
         response_data['slides'].append(slide_dict)
 
     response_data['authors'] = []
