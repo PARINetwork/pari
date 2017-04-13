@@ -74,12 +74,14 @@
             </a>
           </li>
           <li class="icon">
-            <a href="https://twitter.com/home?status=Talking%20Albums+http%3A//development.ruralindiaonline.org/albums/talking/" target="_blank" class="link-light">
+            <a href="https://twitter.com/home?status={{ request.build_absolute_uri|urlencode }}"
+               target="_blank" class="link-light">
                 <i class="fa fa-twitter" aria-hidden="true"></i>
+
             </a>
           </li>
           <li class="icon">
-              <a href="https://facebook.com/sharer.php?u=http%3A//development.ruralindiaonline.org/albums/talking/&amp;t=Talking%20Albums" target="_blank" class="link-light">
+              <a href="https://facebook.com/sharer.php?u={{ request.build_absolute_uri|urlencode }}" target="_blank" class="link-light">
                   <i class="fa fa-facebook" aria-hidden="true"></i>
               </a>
           </li>
