@@ -169,8 +169,6 @@ html, body {
   padding: 0px 30px;
   background: rgba(0, 0, 0, 0.3);
   overflow: hidden;
-  height: 45%;
-  width: 30%;
   h1 {
     color: white;
     font-size: 30px;
@@ -184,6 +182,7 @@ html, body {
   line-height: normal;
   margin: 0px;
   height: auto;
+
 }
 
 .photo-album section .carousel-container ul li.item:first-child .floating-text .photographer {
@@ -503,9 +502,9 @@ ul.audio-player-controls, ul.audio-player-controls li, .audio-player-controls ul
   }
 
   .photo-album section .carousel-container ul li.item:first-child .floating-text {
-    width: 100%;
     left: 0 !important;
     overflow: hidden;
+
   }
 
   .photo-album section .carousel-container ul li.item:first-child .floating-text h1 {
@@ -514,6 +513,9 @@ ul.audio-player-controls, ul.audio-player-controls li, .audio-player-controls ul
 
   .photo-album section .carousel-container ul li.item:first-child .floating-text p {
     padding-top: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .photo-album section .carousel-container ul li.item:first-child .floating-text .place {

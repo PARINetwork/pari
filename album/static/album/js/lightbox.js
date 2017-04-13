@@ -385,7 +385,8 @@ function positionFloatingText() {
     var contentHeight = image.get(0).offsetHeight * 0.4,
         contentWidth = image.get(0).offsetWidth * 0.5;
 
-    contentHeight = contentHeight < 240 ? 240 : contentHeight;
+    contentHeight = contentHeight < 245 ? 245 : contentHeight;
+    contentWidth = contentWidth < 415 ? 415 : contentWidth;
 
     var top = image.get(0).offsetTop + (image.get(0).offsetHeight - contentHeight) / 2;
 
@@ -393,6 +394,8 @@ function positionFloatingText() {
     $(".floating-text").css({
         left: image.get(0).offsetLeft + (image.get(0).offsetLeft * 0.15) + 40,
         top: top,
+        height: contentHeight,
+        width: contentWidth
 
     });
 }
@@ -429,7 +432,7 @@ function handleCarouselEvents(carouselData) {
     $('#showSlideInfo').click(function () {
         $(this).toggleClass("selected");
         $(this).removeClass("fa-info-circle").removeClass("fa-angle-right");
-        $(this).addClass($(this).hasClass("selected") ? "fa-angle-right" : "fa-info-circle")
+        $(this).addClass($(this).hasClass("selected") ? "fa-angle-right" : "fa-info-circle");
         $(".photo-album").toggleClass("show-slide-info");
 
         setTimeout(function () {
@@ -441,12 +444,16 @@ function handleCarouselEvents(carouselData) {
         var index = $(event.currentTarget).index('.thumbnail-list li');
         $("#carousel").carousel(index);
         toggleThumbnail();
-        playSlide();
+        if (isPlaying == true){
+            playSlide();
+        }
     });
 
     $('.close-thumbnail').click(function (event) {
         toggleThumbnail();
-        playSlide();
+        if (isPlaying == true){
+            playSlide();
+        }
     });
 
     $('.back-to-albums').click(function () {
