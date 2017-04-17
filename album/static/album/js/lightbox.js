@@ -274,11 +274,10 @@ function handleCarouselEvents(carouselData) {
         $("#carousel").carousel("cycle");
     }
 
-    function nextSlide() {
-    }
-
     $('#carousel').on('slid.bs.carousel', function () {
-        pauseSlide();
+        if ($("div#type-identifier").text() == "talking_album") {
+            pauseSlide();
+        }
         updateIndexOnSlide();
         if ($("div#type-identifier").text() == "talking_album") {
             var data = carouselData.slides[currentIndex];
