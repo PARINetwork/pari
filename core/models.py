@@ -40,9 +40,56 @@ class StaticPage(Page):
     def get_absolute_url(self):
         return reverse("static_page", kwargs={"slug": self.slug})
 
+class FeaturedSectionBlock(StructBlock):
+    title = blocks.CharBlock()
+    link_title = blocks.CharBlock()
+    featured_page = blocks.PageChooserBlock()
+
+class HomePageAdminForm(WagtailAdminPageForm):
+    in_focus_title = forms.CharField(required=True)
+    in_focus_link = forms.CharField(required=True)
+    in_focus_link_text = forms.CharField(required=True)
+
+    def __init__(self, *args, **kwargs):
+        super(HomePageAdminForm, self).__init__(*args, **kwargs)
+        self.fields['talking_album'] = forms.CharField(max_length=50,
+                                    widget=forms.Select(
+                                    choices=Album.objects.filter(~Q(slides__audio='')).distinct().values_list('page_ptr_id', 'title')))
+        self.fields['photo_album'] = forms.CharField(max_length=50,
+                                  widget=forms.Select(choices=Album.objects.filter(Q(slides__audio='')).distinct().values_list('page_ptr_id', 'title')))
+        self.fields['video'] = forms.CharField(max_length=50,
+                            widget=forms.Select(choices=Article.objects.filter(Q(categories__name='VideoZone')).values_list('page_ptr_id', 'title')))
+
+    def clean_in_focus_page1(self):
+        page1 = self.cleaned_data['in_focus_page1']
+        if not page1:
+            raise forms.ValidationError(_('Please add a page'))
+        return page1
+
+    def clean_in_focus_page2(self):
+        page2 = self.cleaned_data['in_focus_page2']
+        if not page2:
+            raise forms.ValidationError(_('Please add a page'))
+        return page2
+
+    def clean_talking_album(self):
+        talking_album = Album.objects.get(page_ptr_id=self.cleaned_data['talking_album'])
+        return talking_album
+
+    def clean_photo_album(self):
+        photo_album = Album.objects.get(page_ptr_id=self.cleaned_data['photo_album'])
+        return photo_album
+
+    def clean_video(self):
+        video = Article.objects.get(page_ptr_id=self.cleaned_data['video'])
+        return video
 
 @python_2_unicode_compatible
 class HomePage(Page):
+    featured_content = StreamField([
+        ("featured_section", FeaturedSectionBlock()),
+    ], blank=True, null=True)
+
     # TODO: Carousel is temporary and being phased out
     carousel_0 = models.ForeignKey("wagtailcore.Page",
                                    null=True, blank=True,
@@ -84,24 +131,29 @@ class HomePage(Page):
                                    null=True, blank=True,
                                    on_delete=models.SET_NULL,
                                    related_name="+")
+    in_focus_title = models.TextField(blank=True, null=True, verbose_name="Title")
+    in_focus_link = models.TextField(blank=True, null=True, verbose_name="Link")
+    in_focus_link_text = models.TextField(blank=True, null=True, verbose_name="Link Text")
+    in_focus_page1 = models.ForeignKey("wagtailcore.Page",
+                                   null=True, blank=True,
+                                   on_delete=models.PROTECT,
+                                   related_name="+", verbose_name="Page one")
+    in_focus_page2 = models.ForeignKey("wagtailcore.Page",
+                                   null=True, blank=True,
+                                   on_delete=models.PROTECT,
+                                   related_name="+", verbose_name="Page two")
 
-    announcements = RichTextField(blank=True)
+    talking_album = models.ForeignKey("album.Album",
+                                      null=True, blank=True, related_name='+', on_delete=models.PROTECT)
+    photo_album = models.ForeignKey("album.Album",
+                                    null=True, blank=True, related_name='+', on_delete=models.PROTECT)
+    video = models.ForeignKey("article.Article",
+                              null=True, blank=True, on_delete=models.PROTECT)
 
-    strap = StreamField([
-        ("tagline_1", blocks.RichTextBlock()),
-        ("tagline_2", blocks.RichTextBlock()),
-    ])
-    about = StreamField([
-        ("column_1", blocks.RichTextBlock()),
-        ("column_2", blocks.RichTextBlock()),
-        ("column_3", blocks.RichTextBlock()),
-        ("column_4", blocks.RichTextBlock()),
-    ])
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
 
     content_panels = Page.content_panels + [
-        StreamFieldPanel('strap'),
-        FieldPanel('announcements'),
+        MultiFieldPanel([StreamFieldPanel('featured_content')], heading="Featured Content", classname="collapsible "),
         MultiFieldPanel([
             PageChooserPanel('carousel_0'),
             PageChooserPanel('carousel_1'),
@@ -114,9 +166,20 @@ class HomePage(Page):
             PageChooserPanel('carousel_8'),
             PageChooserPanel('carousel_9'),
         ], "Carousel"),
-        StreamFieldPanel('about'),
+        MultiFieldPanel([
+            FieldPanel('in_focus_title'),
+            FieldPanel('in_focus_link'),
+            FieldPanel('in_focus_link_text'),
+            PageChooserPanel('in_focus_page1'),
+            PageChooserPanel('in_focus_page2'),
+        ], "In Focus"),
+        FieldPanel('talking_album'),
+        FieldPanel('photo_album'),
+        FieldPanel('video'),
         FieldPanel('language'),
     ]
+
+    base_form_class = HomePageAdminForm
 
     def __str__(self):
         return _("HomePage")
