@@ -45,32 +45,23 @@ class FeaturedSectionBlock(StructBlock):
     link_title = blocks.CharBlock()
     featured_page = blocks.PageChooserBlock()
 
-class HomePageAdminForm(WagtailAdminPageForm):
-    in_focus_title = forms.CharField(required=True)
-    in_focus_link = forms.CharField(required=True)
-    in_focus_link_text = forms.CharField(required=True)
 
+class HomePageAdminMediaForm(WagtailAdminPageForm):
     def __init__(self, *args, **kwargs):
-        super(HomePageAdminForm, self).__init__(*args, **kwargs)
+        super(HomePageAdminMediaForm, self).__init__(*args, **kwargs)
         self.fields['talking_album'] = forms.CharField(max_length=50,
-                                    widget=forms.Select(
-                                    choices=Album.objects.filter(~Q(slides__audio='')).distinct().values_list('page_ptr_id', 'title')))
+                                                       widget=forms.Select(
+                                                           choices=Album.objects.filter(
+                                                               ~Q(slides__audio='')).distinct().values_list(
+                                                               'page_ptr_id', 'title')))
         self.fields['photo_album'] = forms.CharField(max_length=50,
-                                  widget=forms.Select(choices=Album.objects.filter(Q(slides__audio='')).distinct().values_list('page_ptr_id', 'title')))
+                                                     widget=forms.Select(choices=Album.objects.filter(
+                                                         Q(slides__audio='')).distinct().values_list('page_ptr_id',
+                                                                                                     'title')))
         self.fields['video'] = forms.CharField(max_length=50,
-                            widget=forms.Select(choices=Article.objects.filter(Q(categories__name='VideoZone')).values_list('page_ptr_id', 'title')))
-
-    def clean_in_focus_page1(self):
-        page1 = self.cleaned_data['in_focus_page1']
-        if not page1:
-            raise forms.ValidationError(_('Please add a page'))
-        return page1
-
-    def clean_in_focus_page2(self):
-        page2 = self.cleaned_data['in_focus_page2']
-        if not page2:
-            raise forms.ValidationError(_('Please add a page'))
-        return page2
+                                               widget=forms.Select(choices=Article.objects.filter(
+                                                   Q(categories__name='VideoZone')).values_list('page_ptr_id',
+                                                                                                'title')))
 
     def clean_talking_album(self):
         talking_album = Album.objects.get(page_ptr_id=self.cleaned_data['talking_album'])
@@ -83,6 +74,23 @@ class HomePageAdminForm(WagtailAdminPageForm):
     def clean_video(self):
         video = Article.objects.get(page_ptr_id=self.cleaned_data['video'])
         return video
+
+class HomePageAdminForm(HomePageAdminMediaForm):
+    in_focus_title = forms.CharField(required=True)
+    in_focus_link = forms.CharField(required=True)
+    in_focus_link_text = forms.CharField(required=True)
+
+    def clean_in_focus_page1(self):
+        page1 = self.cleaned_data['in_focus_page1']
+        if not page1:
+            raise forms.ValidationError(_('Please add a page'))
+        return page1
+
+    def clean_in_focus_page2(self):
+        page2 = self.cleaned_data['in_focus_page2']
+        if not page2:
+            raise forms.ValidationError(_('Please add a page'))
+        return page2
 
 @python_2_unicode_compatible
 class HomePage(Page):
@@ -225,37 +233,15 @@ class GuidelinesPage(Page):
     def __str__(self):
         return _("GuidelinesPage")
 
-class GalleryHomePageAdminForm(WagtailAdminPageForm):
+class GalleryHomePageAdminForm(HomePageAdminMediaForm):
     photo_title = forms.CharField(required=True)
     photo_link = forms.CharField(required=False)
-
-    def __init__(self, *args, **kwargs):
-        super(GalleryHomePageAdminForm, self).__init__(*args, **kwargs)
-        self.fields['talking_album'] = forms.CharField(max_length=50,
-                                    widget=forms.Select(
-                                    choices=Album.objects.filter(~Q(slides__audio='')).distinct().values_list('page_ptr_id', 'title')))
-        self.fields['photo_album'] = forms.CharField(max_length=50,
-                                  widget=forms.Select(choices=Album.objects.filter(Q(slides__audio='')).distinct().values_list('page_ptr_id', 'title')))
-        self.fields['video'] = forms.CharField(max_length=50,
-                            widget=forms.Select(choices=Article.objects.filter(Q(categories__name='VideoZone')).values_list('page_ptr_id', 'title')))
 
     def clean_photo_of_the_week(self):
         photo_of_the_week = self.cleaned_data["photo_of_the_week"]
         if photo_of_the_week and photo_of_the_week.photographers.count() == 0:
             raise forms.ValidationError(_('Please add photographers to the image'))
         return self.cleaned_data["photo_of_the_week"]
-
-    def clean_talking_album(self):
-        talking_album = Album.objects.get(page_ptr_id=self.cleaned_data['talking_album'])
-        return talking_album
-
-    def clean_photo_album(self):
-        photo_album = Album.objects.get(page_ptr_id=self.cleaned_data['photo_album'])
-        return photo_album
-
-    def clean_video(self):
-        video = Article.objects.get(page_ptr_id=self.cleaned_data['video'])
-        return video
 
 @python_2_unicode_compatible
 class GalleryHomePage(Page):
