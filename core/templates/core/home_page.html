@@ -29,82 +29,23 @@
         <div id="myCarousel-1" class="carousel slide" data-ride="carousel">
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <img class="img-responsive center-align" src="{{ STATIC_URL }}img/edited_g007_25.max-1400x1120.jpg"
-                         alt="sample content">
-                    <div class="container">
-                        <div class="item-container">
-                            <div>
-                                <span>FEATURED</span>
-                            </div>
-                            <h1>to market, to market…</h1>
-                            <div>
-                                <a href="#">Visible Work, Invisible Women <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <img class="img-responsive center-align" src="{{ STATIC_URL }}img/edited_g007_25.max-1400x1120.jpg"
-                         alt="sample content">
-                    <div class="container">
-                        <div class="item-container">
-                            <div>
-                                <span>FEATURED</span>
-                            </div>
-                            <h1>to market, to market…</h1>
-                            <div>
-                                <a href="#">Visible Work, Invisible Women <i class="fa fa-angle-right"></i></a>
+                {% for featured_content in page.featured_content %}
+                    <div class=" {% if forloop.first %}active{% endif %} item">
+                        <img class="img-responsive center-align" src="{{ STATIC_URL }}img/edited_g007_25.max-1400x1120.jpg"
+                             alt="sample content">
+                        <div class="container">
+                            <div class="item-container">
+                                <div>
+                                    <span>FEATURED</span>
+                                </div>
+                                <h1>{{ featured_content.value.title }}</h1>
+                                <div>
+                                    <a href="{{ featured_content.value.featured_page.url }}">{{ featured_content.value.link_title }}<i class="fa fa-angle-right margin-left"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <img class="img-responsive center-align" src="{{ STATIC_URL }}img/edited_g007_25.max-1400x1120.jpg"
-                         alt="sample content">
-                    <div class="container">
-                        <div class="item-container">
-                            <div>
-                                <span>FEATURED</span>
-                            </div>
-                            <h1>to market, to market…</h1>
-                            <div>
-                                <a href="#">Visible Work, Invisible Women <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <img class="img-responsive center-align" src="{{ STATIC_URL }}img/edited_g007_25.max-1400x1120.jpg"
-                         alt="sample content">
-                    <div class="container">
-                        <div class="item-container">
-                            <div>
-                                <span>FEATURED</span>
-                            </div>
-                            <h1>to market, to market…</h1>
-                            <div>
-                                <a href="#">Visible Work, Invisible Women <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <img class="img-responsive center-align" src="{{ STATIC_URL }}img/edited_g007_25.max-1400x1120.jpg"
-                         alt="sample content">
-                    <div class="container">
-                        <div class="item-container">
-                            <div>
-                                <span>FEATURED</span>
-                            </div>
-                            <h1>to market, to market…</h1>
-                            <div>
-                                <a href="#">Visible Work, Invisible Women <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                {% endfor %}
             <!-- Left and right controls -->
             <div class="container">
                 <div class="carousel-control-container">
@@ -116,6 +57,7 @@
                     </a>
                 </div>
             </div>
+        </div>
         </div>
         <div class="container">
             <div id="myCarousel-2" class="carousel slide" data-ride="carousel">
@@ -197,56 +139,66 @@
                 <div class="row">
                     <div class="col-lg-6 margin-btm-20px">
                         <span class="tags-label">IN FOCUS</span>
-                        <span class="subtitle-primary font-l">Stories of a demonetised India</span>
+                        <span class="subtitle-primary font-l">{{ page.in_focus_title }}</span>
                     </div>
                     <div class="col-lg-6 text-right margin-btm-20px">
-                        <a href="#" class="link-dark">All stories about demonetisation <i class="fa fa-angle-right red-angle-right"></i></a>
+                        <a href="{{ page.in_focus_link }}" class="link-dark">{{ page.in_focus_link_text }} <i class="fa fa-angle-right red-angle-right"></i></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
                         <div class="row">
+                        {% with page.in_focus_page1 as item %}
                             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <img class="img-responsive" src="{{ STATIC_URL }}img/stories-9.jpg"
+                                {% image item.specific.featured_image max-800x800 as featured_image %}
+                                <img class="img-responsive" src="{{ featured_image.url }}"
                                      alt="sample content">
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <h3>BPL XI: they’re mobile, their money isn’t</h3>
+                                <h3>{{ item.title }}</h3>
                                 <div>
-                                    <a href="#">
-                                        <i class="fa fa-pencil"></i>
-                                        <span>P. Sainath</span>
-                                    </a>
-                                    <a href="#">
+                                    {% for author in item.specific.authors.all %}
+                                        <a href="{% url "author-detail" author.slug %}"><i class="fa fa-pencil"></i><span>{{ author.name }}</span>
+                                        </a>
+                                    {% endfor %}
+                                    {% for location in item.specific.locations.all %}
+                                        <a href="{% url "location-detail" location.slug %}">
                                         <i class="fa fa-map-marker"></i>
-                                        <span>Adul</span>
-                                    </a>
+                                        <span>{{ location.name }}</span>
+                                        </a>
+                                    {% endfor %}
                                 </div>
-                                <div class="date">23 NOV 2015</div>
+                                <div class="date">{{ item.specific.latest_revision_created_at|date }}</div>
                             </div>
                         </div>
+                    {% endwith %}
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
                         <div class="row">
+                        {% with page.in_focus_page2 as item %}
                             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <img class="img-responsive" src="{{ STATIC_URL }}img/stories-9.jpg"
+                                {% image item.specific.featured_image max-800x800 as featured_image %}
+                                <img class="img-responsive" src="{{ featured_image.url }}"
                                      alt="sample content">
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <h3>BPL XI: they’re mobile, their money isn’t</h3>
+                                <h3>{{ item.title }}</h3>
                                 <div>
-                                    <a href="#">
-                                        <i class="fa fa-pencil"></i>
-                                        <span>P. Sainath</span>
-                                    </a>
-                                    <a href="#">
+                                    {% for author in item.specific.authors.all %}
+                                        <a href="{% url "author-detail" author.slug %}"><i class="fa fa-pencil"></i><span>{{ author.name }}</span>
+                                        </a>
+                                    {% endfor %}
+                                    {% for location in item.specific.locations.all %}
+                                        <a href="{% url "location-detail" location.slug %}">
                                         <i class="fa fa-map-marker"></i>
-                                        <span>Adul</span>
-                                    </a>
+                                        <span>{{ location.name }}</span>
+                                        </a>
+                                    {% endfor %}
                                 </div>
-                                <div class="date">23 NOV 2015</div>
+                                <div class="date">{{ item.specific.latest_revision_created_at|date }}</div>
                             </div>
                         </div>
+                    {% endwith %}
                     </div>
                 </div>
             </div>
