@@ -89,7 +89,7 @@
                         {% endif %}
                     {% endif %}
                 </div>
-             <h2><span itemprop="headline">{{ article.title }}</span></h2>
+             <h2><span itemprop="headline" id="article-gallery-title">{{ article.title }}</span></h2>
              <p>{{ article.strap }}</p>
              <ul class="clearfix">
                  <li>{% for author in article.authors.all %}
@@ -317,7 +317,9 @@
                   </div>
                   <div class="right slide-info">
                       <div class="description info"></div>
-                      <div class="album_title info"></div>
+                      <div class="title-meta-data">
+                        <div class="album-title info"></div>
+                      </div>
                   </div>
                 </section>
             </div>
