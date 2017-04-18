@@ -34,7 +34,7 @@
     <div class='face-value'>{{ face.location.panchayat }}</div>
 {% endif %}
 
-{% if face.location.sub_district_name  and face.location.sub_district_type %}
+{% if face.location.sub_district_name and face.location.sub_district_type %}
     <div class='face-label'>{{ face.location.sub_district_type|upper }}</div>
     <div class='face-value'>{{ face.location.sub_district_name }}</div>
 {% endif %}
@@ -49,17 +49,19 @@
     <div class='face-value'>{{ face.location.state }}</div>
 {% endif %}
 
-{% if face.image.photographers %}
+{% if face.image.photographers.all %}
     <div class='face-label'>PHOTOGRAPHER</div>
-    <div class='face-value'>
-        <span>{{ face.image.photographers.all|join:", "}}<span>
-        {% if face.image.camera %}
-            <span>• {{ face.image.camera }}<span>
-        {%endif%}
-        {% if face.image.date %}
-            <span>• {{ face.image.date|date:'M d, Y' }}<span>
-        {%endif%}
-    </div>
+    <div class='face-value'>{{ face.image.photographers.all|join:", "}}</div>
+{% endif %}
+
+{% if face.image.camera %}
+    <div class='face-label'>CAMERA</div>
+    <div class='face-value'>{{ face.image.camera }}</div>
+{% endif %}
+
+{% if face.image.date %}
+    <div class='face-label'>DATE PHOTO WAS TAKEN</div>
+    <div class='face-value'>{{ face.image.date|date:'M d, Y' }}</div>
 {% endif %}
 
 {% if face.location not in face.image.locations.all and face.image.locations.all %}
