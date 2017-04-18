@@ -19,6 +19,7 @@ from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailimages.formats import get_image_format
 from wagtail.wagtailimages.models import AbstractImage, AbstractRendition
 from wagtail.wagtailsearch import index
+from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 from album.models import Album
 from article.models import Article
@@ -43,7 +44,8 @@ class StaticPage(Page):
 class FeaturedSectionBlock(StructBlock):
     title = blocks.CharBlock()
     link_title = blocks.CharBlock()
-    featured_page = blocks.PageChooserBlock()
+    featured_link = blocks.CharBlock()
+    featured_page = ImageChooserBlock()
 
 
 class HomePageAdminMediaForm(WagtailAdminPageForm):
