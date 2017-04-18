@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.views.generic import ListView
 from django.db import connections
 from django.contrib.sites.requests import RequestSite
@@ -33,8 +34,8 @@ class FaceDetail(ListView):
     def get_queryset(self):
         alphabet = self.kwargs['alphabet']
         return Face.objects.live().filter(
-            location__district__istartswith=alphabet
-        ).order_by('-first_published_at')
+            Q(location__district__istartswith=alphabet) | Q(image__locations__district__istartswith=alphabet)
+        ).order_by('-first_published_at').distinct()
 
     def get_context_data(self):
         context = super(FaceDetail, self).get_context_data()
