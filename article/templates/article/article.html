@@ -89,7 +89,7 @@
                         {% endif %}
                     {% endif %}
                 </div>
-             <h2><span itemprop="headline">{{ article.title }}</span></h2>
+             <h2><span itemprop="headline" id="article-gallery-title">{{ article.title }}</span></h2>
              <p>{{ article.strap }}</p>
              <ul class="clearfix">
                  <li>{% for author in article.authors.all %}
@@ -297,6 +297,7 @@
                         <i class="fa fa-angle-left back-to-albums" ></i>
                     </div>
                     <div class="right right-icons">
+                        <a href="#" class="fa fa-external-link open-in-new-tab" target="_blank"></a>
                         <i id="showSlideInfo" href="#" class="fa fa-info-circle show-slide-info"></i>
                     </div>
                     <div class="carousel-index"></div>
@@ -317,7 +318,9 @@
                   </div>
                   <div class="right slide-info">
                       <div class="description info"></div>
-                      <div class="album_title info"></div>
+                      <div class="title-meta-data">
+                        <div class="album-title info"></div>
+                      </div>
                   </div>
                 </section>
             </div>
@@ -326,9 +329,9 @@
       {% endverbatim %}
     {% verbatim %}
       <script id="carouselPage" type="text/x-jsrender">
-        <li class="{{:carouselPageClass}}">
+        <li class="{{:carouselPageClass}}" data-slide-to={{:id}}>
             <div class="wrapper">
-                <img src="{{:srcset}}" />
+                <img src="{{:src}}" />
             </div>
         </li>
       </script>

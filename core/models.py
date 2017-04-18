@@ -43,9 +43,9 @@ class StaticPage(Page):
 
 class FeaturedSectionBlock(StructBlock):
     title = blocks.CharBlock()
-    link_title = blocks.CharBlock()
-    featured_link = blocks.CharBlock()
-    featured_page = ImageChooserBlock()
+    link_text = blocks.CharBlock()
+    url = blocks.CharBlock()
+    featured_image = ImageChooserBlock()
 
 
 class HomePageAdminMediaForm(WagtailAdminPageForm):

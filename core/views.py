@@ -32,12 +32,39 @@ from collections import OrderedDict
 def home_page(request, slug="home-page"):
     home_page = HomePage.objects.get(slug=slug)
     translations = get_translations_for_page(home_page)
-    return render(request, "core/home_page.html", {
+    video = home_page.video
+    talking_album = home_page.talking_album
+    photo_album = home_page.photo_album
+    home_context = {
+        'talking_album': {
+            'image': talking_album.slides.first().image,
+            'count':talking_album.slides.count(),
+            'photographers': get_unique_photographers(talking_album),
+            'section_model': talking_album,
+        },
+        'photo_album': {
+            'image': photo_album.slides.first().image,
+            'count': photo_album.slides.count(),
+            'photographers': get_unique_photographers(photo_album),
+            'section_model': photo_album,
+        },
+        'video': {
+            'image': video.featured_image,
+            'photographers': video.authors.all(),
+            'section_model': video,
+        },
         "page": home_page,
         "categories": Category.objects.all(),
         "translations": translations,
         "current_page": 'home-page',
-    })
+    }
+    return render(request, "core/home_page.html", home_context)
+
+def get_unique_photographers(talking_album):
+    photographers = []
+    for slide in talking_album.slides.all():
+        photographers.extend(slide.image.photographers.all())
+    return set(photographers)
 
 
 def static_page(request, slug=None):
