@@ -190,14 +190,17 @@
   }
 }
 
-.related-stories{
-  .related-tile{
-    margin-bottom: 40px;
-  }
-  .article-image{
+.article-tile{
+  margin-bottom: 10px;
+  position: relative;
+  padding: 20px 20px 20px 20px;
+  overflow: hidden;
+}
+
+.article-image{
     a {
       display: inline-block;
-      height: 193px;
+      height: 181px;
       word-break: break-all;
       overflow: hidden;
       width: 100%;
@@ -206,37 +209,57 @@
       word-break: break-all;
       width: 100%;
     }
-  }
+}
 
-    .related-title{
-      &:hover{
-        color: black;
+.article-tile-info {
+  height: 193px;
+  padding-left: 15px;
+  .article-tile-title{
+      a{
+        h3{
+        margin-top: 0;
+        color: @text-dark;
+        }
+        &:hover{
+          color: @text-dark;
+        }
       }
     }
 
-  .related-sub-data{
+  .sub-data{
     width: auto;
     position: relative;
     display: inline-block;
     margin-right: 10px;
-    .fa.fa-map-marker{
-        color: @text-title-light;
-    }
-    .fa.fa-pencil{
-        color: @text-title-light;
-    }
     span{
       margin-right: 0px;
     }
+
+    .sub-data-author{
+      padding-top: 10px;
+      a{
+        color: @link-primary;
+      }
+    }
+
+    .sub-data-location{
+      padding-top: 10px;
+      a{
+        color: @grey;
+      }
+    }
+
     a{
       margin-right: 2px;
+      .font-size(10);
+      &:hover{
+        color: @link;
+        i{
+          color: @link;
+        }
+      }
     }
   }
-
-  h3{
-    color: @text-dark;
-  }
-  padding: 40px 0;
   p{
     color: @grey;
     font-weight: 300;
@@ -247,22 +270,13 @@
     font-weight: 400;
     color: @text-light;
   }
-  a{
-    color: @link-primary;
-    .font-size(16);
-    &:hover{
-      color: @link;
-      i{
-        color: @link;
-      }
+
+  .date {
+      padding-top: 10px;
+    a {
+      .font-size(12);
+      color: @grey;
     }
-    i{
-      .font-size(20);
-      color: @text-light;
-    }
-  }
-  .date a{
-    color: @grey;
   }
   button{
     background: @link-primary;
@@ -273,14 +287,19 @@
   }
 }
 
-
 @media (max-width: @screen-xs-max) {
+  .article-tile {
+    padding-bottom: 0px;
+  }
   .banner-container .banner-info{
     position: static;
     background: @bg-dark;
   }
 }
 @media (min-width: @screen-lg-min) {
+  .article-image {
+    padding: 0;
+  }
   .banner-container{
     width: 100%;
     height: 100vh;

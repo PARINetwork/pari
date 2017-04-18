@@ -227,12 +227,14 @@
       </div>
     </div>
     <div class="container article-grid related-stories">
-        <h4>RELATED STORIES</h4>
+        {% if article.related_articles %}
+            <h4>RELATED STORIES</h4>
+        {% endif %}
         <div class="row">
-           {% for related_article in article.related_articles %}
-            <div class="col-lg-6 col-md-6 related-tile">
+           {% for related_article in article %}
+            <div class="col-lg-6 col-md-6 article-tile">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 article-image">
                         {% if related_article.featured_image %}
                             <div class="article-image">{% image related_article.featured_image fill-270x270 as featured_image %}
                                 <a class="article-image" href="{{ related_article.get_absolute_url }}">
@@ -250,25 +252,29 @@
                             </div>
                         {% endif %}
                     </div>
-                    <div class="col-lg-6 related-info">
-                        <a class="related-title" href="{{ related_article.get_absolute_url }}"> <h3> {{ related_article.title|truncatechars:70 }}</h3></a>
+                    <div class="col-lg-6 article-tile-info">
+                        <div class="article-tile-title">
+                            <a href="{{ related_article.get_absolute_url }}">
+                                <h3> {{ related_article.title|truncatechars:70 }}</h3>
+                            </a>
+                        </div>
                         <div>
-                            <div class="related-sub-data">
-                            <i class="fa fa-pencil"></i>
-                                {% for author in related_article.authors.all %}
-                                    <span class="tag-space">
-                                    <a href="{% url "author-detail" author.slug %}">{{ author.name }}</a>
-                                    {% if not forloop.last %}, {% endif %}
-                                    </span>
-                                {% endfor %}
-                            </div>
-                            <div class="related-sub-data">
-                                <i class="fa fa-map-marker"></i>
-                                {% for location in related_article.locations.all %}
-                                    <span>
-                                        <a  href="{% url "location-detail" location.slug %}">{{  location.name }}{% if not forloop.last %},{% endif %}</a>
-                                    </span>
-                                {%  endfor %}
+                            <div class="sub-data">
+                                <div class="sub-data-author">
+                                    {% for author in related_article.authors.all %}
+                                        <span class="tag-space">
+                                        <a href="{% url "author-detail" author.slug %}">{{ author.name }}</a>
+                                        {% if not forloop.last %}, {% endif %}
+                                        </span>
+                                    {% endfor %}
+                                </div>
+                                <div class="sub-data-location">
+                                    {% for location in related_article.locations.all %}
+                                        <span>
+                                            <a  href="{% url "location-detail" location.slug %}">{{  location.name }}{% if not forloop.last %},{% endif %}</a>
+                                        </span>
+                                    {%  endfor %}
+                                </div>
                             </div>
                         </div>
                         <div class="date">
