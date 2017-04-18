@@ -31,7 +31,9 @@
             <div class="carousel-inner" role="listbox">
                 {% for featured_content in page.featured_content %}
                     <div class=" {% if forloop.first %}active{% endif %} item">
-                        <img class="img-responsive center-align" src="{{ STATIC_URL }}img/edited_g007_25.max-1400x1120.jpg"
+{#                        {% image featured_content.value.featured_page.image fill-500x320 as featured_image %}#}
+                        <img class="img-responsive center-align"
+                             src="{{ featured_content.value.featured_image.file.url }}"
                              alt="sample content">
                         <div class="container">
                             <div class="item-container">
@@ -40,24 +42,25 @@
                                 </div>
                                 <h1>{{ featured_content.value.title }}</h1>
                                 <div>
-                                    <a href="{{ featured_content.value.featured_page.url }}">{{ featured_content.value.link_title }}<i class="fa fa-angle-right margin-left"></i></a>
+                                    <a href="{{ featured_content.value.url }}">{{ featured_content.value.link_text }}<i
+                                            class="fa fa-angle-right margin-left"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
-            <!-- Left and right controls -->
-            <div class="container">
-                <div class="carousel-control-container">
-                    <a class="left carousel-control" href="#myCarousel-1" role="button" data-slide="prev">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a class="right carousel-control" href="#myCarousel-1" role="button" data-slide="next">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
+                <!-- Left and right controls -->
+                <div class="container">
+                    <div class="carousel-control-container">
+                        <a class="left carousel-control" href="#myCarousel-1" role="button" data-slide="prev">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel-1" role="button" data-slide="next">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
         <div class="container">
             <div id="myCarousel-2" class="carousel slide" data-ride="carousel">
@@ -81,9 +84,10 @@
                                         <div class="date">
                                             {% for location in item.specific.locations.all %}
                                                 <a href="{% url "location-detail" location.slug %}">
-                                                {{ location.name }}
+                                                    {{ location.name }}
                                                 </a>
-                                                {% if not forloop.last %}, {% endif %}{% endfor %} <span class ="dot-seperator">•</span>
+                                                {% if not forloop.last %}, {% endif %}{% endfor %} <span
+                                                class="dot-seperator">•</span>
                                             <a href="{% url "archive-detail" year=item.specific.latest_revision_created_at.year month=item.specific.latest_revision_created_at.month %}">
                                                 {{ item.specific.latest_revision_created_at|date }}
                                             </a>
@@ -142,63 +146,64 @@
                         <span class="subtitle-primary font-l">{{ page.in_focus_title }}</span>
                     </div>
                     <div class="col-lg-6 text-right margin-btm-20px">
-                        <a href="{{ page.in_focus_link }}" class="link-dark">{{ page.in_focus_link_text }} <i class="fa fa-angle-right red-angle-right"></i></a>
+                        <a href="{{ page.in_focus_link }}" class="link-dark">{{ page.in_focus_link_text }} <i
+                                class="fa fa-angle-right red-angle-right"></i></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
                         <div class="row">
-                        {% with page.in_focus_page1 as item %}
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                {% image item.specific.featured_image max-800x800 as featured_image %}
-                                <img class="img-responsive" src="{{ featured_image.url }}"
-                                     alt="sample content">
-                            </div>
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <h3>{{ item.title }}</h3>
-                                <div>
-                                    {% for author in item.specific.authors.all %}
-                                        <a href="{% url "author-detail" author.slug %}"><i class="fa fa-pencil"></i><span>{{ author.name }}</span>
-                                        </a>
-                                    {% endfor %}
-                                    {% for location in item.specific.locations.all %}
-                                        <a href="{% url "location-detail" location.slug %}">
-                                        <i class="fa fa-map-marker"></i>
-                                        <span>{{ location.name }}</span>
-                                        </a>
-                                    {% endfor %}
+                            {% with page.in_focus_page1 as item %}
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                    {% image item.specific.featured_image fill-500x320 as featured_image %}
+                                    <img class="img-responsive" src="{{ featured_image.url }}"
+                                         alt="sample content">
                                 </div>
-                                <div class="date">{{ item.specific.latest_revision_created_at|date }}</div>
-                            </div>
-                        </div>
-                    {% endwith %}
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                    <a href="{{ item.url }}"><h3>{{ item.title }}</h3></a>
+                                    <div>
+                                        {% for author in item.specific.authors.all %}
+                                            <a href="{% url "author-detail" author.slug %}"><i class="fa fa-pencil"></i><span>{{ author.name }}</span>
+                                            </a>
+                                        {% endfor %}
+                                        {% for location in item.specific.locations.all %}
+                                            <a href="{% url "location-detail" location.slug %}">
+                                                <i class="fa fa-map-marker"></i>
+                                                <span>{{ location.name }}</span>
+                                            </a>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="date">{{ item.specific.latest_revision_created_at|date }}</div>
+                                </div>
+                                </div>
+                            {% endwith %}
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
                         <div class="row">
-                        {% with page.in_focus_page2 as item %}
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                {% image item.specific.featured_image max-800x800 as featured_image %}
-                                <img class="img-responsive" src="{{ featured_image.url }}"
-                                     alt="sample content">
-                            </div>
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <h3>{{ item.title }}</h3>
-                                <div>
-                                    {% for author in item.specific.authors.all %}
-                                        <a href="{% url "author-detail" author.slug %}"><i class="fa fa-pencil"></i><span>{{ author.name }}</span>
-                                        </a>
-                                    {% endfor %}
-                                    {% for location in item.specific.locations.all %}
-                                        <a href="{% url "location-detail" location.slug %}">
-                                        <i class="fa fa-map-marker"></i>
-                                        <span>{{ location.name }}</span>
-                                        </a>
-                                    {% endfor %}
+                            {% with page.in_focus_page2 as item %}
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                    {% image item.specific.featured_image fill-500x320 as featured_image %}
+                                    <img class="img-responsive" src="{{ featured_image.url }}"
+                                         alt="sample content">
                                 </div>
-                                <div class="date">{{ item.specific.latest_revision_created_at|date }}</div>
-                            </div>
-                        </div>
-                    {% endwith %}
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                    <a href="{{ item.url }}"><h3>{{ item.title }}</h3></a>
+                                    <div>
+                                        {% for author in item.specific.authors.all %}
+                                            <a href="{% url "author-detail" author.slug %}"><i class="fa fa-pencil"></i><span>{{ author.name }}</span>
+                                            </a>
+                                        {% endfor %}
+                                        {% for location in item.specific.locations.all %}
+                                            <a href="{% url "location-detail" location.slug %}">
+                                                <i class="fa fa-map-marker"></i>
+                                                <span>{{ location.name }}</span>
+                                            </a>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="date">{{ item.specific.latest_revision_created_at|date }}</div>
+                                </div>
+                                </div>
+                            {% endwith %}
                     </div>
                 </div>
             </div>
@@ -206,7 +211,8 @@
         <div class="story-grid home-article-grid-3">
             <div class="container">
                 <div class="row">
-                    <div class="subtitle-primary font-l margin-btm-20px pad-left-10px">All that you can read on PARI</div>
+                    <div class="subtitle-primary font-l margin-btm-20px pad-left-10px">All that you can read on PARI
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid large">
@@ -237,7 +243,8 @@
                                     </h5>
                                     <h5 class="mid-below-link">
                                         <a href="{% url "contribute" slug="contribute" %}">Learn how you can contribute
-                                            <i class="fa fa-angle-right red-angle-right" aria-hidden="true"></i></a></h5>
+                                            <i class="fa fa-angle-right red-angle-right" aria-hidden="true"></i></a>
+                                    </h5>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
                                     {% image categories.4.image fill-512x512 as category_image %}
@@ -308,8 +315,8 @@
                                 <h6>Translate for PARI</h6>
                                 <p>Translate the content for PARI in the languages that you can.
                                     <a href="{% url "contribute" slug="contribute" %}">Learn more
-                                    <i class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
-                                     </a></p>
+                                        <i class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
+                                    </a></p>
                             </div>
                         </div>
                     </div>
@@ -343,125 +350,99 @@
         <div class="article-grid home-article-grid-2">
             <div class="container">
                 <div class="row">
+                    <div class="subtitle-primary font-l margin-btm-20px pad-left-10px">and many more stories in audio
+                        and video
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 article-image-icon">
-                                <img class="img-responsive" src="{{ STATIC_URL }}img/stories-9.jpg"
-                                     alt="sample content">
-                                <div><i class="fa fa-music" aria-hidden="true"></i></div>
-                                <div>16</div>
-                            </div>
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <h3>BPL XI: they’re mobile, their money isn’t</h3>
-                                <div>
-                                    <a href="#">
-                                        <i class="fa fa-pencil"></i>
-                                        <span>P. Sainath</span>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fa fa-map-marker"></i>
-                                        <span>Adul</span>
-                                    </a>
+                        {% with talking_album as item %}
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 article-image-icon">
+                                    {% image item.image fill-500x320 as featured_image %}
+                                    <img class="img-responsive" src="{{ featured_image.url }}"
+                                         alt="{{ item.image.alt_text }}">
+                                    <div><i class="fa fa-music" aria-hidden="true"></i></div>
+                                    <div>{{ item.count }}</div>
                                 </div>
-                                <div class="view-article">
-                                    <a href="#">
-                                        <i class="fa  fa-music"
-                                           aria-hidden="true"></i><span>View all Talking Albums</span><i
-                                            class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
-                                    </a>
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                    <a href="{{ item.section_model.get_absolute_url }}">
+                                        <h3>{{ item.section_model.title }}</h3></a>
+                                    <div>
+                                        {% for photographer in item.photographers %}
+                                            <a href="{% url "author-detail" photographer.slug %}"><span>{{ photographer.name }}</span></a>
+                                            {% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="view-article">
+                                        <a href="{% url "talking-album-list" %}">
+                                            <i class="fa  fa-music"
+                                               aria-hidden="true"></i><span>View all Talking Albums</span><i
+                                                class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        {% endwith %}
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 article-image-icon">
-                                <img class="img-responsive" src="{{ STATIC_URL }}img/stories-9.jpg"
-                                     alt="sample content">
-                                <div><i class="fa fa-music" aria-hidden="true"></i></div>
-                                <div>16</div>
-                            </div>
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <h3>BPL XI: they’re mobile, their money isn’t</h3>
-                                <div>
-                                    <a href="#">
-                                        <i class="fa fa-pencil"></i>
-                                        <span>P. Sainath</span>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fa fa-map-marker"></i>
-                                        <span>Adul</span>
-                                    </a>
+                        {% with video as item %}
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 article-image-icon">
+                                    {% image item.image fill-500x320 as featured_image %}
+                                    <img class="img-responsive" src="{{ featured_image.url }}"
+                                         alt="{{ item.image.alt_text }}">
+                                    <div><i class="fa fa-film" aria-hidden="true"></i></div>
                                 </div>
-                                <div class="view-article">
-                                    <a href="#">
-                                        <i class="fa  fa-music"
-                                           aria-hidden="true"></i><span>View all Talking Albums</span><i
-                                            class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
-                                    </a>
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                    <a href="{{ item.section_model.get_absolute_url }}">
+                                        <h3>{{ item.section_model.title }}</h3></a>
+                                    <div>
+                                        {% for photographer in item.photographers %}
+                                            <a href="{% url "author-detail" photographer.slug %}"><span>{{ photographer.name }}</span></a>
+                                            {% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="view-article">
+                                        <a href="{% url "gallery-detail" slug="videozone" %}">
+                                            <i class="fa  fa-music"
+                                               aria-hidden="true"></i><span>View all Videos</span><i
+                                                class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        {% endwith %}
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 article-image-icon">
-                                <img class="img-responsive" src="{{ STATIC_URL }}img/stories-9.jpg"
-                                     alt="sample content">
-                                <div><i class="fa fa-music" aria-hidden="true"></i></div>
-                                <div>16</div>
-                            </div>
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <h3>BPL XI: they’re mobile, their money isn’t</h3>
-                                <div>
-                                    <a href="#">
-                                        <i class="fa fa-pencil"></i>
-                                        <span>P. Sainath</span>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fa fa-map-marker"></i>
-                                        <span>Adul</span>
-                                    </a>
+                        {% with photo_album as item %}
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 article-image-icon">
+                                    {% image item.image fill-500x320 as featured_image %}
+                                    <img class="img-responsive" src="{{ featured_image.url }}"
+                                         alt="{{ item.image.alt_text }}">
+                                    <div><i class="fa  fa-picture-o" aria-hidden="true"></i></div>
+                                    <div>{{ item.count }}</div>
                                 </div>
-                                <div class="view-article">
-                                    <a href="#">
-                                        <i class="fa  fa-music"
-                                           aria-hidden="true"></i><span>View all Talking Albums</span><i
-                                            class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 article-image-icon">
-                                <img class="img-responsive" src="{{ STATIC_URL }}img/stories-9.jpg"
-                                     alt="sample content">
-                                <div><i class="fa fa-music" aria-hidden="true"></i></div>
-                                <div>16</div>
-                            </div>
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <h3>BPL XI: they’re mobile, their money isn’t</h3>
-                                <div>
-                                    <a href="#">
-                                        <i class="fa fa-pencil"></i>
-                                        <span>P. Sainath</span>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fa fa-map-marker"></i>
-                                        <span>Adul</span>
-                                    </a>
-                                </div>
-                                <div class="view-article">
-                                    <a href="#">
-                                        <i class="fa  fa-music"
-                                           aria-hidden="true"></i><span>View all Talking Albums</span><i
-                                            class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
-                                    </a>
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                    <a href="{{ item.section_model.get_absolute_url }}">
+                                        <h3>{{ item.section_model.title }}</h3></a>
+                                    <div>
+                                        {% for photographer in item.photographers %}
+                                            <a href="{% url "author-detail" photographer.slug %}"><span>{{ photographer.name }}</span></a>
+                                            {% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="view-article">
+                                        <a href="{% url "other-album-list" %}">
+                                            <i class="fa  fa-music"
+                                               aria-hidden="true"></i><span>View all Photo Albums</span><i
+                                                class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        {% endwith %}
                     </div>
                 </div>
             </div>
