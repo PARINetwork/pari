@@ -223,6 +223,10 @@
 
 }
 
+.mfp-gallery {
+  background-color: @bg-dark;
+}
+
 .mfp-container {
   padding: 0;
 
@@ -294,7 +298,10 @@
     padding: 40px 12px;
     margin-top: 0;
     height: 100%;
-
+    @media (max-width: @switchOver) {
+        border-top: @darker-grey solid 2px;
+        border-left: none;
+    }
     .mfp-title {
       color: #000;
       padding: 0;
