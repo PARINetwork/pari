@@ -332,7 +332,7 @@ class AffixImage(AbstractImage):
         locations = []
         for location in self.locations.all():
             locations.append(" ".join([location.name or "",
-                                       location.sub_district_type_value or "",
+                                       location.sub_district_name or "",
                                        location.district or "",
                                        location.region or "",
                                        location.state or ""]))
