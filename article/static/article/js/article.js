@@ -123,8 +123,9 @@ var ArticleAlbum = {
         totalItems = $('.carousel-items .item').length;
         $('.carousel-index').html((currentIndex + 1) + " / " + totalItems);
 
-
         var data = carouselData[currentIndex];
+        $(".right-icons .open-in-new-tab").attr("href",data.src);
+
         if (currentIndex <= carouselData.length) {
             $(".slide-info .description").html(data.description);
             $(".slide-info .album-title").text(data.article_title);
