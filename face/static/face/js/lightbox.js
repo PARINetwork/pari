@@ -30,22 +30,20 @@ var Face = {
                     var icon = slideshow ? "pause" : "play";
                     var el = item.data.el;
                     return '<div>'+
-                        '<h4 class="image-heading">'+ el.attr('data-title') + '</h4>' +
-                        '<p class="image-district">' + el.attr('data-district') + '</p> <br />' +
-                        '<p class="image-description">' + el.attr('data-description') + '</p>' +
+                        el.attr('data-face-details') +
                         '</div>'
                 }, this),
 
                 markup: '<div class="mfp-figure">'+
-                    '<div class="mfp-close"></div>'+
-                    '<div class="mfp-img-holder">'+
-                    '<div class="mfp-img"></div>'+
-                    '</div>'+
-                    '<div class="mfp-bottom-bar">'+
-                    '<div class="mfp-title"></div>'+
-                    '<div class="mfp-counter"></div>'+
-                    '</div>'+
-                    '</div>'
+                            '<div class="mfp-close"></div>'+
+                            '<div class="mfp-img-holder">'+
+                                '<div class="mfp-img"></div>'+
+                            '</div>'+
+                            '<div class="mfp-bottom-bar">'+
+                                '<div class="mfp-title"></div>'+
+                                '<div class="mfp-counter"></div>'+
+                            '</div>'+
+                        '</div>'
             },
             closeBtnInside: true,
             callbacks: {
