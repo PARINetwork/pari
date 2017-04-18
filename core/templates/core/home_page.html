@@ -174,6 +174,19 @@
                                         {% endfor %}
                                     </div>
                                     <div class="date">{{ item.specific.latest_revision_created_at|date }}</div>
+                                    {% if translations_for_infocus_article1|length > 1%}
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                {{ translations_for_infocus_article1 | length }} languages
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                {% for translation in translations_for_infocus_article1 %}
+                                                    <li>{{ translation.get_language_display }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    {% endif %}
                                 </div>
                                 </div>
                             {% endwith %}
@@ -201,6 +214,19 @@
                                         {% endfor %}
                                     </div>
                                     <div class="date">{{ item.specific.latest_revision_created_at|date }}</div>
+                                    {% if translations_for_infocus_article2|length > 1 %}
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                {{ translations_for_infocus_article2 | length }} languages
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                {% for translation in translations_for_infocus_article2 %}
+                                                    <li>{{ translation.get_language_display }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    {% endif %}
                                 </div>
                                 </div>
                             {% endwith %}
