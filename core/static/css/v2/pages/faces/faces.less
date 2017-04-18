@@ -1,7 +1,7 @@
 @import "../../colors/colors";
 @import "../../layout/responsive";
 
-@sidebarWidth: 18%;
+@sidebarWidth: 25%;
 @gutterWidth: 2.5%;
 @sidebarLocation: 100% - @sidebarWidth;
 @imageLocation: 2.5%;
@@ -114,6 +114,22 @@
   }
 }
 
+.face-name {
+  color: @bg-light;
+}
+
+.face-label {
+  color: @dark-grey;
+  font-weight: bold;
+  font-size: 12px;
+  padding-top: 15px;
+}
+
+.face-value {
+  color: @bg-light;
+  font-size: 15px;
+}
+
 @media (min-width: @screen-sm-min ) {
   .tile {
     img {
@@ -208,7 +224,7 @@
       background: #000;
     }
     .mfp-close {
-      right: @sidebarWidth;
+      right: 1%;
       @media (max-width: @switchOver) {
         right: 0;
       }
@@ -251,15 +267,25 @@
   width: 100%;
   height: 100%;
 
+  .mfp-counter {
+    left: 3%;
+    top: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    color: @dark-grey;
+    line-height: 18px;
+    white-space: nowrap;
+  }
+
   .mfp-bottom-bar {
     top: 0;
     width: @sidebarWidth;
     left: @sidebarLocation;
+    border-left: @darker-grey solid 2px;
     //.box-sizing(border-box);
     padding: 40px 12px;
     margin-top: 0;
     height: 100%;
-    background-color: #fff;
 
     .mfp-title {
       color: #000;
