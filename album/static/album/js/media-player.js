@@ -1,4 +1,5 @@
 function MediaPlayerControl(mediaElement) {
+  this.selectorQuery = mediaElement;
   this.mediaElement = $(mediaElement);
   this.volume = 0;
   this.time = 0;
@@ -23,17 +24,31 @@ MediaPlayerControl.prototype.hideAllControls = function() {
   // document.body.removeEventListener('click', this.hideAllControls.bind(this));
 }
 
-MediaPlayerControl.prototype.createEvents = function() {
-  var self = this;
-  $(this.mediaElement).find(".play-pause").click(this.handlePlayPauseClick.bind(this));
-  $(this.mediaElement).find(".volume-symbol").click(this.handleVolumeClick.bind(this));
+MediaPlayerControl.prototype.removeEvents = function() {
+  $(this.mediaElement).find(".play-pause").off("click");
+  $(this.mediaElement).find(".volume-symbol").off("click");
+  $(this.mediaElement).find(".volume-control .seekbar-max-length").off("click");
+  $(this.mediaElement).find(".seek-bar-control .seekbar-max-length").off("click");
+  $(this.mediaElement).find(".volume-control .seeker").off("mousedown");
+  $(this.mediaElement).find(".volume-control .seeker").off("mousemove");
+  $(this.mediaElement).find(".volume-control .seeker").off("mouseup");
+  $(this.mediaElement).find(".seek-bar-control .seeker").off("mousedown");
+  $(this.mediaElement).find(".seek-bar-control .seeker").off("mousemove");
+  $(this.mediaElement).find(".seek-bar-control .seeker").off("mouseup");
+}
 
-  $(this.mediaElement).find(".volume-control .seekbar-max-length").click(this.handleSeekbarClick.bind(this, function(value) {
+MediaPlayerControl.prototype.createEvents = function() {
+  this.removeEvents();
+  var self = this;
+  $(this.mediaElement).find(".play-pause").on("click", this.handlePlayPauseClick.bind(this));
+  $(this.mediaElement).find(".volume-symbol").on("click", this.handleVolumeClick.bind(this));
+
+  $(this.mediaElement).find(".volume-control .seekbar-max-length").on("click", this.handleSeekbarClick.bind(this, function(value) {
     this.volume = value;
     $(this.mediaElement).trigger("volume-seekbar-click", this.getState());
   }));
 
-  $(this.mediaElement).find(".seek-bar-control .seekbar-max-length").click(this.handleSeekbarClick.bind(this, function(seekPercent) {
+  $(this.mediaElement).find(".seek-bar-control .seekbar-max-length").on("click", this.handleSeekbarClick.bind(this, function(seekPercent) {
     this.seekPercent = seekPercent;
     $(this.mediaElement).trigger("seeker-seekbar-click", this.getState());
   }));
@@ -60,13 +75,7 @@ MediaPlayerControl.prototype.createEvents = function() {
 
 MediaPlayerControl.prototype.handlePlayPauseClick = function(event) {
   event.stopPropagation();
-  var element = $(this.mediaElement).find(".play-pause");
-  element.toggleClass("selected")
-  .removeClass("fa-play")
-  .removeClass("fa-pause")
-  .addClass(element.hasClass("selected") ? "fa-pause" : "fa-play");
-  this.isPaused = element.hasClass("selected");
-  $(this.mediaElement).trigger("play-pause-click", this.getState());
+  this.handlePlayPause();
 }
 
 MediaPlayerControl.prototype.handleVolumeClick = function(event) {
@@ -180,4 +189,22 @@ MediaPlayerControl.prototype.setVolume = function(volume) {
   var seekInPixels = maxBar.width() * volume;
   seekbarFilled.css("width", seekInPixels + "px");
   seekbarFilled.find(".seeker").css("left", seekInPixels + "px");
+}
+
+MediaPlayerControl.prototype.play = function() {
+  this.handlePlayPause();
+}
+
+MediaPlayerControl.prototype.pause = function() {
+  this.handlePlayPause();
+}
+
+MediaPlayerControl.prototype.handlePlayPause = function() {
+  var element = $(this.mediaElement).find(".play-pause");
+  element.toggleClass("selected")
+  .removeClass("fa-play")
+  .removeClass("fa-pause")
+  .addClass(element.hasClass("selected") ? "fa-pause" : "fa-play");
+  this.isPaused = element.hasClass("selected");
+  $(this.mediaElement).trigger("play-pause-click", this.getState());
 }

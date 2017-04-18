@@ -11,7 +11,27 @@ var Album = {
         }
     },
 
+    playAudio: function () {
+      if(this._player) {
+          this._player.play();
+      }
+    },
+
+    pauseAudio: function () {
+        if(this._player) {
+            this._player.pause();
+        }
+    },
+
     prepareSoundCloudWidget: function (trackId) {
+        var isTalkingAlbum = $("div#type-identifier").text() === "talking_album";
+        if(isTalkingAlbum) {
+          $("#playPause").hide();
+        } else {
+          $("#playPause").show();
+        }
+
+
         var mediaPlayer = new MediaPlayerControl(".audio-player-controls");
         if (this._player) {
             this._player.seek(0);
@@ -40,6 +60,14 @@ var Album = {
                 $("#carousel").carousel("next");
             });
 
+            $(".audio-player-controls").on("play-pause-click", function (event, state) {
+                if(state.isPaused) {
+                  Album.pauseAudio();
+                } else {
+                  Album.playAudio();
+                }
+            });
+
             $(".audio-player-controls").on("volume-seekbar-click", function (event, data) {
                 player.setVolume(data.volume / 100);
             });
@@ -57,8 +85,15 @@ var Album = {
             $(".audio-player-controls").on("seeker-seekbar-drag", function (event, data) {
                 var seekTime = player.options.duration * data.seekPercent / 100;
                 player.seek(seekTime);
-                player.play(seekTime);
+                player.play(seekTime, player);
             });
+
+            $('#carousel').on('slid.bs.carousel', function () {
+              Album.playAudio();
+              mediaPlayer.play();
+            });
+
+
         });
     },
 
@@ -204,26 +239,26 @@ function positionFloatingText() {
 function handleCarouselEvents(carouselData) {
     var totalItems = $('.carousel-items .item').length,
         currentIndex = 0,
-        isPlaying = true;
+        isTalkingAlbum = $("div#type-identifier").text() === "talking_album",
+        isSlideshowPlaying = !isTalkingAlbum;
 
     updateCurrentPageData();
 
     $("#carousel").carousel({
-        interval: 5000,
-        pause: false
+        interval: isTalkingAlbum ? 1000 * 60 : 5000,
+        pause: isTalkingAlbum
     });
 
-    if ($("div#type-identifier").text() == "talking_album") {
-        pauseSlide();
+    if(isTalkingAlbum) {
+        $("#carousel").carousel("pause");
     }
 
     $('#playPause').click(function () {
-        isPlaying ? pauseSlide() : playSlide();
+        isSlideshowPlaying ? pauseSlide() : playSlide();
         $(this).toggleClass("selected");
     });
 
     $('#showThumbnail').click(function () {
-        pauseSlide();
         toggleThumbnail();
     });
 
@@ -246,14 +281,14 @@ function handleCarouselEvents(carouselData) {
         var index = $(event.currentTarget).index('.thumbnail-list li');
         $("#carousel").carousel(index);
         toggleThumbnail();
-        if (isPlaying == true){
+        if(isSlideshowPlaying) {
             playSlide();
         }
     });
 
     $('.close-thumbnail').click(function (event) {
         toggleThumbnail();
-        if (isPlaying == true){
+        if (isSlideshowPlaying === true){
             playSlide();
         }
     });
@@ -263,14 +298,14 @@ function handleCarouselEvents(carouselData) {
     });
 
     function pauseSlide() {
-        isPlaying = false;
-        $('#playPause').removeClass("fa-pause").addClass("fa-play");
+        isSlideshowPlaying = false;
+        $('#playPause').removeClass("fa-play").addClass("fa-pause");
         $("#carousel").carousel("pause");
     }
 
     function playSlide() {
-        isPlaying = true;
-        $('#playPause').removeClass("fa-play").addClass("fa-pause");
+        isSlideshowPlaying = true;
+        $('#playPause').removeClass("fa-pause").addClass("fa-play");
         $("#carousel").carousel("cycle");
     }
 

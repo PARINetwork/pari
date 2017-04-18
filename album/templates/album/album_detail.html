@@ -65,14 +65,14 @@
                 <header class="header clear-fix">
                     <div class="left left-icons">
                         <a {% endverbatim %}{% if album_type == 'talking_album' %} href="{% url "talking-album-list" %}" {% else %} href="{% url "other-album-list" %}"{% endif %}{% verbatim %}><i class="fa fa-angle-left back-to-albums" ></i></a>
-                        <i id="playPause" href="#" class="fa fa-pause"></i>
+                        <i id="playPause" href="#" class="fa fa-play"></i>
                         <i id="showThumbnail" href="#" class="fa fa-th-large"></i>
 
                         <ul class="audio-player-controls">
-                          <li class="play-pause fa fa-pause"></li>
+                          <li class="play-pause fa fa-play"></li>
                           <li class="volume-control control hidden">
                             <div class="volume-symbol fa fa-volume-up "></div>
-                            <div class="seek-bar toggle-tooltip">
+                            <div class="seek-bar toggle-tooltip" style="visibility: hidden;">
                               <div class="seekbar-max-length">
                                 <div class="seekbar-filled">
                                   <div class="seeker"></div>

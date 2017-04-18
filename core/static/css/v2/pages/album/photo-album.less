@@ -169,10 +169,11 @@ html, body {
   padding: 0px 30px;
   background: rgba(0, 0, 0, 0.3);
   overflow: hidden;
+
   h1 {
     color: white;
     font-size: 30px;
-    height: 65px;
+    max-height: 65px;
     overflow: hidden;
     margin: 10px 0px;
   }
@@ -203,9 +204,14 @@ html, body {
   border-bottom: 1px solid #b8b8b8;
 }
 
+.photo-album section .carousel-container ul li.item:first-child .floating-text .social-icons {
+  position: absolute;
+  bottom: 8px;
+}
+
 .photo-album section .carousel-container ul li.item:first-child .floating-text .social-icons i {
   font-size: 22px;
-  margin-left: 10px;
+  margin-right: 10px;
   padding: 8px;
   border: 1px solid;
   border-radius: 100%;
@@ -376,11 +382,6 @@ ul.audio-player-controls, ul.audio-player-controls li, .audio-player-controls ul
 .audio-player-controls .fa {
   cursor: pointer;
   color: #b0b0b0;
-}
-
-.audio-player-controls .play-pause {
-  cursor: pointer;
-  display: none;
 }
 
 .audio-player-controls .selected {
