@@ -1,7 +1,7 @@
 @import "../../colors/colors";
 @import "../../layout/responsive";
 
-@sidebarWidth: 25%;
+@sidebarWidth: 35%;
 @gutterWidth: 2.5%;
 @sidebarLocation: 100% - @sidebarWidth;
 @imageLocation: 2.5%;
@@ -116,6 +116,7 @@
 
 .face-name {
   color: @bg-light;
+  padding-top: 10px;
 }
 
 .face-label {
@@ -287,6 +288,9 @@
     color: @dark-grey;
     line-height: 18px;
     white-space: nowrap;
+    @media (max-width: @switchOver) {
+      left: 1%;
+    }
   }
 
   .mfp-bottom-bar {
@@ -295,7 +299,7 @@
     left: @sidebarLocation;
     border-left: @darker-grey solid 2px;
     //.box-sizing(border-box);
-    padding: 40px 12px;
+    padding: 40px 20px;
     margin-top: 0;
     height: 100%;
     @media (max-width: @switchOver) {
@@ -330,7 +334,7 @@
 
     @media (max-width: @switchOver) {
       left: 0;
-      top: @sidebarLocation;
+      top: 103%;
       width: 100%;
       height: auto;
       padding: 8px;
@@ -341,6 +345,10 @@
     position: relative;
     left: @imageLocation;
     width: @imageWidth;
+
+    .mfp-img {
+      padding:0px;
+    }
 
     @media (max-width: @switchOver) {
       width: 100%;
