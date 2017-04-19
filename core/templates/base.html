@@ -74,6 +74,15 @@
             </a>
           </li>
           <li class="icon">
+            <div class="header-back-to-categories">
+                <a class="link-dark font-m" itemprop="url" href="{% url "category-list" %}">
+                    <i class="fa fa-angle-left"></i>
+                    <span itemprop="name" style="padding-left:3px;">{% trans "Categories" %}</span>
+                </a>
+            </div>
+          </li>
+
+            <li class="icon">
             <a href="https://twitter.com/home?status={{ request.build_absolute_uri|urlencode }}"
                target="_blank" class="link-light">
                 <i class="fa fa-twitter" aria-hidden="true"></i>
