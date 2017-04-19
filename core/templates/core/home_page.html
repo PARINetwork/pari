@@ -73,8 +73,10 @@
                                 <div class="col-lg-4 col-md-4">
                                     <div class="gallery-tile-info">
                                         <h2>{{ item.title }}</h2>
-                                        <p>{% if item.specific.strap %} {{ item.specific.strap }}{% else %}
-                                            &nbsp;{% endif %}</p>
+                                        <div class="desc-module line-clamp">
+                                            <p>{% if item.specific.strap %} {{ item.specific.strap }}{% else %}
+                                                &nbsp;{% endif %}</p>
+                                        </div>
                                         <div class="name-primary">
                                             {% for author in item.specific.authors.all %}
                                                 <a href="{% url "author-detail" author.slug %}"><span>{{ author.name }}</span></a>

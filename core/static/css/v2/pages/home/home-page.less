@@ -10,10 +10,11 @@
 #mainnav {
   margin: 0;
 }
-#mainnav .navbar-header{
+
+#mainnav .navbar-header {
   .header-title-wrapper {
     display: inline-block;
-}
+  }
 }
 
 #myCarousel-1 {
@@ -133,6 +134,18 @@
       max-width: 100%;
     }
     .gallery-tile-info {
+      .desc-module {
+        margin: 0 0 1em 0;
+        overflow: hidden;
+      }
+      .desc-module p {
+        margin: 0;
+      }
+      .line-clamp {
+        display: -webkit-box;
+        -webkit-line-clamp: 8;
+        -webkit-box-orient: vertical;
+      }
       .date {
         .dot-seperator {
           padding: 0px 5px 2px 5px;
@@ -154,14 +167,16 @@
       h2 {
         margin-top: 0;
         .font-size(36);
+        line-height: 35px;
       }
       p {
         .font-size(16);
-        margin-bottom: 20px;
+        line-height: inherit;
+        font-size: 1.3333333333333333rem;
+        margin-bottom: 15px;
       }
       .name-primary {
         .font-size(16);
-        margin-bottom: 20px;
         + a {
           .font-size(16);
           color: @grey;
@@ -172,8 +187,10 @@
   }
   .carousel-inner {
     .view-all {
-      margin-top: 30px;
+      margin-top: 20px;
       text-align: left;
+      margin-bottom: 45px;
+      padding-top: 15px;
       a {
         span {
           margin: 0;
@@ -491,15 +508,16 @@
     line-height: 2.4vw;
   }
 
-   .home-page #mainnav .navbar-header .navbar-brand-sub-title {
+  .home-page #mainnav .navbar-header .navbar-brand-sub-title {
     display: block !important;
     font-size: 1.4vw;
   }
 
-   .home-page #mainnav .navbar-header .navbar-brand{
-     position: relative;
-     float: left;
-   }
+  .home-page #mainnav .navbar-header .navbar-brand {
+    position: relative;
+    float: left;
+  }
+
   #mainnav .navbar-header .navbar-brand img {
     width: 57px;
     left: 0px;
@@ -508,7 +526,6 @@
   }
 
 }
-
 
 .red-angle-right {
   color: @primary-color;
