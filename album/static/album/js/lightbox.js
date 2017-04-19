@@ -251,6 +251,9 @@ function handleCarouselEvents(carouselData) {
 
     if(isTalkingAlbum) {
         $("#carousel").carousel("pause");
+        $(".play-pause").show();
+    } else {
+      $(".play-pause").hide();
     }
 
     $('#playPause').click(function () {
@@ -299,13 +302,13 @@ function handleCarouselEvents(carouselData) {
 
     function pauseSlide() {
         isSlideshowPlaying = false;
-        $('#playPause').removeClass("fa-play").addClass("fa-pause");
+        $('#playPause').removeClass("fa-pause").addClass("fa-play");
         $("#carousel").carousel("pause");
     }
 
     function playSlide() {
         isSlideshowPlaying = true;
-        $('#playPause').removeClass("fa-pause").addClass("fa-play");
+        $('#playPause').removeClass("fa-play").addClass("fa-pause");
         $("#carousel").carousel("cycle");
     }
 

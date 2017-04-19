@@ -204,7 +204,7 @@ MediaPlayerControl.prototype.handlePlayPause = function() {
   element.toggleClass("selected")
   .removeClass("fa-play")
   .removeClass("fa-pause")
-  .addClass(element.hasClass("selected") ? "fa-pause" : "fa-play");
+  .addClass(element.hasClass("selected") ? "fa-play" : "fa-pause");
   this.isPaused = element.hasClass("selected");
   $(this.mediaElement).trigger("play-pause-click", this.getState());
 }
