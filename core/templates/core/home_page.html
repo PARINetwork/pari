@@ -37,13 +37,13 @@
                              alt="sample content">
                         <div class="container">
                             <div class="item-container">
-                                <div>
+                                <div >
                                     <span>FEATURED</span>
                                 </div>
                                 <h1>{{ featured_content.value.title }}</h1>
-                                <div>
+                                <div class="link-to-page">
                                     <a href="{{ featured_content.value.url }}">{{ featured_content.value.link_text }}<i
-                                            class="fa fa-angle-right margin-left"></i></a>
+                                                class="fa fa-angle-right margin-left red-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -148,8 +148,8 @@
                         <span class="subtitle-primary font-l">{{ page.in_focus_title }}</span>
                     </div>
                     <div class="col-lg-6 text-right margin-btm-20px">
-                        <a href="{{ page.in_focus_link }}" class="link-dark">{{ page.in_focus_link_text }} <i
-                                class="fa fa-angle-right red-angle-right"></i></a>
+                        <a href="{{ page.in_focus_link }}" class="link-dark">{{ page.in_focus_link_text }}
+                        <i class="fa fa-angle-right red-angle-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
                 <div class="row">
@@ -165,17 +165,21 @@
                                     <a href="{{ item.url }}"><h3>{{ item.title }}</h3></a>
                                     <div>
                                         {% for author in item.specific.authors.all %}
-                                            <a href="{% url "author-detail" author.slug %}"><i class="fa fa-pencil"></i><span>{{ author.name }}</span>
-                                            </a>
-                                        {% endfor %}
-                                        {% for location in item.specific.locations.all %}
-                                            <a href="{% url "location-detail" location.slug %}">
-                                                <i class="fa fa-map-marker"></i>
-                                                <span>{{ location.name }}</span>
+                                            <a href="{% url "author-detail" author.slug %}"><span>{{ author.name }}</span>
                                             </a>
                                         {% endfor %}
                                     </div>
-                                    <div class="date">{{ item.specific.latest_revision_created_at|date }}</div>
+                                    <div class="date">
+                                        {% if item.specific.locations.all|length >= 1 %}
+                                            {% for location in item.specific.locations.all %}
+                                                <a href="{% url "location-detail" location.slug %}">
+                                                    <span>{{ location.name }}</span>
+                                                </a>
+                                            {% endfor %}
+                                            <span class="dot-seperator">•</span>
+                                        {% endif %}
+                                        {{ item.specific.latest_revision_created_at|date }}
+                                    </div>
                                     {% if translations_for_infocus_article1|length > 1%}
                                         <div class="dropdown">
                                             <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -205,17 +209,21 @@
                                     <a href="{{ item.url }}"><h3>{{ item.title }}</h3></a>
                                     <div>
                                         {% for author in item.specific.authors.all %}
-                                            <a href="{% url "author-detail" author.slug %}"><i class="fa fa-pencil"></i><span>{{ author.name }}</span>
+                                            <a href="{% url "author-detail" author.slug %}"><span>{{ author.name }}</span>
                                             </a>
                                         {% endfor %}
-                                        {% for location in item.specific.locations.all %}
-                                            <a href="{% url "location-detail" location.slug %}">
-                                                <i class="fa fa-map-marker"></i>
-                                                <span>{{ location.name }}</span>
-                                            </a>
-                                        {% endfor %}
+
                                     </div>
-                                    <div class="date">{{ item.specific.latest_revision_created_at|date }}</div>
+                                    <div class="date">
+                                        {% if item.specific.locations.all|length >= 1 %}
+                                            {% for location in item.specific.locations.all %}
+                                                <a href="{% url "location-detail" location.slug %}">
+                                                    <span>{{ location.name }}</span>
+                                                </a>
+                                            {% endfor %}
+                                        {% endif %}
+                                         <span class="dot-seperator">•</span>
+                                        {{ item.specific.latest_revision_created_at|date }}</div>
                                     {% if translations_for_infocus_article2|length > 1 %}
                                         <div class="dropdown">
                                             <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
