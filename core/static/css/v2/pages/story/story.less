@@ -195,6 +195,12 @@
     position: static;
     background: @bg-dark;
   }
+  .map-view {
+      height: 180px !important;
+      margin: auto !important;
+      float: none !important;
+      width: 60% !important;
+  }
 }
 @media (min-width: @screen-lg-min) {
   .banner-container{
@@ -249,4 +255,12 @@
   footer{
     display: none;
   }
+}
+
+.map-view {
+  width: ~'calc(20% - 20px)';
+  height: 180px;
+  margin-top: 14px;
+  float: left;
+  padding-right: 20px;
 }

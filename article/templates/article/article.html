@@ -164,7 +164,7 @@
     <div class="col-lg-1 col-md-1 col-sm-1"></div>
       <div class="container article-container">
         <div class="row">
-        <div class="col-lg-3 content-map" itemscope itemtype="http://schema.org/Map">
+        <div class="content-map" itemscope itemtype="http://schema.org/Map">
             {% if article.locations.count %}
             {% with article.locations.first as location %}
                 <a class="map-title" itemprop="url" href="https://www.openstreetmap.org/?mlat={{ location.point.x }}&mlon={{ location.point.y }}#map=14/{{ location.point.x }}/{{ location.point.y }}" target="_blank">
@@ -174,18 +174,26 @@
                         </span>
                     </span>
                 </a>
-            <div id="map" class="map-view" data-content="{% for location in article.locations.all %}{{ location.name }}{% if not forloop.last %},{% endif %}{% endfor %}" data-lat="{% for location in article.locations.all %}{{ location.point.x }}{% if not forloop.last %},{% endif %}{% endfor %}" data-long="{% for location in article.locations.all %}{{ location.point.y }}{% if not forloop.last %},{% endif %}{% endfor %}"></div>
+
             <a class="title" href="{% url "location-detail" location.slug %}">
-                            <span>See more from this region</span>
-                            <i class="fa fa-chevron-right"></i>
-                        </a>
+                <span>See more from this region</span>
+                <i class="fa fa-chevron-right"></i>
+            </a>
             {% endwith %}
             {% endif%}
         </div>
 
-            <div itemprop="articleBody" class="article-content">
-                {{ article.content|richtext }}
-	        </div>
+        <div class="article-content-wrapper">
+          {% if article.locations.count %}
+          {% with article.locations.first as location %}
+            <div id="map" class="map-view" data-content="{% for location in article.locations.all %}{{ location.name }}{% if not forloop.last %},{% endif %}{% endfor %}" data-lat="{% for location in article.locations.all %}{{ location.point.x }}{% if not forloop.last %},{% endif %}{% endfor %}" data-long="{% for location in article.locations.all %}{{ location.point.y }}{% if not forloop.last %},{% endif %}{% endfor %}"></div>
+          {% endwith %}
+          {% endif%}
+          <div itemprop="articleBody" class="article-content">
+              {{ article.content|richtext }}
+          </div>
+        </div>
+
     </div>
   <div class="translator_bio">
     {% for translator in article.translators.all %}
