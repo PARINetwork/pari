@@ -86,7 +86,7 @@ var Face = {
             var items = [];
             $.each($this.items, function(ii, item) {
                 items.push({
-                    src: $($(".mfp-image img")[ii]).attr("src"),
+                    src: $($("a.mfp-image")[ii]).attr("data-original-image-src"),
                     el: $($(".mfp-image")[ii])
                 });
             });
