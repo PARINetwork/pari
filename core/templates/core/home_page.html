@@ -351,24 +351,26 @@
         </div>
         <div class="faces-tile-1">
             <img class="img-responsive" src="{{ STATIC_URL }}img/faces-tile-1.jpg" alt="sample content">
-            <div class="faces-container container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h4 class="subtitle-primary">View faces from across India</h4>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h2 class="title-light">PARI is capturing the facial diversity of the people of
-                            India</h2>
-                    </div>
-                    <div class="col-lg-6">
-                        <div>
-                            <button class="btn" onclick="location.href='{% url "face-list" %}'">View all faces</button>
+            <div class="container">
+                <div class="faces-container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h4 class="subtitle-primary">View faces from across India</h4>
                         </div>
-                        <p class="text"><a
-                                href="/pages/send-us-photos-help-pari-capture-the-sheer-facial-diversity-of-the-indian-people/"><u>{% trans "Contribute faces" %}</u></a>
-                            to the faces database</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h2 class="title-light">PARI is capturing the facial diversity of the people of
+                                India</h2>
+                        </div>
+                        <div class="col-lg-6">
+                            <div>
+                                <button class="btn" onclick="location.href='{% url "face-list" %}'">View all faces</button>
+                            </div>
+                            <p class="text"><a
+                                    href="/pages/send-us-photos-help-pari-capture-the-sheer-facial-diversity-of-the-indian-people/"><u>{% trans "Contribute faces" %}</u></a>
+                                to the faces database</p>
+                        </div>
                     </div>
                 </div>
             </div>
