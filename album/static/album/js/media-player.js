@@ -9,6 +9,7 @@ function MediaPlayerControl(mediaElement) {
 
   this.hideAllControls();
   this.createEvents();
+  this.reset(0);
 }
 
 MediaPlayerControl.prototype.getState = function() {
@@ -153,13 +154,13 @@ MediaPlayerControl.prototype.mouseUp = function(event) {
 }
 
 MediaPlayerControl.prototype.setSeek = function(value) {
+  var maxBar = $(this.mediaElement).find(".seek-bar-control .seekbar-max-length");
   var seekbarFilled = $(this.mediaElement).find(".seek-bar-control .seekbar-filled");
-
-  var rootElement = $(event.target).parents(".control");
-  var element = rootElement.find(".seekbar-filled");
-  element.css("width", event.offsetX + "px");
-  element.find(".seeker").css("left", event.offsetX + "px");
-  callback.call(this, parseInt((event.offsetX / rootElement.find(".seekbar-max-length").width()) * 100));
+  var seekInPixels = maxBar.width() * value;
+  seekbarFilled.css("width", seekInPixels + "px");
+  seekbarFilled.find(".seeker").css("left", seekInPixels + "px");
+  $(".current-length").html(0);
+  $(".total-length").html(0);
 }
 
 MediaPlayerControl.prototype.updateOnSeek = function(currentTime, totalTime) {
@@ -207,4 +208,8 @@ MediaPlayerControl.prototype.handlePlayPause = function() {
   .addClass(element.hasClass("selected") ? "fa-play" : "fa-pause");
   this.isPaused = element.hasClass("selected");
   $(this.mediaElement).trigger("play-pause-click", this.getState());
+}
+
+MediaPlayerControl.prototype.reset = function() {
+  this.setSeek(0);
 }

@@ -3,100 +3,6 @@ var Album = {
         this._initControls();
     },
 
-    stopAudioPlayer: function () {
-        if (this._player) {
-            this._player.seek(0);
-            this._player.pause(0);
-            this._player.dispose();
-        }
-    },
-
-    playAudio: function () {
-      if(this._player) {
-          this._player.play();
-      }
-    },
-
-    pauseAudio: function () {
-        if(this._player) {
-            this._player.pause();
-        }
-    },
-
-    prepareSoundCloudWidget: function (trackId) {
-        var isTalkingAlbum = $("div#type-identifier").text() === "talking_album";
-        if(isTalkingAlbum) {
-          $("#playPause").hide();
-        } else {
-          $("#playPause").show();
-        }
-
-
-        var mediaPlayer = new MediaPlayerControl(".audio-player-controls");
-        if (this._player) {
-            this._player.seek(0);
-            this._player.play();
-        }
-
-        SC.initialize({
-            client_id: "d129911dd3c35ec537c30a06990bd902"
-        });
-        var $this = this;
-        SC.stream(trackId).then(function (player) {
-            $this._player = player;
-            player.play();
-
-            player.on("time", function () {
-                mediaPlayer.updateOnSeek(player.currentTime(), player.options.duration);
-            });
-
-            player.on("state-change", function (e) {
-                if (e === "playing") {
-                    mediaPlayer.setVolume(player.getVolume());
-                }
-            });
-
-            player.on("finish", function () {
-                $("#carousel").carousel("next");
-            });
-
-            $(".audio-player-controls").on("play-pause-click", function (event, state) {
-                if(state.isPaused) {
-                  Album.pauseAudio();
-                } else {
-                  Album.playAudio();
-                }
-            });
-
-            $(".audio-player-controls").on("volume-seekbar-click", function (event, data) {
-                player.setVolume(data.volume / 100);
-            });
-
-            $(".audio-player-controls").on("volume-seekbar-drag", function (event, data) {
-                player.setVolume(data.volume / 100);
-            });
-
-            $(".audio-player-controls").on("seeker-seekbar-click", function (event, data) {
-                var seekTime = player.options.duration * data.seekPercent / 100;
-                player.seek(seekTime);
-                player.play(seekTime);
-            });
-
-            $(".audio-player-controls").on("seeker-seekbar-drag", function (event, data) {
-                var seekTime = player.options.duration * data.seekPercent / 100;
-                player.seek(seekTime);
-                player.play(seekTime, player);
-            });
-
-            $('#carousel').on('slid.bs.carousel', function () {
-              Album.playAudio();
-              mediaPlayer.play();
-            });
-
-
-        });
-    },
-
     _initControls: function () {
         var photoAlbum = $.templates("#photoAlbumTemplate");
         var photoAlbumHtml = photoAlbum.render({});
@@ -145,7 +51,6 @@ var Album = {
         $(".carousel-container").addClass("carousel");
         $(".carousel-container").attr("data-ride", "carousel");
 
-        // _initializeCarousel()
         handleCarouselEvents(this.carouselData);
         setTimeout(function () {
             positionFloatingText();
@@ -154,57 +59,103 @@ var Album = {
         $(window).resize(function () {
             positionFloatingText();
         });
-
     },
 
-    _initializeCarousel: function () {
+    prepareSoundCloudWidget: function (trackId) {
+        var isTalkingAlbum = $("div#type-identifier").text() === "talking_album";
+        if(isTalkingAlbum) {
+          $("#playPause").hide();
+        } else {
+          $("#playPause").show();
+        }
 
-    },
+        var mediaPlayer = new MediaPlayerControl(".audio-player-controls");
 
-    _dummy: function () {
-        return {
-            "slides": [{
-                "src": '/static/img/stories-1.jpg',
-                "type": 'image',
-                "description": "Currently, image is being stored along with alt tags as single content. While doing this feature, we need to separate html & content. Hence we get the ability to add alt tags to images for SEO purposes",
-                "album_title": "Weavers of walagpet",
-                "slide_photographer": "vinod",
-                "image_captured_date": "20 May 2017",
-                "slide_location": "Madurai"
-                // }, {
-                //     src: '/static/img/stories-2.jpg',
-                //     type: 'image',
-                // }, {
-                //     src: '/static/img/stories-3-1.jpg',
-                //     type: 'image',
-                // }, {
-                //     src: '/static/img/stories-3-2.jpg',
-                //     type: 'image',
-            }, {
-                "src": '/static/img/stories-4.jpg',
-                "type": 'image',
-                "description": "Featured image is random. Should have an option to select one. Featured image is random. Should have an option to select one. ",
-                "album_title": "Weavers of walagpet",
-                "slide_photographer": "deepthi",
-                "image_captured_date": "30 May 2017",
-                "slide_location": "Chennai"
-            }],
+        SC.initialize({
+            client_id: "d129911dd3c35ec537c30a06990bd902"
+        });
+        var $this = this;
 
-            "authors": [{
-                // src: '.author',
-                // type: 'inline',
-                // show_title: false,
-                "name": 'name1',
-                "bio": 'bio1'
-            },
-                {
-                    // src: '.author',
-                    // type: 'inline',
-                    // show_title: false,
-                    "name": 'name2',
-                    "bio": 'bio2'
+        SC.stream(trackId).then(function (player) {
+            $this._player = player;
+            player.play();
+
+            if(isTalkingAlbum) {
+              $(".play-pause")
+              .removeClass("fa-play fa-pause selected")
+              .addClass("fa-pause");
+            }
+
+            $this._player.on("time", function () {
+                mediaPlayer.updateOnSeek(player.currentTime(), player.options.duration);
+            });
+
+            $this._player.on("state-change", function (e) {
+                if (e === "playing") {
+                    mediaPlayer.setVolume(player.getVolume());
                 }
-            ]
+            });
+
+            $this._player.on("finish", function () {
+                $("#carousel").carousel("next");
+            });
+
+            $(".audio-player-controls").on("play-pause-click", function (event, state) {
+                if(state.isPaused) {
+                  Album.pauseAudio();
+                } else {
+                  Album.playAudio();
+                }
+            });
+
+            $(".audio-player-controls").on("volume-seekbar-click", function (event, data) {
+                $this._player.setVolume(data.volume / 100);
+            });
+
+            $(".audio-player-controls").on("volume-seekbar-drag", function (event, data) {
+                $this._player.setVolume(data.volume / 100);
+            });
+
+            $(".audio-player-controls").on("seeker-seekbar-click", function (event, data) {
+                var seekTime = player.options.duration * data.seekPercent / 100;
+                $this._player.seek(seekTime);
+                $this._player.play(seekTime);
+            });
+
+            $(".audio-player-controls").on("seeker-seekbar-drag", function (event, data) {
+                var seekTime = player.options.duration * data.seekPercent / 100;
+                $this._player.seek(seekTime);
+                $this._player.play(seekTime, player);
+            });
+
+            $('#carousel').on('slid.bs.carousel', function () {
+              Album.stopAudioPlayer();
+              Album.playAudio();
+              mediaPlayer.play();
+            });
+
+
+        });
+    },
+
+    stopAudioPlayer: function () {
+        if (this._player) {
+            this._player.seek(0);
+            this._player.pause(0);
+            this._player.dispose();
+            this._player = null;
+        }
+    },
+
+    playAudio: function () {
+      if(this._player) {
+          this._player.play();
+      }
+    },
+
+    pauseAudio: function () {
+        if(this._player) {
+            this._player.pause();
         }
     }
 };
@@ -319,8 +270,15 @@ function handleCarouselEvents(carouselData) {
         updateIndexOnSlide();
         if ($("div#type-identifier").text() == "talking_album") {
             var data = carouselData.slides[currentIndex];
-            var trackId = data.track_id;
-            Album.prepareSoundCloudWidget("/tracks/"+trackId);
+            if(data) {
+              var trackId = data.track_id;
+              Album.prepareSoundCloudWidget("/tracks/"+trackId);
+              $(".audio-player-controls").show();
+            } else {
+              Album.stopAudioPlayer();
+              $(".audio-player-controls").hide();
+            }
+
         }
         if (currentIndex === 0) {
             setTimeout(function () {
