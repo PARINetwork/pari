@@ -174,6 +174,19 @@
                                         {% endfor %}
                                     </div>
                                     <div class="date">{{ item.specific.latest_revision_created_at|date }}</div>
+                                    {% if translations_for_infocus_article1|length > 1%}
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                {{ translations_for_infocus_article1 | length }} languages
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                {% for translation in translations_for_infocus_article1 %}
+                                                    <li>{{ translation.get_language_display }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    {% endif %}
                                 </div>
                                 </div>
                             {% endwith %}
@@ -201,6 +214,19 @@
                                         {% endfor %}
                                     </div>
                                     <div class="date">{{ item.specific.latest_revision_created_at|date }}</div>
+                                    {% if translations_for_infocus_article2|length > 1 %}
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                {{ translations_for_infocus_article2 | length }} languages
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                {% for translation in translations_for_infocus_article2 %}
+                                                    <li>{{ translation.get_language_display }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    {% endif %}
                                 </div>
                                 </div>
                             {% endwith %}
@@ -306,14 +332,14 @@
                                 </a>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid">
-                                <h4>Stories from all over in all languages</h4>
+                                <h4 class="all-categ-head">Stories from all over in all languages</h4>
                                 <h5 class="mid-link">
                                     <a href="{% url "category-list" %}">Browse stories in all categories <i
                                             class="fa fa-angle-right red-angle-right"
                                             aria-hidden="true"></i></a>
                                 </h5>
-                                <h6>Translate for PARI</h6>
-                                <p>Translate the content for PARI in the languages that you can.
+                                <h6><i class="fa fa-language" aria-hidden="true"></i> Translate for PARI</h6>
+                                <p class="desc-para">Translate the content for PARI in the languages that you can.
                                     <a href="{% url "contribute" slug="contribute" %}">Learn more
                                         <i class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
                                     </a></p>
@@ -325,7 +351,7 @@
         </div>
         <div class="faces-tile-1">
             <img class="img-responsive" src="{{ STATIC_URL }}img/faces-tile-1.jpg" alt="sample content">
-            <div class="faces-container">
+            <div class="faces-container container">
                 <div class="row">
                     <div class="col-lg-12">
                         <h4 class="subtitle-primary">View faces from across India</h4>
@@ -405,7 +431,7 @@
                                     </div>
                                     <div class="view-article">
                                         <a href="{% url "gallery-detail" slug="videozone" %}">
-                                            <i class="fa  fa-music"
+                                            <i class="fa  fa-film"
                                                aria-hidden="true"></i><span>View all Videos</span><i
                                                 class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
                                         </a>
@@ -435,7 +461,7 @@
                                     </div>
                                     <div class="view-article">
                                         <a href="{% url "other-album-list" %}">
-                                            <i class="fa  fa-music"
+                                            <i class="fa  fa-picture-o"
                                                aria-hidden="true"></i><span>View all Photo Albums</span><i
                                                 class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
                                         </a>

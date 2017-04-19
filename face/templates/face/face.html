@@ -117,7 +117,7 @@
           </a>
             <div class="caption">
                 <div class="name">{{face.title|capfirst }}</div>
-                <div class="district">{{ face.location.district|capfirst }}</div>
+                <div class="district">{{ face|matching_district:alphabet |capfirst }}</div>
             </div>
         </li>
     {% empty %}
