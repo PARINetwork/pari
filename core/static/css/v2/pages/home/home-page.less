@@ -10,6 +10,11 @@
 #mainnav {
   margin: 0;
 }
+#mainnav .navbar-header{
+  .header-title-wrapper {
+    display: inline-block;
+}
+}
 
 #myCarousel-1 {
   margin-bottom: 60px;
@@ -66,28 +71,29 @@
     margin-left: 100px;
   }
   .carousel-control {
-    &.left, &.right{
+    &.left, &.right {
       background: none;
       width: 44px;
       color: @lighter-grey;
       opacity: 1;
       background: @bg-lighter-transparent;
-      &:hover{
+      &:hover {
         opacity: 0.6;
       }
-      i{
+      i {
         .font-size(34);
       }
     }
-    &.right{
+    &.right {
       border-left: 1px solid @bg-light;
     }
   }
 }
+
 #myCarousel-2 {
   margin-bottom: 60px;
-  .carousel-title{
-    h4{
+  .carousel-title {
+    h4 {
       color: @primary-color;
       margin-bottom: 20px;
     }
@@ -102,61 +108,61 @@
     left: 0;
   }
   .carousel-control {
-    &.left, &.right{
+    &.left, &.right {
       background: none;
       width: 44px;
       color: @light-grey;
       opacity: 1;
       background: @bg-lighter-transparent;
       text-shadow: none;
-      &:hover{
+      &:hover {
         opacity: 0.6;
       }
-      i{
+      i {
         .font-size(34);
       }
     }
-    &.right{
+    &.right {
       border-left: 1px solid @light-grey;
     }
   }
-  .gallery-tile{
+  .gallery-tile {
     margin-bottom: 0;
-    img{
+    img {
       max-height: 80%;
       max-width: 100%;
     }
-    .gallery-tile-info{
+    .gallery-tile-info {
       .date {
-        .dot-seperator{
+        .dot-seperator {
           padding: 0px 5px 2px 5px;
           font-weight: 800;
           color: @text-title-light;
         }
-          a{
-            &:hover{
-              color: @primary-color;
-            }
-            color: @text-title-light;
-            font-weight: 300;
-            font-size: 1em;
-            letter-spacing: 1px;
+        a {
+          &:hover {
+            color: @primary-color;
           }
+          color: @text-title-light;
+          font-weight: 300;
+          font-size: 1em;
+          letter-spacing: 1px;
+        }
 
       }
       min-height: auto;
-      h2{
+      h2 {
         margin-top: 0;
         .font-size(36);
       }
-      p{
+      p {
         .font-size(16);
         margin-bottom: 20px;
       }
-      .name-primary{
+      .name-primary {
         .font-size(16);
         margin-bottom: 20px;
-        + a{
+        + a {
           .font-size(16);
           color: @grey;
           padding-bottom: 40px;
@@ -185,7 +191,7 @@
   background: @lighter-grey;
   padding: 40px 0 20px 0;
   margin-bottom: 60px;
-  .dropdown{
+  .dropdown {
     button {
       border-radius: 0;
       border-style: solid;
@@ -195,14 +201,14 @@
       color: @grey;
     }
   }
-  .open>.dropdown-menu {
+  .open > .dropdown-menu {
     display: block;
     min-width: 89px;
     text-align: center;
     border-radius: 0;
     color: @grey;
   }
-  .tags-label{
+  .tags-label {
     background: white;
   }
   .grid {
@@ -225,7 +231,7 @@
       .font-size(16);
       color: @dark-grey;
       i {
-        color: @link-primary;
+        color: @grey;
       }
       &:hover {
         i {
@@ -260,6 +266,7 @@
     }
   }
 }
+
 .home-article-grid-3 {
   margin-bottom: 60px;
   .large {
@@ -270,14 +277,25 @@
       }
     }
   }
-  .grid{
+  .grid {
     padding: 10px;
-    &.share{
-      h1{
+    &.share {
+      h1 {
         min-height: 265px;
       }
     }
-    h4{
+    .desc-para {
+      line-height: 15px;
+      margin-top: 0px;
+    }
+    .fa {
+      padding-top: 8px;
+    }
+    .all-categ-head {
+      padding-bottom: 50px;
+      margin-top: 0px;
+    }
+    h4 {
       .font-size(30);
       color: @text-title-light;
       font-weight: 300;
@@ -285,7 +303,7 @@
     h1.subtitle {
       font-weight: 300;
     }
-    .subtitle{
+    .subtitle {
       .font-size(58);
       margin: 0;
       color: @text-title-light;
@@ -297,59 +315,64 @@
         color: @darker-grey;
       }
     }
-    .mid-link{
+    .mid-link {
       border-top: 1px solid @grey;
       border-bottom: 1px solid @grey;
       padding: 15px 0;
-      a{
+      a {
         color: @darker-grey;
       }
     }
-    h6{
+    h6 {
       color: @grey;
     }
-    p{
+    p {
       color: @text-title-light;
     }
-    a{
+    a {
       color: @grey;
-      &:hover{
+      &:hover {
         color: @link-primary;
       }
     }
   }
 }
 
-.faces-tile-1{
-  img{
-    width:100%
+.faces-tile-1 {
+  img {
+    width: 100%
   }
   margin-bottom: 30px;
   position: relative;
-  .faces-container{
+  .faces-container {
     position: absolute;
     top: 0;
-    width: 100%;
+    width: 88%;
+    right: 0;
+    left: 0;
+    margin: auto;
+    bottom: 0;
     padding: 40px;
-    .row{
+    .row {
       margin-bottom: 80px;
     }
-    h2{
+    h2 {
       color: @text-light;
       border-right: 1px solid @border-light;
       padding: 20px 0px;
     }
-    button{
+    button {
       color: @text-light;
       background: @bg-lighter-transparent;
       border: 1px solid @border-light;
-      margin: 20px 0px;
+      margin: 40px 0px 0px;
     }
-    p{
+    p {
       color: @grey;
-      a{
+      margin: 7px 0;
+      a {
         color: @grey;
-        &:hover{
+        &:hover {
           color: @primary-color;
         }
       }
@@ -358,52 +381,71 @@
 }
 
 @media (max-width: @screen-xs-max) {
-  #myCarousel-1 .carousel-control-container{
+  .navbar-header {
+    position: relative;
+    .header-title-wrapper {
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      height: 32px;
+      text-align: center;
+    }
+  }
+
+  #myCarousel-1 .carousel-control-container {
     top: 37%;
     margin: 0;
     left: 0;
-    .left, .right{
+    .left, .right {
 
     }
   }
-  .home-article-grid-3 .grid.share h1{
+
+  .home-article-grid-3 .grid.share h1 {
     min-height: auto;
   }
-  .home-article-grid-1{
+
+  .home-article-grid-1 {
     margin-bottom: 20px;
   }
-  #myCarousel-2{
+
+  #myCarousel-2 {
     margin-bottom: 20px;
   }
-  #myCarousel-1{
+
+  #myCarousel-1 {
     margin-bottom: 20px;
-    .item .item-container{
+    .item .item-container {
       padding-bottom: 20px;
       border-bottom: 1px solid @grey;
       position: static;
-      div:first-child{
+      div:first-child {
         margin-top: 20px;
-        span{
+        span {
           background: @bg-light;
           padding: 2px 10px;
           letter-spacing: 2px;
         }
-        + h1{
+        + h1 {
           .font-size(50);
           color: @text-dark;
           padding: 10px 0;
           max-width: 320px;
           margin: 0;
 
-          +div{
+          + div {
             text-align: center;
-            a{
+            a {
               padding: 15px 20px;
               .font-size(16);
               color: @text-dark;
               border-top: 1px solid @border-light;
               border-bottom: 1px solid @border-light;
-              &:hover{
+              &:hover {
                 color: @primary-color;
               }
             }
@@ -412,39 +454,66 @@
       }
     }
   }
-  .faces-tile-1{
+
+  .faces-tile-1 {
     margin-bottom: 0px;
-    .faces-container{
+    .faces-container {
       position: static;
       width: 100%;
-      padding: 0;
-      .row{
+      padding: 10px;
+      .row {
         margin-bottom: 0px;
       }
-      h2{
+      h2 {
         color: @text-dark;
         border-right: none;
         padding: 0;
         margin: 0;
       }
-      button{
+      button {
         color: @text-dark;
         background: @bg-lighter-transparent;
         border: 1px solid @border-dark;
         margin: 20px 0;
       }
-      p{
+      p {
         color: @grey;
-        a{
+        a {
           color: @grey;
-          &:hover{
+          &:hover {
             color: @primary-color;
           }
         }
       }
     }
   }
+
+  #mainnav .navbar-header .navbar-brand-title {
+    display: block;
+    margin: 5px 0px 5px 22px;
+    color: black;
+    font-size: 3.7vw;
+    line-height: 2.4vw;
+  }
+
+   .home-page #mainnav .navbar-header .navbar-brand-sub-title {
+    display: block !important;
+    font-size: 1.4vw;
+  }
+
+   .home-page #mainnav .navbar-header .navbar-brand{
+     position: relative;
+     float: left;
+   }
+  #mainnav .navbar-header .navbar-brand img {
+    width: 57px;
+    left: 0px;
+    position: absolute;
+    margin-left: 13px;
+  }
+
 }
+
 
 .red-angle-right {
   color: @primary-color;
@@ -452,55 +521,57 @@
   font-weight: 700;
 }
 
-.pari-doing-block{
+.pari-doing-block {
   border-top: 1px solid @border-dark;
   margin-top: 30px;
   padding-top: 40px;
-  .pari-do-link{
+  .pari-do-link {
     padding-bottom: 10px;
   }
-  a{
+  a {
     text-decoration: none;
     color: @dark-grey;
     letter-spacing: 1px;
     font-size: 1.5em;
-    &:hover{
+    &:hover {
       cursor: pointer;
       color: @primary-color;
     }
   }
-  h1{
+  h1 {
     color: @primary-color;
     padding-bottom: 20px;
   }
 }
+
 @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
-  .faces-tile-1{
+
+  .faces-tile-1 {
     margin-bottom: 0px;
-    .faces-container{
+    .faces-container {
       position: static;
-      width: 100%;
+      width: 91%;
       padding: 0;
-      .row{
+      .row {
         margin-bottom: 0px;
       }
-      h2{
+      h2 {
         color: @text-dark;
         border-right: none;
         padding: 0;
         margin: 0;
       }
-      button{
+      button {
         color: @text-dark;
         background: @bg-lighter-transparent;
         border: 1px solid @border-dark;
         margin: 20px 0;
       }
-      p{
+      p {
         color: @grey;
-        a{
+        a {
           color: @grey;
-          &:hover{
+          &:hover {
             color: @primary-color;
           }
         }
@@ -510,30 +581,34 @@
 }
 
 @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
-  .faces-tile-1{
-    .faces-container{
+  .nav-header-icon-title {
+    padding-right: 0px;
+  }
+
+  .faces-tile-1 {
+    .faces-container {
       width: 100%;
       padding: 40;
-      .row{
+      .row {
         margin-bottom: 20px;
       }
-      h2{
+      h2 {
         color: @text-light;
         border-right: none;
         padding: 0;
         margin: 0;
       }
-      button{
+      button {
         color: @text-light;
         background: @bg-lighter-transparent;
         border: 1px solid @border-light;
         margin: 20px 0;
       }
-      p{
+      p {
         color: @grey;
-        a{
+        a {
           color: @grey;
-          &:hover{
+          &:hover {
             color: @primary-color;
           }
         }
@@ -541,9 +616,17 @@
     }
   }
 }
+
 @media (min-width: @screen-lg-min) {
   .faces-tile-1 {
     .faces-container {
+      //position: absolute;
+      //top: 0;
+      //width: 88%;
+      //right: 0;
+      //left: 0;
+      //margin: auto;
+      //bottom: 0;
       h2 {
         color: @text-light;
         border-right: 1px solid @border-light;
