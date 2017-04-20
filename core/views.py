@@ -106,6 +106,11 @@ def contribute_to_faces(request,slug=None):
                    "current_page": 'contribute_to_faces',
                    })
 
+
+def donate(request):
+    return render(request, "core/donate.html", {"tab": "donate", "current_page": 'donate'})
+
+
 def pari_teachers_students(request):
     active_tab = 'about-pari'
     return render(request, "core/pari_teachers_students.html", {
