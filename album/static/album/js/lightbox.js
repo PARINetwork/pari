@@ -169,14 +169,15 @@ function positionFloatingText() {
         return;
     }
     var image = $('.carousel-items .item:first-child img');
-    var contentHeight = image.get(0).offsetHeight * 0.4,
+
+    var imageHeight = image.get(0).offsetHeight,
+        contentHeight = imageHeight * 0.4,
         contentWidth = image.get(0).offsetWidth * 0.5;
 
-    contentHeight = contentHeight < 245 ? 245 : contentHeight;
+    contentHeight = contentHeight < 350 ? 350 : contentHeight;
+    contentHeight = contentHeight > imageHeight ? imageHeight : contentHeight;
     contentWidth = contentWidth < 415 ? 415 : contentWidth;
-
-    var top = image.get(0).offsetTop + (image.get(0).offsetHeight - contentHeight) / 2;
-
+    var top = image.get(0).offsetTop + (imageHeight - contentHeight) / 2;
 
     $(".floating-text").css({
         left: image.get(0).offsetLeft + (image.get(0).offsetLeft * 0.15) + 40,
