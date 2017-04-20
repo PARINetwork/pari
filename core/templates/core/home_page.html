@@ -31,19 +31,19 @@
             <div class="carousel-inner" role="listbox">
                 {% for featured_content in page.featured_content %}
                     <div class=" {% if forloop.first %}active{% endif %} item">
-{#                        {% image featured_content.value.featured_page.image fill-500x320 as featured_image %}#}
+                        {#                        {% image featured_content.value.featured_page.image fill-500x320 as featured_image %}#}
                         <img class="img-responsive center-align"
                              src="{{ featured_content.value.featured_image.file.url }}"
                              alt="sample content">
                         <div class="container">
                             <div class="item-container">
-                                <div >
+                                <div>
                                     <span>FEATURED</span>
                                 </div>
                                 <h1>{{ featured_content.value.title }}</h1>
                                 <div class="link-to-page">
                                     <a href="{{ featured_content.value.url }}">{{ featured_content.value.link_text }}<i
-                                                class="fa fa-angle-right margin-left red-angle-right"></i></a>
+                                            class="fa fa-angle-right margin-left red-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -149,7 +149,7 @@
                     </div>
                     <div class="col-lg-6 text-right margin-btm-20px">
                         <a href="{{ page.in_focus_link }}" class="link-dark">{{ page.in_focus_link_text }}
-                        <i class="fa fa-angle-right red-angle-right" aria-hidden="true"></i></a>
+                            <i class="fa fa-angle-right red-angle-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
                 <div class="row">
@@ -175,14 +175,15 @@
                                                 <a href="{% url "location-detail" location.slug %}">
                                                     <span>{{ location.name }}</span>
                                                 </a>
+                                                <span class="dot-seperator">•</span>
                                             {% endfor %}
-                                            <span class="dot-seperator">•</span>
                                         {% endif %}
                                         {{ item.specific.latest_revision_created_at|date }}
                                     </div>
-                                    {% if translations_for_infocus_article1|length > 1%}
+                                    {% if translations_for_infocus_article1|length > 1 %}
                                         <div class="dropdown">
-                                            <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <button class="dropdown-toggle" type="button" id="dropdownMenu1"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                                 {{ translations_for_infocus_article1 | length }} languages
                                                 <span class="caret"></span>
                                             </button>
@@ -220,13 +221,14 @@
                                                 <a href="{% url "location-detail" location.slug %}">
                                                     <span>{{ location.name }}</span>
                                                 </a>
+                                                <span class="dot-seperator">•</span>
                                             {% endfor %}
                                         {% endif %}
-                                         <span class="dot-seperator">•</span>
                                         {{ item.specific.latest_revision_created_at|date }}</div>
                                     {% if translations_for_infocus_article2|length > 1 %}
                                         <div class="dropdown">
-                                            <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <button class="dropdown-toggle" type="button" id="dropdownMenu1"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                                 {{ translations_for_infocus_article2 | length }} languages
                                                 <span class="caret"></span>
                                             </button>
@@ -375,7 +377,8 @@
                         </div>
                         <div class="col-lg-6">
                             <div>
-                                <button class="btn" onclick="location.href='{% url "face-list" %}'">View all faces</button>
+                                <button class="btn" onclick="location.href='{% url "face-list" %}'">View all faces
+                                </button>
                             </div>
                             <p class="text"><a
                                     href="/pages/send-us-photos-help-pari-capture-the-sheer-facial-diversity-of-the-indian-people/"><u>{% trans "Contribute faces" %}</u></a>

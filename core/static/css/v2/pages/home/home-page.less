@@ -11,12 +11,6 @@
   margin: 0;
 }
 
-#mainnav .navbar-header {
-  .header-title-wrapper {
-    display: inline-block;
-  }
-}
-
 #myCarousel-1 {
   margin-bottom: 60px;
   .item {
@@ -29,8 +23,8 @@
       z-index: 9999999999;
       top: 25%;
       .link-to-page {
-        border-top: 1px solid #FFF;
-        border-bottom: 1px solid #FFF;
+        border-top: 1px solid @bg-light;
+        border-bottom: 1px solid @bg-light;
         padding: 14px;
       }
       .margin-left {
@@ -133,6 +127,9 @@
   }
   .gallery-tile {
     margin-bottom: 0;
+    .name-primary{
+      padding-bottom: 20px;
+    }
     img {
       max-height: 80%;
       max-width: 100%;
@@ -216,7 +213,7 @@
     .dot-seperator {
       margin: 5px;
     }
-    a{
+    a {
       color: @grey;
       margin-right: 0;
     }
@@ -229,6 +226,8 @@
       border-width: 1px;
       border-color: lightgrey;
       color: @grey;
+      margin-top: 26px;
+      margin-bottom: 10px;
     }
   }
 
@@ -607,10 +606,6 @@
 }
 
 @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
-  .nav-header-icon-title {
-    padding-right: 0px;
-  }
-
   .faces-tile-1 {
     .faces-container {
       width: 100%;
