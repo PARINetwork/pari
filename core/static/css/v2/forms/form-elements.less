@@ -1,3 +1,7 @@
+@import "../colors/colors";
+@import "../layout/responsive";
+@import "../layout/mixins";
+
 button{
   border-radius: 0;
   border: none;
@@ -9,4 +13,20 @@ button{
   outline: none;
   .appearance(none);
 
+}
+
+.donate-form-content {
+  margin-top: 15px;
+  padding: 0px;
+
+  label {
+    color: @grey;
+    font-weight: 500;
+  }
+  .help-text {
+    margin: 0;
+    line-height: 22px;
+    color: @text-color-footer;
+    .font-size(12);
+  }
 }
