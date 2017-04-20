@@ -15,7 +15,7 @@ var ArticleAlbum = {
         var jsonArray = [];
         var counter = 0;
         function imageSrc(item) {
-            var src = $(item).find("img").attr('srcset');
+            var src = $(item).find("img").attr('srcset') || $(item).find("img").attr('data-srcset');
             if (typeof src != 'undefined') {
                 return src.split(',')[1];
             }
@@ -33,9 +33,12 @@ var ArticleAlbum = {
 
         $(".article-content .rich-text-image-holder").each(function (index, item) {
             var description = $(item).find("img").next("i").text().trim();
+            if(description.length === 0) {
+                description = $(item).children("i").text().trim();
+            }
             jsonArray.push({
                 'src': imageSrc(item),
-                'description': description.length < 0 ? description : $(item).next(".center.paragraph-holder").find("i").text().trim(),
+                'description': description.length > 0 ? description : $(item).nextAll(".center.paragraph-holder").first().find("i").text().trim(),
                 'article_title': $('#article-gallery-title').text(),
                 'id': counter++
             });
