@@ -162,8 +162,8 @@
                                          alt="sample content">
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                    <a href="{{ item.url }}"><h3>{{ item.title }}</h3></a>
-                                    <div>
+                                    <a href="{{ item.url }}" class="infocus-title-primary"><h3>{{ item.title }}</h3></a>
+                                    <div class="name-primary">
                                         {% for author in item.specific.authors.all %}
                                             <a href="{% url "author-detail" author.slug %}"><span>{{ author.name }}</span>
                                             </a>
@@ -207,8 +207,8 @@
                                          alt="sample content">
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                    <a href="{{ item.url }}"><h3>{{ item.title }}</h3></a>
-                                    <div>
+                                    <a href="{{ item.url }}" class="infocus-title-primary"><h3>{{ item.title }}</h3></a>
+                                    <div class="name-primary">
                                         {% for author in item.specific.authors.all %}
                                             <a href="{% url "author-detail" author.slug %}"><span>{{ author.name }}</span>
                                             </a>
@@ -407,9 +407,9 @@
                                     <div>{{ item.count }}</div>
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                    <a href="{{ item.section_model.get_absolute_url }}">
+                                    <a class="more-story-primary-title" href="{{ item.section_model.get_absolute_url }}">
                                         <h3>{{ item.section_model.title }}</h3></a>
-                                    <div>
+                                    <div class="name-primary">
                                         {% for photographer in item.photographers %}
                                             <a href="{% url "author-detail" photographer.slug %}"><span>{{ photographer.name }}</span></a>
                                             {% if not forloop.last %}, {% endif %}
@@ -436,9 +436,9 @@
                                     <div><i class="fa fa-film" aria-hidden="true"></i></div>
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                    <a href="{{ item.section_model.get_absolute_url }}">
+                                    <a class="more-story-primary-title" href="{{ item.section_model.get_absolute_url }}">
                                         <h3>{{ item.section_model.title }}</h3></a>
-                                    <div>
+                                    <div class="name-primary">
                                         {% for photographer in item.photographers %}
                                             <a href="{% url "author-detail" photographer.slug %}"><span>{{ photographer.name }}</span></a>
                                             {% if not forloop.last %}, {% endif %}
@@ -466,9 +466,9 @@
                                     <div>{{ item.count }}</div>
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                    <a href="{{ item.section_model.get_absolute_url }}">
+                                    <a  class="more-story-primary-title" href="{{ item.section_model.get_absolute_url }}">
                                         <h3>{{ item.section_model.title }}</h3></a>
-                                    <div>
+                                    <div class="name-primary">
                                         {% for photographer in item.photographers %}
                                             <a href="{% url "author-detail" photographer.slug %}"><span>{{ photographer.name }}</span></a>
                                             {% if not forloop.last %}, {% endif %}
