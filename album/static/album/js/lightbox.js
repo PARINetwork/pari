@@ -36,6 +36,7 @@ var Album = {
                     var trackId = slide.track_id;
                     Album.prepareSoundCloudWidget("/tracks/"+trackId);
                 }
+                $(".floating-text .description").html(slide.album_description);
             }
 
             $(".thumbnail-list").append('<li class="thumbnail left box"><img src=' + slide.src + ' /></li>');
