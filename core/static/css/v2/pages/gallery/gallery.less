@@ -1,6 +1,24 @@
+@import "../../layout/responsive";
+
 #main_content{
   margin-top: 0;
 }
 #mainnav.navbar-inverse{
   margin-bottom: 0;
+}
+
+.banner-info {
+  &.footer {
+    margin-top: 100vh;
+  }
+}
+
+@media (max-width: @screen-sm-min) {
+  .banner-info {
+    .container {
+      .title-info {
+        width: 60%;
+      }
+    }
+  }
 }
