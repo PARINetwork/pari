@@ -172,6 +172,7 @@
                         <span itemprop="name">
                             <span class = "map-top-title">{{ location.district }}</span>, {{ location.state }}
                         </span>
+                        <a href="{% url 'map-list' %}?lat={{ location.point.x }}&long={{ location.point.y }}&title={{ location.name }}">map</a>
                     </span>
                 </a>
 
