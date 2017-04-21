@@ -23,24 +23,37 @@
 {% endblock %}
 
 {% block main %}
-<div class="container content-container">
-  <div class="row filter">
-    <h3>{% trans "Filter by" %}:</h3>
-    <ul>
-      <li><input type="checkbox" name="filter" value="articles" {% if articles_checked %}checked="checked"{% endif %}>{% trans "Articles" %}</li>
-      <li><input type="checkbox" name="filter" value="faces" {% if faces_checked %}checked="checked"{% endif %}>{% trans "Faces" %}</li>
-      <li><input type="checkbox" name="filter" value="albums" {% if albums_checked %}checked="checked"{% endif %}>{% trans "Albums" %}</li>
-      <li><input type="button" value="Filter" id="filter"></li>
-    </ul>
-    <h3>{% trans "View" %}</h3>
-    <select name="boundary">
-      <option value="">---</option>
-      <option value="state">State</option>
-      <option value="district">District</option>
-    </select>
+<div class="map-page">
+
+  <div class="filter">
+    <div class="wrapper clear-fix">
+      <div class="left">
+        <span>Show</span>
+        <ul>
+          <li>
+            <input type="checkbox" name="articles" id="articles" value="articles" {% if articles_checked %}checked="checked"{% endif %}>
+            <label for="articles">{% trans "Articles" %}</label>
+          </li>
+          <li>
+            <input type="checkbox" name="faces" id="faces" value="faces" {% if faces_checked %}checked="checked"{% endif %}>
+            <label for="faces">{% trans "Faces" %}</label>
+          </li>
+          <li>
+            <input type="checkbox" name="albums" id="albums" value="albums" {% if albums_checked %}checked="checked"{% endif %}>
+            <label for="albums">{% trans "Albums" %}</label>
+          </li>
+        </ul>
+      </div>
+      <div class="right">
+        <ul class="toggler">
+          <li class="state selected">State</li>
+          <li class="district">District</li>
+        </ul>
+      </div>
+    </div>
   </div>
-  <div class="row">
-    <div class="col-lg-12 col-md-12" id="map"></div>
-  </div>
+
+  <div class="map-container" id="map"></div>
+  
 </div>
 {% endblock %}
