@@ -111,6 +111,10 @@ def donate(request):
     return render(request, "core/donate.html", {"tab": "donate", "current_page": 'donate'})
 
 
+def founders(request):
+    return render(request, "core/founders.html", {"tab": "about-pari", "current_page": 'founders'})
+
+
 def pari_teachers_students(request):
     active_tab = 'about-pari'
     return render(request, "core/pari_teachers_students.html", {

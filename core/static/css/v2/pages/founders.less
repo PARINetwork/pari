@@ -1,0 +1,71 @@
+@import "../colors/colors";
+@import "../layout/responsive";
+
+.founders-title {
+  font-size: 50px;
+  font-family: Fira sans-serif;
+  font-weight: bolder;
+  color: lightgray;
+}
+
+.founders-bio {
+  h3 {
+    color: @primary-color;
+  }
+}
+
+.image-grid {
+  width: 100%;
+}
+
+hr {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border: 0;
+  border-top: 1px solid black;
+}
+
+.founders-details {
+  display: inline-block;
+  width: 289px;
+  padding: 10px;
+  padding-bottom: 25px;
+  .image-holder {
+    width: 270px;
+    height: 171px;
+    overflow: hidden;
+  }
+  img {
+    width: 100%;
+  }
+  h4 {
+    color: @primary-color;
+    padding-top: 10px;
+  }
+}
+
+.photo-section-head {
+  font-size: x-large;
+  margin-bottom: 30px;
+  color: red;
+  margin-top: 30px;
+  font-weight: 500;
+}
+
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+  .image-grid {
+    padding: 0 33px 0 33px;
+  }
+}
+
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+  padding: 0 69px 0 69px;
+}
+
+@media (max-width: @screen-xs-max) {
+  .image-grid .image-holder {
+    width: 274px;
+    height: 200px;
+    overflow: hidden;
+  }
+}
