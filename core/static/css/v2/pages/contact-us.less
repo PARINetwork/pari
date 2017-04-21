@@ -1,4 +1,5 @@
 @import "../colors/colors";
+@import "../layout/responsive";
 #contact-pari {
   h1 {
     padding-bottom: 40px;
@@ -19,6 +20,18 @@
   form {
     p {
       padding-bottom: 0;
+    }
+
+    input[type="text"], input[type="email"], textarea {
+      width: 35%;
+    }
+  }
+
+  @media (max-width: @screen-xs-max) {
+    form {
+      input[type="text"], input[type="email"], textarea {
+        width: 100%;
+      }
     }
   }
 }
