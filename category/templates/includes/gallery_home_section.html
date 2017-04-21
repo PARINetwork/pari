@@ -3,12 +3,16 @@
 <div class="row gallery-tile">
     <div class="col-lg-6 col-md-6">
         <h4>{{ section_title }}</h4>
-        <img class="img-responsive center-align" src="{{ section_context.image.file.url }}"
-             alt="{{ section_context.image.alt_text }}">
+        <a href="{{ section_context.section_model.get_absolute_url }}">
+            <img class="img-responsive center-align" src="{{ section_context.image.file.url }}"
+                alt="{{ section_context.image.alt_text }}">
+        </a>
     </div>
     <div class="col-lg-6 col-md-6">
         <div class="gallery-tile-info">
-            <h2>{{ section_context.section_model.title }}</h2>
+            <a href="{{ section_context.section_model.get_absolute_url }}">
+                <h2>{{ section_context.section_model.title }}</h2>
+            </a>
             <p> {{ section_context.section_model.description|richtext }}</p>
             <div class="name-primary">
                 {% for photographer in section_context.photographers %}
