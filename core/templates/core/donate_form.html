@@ -27,7 +27,7 @@
       <form method="post" action="{% url "core.views.donate_form" %}">{% csrf_token %}
         {% for field in form %}
         <div class="form-group {% if field.errors %}has-error{% endif %}">
-          {% if not field.is_hidden %}<label class="control-label" id="{{ field.id_for_label }}">{{ field.label | upper }} </label>{% endif %}
+          {% if not field.is_hidden %}<label class="control-label" id="label_{{ field.id_for_label }}">{{ field.label }} </label>{% endif %}
           {{ field }} {{ field.errors }}
           <p class="help-text">{{ field.help_text }}</p>
         </div>
@@ -36,7 +36,7 @@
         <p class="notify-info">You will be redirected to Instamojo where you can complete the donation either through a credit/debit card or net banking.</p>
         <div class="payment-powered-by">
             <p class="notify-info">Payments powered by</p>
-            <img src="//im-cdn.com/assets/images/logo.png" alt="Payment Gateway provided by Instamojo">
+            <img src="{{ STATIC_URL }}img/instamojo_logo.png" alt="Payment Gateway provided by Instamojo">
         </div>
       </form>
     </div>

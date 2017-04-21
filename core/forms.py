@@ -12,21 +12,25 @@ class ContactForm(forms.ModelForm):
 
 class DonateForm(forms.Form):
     name = forms.CharField(
+        label=_("NAME"),
         max_length=100,
         widget=forms.TextInput(attrs={"class": "form-control"})
     )
     email = forms.EmailField(
+        label=_("EMAIL"),
         widget=forms.EmailInput(attrs={"class": "form-control"})
     )
     phone = forms.CharField(
+        label=_("PHONE NUMBER"),
         widget=forms.TextInput(attrs={"class": "form-control"})
     )
     address = forms.CharField(
+        label=_("ADDRESS"),
         widget=forms.Textarea(attrs={"class": "form-control", "rows": 3}),
         required=False
     )
     pan = forms.CharField(
-        label=_("PAN"),
+        label=_("PAN NUMBER"),
         max_length=10,
         widget=forms.TextInput(attrs={"class": "form-control"}),
         help_text=_("PAN is required as per government regulations.")

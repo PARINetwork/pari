@@ -23,15 +23,22 @@ p{
   }
 
 .donate-form-content {
-
+  label{
+    display: inline-block;
+  }
   .form-group {
-    #id_is_indian{
+    border-radius: 0;
+    #label_id_is_indian{
       color:@darker-grey;
-      padding: 0;
+      padding: 0 0 0 20px;
       line-height: normal;
+      .font-size(15);
     }
-   input {
-
+   #id_is_indian{
+     position: absolute;
+     left: 0;
+     .font-size(30);
+     margin-top: 1px;
    }
   }
   .btn {
@@ -59,6 +66,9 @@ p{
       opacity: 0.4;
     }
   }
+  input, textarea{
+      border-radius: 0 ;
+    }
 }
 
 .donate-form-section {
