@@ -53,15 +53,15 @@ class HomePageAdminMediaForm(WagtailAdminPageForm):
         super(HomePageAdminMediaForm, self).__init__(*args, **kwargs)
         self.fields['talking_album'] = forms.CharField(max_length=50,
                                                        widget=forms.Select(
-                                                           choices=Album.objects.filter(
+                                                           choices=Album.objects.live().filter(
                                                                ~Q(slides__audio='')).distinct().values_list(
                                                                'page_ptr_id', 'title')))
         self.fields['photo_album'] = forms.CharField(max_length=50,
-                                                     widget=forms.Select(choices=Album.objects.filter(
+                                                     widget=forms.Select(choices=Album.objects.live().filter(
                                                          Q(slides__audio='')).distinct().values_list('page_ptr_id',
                                                                                                      'title')))
         self.fields['video'] = forms.CharField(max_length=50,
-                                               widget=forms.Select(choices=Article.objects.filter(
+                                               widget=forms.Select(choices=Article.objects.live().filter(
                                                    Q(categories__name='VideoZone')).values_list('page_ptr_id',
                                                                                                 'title')))
 

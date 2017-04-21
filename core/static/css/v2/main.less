@@ -25,13 +25,25 @@
    }
   }
 }
+#mainnav .navbar-header {
+  .header-title-wrapper {
+    display: inline-block;
+  }
+}
 
+
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+  .nav-header-icon-title {
+    padding-right: 0px;
+  }
+}
 @media only screen and (max-width: 768px) {
   .album-list, .single-category, .Visible, .PhotoZone, .Little, .VideoZone, .AudioZone, .Tongues, .gallery-home,
   .face-list, .resource-list, .about-the-editor, .authors {
 
     #header ul.header-social-icons {
       display: block;
+      top: 18px;
     }
 
     .gallery-title-icon.share-icon, .gallery-title-icon.face-upload-share {
@@ -39,7 +51,26 @@
     }
   }
 
+  .header-back-to-categories {
+      display: none;
+    }
 
+  .single-category {
+    #header ul.header-social-icons {
+      top: 13px;
+    }
+    .header-back-to-categories {
+      border-right: 1px solid @light-grey;
+      display: block;
+      letter-spacing: 1px;
+      padding: 0 10px 0 0;
+      line-height: 30px;
+      .fa-angle-left {
+        color: @link-primary;
+        font-size: 12px !important;
+      }
+    }
+  }
   .single-category, .Visible, .Little, .Tongues, .gallery-home, .about-the-editor, .authors {
     #header ul.header-social-icons {
       left: 20px;

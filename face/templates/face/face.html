@@ -35,9 +35,11 @@
 {% block extra_uncompressed_js %}
 {% if slug %}
     <script type="text/javascript">
-      $(function() {
-	  $('a[data-slug="{{ slug }}"]').click();
-      });
+        $("document").ready(function() {
+            setTimeout(function() {
+                $('a[data-slug="{{ slug }}"]').click();
+                }, 10);
+        });
     </script>
 {% endif %}
 {% endblock %}

@@ -47,7 +47,17 @@ class LocationList(ListView):
         context = super(LocationList, self).get_context_data(**kwargs)
         req = self.request
         filters = req.GET.getlist("filter")
-        if filters:
+        latitude = req.GET.get("lat", '')
+        longitude = req.GET.get("long", '')
+        location_title = req.GET.get("title", '')
+
+        if latitude and longitude:
+            location_title = location_title if location_title else "Lat: %s, Long: %s" % (latitude, longitude)
+            context['latitude'] = latitude
+            context['longitude'] = longitude
+            context['location_title'] = location_title
+            context["articles_checked"], context["albums_checked"], context["faces_checked"] = False, False, False
+        elif filters:
             context["articles_checked"] = "articles" in filters
             context["albums_checked"] = "albums" in filters
             context["faces_checked"] = "faces" in filters

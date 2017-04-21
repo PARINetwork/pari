@@ -11,9 +11,15 @@
 <script src="https://maps.google.co.in/maps/api/js?key={{ MAP_KEY }}"></script>
 <script type="text/javascript">
   var staticURL = "{{ STATIC_URL }}";
-  var locations = [
-  {% for location in locations %}{% if location.slug %}{% url "location-detail" slug=location.slug as location_url %}{"lat": {{ location.point.x }}, "lng": {{ location.point.y }}, "title": "<div><p><strong>{% trans "Name" %}</strong>: <a href=\"{{ location_url }}\" target=\"_blank\">{{ location.name }}</a></p> <p><strong>{% trans "District" %}</strong>: {{ location.district }}</p><p><strong>{% trans "State" %}</strong>: {{ location.state }}</p></div>"} {% if not forloop.last %},{% endif %}{% endif %}{% endfor %}
-  ];
+  var locations;
+
+  {% if latitude and longitude %}
+      locations = [{'lat': {{ latitude }}, 'lng': {{ longitude }}, 'title': '{{ location_title }}' }];
+  {% else %}
+      locations = [ {% for location in locations %}{% if location.slug %}{% url "location-detail" slug=location.slug as location_url %}{"lat": {{ location.point.x }}, "lng": {{ location.point.y }}, "title": "<div><p><strong>{% trans "Name" %}</strong>: <a href=\"{{ location_url }}\" target=\"_blank\">{{ location.name }}</a></p> <p><strong>{% trans "District" %}</strong>: {{ location.district }}</p><p><strong>{% trans "State" %}</strong>: {{ location.state }}</p></div>"} {% if not forloop.last %},{% endif %}{% endif %}{% endfor %}
+      ];
+  {% endif %}
+
 </script>
 {% endblock %}
 

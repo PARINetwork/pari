@@ -1,12 +1,79 @@
-button{
+@import "../colors/colors";
+@import "../layout/responsive";
+@import "../layout/mixins";
+
+button {
   border-radius: 0;
   border: none;
 }
 
-.select-no-style{
+.select-no-style {
   border: none;
   background: none;
   outline: none;
   .appearance(none);
 
+}
+
+form {
+  margin-top: 15px;
+  padding: 0px;
+
+  label {
+    color: @grey;
+    font-weight: 500;
+    .font-size(14);
+    display: block;
+  }
+
+  input[type="text"], input[type="email"], textarea {
+    padding: 10px 10px;
+    &:focus {
+        outline: none;
+      }
+  }
+
+  textarea {
+    border: solid 1px @light-grey;
+  }
+
+  button, input[type="submit"] {
+    border: none;
+    outline: none;
+    .font-size(16);
+    border-radius: 0;
+    padding: 10px 50px;
+    font-weight: 500;
+    &.primary {
+      background: @primary-color;
+      color: @bg-light;
+    }
+    &.secondary {
+      background: @text-color-footer;
+      color: @bg-light;
+      &:hover {
+        background: @link-primary;
+      }
+    }
+  }
+}
+
+@media (max-width: @screen-xs-max) {
+  form {
+    input[type="text"], input[type="email"], textarea {
+      border: solid 1px @text-color-brand-title;
+    }
+  }
+}
+
+.donate-form-content {
+  margin-top: 15px;
+  padding: 0px;
+
+  .help-text {
+    margin: 0;
+    line-height: 22px;
+    color: @text-color-brand-title;
+    .font-size(12);
+  }
 }

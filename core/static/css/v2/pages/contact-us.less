@@ -1,0 +1,37 @@
+@import "../colors/colors";
+@import "../layout/responsive";
+#contact-pari {
+  h1 {
+    padding-bottom: 40px;
+  }
+
+  .subtitle {
+    color: @text-color-brand-title;
+  }
+
+  p {
+    margin-top: 10px;
+    padding-bottom: 30px;
+  }
+  .section-content {
+    border-bottom: thin solid @text-color-brand-title;
+  }
+
+  form {
+    p {
+      padding-bottom: 0;
+    }
+
+    input[type="text"], input[type="email"], textarea {
+      width: 35%;
+    }
+  }
+
+  @media (max-width: @screen-xs-max) {
+    form {
+      input[type="text"], input[type="email"], textarea {
+        width: 100%;
+      }
+    }
+  }
+}
