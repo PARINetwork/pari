@@ -1,0 +1,86 @@
+@import "../colors/colors";
+@import "../layout/responsive";
+@import "../layout/mixins";
+
+p{
+  line-height:25px;
+}
+.donate-form-title {
+  .title-strap{
+    color:@darker-grey;
+    padding: 0;
+    margin: 0px;
+    line-height: normal;
+  }
+}
+
+ .donate-heading {
+    color: @link-primary;
+    .font-size(15);
+    margin-bottom: 0px;
+    font-weight: bold;
+    padding-top:10px;
+  }
+
+.donate-form-content {
+
+  .form-group {
+    #id_is_indian{
+      color:@darker-grey;
+      padding: 0;
+      line-height: normal;
+    }
+   input {
+
+   }
+  }
+  .btn {
+    .font-size(16);
+    border-radius: 0;
+    background: @text-color-footer;
+    color: @bg-light;
+    padding:10px 50px;
+    font-weight: 500;
+    &:hover {
+      background: @link-primary;
+    }
+  }
+  .notify-info {
+    line-height: 22px;
+    color: @text-color-footer;
+    .font-size(12);
+  }
+  .payment-powered-by{
+    p{
+      margin-bottom: 0;
+    }
+    img{
+      height: 21px;
+      opacity: 0.4;
+    }
+  }
+}
+
+.donate-form-section {
+  padding:0px;
+  margin-top: 20px;
+  border-top: @grey 1px solid;
+
+  .special-bullets {
+    li:before {
+      margin-top: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+    .account-details{
+      margin-left: 40px;
+    }
+  }
+  .donate-heading {
+    a{
+      color: @link-primary
+    }
+  }
+}
