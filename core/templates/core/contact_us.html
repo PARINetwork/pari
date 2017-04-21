@@ -19,37 +19,34 @@
 
     <h1>{% trans "Contact PARI" %}</h1>
     <h4 class="subtitle font-xl">{% trans "TO CONTRIBUTE CONTENT" %}</h4>
-    <p class="section-content">Please visit the <a href="https://script.google.com/macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec">content upload form</a> and the <a href="{{ guidelines_url }}"> guidelines </a> for details.</p>
+    <p class="section-content">Please visit the <a href="https://script.google.com/macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec">content upload form</a> and the <a href="{{ guidelines_url }}">guidelines</a> for details.</p>
 
     <h4 class="subtitle font-xl">{% trans "TO DONATE TO PARI" %}</h4>
-    <p class="section-content">Do see our <a href="{{ donate_url }}"> donate </a> page for details.</p>
+    <p class="section-content">Do see our <a href="{{ donate_url }}">donate</a> page for details.</p>
 
     <h4 class="subtitle font-xl">{% trans "WANT TO VOLUNTEER FOR PARI?" %}</h4>
     <p class="section-content">Help us understand your skills and interests by filling up this <a href="https://docs.google.com/forms/d/1IbwsyjTovsTnlSb2yC-KkkBlR_rPWOnGepi7XBD4b_k/viewform?usp=send_form">form</a>.</p>
 
-    <h4 class="subtitle font-xl">{% trans "OTHER QUESTIONS?" %}</h4>
-    <p>Write to us using this form:</p>
-
     <form method="post" action="{% url "contact_us" %}">{% csrf_token %}
-
-    <div class="form">
-      <div class="form-group">
-	<p>{{ contact_form.name.label }}</p>
-	{{ contact_form.name }}
-      </div>
-      <div class="form-group">
-	<p>{{ contact_form.email.label }}</p>
-	{{ contact_form.email }}
-      </div>
-      <div class="form-group">
-	<p>{{ contact_form.message.label }}</p>
-	{{ contact_form.message }}
-      </div>
-      <div class="form-group">
-	<input type="submit" value="{% trans "Send" %}">
-      </div>
-    </div>
+        <h4 class="subtitle font-xl">{% trans "OTHER QUESTIONS?" %}</h4>
+        <p>Write to us using this form:</p>
+        <div class="form">
+            <div class="form-group">
+                <label>{{ contact_form.name.label | upper }}</label>
+                {{ contact_form.name }}
+            </div>
+            <div class="form-group">
+                <label>{{ contact_form.email.label | upper }}</label>
+                {{ contact_form.email }}
+            </div>
+            <div class="form-group">
+                <label>{{ contact_form.message.label | upper }}</label>
+                {{ contact_form.message }}
+            </div>
+            <div class="form-group">
+                <input type="submit" class="primary" value="{% trans "Send" %}">
+            </div>
+            </div>
   </form>
 </div>
-
 {% endblock %}
