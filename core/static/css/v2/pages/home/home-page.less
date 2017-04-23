@@ -452,11 +452,16 @@
   }
 
   #myCarousel-1 .carousel-control-container {
-    top: 37%;
-    margin: 0;
-    left: 0;
+    top: 86%;
+    margin-left: 34%;
     .left, .right {
 
+    }
+    .fa-angle-right {
+      vertical-align: middle;
+    }
+    .fa-angle-left {
+      vertical-align: middle;
     }
   }
 
@@ -472,22 +477,46 @@
     margin-bottom: 20px;
   }
 
+  #myCarousel-1 .item {
+    max-height: 100vh;
+  }
+
   #myCarousel-1 {
     margin-bottom: 20px;
+    height: 100vh;
+    .carousel-inner {
+      height: 100%;
+      .active {
+        height: 100%;
+        img {
+          height: 100%;
+        }
+      }
+
+    }
     .item .item-container {
-      padding-bottom: 20px;
-      border-bottom: 1px solid @grey;
-      position: static;
+      z-index: 9999999999;
+      text-align: center;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 40%;
+      width: 275px;
+      margin: 0 auto;
+      padding-bottom: 30%;
       div:first-child {
         margin-top: 20px;
         span {
-          background: @light-grey;
+          background: @lighter-grey;
+          font-weight: 500;
           padding: 2px 10px;
           letter-spacing: 2px;
+          color: @grey;
+          border: 1px solid @light-grey;
         }
         + h1 {
           .font-size(50);
-          color: @text-dark;
+          color: @text-light;
           padding: 10px 0;
           max-width: 320px;
           margin: 0;
@@ -497,9 +526,7 @@
             a {
               padding: 15px 20px;
               .font-size(16);
-              color: @text-dark;
-              border-top: 1px solid @grey;
-              border-bottom: 1px solid @grey;
+              color: @text-light;
               &:hover {
                 color: @primary-color;
               }
@@ -545,7 +572,7 @@
 
   #mainnav .navbar-header .navbar-brand-title {
     display: block;
-    margin: 5px 0px 5px 22px;
+    margin: 10px 0px 5px 22px;
     color: black;
     font-size: 3.7vw;
     line-height: 2.4vw;
