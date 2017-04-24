@@ -30,11 +30,11 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 {% for featured_content in page.featured_content %}
-                    <div class=" {% if forloop.first %}active{% endif %} item">
+                    <div class=" {% if forloop.first %}active{% endif %} item" style="background-image: url('{{ featured_content.value.featured_image.file.url }}');">
                         {#                        {% image featured_content.value.featured_page.image fill-500x320 as featured_image %}#}
-                        <img class="img-responsive center-align"
-                             src="{{ featured_content.value.featured_image.file.url }}"
-                             alt="sample content">
+{#                        <img class="img-responsive center-align"#}
+{#                             src="{{ featured_content.value.featured_image.file.url }}"#}
+{#                             alt="sample content">#}
                         <div class="container">
                             <div class="item-container">
                                 <div>
@@ -178,8 +178,8 @@
                                                 <span class="dot-seperator">•</span>
                                             {% endfor %}
                                         {% endif %}
-                                        <a href="{% url "archive-detail" year=item.specific.original_published_date.year month=item.specific.original_published_date.month %}">
-                                        {{ item.specific.original_published_date|date }}
+                                        <a href="{% url "archive-detail" year=item.specific.latest_revision_created_at.year month=item.specific.latest_revision_created_at.month %}">
+                                        {{ item.specific.latest_revision_created_at|date }}
                                         </a>
                                     </div>
                                     {% if translations_for_infocus_article1|length > 1 %}
@@ -226,7 +226,9 @@
                                                 <span class="dot-seperator">•</span>
                                             {% endfor %}
                                         {% endif %}
-                                        {{ item.specific.latest_revision_created_at|date }}</div>
+                                        <a href="{% url "archive-detail" year=item.specific.latest_revision_created_at.year month=item.specific.latest_revision_created_at.month %}">
+                                            {{ item.specific.latest_revision_created_at|date }}</a>
+                                    </div>
                                     {% if translations_for_infocus_article2|length > 1 %}
                                         <div class="dropdown">
                                             <button class="dropdown-toggle" type="button" id="dropdownMenu1"

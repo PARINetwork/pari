@@ -14,10 +14,12 @@
 #myCarousel-1 {
   margin-bottom: 60px;
   .item {
-    max-height: 930px;
-    img {
-      width: 100%;
-    }
+    height: 970px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    //img {
+    //  width: 100%;
+    //}
     .item-container {
       position: absolute;
       z-index: 9999999999;
@@ -216,6 +218,7 @@
     a {
       color: @grey;
       margin-right: 0;
+      padding-bottom: 10px;
       &:hover {
         color: @primary-color;
       }
@@ -485,7 +488,7 @@
     margin-bottom: 20px;
     height: 100vh;
     .carousel-inner {
-      height: 100%;
+      height: 93%;
       .active {
         height: 100%;
         img {
@@ -573,7 +576,7 @@
   #mainnav .navbar-header .navbar-brand-title {
     display: block;
     margin: 10px 0px 5px 22px;
-    color: black;
+    color: @dark-grey;
     font-size: 3.7vw;
     line-height: 2.4vw;
   }
@@ -627,6 +630,11 @@
 }
 
 @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+  #myCarousel-1 .item {
+    height: 100vh;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
 
   .faces-tile-1 {
     margin-bottom: 0px;
@@ -663,6 +671,11 @@
 }
 
 @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+  #myCarousel-1 .item {
+    height: 100vh;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+  }
   .faces-tile-1 {
     .faces-container {
       width: 100%;
@@ -696,6 +709,12 @@
 }
 
 @media (min-width: @screen-lg-min) {
+  #myCarousel-1 .item {
+    height: 100vh;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
   .faces-tile-1 {
     .faces-container {
       h2 {
