@@ -140,9 +140,7 @@ def construct_guidelines(guideline_content):
     return guideline_dict
 
 def contribute(request, slug=None):
-    page = StaticPage.objects.get(slug=slug)
     return render(request, "core/contribute.html", {
-        "self": page,
         "tab": 'about-pari',
         "current_page": 'contribute',
     })

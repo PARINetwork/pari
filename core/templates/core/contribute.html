@@ -1,52 +1,137 @@
-{% extends "core/static_page.html" %}
+{% extends "base.html" %}{% load i18n %}
 
-{% block extra_css %}
-<style>
-    .richtext h4 {
-      font-size: 20px;
-      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
-      color: #ee4303;
-      margin: 0px;
-      padding: 10px 25px;
-      cursor: pointer;
-      background: #e8e8e8;
-  }
-  .rich-text h4:not(:last-of-type) {
-      border-bottom: 1px #a6a6a6 solid;
-  }
-  .rich-text h4:first-of-type {
-      border-top-left-radius: 7px;
-      border-top-right-radius: 7px;
-  }
-  .rich-text h4:last-of-type {
-    border-bottom-left-radius: 7px;
-    border-bottom-right-radius: 7px;	
-  }
-  p {
-      margin: 10px 0px;
-      padding: 0px 25px;
-  }
-</style>
+{% block meta_title %}
+    {% blocktrans with site_name=site.site_name %}Donate to {{ site_name }}{% endblocktrans %}
 {% endblock %}
 
-{% block extra_js %}
-<script type="text/javascript">
-    $(function() {
-	$(".rich-text h4").addClass("glyphicon-plus");
-	$(".rich-text h4").each(function() {
-	    var $this = $(this);
-	    var children = $this.nextUntil("h4");
-	    $this.after("<div></div>");
-	    $this.next("div").addClass("collapse").html(children);
-	    $this.on("click", function() {
-		if ($this.hasClass("glyphicon-plus")) {
-		    $this.removeClass("glyphicon-plus").addClass("glyphicon-minus");
-		} else {
-		    $this.removeClass("glyphicon-minus").addClass("glyphicon-plus");
-		}
-		$this.next("div").toggleClass("in");
-	    });
-	});
-    });
-</script>
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/forms/form-elements.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/contribute.less">
+{% endblock %}
+
+{% block main %}
+    <div id="contribute">
+        <div class="content container">
+            <h1>India’s biggest archive of itself needs everyone to participate</h1>
+            <p class="contribute-heading">COVER YOUR COUNTRY – HERE’S HOW</p>
+            <p>Join us in building a unique national knowledge repository on rural India.</p>
+            <p>You can start by telling us something about yourself.</p>
+            <a href="https://docs.google.com/forms/d/1IbwsyjTovsTnlSb2yC-KkkBlR_rPWOnGepi7XBD4b_k/viewform?usp=send_form"
+               target="_blank" class="btn primary">Fill the profile form</a>
+            <hr/>
+
+            <div>
+                <p class="contribute-heading">CONTRIBUTE CONTENT</p>
+                <div class="contribute-cols row">
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                        <div>
+                            <i class="fa fa-pencil"></i>
+                            <p class="contribute-col-heading"> Write/ Edit / Photograph </p>
+                        </div>
+                        <p>
+                            You could write content for existing films or edit content that has been written but needs
+                            the
+                            careful eye of an editor. You can also write independent content for our print section. You
+                            could translate the subtitles of films on PARI into other languages. Having those in as many
+                            Indian languages as possible is a major objective. You can also translate other written
+                            content
+                            into different languages.
+                        </p>
+                        <hr/>
+                        <div class="help-text">
+                            Help us understand your skills and interests by filling in this <a
+                                href="https://docs.google.com/forms/d/1IbwsyjTovsTnlSb2yC-KkkBlR_rPWOnGepi7XBD4b_k/viewform?usp=send_form"
+                                target="_blank">Profile Form</a>.
+                        </div>
+                        <hr/>
+                        <div class="help-text">
+                            Upload your articles, photos, document with content ideas through the <a
+                                href="https://script.google.com/macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec"
+                                target="_blank">Content Upload Form</a>. 
+                        </div>
+                        <hr/>
+                        <div class="help-text">
+                            To contribute to the Faces category, upload the photos and details through the Faces Form.
+                        </div>
+                        <hr/>
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                        <div>
+                            <i class="fa fa-film"></i>
+                            <p class="contribute-col-heading"> Make a film </p>
+                        </div>
+                        <p>
+                            You can produce content for the archive by making films like the ones you already see on
+                            this
+                            website, so long as these are within PARI’s mandate and objectives. Get in touch with us to
+                            know
+                            what would be suitable for the archive. The basic principle: it’s got to be on the everyday
+                            lives of everyday people in rural India. Share your ideas about what topics/ areas you wish
+                            to
+                            make a film on. We can take it further from there. Know that you can record content for PARI
+                            on
+                            your cell phone camera. Please share your audio/video clip links through this <a
+                                href="https://script.google.com/macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec"
+                                target="_blank">Content Upload Form</a>
+                        </p>
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                        <div>
+                            <i class="fa fa-binoculars"></i>
+                            <p class="contribute-col-heading"> Research </p>
+                        </div>
+                        <p>Find online content already on the archive and send us links to it. Or research a vital topic
+                            –
+                            for instance, the lives of agricultural labourers in rural India – and collaborate with us
+                            on
+                            building a fund of information, photographs and data on that subject. Besides, you can send
+                            us
+                            any studies or reports in electronic form which you know of and that are relevant to rural
+                            India. Have a look at PARI’s ‘Resources’ section to know what’s already there and get a
+                            better
+                            idea of what we’re looking for. Do share any relevant reports you find through this <a
+                                    href="https://script.google.com/macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec"
+                                    target="_blank">Content Upload Form</a>. </p>
+                    </div>
+                </div>
+                <div class="contribute-cols row">
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                        <div>
+                            <i class="fa fa-language"></i>
+                            <p class="contribute-col-heading"> Translate </p>
+                        </div>
+                        <p>Help us by translating content into Indian languages. Please help us understand your skills
+                            and
+                            interests by filling in this Profile Form.</p>
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                        <div>
+                            <i class="fa fa-user-circle-o"></i>
+                            <p class="contribute-col-heading"> FACES </p>
+                        </div>
+                        <p>Do you have FACES to contribute to the only and largest database recording India’s facial
+                            diversity?</p>
+                        <a href="{% url "contribute_to_faces" %}" class="btn primary">Contribute to Faces</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ready-to-upload">
+            <div class="container">
+                <p class="contribute-heading">READY TO UPLOAD?</p>
+                <p>Is your content ready to upload? Do go through the PARI content guidelines to ensure you know what’s
+                    required.</p>
+                <a href="https://script.google.com/macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec"
+                   target="_blank" class="btn primary">Upload content</a>
+            </div>
+        </div>
+
+        <div class="support-a-pari-project container">
+            <p class="contribute-heading">DONATE – SUPPPORT A PARI PROJECT</p>
+            <p>You can back ongoing PARI projects by funding them. Or pitch one yourself on an aspect of rural India
+                from your home state or district that you believe demands attention. </p>
+            <a href="{% url "static_page" slug="donate" %}" class="btn primary">Donate to PARI</a>
+        </div>
+    </div>
 {% endblock %}

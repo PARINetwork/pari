@@ -2,10 +2,25 @@
 @import "../layout/responsive";
 @import "../layout/mixins";
 
-button {
-  border-radius: 0;
-  border: none;
-}
+button, input[type="submit"], a.btn {
+    border: none;
+    outline: none;
+    .font-size(16);
+    border-radius: 0;
+    padding: 10px 50px;
+    font-weight: 500;
+    &.primary {
+      background: @primary-color;
+      color: @bg-light;
+    }
+    &.secondary {
+      background: @text-color-footer;
+      color: @bg-light;
+      &:hover {
+        background: @link-primary;
+      }
+    }
+  }
 
 .select-no-style {
   border: none;
@@ -35,26 +50,6 @@ form {
 
   textarea {
     border: solid 1px @light-grey;
-  }
-
-  button, input[type="submit"] {
-    border: none;
-    outline: none;
-    .font-size(16);
-    border-radius: 0;
-    padding: 10px 50px;
-    font-weight: 500;
-    &.primary {
-      background: @primary-color;
-      color: @bg-light;
-    }
-    &.secondary {
-      background: @text-color-footer;
-      color: @bg-light;
-      &:hover {
-        background: @link-primary;
-      }
-    }
   }
 }
 
