@@ -56,6 +56,11 @@ var ArticleAlbum = {
                 description = $(this).find("i").text().trim();
               }
           });
+          $(item).nextAll("i:not('.rich-text-image-holder')").each(function() {
+              if(!description) {
+                description = $(this).find("i").text().trim();
+              }
+          });
       }
       return description;
     },
@@ -175,14 +180,13 @@ $(function () {
     });
 
 
-    $('.rich-text p').each(function () {
+    $('.rich-text p, .rich-text h3, .rich-text h5').each(function () {
         if ($(this).find('img').length > 0) {
             $(this).addClass("rich-text-image-holder");
         } else {
             $(this).addClass("paragraph-holder");
         }
     });
-
     $('.rich-text img').each(function (index) {
         $(this).wrap('<a class="gallery" id=' + index + '></a>');
         $(this).parents('a').first().prepend('<i class="fa fa-expand fa-invert"></i>').css("position", "relative");

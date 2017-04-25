@@ -14,10 +14,12 @@
 #myCarousel-1 {
   margin-bottom: 60px;
   .item {
-    max-height: 930px;
-    img {
-      width: 100%;
-    }
+    height: 970px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    //img {
+    //  width: 100%;
+    //}
     .item-container {
       position: absolute;
       z-index: 9999999999;
@@ -216,6 +218,7 @@
     a {
       color: @grey;
       margin-right: 0;
+      padding-bottom: 10px;
       &:hover {
         color: @primary-color;
       }
@@ -452,11 +455,16 @@
   }
 
   #myCarousel-1 .carousel-control-container {
-    top: 37%;
-    margin: 0;
-    left: 0;
+    top: 80%;
+    margin-left: 34%;
     .left, .right {
 
+    }
+    .fa-angle-right {
+      vertical-align: middle;
+    }
+    .fa-angle-left {
+      vertical-align: middle;
     }
   }
 
@@ -472,22 +480,48 @@
     margin-bottom: 20px;
   }
 
+  #myCarousel-1 .item {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
   #myCarousel-1 {
     margin-bottom: 20px;
+    height: 100vh;
+    .carousel-inner {
+      height: 100%;
+      .active {
+        height: 93%;
+        img {
+          height: 100%;
+        }
+      }
+
+    }
     .item .item-container {
-      padding-bottom: 20px;
-      border-bottom: 1px solid @grey;
-      position: static;
+      z-index: 9999999999;
+      text-align: center;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 40%;
+      width: 275px;
+      margin: 0 auto;
+      padding-bottom: 30%;
       div:first-child {
         margin-top: 20px;
         span {
-          background: @light-grey;
+          background: @lighter-grey;
+          font-weight: 500;
           padding: 2px 10px;
           letter-spacing: 2px;
+          color: @grey;
+          border: 1px solid @light-grey;
         }
         + h1 {
           .font-size(50);
-          color: @text-dark;
+          color: @text-light;
           padding: 10px 0;
           max-width: 320px;
           margin: 0;
@@ -497,9 +531,7 @@
             a {
               padding: 15px 20px;
               .font-size(16);
-              color: @text-dark;
-              border-top: 1px solid @grey;
-              border-bottom: 1px solid @grey;
+              color: @text-light;
               &:hover {
                 color: @primary-color;
               }
@@ -545,8 +577,8 @@
 
   #mainnav .navbar-header .navbar-brand-title {
     display: block;
-    margin: 5px 0px 5px 22px;
-    color: black;
+    margin: 10px 0px 5px 22px;
+    color: @dark-grey;
     font-size: 3.7vw;
     line-height: 2.4vw;
   }
@@ -600,6 +632,11 @@
 }
 
 @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+  #myCarousel-1 .item {
+    height: 100vh;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
 
   .faces-tile-1 {
     margin-bottom: 0px;
@@ -636,6 +673,11 @@
 }
 
 @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+  #myCarousel-1 .item {
+    height: 100vh;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+  }
   .faces-tile-1 {
     .faces-container {
       width: 100%;
@@ -669,6 +711,12 @@
 }
 
 @media (min-width: @screen-lg-min) {
+  #myCarousel-1 .item {
+    height: 100vh;
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
   .faces-tile-1 {
     .faces-container {
       h2 {

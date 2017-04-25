@@ -51,12 +51,7 @@
 {% block extra_js %}
     <script type="text/javascript" src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}article/js/social.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}article/js/map.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}article/js/article.js"></script>
-{% endblock %}
-
-{% block extra_uncompressed_js %}
-<script src="https://maps.googleapis.com/maps/api/js?key={{ MAP_KEY }}&callback=initMap" async defer></script>
 {% endblock %}
 
 {% block main_wrapper %}
@@ -76,7 +71,7 @@
                                 {% else %}  <span class="tag-space-both">•</span>
                                 {%  endif  %}
                             {% endfor %}
-                        {%  endif %}
+                        {% endif %}
                     </span>
                     {% if article.original_published_date %}
                         <a href="{% url "archive-detail" year=article.original_published_date.year month=article.original_published_date.month %}">
@@ -105,8 +100,7 @@
       <span itemprop="address">{{ author.twitter_username }}</span>
   </span>
 </span>
-                    {% endfor %}</li>
-                 <li >
+                    {% endfor %}</li><li >
 {#                    {% if translations and translations|length > 1 %}#}
                     <span class="filter-value">
                         <span class="banner-label">Language</span>
@@ -123,33 +117,44 @@
 {#                    {% endif %}#}
 
 
-                 </li>
-                 <li>
-                     <a href="#">
-                         <i class="fa fa-photo"></i>
-                         <span class="preview">Read the story in pictures</span>
-                     </a>
-                 </li>
-                 {% with request.build_absolute_uri as url and item.title as title %}
-                     <li class="social-icon" data-url="{{ url }}">
-                            <span class="banner-label">Share</span>
-                            <a target="_blank"
-                               href="https://twitter.com/home?status={{ title|urlencode }}+{{ url|urlencode }}">
-                                <i class="fa fa-twitter"></i>
-                            </a>
-                            <a target="_blank"
-                               href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-                        </li>
-                 {% endwith %}
-                 <li>
-                     <a class="#" onclick="window.print()">Print this story</a>
-                 </li>
-             </ul>
-         </div>
-        </div>
-     </div>
+                            </li><li>
+                                <a href="#">
+                                    <i class="fa fa-photo"></i>
+                                    <span class="preview">Read the story in pictures</span>
+                                </a>
+                            </li>{% with request.build_absolute_uri as url and item.title as title %}<li class="social-icon" data-url="{{ url }}">
+                                    <span class="banner-label">Share</span>
+                                    <a target="_blank"
+                                       href="https://twitter.com/home?status={{ title|urlencode }}+{{ url|urlencode }}">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                    <a target="_blank"
+                                       href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>{% endwith %}<li>
+                                <a class="#" onclick="window.print()">Print this story</a>
+                            </li>{% if article.locations.count %}{% with article.locations.first as location %}<li>
+                                        <a href="{% url 'map-list' %}?lat={{ location.point.x }}&long={{ location.point.y }}&title={{ location.name }}">
+                                            <span itemprop="contentLocation">
+                                                <span itemprop="name">
+                                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                    <span class="map-top-title">{{ location.district }}</span>, {{ location.state }}
+                                                </span>
+
+                                            </span>
+                                        </a>
+                                    </li><li>
+                                        <a href="{% url "location-detail" location.slug %}">
+                                            <span>See more from this region</span>
+                                        </a>
+                                    </li>
+                                {% endwith %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
 </div>
 {% endif %}
@@ -160,40 +165,15 @@
 <div class="container content-container" itemscope itemtype="http://schema.org/Article">
 
 
-  <div class="row">
-    <div class="col-lg-1 col-md-1 col-sm-1"></div>
-      <div class="container article-container">
-        <div class="row">
-        <div class="content-map" itemscope itemtype="http://schema.org/Map">
-            {% if article.locations.count %}
-            {% with article.locations.first as location %}
-                <a class="map-title" itemprop="url" href="https://www.openstreetmap.org/?mlat={{ location.point.x }}&mlon={{ location.point.y }}#map=14/{{ location.point.x }}/{{ location.point.y }}" target="_blank">
-                    <span itemprop="contentLocation">
-                        <span itemprop="name">
-                            <span class = "map-top-title">{{ location.district }}</span>, {{ location.state }}
-                        </span>
-                        <a href="{% url 'map-list' %}?lat={{ location.point.x }}&long={{ location.point.y }}&title={{ location.name }}">map</a>
-                    </span>
-                </a>
-
-            <a class="title" href="{% url "location-detail" location.slug %}">
-                <span>See more from this region</span>
-                <i class="fa fa-chevron-right"></i>
-            </a>
-            {% endwith %}
-            {% endif%}
-        </div>
-
-        <div class="article-content-wrapper">
-          {% if article.locations.count %}
-          {% with article.locations.first as location %}
-            <div id="map" class="map-view" data-content="{% for location in article.locations.all %}{{ location.name }}{% if not forloop.last %},{% endif %}{% endfor %}" data-lat="{% for location in article.locations.all %}{{ location.point.x }}{% if not forloop.last %},{% endif %}{% endfor %}" data-long="{% for location in article.locations.all %}{{ location.point.y }}{% if not forloop.last %},{% endif %}{% endfor %}"></div>
-          {% endwith %}
-          {% endif%}
-          <div itemprop="articleBody" class="article-content">
-              {{ article.content|richtext }}
-          </div>
-        </div>
+    <div class="row">
+        <div class="col-lg-1 col-md-1 col-sm-1"></div>
+        <div class="container article-container">
+            <div class="row">
+                <div class="article-content-wrapper">
+                    <div itemprop="articleBody" class="article-content">
+                        {{ article.content|richtext }}
+                    </div>
+                </div>
 
     </div>
   <div class="translator_bio">

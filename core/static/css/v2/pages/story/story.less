@@ -86,20 +86,26 @@
       color: @primary-color;
       font-size: 1.2em;
     }
+
     .banner-language-list{
       position: relative;
     }
     ul {
-
       margin: 0 0 20px 0;
       color: @text-light;
       li {
-          float: left;
+          display: inline-block;
           padding: 10px 20px;
           border-top: 1px solid @border-banner;
           border-right: 1px solid @border-banner;
         &:last-child {
           border-right: none;
+        }
+        &:nth-child(4) {
+          padding-top: 4px;
+        }
+        &:nth-child(6) {
+          padding-top: 9px;
         }
 
         a{
@@ -128,34 +134,22 @@
     }
   }
 }
-
+.rich-text {
+  i{
+      &.fa-expand {
+        font-size: 35px !important;
+        color: white;
+        background-color: #151414;
+        opacity: 0.6;
+        float: right;
+        position: absolute;
+        right: 0;
+        padding: 10px;
+      }
+    }
+}
 .article-container{
   text-align: left;
-  .content-map{
-    margin-right: 30px;
-    .subtitle{
-      color: @title;
-      line-height: 30px;
-    }
-    i{
-      float: right;
-      .font-size(12);
-      line-height: 30px;
-    }
-    a{
-      .font-size(18);
-      display: inline-block;
-      width: 100%;
-      margin-top: 10px;
-      padding-top: 10px;
-    }
-    .title{
-      border-top: 2px solid @primary-color;
-    }
-    .map-top-title{
-      font-weight: bold;
-    }
-  }
   a{
     color: @link-primary;
     &:hover{
@@ -195,13 +189,15 @@
     position: static;
     background: @bg-dark;
   }
-  .map-view {
-      height: 180px !important;
-      margin: auto !important;
-      float: none !important;
-      width: 60% !important;
+}
+
+@media (max-width: @screen-xs-max) {
+  .banner-container .banner-info{
+    position: static;
+    background: @bg-dark;
   }
 }
+
 @media (min-width: @screen-lg-min) {
   .related-stories {
     h4 {
@@ -262,10 +258,7 @@
   }
 }
 
-.map-view {
-  width: ~'calc(20% - 20px)';
-  height: 180px;
-  margin-top: 14px;
-  float: left;
-  padding-right: 20px;
+.fa-map-marker {
+  .font-size(15);
+  padding-right: 5px;
 }
