@@ -31,7 +31,8 @@ var MapPage = {
   },
 
   getMarkers: function() {
-    var map = this.mapInstance;
+    var map = this.mapInstance,
+    self = this;
     return locations.map(function(location, index) {
       var marker = new google.maps.Marker({
           position: {lat: location.lat, lng: location.lng},
@@ -40,20 +41,54 @@ var MapPage = {
       });
       marker.addListener('click', function() {
           var infoWindow = new google.maps.InfoWindow({
-              content: this.getTitle()
+              content: this.getTitle(),
+              maxWidth: 350
           });
           infoWindow.open(map, this);
+
+          google.maps.event.addListener(map, 'click', function() {
+            infoWindow.close();
+          });
+
+          self.updateStyle(infoWindow);
       });
       return marker;
     });
   },
 
-  highlightDefault() {
+  updateStyle: function(infoWindow) {
+    var self = this;
+    google.maps.event.addListener(infoWindow, 'domready', function() {
+      self.overrideLocationPopup();
+    });
+  },
+
+  overrideLocationPopup: function() {
+    var iwOuter = $('.gm-style-iw');
+    if(iwOuter.length === 0) {
+      return;
+    }
+    iwOuter.parent().addClass("map-pin-popup");
+    var iwBackground = iwOuter.prev();
+    iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+    iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+    iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
+    iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
+    iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index' : '1'});
+    var iwCloseBtn = iwOuter.next();
+    iwCloseBtn.css({opacity: '1', right: '38px', top: '3px', border: '7px solid #48b5e9', 'border-radius': '13px', 'box-shadow': '0 0 5px #3990B9'});
+    $(".map-pin-container").addClass("map-pin-content");
+    $(".gm-style-iw > div:first-child").attr("style", "display:block;");
+    $(".gm-style-iw").next().hide();
+  },
+
+  highlightDefault: function() {
       this.updateStateDistrict($(".toggler li:first-child").text().trim().toLowerCase());
   },
 
   handleEvents: function() {
     var self = this;
+
     $(".toggler li").on("click", function() {
       if(!$(this).hasClass("selected")) {
         $(".toggler li").removeClass("selected");
@@ -61,9 +96,11 @@ var MapPage = {
         self.updateStateDistrict($(this).text().trim().toLowerCase());
       }
     });
+
+
   },
 
-  updateStateDistrict(type) {
+  updateStateDistrict: function(type) {
     var self = this,
     map = this.mapInstance;
 

@@ -16,7 +16,7 @@
   {% if latitude and longitude %}
       locations = [{'lat': {{ latitude }}, 'lng': {{ longitude }}, 'title': '{{ location_title }}' }];
   {% else %}
-      locations = [ {% for location in locations %}{% if location.slug %}{% url "location-detail" slug=location.slug as location_url %}{"lat": {{ location.point.x }}, "lng": {{ location.point.y }}, "title": "<div><p><strong>{% trans "Name" %}</strong>: <a href=\"{{ location_url }}\" target=\"_blank\">{{ location.name }}</a></p> <p><strong>{% trans "District" %}</strong>: {{ location.district }}</p><p><strong>{% trans "State" %}</strong>: {{ location.state }}</p></div>"} {% if not forloop.last %},{% endif %}{% endif %}{% endfor %}
+      locations = [ {% for location in locations %}{% if location.slug %}{% url "location-detail" slug=location.slug as location_url %}{"lat": {{ location.point.x }}, "lng": {{ location.point.y }}, "title": '<div class="map-pin-container"><div class="story"><div class="story-header">story</div><div class="story-name"></div></div><ul class="content-list"><li class="content"><i class="fa fa-map-marker" aria-hidden="true"></i><a href=\"{{ location_url }}\" target=\"_blank\">{{ location.name }},</a></li><li class="content"><span>{{ location.district }}</span></li><li class="content"><span>{{ location.state }}</span></li></ul></div>'} {% if not forloop.last %},{% endif %}{% endif %}{% endfor %}
       ];
   {% endif %}
 
@@ -29,6 +29,7 @@
 {% endblock %}
 
 {% block main %}
+
 <div class="map-page">
 
   <div class="filter">
@@ -60,6 +61,6 @@
   </div>
 
   <div class="map-container" id="map"></div>
-  
+
 </div>
 {% endblock %}
