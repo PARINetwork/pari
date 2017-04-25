@@ -1,5 +1,5 @@
 var Face = {
-    init: function() {
+    init: function () {
         this._initPopup();
         this._initControls();
     },
@@ -7,7 +7,7 @@ var Face = {
     _popup: null,
     _sound: null,
 
-    _initPopup: function() {
+    _initPopup: function () {
         this._popup = $('.popup-gallery').magnificPopup({
             delegate: '.mfp-image',
             type: 'image',
@@ -30,21 +30,21 @@ var Face = {
                     var slideshow = this._popup.data('slideshow');
                     var icon = slideshow ? "pause" : "play";
                     var el = item.data.el;
-                    return '<div>'+
+                    return '<div>' +
                         el.attr('data-face-details') +
                         '</div>'
                 }, this),
 
-                markup: '<div class="mfp-figure">'+
-                            '<div class="mfp-close"></div>'+
-                            '<div class="mfp-img-holder">'+
-                                '<div class="mfp-img"></div>'+
-                            '</div>'+
-                            '<div class="mfp-bottom-bar">'+
-                                '<div class="mfp-title"></div>'+
-                                '<div class="mfp-counter"></div>'+
-                            '</div>'+
-                        '</div>'
+                markup: '<div class="mfp-figure">' +
+                '<div class="mfp-close"></div>' +
+                '<div class="mfp-img-holder">' +
+                '<div class="mfp-img"></div>' +
+                '</div>' +
+                '<div class="mfp-bottom-bar">' +
+                '<div class="mfp-title"></div>' +
+                '<div class="mfp-counter"></div>' +
+                '</div>' +
+                '</div>'
             },
             closeBtnInside: true,
             callbacks: {
@@ -53,39 +53,42 @@ var Face = {
                 }, this),
                 close: $.proxy(function () {
                     this._popup.removeData('slideshow');
-		                history.pushState(null, null, $(".popup-gallery").data("url"));
+                    history.pushState(null, null, $(".popup-gallery").data("url"));
+                    console.log("closed");
+                    $(document).attr("overflow", "auto");
                 }, this),
-		            open: function() {
-		                var mfp = $.magnificPopup.instance;
-		                var proto = $.magnificPopup.proto;
+                open: function () {
+                    var mfp = $.magnificPopup.instance;
+                    var proto = $.magnificPopup.proto;
 
-		                // extend function that moves to next item
-		                mfp.next = function() {
+                    // extend function that moves to next item
+                    mfp.next = function () {
 
-			                  // if index is not last, call parent method
-			                  if(mfp.index < mfp.items.length - 1) {
-			                      proto.next.call(mfp);
-			                      history.pushState(null, null, $($(".mfp-image")[mfp.index]).data("url"));
-			                  } else {
-			                      // otherwise do whatever you want, e.g. hide "next" arrow
-			                      proto.close();
-			                  }
-		                };
+                        // if index is not last, call parent method
+                        if (mfp.index < mfp.items.length - 1) {
+                            proto.next.call(mfp);
+                            history.pushState(null, null, $($(".mfp-image")[mfp.index]).data("url"));
+                        } else {
+                            // otherwise do whatever you want, e.g. hide "next" arrow
+                            proto.close();
+                        }
+                    };
 
-		                // same with prev method
-		                mfp.prev = function() {
-			                  if(mfp.index > 0) {
-			                      proto.prev.call(mfp);
-			                      history.pushState(null, null, $($(".mfp-image")[mfp.index]).data("url"));
-			                  }
-		                };
-		            }
+                    // same with prev method
+                    mfp.prev = function () {
+                        if (mfp.index > 0) {
+                            proto.prev.call(mfp);
+                            history.pushState(null, null, $($(".mfp-image")[mfp.index]).data("url"));
+                        }
+                    };
+                    $(document).attr("overflow", "hidden");
+                }
             }
         });
-        $.magnificPopup.instance.updateItemHTML = function() {
+        $.magnificPopup.instance.updateItemHTML = function () {
             var $this = this;
             var items = [];
-            $.each($this.items, function(ii, item) {
+            $.each($this.items, function (ii, item) {
                 items.push({
                     src: $($("a.mfp-image")[ii]).attr("data-original-image-src"),
                     el: $($(".mfp-image")[ii])
@@ -97,11 +100,10 @@ var Face = {
     },
 
 
-
     _updateSlideshowButtonIcon: function () {
         var slideshow = this._popup.data('slideshow');
         var slideshowButton = $('.btn-slideshow i');
-        if(slideshow) {
+        if (slideshow) {
             slideshowButton.addClass('fa fa-pause');
             slideshowButton.removeClass('fa fa-play');
         } else {
@@ -112,24 +114,22 @@ var Face = {
 
     },
 
-
-
-    _initControls: function() {
+    _initControls: function () {
         $('.album-controls').click($.proxy(function () {
             this._popup.data('slideshow', 'true');
             this._popup.magnificPopup('open');
         }, this));
     },
 
-    _initImage: function() {
-        $('.btn-fullscreen').on('click', function() {
+    _initImage: function () {
+        $('.btn-fullscreen').on('click', function () {
             $('.mfp-container').addClass('mfp-container-fullscreen');
             return false;
         });
 
-        $('.btn-slideshow').on('click', $.proxy(function() {
+        $('.btn-slideshow').on('click', $.proxy(function () {
             var slideshow = this._popup.data("slideshow");
-            if(slideshow) {
+            if (slideshow) {
                 this._popup.removeData('slideshow');
             } else {
                 this._popup.data('slideshow', 'true');
@@ -140,20 +140,20 @@ var Face = {
             return false;
         }, this));
 
-        $('.mfp-figure').on('click', function() {
+        $('.mfp-figure').on('click', function () {
             $('.mfp-container').removeClass('mfp-container-fullscreen');
         });
 
-	      var mfp = $.magnificPopup.instance;
-	      history.pushState(null, null, $($(".mfp-image")[mfp.index]).data("url"));
+        var mfp = $.magnificPopup.instance;
+        history.pushState(null, null, $($(".mfp-image")[mfp.index]).data("url"));
     }
 
 }
 
-$(function() {
+$(function () {
     Face.init();
 
-    $(window).on("popstate", function() {
-	      $('a[data-url="' + location.pathname + '"]').click();
+    $(window).on("popstate", function () {
+        $('a[data-url="' + location.pathname + '"]').click();
     });
 });
