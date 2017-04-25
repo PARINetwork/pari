@@ -125,6 +125,20 @@
                         Ask your friends to connect and contribute to this endeavour. Help us cover your country. Join us
                         in building a unique national knowledge repository on rural India
                     </p>
+
+                    {% with url=request.build_absolute_uri  title='Donate to PARI' %}
+                        <div class="gallery-social-icon">
+                            <a href="https://twitter.com/home?status={{ title|urlencode }}+{{ url|urlencode }}"
+                               target="_blank" class="link-light">
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                            <a href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}"
+                               target="_blank" class="link-light">
+                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    {% endwith %}
+
                 </div>
                 <div class="faqs">
                     <div class="header">FAQs</div>
