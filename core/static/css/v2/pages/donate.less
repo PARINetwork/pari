@@ -5,10 +5,113 @@
   line-height: 35px;
 
   .donate-title {
-    padding-bottom: 30px;
+    font-size: 18px;
+  }
+
+  .highlight {
+    color: @primary-color;
   }
 
   .subtitle {
-    color: @text-color-brand-title;
+    color: @bg-red-transparant;
+    font-size: 18px;
+  }
+
+  .donate-section {
+    .header {
+      color: @bg-red-transparant;
+      font-size: 15px;
+      font-weight: bold;
+      border-top: @grey solid 1px;
+      padding-top: 15px;
+    }
+
+    .fellows {
+      font-weight: bold;
+      .fa {
+        padding: 5px;
+        padding-left: 20px;
+      }
+    }
+
+    .fellowship {
+      .cost-label {
+        font-size: 14px;
+        font-weight: bold;
+      }
+      .cost {
+        font-size: 17px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .founder {
+    float: left;
+    img {
+      height: 150px;
+      width: 150px;
+      border-radius: 83px;
+      float: left;
+    }
+    p {
+      line-height: 25px;
+      padding-left: 30px;
+      float: left;
+    }
+  }
+
+  .side-panel {
+
+    p {
+      margin: 0px;
+      line-height: 30px;
+    }
+    .header {
+      color: @grey;
+      font-size: 15px;
+      font-weight: bold;
+      border-top: @light-grey solid 3px;
+      padding-top: 15px;
+    }
+
+    .sub-header {
+      padding-top: 10px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    button {
+      border: none;
+      outline: none;
+      border-radius: 0;
+      padding: 5px 30px;
+      &.primary {
+        background: @primary-color;
+        color: @bg-light;
+      }
+    }
+
+    .faq-no-border {
+      color: @grey;
+    }
+
+    .faq {
+      color: @grey;
+      border-top: @light-grey solid 1px;
+      a {
+        color: inherit;
+      }
+
+      &:last-of-type {
+        border-bottom: @light-grey solid 1px;
+      }
+    }
+
+    .faqs {
+      border-bottom: @light-grey solid 3px;
+      padding-bottom:27px
+    }
+
   }
 }

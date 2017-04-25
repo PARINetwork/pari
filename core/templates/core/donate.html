@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 {% load i18n wagtailcore_tags %}
 {% block meta_title %} Donate to PARI {% endblock %}
 {% block meta_description %} We can do this without governments – and will. We can’t do it without you.  {% endblock %}
@@ -10,118 +11,149 @@
 {% block main %}
     <div class="container donate-page">
         <div class="donate-title">
-            <h1>
-                In 2014-15, only about 0.24% of front page news came out of rural India. We want to change that.
+            <h1 class>
+                In 2014-15, only about <span class="highlight">0.24%</span> of front page news came out of rural India. We want to change that.
             </h1>
-            <div class="subtitle">
-                We can do this without governments – and will. We can’t do it without you.
-            </div>
         </div>
-        <div class="content col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <div class="subtitle">
+            We can do this without governments – and will. We can’t do it without you.
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 main-panel">
             <div>
-                <p>India’s younger, media-saturated generations grow up knowing little about their country, but a lot about the elites of a few metros and towns. For a narrowly-owned, commercially-driven media, the dumbing down of a nation is part of standard operating procedure. Data of the Centre for Media Studies (CMS, Delhi) show us that reports from New Delhi account for 66 per cent of news on the front pages of major dailies. The CMS also found that in 2014-15, only about 0.24 per cent of front page news came out of rural India. The TV channels are not much better.</p>
+                <p>India’s younger, media-saturated generations grow up knowing little about their country, but a lot
+                    about the elites of a few metros and towns. For a narrowly-owned, commercially-driven media, the
+                    dumbing down of a nation is part of standard operating procedure. Data of the Centre for
+                    Media Studies (CMS, Delhi) show us that reports from New Delhi account for 66 per cent of news on
+                    the front pages of major dailies. The CMS also found that in 2014-15, only about 0.24 per cent of
+                    front page news came out of rural India. The TV channels are not much better.</p>
                 <p>PARI needs your help to pull off this most ambitious of Indian journalistic endeavours.</p>
             </div>
 
-            <div class="special-bullets">
-                <div>THE PLAN</div>
-                <ol>
-                    <li>
-                        <p> The People’s Archive of Rural India aims to position a PARI Fellow in every single one of
-                            the country’s 95 regions, most of which are untouched by the ‘national’ (read corporate)
-                            media.
-                            <br>The Fellows could be
-                        </p>
-                        <div>Reporters	 Writers	Filmmakers	 Photographers</div>
-                    </li>
-                    <li>
-                        Each PARI Fellow works on a specific region for a year, spending at least three months
-                        full-time in fieldwork amongst the region’s people and communities.
-                    </li>
-                    <li>
-                        Across 60 months or so, PARI will generate text reports, audio stories, videos, documentary
-                        films, photographs, music and ‘talking albums’ on the everyday lives of everyday people – from
-                        every part of the country. A database that will be truly representative of the Indian people,
-                        particularly of 833 million rural citizens. Of their labour, crafts, stories, songs, poems, art
-                        and more. The network of Fellows we build will also reflect the social composition of the
-                        country. Half of the nearly 100 Fellows will be women.  And Dalit journalists,
-                        Adivasi journalists and those from the minorities, will also be represented in a fair manner.
-                        Many stories will be told directly by everyday people themselves. Among other legacies, this
-                        will give generations of students, all our children, living textbooks on the world around them.
-                        And give the nation itself a repository the like of which it has never seen.
-                    </li>
-                    <li>
-                        PARI is a multi-lingual site. On this site you’ll find several articles which have a
-                        ‘Choose language’ button at the top. Some appear in multiple languages, a few in as many as 10.
-                        We intend to scale up both, the number of articles as well as languages. PARI’s audio project
-                        too aims to record speakers in every one of India’s 780 living languages.
-                    </li>
-                </ol>
-            </div>
-            <div>
-                <div>SPONSOR A FELLOW</div>
-                <div>Cost of each fellowship:</div>
-                <div>Rs. 2 lakhs</div>
-                <p>
-                    + associated costs related to the recording, documentation, collation, editing (text and video),
-                    training and more.
-                </p>
+            <div class="donate-section">
+                <div class="header">THE PLAN</div>
+                <div class="special-bullets">
+                    <ol>
+                        <li>
+                            <p> The People’s Archive of Rural India aims to position a PARI Fellow in every single one of
+                                the country’s 95 regions, most of which are untouched by the ‘national’ (read corporate)
+                                media.
+                                <br>The Fellows could be
+                            </p>
+                            <div class="fellows">
+                                <span><i class="fa fa-microphone"></i>Reporters</span>
+                                <span><i class="fa fa-pencil"></i>Writers</span>
 
-                <div>Approximate total cost of PARI fellowships (per year):</div>
-                <div>Rs. 80 lakhs</div>
+                                <span><i class="fa fa-film"></i>Filmmakers</span>
+                                <span><i class="fa fa-camera"></i> Photographers</span>
+                            </div>
+                            <p>and everyday residents of the regions themselves.</p>
+                            <p>By ‘regions’ we mean natural or historically evolved areas. For instance, in the state
+                                of Uttar Pradesh we have Rohilkhand, Bundelkhand, Braj, Awadh, Sonebhadra, and Bhojpur
+                                (which extends into Bihar as well).
+                            </p>
+                        </li>
+                        <li>
+                            Each PARI Fellow works on a specific region for a year, spending at least three months
+                            full-time in fieldwork amongst the region’s people and communities.
+                        </li>
+                        <li>
+                            Across 60 months or so, PARI will generate text reports, audio stories, videos, documentary
+                            films, photographs, music and ‘talking albums’ on the everyday lives of everyday people – from
+                            every part of the country. A database that will be truly representative of the Indian people,
+                            particularly of 833 million rural citizens. Of their labour, crafts, stories, songs, poems, art
+                            and more. The network of Fellows we build will also reflect the social composition of the
+                            country. Half of the nearly 100 Fellows will be women.  And Dalit journalists,
+                            Adivasi journalists and those from the minorities, will also be represented in a fair manner.
+                            Many stories will be told directly by everyday people themselves. Among other legacies, this
+                            will give generations of students, all our children, living textbooks on the world around them.
+                            And give the nation itself a repository the like of which it has never seen.
+                        </li>
+                        <li>
+                            PARI is a multi-lingual site. On this site you’ll find several articles which have a
+                            ‘Choose language’ button at the top. Some appear in multiple languages, a few in as many as 10.
+                            We intend to scale up both, the number of articles as well as languages. PARI’s audio project
+                            too aims to record speakers in every one of India’s 780 living languages.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="donate-section">
+                <div class="header">SPONSOR A FELLOW</div>
+                <div class="fellowship">
+                    <div class="cost-label">Cost of each fellowship:</div>
+                    <div class="cost">Rs. 2 lakhs</div>
+                    <p>
+                        + associated costs related to the recording, documentation, collation, editing (text and video),
+                        training and more.
+                    </p>
+                </div>
+                <div class="fellowship">
+                    <div class="cost-label">Approximate total cost of PARI fellowships (per year):</div>
+                    <div class="cost">Rs. 80 lakhs</div>
+                </div>
             </div>
         </div>
-        <div class="index col-lg-4 col-md-4 col-sm-12 col-xs-12">
-            <div>
-                <div>HOW YOU CAN HELP</div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 side-panel">
                 <div>
-                    <div>Donate money</div>
-                    <p>
-                        You can send in donations using a range of payment methods. All donations made to the CounterMedia
-                        Trust are eligible for exemption under Section 80G of the Income Tax Act, 1961.
-                    </p>
+                    <div class="header">HOW YOU CAN HELP</div>
                     <div>
-                        Please see the donations page for more details.
+                        <div class="sub-header">Donate money</div>
+                        <p>
+                            You can send in donations using a range of payment methods. All donations made to the CounterMedia
+                            Trust are eligible for exemption under Section 80G of the Income Tax Act, 1961.
+                        </p>
+                        <div class="faq-no-border">
+                            Please see the donations page for more details.
+                        </div>
+                        <a href="{%  url 'donate_form' %}" >
+                            <button class="primary">Send donation</button>
+                        </a>
                     </div>
-                    <a href="{%  url 'donate_form' %}" >
-                        <button>Send donation</button>
-                    </a>
+                    <div>
+                        <div class="sub-header">Donate equipment</div>
+                        <p>
+                            If you would like to send over equipment (new or used) that PARI Fellows and rural contributors
+                            could use, please get in touch. That could include still and video cameras, audio digital
+                            recorders, laptops, hard disks and other equipment.
+                        </p>
+                    </div>
                 </div>
                 <div>
-                    <div>Donate equipment</div>
-                    <p>
-                        If you would like to send over equipment (new or used) that PARI Fellows and rural contributors
-                        could use, please get in touch. That could include still and video cameras, audio digital
-                        recorders, laptops, hard disks and other equipment.
-                    </p>
-                </div>
-                <div>
-                    <div>Share the message in your network</div>
+                    <div class="sub-header">Share the message in your network</div>
                     <p>
                         Ask your friends to connect and contribute to this endeavour. Help us cover your country. Join us
                         in building a unique national knowledge repository on rural India
                     </p>
                 </div>
-            </div>
-            <div>
-                <div>FAQs</div>
-                <div>I'm in the U.S. Can I send PARI a donation?</div>
-                <div>I sent PARI a donation. How can I procure an exemption certificate?</div>
-                <div>Is there any other way in which I can help?</div>
-            </div>
+                <div class="faqs">
+                    <div class="header">FAQs</div>
+                    <div class="faq" >
+                        <a href="#">I'm in the U.S. Can I send PARI a donation?</a>
+                    </div>
+                    <div class="faq">
+                        <a href="#">I sent PARI a donation. How can I procure an exemption certificate?</a>
+                    </div>
+                    <div class="faq">
+                        <a href="#">Is there any other way in which I can help?</a>
+                    </div>
+                </div>
         </div>
         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-            <p>A lot more, actually, but PARI’s core group and volunteers bear significant costs, personally. We appeal 
-                to you to contribute generously and make this unique journalistic effort a success. We can do this
-                without governments and corporations – and will. We can’t do it without you.
-            </p>
-            <div>
-                <span></span>
-                <p>
-                    Thanking you,<br>
-                    Sincerely,<br>
-                    P. Sainath
-                </p>
+            <div class="donate-section">
+                <div class="header"></div>
+                    <p>A lot more, actually, but PARI’s core group and volunteers bear significant costs, personally. We appeal 
+                        to you to contribute generously and make this unique journalistic effort a success. We can do this
+                        without governments and corporations – and will. We can’t do it without you.
+                    </p>
+                    <div class="founder">
+                        <img src="{{ STATIC_URL }}img/founders/p_sainath.jpg" alt="P. Sainath"/>
+                        <p>
+                            Thanking you,<br>
+                            Sincerely,<br>
+                            P. Sainath
+                        </p>
+                    </div>
             </div>
         </div>
     </div>
