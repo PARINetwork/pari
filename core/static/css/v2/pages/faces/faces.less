@@ -207,7 +207,7 @@
 
   .gallery-title-icon.face-upload-share {
     width: auto;
-    z-index: 9999;
+    z-index: 1022;
     line-height: 30px;
     left: 100px;
     margin-left: 5px;
@@ -231,7 +231,9 @@
 
 .mfp-container {
   padding: 0;
-
+  .mfp-arrow:before, .mfp-arrow:after{
+    display: none;
+  }
   .mfp-figure {
     background: #000;
     &:after {
@@ -246,6 +248,11 @@
   }
 
   .mfp-arrow {
+    z-index: 9999;
+    .slide-arrow{
+      font-size: xx-large;
+      color: @light-grey;
+    }
     &.mfp-arrow-right {
       right: @arrowRightLocation;
       @media (max-width: @switchOver) {
@@ -303,6 +310,7 @@
     padding: 40px 20px;
     margin-top: 0;
     height: 100%;
+    overflow: auto;
     @media (max-width: @switchOver) {
         border-top: @darker-grey solid 2px;
         border-left: none;
@@ -344,7 +352,6 @@
 
   .mfp-img-holder {
     position: relative;
-    left: @imageLocation;
     width: @imageWidth;
 
     .mfp-img {

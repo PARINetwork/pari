@@ -16,6 +16,7 @@ var Face = {
             mainClass: 'mfp-album-popup',
 
             gallery: {
+                arrowMarkup: '<span title="%title%" class="mfp-arrow mfp-arrow-%dir%"><i class="fa fa-chevron-%dir% mfp-prevent-close slide-arrow"></i></span>',
                 enabled: true,
                 navigateByImgClick: true,
                 preload: [0, 2],
