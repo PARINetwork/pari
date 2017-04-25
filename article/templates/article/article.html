@@ -100,8 +100,7 @@
       <span itemprop="address">{{ author.twitter_username }}</span>
   </span>
 </span>
-                    {% endfor %}</li>
-                 <li >
+                    {% endfor %}</li><li >
 {#                    {% if translations and translations|length > 1 %}#}
                     <span class="filter-value">
                         <span class="banner-label">Language</span>
@@ -118,15 +117,12 @@
 {#                    {% endif %}#}
 
 
-                            </li>
-                            <li>
+                            </li><li>
                                 <a href="#">
                                     <i class="fa fa-photo"></i>
                                     <span class="preview">Read the story in pictures</span>
                                 </a>
-                            </li>
-                            {% with request.build_absolute_uri as url and item.title as title %}
-                                <li class="social-icon" data-url="{{ url }}">
+                            </li>{% with request.build_absolute_uri as url and item.title as title %}<li class="social-icon" data-url="{{ url }}">
                                     <span class="banner-label">Share</span>
                                     <a target="_blank"
                                        href="https://twitter.com/home?status={{ title|urlencode }}+{{ url|urlencode }}">
@@ -136,14 +132,9 @@
                                        href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}">
                                         <i class="fa fa-facebook"></i>
                                     </a>
-                                </li>
-                            {% endwith %}
-                            <li>
+                                </li>{% endwith %}<li>
                                 <a class="#" onclick="window.print()">Print this story</a>
-                            </li>
-                            {% if article.locations.count %}
-                                {% with article.locations.first as location %}
-                                    <li>
+                            </li>{% if article.locations.count %}{% with article.locations.first as location %}<li>
                                         <a href="{% url 'map-list' %}?lat={{ location.point.x }}&long={{ location.point.y }}&title={{ location.name }}">
                                             <span itemprop="contentLocation">
                                                 <span itemprop="name">
@@ -153,8 +144,7 @@
 
                                             </span>
                                         </a>
-                                    </li>
-                                    <li>
+                                    </li><li>
                                         <a href="{% url "location-detail" location.slug %}">
                                             <span>See more from this region</span>
                                         </a>

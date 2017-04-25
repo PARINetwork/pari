@@ -86,20 +86,26 @@
       color: @primary-color;
       font-size: 1.2em;
     }
+
     .banner-language-list{
       position: relative;
     }
     ul {
-
       margin: 0 0 20px 0;
       color: @text-light;
       li {
-          float: left;
+          display: inline-block;
           padding: 10px 20px;
           border-top: 1px solid @border-banner;
           border-right: 1px solid @border-banner;
         &:last-child {
           border-right: none;
+        }
+        &:nth-child(4) {
+          padding-top: 4px;
+        }
+        &:nth-child(6) {
+          padding-top: 9px;
         }
 
         a{
