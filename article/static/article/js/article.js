@@ -56,6 +56,11 @@ var ArticleAlbum = {
                 description = $(this).find("i").text().trim();
               }
           });
+          $(item).nextAll("i:not('.rich-text-image-holder')").each(function() {
+              if(!description) {
+                description = $(this).find("i").text().trim();
+              }
+          });
       }
       return description;
     },
