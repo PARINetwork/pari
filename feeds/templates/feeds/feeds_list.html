@@ -2,10 +2,12 @@
 {% load i18n %}
 
 {% block meta_title %}{% trans "Stay updated with RSS/Atom feeds" %}{% endblock %}
-
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/feeds/feeds.less">
+{% endblock %}
 {% block main %}
-<div class="row">
-  <h3>{% trans "Stay updated with latest content through Feeds" %}</h3>
+<div class="container">
+  <h2 class="feed-head">{% trans "Stay updated with latest content through Feeds" %}</h2>
   <ul>
     <li>
       <h4>{% trans "Consolidated Feed" %} (<a href="{% url "all_feeds" %}?format=atom">{% trans "Atom" %}</a> | <a href="{% url "all_feeds" %}?format=rss">{% trans "RSS" %}</a>)</h4>
