@@ -36,17 +36,17 @@
     <div class="wrapper clear-fix">
       <div class="left">
         <span>Show</span>
-        <ul>
+        <ul class="filter-checkbox-list">
           <li>
-            <input type="checkbox" name="articles" id="articles" value="articles" {% if articles_checked %}checked="checked"{% endif %}>
+            <input type="checkbox" name="filter" id="articles" value="articles" {% if articles_checked %}checked="checked"{% endif %}>
             <label for="articles">{% trans "Articles" %}</label>
           </li>
           <li>
-            <input type="checkbox" name="faces" id="faces" value="faces" {% if faces_checked %}checked="checked"{% endif %}>
+            <input type="checkbox" name="filter" id="faces" value="faces" {% if faces_checked %}checked="checked"{% endif %}>
             <label for="faces">{% trans "Faces" %}</label>
           </li>
           <li>
-            <input type="checkbox" name="albums" id="albums" value="albums" {% if albums_checked %}checked="checked"{% endif %}>
+            <input type="checkbox" name="filter" id="albums" value="albums" {% if albums_checked %}checked="checked"{% endif %}>
             <label for="albums">{% trans "Albums" %}</label>
           </li>
         </ul>

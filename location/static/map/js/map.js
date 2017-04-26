@@ -37,7 +37,8 @@ var MapPage = {
       var marker = new google.maps.Marker({
           position: {lat: location.lat, lng: location.lng},
           map: map,
-          title: location.title
+          title: location.title,
+          icon: "/static/map/images/location_map_pin_orange.png"
       });
       marker.addListener('click', function() {
           var infoWindow = new google.maps.InfoWindow({
@@ -75,11 +76,20 @@ var MapPage = {
     iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
     iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
     iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index' : '1'});
-    var iwCloseBtn = iwOuter.next();
-    iwCloseBtn.css({opacity: '1', right: '38px', top: '3px', border: '7px solid #48b5e9', 'border-radius': '13px', 'box-shadow': '0 0 5px #3990B9'});
     $(".map-pin-container").addClass("map-pin-content");
     $(".gm-style-iw > div:first-child").attr("style", "display:block;");
-    $(".gm-style-iw").next().hide();
+    var closeButton = $(".gm-style-iw").next()
+    closeButton.css({
+      opacity: '1',
+      width: '20px',
+      height: '20px',
+      right: '59px',
+      top: '16px',
+      color: 'rgb(255, 255, 255)',
+      fontSize: '20px'
+    });
+    closeButton.addClass("fa fa-close");
+    closeButton.find("img").hide();
   },
 
   highlightDefault: function() {
@@ -95,6 +105,14 @@ var MapPage = {
         $(this).addClass("selected");
         self.updateStateDistrict($(this).text().trim().toLowerCase());
       }
+    });
+
+    $(".filter-checkbox-list > li > input[type='checkbox']").on("change", function() {
+      var checked = [];
+      $(".filter-checkbox-list > li > input[type='checkbox']:checked").each(function() {
+          checked.push('filter=' + $(this).val());
+      });
+      window.location = checked.length > 0 ? '/map/?' + checked.join('&') : '/map/';
     });
 
 
