@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% load i18n wagtailcore_tags %}
+{% block meta_title %} The story of PARI {% endblock %}
+{% block meta_description %} Rural India — a living journal, a breathing archive  {% endblock %}
+
+{% block extra_css %}
+   <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/story_of_pari.less">
+{% endblock %}
+
+{% block main %}
+    <div class="container story-of-pari"></div>
+{%  endblock %}
