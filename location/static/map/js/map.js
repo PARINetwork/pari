@@ -38,7 +38,7 @@ var MapPage = {
           position: {lat: location.lat, lng: location.lng},
           map: map,
           title: location.title,
-          icon: "/static/map/images/location_map_pin_orange.png"
+          icon: staticURL + "map/images/location_map_pin_orange.png"
       });
       marker.addListener('click', function() {
           var infoWindow = new google.maps.InfoWindow({
