@@ -17,7 +17,6 @@ class LocationAdmin(GeoModelAdmin):
     list_display = ["name", "district", "panchayat", "region", "state", "sub_district_name"]
 
     def save_model(self, request, obj, form, change):
-        obj.slug = slugify(obj.name[:50])
         obj.save()
 
 admin.site.register(Location, LocationAdmin)
