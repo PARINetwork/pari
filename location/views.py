@@ -88,7 +88,6 @@ class LocationDetail(DetailView):
             lang = self.request.GET["lang"]
             articles_qs = articles_qs.filter(language=lang)
             albums_qs = albums_qs.filter(language=lang)
-            # faces_qs = faces_qs.filter(language=lang)
         context['articles'] = itertools.chain(
             articles_qs,
             albums_qs,
@@ -105,7 +104,6 @@ def add_location(request):
         form = LocationAdminForm(request.POST)
         if form.is_valid():
             instance = form.save(commit=False)
-            instance.slug = slugify(instance.name)[:50]
             instance.save()
     else:
         form = LocationAdminForm()
