@@ -36,11 +36,11 @@ var Album = {
                     var trackId = slide.track_id;
                     Album.prepareSoundCloudWidget("/tracks/"+trackId);
                 }
-                var description = slide.description;
-                if(description.length > 450) {
-                  description = description.substring(0, 450);
+                var albumDescription = slide.album_description;
+                if(albumDescription.length > 450) {
+                  albumDescription = albumDescription.substring(0, 450);
                 }
-                $(".floating-text .description").html(description);
+                $(".floating-text .description").html(albumDescription);
             }
 
             $(".thumbnail-list").append('<li class="thumbnail left box"><img src=' + slide.src + ' /></li>');
