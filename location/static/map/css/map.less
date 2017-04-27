@@ -1,6 +1,6 @@
-.navbar-brand-title {
-  display: none !important;
-}
+// .navbar-brand-title {
+//   display: none !important;
+// }
 
 html, body {
   height: 100%;
@@ -143,6 +143,7 @@ html, body {
                 background: #000;
                 color: #FFF;
                 padding: 4px;
+                display: none;
 
                 .story-header {
                   font-size: 14px;
@@ -167,6 +168,7 @@ html, body {
 
                     i {
                       color: #CCC;
+                      font-size: 22px;
                       margin-right: 6px;
                     }
 
@@ -198,18 +200,26 @@ html, body {
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 524px) {
   .filter {
     .wrapper {
       padding-left: 5px !important;
       padding-right: 5px !important;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .filter {
+    font-size: 13px !important;
+    .wrapper {
       & > div {
         span, ul, li {
           padding-right: 5px !important;
         }
       }
       .toggler li {
-        width: 60px !important;
+        width: 48px !important;
       }
     }
   }

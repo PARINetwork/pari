@@ -83,9 +83,9 @@ var MapPage = {
       opacity: '1',
       width: '20px',
       height: '20px',
-      right: '59px',
-      top: '16px',
-      color: 'rgb(255, 255, 255)',
+      right: '55px',
+      top: '18px',
+      color: '#5e5e5e',
       fontSize: '20px'
     });
     closeButton.addClass("fa fa-close");
