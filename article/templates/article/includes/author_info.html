@@ -1,0 +1,59 @@
+{% load i18n wagtailcore_tags %}
+
+<div class="author-info">
+    <div class="container">
+        {% for author in authors %}
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="author-name">{{ author.name }}</div>
+                    {% if author.twitter_username %}
+                        <div>
+                            <i class="fa fa-twitter handle"></i>
+                            <div class="twitter-handle">{{ author.twitter_username }}</div>
+                        </div>
+                    {% endif %}
+                    {% if author.facebook_username %}
+                        <div>
+                            <i class="fa fa-facebook handle"></i>
+                            <div class="website-handle">{{ author.facebook_username }}</div>
+                        </div>
+                    {% endif %}
+
+                    {% if author.email %}
+                        <div>
+                            <i class="fa fa-envelope handle"></i>
+                            <div class="website-handle">{{ author.email }}</div>
+                        </div>
+                    {% endif %}
+
+                    {% if author.website %}
+                        <div>
+                            <i class="glyphicon glyphicon-globe handle"></i>
+                            <div class="website-handle">{{ author.website }}</div>
+                        </div>
+                    {% endif %}
+                    <div>
+                        {% with request.build_absolute_uri as url and item.title as title %}
+                            <ul>
+                                <li class="social-icon" data-url="{{ url }}">
+                                    <span class="banner-label">Share</span>
+                                    <a target="_blank"
+                                       href="https://twitter.com/home?status={{ title|urlencode }}+{{ url|urlencode }}">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                    <a target="_blank"
+                                       href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        {% endwith %}
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="author-bio"> {{ author.bio }} </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,65 @@
+@import "../../../colors/colors";
+@import "../../../layout/mixins";
+
+.navbar {
+  margin-bottom: 0;
+}
+
+#main_content {
+  margin-top: 0;
+}
+
+.author-info {
+  padding-top: 40px;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+  background-color: @darker-grey;
+  color: @light-grey;
+  line-height: 40px;
+  .author-name {
+    color: @primary-color;
+    .font-size(30);
+  }
+
+  .author-bio {
+    line-height: 25px;
+  }
+
+  i {
+    &.handle {
+      .font-size(20);
+      color: @grey;
+      padding-right: 6px;
+      vertical-align: middle;
+    }
+  }
+
+  .twitter-handle, .website-handle {
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  ul {
+    margin: 0 0 20px 0;
+    .social-icon {
+      padding: 6px 20px 4px 0;
+      a {
+        border: 1px solid @border-light;
+        border-radius: 20px;
+        display: inline-block;
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        vertical-align: middle;
+        margin-left: 4px;
+        &:hover {
+          text-decoration: none;
+        }
+        i {
+          color: @light-grey;
+          .font-size(20);
+        }
+      }
+    }
+  }
+}

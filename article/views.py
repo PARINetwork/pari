@@ -108,6 +108,32 @@ class ArchiveDetail(ListView):
         context['current_page'] = 'archive-detail'
         return context
 
+class AuthorArticleList(ListView):
+    context_object_name = "articles"
+    paginate_by = 12
+    template_name = "article/author_article_list.html"
+
+    def get_queryset(self):
+        live_articles_by_author = Article.objects.live().filter(
+            authors__slug=self.kwargs["slug"]
+        )
+        qs = live_articles_by_author.order_by("-first_published_at")
+        if self.request.GET.get("lang"):
+            qs = qs.filter(language=self.request.GET["lang"])
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super(AuthorArticleList, self).get_context_data(**kwargs)
+        try:
+            author = Author.objects.get(slug=self.kwargs["slug"])
+        except Author.DoesNotExist:
+            raise Http404
+        context["authors"] = [author]
+        context["title"] = "All stories by {0}".format(author.name)
+        context["articles"] = context["page_obj"]
+        context['LANGUAGES'] = settings.LANGUAGES
+        context['current_page'] = 'author-detail'
+        return context
 
 class ArticleList(ListView):
     context_object_name = "articles"

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load i18n wagtailimages_tags %}
+
+{% block meta_title %}{{ title }}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet"
+          href="{{ STATIC_URL }}css/v2/layout/components/main-content/article-list.less">
+    <link type="text/less" rel="stylesheet"
+          href="{{ STATIC_URL }}css/v2/layout/components/main-content/author-info.less">
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{{ STATIC_URL }}article/js/category.js"></script>
+{% endblock %}
+
+{% block main %}
+    {% include "article/includes/author_info.html" with authors=authors %}
+    <div class="container content-container">
+        <h2>{{ title }}</h2>
+        {% include "article/includes/article_list.html" with articles=articles title=title %}
+    </div>
+{% endblock %}
