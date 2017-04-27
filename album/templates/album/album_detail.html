@@ -166,7 +166,13 @@
         <div class="floating-text">
             <h1 class="title">{{:album_title}}</h1>
             <div class="description"></div>
-            <div class="photographer">{{:slide_photographer}}, {{:slide_location}}</div>
+            <div class="photographer">
+              <span class="photographer-name">{{:photographerNames}}</span>
+              <span class="location">
+                <span class="fa fa-map-marker"></span>
+                <span class="location-name">{{:slide_location}},</span>
+              </span>
+            </div>
             <div class="social-icons">
             <a target="_blank" href="https://twitter.com/home?status="{{:album_title}}"+{{:url}}">
                     <i class="fa fa-twitter"></i>

@@ -212,4 +212,5 @@ MediaPlayerControl.prototype.handlePlayPause = function() {
 
 MediaPlayerControl.prototype.reset = function() {
   this.setSeek(0);
+  $(this.mediaElement).find(".volume-symbol").removeClass("selected");
 }

@@ -29,14 +29,18 @@ var Album = {
 
             if (index === 0) {
                 var carouselInfoBox = $.templates("#carouselStartingIntro");
+                slide.photographerNames = slide.slide_photographer.map(function(i) { return i.trim()}).join(", ");
                 var carouselInfoBoxHtml = carouselInfoBox.render(slide);
-
                 $(".carousel-items .item:first-child .wrapper").append(carouselInfoBoxHtml);
                 if ($("div#type-identifier").text() == "talking_album") {
                     var trackId = slide.track_id;
                     Album.prepareSoundCloudWidget("/tracks/"+trackId);
                 }
-                $(".floating-text .description").html(slide.album_description);
+                var description = slide.description;
+                if(description.length > 450) {
+                  description = description.substring(0, 450);
+                }
+                $(".floating-text .description").html(description);
             }
 
             $(".thumbnail-list").append('<li class="thumbnail left box"><img src=' + slide.src + ' /></li>');
@@ -214,14 +218,6 @@ function handleCarouselEvents(carouselData) {
         $(this).toggleClass("selected");
     });
 
-    $('#showThumbnail').click(function () {
-        toggleThumbnail();
-    });
-
-    // $('.show-slide-info').click(function () {
-    //   $('.show-slide-info').toggleClass('fa-info-circle fa-chevron-circle-right');
-    // })
-
     $('#showSlideInfo').click(function () {
         $(this).toggleClass("selected");
         $(this).removeClass("fa-info-circle").removeClass("fa-angle-right");
@@ -233,20 +229,23 @@ function handleCarouselEvents(carouselData) {
         }, 500);
     });
 
+    $('#showThumbnail').click(function () {
+        pauseSlide();
+        toggleThumbnail();
+        $(".thumbnail-list li").removeClass("selected");
+        $(".thumbnail-list li:nth-child(" + (currentIndex + 1) + ")").addClass("selected");
+    });
+
     $('.thumbnail-list li').click(function (event) {
         var index = $(event.currentTarget).index('.thumbnail-list li');
         $("#carousel").carousel(index);
         toggleThumbnail();
-        if(isSlideshowPlaying) {
-            playSlide();
-        }
+        playSlide();
     });
 
     $('.close-thumbnail').click(function (event) {
         toggleThumbnail();
-        if (isSlideshowPlaying === true){
-            playSlide();
-        }
+        playSlide();
     });
 
     $('.back-to-albums').click(function () {
@@ -302,8 +301,6 @@ function handleCarouselEvents(carouselData) {
         updateSlideInfo();
         totalItems = $('.carousel-items .item').length;
         $('.carousel-index').html((currentIndex + 1) + " / " + totalItems);
-        $(".thumbnail-list li").removeClass("selected");
-        $(".thumbnail-list li:nth-child(" + (currentIndex + 1) + ")").addClass("selected");
     }
 
     function updateSlideInfo() {
@@ -316,10 +313,10 @@ function handleCarouselEvents(carouselData) {
         if (currentIndex <= carouselData.slides.length) {
             $(".slide-info .description").html(data.description);
             $(".slide-info .album-title").text(data.album_title);
-            $(".slide-info .slide-photographer").text(data.slide_photographer.join(", "));
+            $(".slide-info .slide-photographer").text(data.slide_photographer.map(function(i) { return i.trim()}).join(", "));
             $(".slide-info .image-captured-date").text(data.image_captured_date);
             $(".slide-info .slide-location").text(data.slide_location);
-            $(".slide-info .open-in-new-tab").attr("href", data.src);
+            $(".open-in-new-tab").attr("href", data.src);
         }
 
     }
