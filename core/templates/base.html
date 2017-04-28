@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}font-awesome/css/font-awesome.min.css">
     <!--<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/base.less">-->
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/main.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/search-panel.less">
 
     {% block extra_css %}{% endblock %}
     {% endcompress %}
@@ -152,8 +153,17 @@
 
         {% block extra_header %}{% endblock %}
     </div>
+
     {% block main_wrapper %}
     <div id="main_content">
+      <div class="search-panel-toggle">
+        <div class="container">
+          <header class="seach-input-panel">
+            <input type="text" name="search" value="" placeholder="Enter to search">
+            <span class="search-icon fa fa-search"></span>
+          </header>
+        </div>
+      </div>
         {% block main %}{% endblock %}
     </div>
     {% endblock %}
@@ -184,6 +194,25 @@
                 }
             });
         }
+
+        $(".dropdown-toggle .fa-search").on("click", function() {
+          $(".search-panel-toggle").toggleClass("show");
+        });
+
+        $(".search-panel-toggle header .fa-search").on("click", function() {
+          var input = $(".search-panel-toggle header input");
+          var value = input.val().trim();
+          input.removeClass("error");
+          if(value.length > 0) {
+            window.location.href = window.location.origin + "/search/?q="+value;
+          } else {
+            if(!input.hasClass("error")) {
+                input.addClass("error");
+            }
+
+          }
+        });
+
     });
     window.lazySizesConfig = window.lazySizesConfig || {};
     lazySizesConfig.loadMode = 1;

@@ -1,0 +1,116 @@
+.search-panel, .search-panel-toggle {
+  background: rgb(222, 222, 222);
+
+    .container {
+      position: relative;
+      height: 100%;
+
+      header.seach-input-panel {
+        margin-top: 23px;
+        height: 43px;
+        position: relative;
+
+        input:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0px 1000px #dedede inset;
+        }
+
+        & > input {
+          width: 100%;
+          display: block;
+          outline: none;
+          border: none;
+          border-bottom: 1px solid rgb(174, 174, 174);
+          margin: 0px;
+          padding: 10px 30px 10px 10px;
+          background: none;
+          font-size: 16px;
+
+          &.error {
+            border-bottom-color: #FF0000 !important;
+          }
+
+        }
+        & > span {
+          position: absolute;
+          right: 5px;
+          top: 11px;
+          font-size: 20px;
+          cursor: pointer;
+          color: #FAFAFA;
+        }
+      }
+
+    }
+}
+
+.search-panel-toggle {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: -100px;
+  height: 100px;
+  z-index: 2 !important;
+  margin-top: 82px;
+
+  -webkit-transition: 300ms linear top;
+  -moz-transition: 300ms linear top;
+  -ms-transition: 300ms linear top;
+  transition: 300ms linear top;
+
+  &.show {
+    top: 0px !important;
+    box-shadow: 3px 3px 3px darkgrey;
+  }
+}
+
+.search-result-panel {
+  margin-top: -40px;
+
+  .search-panel {
+    .container {
+      position: relative;
+      height: 100%;
+
+      header.seach-input-panel {
+        height: 43px;
+        position: relative;
+        margin: 0px;
+      }
+
+      section.search-result {
+        height: ~"calc(100% - 126px)";
+        margin: 20px 0px 20px 0px;
+        overflow: auto;
+      }
+
+      footer.page-index {
+        height: 43px;
+      }
+
+      .result-not-found {
+        background: #f4c581;
+        padding: 0px 10px;
+        border-radius: 3px;
+        box-shadow: 3px 3px 3px darkgrey;
+      }
+    }
+
+  }
+}
+
+
+
+@media (max-width: 991px) {
+  .search-panel-toggle {
+    margin-top: 80px !important;
+  }
+  .search-panel {
+    margin-top: 40px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-panel-toggle {
+    margin-top: 56px !important;
+  }
+}
