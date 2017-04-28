@@ -82,9 +82,12 @@ var Album = {
         var $this = this;
 
         SC.stream(trackId).then(function (player) {
-            $this._player = player;
+            if (player.options.protocols[0] === 'rtmp') {
+                player.options.protocols.splice(0, 1);
+            }
             player.play();
 
+            $this._player = player;
             if(isTalkingAlbum) {
               $(".play-pause")
               .removeClass("fa-play fa-pause selected")
