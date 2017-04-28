@@ -14,7 +14,7 @@
   var locations;
 
   {% if latitude and longitude %}
-      locations = [{'lat': {{ latitude }}, 'lng': {{ longitude }}, 'title': '{{ location_title }}' }];
+      locations = [{'lat': {{ latitude }}, 'lng': {{ longitude }}, 'title': '<div class="map-pin-container"><div class="story"><div class="story-header">story</div><div class="story-name"></div></div><ul class="content-list"><li class="content"><i class="fa fa-map-marker" aria-hidden="true"></i><a href="" target=\"_blank\">{{ location_title }}</a></li><li class="content"><span></span></li><li class="content"><span></span></li></ul></div>' }];
   {% else %}
       locations = [ {% for location in locations %}{% if location.slug %}{% url "location-detail" slug=location.slug as location_url %}{"lat": {{ location.point.x }}, "lng": {{ location.point.y }}, "title": '<div class="map-pin-container"><div class="story"><div class="story-header">story</div><div class="story-name"></div></div><ul class="content-list"><li class="content"><i class="fa fa-map-marker" aria-hidden="true"></i><a href=\"{{ location_url }}\" target=\"_blank\">{{ location.name }},</a></li><li class="content"><span>{{ location.district }}</span></li><li class="content"><span>{{ location.state }}</span></li></ul></div>'} {% if not forloop.last %},{% endif %}{% endif %}{% endfor %}
       ];
