@@ -79,16 +79,6 @@ class AlbumDetail(DetailView):
 
 
 def get_slide_detail(request, slug):
-    # {
-    #     "src": '/static/img/stories-4.jpg',
-    #     "type": 'image',
-    #     "description": "Featured image is random. Should have an option to select one. Featured image is random. Should have an option to select one. ",
-    #     "album_title": "Weavers of walagpet",
-    #     "slide_photographer": "deepthi",
-    #     "image_captured_date": "30 May 2017",
-    #     "slide_location": "Chennai"
-    # }
-
     album = Album.objects.get(slug=slug)
     response_data = {}
     response_data['slides'] = []
@@ -122,7 +112,7 @@ def get_slide_detail(request, slug):
         photographer_dict = dict(
             [('type', 'inline'), ('show_title', "False"), ('name', photographer.name), ('bio', photographer.bio),
              ('twitter_username', photographer.twitter_username), ('facebook_username', photographer.facebook_username),
-             ('email', photographer.email), ('website', photographer.website)])
+             ('email', photographer.email), ('website', photographer.website), ('author_url', reverse('author-detail', kwargs={'slug': photographer.slug}))])
         response_data['authors'].append(photographer_dict)
     return JsonResponse(response_data)
 
