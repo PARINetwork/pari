@@ -8,28 +8,32 @@
                     <div class="author-name">{{ author.name }}</div>
                     {% if author.twitter_username %}
                         <div>
-                            <i class="fa fa-twitter handle"></i>
-                            <div class="twitter-handle">{{ author.twitter_username }}</div>
+                            <i class="fa fa-twitter icon-handle"></i>
+                            <div class="handle">
+                                <a href="https://twitter.com/{{ author.twitter_username }}">{{ author.twitter_username }}</a>
+                            </div>
                         </div>
                     {% endif %}
                     {% if author.facebook_username %}
                         <div>
-                            <i class="fa fa-facebook handle"></i>
-                            <div class="website-handle">{{ author.facebook_username }}</div>
+                            <i class="fa fa-facebook icon-handle"></i>
+                            <div class="handle">
+                                <a href="https://www.facebook.com/{{ author.facebook_username }}">{{ author.facebook_username }}</a>
+                            </div>
                         </div>
                     {% endif %}
 
                     {% if author.email %}
                         <div>
-                            <i class="fa fa-envelope handle"></i>
-                            <div class="website-handle">{{ author.email }}</div>
+                            <i class="fa fa-envelope icon-handle"></i>
+                            <div class="handle">{{ author.email }}</div>
                         </div>
                     {% endif %}
 
                     {% if author.website %}
                         <div>
-                            <i class="glyphicon glyphicon-globe handle"></i>
-                            <div class="website-handle">{{ author.website }}</div>
+                            <i class="glyphicon glyphicon-globe icon-handle"></i>
+                            <div class="handle"><a href="{{ author.website }}">{{ author.website }}</a></div>
                         </div>
                     {% endif %}
                     <div>
@@ -51,7 +55,9 @@
                     </div>
                 </div>
                 <div class="col-lg-8">
-                    <div class="author-bio"> {{ author.bio }} </div>
+                    {% if author.bio %}
+                        <div class="author-bio"> {{ author.bio }} </div>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}
