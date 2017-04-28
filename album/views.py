@@ -121,7 +121,8 @@ def get_slide_detail(request, slug):
     for photographer in set(photographers):
         photographer_dict = dict(
             [('type', 'inline'), ('show_title', "False"), ('name', photographer.name), ('bio', photographer.bio),
-             ('twitter', photographer.twitter_username)])
+             ('twitter_username', photographer.twitter_username), ('facebook_username', photographer.facebook_username),
+             ('email', photographer.email), ('website', photographer.website)])
         response_data['authors'].append(photographer_dict)
     return JsonResponse(response_data)
 

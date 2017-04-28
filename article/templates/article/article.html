@@ -39,6 +39,7 @@
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}article/css/article.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/story/story.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/layout/components/main-content/article-list.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/layout/components/main-content/author-info.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/album/photo-album.less">
 {% endblock %}
 
@@ -196,26 +197,10 @@
     {% endif %}
     {% endfor %}
   </div>
-	<div class="author_bio">
-	  {% for author in article.authors.all %}
-	  <p itemscope itemtype="http://schema.org/Person">
-      <i>
-        {% if author.bio %}
-        <span class="hidden" itemprop="name">{{ author.name }}</span>
-        <span itemprop="description">{{ author.bio }}</span>
-        {% else %}
-        {% trans "Author:" %} <span itemprop="name">{{ author.name }}</span>
-        {% endif %}
-        {% if author.twitter_username %}
-        {% trans "You can contact the author here:" %}
-        <a itemprop="url" href="https://twitter.com/{{ author.twitter_username }}">{{ author.twitter_username }}</a>
-        {% endif %}
-      </i>
-    </p>
-	  {% endfor %}
-	</div>
       </div>
     </div>
+</div>
+{% include "article/includes/author_info.html" with authors=article.authors.all %}
     <div class="container related-stories">
         {% if article.related_articles %}
             <h4>RELATED STORIES</h4>
