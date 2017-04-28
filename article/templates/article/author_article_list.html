@@ -9,6 +9,7 @@
           href="{{ STATIC_URL }}css/v2/layout/components/main-content/article-list.less">
     <link type="text/less" rel="stylesheet"
           href="{{ STATIC_URL }}css/v2/layout/components/main-content/author-info.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/author-article-list.less">
 {% endblock %}
 
 {% block extra_js %}
@@ -18,7 +19,30 @@
 {% block main %}
     {% include "article/includes/author_info.html" with authors=authors %}
     <div class="container content-container">
-        <h2>{{ title }}</h2>
-        {% include "article/includes/article_list.html" with articles=articles title=title %}
+        <div class="result-title clear-fix">
+            <div class="left"><h3>{{ title }}</h3></div>
+            <div class="right">
+                <ul class="font-m">
+                    <li>{% trans "Languages" %}:</li>
+                    <li>
+                        <select class="select-no-style" name="lang">
+                            <option value="">{% trans "All" %}</option>
+                            #}
+                            {% for lang in LANGUAGES %}
+                                <option {% if request.GET.lang == lang.0 %}selected="selected"{% endif %}
+                                        value="{{ lang.0 }}">
+                                    {% blocktrans with tlang=lang.1 %}{{ tlang }}{% endblocktrans %}
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <i class="fa fa-angle-down"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            {% include "article/includes/article_list.html" with articles=articles title=title %}
+        </div>
     </div>
 {% endblock %}
