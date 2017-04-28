@@ -47,6 +47,16 @@ var Album = {
         });
 
         data.authors.forEach(function (author) {
+            var url = "";
+            if (location.protocol != 'https:') {
+                url = "http://"+window.location.hostname+author.author_url;
+            } else {
+                url = "https://"+window.location.hostname+author.author_url;
+            }
+            var fbShare = "https://facebook.com/sharer.php?u="+url;
+            var twitterShare = "https://twitter.com/home?status="+url;
+            author["fbShare"] = encodeURI(fbShare);
+            author["twitterShare"] = encodeURI(twitterShare);
             var carouselAuthor = $.templates("#carouselAuthor");
             var carouselAuthorHtml = carouselAuthor.render(author);
             $(".carousel-items").append(carouselAuthorHtml);
