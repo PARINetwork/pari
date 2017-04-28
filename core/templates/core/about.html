@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load i18n wagtailcore_tags %}
+{% block meta_title %} The story of PARI {% endblock %}
+{% block meta_description %} Rural India — a living journal, a breathing archive  {% endblock %}
+
+{% block extra_css %}
+   <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/about.less">
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% block main %}
+    <div class="about-page">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="banner-container">
+                    <div class="cover-image"></div>
+                    <div class="banner-content container">
+                        <h1 itemprop="headline"> Headline TODO</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 main-panel">
+                <div>
+                    <p>
+                        Paragraph TODO
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 side-panel">
+            </div>
+        </div>
+    </div>
+{%  endblock %}

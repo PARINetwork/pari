@@ -1,0 +1,42 @@
+@import "../colors/colors";
+@import "../layout/responsive";
+
+#main_content {
+  margin-top: 0px;
+}
+
+.navbar {
+  margin-bottom: 0px;
+}
+
+.about-page {
+  .cover-image {
+     .faded-sepia {
+      -webkit-filter: grayscale(100%) brightness(60%);
+      filter: grayscale(100%) brightness(60%);
+    }
+    height: 370px;
+    overflow: hidden;
+    background-color: yellow;
+    background: url("../../../img/farm_woman_bend.jpg") no-repeat center;
+    background-position: 0 2%;
+    background-size: 100%;
+    width: 100%;
+    filter: grayscale(100%) brightness(80%);
+  }
+
+  .banner-container {
+    margin-bottom: 60px;
+
+    .banner-content {
+      position: absolute;
+      top: 150px;
+      left: 135px;
+      h1 {
+        color: white;
+        font-weight: 500;
+      }
+    }
+  }
+
+}
