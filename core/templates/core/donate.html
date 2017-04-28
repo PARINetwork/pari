@@ -11,14 +11,14 @@
 {% block main %}
     <div class="container donate-page">
         <div class="header-section">
-            <h3 class="donate-title">
-                In 2014-15, only about <span class="highlight">0.24%</span> of front page news came out of rural India. We want to change that.
-            </h3>
+            <h1 class="donate-title">
+                In 2014-15, only about <span class="highlight">0.24%</span> of front page news came out of rural India.<br/>We want to change that.
+            </h1>
             <div class="subtitle">
                 We can do this without governments – and will. We can’t do it without you.
             </div>
         </div>
-        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 main-panel">
+        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 main-panel">
             <div>
                 <p>India’s younger, media-saturated generations grow up knowing little about their country, but a lot
                     about the elites of a few metros and towns. For a narrowly-owned, commercially-driven media, the
@@ -30,7 +30,7 @@
             </div>
 
             <div class="donate-section">
-                <div class="header">THE PLAN</div>
+                <h4 class="header">THE PLAN</h4>
                 <div class="special-bullets">
                     <ol>
                         <li>
@@ -42,12 +42,11 @@
                             <div class="fellows">
                                 <span><i class="fa fa-microphone"></i>Reporters</span>
                                 <span><i class="fa fa-pencil"></i>Writers</span>
-
                                 <span><i class="fa fa-film"></i>Filmmakers</span>
-                                <span><i class="fa fa-camera"></i> Photographers</span>
+                                <span><i class="fa fa-camera"></i>Photographers</span>
                             </div>
                             <p>and everyday residents of the regions themselves.</p>
-                            <p>By ‘regions’ we mean natural or historically evolved areas. For instance, in the state
+                            <p class="grey-text">By ‘regions’ we mean natural or historically evolved areas. For instance, in the state
                                 of Uttar Pradesh we have Rohilkhand, Bundelkhand, Braj, Awadh, Sonebhadra, and Bhojpur
                                 (which extends into Bihar as well).
                             </p>
@@ -79,7 +78,7 @@
             </div>
 
             <div class="donate-section">
-                <div class="header">SPONSOR A FELLOW</div>
+                <h4 class="header">SPONSOR A FELLOW</h4>
                 <div class="fellowship">
                     <div class="cost-label">Cost of each fellowship:</div>
                     <div class="cost">Rs. 2 lakhs</div>
@@ -94,24 +93,24 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 side-panel">
+        <div class="col-lg-offset-1 col-lg-4 col-md-offset-1 col-md-4 col-sm-12 col-xs-12 side-panel">
                 <div>
-                    <div class="header">HOW YOU CAN HELP</div>
-                    <div>
-                        <div class="sub-header">Donate money</div>
+                    <h4 class="header">HOW YOU CAN HELP</h4>
+                    <div class="side-panel-section">
+                        <p class="sub-header">Donate money</p>
                         <p>
                             You can send in donations using a range of payment methods. All donations made to the CounterMedia
-                            Trust are eligible for exemption under Section 80G of the Income Tax Act, 1961.
+                            Trust are <u>eligible for exemption</u> under Section 80G of the Income Tax Act, 1961.
                         </p>
                         <div class="faq-no-border">
-                            Please see the donations page for more details.
+                            Please see the <a href="{%  url 'donate_form' %}" >donations page</a> for more details.
                         </div>
                         <a href="{%  url 'donate_form' %}" >
                             <button class="primary">Send donation</button>
                         </a>
                     </div>
-                    <div>
-                        <div class="sub-header">Donate equipment</div>
+                    <div class="side-panel-section">
+                        <p class="sub-header">Donate equipment</p>
                         <p>
                             If you would like to send over equipment (new or used) that PARI Fellows and rural contributors
                             could use, please get in touch. That could include still and video cameras, audio digital
@@ -119,15 +118,16 @@
                         </p>
                     </div>
                 </div>
-                <div>
-                    <div class="sub-header">Share the message in your network</div>
+                <div class="side-panel-section">
+                    <p class="sub-header">Share the message in your network</p>
                     <p>
                         Ask your friends to connect and contribute to this endeavour. Help us cover your country. Join us
                         in building a unique national knowledge repository on rural India
                     </p>
 
+                     <div class="gallery-social-icon">
                     {% with url=request.build_absolute_uri  title='Donate to PARI' %}
-                        <div class="gallery-social-icon">
+
                             <a href="https://twitter.com/home?status={{ title|urlencode }}+{{ url|urlencode }}"
                                target="_blank" class="link-light">
                                 <i class="fa fa-twitter" aria-hidden="true"></i>
@@ -136,32 +136,32 @@
                                target="_blank" class="link-light">
                                 <i class="fa fa-facebook" aria-hidden="true"></i>
                             </a>
-                        </div>
                     {% endwith %}
+                     </div>
 
                 </div>
                 <div class="faqs">
                     <div class="header">FAQs</div>
-                    <div class="faq" >
-                        <a href="{% url 'guidelines' %}#section-7-1">I'm in the U.S. Can I send PARI a donation?</a>
-                    </div>
-                    <div class="faq">
-                        <a href="{% url 'guidelines' %}#section-7-1">I sent PARI a donation. How can I procure an exemption certificate?</a>
-                    </div>
-                    <div class="faq">
-                        <a href="{% url 'guidelines' %}#section-7-1">Is there any other way in which I can help?</a>
-                    </div>
+                    <p class="faq" >
+                        <a href="{% url 'guidelines' %}#section-7-1">I sent PARI a donation. How do I get a receipt?</a>
+                    </p>
+                    <p class="faq">
+                        <a href="{% url 'guidelines' %}#section-7-1">I live in the U.S. Can I send PARI a donation?</a>
+                    </p>
+                    <p class="faq">
+                        <a href="{% url 'guidelines' %}#section-7-1">Is there any other way in which I can contribute?</a>
+                    </p>
                 </div>
         </div>
-        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-            <div class="donate-section">
+        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+            <div class="donate-section founder-section">
                 <div class="header"></div>
-                    <p>A lot more, actually, but PARI’s core group and volunteers bear significant costs, personally. We appeal 
+                <p>A lot more, actually, but PARI’s core group and volunteers bear significant costs, personally. We appeal 
                         to you to contribute generously and make this unique journalistic effort a success. We can do this
                         without governments and corporations – and will. We can’t do it without you.
                     </p>
-                    <div class="founder">
-                        <img src="{{ STATIC_URL }}img/founders/p_sainath.jpg" alt="P. Sainath"/>
+                <div class="founder">
+                    <img src="{{ STATIC_URL }}img/founders/p_sainath.jpg" alt="P. Sainath"/>
                         <p>
                             Thanking you,<br>
                             Sincerely,<br>
