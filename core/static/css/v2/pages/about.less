@@ -26,16 +26,37 @@
   }
 
   .banner-container {
-    margin-bottom: 60px;
+    margin-bottom: 20px;
+    text-align: center;
 
     .banner-content {
       position: absolute;
       top: 150px;
       left: 135px;
-      h1 {
-        color: white;
+
+      h2 {
         font-weight: 500;
+        color: white;
       }
+
+      h4 {
+        font-weight:200;
+        color: white;
+        font-size: 16px;
+      }
+    }
+  }
+
+  @media (max-width: @screen-xs-max) {
+    .banner-container {
+      .banner-content {
+        left: initial;
+        top: 70px;
+      }
+    }
+
+    .cover-image {
+      height: 270px;
     }
   }
 
