@@ -38,13 +38,13 @@
     <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
     <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ cover_image.url }}">
     <meta property="og:type" content="article">
-    <meta property="og:description" content="{{ album.description }}">
+    <meta property="og:description" content=" {{ album.description|striptags }} #PARIStories">
     <meta property="og:published_time" content={{ albums.first.first_published_at|date:"c" }}>
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
     <meta name="twitter:title" content="{{ album.title }}" >
-    <meta name="twitter:description" content="{{ album.description }}" >
+    <meta name="twitter:description" content="{{ album.description|striptags }} #PARIStories" >
     <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ cover_image.url }}" >
     <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
     {% endwith %}
@@ -54,7 +54,6 @@
 
 <div style="display:none;" id="slug-identifier">{{ album.slug }}</div>
 <div style="display:none;" id="type-identifier">{{ album_type }}</div>
-
 
 <!--  photo album starts here -->
 
@@ -229,8 +228,8 @@
               </span>
             </div>
             <div class="social-icons">
-            <a target="_blank" href="https://twitter.com/home?status="{{:album_title}}"+{{:url}}">
-                    <i class="fa fa-twitter"></i>
+                  <a href="https://twitter.com/intent/tweet?text={{:url}}&button_hashtag=PARIStories" target="_blank" >
+                  <i class="fa fa-twitter"></i>
             </a>
             <a target="_blank" href="https://facebook.com/sharer.php?u={{:url}}&t={{:album_title}}">
                     <i class="fa fa-facebook"></i>

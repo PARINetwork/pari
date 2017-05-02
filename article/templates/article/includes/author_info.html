@@ -41,8 +41,7 @@
                             <ul>
                                 <li class="social-icon" data-url="{{ author.get_absolute_url }}">
                                     <span class="banner-label">Share</span>
-                                    <a target="_blank"
-                                       href="https://twitter.com/home?status={{ title|urlencode }}+http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{{ author.get_absolute_url|urlencode }}">
+                                    <a href="https://twitter.com/intent/tweet?text={{ url|urlencode }}&button_hashtag=PARIStories" target="_blank" >
                                         <i class="fa fa-twitter"></i>
                                     </a>
                                     <a target="_blank"

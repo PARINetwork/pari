@@ -16,6 +16,7 @@
 <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ face.get_absolute_url }}">
 <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{% if face.featured_image %}{{ face.featured_image.file.url }}{% else %}{{ STATIC_URL }}img/default_featured_image.png{% endif %}">
 <meta property="og:type" content="article">
+<meta property="og:description" content="FACIAL DIVERSITY FROM EVERY INDIAN DISTRICT">
 <meta property="og:published_time" content="{% firstof face.original_published_date|date:"c" face.first_published_at|date:"c" %}">
 
 <meta name="twitter:card" content="summary_large_image">
