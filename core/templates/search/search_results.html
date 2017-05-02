@@ -12,9 +12,14 @@ Search{% if search_results %} Results{% endif %}
     <div class="container">
       <header class="seach-input-panel">
         <form action="/search/" role="search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction" class="search-form">
+          <div class="no-of-results">{{search_results|length}} results for </div>
+          <div class="input-box">
+            <input type="text" name="q" value="{{ query_string }}" placeholder="Enter to search" itemprop="query-input">
+            <span class="search-icon fa fa-search"></span>
+          </div>
+
           <meta itemprop="target" content="/search/?q={q}">
-          <input type="text" name="q" value="{{ query_string }}" placeholder="Enter to search" itemprop="query-input">
-          <span class="search-icon fa fa-search"></span>
+
         </form>
       </header>
       {% if search_results %}
@@ -40,7 +45,7 @@ Search{% if search_results %} Results{% endif %}
           {% include "includes/paginator.html" with results=search_results %}
         </section>
       {% else %}
-          <div class="result-not-found">
+          <div class="result-not-found bg-danger">
             <p class="not-found-msg">Sorry, could not find any results for "{{ query }}". Please try a different query.</p>
           </div>
       {% endif %}
@@ -49,5 +54,6 @@ Search{% if search_results %} Results{% endif %}
 </div>
 <script type="text/javascript">
   document.getElementById("main_content").style.marginBottom = "0px";
+  document.getElementById("main_content").style.background = "#F4F4F4";
 </script>
 {% endblock %}

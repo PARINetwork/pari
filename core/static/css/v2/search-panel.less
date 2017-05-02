@@ -1,5 +1,5 @@
 .search-panel, .search-panel-toggle {
-  background: rgb(222, 222, 222);
+  background: #F4F4F4;
 
     .container {
       position: relative;
@@ -14,6 +14,19 @@
           margin: 0px;
         }
 
+        .input-box {
+          display: inline-block;
+          width: ~"calc(100% - 126px)";
+          vertical-align: middle;
+        }
+        .no-of-results {
+          display: inline-block;
+          vertical-align: middle;
+          width: 120px;
+          font-size: 16px;
+          color: #8F8F8F;
+        }
+
         input:-webkit-autofill {
             -webkit-box-shadow: 0 0 0px 1000px #dedede inset;
         }
@@ -23,7 +36,7 @@
           display: block;
           outline: none;
           border: none;
-          border-bottom: 1px solid rgb(174, 174, 174);
+          border-bottom: 1px solid #c7c7c7;
           margin: 0px;
           padding: 10px 30px 10px 10px;
           background: none;
@@ -32,7 +45,6 @@
           &.error {
             border-bottom-color: #FF0000 !important;
           }
-
         }
         span {
           position: absolute;
@@ -40,7 +52,7 @@
           top: 11px;
           font-size: 20px;
           cursor: pointer;
-          color: #FAFAFA;
+          color: #c7c7c7;
         }
       }
 
@@ -63,7 +75,7 @@
 
   &.show {
     top: 0px !important;
-    box-shadow: 3px 3px 3px darkgrey;
+    box-shadow: 2px 2px 3px #bfbfbf;
   }
 }
 
@@ -114,6 +126,11 @@
                 margin: 7px 2px;
                 max-height: 42px;
                 overflow: hidden;
+                color: rgb(59, 59, 59);
+
+                a {
+                  color: rgb(59, 59, 59);
+                }
               }
               .date, .margin-top-20px {
                 margin-top: 10px !important;
@@ -145,10 +162,12 @@
       }
 
       .result-not-found {
-        background: #f4c581;
         padding: 0px 10px;
         border-radius: 3px;
-        box-shadow: 3px 3px 3px darkgrey;
+
+        p {
+          padding: 20px;
+        }
       }
     }
 
