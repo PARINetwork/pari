@@ -9,55 +9,148 @@
   margin-bottom: 0px;
 }
 
-.about-page {
-  .cover-image {
-     .faded-sepia {
-      -webkit-filter: grayscale(100%) brightness(60%);
-      filter: grayscale(100%) brightness(60%);
+.cover-image {
+  .faded-sepia {
+    -webkit-filter: grayscale(100%) brightness(60%);
+    filter: grayscale(100%) brightness(60%);
+  }
+  height: 370px;
+  overflow: hidden;
+  background-color: yellow;
+  background: url("../../../img/farm_woman_bend.jpg") no-repeat center;
+  background-position: 0 2%;
+  background-size: 100%;
+  width: 100%;
+  filter: grayscale(100%) brightness(80%);
+}
+
+.banner-container {
+  margin-bottom: 20px;
+  text-align: center;
+
+  .banner-content {
+    position: absolute;
+    top: 150px;
+    left: 135px;
+
+    h2 {
+      font-weight: 500;
+      color: white;
     }
-    height: 370px;
-    overflow: hidden;
-    background-color: yellow;
-    background: url("../../../img/farm_woman_bend.jpg") no-repeat center;
-    background-position: 0 2%;
-    background-size: 100%;
+
+    h4 {
+      font-weight: 200;
+      color: white;
+      font-size: 16px;
+    }
+  }
+}
+
+.main-panel {
+  p {
+    padding-right: 60px;
+  }
+
+  .section-sub-header {
+    color: @primary-color;
+  }
+
+  .section-header {
+    color: @primary-color;
+    font-weight: bold;
+    border-top: @grey solid 1px;
+    padding-top: 35px;
+  }
+
+  .author {
+    color: @primary-color;
+    font-weight: bold;
+  }
+
+  .category-thumbanail {
     width: 100%;
-    filter: grayscale(100%) brightness(80%);
+    margin-top: 12px;
+  }
+  .category {
+    margin-top: 5px;
+    padding-top: 0px;
+    border-bottom: @light-grey solid 1px;
+    padding-bottom: 25px;
+
+    p {
+      margin-top: 0px;
+    }
   }
 
+  .top-bordered {
+    border-top: @grey solid 1px;
+  }
+}
+
+.side-panel {
+  .quote-section {
+    padding-bottom: 25px;
+    .quote {
+      font-size: 20px;
+      font-style: italic;
+      color: @grey;
+      margin-bottom: 0px;
+
+      &:last-of-type {
+        border-top: @light-grey solid 1px;
+        padding-top: 25px;
+      }
+    }
+
+    .quote-author {
+      font-size: 15px;
+      color: @bg-red-transparant;
+    }
+  }
+
+  .heading {
+    color: @grey;
+    font-weight: bold;
+    border-top: @light-grey solid 3px;
+    margin-bottom: 0px;
+  }
+
+  .section {
+    margin-bottom: 50px;
+  }
+
+  .sub-heading {
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .content {
+    font-size: small;
+    margin-top: 0px;
+    line-height: 25px;
+    margin-bottom: 50px;
+  }
+
+  margin-bottom: 50px;
+
+}
+
+@media (max-width: @screen-xs-max) {
   .banner-container {
-    margin-bottom: 20px;
-    text-align: center;
-
     .banner-content {
-      position: absolute;
-      top: 150px;
-      left: 135px;
-
-      h2 {
-        font-weight: 500;
-        color: white;
-      }
-
-      h4 {
-        font-weight:200;
-        color: white;
-        font-size: 16px;
-      }
+      left: initial;
+      top: 70px;
     }
   }
 
-  @media (max-width: @screen-xs-max) {
-    .banner-container {
-      .banner-content {
-        left: initial;
-        top: 70px;
-      }
-    }
-
-    .cover-image {
-      height: 270px;
+  .main-panel {
+    p {
+      padding-right: 0px;
     }
   }
 
+  .cover-image {
+    height: 270px;
+  }
 }

@@ -6,30 +6,23 @@
 
 {% block opengraph_block %}
     {% with authors|first as author %}
-        <meta property="og:title" content="{{ author.name }}">
+        <meta property="og:title" content="{{ title }}">
         <meta property="og:url"
-              content="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{{ request.get_full_path }}">
-        <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{{ STATIC_URL }}img/logo.png">
+              content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
         <meta property="og:type" content="article">
-        <meta property="og:description" content="{{ author.bio }} #PARIStories">
-
+        <meta property="og:image" content="{{ STATIC_URL }}img/logo.png">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
-        <meta name="twitter:title" content="{{ author.name }}">
-        <meta name="twitter:description" content="{{ author.bio }} #PARIStories">
         <meta name="twitter:url"
-              content="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{{ request.get_full_path }}">
-        <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{{ STATIC_URL }}img/logo.png" >
+              content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
     {% endwith %}
 {% endblock %}
 
 {% block extra_css %}
     <link type="text/less" rel="stylesheet"
           href="{{ STATIC_URL }}css/v2/layout/components/main-content/article-list.less">
-    <link type="text/less" rel="stylesheet"
-          href="{{ STATIC_URL }}css/v2/layout/components/main-content/author-info.less">
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/author-article-list.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/archive-article-list.less">
 {% endblock %}
 
 {% block extra_js %}
@@ -37,10 +30,11 @@
 {% endblock %}
 
 {% block main %}
-    {% include "article/includes/author_info.html" with authors=authors %}
     <div class="container content-container">
         <div class="result-title clear-fix">
-            <div class="left"><h3>{{ title }}</h3></div>
+            <div class="left">
+                <h1>{{ title }}</h1>
+            </div>
             <div class="right">
                 <ul class="font-m">
                     <li>{% trans "Languages" %}:</li>
@@ -57,6 +51,20 @@
                         </select>
                         <i class="fa fa-angle-down"></i>
                     </li>
+                    {% with request.build_absolute_uri as url%}
+                        <li class="icon">
+                            <a href="https://twitter.com/intent/tweet?text={{ url|urlencode }}&button_hashtag=PARIStories" target="_blank" >
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="icon">
+                            <a target="_blank"
+                               href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                    {% endwith %}
+
                 </ul>
             </div>
         </div>

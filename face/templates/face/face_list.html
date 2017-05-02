@@ -46,8 +46,7 @@
                 </span>
                     {% with request.build_absolute_uri as url %}
                         <span class="gallery-social-icon">
-                        <a href="https://twitter.com/home?status={{ title|urlencode }}+{{ url|urlencode }}"
-                           target="_blank" class="link-light">
+                            <a href="https://twitter.com/intent/tweet?text={{ url|urlencode }}&button_hashtag=PARIStories" target="_blank" class="link-light">
                             <i class="fa fa-twitter" aria-hidden="true"></i>
                         </a>
                         <a href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}"
