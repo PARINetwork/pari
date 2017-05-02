@@ -4,6 +4,7 @@ from django.db import models
 from django.conf import settings
 from django.utils.text import slugify
 from django.utils.encoding import python_2_unicode_compatible
+from django.core.urlresolvers import reverse
 
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
 
@@ -40,3 +41,7 @@ class Author(models.Model):
         if not self.slug:
             self.slug = slugify(self.name)
         return super(Author, self).save(**kwargs)
+
+    def get_absolute_url(self):
+        name = "author-detail"
+        return reverse(name, kwargs={"slug": self.slug})

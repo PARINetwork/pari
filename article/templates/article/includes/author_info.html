@@ -37,17 +37,16 @@
                         </div>
                     {% endif %}
                     <div>
-                        {% url "author-detail" slug=author.slug as author_url %}
                         {% with author.name as title %}
                             <ul>
-                                <li class="social-icon" data-url="{{ author_url }}">
+                                <li class="social-icon" data-url="{{ author.get_absolute_url }}">
                                     <span class="banner-label">Share</span>
                                     <a target="_blank"
-                                       href="https://twitter.com/home?status={{ title|urlencode }}+http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ author_url|urlencode }}">
+                                       href="https://twitter.com/home?status={{ title|urlencode }}+http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ author.get_absolute_url|urlencode }}">
                                         <i class="fa fa-twitter"></i>
                                     </a>
                                     <a target="_blank"
-                                       href="https://facebook.com/sharer.php?u=http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ author_url|urlencode }}&t={{ title|urlencode }}">
+                                       href="https://facebook.com/sharer.php?u=http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ author.get_absolute_url|urlencode }}&t={{ title|urlencode }}">
                                         <i class="fa fa-facebook"></i>
                                     </a>
                                 </li>
