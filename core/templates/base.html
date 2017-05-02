@@ -159,8 +159,11 @@
       <div class="search-panel-toggle">
         <div class="container">
           <header class="seach-input-panel">
-            <input type="text" name="search" value="" placeholder="Enter to search">
-            <span class="search-icon fa fa-search"></span>
+            <form action="/search/" role="search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction" class="search-form">
+              <meta itemprop="target" content="/search/?q={q}">
+              <input type="text" name="q" value="{{ query_string }}" placeholder="Enter to search" itemprop="query-input">
+              <span class="search-icon fa fa-search"></span>
+            </form>
           </header>
         </div>
       </div>
@@ -200,7 +203,14 @@
         });
 
         $(".search-panel-toggle header .fa-search").on("click", function() {
-          var input = $(".search-panel-toggle header input");
+          handleSearchClick($(".search-panel-toggle header input"));
+        });
+
+        $(".search-panel header.seach-input-panel .fa-search").on("click", function() {
+          handleSearchClick($(".search-panel header.seach-input-panel input"));
+        });
+
+        function handleSearchClick(input) {
           var value = input.val().trim();
           input.removeClass("error");
           if(value.length > 0) {
@@ -211,7 +221,7 @@
             }
 
           }
-        });
+        }
 
     });
     window.lazySizesConfig = window.lazySizesConfig || {};

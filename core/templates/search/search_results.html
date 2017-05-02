@@ -11,8 +11,11 @@ Search{% if search_results %} Results{% endif %}
   <div class="search-panel">
     <div class="container">
       <header class="seach-input-panel">
-        <input type="text" name="search" value="{{ query_string }}" placeholder="Enter to search">
-        <span class="search-icon fa fa-search"></span>
+        <form action="/search/" role="search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction" class="search-form">
+          <meta itemprop="target" content="/search/?q={q}">
+          <input type="text" name="q" value="{{ query_string }}" placeholder="Enter to search" itemprop="query-input">
+          <span class="search-icon fa fa-search"></span>
+        </form>
       </header>
       {% if search_results %}
         <section class="search-result">
@@ -28,15 +31,13 @@ Search{% if search_results %} Results{% endif %}
                     <img src="{{ STATIC_URL }}img/default_featured_image.png" alt="{{ result.specific.title }}" width="278" height="225">
                     {% endif %}
                   </div>
+                  {% include "article/includes/default_atom.html" with article=result.specific %}
                 </a>
-                {% include "article/includes/default_atom.html" with article=result.specific %}
               </li>
               {% endfor %}
           </ul>
-        </section>
-        <footer class="page-index">
           {% include "includes/paginator.html" with results=search_results %}
-        </footer>
+        </section>
       {% else %}
           <div class="result-not-found">
             <p class="not-found-msg">Sorry, could not find any results for "{{ query }}". Please try a different query.</p>

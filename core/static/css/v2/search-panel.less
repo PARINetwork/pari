@@ -10,11 +10,15 @@
         height: 43px;
         position: relative;
 
+        form {
+          margin: 0px;
+        }
+
         input:-webkit-autofill {
             -webkit-box-shadow: 0 0 0px 1000px #dedede inset;
         }
 
-        & > input {
+        input {
           width: 100%;
           display: block;
           outline: none;
@@ -30,7 +34,7 @@
           }
 
         }
-        & > span {
+        span {
           position: absolute;
           right: 5px;
           top: 11px;
@@ -81,6 +85,52 @@
         height: ~"calc(100% - 126px)";
         margin: 20px 0px 20px 0px;
         overflow: auto;
+        & > ul {
+          overflow: auto;
+          li {
+            float: left;
+            width: 50%;
+            overflow: auto;
+            margin-bottom: 20px;
+
+            img {
+              width: 100%;
+            }
+
+            & > a {
+              width: 250px;
+            }
+
+            & > a, & > .caption {
+              display: block;
+              width: 50%;
+              padding-right: 10px;
+              float: left;
+            }
+
+            .caption {
+              h3 {
+                font-size: 22px;
+                margin: 7px 2px;
+                max-height: 42px;
+                overflow: hidden;
+              }
+            }
+          }
+        }
+
+        .pagination {
+          margin: 0px;
+          li {
+            a {
+             color: #827c7c;
+           }
+           &.active a {
+             color: #FFF;
+           }
+          }
+        }
+
       }
 
       footer.page-index {
@@ -112,5 +162,41 @@
 @media (max-width: 768px) {
   .search-panel-toggle {
     margin-top: 56px !important;
+  }
+
+  .search-result-panel .search-panel .container section.search-result ul li {
+    .caption {
+      h3 {
+        font-size: 18px;
+        margin: 4px 2px;
+        max-height: 38px;
+      }
+      .margin-top-20px {
+          margin-top: 10px !important;
+      }
+    }
+  }
+
+}
+
+@media (max-width: 500px) {
+  section.search-result {
+    & > ul {
+      li {
+        float: none !important;
+        width: 100% !important;
+
+        & > a, & > .caption {
+          width: 100% !important;
+
+          .margin-top-20px {
+            margin-top: 0px !important;
+            a {
+             font-size: 14px;
+           }
+          }
+        }
+      }
+    }
   }
 }
