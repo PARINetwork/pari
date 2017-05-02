@@ -57,6 +57,7 @@ var Album = {
             var twitterShare = "https://twitter.com/home?status="+url;
             author["fbShare"] = encodeURI(fbShare);
             author["twitterShare"] = encodeURI(twitterShare);
+            author["url"] = encodeURI(url);
             var carouselAuthor = $.templates("#carouselAuthor");
             var carouselAuthorHtml = carouselAuthor.render(author);
             $(".carousel-items").append(carouselAuthorHtml);
