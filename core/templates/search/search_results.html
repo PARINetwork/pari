@@ -25,13 +25,14 @@ Search{% if search_results %} Results{% endif %}
                 <a href="{{ result.specific.get_absolute_url }}">
                   <div class="item-image">
                     {% if result.specific.featured_image %}
-                    {% image result.specific.featured_image fill-278x225 as featured_image %}
-                    <img src="{{ featured_image.url }}">
+                      {% image result.specific.featured_image fill-278x225 as featured_image %}
+                      <img src="{{ featured_image.url }}">
                     {% else %}
-                    <img src="{{ STATIC_URL }}img/default_featured_image.png" alt="{{ result.specific.title }}" width="278" height="225">
+                      <img src="{{ STATIC_URL }}img/default_featured_image.png" alt="{{ result.specific.title }}" width="278" height="225">
                     {% endif %}
                   </div>
                   {% include "article/includes/default_atom.html" with article=result.specific %}
+                  <div class="date link-dark font-xs">{{result.specific.latest_revision_created_at|date}}</div>
                 </a>
               </li>
               {% endfor %}
@@ -46,4 +47,7 @@ Search{% if search_results %} Results{% endif %}
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  document.getElementById("main_content").style.marginBottom = "0px";
+</script>
 {% endblock %}

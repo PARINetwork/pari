@@ -200,6 +200,9 @@
 
         $(".dropdown-toggle .fa-search").on("click", function() {
           $(".search-panel-toggle").toggleClass("show");
+          if($(".search-panel-toggle").hasClass("show")) {
+            $(".search-panel-toggle input").focus();
+          }
         });
 
         $(".search-panel-toggle header .fa-search").on("click", function() {
