@@ -27,12 +27,21 @@
 <meta property="og:type" content="article">
 <meta property="og:published_time" content="{% firstof resource.original_published_date|date:"c" resource.first_published_at|date:"c" %}">
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
-<meta name="twitter:title" content="{{ resource.title }}" >
-<meta name="twitter:description" content="Read the full report on {{ SITE_TITLE }}" >
-<meta name="twitter:image" content="https:{{ resource.embed_thumbnail }}" >
-<meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ resource.get_absolute_url }}" >
+
+    <meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@nytimesbits" />
+<meta name="twitter:creator" content="@nickbilton" />
+<meta property="og:url" content="http://bits.blogs.nytimes.com/2011/12/08/a-twitter-for-my-sister/" />
+<meta property="og:title" content="A Twitter for My Sister" />
+<meta property="og:description" content="In the early days, Twitter grew so quickly that it was almost impossible to add new features because engineers spent their time trying to keep the rocket ship from stalling." />
+<meta property="og:image" content="http://graphics8.nytimes.com/images/2011/12/08/technology/bits-newtwitter/bits-newtwitter-tmagArticle.jpg" />
+{##}
+{#<meta name="twitter:card" content="summary_large_image">#}
+{#<meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">#}
+{#<meta name="twitter:title" content="{{ resource.title }}" >#}
+{#<meta name="twitter:description" content="Read the full report on {{ SITE_TITLE }}" >#}
+{#<meta name="twitter:image" content="https:{{ resource.embed_thumbnail }}" />#}
+{#<meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ resource.get_absolute_url }}" />#}
 {% endblock %}
 
 {% block main %}
@@ -59,13 +68,13 @@
                             </li>
                             {% with request.build_absolute_uri as url and category.title as title %}
                                 <li class="share-icons">
-                                    <a target="_blank"
-                                   href="https://twitter.com/home?status={{ title|urlencode }}+{{ url|urlencode }}">
+                                    <a href="https://twitter.com/intent/tweet?text={{ url|urlencode }}&button_hashtag=PARIStories" target="_blank" class="link-light">
                                     <i class="fa fa-twitter"></i>
                                     </a>
                                 </li>
                                 <li class="share-icons">
                                     <a target="_blank"
+
                                    href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}">
                                     <i class="fa fa-facebook"></i>
                                 </a>

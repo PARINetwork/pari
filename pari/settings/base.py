@@ -9,11 +9,10 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
 from os.path import abspath, dirname, join
-from django.utils.translation import  ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _
 
 # Absolute filesystem path to the Django project directory:
 PROJECT_ROOT = dirname(dirname(dirname(abspath(__file__))))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -24,13 +23,11 @@ SECRET_KEY = 'vcg^g$-6bce@3hk+bmiyn^exoe4r()+a9g%ypo7p(+fy*q*8em'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ '0.0.0.0', '127.0.0.1', 'localhost', '54.255.193.26' ]
-
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '54.255.193.26']
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://ruralindiaonline.org'
-
 
 # Application definition
 
@@ -238,12 +235,12 @@ STATE_CHOICES = (
 )
 
 SOCIAL = {
-   "FACEBOOK": "PARINetwork",
-   "TWITTER": "PARINetwork",
-   "GITHUB_REPO": "PARINetwork/pari",
-   "GOOGLE_ANALYTICS_ID": "UA-49439949-1",
-   "YOUTUBE" : "PARInetwork",
-   "SOUND_CLOUD" : "ruralindia"
+    "FACEBOOK": "PARINetwork",
+    "TWITTER": "PARINetwork",
+    "GITHUB_REPO": "PARINetwork/pari",
+    "GOOGLE_ANALYTICS_ID": "UA-49439949-1",
+    "YOUTUBE": "PARInetwork",
+    "SOUND_CLOUD": "ruralindia"
 }
 
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'

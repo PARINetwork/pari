@@ -12,7 +12,7 @@
 {% block opengraph_block %}
     <meta property="og:title" content="{% trans "PARI Gallery" %}">
     <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
-    <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ MEDIA_URL }}images/savitamundal_photozone2.2e16d0ba.fill-370x300.jpg">
+    <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ page.photo_of_the_week.file.url }}">
     <meta property="og:type" content="article">
     <meta property="og:description" content="PARI hosts and combines video, still photo, audio and text archives.
     There is content we already have and content we are newly generating. Both will take time and effort to organise and load.
@@ -25,7 +25,7 @@
     <meta name="twitter:description" content="PARI hosts and combines video, still photo, audio and text archives.
     There is content we already have and content we are newly generating. Both will take time and effort to organise and load.
     The videos generated specifically for PARI record the lives and livelihoods of poor and everyday Indians." >
-    <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ MEDIA_URL }}images/savitamundal_photozone2.2e16d0ba.fill-370x300.jpg" >
+    <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ page.photo_of_the_week.file.url }}" >
     <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
 {% endblock %}
 {% block main %}
@@ -42,7 +42,7 @@
                 <div class="text-right">
                     {% with request.build_absolute_uri as url %}
                         <span class="gallery-social-icon">
-                            <a href="https://twitter.com/home?status=Gallery+{{ url|urlencode }}" target="_blank" class="link-light">
+                            <a href="https://twitter.com/intent/tweet?text={{ url|urlencode }}&button_hashtag=PARIStories" target="_blank" class="link-light">
                                 <i class="fa fa-twitter" aria-hidden="true"></i>
                             </a>
                             <a href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t=Gallery" target="_blank" class="link-light">

@@ -125,8 +125,7 @@
                                 </a>
                             </li>{% with request.build_absolute_uri as url and item.title as title %}<li class="social-icon" data-url="{{ url }}">
                                     <span class="banner-label">Share</span>
-                                    <a target="_blank"
-                                       href="https://twitter.com/home?status={{ title|urlencode }}+{{ url|urlencode }}">
+                            <a href="https://twitter.com/intent/tweet?text={{ url|urlencode }}&button_hashtag=PARIStories" target="_blank" >
                                         <i class="fa fa-twitter"></i>
                                     </a>
                                     <a target="_blank"
