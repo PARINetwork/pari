@@ -156,8 +156,8 @@
   <li class="item author-container">
       <div class="author-info">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
+            <div class="row author-block">
+                <div class="col-lg-3">
                     <div class="author-name">{{:name}}</div>
                     {{if twitter_username}}
                         <div>
@@ -203,10 +203,11 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-9 margin-btm-30px">
                     {{if bio}}
-                        <div class="author-bio">{{:bio}}</div>
+                        <p class="author-bio">{{:bio}}</p>
                     {{/if}}
+                    <a href="{{:url}}" class="btn primary">Other Stories by {{:name}}</a>
                 </div>
             </div>
         </div>

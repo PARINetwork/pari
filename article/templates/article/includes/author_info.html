@@ -3,8 +3,8 @@
 <div class="author-info">
     <div class="container">
         {% for author in authors %}
-            <div class="row">
-                <div class="col-lg-4">
+            <div class="row author-block">
+                <div class="col-lg-3">
                     <div class="author-name">{{ author.name }}</div>
                     {% if author.twitter_username %}
                         <div>
@@ -54,9 +54,12 @@
                         {% endwith %}
                     </div>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-9 margin-btm-30px">
                     {% if author.bio %}
-                        <div class="author-bio"> {{ author.bio }} </div>
+                        <p class="author-bio"> {{ author.bio }} </p>
+                    {% endif %}
+                    {%  if show_other_stories %}
+                    <a href="{{ author.get_absolute_url }}" class="btn primary">Other Stories by {{ author.name }}</a>
                     {% endif %}
                 </div>
             </div>
