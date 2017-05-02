@@ -86,7 +86,7 @@ class ArticleDetail(DetailView):
 class ArchiveDetail(ListView):
     context_object_name = "articles"
     model = Article
-    template_name = 'article/article_list.html'
+    template_name = 'article/archive_article_list.html'
     paginate_by = 12
 
     def get_queryset(self):

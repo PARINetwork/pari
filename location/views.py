@@ -73,6 +73,7 @@ class LocationList(ListView):
 class LocationDetail(DetailView):
     context_object_name = "location"
     model = Location
+    template_name = 'article/archive_article_list.html'
 
     def get_context_data(self, **kwargs):
         context = super(LocationDetail, self).get_context_data(**kwargs)
