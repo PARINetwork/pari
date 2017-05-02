@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load i18n wagtailimages_tags %}
+
+{% block meta_title %}{{ title }}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block opengraph_block %}
+    {% with authors|first as author %}
+        <meta property="og:title" content="{{ title }}">
+        <meta property="og:url"
+              content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
+        <meta property="og:type" content="article">
+        <meta property="og:image" content="{{ STATIC_URL }}img/logo.png">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
+        <meta name="twitter:url"
+              content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
+    {% endwith %}
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet"
+          href="{{ STATIC_URL }}css/v2/layout/components/main-content/article-list.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/archive-article-list.less">
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{{ STATIC_URL }}article/js/category.js"></script>
+{% endblock %}
+
+{% block main %}
+    <div class="container content-container">
+        <div class="result-title clear-fix">
+            <div class="left">
+                <h1>{{ title }}</h1>
+            </div>
+            <div class="right">
+                <ul class="font-m">
+                    <li>{% trans "Languages" %}:</li>
+                    <li>
+                        <select class="select-no-style" name="lang">
+                            <option value="">{% trans "All" %}</option>
+                            #}
+                            {% for lang in LANGUAGES %}
+                                <option {% if request.GET.lang == lang.0 %}selected="selected"{% endif %}
+                                        value="{{ lang.0 }}">
+                                    {% blocktrans with tlang=lang.1 %}{{ tlang }}{% endblocktrans %}
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <i class="fa fa-angle-down"></i>
+                    </li>
+                    {% with request.build_absolute_uri as url%}
+                        <li class="icon">
+                            <a href="https://twitter.com/intent/tweet?text={{ url|urlencode }}&button_hashtag=PARIStories" target="_blank" >
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="icon">
+                            <a target="_blank"
+                               href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                    {% endwith %}
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            {% include "article/includes/article_list.html" with articles=articles title=title %}
+        </div>
+    </div>
+{% endblock %}
