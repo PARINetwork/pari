@@ -1,0 +1,268 @@
+{% extends "base.html" %}
+
+{% load i18n wagtailcore_tags %}
+{% block meta_title %} The story of PARI {% endblock %}
+{% block meta_description %} Rural India — a living journal, a breathing archive  {% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/about.less">
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% block main %}
+<div class="about-page">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="banner-container">
+                <div class="cover-image"></div>
+                <div class="banner-content container">
+                    <h2 itemprop="headline"> Rural India: a living journal, a breathing archive </h2>
+                    <h4> The everyday lives of everyday people </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 main-panel">
+            <div>
+                <p>
+                    Can a project’s success be judged on the basis of its never being completed? Yes, if it’s a
+                    living archive of the world’s most complex countryside. Rural India is in many ways the most
+                    diverse part of the planet. Its 833 million people include distinct societies speaking well over
+                    700 languages, some of them thousands of years old. The People’s Linguistic Survey of India
+                    tells us the country as a whole speaks some 780 languages and uses 86 different scripts.
+                    But in terms of provision for schooling up to Class 7, just 4 per cent of those 780 are
+                    covered. Most Indian languages are mainly spoken by people in rural India.
+                </p>
+                <p>
+                    The Eighth Schedule of the Constitution of India lists 22 languages whose development the
+                    country’s government is obliged to promote. Yet, there are states whose official languages fall
+                    outside those 22, like Khasi and Garo of Meghalaya. Each of six Indian languages is spoken by 50
+                    million people or more. Three are spoken by 80 million or more. One, by close to 500 million. At
+                    the other end of the spectrum are unique tribal languages spoken by as few as 4,000 people, some
+                    by even less. The eastern state of Odisha alone is home to around 44 tribal languages. The
+                    Linguistic Survey reckons that close to 220 languages have died in the past 50 years. Saimar in
+                    Tripura is down its last seven speakers.
+                </p>
+                <p>
+                    The same diversity characterises rural India’s occupations, arts and crafts, culture,
+                    literature, legend, transportation, and other fields. As the Indian countryside rushes through
+                    an extremely painful transformation, many of these features disappear, leaving us poorer. There
+                    are, for instance, probably more schools and styles of weaving in India than in any other single
+                    nation. Many of these traditional weaving communities face real collapse, which will rob the
+                    world of some of its greatest gifts. Some unique occupations – professional storytellers, epic
+                    poem singers – are also in danger of extinction. 
+                </p>
+                <p>
+                    Then there are professions known only to a few nations. Like toddy-tappers who climb 50 palm
+                    trees daily, each one thrice, in season. From the sap they make palm jaggery or a fermented
+                    liquor called toddy. In peak season, a toddy tapper climbs a height greater than New York’s
+                    Empire State Building – every single day. But so many occupations are in collapse. Potters,
+                    metal workers and millions of other highly skilled craftspeople are rapidly losing their
+                    livelihoods.
+                </p>
+                <p>
+                    Much of what makes the countryside unique could be gone in 20-30 years. Without any systematic
+                    record, visual or oral, to educate us – let alone motivate us – to save this incredible
+                    diversity. We are losing worlds and voices within rural India of which future generations will
+                    know little or nothing. Even as the present one steadily sheds its own links with those worlds.
+                </p>
+                <p>
+                    There is surely much in rural India that should die. Much that is tyrannical, oppressive,
+                    regressive and brutal – and which must go. Untouchability, feudalism, bonded labour, extreme
+                    caste and gender oppression and exploitation, land grab and more. The tragedy though is that the
+                    nature of the transformation underway more often tends to bolster the regressive and the
+                    barbaric, while undermining the best and the diverse. That, too, will be documented here.
+                </p>
+            </div>
+            <div>
+                <p>THIS IS WHERE PARI COMES IN </p>
+                <p>PARI is both a living journal and an archive. It will generate and host reporting on the
+                    countryside that is current and contemporary, while also creating a database of already
+                    published stories, reports, videos and audios from as many sources as we can. All of PARI’s own
+                    content comes under the <a href="{% url 'static_page' slug='copyright' %}">Creative Commons </a>
+                    and the site is free to access. And anyone can
+                    contribute to PARI. Write for us, shoot for us, record for us – your material is welcome so long
+                    as it meets the standards of this site and falls within our mandate: the everyday lives of
+                    everyday people.
+                </p>
+                <p>
+                    The use of many libraries and museums in India has fallen, more so in the last 20 years. This
+                    was compensated by the fact that what you can find in our museums, you could also find on our
+                    streets: the same miniature painting schools, the same traditions of sculpture. Now those too
+                    are fading. Library and museum visits amongst the young are more rare than routine. However,
+                    there is one place future generations the world over, including Indians, will visit more and
+                    more: the Net. Internet access, particularly broadband, is low in India, but it is expanding. It
+                    is the right place to build – as a public resource – a living, breathing journal and an archive
+                    aimed at recording people’s lives. The People’s Archive of Rural India. Many worlds, one
+                    website. More voices and distinct languages, we hope, than have ever met on one site. 
+
+                </p>
+                <p>
+                    It means an undertaking unprecedented in scale and scope, utilising myriad forms of media in
+                    audio, visual and text platforms. One where the stories, the work, the activity, the histories
+                    are narrated, as far as possible, as far as we can manage, by rural Indians themselves. By
+                    tea-pickers amidst the fields. By fishermen out at sea. By women paddy transplanters singing at
+                    work, or by traditional storytellers. By Khalasi men using centuries-old methods to launch heavy
+                    ships to sea without forklifts and cranes. In short, by everyday people talking about
+                    themselves, their labour and their lives – talking to us about a world we mostly fail to see.
+                </p>
+            </div>
+            <div>
+                <h1>WHAT’S ON PARI</h1>
+                <p>
+                    PARI hosts and combines video, photo, audio and text archives. There is content we already have
+                    and stories we are generating. Both take time and effort to organise and load. The videos
+                    generated specifically for PARI record the lives and livelihoods of poor and everyday Indians.
+                    For example, a woman agricultural labourer takes you through her life, her work, her labour
+                    techniques, family, kitchen, whatever she considers important. Typically, the first credit in
+                    such a film goes to her; the second to her village/community. The director comes third. PARI
+                    respects her ownership of her story. And it is in our mandate to search for ways in which the
+                    very people we cover, rural Indians, will also have access to, and a say in, the making of this
+                    site.We're also trying to create subtitling in multiple Indian languages for each documentary we
+                    generate.
+                </p>
+                <p>
+                    The site's <a href="https://soundcloud.com/ruralindia">AudioZone</a> will, over time, hold thousands of clips – conversations, songs, poetry –
+                    in every Indian language that we can record. We started with the Grindmill Songs Project – folk
+                    songs by women in Maharashtra’s villages. More than 100,000 songs will eventually be hosted on
+                    PARI as an archive of a phenomenal poetic-musical legacy.
+                </p>
+                <p>
+                    We also focus on education and learning. Teaching and research materials, including textbooks,
+                    will increasingly move online in the next few years – that process is already on in some parts
+                    of the world.  PARI aims to help create informative and lively resources for students, teachers,
+                    schools, colleges and universities. Done right, it could mean ‘textbooks’ or teaching material
+                    that can be added to, amended, updated or widened. As broadband access grows, it should also
+                    mean lower costs for many students, as PARI is a free-access-to-public site.
+                </p>
+                <p>
+                    PARI is also building a <a href="{% url 'resource-list' %}">Resources</a> section, where we aim to put up (in full text and not just via
+                    links), all official (and unofficial but credible) reports related to rural India. For instance,
+                    every report of the National Commission for Enterprises in the Unorganised Sector, reports of
+                    the Planning Commission (now NITI Aayog) and ministries, the United Nations and much more.
+                    Researchers will not have to surf multiple sites to access important documents and studies from
+                    different sources.
+                </p>
+            </div>
+            <div>
+                <p>CATEGORIES</p>
+                <p>
+                    The number of categories you see in the archive are not fixed or final. We will also, for
+                    example, include livestock and wildlife – and many others, brick by brick. Here’s a look at just
+                    three of very many categories on PARI:
+                </p>
+                <p>Things we do</p>
+                <p>
+                    This leads you into the complex world of rural Indian labour. To landless workers in the fields,
+                    to farmers and woodcutters, to brick-makers and blacksmiths. From men who push 200 kilograms of
+                    coal on bicycles across 40 kilometres to earn a few rupees, to women who scavenge coal at great
+                    risk from giant waste dumps. And migrant labourers who travel thousands of kilometres each year
+                    in search of work, never staying anywhere for six months, not even in their own village homes.
+                    Apart from covering their stories we are also photographing and filming the tools and implements
+                    that people use, many of them sure to disappear over the next few years. 
+                </p>
+                <p>Explore</p>
+                <p>Things we make</p>
+                <p>
+                    Here, PARI covers arts and crafts, artists and craftspersons. The country’s countless schools
+                    and
+                    skills and traditions, and their products. In this category, you will find India’s ‘everyday
+                    museums’ – miniature painting schools, rural traditions of sculpture, exquisite weaving
+                    techniques – many of which are slowly fading away and might soon vanish completely.
+                </p>
+                <p>Explore</p>
+                <p>Foot-soldiers of freedom</p>
+                <p>
+                    The last living freedom fighters of rural India, most now in their 90s. People who spent many
+                    years in prison fighting for the country’s freedom from colonial rule and to establish an
+                    independent, democratic Indian nation. In the next decade there will be none left to tell the
+                    tale.
+                </p>
+                <p>Explore</p>
+                <p>
+                    While we constantly try to build and expand a gene pool of contributors, we do exercise
+                    editorial selection and quality control. The use of experienced contributors with a credible
+                    record is important to this work, of course. Most of these will be journalists, writers and
+                    authors. But not all. Anyone who is interested can participate, write for us, or shoot even on
+                    cell phones with decent video quality – if the material falls within the mandate of the archive.
+                    You need not be a professional journalist.
+                </p>
+                <p>
+                    Remember, the narratives that make up the overwhelming share of PARI come from rural Indians
+                    themselves, not from the professional media persons who help record their story. Some of those
+                    rural Indians will shoot their own stories. And the stories will be renewed and reported — as
+                    long as there is a countryside.
+                </p>
+                <p>
+                    Public access to PARI is free. The site is run by the CounterMedia Trust. An informal network
+                    supports and funds the trust and its primary activities through volunteer work, donations and
+                    direct personal contributions. This voluntary network of reporters, professional filmmakers,
+                    film editors, photographers, documentary filmmakers and journalists (television, online and
+                    print), represents PARI's biggest asset. Besides, academics, teachers, researchers, techies and
+                    professionals from many other fields have also donated their expertise to design the site and
+                    establish PARI.
+                </p>
+                <p>
+                    PARI needs money to create content beyond what volunteers do for us, and we aim at crowd funding
+                    to generate the resources. Though our call for donations is titled ‘Cover your country’, rural
+                    India can never be fully 'covered' and the content on this site consists of fragments of many
+                    giant realities. We can expand our coverage of those many worlds only with the widest possible
+                    public participation.
+                </p>
+                <p>
+                    P. Sainath
+                    Founder Editor, PARI
+                </p>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 side-panel">
+            <div>
+                <p>
+                    "This is an insane project – and a wonderful one"
+                </p>
+                <p>
+                    Neville Roy Singham, Chairman, ThoughtWorks Inc.
+                </p>
+            </div>
+            <div>
+                <p>
+                    "There's a pleasure sure to being mad, that only madmen know"
+                </p>
+                <p>
+                    John Dryden in ‘The Spanish Friar’ (1681)
+                </p>
+            </div>
+            <div>
+                <p>CONSIDER DONATING TO PARI</p>
+                <p><b>Donate money</b></p>
+                <p>
+                    You can send in donations using a range of payment methods. All donations made to the CounterMedia
+                    Trust are eligible for exemption under Section 80G of the Income Tax Act, 1961.
+                </p>
+                <p>Send donation</p>
+            </div>
+            <div>
+                <p>CONTRIBUTE TO PARI</p>
+                <p>
+                    Anyone can contribute to PARI. Write for us, shoot for us, record, translate, research, edit a video
+                    for us – your material is welcome so long as it meets the standards of this site and falls within
+                    our mandate: the everyday lives of everyday people.
+                </p>
+                <p>Learn more</p>
+            </div>
+            <div>
+                <p>PARI AND EDUCATION</p>
+                <p>
+                    At PARI, we’re writing the textbooks of the future. That’s happening with the numerous stories,
+                    photos, videos and audio material going up every week on our site. Over time, quite a bit of that
+                    will be produced by students and teachers themselves.
+                </p>
+                <p>Learn more</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

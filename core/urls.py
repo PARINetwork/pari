@@ -26,7 +26,7 @@ urlpatterns = patterns('core.views',
     url(r'^pages/pari-teachers-students/$', 'pari_teachers_students', name='pari_teachers_students'),
     url(r'^pages/contribute-to-faces/$', 'contribute_to_faces', name='contribute_to_faces'),
     url(r'^pages/donate/$', 'donate', name='donate'),
-    url(r'^pages/about/$', 'story_of_pari', name='story_of_pari'),
+    url(r'^pages/about/$', 'about', name='about'),
     url(r'^pages/about-the-editor/$', 'founders', name='founders'),
     url(r'^pages/(?P<slug>.+)/$', 'static_page', name='static_page'),
 
