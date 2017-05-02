@@ -1,5 +1,6 @@
 @import "../../../colors/colors";
 @import "../../../layout/mixins";
+@import "../../../layout/responsive";
 
 .navbar {
   margin-bottom: 0;
@@ -16,8 +17,14 @@
   background-color: @darker-grey;
   color: @light-grey;
   line-height: 40px;
+  a.btn {
+    &.primary {
+      background: #B25B46;
+      padding: 10px;
+    }
+  }
   .author-name {
-    color: @primary-color;
+    color: #B25B46;
     .font-size(30);
   }
 
@@ -27,6 +34,7 @@
   }
 
   .author-bio {
+    color: @grey;
     margin-top: 3px;
   }
 
@@ -36,7 +44,7 @@
       color: @grey;
       padding-right: 6px;
       vertical-align: middle;
-      width: 7%;
+      width: 9%;
     }
   }
 
@@ -68,6 +76,14 @@
           color: @light-grey;
           .font-size(20);
         }
+      }
+    }
+  }
+
+  @media (max-width: @screen-xs-max) {
+    i {
+      &.icon-handle {
+        width: 6%;
       }
     }
   }
