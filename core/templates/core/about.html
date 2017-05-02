@@ -6,6 +6,7 @@
 
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/about.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/forms/form-elements.less">
 {% endblock %}
 
 {% block extra_js %}
@@ -78,7 +79,7 @@
                 </p>
             </div>
             <div>
-                <p>THIS IS WHERE PARI COMES IN </p>
+                <p class="section-sub-header">THIS IS WHERE PARI COMES IN </p>
                 <p>PARI is both a living journal and an archive. It will generate and host reporting on the
                     countryside that is current and contemporary, while also creating a database of already
                     published stories, reports, videos and audios from as many sources as we can. All of PARI’s own
@@ -111,7 +112,7 @@
                 </p>
             </div>
             <div>
-                <h1>WHAT’S ON PARI</h1>
+                <p class="section-sub-header">WHAT’S ON PARI</p>
                 <p>
                     PARI hosts and combines video, photo, audio and text archives. There is content we already have
                     and stories we are generating. Both take time and effort to organise and load. The videos
@@ -148,40 +149,71 @@
                 </p>
             </div>
             <div>
-                <p>CATEGORIES</p>
+                <h3 class="section-header">CATEGORIES</h3>
                 <p>
                     The number of categories you see in the archive are not fixed or final. We will also, for
                     example, include livestock and wildlife – and many others, brick by brick. Here’s a look at just
                     three of very many categories on PARI:
                 </p>
-                <p>Things we do</p>
-                <p>
-                    This leads you into the complex world of rural Indian labour. To landless workers in the fields,
-                    to farmers and woodcutters, to brick-makers and blacksmiths. From men who push 200 kilograms of
-                    coal on bicycles across 40 kilometres to earn a few rupees, to women who scavenge coal at great
-                    risk from giant waste dumps. And migrant labourers who travel thousands of kilometres each year
-                    in search of work, never staying anywhere for six months, not even in their own village homes.
-                    Apart from covering their stories we are also photographing and filming the tools and implements
-                    that people use, many of them sure to disappear over the next few years. 
-                </p>
-                <p>Explore</p>
-                <p>Things we make</p>
-                <p>
-                    Here, PARI covers arts and crafts, artists and craftspersons. The country’s countless schools
-                    and
-                    skills and traditions, and their products. In this category, you will find India’s ‘everyday
-                    museums’ – miniature painting schools, rural traditions of sculpture, exquisite weaving
-                    techniques – many of which are slowly fading away and might soon vanish completely.
-                </p>
-                <p>Explore</p>
-                <p>Foot-soldiers of freedom</p>
-                <p>
-                    The last living freedom fighters of rural India, most now in their 90s. People who spent many
-                    years in prison fighting for the country’s freedom from colonial rule and to establish an
-                    independent, democratic Indian nation. In the next decade there will be none left to tell the
-                    tale.
-                </p>
-                <p>Explore</p>
+                <div class="category clearfix">
+                    <div class="col-lg-5">
+                        <img class=category-thumbanail src="{{ STATIC_URL }}img/category_things_we_do.jpg"/>
+                    </div>
+                    <div class="col-lg-7">
+                        <h4 class="section-sub-header">Things we do</h4>
+                            <p>
+                                This leads you into the complex world of rural Indian labour. To landless workers in the fields,
+                                to farmers and woodcutters, to brick-makers and blacksmiths. From men who push 200 kilograms of
+                                coal on bicycles across 40 kilometres to earn a few rupees, to women who scavenge coal at great
+                                risk from giant waste dumps. And migrant labourers who travel thousands of kilometres each year
+                                in search of work, never staying anywhere for six months, not even in their own village homes.
+                                Apart from covering their stories we are also photographing and filming the tools and implements
+                                that people use, many of them sure to disappear over the next few years. 
+                            </p>
+                            <a href="{%  url 'story-detail' slug="things-we-do" %}" >
+                                <button class="primary">Explore</button>
+                            </a>
+                    </div>
+                </div>
+
+                <div class="category clearfix">
+                    <div class="col-lg-5">
+                        <img class=category-thumbanail src="{{ STATIC_URL }}img/category_things_we_make.jpg"/>
+                    </div>
+                    <div class="col-lg-7">
+                        <h4 class="section-sub-header">Things we make</h4>
+                        <p>
+                            Here, PARI covers arts and crafts, artists and craftspersons. The country’s countless
+                            schools
+                            and
+                            skills and traditions, and their products. In this category, you will find India’s ‘everyday
+                            museums’ – miniature painting schools, rural traditions of sculpture, exquisite weaving
+                            techniques – many of which are slowly fading away and might soon vanish completely.
+                        </p>
+                        <a href="{% url 'story-detail' slug="things-we-make" %}">
+                            <button class="primary">Explore</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="category clearfix">
+                    <div class="col-lg-5">
+                        <img class=category-thumbanail src="{{ STATIC_URL }}img/category_footsoldiers_of_freedom.jpg"/>
+                    </div>
+                    <div class="col-lg-7">
+                        <h4 class="section-sub-header">Foot-soldiers of freedom</h4>
+                        <p>
+                            The last living freedom fighters of rural India, most now in their 90s. People who spent
+                            many
+                            years in prison fighting for the country’s freedom from colonial rule and to establish an
+                            independent, democratic Indian nation. In the next decade there will be none left to tell
+                            the
+                            tale.
+                        </p>
+                        <a href="{% url 'story-detail' slug="foot-soldiers-of-freedom" %}">
+                            <button class="primary">Explore</button>
+                        </a>
+                    </div>
+                </div>
                 <p>
                     While we constantly try to build and expand a gene pool of contributors, we do exercise
                     editorial selection and quality control. The use of experienced contributors with a credible
@@ -212,8 +244,8 @@
                     giant realities. We can expand our coverage of those many worlds only with the widest possible
                     public participation.
                 </p>
-                <p>
-                    P. Sainath
+                <p class="author">
+                    P. Sainath <br>
                     Founder Editor, PARI
                 </p>
             </div>
