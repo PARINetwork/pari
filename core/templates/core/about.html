@@ -228,6 +228,7 @@
                     rural Indians will shoot their own stories. And the stories will be renewed and reported — as
                     long as there is a countryside.
                 </p>
+                <p class="top-bordered"></p>
                 <p>
                     Public access to PARI is free. The site is run by the CounterMedia Trust. An informal network
                     supports and funds the trust and its primary activities through volunteer work, donations and
@@ -251,48 +252,56 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 side-panel">
-            <div>
-                <p>
+            <div class="quote-section">
+                <p class="quote">
                     "This is an insane project – and a wonderful one"
                 </p>
-                <p>
+                <div class="quote-author">
                     Neville Roy Singham, Chairman, ThoughtWorks Inc.
-                </p>
-            </div>
-            <div>
-                <p>
+                </div>
+                <p class="quote">
                     "There's a pleasure sure to being mad, that only madmen know"
                 </p>
-                <p>
+                <div class="quote-author">
                     John Dryden in ‘The Spanish Friar’ (1681)
-                </p>
+                </div>
             </div>
-            <div>
-                <p>CONSIDER DONATING TO PARI</p>
-                <p><b>Donate money</b></p>
-                <p>
-                    You can send in donations using a range of payment methods. All donations made to the CounterMedia
+            <div class="section">
+                <p class="heading">CONSIDER DONATING TO PARI</p>
+                <p class="sub-heading">Donate money</p>
+                <p class="content">
+                    You can send in donations using a range of payment methods. All donations made to
+                    the CounterMedia
                     Trust are eligible for exemption under Section 80G of the Income Tax Act, 1961.
                 </p>
-                <p>Send donation</p>
+                <a href="{% url 'donate_form' %}">
+                    <button class="primary">Send donation</button>
+                </a>
             </div>
-            <div>
-                <p>CONTRIBUTE TO PARI</p>
-                <p>
-                    Anyone can contribute to PARI. Write for us, shoot for us, record, translate, research, edit a video
-                    for us – your material is welcome so long as it meets the standards of this site and falls within
+            <div class="section">
+                <p class="heading">CONTRIBUTE TO PARI</p>
+                <p class="content">
+                    Anyone can contribute to PARI. Write for us, shoot for us, record, translate, research, edit a
+                    video
+                    for us – your material is welcome so long as it meets the standards of this site and falls
+                    within
                     our mandate: the everyday lives of everyday people.
                 </p>
-                <p>Learn more</p>
+                <a href="{% url 'contribute' slug="contribute" %}">
+                    <button class="primary">Learn more</button>
+                </a>
             </div>
-            <div>
-                <p>PARI AND EDUCATION</p>
-                <p>
+            <div class="section">
+                <p class="heading">PARI AND EDUCATION</p>
+                <p class="content">
                     At PARI, we’re writing the textbooks of the future. That’s happening with the numerous stories,
-                    photos, videos and audio material going up every week on our site. Over time, quite a bit of that
+                    photos, videos and audio material going up every week on our site. Over time, quite a bit of
+                    that
                     will be produced by students and teachers themselves.
                 </p>
-                <p>Learn more</p>
+                <a href="{% url 'pari_teachers_students' %}">
+                    <button class="primary">Learn more</button>
+                </a>
             </div>
         </div>
     </div>
