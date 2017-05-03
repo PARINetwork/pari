@@ -13,4 +13,12 @@
         {% for location in article.locations.all %}<a class="link-dark font-xs" href="{% url "location-detail" slug=location.slug %}">{{ location.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
     </div>
 
+    {% if article.latest_revision_created_at %}
+    <div class="margin-top-20px">
+      <a href="{% url "archive-detail" year=result.specific.latest_revision_created_at.year month=result.specific.latest_revision_created_at.month %}">
+          <span itemprop="datePublished" class="date link-dark font-xs">{{ article.latest_revision_created_at|date }}</span>
+      </a>
+    </div>
+    {% endif %}
+
 </div>

@@ -1,0 +1,11 @@
+{% if type == 'photo_album' %}
+  <span class="result-type fa fa-picture-o"></span>
+{% elif type == 'talking_album' %}
+  <span class="result-type fa fa-music"></span>
+{% elif type == 'article' %}
+  <span class="result-type fa fa-file-text-o"></span>
+{% elif type == 'resource' %}
+  <span class="result-type fa fa-file-archive-o"></span>
+{% elif type == 'face' %}
+  <span class="result-type fa fa-user-o"></span>
+{% endif %}

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-{% load i18n wagtailimages_tags %}
+<!-- {% load i18n wagtailimages_tags %} -->
+{% load i18n core_filters %}
 
 {% block meta_title %}
 Search{% if search_results %} Results{% endif %}
@@ -26,20 +27,11 @@ Search{% if search_results %} Results{% endif %}
         <section class="search-result">
           <ul>
             {% for result in search_results %}
-              <li class="result item">
+              <li class="result item col-lg-6 col-md-4 col-sm-6 col-xs-12">
                 <a href="{{ result.specific.get_absolute_url }}">
-                  <div class="item-image">
-                    {% if result.specific.featured_image %}
-                      {% image result.specific.featured_image fill-278x225 as featured_image %}
-                      <img src="{{ featured_image.url }}">
-                    {% else %}
-                      <img src="{{ STATIC_URL }}img/default_featured_image.png" alt="{{ result.specific.title }}" width="278" height="225">
-                    {% endif %}
-                  </div>
+                  {% include "includes/content_type.html" with type=result.specific|get_type %}
+                  {% include "includes/article_listing_image.html" with specific=result.specific alignment_class='full-image-center listing-image'%}
                   {% include "article/includes/default_atom.html" with article=result.specific %}
-                  <a href="{% url "archive-detail" year=result.specific.latest_revision_created_at.year month=result.specific.latest_revision_created_at.month %}">
-                      <span itemprop="datePublished" class="date link-dark font-xs">{{ result.specific.latest_revision_created_at|date }}</span>
-                  </a>
                 </a>
               </li>
               {% endfor %}
@@ -54,8 +46,4 @@ Search{% if search_results %} Results{% endif %}
     </div>
   </div>
 </div>
-<script type="text/javascript">
-  document.getElementById("main_content").style.marginBottom = "0px";
-  document.getElementById("main_content").style.background = "#F4F4F4";
-</script>
 {% endblock %}
