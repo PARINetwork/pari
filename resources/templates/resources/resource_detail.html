@@ -61,9 +61,7 @@
                             </li>
                             {% with request.build_absolute_uri as url and category.title as title %}
                                 <li class="share-icons">
-                                    <a href="https://twitter.com/intent/tweet?text={{ url|urlencode }}&button_hashtag=PARIStories" target="_blank" >
-
-                                    <a href="https://twitter.com/intent/tweet?text={{ url|urlencode }}&button_hashtag=PARIStories" target="_blank" class="link-light">
+                                    <a href="https://twitter.com/intent/tweet?text={{ url|urlencode }} %23PARIStories" target="_blank" >
                                     <i class="fa fa-twitter"></i>
                                     </a>
                                 </li>
