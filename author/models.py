@@ -37,6 +37,12 @@ class Author(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def twitter_handle(self):
+        if self.twitter_username:
+            return self.twitter_username.replace('@', '')
+        return ""
+
     def save(self, **kwargs):
         if not self.slug:
             self.slug = slugify(self.name)
