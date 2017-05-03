@@ -136,7 +136,7 @@
                                 </li>{% endwith %}<li>
                                 <a class="#" onclick="window.print()">Print this story</a>
                             </li>{% if article.locations.count %}{% with article.locations.first as location %}<li>
-                                        <a href="{% url 'map-list' %}?lat={{ location.point.x }}&long={{ location.point.y }}&title={{ location.name }}">
+                                        <a href="{% url 'map-list' %}?lat={{ location.point.x }}&long={{ location.point.y }}&title={{ location.name }}&slug={{ location.slug }}">
                                             <span itemprop="contentLocation">
                                                 <span itemprop="name">
                                                     <i class="fa fa-map-marker" aria-hidden="true"></i>

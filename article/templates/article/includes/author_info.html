@@ -33,7 +33,7 @@
                     {% if author.website %}
                         <div>
                             <i class="glyphicon glyphicon-globe icon-handle"></i>
-                            <div class="handle"><a href="{{ author.website }}">{{ author.website }}</a></div>
+                            <div class="handle"><a href="{{ author.website }}" target="_blank">{{ author.website }}</a></div>
                         </div>
                     {% endif %}
                     <div>
@@ -41,7 +41,7 @@
                             <ul>
                                 <li class="social-icon" data-url="{{ author.get_absolute_url }}">
                                     <span class="banner-label">Share</span>
-                                    <a href="https://twitter.com/intent/tweet?text={{ url|urlencode }}&button_hashtag=PARIStories" target="_blank" >
+                                    <a href="https://twitter.com/intent/tweet?text=http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{{ author.get_absolute_url|urlencode }}&button_hashtag=PARIStories" target="_blank" >
                                         <i class="fa fa-twitter"></i>
                                     </a>
                                     <a target="_blank"

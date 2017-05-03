@@ -47,20 +47,21 @@ class LocationList(ListView):
         context = super(LocationList, self).get_context_data(**kwargs)
         req = self.request
         filters = req.GET.getlist("filter")
-        latitude = req.GET.get("lat", '')
-        longitude = req.GET.get("long", '')
-        location_title = req.GET.get("title", '')
+        latitude = req.GET.get("lat")
+        longitude = req.GET.get("long")
+        location_title = req.GET.get("title")
+        location_slug = req.GET.get("slug")
 
-        if latitude and longitude:
-            location_title = location_title if location_title else "Lat: %s, Long: %s" % (latitude, longitude)
-            context['latitude'] = latitude
-            context['longitude'] = longitude
-            context['location_title'] = location_title
-            context["articles_checked"], context["albums_checked"], context["faces_checked"] = False, False, False
-        elif filters:
+        if filters:
             context["articles_checked"] = "articles" in filters
             context["albums_checked"] = "albums" in filters
             context["faces_checked"] = "faces" in filters
+        elif latitude and longitude:
+            context['latitude'] = latitude
+            context['longitude'] = longitude
+            context['location_title'] = location_title if location_title else "Lat: %s, Long: %s" % (latitude, longitude)
+            context['location_url'] = reverse("location-detail", kwargs={"slug": location_slug}) if location_slug else ''
+            context["articles_checked"], context["albums_checked"], context["faces_checked"] = False, False, False
         else:
             context["articles_checked"], context["albums_checked"], \
                 context["faces_checked"] = True, True, True

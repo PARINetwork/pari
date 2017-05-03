@@ -24,6 +24,7 @@
 <meta property="og:title" content="{{ resource.title }}">
 <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ resource.get_absolute_url }}">
 <meta property="og:image" content="https:{{ resource.embed_thumbnail }}">
+<meta property="og:description" content="{{ resource.content.2 }} #PARIStories">
 <meta property="og:type" content="resource">
 <meta property="og:published_time" content="{% firstof resource.original_published_date|date:"c" resource.first_published_at|date:"c" %}">
 

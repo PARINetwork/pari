@@ -12,7 +12,7 @@
 {% if article.featured_image %}
 <meta property="og:title" content="Donate to PARI">
 <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
-<meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ STATIC_URL }}img/logo.png">
+<meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ STATIC_URL }}img/default_featured_image.png">
 <meta property="og:description" content="In 2014-15, only about 0.24% of front page news came out of rural India. We want to change that. #PARIStories">
 <meta property="og:type" content="donation">
 
@@ -20,7 +20,7 @@
 <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
 <meta name="twitter:title" content="Donate to PARI" >
 <meta name="twitter:description" content="In 2014-15, only about 0.24% of front page news came out of rural India. We want to change that. #PARIStories" >
-<meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ STATIC_URL }}img/logo.png" >
+<meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ STATIC_URL }}img/default_featured_image.png" >
 <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}" >
 {% endif %}
 {% endblock %}
