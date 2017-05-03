@@ -62,7 +62,11 @@
         </div>
 
         <div class="row">
-            {% include "article/includes/article_list.html" with articles=articles title=title %}
+            {% with authors|first as author %}
+                {% with "No articles written by "|add:author.name as error_message %}
+                    {% include "article/includes/article_list.html" with articles=articles title=title error_message=error_message %}
+                {% endwith %}
+            {% endwith %}
         </div>
     </div>
 {% endblock %}
