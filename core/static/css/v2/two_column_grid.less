@@ -1,0 +1,135 @@
+.two-column-grid {
+  margin: 30px 0px 20px 0px;
+  overflow: auto;
+  & > ul {
+    overflow: auto;
+    li {
+      overflow: auto;
+      position: relative;
+      padding: 0px;
+      margin: 20px 0px 20px 0px;
+      & > a {
+        float: left;
+        width: 270px;
+        position: relative;
+      }
+
+      & > .caption {
+
+      }
+      & > a, & > .caption {
+        display: block;
+        padding-right: 10px;
+      }
+
+      .caption {
+        h3 {
+          font-size: 22px;
+          margin: 7px 0px;
+          max-height: 48px;
+          overflow: hidden;
+          color: rgb(59, 59, 59);
+
+          a {
+            color: rgb(59, 59, 59);
+          }
+        }
+        .margin-top-20px {
+          margin-top: 10px !important;
+        }
+      }
+      .result-type {
+        color: #FFF;
+        background: rgba(0, 0, 0, 0.4);
+        padding: 5px;
+        position: absolute;
+        left: 5px;
+        bottom: 5px;
+        font-size: 17px;
+        z-index: 1;
+      }
+    }
+  }
+
+  .pagination {
+    margin: 0px;
+    li {
+      a {
+       color: #827c7c;
+     }
+     &.active a {
+       color: #FFF;
+     }
+    }
+  }
+
+}
+
+// ends
+
+@media (max-width: 1199px) {
+  .two-column-grid {
+    & > ul {
+      li {
+        padding-right: 15px;
+        padding-left: 15px;
+        margin: 20px 0px;
+        & > a {
+          float: none;
+          width: 100%;
+          padding: 0px;
+          margin-bottom: 15px;
+
+          .item-image {
+            max-width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .two-column-grid {
+    ul {
+      li {
+        & > a, & > .caption {
+          width: 100% !important;
+
+          h3 {
+            font-size: 18px;
+            margin: 4px 2px;
+            max-height: 38px;
+          }
+          .margin-top-20px {
+            a, a span {
+             font-size: 14px;
+           }
+          }
+        }
+      }
+    }
+    .pagination > li {
+      display: inline-block;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .two-column-grid {
+    & > ul {
+      li {
+        float: none !important;
+        width: 100% !important;
+
+        & > a, & > .caption {
+          width: 100% !important;
+
+          h3 {
+            margin-top: 10px !important;
+          }
+        }
+      }
+    }
+  }
+}

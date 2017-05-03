@@ -1,0 +1,16 @@
+{% load i18n core_filters %}
+
+<section class="search-result two-column-grid">
+  <ul>
+    {% for result in search_results %}
+      <li class="result item col-lg-6 col-md-4 col-sm-6 col-xs-12">
+        <a href="{{ result.specific.get_absolute_url }}">
+          {% include "includes/content_type.html" with type=result.specific|get_type %}
+          {% include "includes/article_listing_image.html" with specific=result.specific alignment_class='full-image-center listing-image'%}
+          {% include "article/includes/default_atom.html" with article=result.specific %}
+        </a>
+      </li>
+      {% endfor %}
+  </ul>
+  {% include "includes/paginator.html" with results=search_results %}
+</section>
