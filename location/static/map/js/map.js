@@ -65,31 +65,31 @@ var MapPage = {
   },
 
   overrideLocationPopup: function() {
-    var iwOuter = $('.gm-style-iw');
-    if(iwOuter.length === 0) {
-      return;
-    }
-    iwOuter.parent().addClass("map-pin-popup");
-    var iwBackground = iwOuter.prev();
-    iwBackground.children(':nth-child(2)').css({'display' : 'none'});
-    iwBackground.children(':nth-child(4)').css({'display' : 'none'});
-    iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
-    iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
-    iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index' : '1'});
-    $(".map-pin-container").addClass("map-pin-content");
-    $(".gm-style-iw > div:first-child").attr("style", "display:block;");
-    var closeButton = $(".gm-style-iw").next()
-    closeButton.css({
-      opacity: '1',
-      width: '20px',
-      height: '20px',
-      right: '55px',
-      top: '18px',
-      color: '#5e5e5e',
-      fontSize: '20px'
-    });
-    closeButton.addClass("fa fa-close");
-    closeButton.find("img").hide();
+    // var iwOuter = $('.gm-style-iw');
+    // if(iwOuter.length === 0) {
+    //   return;
+    // }
+    // iwOuter.parent().addClass("map-pin-popup");
+    // var iwBackground = iwOuter.prev();
+    // iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+    // iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+    // iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
+    // iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 76px !important;'});
+    // iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index' : '1'});
+    // $(".map-pin-container").addClass("map-pin-content");
+    // $(".gm-style-iw > div:first-child").attr("style", "display:block;");
+    // var closeButton = $(".gm-style-iw").next()
+    // closeButton.css({
+    //   opacity: '1',
+    //   width: '20px',
+    //   height: '20px',
+    //   right: '55px',
+    //   top: '18px',
+    //   color: '#5e5e5e',
+    //   fontSize: '20px'
+    // });
+    // closeButton.addClass("fa fa-close");
+    // closeButton.find("img").hide();
   },
 
   highlightDefault: function() {

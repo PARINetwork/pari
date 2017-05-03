@@ -37,7 +37,9 @@ Search{% if search_results %} Results{% endif %}
                     {% endif %}
                   </div>
                   {% include "article/includes/default_atom.html" with article=result.specific %}
-                  <div class="date link-dark font-xs">{{result.specific.latest_revision_created_at|date}}</div>
+                  <a href="{% url "archive-detail" year=result.specific.latest_revision_created_at.year month=result.specific.latest_revision_created_at.month %}">
+                      <span itemprop="datePublished" class="date link-dark font-xs">{{ result.specific.latest_revision_created_at|date }}</span>
+                  </a>
                 </a>
               </li>
               {% endfor %}
