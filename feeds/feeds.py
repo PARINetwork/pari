@@ -53,7 +53,7 @@ class BaseFeed(Feed):
         if item.__class__.__name__.lower() == "article":
             authors = ",".join(list(item.authors.values_list("name", flat=True)))
         elif item.__class__.__name__.lower() == "album":
-            authors = ",".join(list(item.photographers.values_list("name", flat=True)))
+            authors = ",".join(set(list(map(lambda slide: ",".join(slide.image.photographers.all().values_list('name', flat=True)),item.slides.all()))))
         return authors
 
     def item_enclosure_url(self, item):
@@ -114,7 +114,7 @@ class AllFeed(BaseFeed):
             return item.strap
         elif item.__class__.__name__.lower() == "album":
             return item.slides.all()[0].description
-        return item.description or ""
+        return item.additional_info or ""
 
 
 
