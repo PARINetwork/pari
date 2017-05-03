@@ -103,7 +103,8 @@ def get_slide_detail(request, slug):
         d = datetime.datetime.strptime(str(album.first_published_at)[:10], "%Y-%m-%d")
         date = d.strftime('%d %b,%Y')
         slide_dict['image_captured_date'] = date
-        slide_dict['slide_location'] = ",".join(slide.image.locations.all().values_list('district', flat=True))
+        image_location = slide.image.locations.first()
+        slide_dict['slide_location'] = "%s, %s" % (image_location.district, image_location.state) if image_location else ''
         slide_dict['track_id'] = slide.audio
         response_data['slides'].append(slide_dict)
 
@@ -111,7 +112,7 @@ def get_slide_detail(request, slug):
     for photographer in set(photographers):
         photographer_dict = dict(
             [('type', 'inline'), ('show_title', "False"), ('name', photographer.name), ('bio', photographer.bio),
-             ('twitter_username', photographer.twitter_username), ('facebook_username', photographer.facebook_username),
+             ('twitter_username', photographer.twitter_handle), ('facebook_username', photographer.facebook_username),
              ('email', photographer.email), ('website', photographer.website), ('author_url', reverse('author-detail', kwargs={'slug': photographer.slug}))])
         response_data['authors'].append(photographer_dict)
     return JsonResponse(response_data)
