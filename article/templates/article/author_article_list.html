@@ -9,7 +9,7 @@
         <meta property="og:title" content="{{ author.name }}">
         <meta property="og:url"
               content="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{{ request.get_full_path }}">
-        <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{{ STATIC_URL }}img/logo.png">
+        <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{{ STATIC_URL }}img/default_featured_image.png">
         <meta property="og:type" content="article">
         <meta property="og:description" content="{{ author.bio }} #PARIStories">
 
@@ -20,7 +20,7 @@
         <meta name="twitter:description" content="{{ author.bio }} #PARIStories">
         <meta name="twitter:url"
               content="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{{ request.get_full_path }}">
-        <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{{ STATIC_URL }}img/logo.png" >
+        <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{{ STATIC_URL }}img/default_featured_image.png" >
     {% endwith %}
 {% endblock %}
 
