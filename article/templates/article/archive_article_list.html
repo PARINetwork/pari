@@ -11,6 +11,7 @@
               content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
         <meta property="og:type" content="article">
         <meta property="og:image" content="{{ STATIC_URL }}img/logo.png">
+        <meta property="og:description" content="#PARIStories">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
@@ -52,6 +53,7 @@
                         <i class="fa fa-angle-down"></i>
                     </li>
                     {% with request.build_absolute_uri as url%}
+                        <div class="social-media">
                         <li class="icon">
                             <a href="https://twitter.com/intent/tweet?text={{ url|urlencode }}&button_hashtag=PARIStories" target="_blank" >
                                 <i class="fa fa-twitter"></i>
@@ -63,14 +65,14 @@
                                 <i class="fa fa-facebook"></i>
                             </a>
                         </li>
+                        </div>
                     {% endwith %}
 
                 </ul>
             </div>
         </div>
 
-        <div class="row">
-            {% include "article/includes/article_list.html" with articles=articles title=title %}
-        </div>
+
+        {% include "article/includes/article_list.html" with articles=articles title=title %}
     </div>
 {% endblock %}

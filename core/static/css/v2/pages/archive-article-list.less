@@ -16,10 +16,9 @@
   float: right;
 }
 
-
 .result-title {
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 55px;
   .left {
     h1 {
       margin-top: 0;
@@ -27,13 +26,15 @@
     }
   }
 
-  ul li {
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 4px;
-    margin-top: 9px;
-    color: @grey;
-     &.icon {
+  .right {
+
+    ul li {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 4px;
+      margin-top: 9px;
+      color: @grey;
+      &.icon {
         border: 1px solid #8F8F8F;
         border-radius: 20px;
         padding: 5px;
@@ -42,28 +43,45 @@
         text-align: center;
       }
 
-    a {
-      color: @grey;
+      a {
+        color: @grey;
+      }
+      .Chevron {
+        background-color: transparent;
+      }
+      .select-no-style {
+        float: left;
+        width: 65px;
+        margin-top: 1px;
+      }
     }
-    .Chevron {
-      background-color: transparent;
-    }
-    .select-no-style {
-      float: left;
-      width: 65px;
-      margin-top: 1px;
+    .social-media {
+      display: inline-block;
+      padding: 5px 0 5px 18px;
+      border-left: solid 1px @grey;
+      margin-left: 15px;
+
+      li {
+        margin-top: 0px;
+      }
     }
   }
 }
 
-@media (max-width: @screen-xs-max) {
-  .left{
-    float: none;
-  }
-  .right {
-    .icon {
-      display: none;
-    }
-    float: none;
-  }
+.article-tile {
+  padding-left: 0;
 }
+
+  @media (max-width: @screen-xs-max) {
+    .left {
+      float: none;
+    }
+    .result-title {
+      .right {
+        .social-media {
+          display: none ;
+        }
+        float: none;
+      }
+    }
+  }
