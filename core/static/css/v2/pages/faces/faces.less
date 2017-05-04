@@ -22,9 +22,14 @@
     }
   }
   .tile {
+    .image-wrapper {
+      width: 179px;
+      height: 179px;
+      background-color: #CCCCCC;
+    }
     margin: 0;
     position: relative;
-    padding: 8px 8px;
+    margin: 8px 8px;
     overflow: hidden;
     float: left;
 
@@ -37,7 +42,7 @@
       width: 20%;
       bottom: 0;
       background-color: @bg-red-transparant;
-      margin-bottom: 8px;
+      margin-bottom: 0px;
       text-align: center;
       .alphabat {
         color: white;
@@ -132,7 +137,7 @@
 }
 
 .external-link {
-  font-size:20px;
+  font-size: 20px;
   a {
     color: @dark-grey;
   }
@@ -141,6 +146,10 @@
 
 @media (min-width: @screen-sm-min ) {
   .tile {
+    .image-wrapper {
+      width: 179px;
+      height: 179px;
+    }
     img {
       height: 179px;
     }
@@ -149,6 +158,11 @@
 
 @media (max-width: @screen-md-max ) {
   .tile {
+    .image-wrapper {
+      width: 219px !important;
+      height: 219px !important;
+    }
+
     img {
       height: 219px;
     }
@@ -157,6 +171,11 @@
 
 @media (max-width: @screen-sm-max ) {
   .tile {
+
+    .image-wrapper {
+      width: 224px;
+      height: 224px;
+    }
     img {
       height: 224px;
     }
@@ -169,6 +188,10 @@
   }
 
   .tile {
+    .image-wrapper {
+      width: 244px !important;
+      height: 244px !important;
+    }
     img {
       max-height: 244px !important;
     }
@@ -181,6 +204,11 @@
   }
 
   .tile {
+    .image-wrapper {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
     img {
       height: auto;
     }
@@ -231,7 +259,7 @@
 
 .mfp-container {
   padding: 0;
-  .mfp-arrow:before, .mfp-arrow:after{
+  .mfp-arrow:before, .mfp-arrow:after {
     display: none;
   }
   .mfp-figure {
@@ -249,7 +277,7 @@
 
   .mfp-arrow {
     z-index: 9999;
-    .slide-arrow{
+    .slide-arrow {
       font-size: xx-large;
       color: @light-grey;
     }
@@ -312,8 +340,8 @@
     height: 100%;
     overflow: auto;
     @media (max-width: @switchOver) {
-        border-top: @darker-grey solid 2px;
-        border-left: none;
+      border-top: @darker-grey solid 2px;
+      border-left: none;
     }
     .mfp-title {
       color: #000;
@@ -355,7 +383,7 @@
     width: @imageWidth;
 
     .mfp-img {
-      padding:0px;
+      padding: 0px;
     }
 
     @media (max-width: @switchOver) {

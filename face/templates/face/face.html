@@ -113,7 +113,7 @@
         <li class="tile">
             {% image face.image fill-514x514 as face_image_resized %}
             {% image face.image original as original_face_image %}
-
+            <div class="image-wrapper">
             <a href="{{ face.get_absolute_url }}"
                class="image-tag mfp-image"
                data-face-details="{% spaceless %} {% include 'face/includes/face_details.html' with face=face original_face_image=original_face_image only %} {% endspaceless %}"
@@ -122,6 +122,7 @@
                data-url="{{ face.get_absolute_url }}">
                 <img class="img-responsive grid-image no-border" src="{{ face_image_resized.url }}" alt="{{ face|alt_text }}">
             </a>
+            </div>
 
             <div class="caption">
                 <div class="name">{{face.title|capfirst }}</div>

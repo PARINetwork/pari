@@ -80,14 +80,16 @@
             <div class="story-grid">
                 {% for face in faces %}
                     <li class="tile">
-                        <a href="{% url "face-detail" alphabet=face.location.district|lower|first %}">
-                            {% image face.image fill-514x514 as face_image %}
-                            <img class="img-responsive grid-image" src="{{ face_image.url }}"
-                                 alt="{{ face|alt_text }}">
-                            <div class="alphabat-holder">
-                                <h4 class="alphabat">{{ face.district|lower|first }}</h4>
-                            </div>
-                        </a>
+                        <div class="image-wrapper">
+                            <a href="{% url "face-detail" alphabet=face.location.district|lower|first %}">
+                                {% image face.image fill-512x512 as face_image %}
+                                <img class="img-responsive grid-image" src="{{ face_image.url }}"
+                                     alt="{{ face|alt_text }}">
+                                <div class="alphabat-holder">
+                                    <h4 class="alphabat">{{ face.district|lower|first }}</h4>
+                                </div>
+                            </a>
+                        </div>
                     </li>
                     {% empty %}
                     <div class="error-message-holder">
