@@ -110,6 +110,15 @@ def contribute_to_faces(request,slug=None):
                    "current_page": 'contribute_to_faces',
                    })
 
+def acknowledgements(request,slug=None):
+    active_tab = 'about-pari'
+    link = 'https://script.google.com/macros/s/AKfycbzMQwyY8P1t7CT0_ylmPfSDz7WiSTVHWtL-Yf0UhtoYOIWQfMf5/exec'
+    return render(request, "core/acknowledgements.html",
+                  {"tab": active_tab,
+                   "link": link,
+                   "current_page": 'acknowledgements',
+                   })
+
 
 def donate(request):
     return render(request, "core/donate.html", {"tab": "donate", "current_page": 'donate'})
