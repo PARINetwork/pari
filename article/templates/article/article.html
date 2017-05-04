@@ -39,8 +39,8 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}album/css/magnific-popup.css" />
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}article/css/article.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/story/story.less">
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/layout/components/main-content/article-list.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/layout/components/main-content/author-info.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/two_column_grid.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/album/photo-album.less">
 {% endblock %}
 
@@ -205,68 +205,7 @@
         {% if article.related_articles %}
             <h4>RELATED STORIES</h4>
         {% endif %}
-        <div class="row">
-           {% for related_article in article.related_articles %}
-            <div class="col-lg-6 col-md-6 article-tile">
-                <div class="row">
-                    <div class="col-lg-6 article-image">
-                        {% if related_article.featured_image %}
-                            <div class="article-image">{% image related_article.featured_image fill-270x270 as featured_image %}
-                                <a class="article-image" href="{{ related_article.get_absolute_url }}">
-                                    <img class="img-responsive lazyload" data-src="{{ featured_image.url }}"
-                                     alt="{{ related_article.featured_image.alt_text }}" width="270" height="192"
-                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                </a>
-                            </div>
-                        {% else %}
-                            <div class="article-image">
-                            <a href="{{ related_article.get_absolute_url }}">
-                                <img class="img-responsive" src="{{ STATIC_URL }}img/default_featured_image.png"
-                                     alt="{{ related_article.title }}" width="260" height="260">
-                            </a>
-                            </div>
-                        {% endif %}
-                    </div>
-                    <div class="col-lg-6 article-tile-info">
-                        <div class="article-tile-title">
-                            <a href="{{ related_article.get_absolute_url }}">
-                                <h3> {{ related_article.title|truncatechars:70 }}</h3>
-                            </a>
-                        </div>
-                        <div>
-                            <div class="sub-data">
-                                <div class="sub-data-author">
-                                    {% for author in related_article.authors.all %}
-                                        <span class="tag-space">
-                                        <a href="{% url "author-detail" author.slug %}">{{ author.name }}</a>
-                                        {% if not forloop.last %}, {% endif %}
-                                        </span>
-                                    {% endfor %}
-                                </div>
-                                <div class="sub-data-location">
-                                    {% for location in related_article.locations.all %}
-                                        <span>
-                                            <a  href="{% url "location-detail" location.slug %}">{{  location.name }}{% if not forloop.last %},{% endif %}</a>
-                                        </span>
-                                    {%  endfor %}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="date">
-                                 {% if related_article.original_published_date %}
-	                                <a href="{% url "archive-detail" year=related_article.original_published_date.year month=related_article.original_published_date.month %}">
-                                        <span itemprop="datePublished">{{ related_article.original_published_date|date }}</span>
-                                    </a>
-	                             {% else %}
-	                             {% if related_article.first_published_at %}<a href="{% url "archive-detail" year=related_article.first_published_at.year month=related_article.first_published_at.month %}">
-                                     <span itemprop="datePublished">{{ related_article.first_published_at|date }}</span></a>{% endif %}
-	                             {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-           {% endfor %}
-    </div>
+    {% include "article/includes/article_list.html" with articles=article.related_articles %}
 </div>
 
     {% verbatim %}

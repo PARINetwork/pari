@@ -6,6 +6,11 @@
 Search{% if search_results %} Results{% endif %}
 {% endblock %}
 
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/two_column_grid.less">
+{% endblock %}
+
+
 {% block main %}
 <div itemscope itemtype="http://schema.org/SearchResultsPage" class="search-result-panel">
 

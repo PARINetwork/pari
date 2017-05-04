@@ -1,50 +1,56 @@
 {% load i18n static wagtailimages_tags %}
+{% load i18n core_filters %}
 
-{% for article in articles %}
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 article-tile">
-                <div class="row">
-                    <div class="col-lg-6 article-image">
-                        {% if article.featured_image %}
-                            <div>{% image article.featured_image fill-270x270 as featured_image %}
-                                <a class="article-image" href="{{ article.get_absolute_url }}">
-                                    <img class="img-responsive lazyload" data-src="{{ featured_image.url }}"
-                                     alt="{{ article.featured_image.alt_text }}" width="270" height="192"
-                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                </a>
-                            </div>
-                        {% else %}
-                            <div class="article-image">
-                            <a href="{{ article.get_absolute_url }}">
-                                <img class="img-responsive" src="{{ STATIC_URL }}img/default_featured_image.png"
-                                     alt="{{ article.title }}" width="260" height="260">
-                            </a>
-                            </div>
-                        {% endif %}
-                    </div>
-                  {% include "article/includes/article_tile_info.html" %}
+    <section class="two-column-grid">
+        <ul>
+        {% for article in articles %}
+          <li class="result item col-lg-6 col-md-4 col-sm-6 col-xs-12">
+            <a href="{{ article.get_absolute_url }}">
+                <div class="show-content-type">
+                    {% include "includes/content_type.html" with type=article|get_type %}
                 </div>
-        </div>
-    {% empty %}
-    <div class="col-lg-12">
-    <p class="bg-danger font-l pad-20px">
-        {% if error_message %}
-            {{ error_message }}
-        {% else %}
-            {% trans "No articles available for " %}
-            {% for lang in LANGUAGES %}
-            {% if request.GET.lang == lang.0 %}
-            {% blocktrans with tlang=lang.1 %}{{ tlang }}.{% endblocktrans %}
-            {% endif %}
-            {% endfor %}
-            Please help us
-            <a class="font-l" href="{% url "contribute" slug="contribute" %}">
-            <span itemprop="name">{% trans "translate." %}</span>
+              {% include "includes/article_listing_image.html" with specific=article alignment_class='full-image-center listing-image'%}
+                <div class="caption">
+                    {% include "article/includes/default_atom.html" with article=article%}
+
+                   <div class="margin-top-20px date">
+                    {% if article.original_published_date %}
+                        <a href="{% url "archive-detail" year=article.original_published_date.year month=article.original_published_date.month %}">
+                            <span itemprop="datePublished" class="date link-dark font-xs">{{ article.original_published_date|date }}</span>
+                        </a>
+                    {% elif article.first_published_at %}
+                        <a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month  %}">
+                            <span itemprop="datePublished" class="date link-dark font-xs">{{ article.first_published_at|date }}</span>
+                        </a>
+                    {% endif %}
+                  </div>
+                </div>
             </a>
-        {% endif %}
-        {{ tlang }}
-    </p>
-</div>
-    {% endfor %}
+          </li>
+
+              {% empty %}
+            <div class="col-lg-12">
+                <p class="bg-danger font-l pad-20px">
+                    {% if error_message %}
+                        {{ error_message }}
+                    {% else %}
+                        {% trans "No articles available for " %}
+                        {% for lang in LANGUAGES %}
+                        {% if request.GET.lang == lang.0 %}
+                        {% blocktrans with tlang=lang.1 %}{{ tlang }}.{% endblocktrans %}
+                        {% endif %}
+                        {% endfor %}
+                        Please help us
+                        <a class="font-l" href="{% url "contribute" slug="contribute" %}">
+                        <span itemprop="name">{% trans "translate." %}</span>
+                        </a>
+                    {% endif %}
+                    {{ tlang }}
+                </p>
+            </div>
+          {% endfor %}
+        </ul>
+    </section>
 {%if articles %}
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 {% include "includes/paginator.html" with results=articles %}
