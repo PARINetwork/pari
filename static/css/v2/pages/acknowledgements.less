@@ -1,0 +1,80 @@
+@import "../colors/colors";
+@import "../layout/responsive";
+@import "../layout/mixins";
+
+#acknowledgements {
+  h1 {
+    margin-bottom: 30px;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  i {
+    font-size: 30px;
+    padding-right: 10px;
+    color: @grey;
+    vertical-align: middle;
+  }
+  .xx {
+    text-align: center;
+  }
+  .acknowledgements-heading {
+    color: @link-primary;
+    .font-size(15);
+    margin-bottom: 0px;
+    font-weight: bold;
+    padding-top: 10px;
+  }
+
+  .acknowledgements-col-heading {
+    .font-size(15);
+    color: @darker-grey;
+    font-weight: bold;
+    padding: 10px 0;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .acknowledgements-cols {
+    padding-top: 10px;
+    .help-text {
+      color: @grey;
+      .font-size(12);
+      line-height: 30px;
+    }
+
+    hr {
+      margin-top: 15px;
+    }
+  }
+
+  .ready-to-upload {
+    margin-top: 50px;
+    background-color: @lighter-grey;
+    padding-bottom: 50px;
+    padding-top: 25px;
+  }
+
+  .support-a-pari-project {
+    padding-top: 25px;
+  }
+
+  a.btn.primary {
+    margin-top: 20px;
+    padding: 10px 20px;
+  }
+
+  hr {
+    margin-top: 40px;
+    border-top: 1px solid @light-grey;
+  }
+
+  @media (max-width: @screen-xs-max) {
+    .support-a-pari-project {
+      padding-bottom: 30px;
+    }
+  }
+}
+
