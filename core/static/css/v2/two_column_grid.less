@@ -3,6 +3,8 @@
   overflow: auto;
   & > ul {
     overflow: auto;
+    min-height: 400px;
+
     li {
       overflow: auto;
       position: relative;
@@ -118,6 +120,7 @@
 @media (max-width: 500px) {
   .two-column-grid {
     & > ul {
+      min-height: auto;
       li {
         float: none !important;
         width: 100% !important;

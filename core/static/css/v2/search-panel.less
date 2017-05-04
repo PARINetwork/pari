@@ -25,10 +25,6 @@
           color: #8F8F8F;
         }
 
-        input:-webkit-autofill {
-            -webkit-box-shadow: 0 0 0px 1000px #dedede inset;
-        }
-
         input {
           width: 100%;
           display: block;
@@ -72,8 +68,12 @@
   transition: 300ms linear top;
   background: #F4F4F4;
 
+  input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px #F4F4F4 inset;
+  }
+
   &.show {
-    top: 0px !important;
+    top: -3px !important;
     box-shadow: 2px 2px 3px #bfbfbf;
   }
 }
@@ -91,6 +91,10 @@
         height: 43px;
         position: relative;
         margin-top: 10px;
+
+        input:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0px 1000px #FFF inset;
+        }
       }
 
       section.search-result {
