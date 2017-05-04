@@ -35,7 +35,7 @@ class FaceDetail(ListView):
         alphabet = self.kwargs['alphabet']
         return Face.objects.live().filter(
             Q(location__district__istartswith=alphabet) | Q(image__locations__district__istartswith=alphabet)
-        ).order_by('title').distinct()
+        ).order_by('-first_published_at').distinct()
 
     def get_context_data(self):
         context = super(FaceDetail, self).get_context_data()
