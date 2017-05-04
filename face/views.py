@@ -20,8 +20,8 @@ class FaceList(ListView):
 
     def get_context_data(self):
         context = super(FaceList, self).get_context_data()
-        context["title"] = 'Faces'
-        context["sub_heading"] = 'FACIAL DIVERSITY FROM EVERY INDIAN DISTRICT'
+        context["title"] = 'FACES'
+        context["sub_heading"] = 'PEOPLE FROM EVERY INDIAN DISTRICT'
         context["tab"] = 'gallery'
         context["current_page"] = 'face-list'
         return context

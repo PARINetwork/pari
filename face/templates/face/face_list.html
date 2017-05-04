@@ -60,11 +60,11 @@
         </div>
 
         <div class="row filter-lang">
-            <span class="filter-label">Alphabetical order</span>
+            <span class="filter-label">Alphabetical</span>
             <span class="filter-value">
-          <select class="select-no-style pull-left" selected="District Names" name="lang"
+          <select class="select-no-style pull-left" selected="District" name="lang"
                   onchange="location =this.value">
-              <option value="">{% trans "District Names" %}</option>
+              <option value="">{% trans "District" %}</option>
               {% for face in faces %}
                   <option class="banner-language-list"
                           value="{% url "face-detail" alphabet=face.location.district|lower|first %}">

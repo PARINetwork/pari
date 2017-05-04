@@ -35,14 +35,14 @@ class AlbumList(ListView):
             context['albums'] = qs
             context['tab'] = 'gallery'
             context["title"] = "Talking Albums"
-            context["sub_heading"] = 'pictures, through the author\'s eyes'
+            context["sub_heading"] = 'PICTURES AND THEIR SPOKEN STORY'
         elif filter_param == "other":
             slide_id = AlbumSlide.objects.filter(audio='').values_list('page__id')
             qs = album_qs.filter(id__in=slide_id)
             context['albums'] = qs
             context['tab'] = 'gallery'
             context["title"] = "Photo Albums"
-            context["sub_heading"] = 'pictures, through the author\'s eyes'
+            context["sub_heading"] = 'THROUGH MANY DIFFERENT LENSES'
         else:
             context['albums'] = album_qs
         photographers = {}

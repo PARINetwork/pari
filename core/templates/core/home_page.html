@@ -31,22 +31,19 @@
             <div class="carousel-inner" role="listbox">
                 {% for featured_content in page.featured_content %}
 
-                    <div class=" {% if forloop.first %}active{% endif %} item" style="background-image: url('{{ featured_content.value.featured_image.file.url }}'); cursor: pointer" onclick="location.href='{{ featured_content.value.url }}';">
-                        {#                        {% image featured_content.value.featured_page.image fill-500x320 as featured_image %}#}
-{#                        <img class="img-responsive center-align"#}
-{#                             src="{{ featured_content.value.featured_image.file.url }}"#}
-{#                             alt="sample content">#}
-                        <div class="container">
-                            <div class="item-container">
-                                <div>
-                                    <span class="featured">FEATURED</span>
-                                </div>
+                    <div class=" {% if forloop.first %}active{% endif %} item" onclick="location.href='{{ featured_content.value.url }}';">
+                        <img src="{{featured_content.value.featured_image.file.url}}" alt="sample">
+                        <div class="floating-container container">
+                          <div class="relative-container">
+                            <div class="floating-content item-container">
+                                <div><span class="featured">FEATURED</span></div>
                                 <h1>{{ featured_content.value.title }}</h1>
                                 <div class="link-to-page">
-                                    <a href="{{ featured_content.value.url }}">{{ featured_content.value.link_text }}<i
-                                            class="fa fa-angle-right margin-left red-angle-right"></i></a>
+                                    <a href="{{ featured_content.value.url }}">{{ featured_content.value.link_text }}
+                                      <i class="fa fa-angle-right margin-left red-angle-right"></i></a>
                                 </div>
                             </div>
+                          </div>
                         </div>
                     </div>
                 {% endfor %}
@@ -65,7 +62,7 @@
         </div>
         <div class="container">
             <div id="myCarousel-2" class="carousel slide" data-ride="carousel">
-                <div class="carousel-title"><h4>Latest Stories on PARI</h4></div>
+                <div class="carousel-title"><h4>Latest on PARI</h4></div>
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     {% for item in page.carousel %}
@@ -92,7 +89,7 @@
                                                 {% if not forloop.last %}, {% endif %}{% endfor %} <span
                                                 class="dot-seperator">•</span>
                                             <a href="{% url "archive-detail" year=item.specific.latest_revision_created_at.year month=item.specific.latest_revision_created_at.month %}">
-                                                {{ item.specific.latest_revision_created_at|date }}
+                                                {{ item.specific.latest_revision_created_at|date:"F d, Y" }}
                                             </a>
                                         </div>
                                     </div>
@@ -180,7 +177,7 @@
                                             {% endfor %}
                                         {% endif %}
                                         <a href="{% url "archive-detail" year=item.specific.latest_revision_created_at.year month=item.specific.latest_revision_created_at.month %}">
-                                            <span class="date-infocus">{{ item.specific.latest_revision_created_at|date }}</span>
+                                            <span class="date-infocus">{{ item.specific.latest_revision_created_at|date:"F d, Y" }}</span>
                                         </a>
                                     </div>
                                     {% if translations_for_infocus_article1|length > 1 %}
@@ -228,7 +225,7 @@
                                             {% endfor %}
                                         {% endif %}
                                         <a href="{% url "archive-detail" year=item.specific.latest_revision_created_at.year month=item.specific.latest_revision_created_at.month %}">
-                                            <span class="date-infocus">{{ item.specific.latest_revision_created_at|date }}</span></a>
+                                            <span class="date-infocus">{{ item.specific.latest_revision_created_at|date:"F d, Y" }}</span></a>
                                     </div>
                                     {% if translations_for_infocus_article2|length > 1 %}
                                         <div class="dropdown">
@@ -254,21 +251,21 @@
         <div class="story-grid home-article-grid-3">
             <div class="container">
                 <div class="row">
-                    <div class="subtitle-primary font-l margin-btm-20px pad-left-10px">All that you can read on PARI
+                    <div class="subtitle-primary font-l margin-btm-20px pad-left-10px">All that you can discover on PARI
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid large">
-                        {% image categories.16.image fill-512x512 as category_image %}
-                        <a href="{{ categories.16.get_absolute_url }}" itemprop="url">
+                        {% image categories.0.image fill-512x512 as category_image %}
+                        <a href="{{ categories.0.get_absolute_url }}" itemprop="url">
                             <img src="{{ STATIC_URL }}img/1_1.png" data-src="{{ category_image.url }}"
-                                 alt="{{ categories.16.name }}" style="width:370px;margin:0 auto;"
+                                 alt="{{ categories.0.name }}" style="width:370px;margin:0 auto;"
                                  class="img-responsive lazyload" itemprop="image">
                             <div class="grid-container">
-                                <h3>{{ categories.16.name }}</h3>
+                                <h3>{{ categories.0.name }}</h3>
                                 <div class="title-grid">
                                     <div class="border-link"></div>
-                                    <div>{{ categories.16.description }}</div>
+                                    <div>{{ categories.0.description }}</div>
                                 </div>
                             </div>
                         </a>
@@ -285,21 +282,21 @@
                                                 aria-hidden="true"></i></a>
                                     </h5>
                                     <h5 class="mid-below-link">
-                                        <a href="{% url "contribute" slug="contribute" %}">Learn how you can contribute
+                                        <a href="{% url "contribute" slug="contribute" %}">Here's how you can contribute
                                             <i class="fa fa-angle-right red-angle-right" aria-hidden="true"></i></a>
                                     </h5>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
-                                    {% image categories.4.image fill-512x512 as category_image %}
-                                    <a href="{{ categories.4.get_absolute_url }}" itemprop="url">
+                                    {% image categories.1.image fill-512x512 as category_image %}
+                                    <a href="{{ categories.1.get_absolute_url }}" itemprop="url">
                                         <img src="{{ STATIC_URL }}img/1_1.png" data-src="{{ category_image.url }}"
-                                             alt="{{ categories.4.name }}" style="width:370px;margin:0 auto;"
+                                             alt="{{ categories.1.name }}" style="width:370px;margin:0 auto;"
                                              class="img-responsive lazyload" itemprop="image">
                                         <div class="grid-container">
-                                            <h3>{{ categories.4.name }}</h3>
+                                            <h3>{{ categories.1.name }}</h3>
                                             <div class="title-grid">
                                                 <div class="border-link"></div>
-                                                <div>{{ categories.4.description }}</div>
+                                                <div>{{ categories.1.description }}</div>
                                             </div>
                                         </div>
                                     </a>
@@ -312,16 +309,16 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid">
-                                {% image categories.12.image fill-512x512 as category_image %}
-                                <a href="{{ categories.12.get_absolute_url }}" itemprop="url">
+                                {% image categories.2.image fill-512x512 as category_image %}
+                                <a href="{{ categories.2.get_absolute_url }}" itemprop="url">
                                     <img src="{{ STATIC_URL }}img/1_1.png" data-src="{{ category_image.url }}"
-                                         alt="{{ categories.12.name }}" style="width:370px;margin:0 auto;"
+                                         alt="{{ categories.2.name }}" style="width:370px;margin:0 auto;"
                                          class="img-responsive lazyload" itemprop="image">
                                     <div class="grid-container">
-                                        <h3>{{ categories.12.name }}</h3>
+                                        <h3>{{ categories.2.name }}</h3>
                                         <div class="title-grid">
                                             <div class="border-link"></div>
-                                            <div>{{ categories.12.description }}</div>
+                                            <div>{{ categories.2.description }}</div>
                                         </div>
                                     </div>
                                 </a>
@@ -334,16 +331,16 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid">
-                                {% image categories.14.image fill-512x512 as category_image %}
-                                <a href="{{ categories.14.get_absolute_url }}" itemprop="url">
+                                {% image categories.3.image fill-512x512 as category_image %}
+                                <a href="{{ categories.3.get_absolute_url }}" itemprop="url">
                                     <img src="{{ STATIC_URL }}img/1_1.png" data-src="{{ category_image.url }}"
-                                         alt="{{ categories.14.name }}" style="width:370px;margin:0 auto;"
+                                         alt="{{ categories.3.name }}" style="width:370px;margin:0 auto;"
                                          class="img-responsive lazyload" itemprop="image">
                                     <div class="grid-container">
-                                        <h3>{{ categories.14.name }}</h3>
+                                        <h3>{{ categories.3.name }}</h3>
                                         <div class="title-grid">
                                             <div class="border-link"></div>
-                                            <div>{{ categories.14.description }}</div>
+                                            <div>{{ categories.3.description }}</div>
                                         </div>
                                     </div>
                                 </a>
@@ -351,12 +348,12 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid">
                                 <h4 class="all-categ-head">Stories from all over in all languages</h4>
                                 <h5 class="mid-link">
-                                    <a href="{% url "category-list" %}">Browse stories in all categories <i
+                                    <a href="{% url "category-list" %}">Browse all categories <i
                                             class="fa fa-angle-right red-angle-right"
                                             aria-hidden="true"></i></a>
                                 </h5>
                                 <h6><i class="fa fa-language" aria-hidden="true"></i> Translate for PARI</h6>
-                                <p class="desc-para">Translate the content for PARI in the languages that you can.
+                                <p class="desc-para">Translate PARI content into languages you know
                                     <a href="{% url "contribute" slug="contribute" %}">Learn more
                                         <i class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
                                     </a></p>
@@ -372,22 +369,21 @@
                 <div class="faces-container">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h4 class="subtitle-primary">View faces from across India</h4>
+                            <h4 class="subtitle-primary">FACES from across India</h4>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <h2 class="title-light">PARI is capturing the facial diversity of the people of
-                                India</h2>
+                            <h2 class="title-light">PARI records the facial diversity of the people of India</h2>
                         </div>
                         <div class="col-lg-6">
                             <div>
-                                <button class="btn" onclick="location.href='{% url "face-list" %}'">View all faces
+                                <button class="btn" onclick="location.href='{% url "face-list" %}'">View all FACES
                                 </button>
                             </div>
                             <p class="text"><a
-                                    href="{% url "static_page" slug="contribute-to-faces" %}"><u>{% trans "Contribute faces" %}</u></a>
-                                to the faces database</p>
+                                    href="{% url "static_page" slug="contribute-to-faces" %}"><u>{% trans "Contribute" %}</u></a>
+                                to this database</p>
                         </div>
                     </div>
                 </div>
@@ -396,8 +392,7 @@
         <div class="article-grid home-article-grid-2">
             <div class="container">
                 <div class="row">
-                    <div class="subtitle-primary font-l margin-btm-20px pad-left-10px">and many more stories in audio
-                        and video
+                    <div class="subtitle-primary font-l margin-btm-20px pad-left-10px">And many more stories in audio and video
                     </div>
                 </div>
                 <div class="row">
@@ -452,7 +447,7 @@
                                     <div class="view-article">
                                         <a href="{% url "gallery-detail" slug="videozone" %}">
                                             <i class="fa  fa-film"
-                                               aria-hidden="true"></i><span>View all Videos</span><i
+                                               aria-hidden="true"></i><span>View all videos</span><i
                                                 class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
                                         </a>
                                     </div>

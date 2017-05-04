@@ -35,6 +35,10 @@ def home_page(request, slug="home-page"):
     video = home_page.video
     talking_album = home_page.talking_album
     photo_album = home_page.photo_album
+    category1 = Category.objects.get(slug="resource-conflicts")
+    category2 = Category.objects.get(slug="adivasis")
+    category3 = Category.objects.get(slug="dalits")
+    category4 = Category.objects.get(slug="sports-games")
     home_context = {
         'talking_album': {
             'image': talking_album.slides.first().image,
@@ -54,7 +58,7 @@ def home_page(request, slug="home-page"):
             'section_model': video,
         },
         "page": home_page,
-        "categories": Category.objects.all(),
+        "categories": [category1, category2, category3, category4],
         "translations": translations,
         "translations_for_infocus_article1": get_translations_for_page(home_page.in_focus_page1.specific),
         "translations_for_infocus_article2": len(get_translations_for_page(home_page.in_focus_page2.specific)),
