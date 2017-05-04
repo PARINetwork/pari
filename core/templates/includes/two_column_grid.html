@@ -15,7 +15,7 @@
             {% if result.specific.latest_revision_created_at %}
               <div class="margin-top-20px date">
                 <a href="{% url "archive-detail" year=result.specific.latest_revision_created_at.year month=result.specific.latest_revision_created_at.month %}">
-                    <span itemprop="datePublished" class="date link-dark font-xs">{{ result.specific.latest_revision_created_at|date }}</span>
+                    <span itemprop="datePublished" class="date link-dark font-s">{{ result.specific.latest_revision_created_at|date }}</span>
                 </a>
               </div>
             {% endif %}

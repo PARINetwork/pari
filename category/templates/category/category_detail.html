@@ -38,9 +38,9 @@
     {% include "includes/category_cover_image.html" with category=category%}
     <div class="container">
         <div class="filter-list-container" data-title="{{ category.name }}" data-filter-endpoint="category_article_filter" data-filter-required-args-category="{{ category.id }}">
-            <div class="row">
+
                 {% include "article/includes/article_list.html" with articles=articles title=title%}
-            </div>
+
         </div>
     </div>
 {% endblock %}

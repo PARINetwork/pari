@@ -16,11 +16,11 @@
                    <div class="margin-top-20px date">
                     {% if article.original_published_date %}
                         <a href="{% url "archive-detail" year=article.original_published_date.year month=article.original_published_date.month %}">
-                            <span itemprop="datePublished" class="date link-dark font-xs">{{ article.original_published_date|date }}</span>
+                            <span itemprop="datePublished" class="date link-dark font-s">{{ article.original_published_date|date }}</span>
                         </a>
                     {% elif article.first_published_at %}
                         <a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month  %}">
-                            <span itemprop="datePublished" class="date link-dark font-xs">{{ article.first_published_at|date }}</span>
+                            <span itemprop="datePublished" class="date link-dark font-s">{{ article.first_published_at|date }}</span>
                         </a>
                     {% endif %}
                   </div>
