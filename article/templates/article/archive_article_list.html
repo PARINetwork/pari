@@ -82,12 +82,33 @@
         <ul>
         {% for result in articles %}
           <li class="result item col-lg-6 col-md-4 col-sm-6 col-xs-12">
-            <a href="{{ result.specific.get_absolute_url }}">
+            <a href="{{ result.get_absolute_url }}">
               {% include "includes/content_type.html" with type=result|get_type %}
               {% include "includes/article_listing_image.html" with specific=result alignment_class='full-image-center listing-image'%}
               {% include "article/includes/default_atom.html" with article=result %}
             </a>
           </li>
+
+              {% empty %}
+            <div class="col-lg-12">
+                <p class="bg-danger font-l pad-20px">
+                    {% if error_message %}
+                        {{ error_message }}
+                    {% else %}
+                        {% trans "No articles available for " %}
+                        {% for lang in LANGUAGES %}
+                        {% if request.GET.lang == lang.0 %}
+                        {% blocktrans with tlang=lang.1 %}{{ tlang }}.{% endblocktrans %}
+                        {% endif %}
+                        {% endfor %}
+                        Please help us
+                        <a class="font-l" href="{% url "contribute" slug="contribute" %}">
+                        <span itemprop="name">{% trans "translate." %}</span>
+                        </a>
+                    {% endif %}
+                    {{ tlang }}
+                </p>
+            </div>
           {% endfor %}
         </ul>
     </section>
