@@ -14,17 +14,34 @@
 #myCarousel-1 {
   margin-bottom: 60px;
   .item {
-    height: 970px;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
+    img {
+     width: 100%;
+    }
 
-    //img {
-    //  width: 100%;
-    //}
+    & > .floating-container {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        z-index: 1;
+
+        .relative-container {
+          position: relative;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          // justify-content: center; //horozontally center
+
+          & > .floating-content {
+            // background: rgba(0, 0, 0, 0.7);
+          }
+        }
+
+    }
+
     .item-container {
-      position: absolute;
-      z-index: 9999999999;
-      top: 25%;
       .link-to-page {
         border-top: 1px solid @bg-light;
         border-bottom: 1px solid @bg-light;
@@ -42,7 +59,7 @@
           letter-spacing: 2px;
         }
         + h1 {
-          .font-size(50);
+          .font-size(35);
           color: @text-light;
           padding: 40px 0;
           max-width: 320px;
@@ -70,7 +87,6 @@
     width: 90px;
     position: absolute;
     top: 80%;
-    margin-left: 100px;
   }
   .carousel-control {
     &.left, &.right {
@@ -106,7 +122,6 @@
     width: 90px;
     position: absolute;
     bottom: 0;
-    margin-left: 100px;
     left: 0;
   }
   .carousel-control {
@@ -463,19 +478,7 @@
     }
   }
 
-  #myCarousel-1 .carousel-control-container {
-    top: 80%;
-    margin-left: 34%;
-    .left, .right {
 
-    }
-    .fa-angle-right {
-      vertical-align: middle;
-    }
-    .fa-angle-left {
-      vertical-align: middle;
-    }
-  }
 
   .home-article-grid-3 .grid.share h1 {
     min-height: auto;
@@ -489,65 +492,72 @@
     margin-bottom: 20px;
   }
 
-  #myCarousel-1 .item {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
   #myCarousel-1 {
     margin-bottom: 20px;
-    height: 100vh;
-    .carousel-inner {
-      height: 100%;
-      .active {
-        height: 93%;
-        img {
-          height: 100%;
+    .item {
+
+      .floating-container .relative-container .floating-content {
+        .link-to-page {
+            padding: 10px;
         }
+
+       &.item-container {
+         margin: 0 auto;
+
+         div:first-child {
+           margin-top: 20px;
+           span {
+             background: @lighter-grey;
+             font-weight: 500;
+             padding: 2px 10px;
+             letter-spacing: 2px;
+             color: @grey;
+             border: 1px solid @light-grey;
+           }
+           + h1 {
+             .font-size(25);
+             color: @text-light;
+             padding: 10px 0;
+             max-width: 320px;
+             margin: 0;
+
+             + div {
+               text-align: center;
+               a {
+                 padding: 15px 20px;
+                 .font-size(16);
+                 color: @text-light;
+                 &:hover {
+                   color: @primary-color;
+                 }
+               }
+             }
+           }
+         }
+       }
       }
+
+
 
     }
-    .item .item-container {
-      z-index: 9999999999;
-      text-align: center;
-      bottom: 0;
+    .carousel-control-container {
+
+      margin-left: 34%;
+      margin: auto;
+      top: 80%;
       left: 0;
       right: 0;
-      top: 40%;
-      width: 275px;
-      margin: 0 auto;
-      padding-bottom: 30%;
-      div:first-child {
-        margin-top: 20px;
-        span {
-          background: @lighter-grey;
-          font-weight: 500;
-          padding: 2px 10px;
-          letter-spacing: 2px;
-          color: @grey;
-          border: 1px solid @light-grey;
-        }
-        + h1 {
-          .font-size(50);
-          color: @text-light;
-          padding: 10px 0;
-          max-width: 320px;
-          margin: 0;
+      .left, .right {
 
-          + div {
-            text-align: center;
-            a {
-              padding: 15px 20px;
-              .font-size(16);
-              color: @text-light;
-              &:hover {
-                color: @primary-color;
-              }
-            }
-          }
-        }
       }
+      .fa-angle-right {
+        vertical-align: middle;
+      }
+      .fa-angle-left {
+        vertical-align: middle;
+      }
+
+
     }
   }
 
@@ -641,13 +651,6 @@
 }
 
 @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
-  #myCarousel-1 .item {
-    height: 100vh;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-
-
-}
 
   .faces-tile-1 {
     margin-bottom: 0px;
@@ -684,12 +687,6 @@
 }
 
 @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
-  #myCarousel-1 .item {
-    height: 100vh;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-
-  }
   .faces-tile-1 {
     .faces-container {
       width: 100%;
@@ -723,13 +720,6 @@
 }
 
 @media (min-width: @screen-lg-min) {
-  #myCarousel-1 .item {
-    height: 100vh;
-    background-position: top left;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-  }
   .faces-tile-1 {
     .faces-container {
       h2 {

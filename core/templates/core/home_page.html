@@ -31,22 +31,19 @@
             <div class="carousel-inner" role="listbox">
                 {% for featured_content in page.featured_content %}
 
-                    <div class=" {% if forloop.first %}active{% endif %} item" style="background-image: url('{{ featured_content.value.featured_image.file.url }}'); cursor: pointer" onclick="location.href='{{ featured_content.value.url }}';">
-                        {#                        {% image featured_content.value.featured_page.image fill-500x320 as featured_image %}#}
-{#                        <img class="img-responsive center-align"#}
-{#                             src="{{ featured_content.value.featured_image.file.url }}"#}
-{#                             alt="sample content">#}
-                        <div class="container">
-                            <div class="item-container">
-                                <div>
-                                    <span class="featured">FEATURED</span>
-                                </div>
+                    <div class=" {% if forloop.first %}active{% endif %} item" onclick="location.href='{{ featured_content.value.url }}';">
+                        <img src="{{featured_content.value.featured_image.file.url}}" alt="sample">
+                        <div class="floating-container container">
+                          <div class="relative-container">
+                            <div class="floating-content item-container">
+                                <div><span class="featured">FEATURED</span></div>
                                 <h1>{{ featured_content.value.title }}</h1>
                                 <div class="link-to-page">
-                                    <a href="{{ featured_content.value.url }}">{{ featured_content.value.link_text }}<i
-                                            class="fa fa-angle-right margin-left red-angle-right"></i></a>
+                                    <a href="{{ featured_content.value.url }}">{{ featured_content.value.link_text }}
+                                      <i class="fa fa-angle-right margin-left red-angle-right"></i></a>
                                 </div>
                             </div>
+                          </div>
                         </div>
                     </div>
                 {% endfor %}
