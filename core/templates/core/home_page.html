@@ -30,7 +30,8 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 {% for featured_content in page.featured_content %}
-                    <div class=" {% if forloop.first %}active{% endif %} item" style="background-image: url('{{ featured_content.value.featured_image.file.url }}');">
+
+                    <div class=" {% if forloop.first %}active{% endif %} item" style="background-image: url('{{ featured_content.value.featured_image.file.url }}'); cursor: pointer" onclick="location.href='{{ featured_content.value.url }}';">
                         {#                        {% image featured_content.value.featured_page.image fill-500x320 as featured_image %}#}
 {#                        <img class="img-responsive center-align"#}
 {#                             src="{{ featured_content.value.featured_image.file.url }}"#}
@@ -159,7 +160,7 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     {% image item.specific.featured_image fill-500x320 as featured_image %}
                                     <img class="img-responsive" src="{{ featured_image.url }}"
-                                         alt="sample content">
+                                         alt="sample content" style="cursor: pointer" onclick="location.href='{{ item.url }}'">
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     <a href="{{ item.url }}" class="infocus-title-primary"><h3>{{ item.title }}</h3></a>
@@ -206,7 +207,7 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     {% image item.specific.featured_image fill-500x320 as featured_image %}
                                     <img class="img-responsive" src="{{ featured_image.url }}"
-                                         alt="sample content">
+                                         alt="sample content" style="cursor: pointer" onclick="location.href='{{ item.url }}'">
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     <a href="{{ item.url }}" class="infocus-title-primary"><h3>{{ item.title }}</h3></a>
@@ -365,8 +366,8 @@
                 </div>
             </div>
         </div>
-        <div class="faces-tile-1">
-            <img class="img-responsive" src="{{ STATIC_URL }}img/faces-tile-1.jpg" alt="sample content">
+        <div class="faces-tile-1" onclick="location.href='{% url "face-list" %}'" style="cursor:pointer">
+            <img class="img-responsive" src="{{ STATIC_URL }}img/faces-tile-1.jpg" alt="sample content" >
             <div class="container">
                 <div class="faces-container">
                     <div class="row">
@@ -406,7 +407,7 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 article-image-icon">
                                     {% image item.image fill-500x320 as featured_image %}
                                     <img class="img-responsive" src="{{ featured_image.url }}"
-                                         alt="{{ item.image.alt_text }}">
+                                         alt="{{ item.image.alt_text }}" style="cursor: pointer" onclick="location.href='{{ item.section_model.get_absolute_url }}'">
                                     <div><i class="fa fa-music" aria-hidden="true"></i></div>
                                     <div>{{ item.count }}</div>
                                 </div>
@@ -436,7 +437,7 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 article-image-icon">
                                     {% image item.image fill-500x320 as featured_image %}
                                     <img class="img-responsive" src="{{ featured_image.url }}"
-                                         alt="{{ item.image.alt_text }}">
+                                         alt="{{ item.image.alt_text }}" style="cursor: pointer" onclick="location.href='{{ item.section_model.get_absolute_url }}'">
                                     <div><i class="fa fa-film" aria-hidden="true"></i></div>
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
@@ -465,7 +466,7 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 article-image-icon">
                                     {% image item.image fill-500x320 as featured_image %}
                                     <img class="img-responsive" src="{{ featured_image.url }}"
-                                         alt="{{ item.image.alt_text }}">
+                                         alt="{{ item.image.alt_text }}" style="cursor: pointer" onclick="location.href='{{ item.section_model.get_absolute_url }}'">
                                     <div><i class="fa  fa-picture-o" aria-hidden="true"></i></div>
                                     <div>{{ item.count }}</div>
                                 </div>

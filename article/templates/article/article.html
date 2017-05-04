@@ -14,9 +14,9 @@
 <meta property="og:published_time" content="{% firstof article.original_published_date|date:"c" article.first_published_at|date:"c" %}">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
+<meta name="twitter:site" content="@{{ SOCIAL_TWITTER }} #PARIStories">
 <meta name="twitter:title" content="{{ article.title }}" >
-<meta name="twitter:description" content="{{ article.strap }}" >
+<meta name="twitter:description" content="{{ article.strap }} " >
 <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ featured_image.file.url }}" >
 <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ article.get_absolute_url }}" >
 {% endif %}
@@ -126,7 +126,7 @@
                                 </a>
                             </li>{% with request.build_absolute_uri as url and item.title as title %}<li class="social-icon" data-url="{{ url }}">
                                     <span class="banner-label">Share</span>
-                            <a href="https://twitter.com/intent/tweet?text={{ url|urlencode }}&button_hashtag=PARIStories" target="_blank" >
+                            <a href="https://twitter.com/intent/tweet?text={{ url|urlencode }} %23PARIStories" target="_blank" >
                                         <i class="fa fa-twitter"></i>
                                     </a>
                                     <a target="_blank"

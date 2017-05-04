@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n wagtailimages_tags %}
+{% load i18n core_filters %}
 
 {% block meta_title %}{{ title }}{% endblock %}
 {% block title %}{{ title }}{% endblock %}
@@ -26,6 +27,7 @@
     <link type="text/less" rel="stylesheet"
           href="{{ STATIC_URL }}css/v2/layout/components/main-content/article-list.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/archive-article-list.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/two_column_grid.less">
 {% endblock %}
 
 {% block extra_js %}
@@ -57,7 +59,7 @@
                     {% with request.build_absolute_uri as url%}
                         <div class="social-media">
                         <li class="icon">
-                            <a href="https://twitter.com/intent/tweet?text={{ url|urlencode }}&button_hashtag=PARIStories" target="_blank" >
+                            <a href="https://twitter.com/intent/tweet?text={{ url|urlencode }} %23PARIStories" target="_blank" >
                                 <i class="fa fa-twitter"></i>
                             </a>
                         </li>
@@ -75,6 +77,46 @@
         </div>
 
 
-        {% include "article/includes/article_list.html" with articles=articles title=title %}
+
+    <section class="search-result two-column-grid">
+        <ul>
+        {% for result in articles %}
+          <li class="result item col-lg-6 col-md-4 col-sm-6 col-xs-12">
+            <a href="{{ result.get_absolute_url }}">
+              {% include "includes/content_type.html" with type=result|get_type %}
+              {% include "includes/article_listing_image.html" with specific=result alignment_class='full-image-center listing-image'%}
+              {% include "article/includes/default_atom.html" with article=result %}
+            </a>
+          </li>
+
+              {% empty %}
+            <div class="col-lg-12">
+                <p class="bg-danger font-l pad-20px">
+                    {% if error_message %}
+                        {{ error_message }}
+                    {% else %}
+                        {% trans "No articles available for " %}
+                        {% for lang in LANGUAGES %}
+                        {% if request.GET.lang == lang.0 %}
+                        {% blocktrans with tlang=lang.1 %}{{ tlang }}.{% endblocktrans %}
+                        {% endif %}
+                        {% endfor %}
+                        Please help us
+                        <a class="font-l" href="{% url "contribute" slug="contribute" %}">
+                        <span itemprop="name">{% trans "translate." %}</span>
+                        </a>
+                    {% endif %}
+                    {{ tlang }}
+                </p>
+            </div>
+          {% endfor %}
+        </ul>
+    </section>
+
+    {%if articles %}
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                {% include "includes/paginator.html" with results=articles %}
+    </div>
+    {% endif %}
     </div>
 {% endblock %}
