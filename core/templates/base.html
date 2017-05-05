@@ -16,10 +16,8 @@
     <meta property="og:site_name" content="{{ SITE_TITLE }}">
     {% block opengraph_block %}{% endblock %}
 
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url " all_feeds
-    " %}">
-    <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url " all_feeds
-    " %}">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "all_feeds" %}">
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "all_feeds" %}">
     {% block feed_block %}{% endblock %}
 
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:200,300,400,500,700" rel="stylesheet">
