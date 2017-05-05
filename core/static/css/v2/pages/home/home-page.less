@@ -84,31 +84,56 @@
       }
     }
   }
-  .carousel-control-container {
-    border: 1px solid @lighter-grey;
-    height: 40px;
-    width: 90px;
+
+  .floating-carousel-buttons {
     position: absolute;
     top: 80%;
-  }
-  .carousel-control {
-    &.left, &.right {
-      background: none;
-      width: 44px;
-      color: @lighter-grey;
-      opacity: 1;
-      background: @bg-lighter-transparent;
-      &:hover {
-        opacity: 0.6;
-      }
-      i {
-        .font-size(34);
+    left: 0;
+    right: 0;
+    height: 40px;
+    margin: auto;
+
+    .carousel-buttons-wrapper {
+      position: relative;
+      max-width: 320px;
+
+      .carousel-control-container {
+        border: 1px solid @lighter-grey;
+        height: 38px;
+        width: 90px;
+        margin: auto;
+
+        .carousel-control {
+          &.left, &.right {
+            float: left;
+            position: static;
+            background: none;
+            width: 44px;
+            height: 36px;
+            color: @lighter-grey;
+            opacity: 1;
+            background: @bg-lighter-transparent;
+
+            &:hover {
+              opacity: 0.6;
+            }
+
+            i {
+              .font-size(34);
+              line-height: 34px;
+            }
+          }
+          &.right {
+            border-left: 1px solid @bg-light;
+          }
+        }
       }
     }
-    &.right {
-      border-left: 1px solid @bg-light;
-    }
+
   }
+
+
+
 }
 
 #myCarousel-2 {
@@ -544,24 +569,11 @@
 
 
     }
-    .carousel-control-container {
 
-      margin-left: 34%;
-      margin: auto;
-      top: 80%;
-      left: 0;
-      right: 0;
-      .left, .right {
-
+    .floating-carousel-buttons {
+      .carousel-buttons-wrapper {
+        margin: auto;
       }
-      .fa-angle-right {
-        vertical-align: middle;
-      }
-      .fa-angle-left {
-        vertical-align: middle;
-      }
-
-
     }
   }
 
