@@ -18,7 +18,7 @@ Search{% if search_results %} Results{% endif %}
     <div class="container">
       <header class="seach-input-panel">
         <form action="/search/" role="search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction" class="search-form">
-          <div class="no-of-results">{{search_results|length}} results for </div>
+          <div class="no-of-results">{{search_results.paginator.count}} results for </div>
           <div class="input-box">
             <input type="text" name="q" value="{{ query_string }}" placeholder="Enter to search" itemprop="query-input">
             <span class="search-icon fa fa-search"></span>
