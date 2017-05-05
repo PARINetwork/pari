@@ -59,7 +59,8 @@
                     {% with request.build_absolute_uri as url%}
                         <div class="social-media">
                         <li class="icon">
-                            <a href="https://twitter.com/intent/tweet?text={{ url|urlencode }} %23PARIStories" target="_blank" >
+                            <a href="https://twitter.com/intent/tweet?text={{ url|urlencode }}&amp;hashtags=PARIStories" target="_blank" >
+
                                 <i class="fa fa-twitter"></i>
                             </a>
                         </li>
