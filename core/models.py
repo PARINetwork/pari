@@ -46,7 +46,7 @@ class FeaturedSectionBlock(StructBlock):
     link_text = blocks.CharBlock()
     url = blocks.CharBlock()
     featured_image = ImageChooserBlock()
-    featured_image_label = blocks.CharBlock()
+    featured_image_label = blocks.CharBlock(required=False)
 
 
 class HomePageAdminMediaForm(WagtailAdminPageForm):
