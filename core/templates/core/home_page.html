@@ -413,7 +413,7 @@
                                         <h3>{{ item.section_model.title }}</h3></a>
                                     <div class="name-primary">
                                         {% for photographer in item.photographers %}
-                                            <a href="{% url "author-detail" photographer.slug %}"><span>{{ photographer.name }}</span></a>
+                                            <a href="{% url "author-detail" photographer.slug %}"><span class="author-name">{{ photographer.name }}</span></a>
                                             {% if not forloop.last %}, {% endif %}
                                         {% endfor %}
                                     </div>
@@ -442,7 +442,7 @@
                                         <h3>{{ item.section_model.title }}</h3></a>
                                     <div class="name-primary">
                                         {% for photographer in item.photographers %}
-                                            <a href="{% url "author-detail" photographer.slug %}"><span>{{ photographer.name }}</span></a>
+                                            <a href="{% url "author-detail" photographer.slug %}"><span class="author-name">{{ photographer.name }}</span></a>
                                             {% if not forloop.last %}, {% endif %}
                                         {% endfor %}
                                     </div>
@@ -472,7 +472,7 @@
                                         <h3>{{ item.section_model.title }}</h3></a>
                                     <div class="name-primary">
                                         {% for photographer in item.photographers %}
-                                            <a href="{% url "author-detail" photographer.slug %}"><span>{{ photographer.name }}</span></a>
+                                            <a  href="{% url "author-detail" photographer.slug %}"><span class="author-name">{{ photographer.name }}</span></a>
                                             {% if not forloop.last %}, {% endif %}
                                         {% endfor %}
                                     </div>

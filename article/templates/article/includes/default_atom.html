@@ -10,7 +10,7 @@
         {% endif %}
     </div>
     <div class="margin-top-20px">
-        {% for location in article.locations.all %}<a class="link-dark font-s" href="{% url "location-detail" slug=location.slug %}">{{ location.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
+        {% for location in article.locations.all %}<a class="link-dark font-m" href="{% url "location-detail" slug=location.slug %}">{{ location.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
     </div>
 
 </div>
