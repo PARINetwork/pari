@@ -38,10 +38,6 @@ class GalleryDetail(DetailView):
     # def get_absolute_url(self):
     #     return reverse("gallery-detail", kwargs={"slug": self.slug})
     def get_context_data(self, **kwargs):
-
-        category_heading_options = {'VideoZone': {'title': 'VideoZone', 'sub_heading': 'stories told in moving pictures'},
-                                    'AudioZone': {'title': 'AudioZone', 'sub_heading': 'you could listen all day'},
-                                    'PhotoZone': {'title': 'PhotoZone', 'sub_heading': 'collections of photographs'}}
         context = super(GalleryDetail, self).get_context_data(**kwargs)
         qs = Article.objects.live().select_related('featured_image')
         qs = qs.filter(categories=context["category"])
@@ -59,9 +55,8 @@ class GalleryDetail(DetailView):
             raise Http404
         context["languages"] = settings.LANGUAGES
         category = context["category"]
-        context["title"] = category_heading_options.get(category.name, {'title': category.name}).get('title')
-        context["sub_heading"] = category_heading_options.get(category.name,
-                                                              {'sub_heading': category.description}).get('sub_heading')
+        context["title"] = category.name
+        context["sub_heading"] = category.description
         context["tab"] = 'gallery'
 
         categories_in_gallery = ['Little takes', 'tongues', 'visible-work-invisible-women']
