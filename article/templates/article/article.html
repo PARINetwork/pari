@@ -200,7 +200,7 @@
       </div>
     </div>
 </div>
-{% include "article/includes/author_info.html" with authors=article.authors.all show_other_stories=True %}
+{% include "article/includes/author_info.html" with authors=article.authors.all show_other_stories=True show_translated_bio=True%}
     <div class="container related-stories">
         {% if article.related_articles %}
             <h4>RELATED STORIES</h4>

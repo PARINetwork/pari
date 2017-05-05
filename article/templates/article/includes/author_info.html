@@ -55,7 +55,11 @@
                 </div>
                 <div class="col-lg-9 margin-btm-30px">
                     {% if author.bio %}
-                        <p class="author-bio"> {{ author.bio }} </p>
+                        {% if show_translated_bio %}
+                            <p class="author-bio"> {{ author.bio }} </p>
+                        {% else %}
+                            <p class="author-bio"> {{ author.bio_en }} </p>
+                        {% endif %}
                     {% endif %}
                     {%  if show_other_stories %}
                     <a href="{{ author.get_absolute_url }}" class="btn primary">Other Stories by {{ author.name }}</a>

@@ -155,60 +155,62 @@
   <li class="item author-container">
       <div class="author-info">
         <div class="container">
-            <div class="row author-block">
-                <div class="col-lg-3">
-                    <div class="author-name">{{:name}}</div>
-                    {{if twitter_username}}
-                        <div>
-                            <i class="fa fa-twitter icon-handle"></i>
-                            <div class="handle">
-                                <a href="https://twitter.com/{{:twitter_username}}">{{:twitter_username}}</a>
+            {{for authors}}
+                <div class="row author-block">
+                    <div class="col-lg-3">
+                        <div class="author-name">{{:name}}</div>
+                        {{if twitter_username}}
+                            <div>
+                                <i class="fa fa-twitter icon-handle"></i>
+                                <div class="handle">
+                                    <a href="https://twitter.com/{{:twitter_username}}">{{:twitter_username}}</a>
+                                </div>
                             </div>
-                        </div>
-                    {{/if}}
-                    {{if facebook_username}}
-                        <div>
-                            <i class="fa fa-facebook icon-handle"></i>
-                            <div class="handle">
-                                <a href="https://www.facebook.com/{{:facebook_username}}">{{:facebook_username}}</a>
+                        {{/if}}
+                        {{if facebook_username}}
+                            <div>
+                                <i class="fa fa-facebook icon-handle"></i>
+                                <div class="handle">
+                                    <a href="https://www.facebook.com/{{:facebook_username}}">{{:facebook_username}}</a>
+                                </div>
                             </div>
-                        </div>
-                    {{/if}}
-                    {{if email}}
+                        {{/if}}
+                        {{if email}}
+                            <div>
+                                <i class="fa fa-envelope icon-handle"></i>
+                                <div class="handle">{{:email}}</div>
+                            </div>
+                        {{/if}}
+                        {{if website}}
+                            <div>
+                                <i class="glyphicon glyphicon-globe icon-handle"></i>
+                                <div class="handle"><a href="{{:website}}" target="_blank">{{:website}}</a></div>
+                            </div>
+                        {{/if}}
                         <div>
-                            <i class="fa fa-envelope icon-handle"></i>
-                            <div class="handle">{{:email}}</div>
+                            <ul>
+                                <li class="social-icon">
+                                    <span class="banner-label">Share</span>
+                                    <a target="_blank"
+                                       href="{{:twitterShare}}">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                    <a target="_blank"
+                                       href="{{:fbShare}}">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
-                    {{/if}}
-                    {{if website}}
-                        <div>
-                            <i class="glyphicon glyphicon-globe icon-handle"></i>
-                            <div class="handle"><a href="{{:website}}" target="_blank">{{:website}}</a></div>
-                        </div>
-                    {{/if}}
-                    <div>
-                        <ul>
-                            <li class="social-icon">
-                                <span class="banner-label">Share</span>
-                                <a target="_blank"
-                                   href="{{:twitterShare}}">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                                <a target="_blank"
-                                   href="{{:fbShare}}">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                            </li>
-                        </ul>
+                    </div>
+                    <div class="col-lg-9 margin-btm-30px">
+                        {{if bio}}
+                            <p class="author-bio">{{:bio}}</p>
+                        {{/if}}
+                        <a href="{{:url}}" class="btn primary">Other Stories by {{:name}}</a>
                     </div>
                 </div>
-                <div class="col-lg-9 margin-btm-30px">
-                    {{if bio}}
-                        <p class="author-bio">{{:bio}}</p>
-                    {{/if}}
-                    <a href="{{:url}}" class="btn primary">Other Stories by {{:name}}</a>
-                </div>
-            </div>
+            {{/for}}
         </div>
     </div>
     </li>

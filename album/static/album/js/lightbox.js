@@ -58,10 +58,11 @@ var Album = {
             author["fbShare"] = encodeURI(fbShare);
             author["twitterShare"] = encodeURI(twitterShare);
             author["url"] = encodeURI(url);
-            var carouselAuthor = $.templates("#carouselAuthor");
-            var carouselAuthorHtml = carouselAuthor.render(author);
-            $(".carousel-items").append(carouselAuthorHtml);
         });
+
+        var carouselAuthor = $.templates("#carouselAuthor");
+        var carouselAuthorHtml = carouselAuthor.render({"authors": data.authors});
+        $(".carousel-items").append(carouselAuthorHtml);
 
         $(".photo-album-popup").removeClass("hide");
         $(".carousel-container").addClass("carousel");

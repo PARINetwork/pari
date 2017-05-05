@@ -111,7 +111,7 @@ def get_slide_detail(request, slug):
     response_data['authors'] = []
     for photographer in set(photographers):
         photographer_dict = dict(
-            [('type', 'inline'), ('show_title', "False"), ('name', photographer.name), ('bio', photographer.bio),
+            [('type', 'inline'), ('show_title', "False"), ('name', photographer.name), ('bio', photographer.bio_en),
              ('twitter_username', photographer.twitter_handle), ('facebook_username', photographer.facebook_username),
              ('email', photographer.email), ('website', photographer.website), ('author_url', reverse('author-detail', kwargs={'slug': photographer.slug}))])
         response_data['authors'].append(photographer_dict)
