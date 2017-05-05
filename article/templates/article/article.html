@@ -58,10 +58,10 @@
 
 {% block main_wrapper %}
 {% if article.featured_image %}
-{% image article.featured_image max-1400x1120 as featured_image %}
+{% image article.featured_image width-1400 as featured_image %}
 <div class="full-row">
     <div class="banner-container">
-        <img src="{{ featured_image.url }}" alt="{{ article.featured_image.alt_text }}" width="{{ featured_image.width }}" height="{{ featured_image.height }}">
+        <img src="{{ featured_image.url }}" alt="{{ article.featured_image.alt_text }}">
         <div class="banner-info">
         <div class="container">
             <div class="row-1">
