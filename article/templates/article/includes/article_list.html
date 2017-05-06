@@ -10,22 +10,22 @@
                     {% include "includes/content_type.html" with type=article|get_type %}
                 </div>
               {% include "includes/article_listing_image.html" with specific=article alignment_class='full-image-center listing-image'%}
+            </a>
                 <div class="caption">
                     {% include "article/includes/default_atom.html" with article=article%}
 
                    <div class="margin-top-20px date">
                     {% if article.original_published_date %}
                         <a href="{% url "archive-detail" year=article.original_published_date.year month=article.original_published_date.month %}">
-                            <span itemprop="datePublished" class="date link-dark font-s">{{ article.original_published_date|date }}</span>
+                            <span class="date link-dark font-s">{{ article.original_published_date|date }}</span>
                         </a>
                     {% elif article.first_published_at %}
                         <a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month  %}">
-                            <span itemprop="datePublished" class="date link-dark font-s">{{ article.first_published_at|date }}</span>
+                            <span class="date link-dark font-s">{{ article.first_published_at|date }}</span>
                         </a>
                     {% endif %}
                   </div>
                 </div>
-            </a>
           </li>
 
               {% empty %}
