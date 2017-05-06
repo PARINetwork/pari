@@ -156,9 +156,10 @@
     <div id="main_content">
       <div class="search-panel-toggle">
         <div class="container">
-          <header class="seach-input-panel">
+          <header class="seach-input-panel"  itemscope itemtype="http://schema.org/WebSite">
+            <meta itemprop="url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}/" />
             <form action="/search/" role="search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction" class="search-form">
-              <meta itemprop="target" content="/search/?q={q}">
+              <meta itemprop="target" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{% url "wagtailsearch_search" %}?q={q}" />
               <input type="text" name="q" value="{{ query_string }}" placeholder="Enter to search" itemprop="query-input">
               <span class="search-icon fa fa-search"></span>
             </form>
