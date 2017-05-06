@@ -68,21 +68,20 @@
                                         {% endwith %}
                                     </a>
                                 </div>
-                                    <div class="caption">
-                                        <h3>
-                                            <a href="{{ album.get_absolute_url }}">{{ album.title }}</a>
-                                        </h3>
-                                        <div class="margin-top-20px">
-                                            <span class="link-dark font-xs">{{ album.description|striptags }}</span>
-                                        </div>
-                                        <div class="margin-top-20px">
-                                            {% for photographer in photographers|get_item:album.id  %}
-                                                <a class="link-dark-primary font-xs" href="{% url "author-detail" slug=photographer.slug %}">{{ photographer.name }}</a>
-                                                {% if not forloop.last %}, {% endif %}
-                                            {% endfor %}
-                                        </div>
+                                <div class="caption">
+                                    <h3>
+                                        <a href="{{ album.get_absolute_url }}">{{ album.title }}</a>
+                                    </h3>
+                                    <div class="margin-top-20px">
+                                        <span class="link-dark font-xs">{{ album.description|striptags }}</span>
                                     </div>
-                                </a>
+                                    <div class="margin-top-20px">
+                                        {% for photographer in photographers|get_item:album.id  %}
+                                            <a class="link-dark-primary font-xs" href="{% url "author-detail" slug=photographer.slug %}">{{ photographer.name }}</a>
+                                            {% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     {% endfor %}
