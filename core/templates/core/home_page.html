@@ -40,7 +40,7 @@
                                 {% if featured_content.value.featured_image_label %}
                                     <div><span class="featured">{{ featured_content.value.featured_image_label }}</span></div>
                                 {% endif %}
-                                <h1>{{ featured_content.value.title }}</h1>
+                                <h4 class="featured-content-title">{{ featured_content.value.title }}</h4>
                                 <div class="link-to-page">
                                     <a href="{{ featured_content.value.url }}">{{ featured_content.value.link_text }}
                                       <i class="fa fa-angle-right margin-left red-angle-right"></i></a>
@@ -329,7 +329,7 @@
                                 </a>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid">
-                                <h1 class="subtitle">…and a wonderful one’</h1>
+                                <h4 class="subtitle">…and a wonderful one’</h4>
                             </div>
                         </div>
                     </div>
@@ -413,7 +413,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     <a class="more-story-primary-title" href="{{ item.section_model.get_absolute_url }}">
-                                        <h3>{{ item.section_model.title }}</h3></a>
+                                        <h4 class="item-section-title">{{ item.section_model.title }}</h4></a>
                                     <div class="name-primary">
                                         {% for photographer in item.photographers %}
                                             <a href="{% url "author-detail" photographer.slug %}"><span class="author-name">{{ photographer.name }}</span></a>
@@ -442,7 +442,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     <a class="more-story-primary-title" href="{{ item.section_model.get_absolute_url }}">
-                                        <h3>{{ item.section_model.title }}</h3></a>
+                                        <h4 class="item-section-title">{{ item.section_model.title }}</h4></a>
                                     <div class="name-primary">
                                         {% for photographer in item.photographers %}
                                             <a href="{% url "author-detail" photographer.slug %}"><span class="author-name">{{ photographer.name }}</span></a>
@@ -472,7 +472,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     <a  class="more-story-primary-title" href="{{ item.section_model.get_absolute_url }}">
-                                        <h3>{{ item.section_model.title }}</h3></a>
+                                        <h4 class="item-section-title">{{ item.section_model.title }}</h4></a>
                                     <div class="name-primary">
                                         {% for photographer in item.photographers %}
                                             <a  href="{% url "author-detail" photographer.slug %}"><span class="author-name">{{ photographer.name }}</span></a>
@@ -495,7 +495,7 @@
         </div>
         <div class="pari-doing-block ">
             <div class="container">
-                <h1>Like what PARI is doing?</h1>
+                <div class="question-heading">Like what PARI is doing?</div>
                 <div class="pari-do-link"><a href="{% url "static_page" slug="donate" %}">Donate to PARI
                     <i class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
                 </a></div>
