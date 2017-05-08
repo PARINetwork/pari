@@ -234,7 +234,21 @@ html, body {
 
 .photo-album section .carousel-container .author-container {
   height: 100%;
-  background-color: white;
+  background-color: #444444;
+  overflow: auto;
+
+  .author-info > .container {
+    width: auto;
+  }
+}
+
+.photo-album section.author-page {
+  .carousel-container {
+      width: 100% !important;
+  }
+  .slide-info {
+    display: none;
+  }
 }
 
 .photo-album section .carousel-container .author-container .description {
@@ -479,7 +493,7 @@ ul.audio-player-controls, ul.audio-player-controls li, .audio-player-controls ul
   cursor: pointer;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 768px) {
   .photo-album header .fa {
     padding: 13px 7px;
   }
@@ -491,6 +505,10 @@ ul.audio-player-controls, ul.audio-player-controls li, .audio-player-controls ul
   .photo-album section .slide-info, .photo-album section .carousel-container {
     width: auto !important;
     height: 50%;
+  }
+
+  .photo-album section.author-page .carousel-container {
+    height: 100%;
   }
 
   .photo-album section .slide-info, .photo-album section .carousel-container {
@@ -539,10 +557,6 @@ ul.audio-player-controls, ul.audio-player-controls li, .audio-player-controls ul
     padding: 10px 0px 10px 0px;
     margin: 10px 0px 10px 0px;
   }
-
-}
-
-@media only screen and (max-width: 768px) {
   .seek-bar-control {
     display: none !important;
   }

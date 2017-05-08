@@ -316,6 +316,15 @@ function handleCarouselEvents(carouselData) {
         updateSlideInfo();
         totalItems = $('.carousel-items .item').length;
         $('.carousel-index').html((currentIndex + 1) + " / " + totalItems);
+        if(currentIndex === carouselData.slides.length) {
+          if(!$(".carousel-area").hasClass("author-page")) {
+              $(".carousel-area").addClass("author-page");
+          }
+        } else {
+          $(".carousel-area").removeClass("author-page");
+        }
+
+
     }
 
     function updateSlideInfo() {
