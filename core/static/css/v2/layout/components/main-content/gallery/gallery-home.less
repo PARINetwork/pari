@@ -116,12 +116,15 @@
   }
   .banner-container{
     position: relative;
-    height: 100vh;
+    // height: 100vh;
     overflow: hidden;
     margin-bottom: 40px;
     .pop-up{
+      & > a {
+        display: block;
+      }
       .banner-image{
-        height: 100vh;
+        // height: 100vh;
         width: 100%;
         margin-left: auto;
         margin-right: auto;
@@ -185,6 +188,10 @@
             margin-right: 7px;
           }
         }
+      }
+      &.footer {
+        position: static;
+        margin-top: 0px;
       }
     }
   }
