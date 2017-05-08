@@ -206,6 +206,10 @@
           }
         });
 
+        $(".dropdown-toggle .fa-search").bind('touchmove', function(e){
+          e.preventDefault();
+        });
+
         $(".search-panel-toggle header .fa-search").on("click", function() {
           handleSearchClick($(".search-panel-toggle header input"));
         });
