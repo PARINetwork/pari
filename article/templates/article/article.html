@@ -126,11 +126,11 @@
                                 </a>
                             </li>{% with request.build_absolute_uri as url and item.title as title %}<li class="social-icon" data-url="{{ url }}">
                                     <span class="banner-label">Share</span>
-                                        <a href="https://twitter.com/intent/tweet?url={{ url|urlencode }}&amp;hashtags=RuralIndiaOnline" target="_blank" >
+                                        <a href="https://twitter.com/intent/tweet?url={{ url }}&amp;hashtags=RuralIndiaOnline" target="_blank" class="link-light">
                                         <i class="fa fa-twitter"></i>
                                     </a>
                                     <a target="_blank"
-                                       href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}">
+                                       href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}" class="link-light">
                                         <i class="fa fa-facebook"></i>
                                     </a>
                                 </li>{% endwith %}<li>
