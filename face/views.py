@@ -35,7 +35,8 @@ class FaceDetail(ListView):
         alphabet = self.kwargs['alphabet']
         faces = Face.objects.live().filter(
             Q(location__district__istartswith=alphabet) | Q(image__locations__district__istartswith=alphabet)
-        ).distinct()
+        ).select_related('location', 'location__sub_district_type') \
+            .prefetch_related('image__photographers', 'image__locations').distinct()
         faces_with_matching_district_added = [self.with_matching_district(face, alphabet) for face in faces]
         faces_ordered_by_matching_district = sorted(faces_with_matching_district_added,
                                                     key=lambda f: f.matching_district)
