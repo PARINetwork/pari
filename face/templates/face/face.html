@@ -11,13 +11,12 @@
 {% block title %}{% trans "Faces" %}{% endblock %}
 
 {% block opengraph_block %}
-{% if slug %}
+
 <meta property="og:title" content="{{ face.title }}">
 <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ face.get_absolute_url }}">
 <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{% if face.featured_image %}{{ face.featured_image.file.url }}{% else %}{{ STATIC_URL }}img/default_featured_image.png{% endif %}">
 <meta property="og:type" content="article">
 <meta property="og:description" content="FACIAL DIVERSITY FROM EVERY INDIAN DISTRICT #RuralIndiaOnline">
-<meta property="og:published_time" content="{% firstof face.original_published_date|date:"c" face.first_published_at|date:"c" %}">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
@@ -25,7 +24,7 @@
 <meta name="twitter:description" content="View the face on {{ SITE_TITLE }}" >
 <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{% if face.featured_image %}{{ face.featured_image.file.url }}{% else %}{{ STATIC_URL }}img/default_featured_image.png{% endif %}" >
 <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ face.get_absolute_url }}" >
-{% endif %}
+
 {% endblock %}
 
 {% block extra_js %}

@@ -14,6 +14,23 @@
 
 {% endblock %}
 
+{% block opengraph_block %}
+
+<meta property="og:title" content="FACES">
+<meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ face.get_absolute_url }}">
+<meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{% if face.featured_image %}{{ face.featured_image.file.url }}{% else %}{{ STATIC_URL }}img/default_featured_image.png{% endif %}">
+<meta property="og:type" content="faces">
+<meta property="og:description" content="FACIAL DIVERSITY FROM EVERY INDIAN DISTRICT #RuralIndiaOnline">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
+<meta name="twitter:title" content="FACES" >
+<meta name="twitter:description" content="FACIAL DIVERSITY FROM EVERY INDIAN DISTRICT #RuralIndiaOnline" >
+<meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{% if face.featured_image %}{{ face.featured_image.file.url }}{% else %}{{ STATIC_URL }}img/default_featured_image.png{% endif %}" >
+<meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ face.get_absolute_url }}" >
+
+{% endblock %}
+
 {% block extra_css %}
     <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}album/css/magnific-popup.css">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/faces/faces.less">
