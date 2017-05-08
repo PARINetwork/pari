@@ -140,12 +140,14 @@ var Album = {
                 var seekTime = player.options.duration * data.seekPercent / 100;
                 $this._player.seek(seekTime);
                 $this._player.play(seekTime);
+                $(".play-pause").removeClass("fa-play fa-pause selected").addClass("fa-pause");
             });
 
             $(".audio-player-controls").on("seeker-seekbar-drag", function (event, data) {
                 var seekTime = player.options.duration * data.seekPercent / 100;
                 $this._player.seek(seekTime);
                 $this._player.play(seekTime, player);
+                $(".play-pause").removeClass("fa-play fa-pause selected").addClass("fa-pause");
             });
 
             $('#carousel').on('slid.bs.carousel', function () {
