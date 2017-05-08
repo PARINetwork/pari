@@ -67,89 +67,92 @@
 <![endif]-->
 <div id="holder" class="{{ current_page }}" >
     <div id="header" itemscope itemtype="http://schema.org/WPHeader">
-        <ul class="header-social-icons">
-          <li class="icon link-light">
-            <a class="link-light" href="/pages/contribute-to-faces/">
-                <i class="fa fa-upload" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li class="icon">
-            <div class="col-xs-12 header-back-to-categories">
-                <a class="link-light font-m" itemprop="url" href="{% url "category-list" %}">
-                    <i class="fa fa-angle-left"></i>
-                    <span itemprop="name">{% trans "CATEGORIES" %}</span>
-                </a>
-            </div>
-          </li>
+      <div class="fixed-header-wrapper">
 
-            <li class="icon">
-            <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri|urlencode }}&amp;hashtags=RuralIndiaOnline" target="_blank" class="link-light">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-
-            </a>
-          </li>
-          <li class="icon">
-              <a href="https://facebook.com/sharer.php?u={{ request.build_absolute_uri|urlencode }}" target="_blank" class="link-light">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
+          <ul class="header-social-icons">
+            <li class="icon link-light">
+              <a class="link-light" href="/pages/contribute-to-faces/">
+                  <i class="fa fa-upload" aria-hidden="true"></i>
               </a>
-          </li>
-        </ul>
+            </li>
+            <li class="icon">
+              <div class="col-xs-12 header-back-to-categories">
+                  <a class="link-light font-m" itemprop="url" href="{% url "category-list" %}">
+                      <i class="fa fa-angle-left"></i>
+                      <span itemprop="name">{% trans "CATEGORIES" %}</span>
+                  </a>
+              </div>
+            </li>
 
-        <nav id="mainnav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-2 nav-header-icon-title">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href="/">
-                                <img src="{{ STATIC_URL }}img/logo.png" title="{{ page.title }}" alt="{{ page.title }}" class="logo img-responsive">
-                            </a>
-                            <div class="header-title-wrapper">
-                                <div class="navbar-brand-title hidden-sm">People's Archive of Rural India</div>
-                                <div class="navbar-brand-sub-title hidden-sm hidden"><span>THE EVERYDAY LIVES OF EVERYDAY PEOPLE</span></div>
-                            </div>
+              <li class="icon">
+              <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri|urlencode }}&amp;hashtags=RuralIndiaOnline" target="_blank" class="link-light">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+
+              </a>
+            </li>
+            <li class="icon">
+                <a href="https://facebook.com/sharer.php?u={{ request.build_absolute_uri|urlencode }}" target="_blank" class="link-light">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+          </ul>
+
+          <nav id="mainnav" class="navbar navbar-inverse" role="navigation">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-lg-4 col-md-4 col-sm-2 nav-header-icon-title">
+                          <div class="navbar-header">
+                              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                  <span class="icon-bar"></span>
+                                  <span class="icon-bar"></span>
+                                  <span class="icon-bar"></span>
+                              </button>
+                              <a class="navbar-brand" href="/">
+                                  <img src="{{ STATIC_URL }}img/logo.png" title="{{ page.title }}" alt="{{ page.title }}" class="logo img-responsive">
+                              </a>
+                              <div class="header-title-wrapper">
+                                  <div class="navbar-brand-title hidden-sm">People's Archive of Rural India</div>
+                                  <div class="navbar-brand-sub-title hidden-sm hidden"><span>THE EVERYDAY LIVES OF EVERYDAY PEOPLE</span></div>
+                              </div>
 
 
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-md-8 col-sm-10">
-                        <div class="collapse navbar-collapse">
-                            <ul class="nav navbar-nav navbar-right" itemscope itemtype="http://schema.org/SiteNavigationElement">
-                                {% include "pages/menus/dropdown.html" %}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        {% comment %}
-        <div class="user">
-            <a href="{% url 'pari-news' %}" class="btn btn-lg btn-homepage">
-                {% trans "PARI news" %}
-            </a>
-        </div>
-        {% endcomment %}
-        {% if messages %}
-        <div class="container messages">
-            {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}" data-alert="alert">
-                <a class="close" href="#" onclick="$(this).parent().fadeOut('fast'); return false;">×</a>{{ message }}
-            </div>
-            {% endfor %}
-        </div>
-        {% endif %}
+                          </div>
+                      </div>
+                      <div class="col-lg-8 col-md-8 col-sm-10">
+                          <div class="collapse navbar-collapse">
+                              <ul class="nav navbar-nav navbar-right" itemscope itemtype="http://schema.org/SiteNavigationElement">
+                                  {% include "pages/menus/dropdown.html" %}
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </nav>
+          {% comment %}
+          <div class="user">
+              <a href="{% url 'pari-news' %}" class="btn btn-lg btn-homepage">
+                  {% trans "PARI news" %}
+              </a>
+          </div>
+          {% endcomment %}
+          {% if messages %}
+          <div class="container messages">
+              {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}" data-alert="alert">
+                  <a class="close" href="#" onclick="$(this).parent().fadeOut('fast'); return false;">×</a>{{ message }}
+              </div>
+              {% endfor %}
+          </div>
+          {% endif %}
 
-{#        {% if announcements %}#}
-{#        <div class="announcement">#}
-{#            {{ announcements|richtext }}#}
-{#        </div>#}
-{#        {% endif %}#}
+  {#        {% if announcements %}#}
+  {#        <div class="announcement">#}
+  {#            {{ announcements|richtext }}#}
+  {#        </div>#}
+  {#        {% endif %}#}
 
-        {% block extra_header %}{% endblock %}
+          {% block extra_header %}{% endblock %}
+      </div>
     </div>
 
     {% block main_wrapper %}

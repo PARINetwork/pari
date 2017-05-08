@@ -1,8 +1,19 @@
 @import "layout/layout";
 
+
+
 #header {
   position: relative;
+  height: 80px;
   z-index: 3;
+
+  .fixed-header-wrapper {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    height: 82px;
+  }
 
   ul.header-social-icons {
     position: absolute;
@@ -27,6 +38,14 @@
    }
   }
 }
+
+#main_content > .container {
+  margin-top: 40px;
+  &.story-grid {
+    margin-top: 0px;
+  }
+}
+
 #mainnav .navbar-header {
   .header-title-wrapper {
     display: inline-block;
@@ -45,6 +64,9 @@
   }
 }
 @media only screen and (max-width: 768px) {
+  #header, #header .fixed-header-wrapper {
+    height: 56px;
+  }
   .album-list, .single-category, .Visible, .PhotoZone, .Little, .VideoZone, .AudioZone, .Tongues, .gallery-home,
   .face-list, .resource-list, .about-the-editor, .authors, .donate, .archive-detail, .location-detail {
 
@@ -119,5 +141,11 @@
     max-height: 100%;
     display: block;
     vertical-align: middle;
+  }
+}
+
+@media (max-width: 500px) {
+  #holder {
+    overflow: hidden;
   }
 }
