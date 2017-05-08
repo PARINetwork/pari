@@ -10,11 +10,11 @@
 <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ article.get_absolute_url }}">
 <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ featured_image.file.url }}">
 <meta property="og:type" content="article">
-<meta property="og:description" content="{{ article.strap }} #PARIStories">
+<meta property="og:description" content="{{ article.strap }} #RuralIndiaOnline">
 <meta property="og:published_time" content="{% firstof article.original_published_date|date:"c" article.first_published_at|date:"c" %}">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@{{ SOCIAL_TWITTER }} #PARIStories">
+<meta name="twitter:site" content="@{{ SOCIAL_TWITTER }} #RuralIndiaOnline">
 <meta name="twitter:title" content="{{ article.title }}" >
 <meta name="twitter:description" content="{{ article.strap }} " >
 <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ featured_image.file.url }}" >
@@ -126,7 +126,7 @@
                                 </a>
                             </li>{% with request.build_absolute_uri as url and item.title as title %}<li class="social-icon" data-url="{{ url }}">
                                     <span class="banner-label">Share</span>
-                                        <a href="https://twitter.com/intent/tweet?url={{ url|urlencode }}&amp;hashtags=PARIStories" target="_blank" >
+                                        <a href="https://twitter.com/intent/tweet?url={{ url|urlencode }}&amp;hashtags=RuralIndiaOnline" target="_blank" >
                                         <i class="fa fa-twitter"></i>
                                     </a>
                                     <a target="_blank"

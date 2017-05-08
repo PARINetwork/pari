@@ -14,13 +14,13 @@
 <meta property="og:title" content="Donate to PARI">
 <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
 <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ STATIC_URL }}img/default_featured_image.png">
-<meta property="og:description" content="In 2014-15, only about 0.24% of front page news came out of rural India. We want to change that. #PARIStories">
+<meta property="og:description" content="In 2014-15, only about 0.24% of front page news came out of rural India. We want to change that. #RuralIndiaOnline">
 <meta property="og:type" content="donation">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
 <meta name="twitter:title" content="Donate to PARI" >
-<meta name="twitter:description" content="In 2014-15, only about 0.24% of front page news came out of rural India. We want to change that. #PARIStories" >
+<meta name="twitter:description" content="In 2014-15, only about 0.24% of front page news came out of rural India. We want to change that. #RuralIndiaOnline" >
 <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ STATIC_URL }}img/default_featured_image.png" >
 <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}" >
 {% endif %}
@@ -144,7 +144,7 @@
 
                      <div class="gallery-social-icon">
                     {% with url=request.build_absolute_uri  title='Donate to PARI' %}
-                            <a href="https://twitter.com/intent/tweet?url={{ url|urlencode }}&amp;hashtags=PARIStories" target="_blank" class="link-light">
+                            <a href="https://twitter.com/intent/tweet?url={{ url|urlencode }}&amp;hashtags=RuralIndiaOnline" target="_blank" class="link-light">
                                <i class="fa fa-twitter" aria-hidden="true"></i>
                             </a>
                             <a href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}"

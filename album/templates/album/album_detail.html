@@ -38,13 +38,13 @@
     <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
     <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ cover_image.url }}">
     <meta property="og:type" content="article">
-    <meta property="og:description" content=" {{ album.description|striptags }} #PARIStories">
+    <meta property="og:description" content=" {{ album.description|striptags }} #RuralIndiaOnline">
     <meta property="og:published_time" content={{ albums.first.first_published_at|date:"c" }}>
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
     <meta name="twitter:title" content="{{ album.title }}" >
-    <meta name="twitter:description" content="{{ album.description|striptags }} #PARIStories" >
+    <meta name="twitter:description" content="{{ album.description|striptags }} #RuralIndiaOnline" >
     <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ cover_image.url }}" >
     <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
     {% endwith %}
@@ -230,7 +230,7 @@
               </span>
             </div>
             <div class="social-icons">
-                  <a href="https://twitter.com/intent/tweet?url={{:url}}&amp;hashtags=PARIStories" target="_blank" >
+                  <a href="https://twitter.com/intent/tweet?url={{:url}}&amp;hashtags=RuralIndiaOnline" target="_blank" >
                   <i class="fa fa-twitter"></i>
             </a>
             <a target="_blank" href="https://facebook.com/sharer.php?u={{:url}}&t={{:album_title}}">
