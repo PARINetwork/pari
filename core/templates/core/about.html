@@ -18,7 +18,7 @@
         <div class="col-lg-12">
             <div class="banner-container">
                 <div class="cover-image"></div>
-                <div class="banner-content container">
+                <div class="banner-content container" itemscope itemtype="http://schema.org/headline">
                     <h2 itemprop="headline"> Rural India: a living journal, a breathing archive </h2>
                     <h4> The everyday lives of everyday people </h4>
                 </div>
@@ -157,7 +157,7 @@
                 </p>
                 <div class="category clearfix">
                     <div class="col-lg-5">
-                        <img class=category-thumbanail src="{{ STATIC_URL }}img/category_things_we_do.jpg"/>
+                        <img class=category-thumbanail src="{{ STATIC_URL }}img/category_things_we_do.jpg" alt="Things we do"/>
                     </div>
                     <div class="col-lg-7">
                         <h5 class="category-section-sub-header">Things we do</h5>
@@ -172,15 +172,13 @@
                                 Apart from covering their stories we are also photographing and filming the tools and implements
                                 that people use, many of them sure to disappear over the next few years. 
                             </p>
-                            <a href="{%  url 'story-detail' slug="things-we-do" %}" >
-                                <button class="primary">Explore</button>
-                            </a>
+                        <button class="primary" onclick="location.href='{%  url 'story-detail' slug="things-we-do" %}'">Explore</button>
                     </div>
                 </div>
 
                 <div class="category clearfix">
                     <div class="col-lg-5">
-                        <img class=category-thumbanail src="{{ STATIC_URL }}img/category_things_we_make.jpg"/>
+                        <img class=category-thumbanail src="{{ STATIC_URL }}img/category_things_we_make.jpg" alt="Things we make"/>
                     </div>
                     <div class="col-lg-7">
                         <h5 class="category-section-sub-header">Things we make</h5>
@@ -192,14 +190,12 @@
                             museums’ – miniature painting schools, rural traditions of sculpture, exquisite weaving
                             techniques – many of which are slowly fading away and might soon vanish completely.
                         </p>
-                        <a href="{% url 'story-detail' slug="things-we-make" %}">
-                            <button class="primary">Explore</button>
-                        </a>
+                        <button class="primary" onclick="location.href='{% url 'story-detail' slug="things-we-make" %}'">Explore</button>
                     </div>
                 </div>
                 <div class="category clearfix">
                     <div class="col-lg-5">
-                        <img class=category-thumbanail src="{{ STATIC_URL }}img/category_footsoldiers_of_freedom.jpg"/>
+                        <img class=category-thumbanail src="{{ STATIC_URL }}img/category_footsoldiers_of_freedom.jpg" alt="Foot Soldiers Of Freedom"/>
                     </div>
                     <div class="col-lg-7">
                         <h5 class="category-section-sub-header">Foot-soldiers of freedom</h5>
@@ -211,9 +207,7 @@
                             the
                             tale.
                         </p>
-                        <a href="{% url 'story-detail' slug="foot-soldiers-of-freedom" %}">
-                            <button class="primary">Explore</button>
-                        </a>
+                        <button class="primary" onclick="location.href='{% url 'story-detail' slug="foot-soldiers-of-freedom" %}'">Explore</button>
                     </div>
                 </div>
                 <p>
@@ -276,9 +270,7 @@
                     the <b>CounterMedia
                     Trust</b> are eligible for exemption under Section 80G of the Income Tax Act, 1961.
                 </p>
-                <a href="{% url 'donate_form' %}">
-                    <button class="primary">Send donation</button>
-                </a>
+                <button class="primary" onclick="location.href='{% url 'donate_form' %}'">Send donation</button>
             </div>
             <div class="section">
                 <p class="heading">CONTRIBUTE TO PARI</p>
@@ -289,9 +281,7 @@
                     within
                     our mandate: the everyday lives of everyday people.
                 </p>
-                <a href="{% url 'contribute' slug="contribute" %}">
-                    <button class="primary">Learn more</button>
-                </a>
+                <button class="primary" onclick="location.href='{% url 'contribute' slug="contribute" %}'">Learn more</button>
             </div>
             <div class="section">
                 <p class="heading">PARI AND EDUCATION</p>
@@ -301,9 +291,7 @@
                     that
                     will be produced by students and teachers themselves.
                 </p>
-                <a href="{% url 'pari_teachers_students' %}">
-                    <button class="primary">Learn more</button>
-                </a>
+                <button class="primary" onclick="location.href='{% url 'pari_teachers_students' %}'">Learn more</button>
             </div>
         </div>
     </div>
