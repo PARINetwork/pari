@@ -32,6 +32,8 @@ class FaceDetail(ListView):
     template_name = "face/face.html"
 
     def get_queryset(self):
+        # TODO: Should return queryset instead of list
+        # TODO: Improve query performance
         alphabet = self.kwargs['alphabet']
         faces = Face.objects.live().filter(
             Q(location__district__istartswith=alphabet) | Q(image__locations__district__istartswith=alphabet)
@@ -49,8 +51,8 @@ class FaceDetail(ListView):
         context["slug"] = self.kwargs.get("slug")
         if context["slug"]:
             try:
-                context["face"] = self.get_queryset().get(slug=context["slug"])
-            except Face.DoesNotExist:
+                context["face"] = next(face for face in self.get_queryset() if face.slug == context["slug"])
+            except StopIteration:
                 pass
         context["current_page"] = 'face-district'
         return context
