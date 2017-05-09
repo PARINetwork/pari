@@ -55,7 +55,7 @@
                     {% include "includes/page_content_header/heading.html" %}
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 gallery-title-icon face-upload-share">
-                <span class="face-upload">
+                <span class="face-upload" itemscope itemtype="https://schema.org/name">
                     <a class="link-light" href="{% url "static_page" slug="contribute-to-faces" %}">
                         <i class="fa fa-upload" aria-hidden="true"></i>
                         <span class="link-text" itemprop="name">{% trans "Upload face" %}</span>
@@ -79,13 +79,13 @@
         <div class="row filter-lang">
             <span class="filter-label">Alphabetical</span>
             <span class="filter-value">
-          <select class="select-no-style pull-left" selected="District" name="lang"
+          <select class="select-no-style pull-left" name="lang"
                   onchange="location =this.value">
-              <option value="">{% trans "District" %}</option>
+              <option value="" selected>{% trans "District" %}</option>
               {% for face in faces %}
                   <option class="banner-language-list"
                           value="{% url "face-detail" alphabet=face.location.district|lower|first %}">
-                  <a class="distric-alphabet">{{ face.district|lower|first|capfirst }}</a>
+                  {{ face.district|lower|first|capfirst }}
                   </option>
               {% endfor %}
           </select>
@@ -93,8 +93,9 @@
         </span>
         </div>
 
-        <ul>
+
             <div class="story-grid">
+             <ul>
                 {% for face in faces %}
                     <li class="tile">
                         <div class="image-wrapper">
@@ -102,9 +103,9 @@
                                 {% image face.image fill-512x512 as face_image %}
                                 <img class="img-responsive grid-image" src="{{ face_image.url }}"
                                      alt="{{ face|alt_text }}">
-                                <div class="alphabat-holder">
-                                    <h4 class="alphabat">{{ face.district|lower|first }}</h4>
-                                </div>
+                                <span class="alphabat-holder">
+                                    <span class="alphabat">{{ face.district|lower|first }}</span>
+                                </span>
                             </a>
                         </div>
                     </li>
@@ -114,8 +115,8 @@
                                 href="{% url "static_page" slug="contribute-to-faces" %}">contributing</a> one.</p>
                     </div>
                 {% endfor %}
+             </ul>
             </div>
-        </ul>
     </div>
 {% endblock %}
 
