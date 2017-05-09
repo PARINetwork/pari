@@ -200,12 +200,15 @@
             });
         }
 
-        $(".dropdown-toggle .fa-search").on("click", function() {
+        $(".search-icon-container").on("click", function() {
           event.preventDefault();
           $(".search-panel-toggle").toggleClass("show");
           if($(".search-panel-toggle").hasClass("show")) {
             $(".search-panel-toggle input").val("");
             $(".search-panel-toggle input").focus();
+          }
+          if($("#header .navbar-collapse").hasClass("in")) {
+            $("#header button.navbar-toggle").trigger("click");
           }
         });
 
@@ -213,7 +216,7 @@
           e.preventDefault();
         });
 
-        $(".search-panel-toggle header .fa-search").on("click", function() {
+        $(".search-panel-toggle header .fa-search").on("click", function() { // more or like submit
           handleSearchClick($(".search-panel-toggle header input"));
         });
 

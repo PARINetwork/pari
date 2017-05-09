@@ -56,7 +56,7 @@
 }
 
 .search-panel-toggle {
-  position: absolute;
+  position: fixed;
   left: 0px;
   right: 0px;
   top: -100px;
@@ -77,13 +77,6 @@
   &.show {
     top: -3px !important;
     box-shadow: 2px 2px 3px #bfbfbf;
-    position: fixed;
-  }
-
-  @media (max-width: @screen-xs-max) {
-    &.show {
-      top: 308px !important;
-    }
   }
 }
 
