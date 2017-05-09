@@ -78,12 +78,14 @@
         }
       }
       h1, .featured-content-title {
-        .font-size(35);
         color: @text-light;
+        font-size: 5.216667rem;
+        color: #FFF;
         padding: 40px 0;
-        // max-width: 320px;
         margin: 0;
         text-align: center;
+        line-height: 56px;
+        letter-spacing: -1.9px;
       }
 
       & > .link-to-page {
@@ -187,12 +189,13 @@
   }
 
   .latest-item-title{
-    line-height: 35px;
-    font-size: 3rem;
+    line-height: 38px;
+    font-size: 3.4rem;
     margin-top: 0px;
-    font-family: 'Amiri',serif;
+    font-family: 'Amiri', serif;
     font-weight: 700;
     margin-bottom: 10px;
+    letter-spacing: -1.5px;
   }
   .carousel-control-container {
     border: 1px solid @light-grey;
@@ -319,15 +322,22 @@
   }
   .dropdown {
     button {
-      border-radius: 0;
       border-style: solid;
       background-color: @lighter-grey;
       border-width: 1px;
       border-color: lightgrey;
-      color: @grey;
-      margin-top: 26px;
-      margin-bottom: 10px;
-      padding: 7px;
+      color: #b5b5b5;
+      margin-top: 6px;
+      padding: 5px 10px;
+      font-size: 11px;
+      border-radius: 3px;
+      letter-spacing: 0.3px;
+      font-weight: 400;
+      text-transform: uppercase;
+      &:hover {
+        color: #444;
+        border: 1px solid #444;
+      }
     }
   }
 
@@ -337,6 +347,18 @@
     text-align: center;
     border-radius: 0;
     color: @grey;
+
+    li {
+      font-size: 14px;
+      padding: 10px 20px;
+      cursor: pointer;
+
+      &:hover {
+        color: #444;
+        background: #f4f4f4;
+      }
+
+    }
   }
   .tags-label {
     background: white;
@@ -353,23 +375,22 @@
         }
     }
     .author-name{
-      font-size: 16px;
-    }
-    .location-name{
-          font-size: 12px;
+      font-size: 14px;
+      letter-spacing: 0.3px;
     }
 
-    .date-infocus{
-      font-size: 12px;
+    .date-infocus, .location-name {
+      font-size: 14px;
     }
 
     .infocus-item-title{
       font-family: 'Amiri',serif;
       font-weight: 700;
-      font-size: 2rem;
-      margin-bottom: 20px;
+      font-size: 2.3rem;
+      margin-bottom: 8px;
       line-height: 1.1;
       color: @darker-grey;
+      letter-spacing: -0.7px;
     }
 
     margin-bottom: 0;
@@ -562,6 +583,10 @@
 
   .home-article-grid-1 {
     margin-bottom: 20px;
+
+    .grid {
+        margin-bottom: 20px;
+    }
   }
 
   #myCarousel-2 {
