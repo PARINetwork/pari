@@ -91,6 +91,7 @@ def get_slide_detail(request, slug):
     for index,slide in enumerate(album.slides.all(),start=0):
         slide_dict = dict([('type', 'image'), ('show_title', "True"), ('album_title', album.title)])
         slide_dict['src'] = slide.image.file.url
+        slide_dict['src_resized'] = slide.image.get_rendition('height-876').url
         slide_dict['description'] = slide.description
         slide_dict['album_description'] = album.description
         slide_dict['url'] = request.build_absolute_uri().replace(".json", "")
