@@ -44,7 +44,7 @@
           & > .floating-content {
             // background: rgba(0, 0, 0, 0.27);
             padding: 10px;
-            width: 320px;
+            width: 380px;
 
             h1 {
               text-align: center;
@@ -78,7 +78,7 @@
         .font-size(35);
         color: @text-light;
         padding: 40px 0;
-        max-width: 320px;
+        // max-width: 320px;
         margin: 0;
         text-align: center;
       }
@@ -92,6 +92,16 @@
           padding: 15px 20px;
           .font-size(16);
           color: @text-light;
+
+          span {
+            max-width: 285px;
+            display: inline-block;
+            height: 22px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            vertical-align: middle;
+          }
 
           &:hover {
             color: @primary-color;
@@ -111,7 +121,7 @@
 
     .carousel-buttons-wrapper {
       position: relative;
-      max-width: 320px;
+      max-width: 380px;
 
       .carousel-control-container {
         border: 1px solid @lighter-grey;
@@ -557,48 +567,19 @@
       .floating-container .relative-container .floating-content {
         .link-to-page {
             padding: 10px;
+
+            a {
+              .font-size(18);
+            }
         }
-
-
 
        &.item-container {
          margin: 0 auto;
-
-         div:first-child {
-           margin-top: 20px;
-           span {
-             background: @lighter-grey;
-             font-weight: 500;
-             padding: 2px 10px;
-             letter-spacing: 2px;
-             color: @grey;
-             border: 1px solid @light-grey;
-           }
-           + h1 {
-             .font-size(25);
-             color: @text-light;
-             padding: 10px 0;
-             max-width: 320px;
-             margin: 0;
-
-             + div {
-               text-align: center;
-               a {
-                 padding: 15px 20px;
-                 .font-size(16);
-                 color: @text-light;
-                 &:hover {
-                   color: @primary-color;
-                 }
-               }
-             }
-           }
+         h1, h4 {
+           padding: 15px 0px;
          }
        }
       }
-
-
-
     }
 
     .floating-carousel-buttons {
