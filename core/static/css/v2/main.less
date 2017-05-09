@@ -66,6 +66,12 @@
 @media only screen and (max-width: 768px) {
   #header, #header .fixed-header-wrapper {
     height: 56px;
+
+    .navbar-collapse {
+      max-height: ~"calc(100vh - 55px)";
+      overflow: auto;
+    }
+
   }
   .album-list, .single-category, .Visible, .PhotoZone, .Little, .VideoZone, .AudioZone, .Tongues, .gallery-home,
   .face-list, .resource-list, .about-the-editor, .authors, .donate, .archive-detail, .location-detail {
