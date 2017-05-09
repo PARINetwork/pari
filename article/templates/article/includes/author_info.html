@@ -37,11 +37,11 @@
                         </div>
                     {% endif %}
                     <div>
-                        {% with author.name as title %}
+                    {% with request.build_absolute_uri as url and author.name as title %}
                             <ul>
                                 <li class="social-icon" data-url="{{ author.get_absolute_url }}">
                                     <span class="banner-label">Share</span>
-                                    <a href="https://twitter.com/intent/tweet?url={{ url }}&amp;hashtags=RuralIndiaOnline" target="_blank" class="link-light">
+                                    <a href="https://twitter.com/intent/tweet?url=http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{% url "author-detail" slug=author.slug %}&amp;hashtags=RuralIndiaOnline" target="_blank" class="link-light">
                                         <i class="fa fa-twitter"></i>
                                     </a>
                                     <a target="_blank"

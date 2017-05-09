@@ -37,7 +37,7 @@
     <meta property="og:title" content="{{ album.title }}">
     <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
     <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ cover_image.url }}">
-    <meta property="og:type" content="article">
+    <meta property="og:type" content="album">
     <meta property="og:description" content=" {{ album.description|striptags }} #RuralIndiaOnline">
     <meta property="og:published_time" content={{ albums.first.first_published_at|date:"c" }}>
 
