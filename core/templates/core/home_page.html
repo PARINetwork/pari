@@ -40,7 +40,7 @@
                                 {% if featured_content.value.featured_image_label %}
                                     <div><span class="featured">{{ featured_content.value.featured_image_label }}</span></div>
                                 {% endif %}
-                                <h1>{{ featured_content.value.title }}</h1>
+                                <div class="featured-content-title">{{ featured_content.value.title }}</div>
                                 <div class="link-to-page">
                                     <a href="{{ featured_content.value.url }}">
                                       <span>{{ featured_content.value.link_text }}</span>
@@ -68,7 +68,7 @@
         </div>
         <div class="container">
             <div id="myCarousel-2" class="carousel slide" data-ride="carousel">
-                <div class="carousel-title"><h4>Latest on PARI</h4></div>
+                <div class="carousel-title"><div>Latest on PARI</div></div>
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     {% for item in page.carousel %}
@@ -76,7 +76,7 @@
                             <div class="row gallery-tile">
                                 <div class="col-lg-4 col-md-4">
                                     <div class="gallery-tile-info">
-                                        <h2>{{ item.title }}</h2>
+                                        <div class="latest-item-title">{{ item.title }}</div>
                                         <div class="desc-module line-clamp">
                                             <p>{% if item.specific.strap %} {{ item.specific.strap }}{% else %}
                                                 &nbsp;{% endif %}</p>
@@ -166,7 +166,7 @@
                                          alt="sample content" style="cursor: pointer" onclick="location.href='{{ item.url }}'">
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                    <a href="{{ item.url }}" class="infocus-title-primary"><h3>{{ item.title }}</h3></a>
+                                    <a href="{{ item.url }}" class="infocus-title-primary"><div class="infocus-item-title">{{ item.title }}</div></a>
                                     <div class="name-primary">
                                         {% for author in item.specific.authors.all %}
                                             <a href="{% url "author-detail" author.slug %}"><span class="author-name">{{ author.name }}</span>
@@ -213,7 +213,7 @@
                                          alt="sample content" style="cursor: pointer" onclick="location.href='{{ item.url }}'">
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                    <a href="{{ item.url }}" class="infocus-title-primary"><h3>{{ item.title }}</h3></a>
+                                    <a href="{{ item.url }}" class="infocus-title-primary"><div class="infocus-item-title">{{ item.title }}</div></a>
                                     <div class="name-primary">
                                         {% for author in item.specific.authors.all %}
                                             <a href="{% url "author-detail" author.slug %}"><span class="author-name">{{ author.name }}</span>
@@ -268,7 +268,7 @@
                                  alt="{{ categories.0.name }}" style="width:370px;margin:0 auto;"
                                  class="img-responsive lazyload">
                             <div class="grid-container">
-                                <h3>{{ categories.0.name }}</h3>
+                                <div class="category-image-overlay-text">{{ categories.0.name }}</div>
                                 <div class="title-grid">
                                     <div class="border-link"></div>
                                     <div>{{ categories.0.description }}</div>
@@ -277,7 +277,7 @@
                         </a>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid share">
-                        <h1 class="subtitle">‘PARI is an insane project...</h1>
+                        <div class="subtitle">‘PARI is an insane project...</div>
                         <div class="align-bottom">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
@@ -299,7 +299,7 @@
                                              alt="{{ categories.1.name }}" style="width:370px;margin:0 auto;"
                                              class="img-responsive lazyload">
                                         <div class="grid-container">
-                                            <h3>{{ categories.1.name }}</h3>
+                                            <div class="category-image-overlay-text">{{ categories.1.name }}</div>
                                             <div class="title-grid">
                                                 <div class="border-link"></div>
                                                 <div>{{ categories.1.description }}</div>
@@ -321,7 +321,7 @@
                                          alt="{{ categories.2.name }}" style="width:370px;margin:0 auto;"
                                          class="img-responsive lazyload">
                                     <div class="grid-container">
-                                        <h3>{{ categories.2.name }}</h3>
+                                        <div class="category-image-overlay-text">{{ categories.2.name }}</div>
                                         <div class="title-grid">
                                             <div class="border-link"></div>
                                             <div>{{ categories.2.description }}</div>
@@ -330,7 +330,7 @@
                                 </a>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid">
-                                <h4 class="subtitle">…and a wonderful one’</h4>
+                                <div class="subtitle" style="line-height: 1.1">…and a wonderful one’</div>
                             </div>
                         </div>
                     </div>
@@ -343,7 +343,7 @@
                                          alt="{{ categories.3.name }}" style="width:370px;margin:0 auto;"
                                          class="img-responsive lazyload">
                                     <div class="grid-container">
-                                        <h3>{{ categories.3.name }}</h3>
+                                        <div class="category-image-overlay-text">{{ categories.3.name }}</div>
                                         <div class="title-grid">
                                             <div class="border-link"></div>
                                             <div>{{ categories.3.description }}</div>
@@ -380,7 +380,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <h2 class="title-light">PARI records the facial diversity of the people of India</h2>
+                            <div class="title-light faces-overlay-text">PARI records the facial diversity of the people of India</div>
                         </div>
                         <div class="col-lg-6">
                             <div>
