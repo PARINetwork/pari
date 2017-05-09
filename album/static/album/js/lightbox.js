@@ -97,13 +97,18 @@ var Album = {
             if (player.options.protocols[0] === 'rtmp') {
                 player.options.protocols.splice(0, 1);
             }
-            player.play();
 
             $this._player = player;
+            var isAndroid = navigator.userAgent.match(/Android/i);
             if(isTalkingAlbum) {
-              $(".play-pause")
-              .removeClass("fa-play fa-pause selected")
-              .addClass("fa-pause");
+                $(".play-pause").removeClass("fa-play fa-pause selected");
+                if(isAndroid) {
+                    Album.pauseAudio();
+                    $(".play-pause").addClass("fa-play selected");
+                } else {
+                    Album.playAudio();
+                    $(".play-pause").addClass("fa-pause");
+                }
             }
 
             $this._player.on("time", function () {
@@ -152,7 +157,6 @@ var Album = {
 
             $('#carousel').on('slid.bs.carousel', function () {
               Album.stopAudioPlayer();
-              Album.playAudio();
               mediaPlayer.play();
             });
 
