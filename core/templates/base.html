@@ -166,6 +166,7 @@
               <input type="text" name="q" value="{{ query_string }}" placeholder="Enter to search" itemprop="query-input">
               <span class="search-icon fa fa-search"></span>
             </form>
+            <span class="search-close fa fa-close"></span>
           </header>
         </div>
       </div>
@@ -212,6 +213,10 @@
           }
         });
 
+        $(".search-close").on("click", function() {
+          $(".search-panel-toggle").removeClass("show");
+        });
+        
         $(".dropdown-toggle .fa-search").bind('touchmove', function(e){
           e.preventDefault();
         });
