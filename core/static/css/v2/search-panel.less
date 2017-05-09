@@ -15,17 +15,10 @@
           position: relative;
         }
 
-        .input-box {
-          display: inline-block;
-          width: ~"calc(100% - 126px)";
-          vertical-align: middle;
-        }
         .no-of-results {
-          display: inline-block;
-          vertical-align: middle;
-          width: 120px;
           font-size: 16px;
           color: #8F8F8F;
+          margin-top: 20px;
         }
 
         input {
@@ -37,7 +30,10 @@
           margin: 0px;
           padding: 10px 30px 10px 10px;
           background: none;
-          font-size: 16px;
+          font-size: 32px;
+          letter-spacing: 0.8px;
+          font-weight: 300;
+          line-height: 30px;
 
           &.error {
             border-bottom-color: #FF0000 !important;
@@ -46,7 +42,7 @@
         span {
           position: absolute;
           right: 5px;
-          top: 11px;
+          top: 26px;
           font-size: 20px;
           cursor: pointer;
           color: #c7c7c7;
@@ -95,16 +91,21 @@
       height: 100%;
 
       header.seach-input-panel {
-        height: 43px;
+        height: auto;
         position: relative;
         margin-top: 10px;
 
         input:-webkit-autofill {
             -webkit-box-shadow: 0 0 0px 1000px #FFF inset;
         }
+
+        .search-icon {
+          top: 50px;
+        }
       }
 
       section.search-result {
+        margin: 5px 0px 20px 0px;
         height: ~"calc(100% - 126px)";
       }
 

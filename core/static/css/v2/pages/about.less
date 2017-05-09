@@ -30,18 +30,29 @@
 
   .banner-content {
     position: absolute;
-    top: 150px;
-    left: 135px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
 
     h2 {
-      font-weight: 500;
-      color: white;
+      font-size: 5.216667rem;
+      color: #FFF;
+      padding: 40px 0;
+      margin: 0 auto;
+      text-align: center;
+      line-height: 56px;
+      letter-spacing: -1.9px;
     }
 
     h4 {
       font-weight: 200;
       color: white;
       font-size: 16px;
+      display: none;
     }
   }
 }
@@ -100,11 +111,12 @@
   .quote-section {
     padding-bottom: 25px;
     .quote {
-      font-size: 20px;
-      font-style: italic;
-      color: @grey;
+      font-size: 42px;
+      color: #bdbdbd;
       margin-bottom: 0px;
-      line-height: 30px;
+      line-height: 41px;
+      font-family: amiri;
+      letter-spacing: -2.4px;
 
       &:last-of-type {
         border-top: @light-grey solid 1px;
@@ -152,8 +164,12 @@
 @media (max-width: @screen-xs-max) {
   .banner-container {
     .banner-content {
-      left: initial;
-      top: 70px;
+      padding: 0px 30px;
+      h2 {
+        font-size: 3.216667rem;
+        line-height: 36px;
+        letter-spacing: -1px;
+      }
     }
   }
 

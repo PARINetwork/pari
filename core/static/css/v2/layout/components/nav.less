@@ -1,5 +1,10 @@
 #mainnav {
   background: @bg-primary-nav;
+
+  .navbar-nav .dropdown .dropdown-menu.mega-nav {
+    border: none;
+  }
+
   &.navbar-inverse {
     border: none;
     .navbar-toggle {
@@ -26,8 +31,10 @@
         .dropdown-toggle {
           padding-top: 30px;
           padding-bottom: 30px;
-          color: @text-color-primary-nav;
-          .font-size(14);
+          color: #222;
+          font-size: 1.1666666666666667rem;
+          font-weight: 300;
+          letter-spacing: 0.3px;
           span {
           }
           &:hover, &:focus {
@@ -40,6 +47,10 @@
           .fa-search {
             color: @icon-color-search;
             .font-size(16);
+          }
+          .fa-angle-down {
+            color: #FF3D08;
+            margin-left: 4px;
           }
         }
         &.open, &.active {
@@ -57,10 +68,11 @@
           &.mega-nav {
             padding: 30px;
             h5 {
-              color: @text-color-dropdown-title;
-              .font-size(14);
+              color: #c7c7c7;
+              font-size: 0.966667rem;
               margin-bottom: 20px;
               font-weight: 400;
+              letter-spacing: 2px;
             }
             ul {
               li {
@@ -119,10 +131,13 @@
     }
     .navbar-brand-title {
       &:extend(.title);
-      color: @text-color-brand-title;
-      font-size: 14px;
       display: inline-block;
       margin: 30px 0;
+      font-family: Amiri;
+      font-size: 16px;
+      color: #B8B8B8;
+      line-height: 20px;
+      letter-spacing: 0.3px;
     }
   }
 }
