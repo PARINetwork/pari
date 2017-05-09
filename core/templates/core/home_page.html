@@ -10,6 +10,7 @@
 
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/home/home-page.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/home-page-face-tile.less">
 {% endblock %}
 
 {% block extra_js %}
@@ -369,32 +370,7 @@
                 </div>
             </div>
         </div>
-        <div class="faces-tile-1" onclick="location.href='{% url "face-list" %}'" style="cursor:pointer">
-            <img class="img-responsive" src="{{ STATIC_URL }}img/faces-tile-1.jpg" alt="sample content" >
-            <div class="container">
-                <div class="faces-container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h4 class="subtitle-primary">FACES from across India</h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="title-light faces-overlay-text">PARI records the facial diversity of the people of India</div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div>
-                                <button class="btn" onclick="location.href='{% url "face-list" %}'">View all FACES
-                                </button>
-                            </div>
-                            <p class="text"><a
-                                    href="{% url "static_page" slug="contribute-to-faces" %}"><u>{% trans "Contribute" %}</u></a>
-                                to this database</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% include "../../core/templates/includes/home_page_face_tile.html" %}
         <div class="article-grid home-article-grid-2">
             <div class="container">
                 <div class="row">

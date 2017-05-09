@@ -2,6 +2,7 @@
 {% load i18n wagtailcore_tags wagtailimages_tags %}
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/gallery/gallery.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/home-page-face-tile.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}category/css/magnific-popup.css">
 {% endblock %}
 
@@ -102,22 +103,6 @@
             {% include "includes/gallery_home_section.html" with section_title="Stories told in moving pictures" icon="fa-youtube-play" section_context=video link_text="View this video" all_links_text="View all videos"  all_links_url="gallery-detail" all_links_slug="videozone" %}
             {% include "includes/gallery_home_section.html" with section_title="Through many different lenses" icon="fa-picture-o" section_context=photo_album link_text="View this Photo Album" all_links_text="View all Photo Albums" all_links_url="other-album-list" %}
                     </div>
-            <div class="row">
-                <div class="col-lg-12 faces-tile">
-                    <div class="face-tile-info">
-                        <div class="top-link">
-{#                            <a href="{% url "other-album-list" %}" class="name-primary-bold">Photo Albums</a>#}
-                        </div>
-                        <h2>The facial diversity of India in one place</h2>
-                        <div class="bottom-link">
-                            <a href="{% url "face-list" %}" class="">
-                                <span>View all faces</span>
-                                <i class="fa fa-angle-right element-nav" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        {% include "../../core/templates/includes/home_page_face_tile.html" %}
     </div>
 {% endblock %}
