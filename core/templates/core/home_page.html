@@ -8,6 +8,24 @@
     <li class="active">{% trans "Home" %}</li>
 {% endblock %}
 
+{% block opengraph_block %}
+
+<meta property="og:title" content="People's Archive of Rural India">
+<meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}">
+<meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ STATIC_URL }}img/default_featured_image.png">
+<meta property="og:type" content="HomePage">
+<meta property="og:description" content="The Everyday Lives Of Everyday People #RuralIndiaOnline">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
+<meta name="twitter:title" content="People's Archive of Rural India" >
+<meta name="twitter:description" content="The Everyday Lives Of Everyday People #RuralIndiaOnline" >
+<meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ STATIC_URL }}img/default_featured_image.png" >
+<meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ request.path }}" >
+
+{% endblock %}
+
+
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/home/home-page.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/home-page-face-tile.less">
