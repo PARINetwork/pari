@@ -5,7 +5,11 @@ $(function() {
         var ss = [];
         for (var ii=0; ii < search.length; ii++) {
             if (search[ii].length > 0 && search[ii].search(/lang\=/gi) < 0) {
-                ss.push(search[ii]);
+                if (search[ii].indexOf("page") !== -1) {
+                    ss.push("page=1");
+                } else {
+                    ss.push(search[ii]);
+                }
             }
         }
         if ($this.val()) {
