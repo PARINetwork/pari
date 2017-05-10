@@ -64,7 +64,6 @@
             <div class="photo-album">
                 <header class="header clear-fix">
                     <div class="left left-icons">
-                        <a {% endverbatim %}{% if album_type == 'talking_album' %} href="{% url "talking-album-list" %}" {% else %} href="{% url "other-album-list" %}"{% endif %}{% verbatim %}><i class="fa fa-angle-left back-to-albums" ></i></a>
                         <i id="playPause" href="#" class="fa fa-pause"></i>
                         <i id="showThumbnail" href="#" class="fa fa-th-large"></i>
 
@@ -98,6 +97,7 @@
                     <div class="right right-icons">
                         <a href="#" class="fa fa-external-link open-in-new-tab" target="_blank"></a>
                         <i id="showSlideInfo" href="#" class="fa fa-info-circle show-slide-info"></i>
+                        <a {% endverbatim %}{% if album_type == 'talking_album' %} href="{% url "talking-album-list" %}" {% else %} href="{% url "other-album-list" %}"{% endif %}{% verbatim %}><i class="fa fa-close back-to-albums" ></i></a>
                     </div>
                     <div class="carousel-index"></div>
                 </header>
