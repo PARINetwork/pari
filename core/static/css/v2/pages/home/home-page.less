@@ -127,11 +127,12 @@
     .carousel-buttons-wrapper {
       position: relative;
       max-width: 380px;
+      text-align: center;
 
       .carousel-control-container {
         border: 1px solid @lighter-grey;
         height: 38px;
-        width: 90px;
+        display: inline-block;
         margin: auto;
 
         .carousel-control {
@@ -558,56 +559,6 @@
   }
 }
 
-.faces-tile-1 {
-  img {
-    width: 100%
-  }
-  margin-bottom: 30px;
-  position: relative;
-  .faces-container {
-    position: absolute;
-    top: 0;
-    padding-top: 40px;
-    .row {
-      margin-bottom: 80px;
-    }
-    h2 {
-      color: @text-light;
-      border-right: 1px solid @border-light;
-      padding: 20px 0px;
-    }
-    button {
-      color: @text-light;
-      background: @bg-lighter-transparent;
-      border: 1px solid @border-light;
-      margin: 40px 0px 0px;
-    }
-    p {
-      color: @grey;
-      margin: 7px 0;
-      a {
-        color: @grey;
-        &:hover {
-          color: @primary-color;
-        }
-      }
-    }
-    .faces-overlay-text{
-      font-size: 30px;
-      border-right: solid 1px;
-      margin-top: 20px;
-      margin-bottom: 10px;
-      display: block;
-      /* font-weight: 700; */
-      /* align-items: center; */
-      text-align: right;
-      color: @text-light;
-      padding: 20px 20px;
-      line-height: 1.1;
-    }
-  }
-}
-
 @media (max-width: @screen-xs-max) {
   .navbar-header {
     position: relative;
@@ -673,46 +624,6 @@
     }
   }
 
-  .faces-tile-1 {
-    margin-bottom: 0px;
-    .faces-container {
-      position: static;
-      width: 100%;
-      padding: 10px;
-      .row {
-        margin-bottom: 0px;
-      }
-      h2 {
-        color: @text-dark;
-        border-right: none;
-        padding: 0;
-        margin: 0;
-      }
-      .faces-overlay-text {
-        color: @text-dark;
-        border-right: none;
-        padding: 0;
-        margin: 0;
-        text-align: left;
-        //line-height: 1;
-      }
-      button {
-        color: @text-dark;
-        background: @bg-lighter-transparent;
-        border: 1px solid @border-dark;
-        margin: 20px 0;
-      }
-      p {
-        color: @grey;
-        a {
-          color: @grey;
-          &:hover {
-            color: @primary-color;
-          }
-        }
-      }
-    }
-  }
 
   #mainnav .navbar-header .navbar-brand-title {
     display: block;
@@ -770,104 +681,6 @@
     font-family: 'Amiri',serif;
     font-weight: 700;
     margin-bottom: 20px;
-  }
-}
-
-@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
-  .faces-tile-1 {
-    margin-bottom: 0px;
-    .faces-container {
-      position: static;
-      width: 91%;
-      padding: 0;
-
-      .row {
-        margin-bottom: 0px;
-      }
-      h2 {
-        color: @text-dark;
-        border-right: none;
-        padding: 0;
-        margin: 0;
-      }
-      .faces-overlay-text {
-        color: @text-dark;
-        border-right: none;
-        padding: 0;
-        margin: 0;
-        text-align: left;
-        //line-height: 1;
-      }
-      button {
-        color: @text-dark;
-        background: @bg-lighter-transparent;
-        border: 1px solid @border-dark;
-        margin: 20px 0;
-      }
-      p {
-        color: @grey;
-        a {
-          color: @grey;
-          &:hover {
-            color: @primary-color;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
-  .faces-tile-1 {
-    .faces-container {
-      width: 100%;
-      padding: 40;
-      .row {
-        margin-bottom: 20px;
-      }
-      h2 {
-        color: @text-light;
-        border-right: none;
-        padding: 0;
-        margin: 0;
-      }
-      .faces-overlay-text {
-        color: @text-light;
-        border-right: none;
-        padding: 0;
-        margin: 0;
-        text-align: left;
-        //line-height: 1;
-      }
-      button {
-        color: @text-light;
-        background: @bg-lighter-transparent;
-        border: 1px solid @border-light;
-        margin: 20px 0;
-      }
-      p {
-        color: @grey;
-        a {
-          color: @grey;
-          &:hover {
-            color: @primary-color;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: @screen-lg-min) {
-  .faces-tile-1 {
-    .faces-container {
-      h2 {
-        color: @text-light;
-        border-right: 1px solid @border-light;
-        padding: 20px 20px;
-        text-align: right;
-      }
-    }
   }
 }
 
