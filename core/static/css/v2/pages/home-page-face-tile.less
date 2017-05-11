@@ -44,7 +44,7 @@
       /* font-weight: 700; */
       /* align-items: center; */
       text-align: right;
-      color: #FFF;
+      color: @text-light;
       padding: 20px 20px;
       line-height: 1.1;
     }
@@ -66,6 +66,13 @@
         border-right: none;
         padding: 0;
         margin: 0;
+      }
+      .faces-overlay-text {
+        color: @text-dark;
+        border-right: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
       }
       button {
         color: @text-dark;
@@ -104,6 +111,13 @@
         padding: 0;
         margin: 0;
       }
+      .faces-overlay-text{
+        color: @text-dark;
+        border-right: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+      }
       button {
         color: @text-dark;
         background: @bg-lighter-transparent;
@@ -137,6 +151,13 @@
         padding: 0;
         margin: 0;
       }
+      .faces-overlay-text{
+        color: @text-light;
+        border-right: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+      }
       button {
         color: @text-light;
         background: @bg-lighter-transparent;
@@ -164,6 +185,12 @@
         border-right: 1px solid @border-light;
         padding: 20px 20px;
         text-align: right;
+      }
+      .faces-overlay-text{
+        color: @text-light;
+        border-right: 1px solid @border-light;
+        padding: 20px 20px;
+        text-align: left;
       }
     }
   }
