@@ -15,10 +15,7 @@
             </a>
             <p> {{ section_context.section_model.description|richtext }}</p>
             <div class="name-primary">
-                {% for photographer in section_context.photographers %}
-                    <a href="{% url "author-detail" photographer.slug %}"><span>{{ photographer.name }}</span></a>
-                    {% if not forloop.last %}, {% endif %}
-                {% endfor %}
+                {% include "../../core/templates/includes/author-links.html" with authors=section_context.photographers author_link_class="" author_name_class="" %}
             </div>
 
             <a href="{{ section_context.section_model.get_absolute_url }}">

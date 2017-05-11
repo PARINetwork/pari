@@ -102,11 +102,11 @@ var Album = {
             var isAndroid = navigator.userAgent.match(/Android/i);
             if(isTalkingAlbum) {
                 $(".play-pause").removeClass("fa-play fa-pause selected");
+                Album.playAudio();
                 if(isAndroid) {
-                    Album.pauseAudio();
+                    Album.pauseAudio(); // To escape the exception due to chrome android
                     $(".play-pause").addClass("fa-play selected");
                 } else {
-                    Album.playAudio();
                     $(".play-pause").addClass("fa-pause");
                 }
             }

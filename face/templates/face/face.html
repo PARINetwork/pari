@@ -13,9 +13,9 @@
 {% block opengraph_block %}
 
 <meta property="og:title" content="{{ face.title }}">
-<meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ face.get_absolute_url }}">
+<meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ request.path }}">
 <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{% if face.featured_image %}{{ face.featured_image.file.url }}{% else %}{{ STATIC_URL }}img/default_featured_image.png{% endif %}">
-<meta property="og:type" content="article">
+<meta property="og:type" content="face">
 <meta property="og:description" content="FACIAL DIVERSITY FROM EVERY INDIAN DISTRICT #RuralIndiaOnline">
 
 <meta name="twitter:card" content="summary_large_image">
@@ -23,7 +23,7 @@
 <meta name="twitter:title" content="{{ face.title }}" >
 <meta name="twitter:description" content="View the face on {{ SITE_TITLE }}" >
 <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{% if face.featured_image %}{{ face.featured_image.file.url }}{% else %}{{ STATIC_URL }}img/default_featured_image.png{% endif %}" >
-<meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ face.get_absolute_url }}" >
+<meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ request.path }}" >
 
 {% endblock %}
 
@@ -75,7 +75,7 @@
             <span class="face-upload">
                 <a class="link-light" href="{% url "static_page" slug="contribute-to-faces" %}">
                     <i class="fa fa-upload" aria-hidden="true"></i>
-                    <span class="link-text" itemprop="name">{% trans "Upload face" %}</span>
+                    <span class="link-text" itemprop="name">{% trans "Upload a FACE" %}</span>
                 </a>
             </span>
             {% with request.build_absolute_uri as url %}

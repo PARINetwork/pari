@@ -6,7 +6,7 @@
     {% endif %}
 
     {% for page in results.paginator.page_range %}
-    <li class="{% if page == results.number %}active{% endif %}" data-page="{{ page }}"><a href="?page={{ page }}{% if query %}&q={{ query }}{% endif %}">{{ page }}</a></li>
+    <li class="{% if page == results.number %}active{% endif %}" data-page="{{ page }}"><a href="?page={{ page }}{% if request.GET.lang %}&lang={{ request.GET.lang }}{% endif %}{% if query %}&q={{ query }}{% endif %}">{{ page }}</a></li>
     {% endfor %}
 
     {% if results.has_next %}

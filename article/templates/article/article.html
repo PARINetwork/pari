@@ -92,19 +92,13 @@
              <h1><span itemprop="headline" id="article-gallery-title">{{ article.title }}</span></h1>
              <p>{{ article.strap }}</p>
              <ul class="clearfix">
-                 <li>{% for author in article.authors.all %}
-                        {% if not forloop.first %}
-                            {% if not forloop.last %},{% else %}{% trans "and" %}{% endif %}
-                        {% endif %}
-                        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-                 <a itemprop="url" href="{% url "author-detail" author.slug %}">
-      <span itemprop="name">{{ author.name }}</span>
-  </a>
-  <span class="hidden" itemprop="homeLocation" itemtype="http://schema.org/Place">
-      <span itemprop="address">{{ author.twitter_username }}</span>
-  </span>
-</span>
-                    {% endfor %}</li><li >
+                 <li>
+                     {% include "../../core/templates/includes/author-links.html" with authors=article.authors.all author_link_class="" author_name_class="" %}
+                     <span class="hidden" itemprop="homeLocation" itemtype="http://schema.org/Place">
+                        <span itemprop="address">{{ author.twitter_username }}</span>
+                    </span>
+                 </li>
+                 <li >
 {#                    {% if translations and translations|length > 1 %}#}
                     <span class="filter-value">
                         <span class="banner-label">Language</span>
