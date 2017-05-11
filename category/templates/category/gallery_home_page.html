@@ -75,10 +75,7 @@
                             <div>from</div>
                             <h3>{{ page.photo_title }}</h3>
                             <p>
-                                {% for photographer in page.photo_of_the_week.photographers.all %}
-                                    <a class="photographer" href="{% url "author-detail" photographer.slug %}"><span>{{ photographer.name }}</span></a>
-                                    {% if not forloop.last %}, {% endif %}
-                                {% endfor %}
+                                {% include "../../core/templates/includes/author-links.html" with authors=page.photo_of_the_week.photographers.all author_link_class="photographer" author_name_class="font-l"  %}
                             </p>
                             {% if page.photo_link %}
                                 <div>

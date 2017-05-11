@@ -6,7 +6,7 @@
     </h3>
     <div class="margin-top-20px">
         {% if article.authors.count %}
-        {% for author in article.authors.all %}<a class="link-dark-primary font-l" href="{% url "author-detail" slug=author.slug %}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
+            {% include "../../core/templates/includes/author-links.html" with authors=article.authors.all author_link_class="" author_name_class="link-dark-primary font-l"  %}
         {% endif %}
     </div>
     <div class="margin-top-20px">

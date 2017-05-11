@@ -101,10 +101,7 @@
                                                 &nbsp;{% endif %}</p>
                                         </div>
                                         <div class="name-primary">
-                                            {% for author in item.specific.authors.all %}
-                                                <a href="{% url "author-detail" author.slug %}"><span>{{ author.name }}</span></a>
-                                                {% if not forloop.last %}, {% endif %}
-                                            {% endfor %}
+                                            {% include "../../core/templates/includes/author-links.html" with authors=item.specific.authors.all author_link_class="author-link" author_name_class="author-name" %}
                                         </div>
                                         <div class="date">
                                             {% for location in item.specific.locations.all %}
@@ -187,10 +184,7 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     <a href="{{ item.url }}" class="infocus-title-primary"><div class="infocus-item-title">{{ item.title }}</div></a>
                                     <div class="name-primary">
-                                        {% for author in item.specific.authors.all %}
-                                            <a href="{% url "author-detail" author.slug %}"><span class="author-name">{{ author.name }}</span>
-                                            </a>
-                                        {% endfor %}
+                                        {% include "../../core/templates/includes/author-links.html" with authors=item.specific.authors.all  author_link_class="author-link" author_name_class="author-name" %}
                                     </div>
                                     <div class="date">
                                         {% if item.specific.locations.all|length >= 1 %}
@@ -234,11 +228,7 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     <a href="{{ item.url }}" class="infocus-title-primary"><div class="infocus-item-title">{{ item.title }}</div></a>
                                     <div class="name-primary">
-                                        {% for author in item.specific.authors.all %}
-                                            <a href="{% url "author-detail" author.slug %}"><span class="author-name">{{ author.name }}</span>
-                                            </a>
-                                        {% endfor %}
-
+                                        {% include "../../core/templates/includes/author-links.html" with authors=item.specific.authors.all  author_link_class="author-link" author_name_class="author-name" %}
                                     </div>
                                     <div class="date">
                                         {% if item.specific.locations.all|length >= 1 %}
@@ -410,10 +400,7 @@
                                     <a class="more-story-primary-title" href="{{ item.section_model.get_absolute_url }}">
                                         <h4 class="item-section-title">{{ item.section_model.title }}</h4></a>
                                     <div class="name-primary">
-                                        {% for photographer in item.photographers %}
-                                            <a href="{% url "author-detail" photographer.slug %}"><span class="author-name">{{ photographer.name }}</span></a>
-                                            {% if not forloop.last %}, {% endif %}
-                                        {% endfor %}
+                                        {% include "../../core/templates/includes/author-links.html" with authors=item.photographers  author_link_class="author-link" author_name_class="author-name" %}
                                     </div>
                                     <div class="view-article">
                                         <a href="{% url "talking-album-list" %}">
@@ -439,10 +426,7 @@
                                     <a class="more-story-primary-title" href="{{ item.section_model.get_absolute_url }}">
                                         <h4 class="item-section-title">{{ item.section_model.title }}</h4></a>
                                     <div class="name-primary">
-                                        {% for photographer in item.photographers %}
-                                            <a href="{% url "author-detail" photographer.slug %}"><span class="author-name">{{ photographer.name }}</span></a>
-                                            {% if not forloop.last %}, {% endif %}
-                                        {% endfor %}
+                                        {% include "../../core/templates/includes/author-links.html" with authors=item.photographers author_link_class="author-link" author_name_class="author-name" %}
                                     </div>
                                     <div class="view-article">
                                         <a href="{% url "gallery-detail" slug="videozone" %}">
@@ -469,10 +453,7 @@
                                     <a  class="more-story-primary-title" href="{{ item.section_model.get_absolute_url }}">
                                         <h4 class="item-section-title">{{ item.section_model.title }}</h4></a>
                                     <div class="name-primary">
-                                        {% for photographer in item.photographers %}
-                                            <a  href="{% url "author-detail" photographer.slug %}"><span class="author-name">{{ photographer.name }}</span></a>
-                                            {% if not forloop.last %}, {% endif %}
-                                        {% endfor %}
+                                        {% include "../../core/templates/includes/author-links.html" with authors=item.photographers author_link_class="author-link" author_name_class="author-name" %}
                                     </div>
                                     <div class="view-article">
                                         <a href="{% url "other-album-list" %}">
