@@ -204,7 +204,7 @@
                                         </a>
                                     </div>
                                     {% if translations_for_infocus_article1|length > 1 %}
-                                        <div class="dropdown">
+                                        <div class="dropdown custom-dropdown">
                                             <button class="dropdown-toggle" type="button" id="dropdownMenu1"
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                                 {{ translations_for_infocus_article1 | length }} languages
@@ -252,7 +252,7 @@
                                         </a>
                                     </div>
                                     {% if translations_for_infocus_article2|length > 1 %}
-                                        <div class="dropdown">
+                                        <div class="dropdown custom-dropdown">
                                             <button class="dropdown-toggle" type="button" id="dropdownMenu1"
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                                 {{ translations_for_infocus_article2 | length }} languages
@@ -286,7 +286,9 @@
                                  alt="{{ categories.0.name }}" style="width:370px;margin:0 auto;"
                                  class="img-responsive lazyload">
                             <div class="grid-container">
-                                <div class="category-image-overlay-text">{{ categories.0.name }}</div>
+                                <div class="category-name">
+                                  <h3 class="category-image-overlay-text">{{ categories.0.name }}</h3>
+                                </div>
                                 <div class="title-grid">
                                     <div class="border-link"></div>
                                     <div>{{ categories.0.description }}</div>
@@ -317,7 +319,9 @@
                                              alt="{{ categories.1.name }}" style="width:370px;margin:0 auto;"
                                              class="img-responsive lazyload">
                                         <div class="grid-container">
-                                            <div class="category-image-overlay-text">{{ categories.1.name }}</div>
+                                          <div class="category-name">
+                                            <h3>{{ categories.1.name }}</h3>
+                                          </div>
                                             <div class="title-grid">
                                                 <div class="border-link"></div>
                                                 <div>{{ categories.1.description }}</div>
@@ -339,7 +343,9 @@
                                          alt="{{ categories.2.name }}" style="width:370px;margin:0 auto;"
                                          class="img-responsive lazyload">
                                     <div class="grid-container">
-                                        <div class="category-image-overlay-text">{{ categories.2.name }}</div>
+                                      <div class="category-name">
+                                        <h3>{{ categories.2.name }}</h3>
+                                      </div>
                                         <div class="title-grid">
                                             <div class="border-link"></div>
                                             <div>{{ categories.2.description }}</div>
@@ -361,7 +367,11 @@
                                          alt="{{ categories.3.name }}" style="width:370px;margin:0 auto;"
                                          class="img-responsive lazyload">
                                     <div class="grid-container">
-                                        <div class="category-image-overlay-text">{{ categories.3.name }}</div>
+                                      <div class="category-name">
+                                        <h3>{{ categories.3.name }}</h3>
+                                      </div>
+
+
                                         <div class="title-grid">
                                             <div class="border-link"></div>
                                             <div>{{ categories.3.description }}</div>
