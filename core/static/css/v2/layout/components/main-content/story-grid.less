@@ -2,22 +2,29 @@
 @import "../../responsive";
 
 
-.story-grid{
-  h3 {
+.story-grid {
+  h3, .category-image-overlay-text {
     color: white;
+    margin-top: 40px;
+    margin-bottom: 5px;
+    letter-spacing: -0.5px;
+    text-shadow: 0px 0px 5px rgba(0,0,0,0.6);
   }
 
   .categories-title {
-    h2{
-      color: @grey;
+    margin-bottom: 33px;
+    h1, h2 {
+      padding-top: 50px;
+      margin-bottom: 0px;
       font-weight: 300;
-    }
-    h1{
-      color: @grey;
-      font-weight: 300;
+      text-align: center;
+      font-family: 'Amiri', serif;
+      font-weight: 700;
+      color: #cccccc;
+      line-height: 48px;
     }
   }
-  .grid{
+  .grid {
     margin-bottom: 0px;
     position: relative;
     padding: 6px;
@@ -26,13 +33,6 @@
         width: 95%;
       }
     }
-    //&.share{
-    //  position: relative;
-    //  .align-bottom{
-    //    position: absolute;
-    //    bottom: 0;
-    //  }
-    //}
 
     .grid-image {
       width:370px;
@@ -40,42 +40,24 @@
       border-radius: 5px;
     }
 
-    .grid-container{
+    .grid-container {
       position: absolute;
-      height: 100%;
+      height: 50%;
       color: white;
       text-align: center;
-      width: 90%;
-      top: 0;
+      bottom: 6px;
+      right: 6px;
+      left: 6px;
+      padding: 0px 10px;
+      border-radius: 6px;
+      background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+      background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.8) 100%);
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.8) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#cc000000',GradientType=0 );
 
-      h3{
-        position: absolute;
-        top: 44%;
-        margin: 0;
-        width: 100%;
-      }
-
-      .category-name {
-        h3{
-          position: absolute;
-          top:auto;
-          bottom: 22%;
-          width: 100%;
-          font-weight: 400;
-        }
-      }
-      .title-grid{
-        position: absolute;
-        bottom: 0;
-        width: 100%;
+      .title-grid {
+        letter-spacing: 0.8px;
         font-weight: 300;
-        padding: 20px 0;
-        .border-link{
-          border-top: 2px solid @light-grey;
-          opacity: 0.3;
-          padding-bottom: 10px;
-          margin: 0 10%;
-        }
       }
 
       @media (max-width: 400px) {
@@ -91,6 +73,14 @@
            }
          }
       }
+
+
     }
+  }
+}
+
+@media (max-width: 1200px) {
+  .story-grid .grid h3 {
+    margin-top: 15px;
   }
 }
