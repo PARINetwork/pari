@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n wagtailimages_tags wagtailcore_tags %}
+{% load core_filters %}
 
 {% block meta_title %}{{ page.title }}{% endblock %}
 {% block meta_description %}{{ page.strap.0.value|striptags }}{% endblock %}
@@ -101,10 +102,10 @@
                                                 &nbsp;{% endif %}</p>
                                         </div>
                                         <div class="name-primary">
-                                            {% include "../../core/templates/includes/author-links.html" with authors=item.specific.authors.all author_link_class="author-link" author_name_class="author-name" %}
+                                            {% include "../../core/templates/includes/author-links.html" with authors=item.specific|get_photographers author_link_class="author-link" author_name_class="author-name" %}
                                         </div>
                                         <div class="date">
-                                            {% for location in item.specific.locations.all %}
+                                            {% for location in item.specific|get_locations %}
                                                 <a href="{% url "location-detail" location.slug %}">
                                                     {{ location.name }}
                                                 </a>

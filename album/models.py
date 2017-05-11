@@ -42,6 +42,20 @@ class Album(Page):
         index.SearchField('get_photographers_index'),
     )
 
+    @property
+    def locations(self):
+        location_objects = []
+        for slide in self.slides.filter(image__isnull=False):
+            location_objects.extend(slide.image.locations.all())
+        return set(location_objects)
+
+    @property
+    def photographers(self):
+        photographer_objects = []
+        for slide in self.slides.filter(image__isnull=False):
+            photographer_objects.extend(slide.image.photographers.all())
+        return set(photographer_objects)
+
     def get_locations_index(self):
         locations_index = map(lambda slide: slide.image.get_locations_index(), self.slides.filter(image__isnull=False))
         return " ".join(locations_index)

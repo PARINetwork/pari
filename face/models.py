@@ -48,6 +48,14 @@ class Face(Page):
     def featured_image(self):
         return self.image
 
+    @property
+    def locations(self):
+        return [self.location]
+
+    @property
+    def photographers(self):
+        return self.image.photographers.all()
+
     search_fields = Page.search_fields + (
         index.FilterField('image'),
         index.SearchField('additional_info', partial_match=True, boost=2),
