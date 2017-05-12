@@ -2,6 +2,34 @@
 @import "../../layout/mixins";
 @import "../../layout/responsive";
 
+.carousel-fade {
+  .carousel-inner {
+      .item {
+          transition-property: opacity;
+      }
+      .item,
+      .active.left,
+      .active.right {
+          opacity: 0;
+      }
+      .active,
+      .next.left,
+      .prev.right {
+          opacity: 1;
+      }
+      .next,
+      .prev,
+      .active.left,
+      .active.right {
+          left: 0;
+          transform: translate3d(0, 0, 0);
+      }
+  }
+  .carousel-control {
+      z-index: 2;
+  }
+}
+
 #main_content {
   margin-top: 0;
   min-height: 0;
@@ -24,9 +52,9 @@
     img {
      width: 100%;
     }
-    transition-duration: 1.5s;
-    transition-property: transform;
-    transition-timing-function: linear;
+    // transition-duration: 1.5s;
+    // transition-property: opacity;
+    // transition-timing-function: linear;
 
     & > .floating-container {
         position: absolute;
@@ -84,7 +112,7 @@
         padding: 40px 0;
         margin: 0;
         text-align: center;
-        line-height: 56px;
+        line-height: 60px;
         letter-spacing: -1.9px;
       }
 
