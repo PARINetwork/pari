@@ -1,14 +1,4 @@
 <div class="authors">
-    {% for author in authors %}
-        {% if forloop.first %}
-        {% else %}
-            {% if forloop.last %}
-                <span class="{{ author_name_class }}">&nbsp;and&nbsp;</span>
-            {% else %}
-                <span class="{{ author_name_class }}">,&nbsp;</span>
-            {% endif %}
-        {% endif %}
-        <a class="{{ author_link_class }}" href="{% url "author-detail" author.slug %}"><span
-                class="{{ author_name_class }}">{{ author.name }}</span></a>
-    {% endfor %}
+{#To remove unwanted space between names and comma, we have written the logic in a single line #}
+    {% for author in authors %}{% if forloop.first %}{% else %}{% if forloop.last %}<span class="{{ author_name_class }}">&nbsp;and&nbsp;</span>{% else %}<span class="{{ author_name_class }}">,&nbsp;</span>{% endif %}{% endif %}<a class="{{ author_link_class }}" href="{% url "author-detail" author.slug %}"><span class="{{ author_name_class }}">{{ author.name }}</span></a>{% endfor %}
 </div>

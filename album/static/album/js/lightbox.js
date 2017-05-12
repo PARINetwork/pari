@@ -29,7 +29,7 @@ var Album = {
 
             if (index === 0) {
                 var carouselInfoBox = $.templates("#carouselStartingIntro");
-                slide.photographerNames = slide.slide_photographer.map(function(i) { return i.trim()}).join(", ");
+                slide.photographerNames = constructPhotographerNames(slide.slide_photographer);
                 var carouselInfoBoxHtml = carouselInfoBox.render(slide);
                 $(".carousel-items .item:first-child .wrapper").append(carouselInfoBoxHtml);
                 if ($("div#type-identifier").text() == "talking_album") {
@@ -214,6 +214,17 @@ function positionFloatingText() {
     });
 }
 
+function constructPhotographerNames(photographers) {
+    if(photographers.length==1) {
+        photographerByline = photographers[0];
+    } else {
+        var commaSeparatedNames =[photographers.slice(0,-1).join(', ')];
+        commaSeparatedNames.push(photographers.slice(-1)[0]);
+        photographerByline = commaSeparatedNames.join(" and ");
+    }
+    return photographerByline;
+}
+
 function handleCarouselEvents(carouselData) {
     var totalItems = $('.carousel-items .item').length,
         currentIndex = 0,
@@ -343,7 +354,7 @@ function handleCarouselEvents(carouselData) {
         if (currentIndex <= carouselData.slides.length) {
             $(".slide-info .description").html(data.description);
             $(".slide-info .album-title").text(data.album_title);
-            $(".slide-info .slide-photographer").text(data.slide_photographer.map(function(i) { return i.trim()}).join(", "));
+            $(".slide-info .slide-photographer").text(constructPhotographerNames(data.slide_photographer));
             $(".slide-info .image-captured-date").text(data.image_captured_date);
             $(".slide-info .slide-location").text(data.slide_location);
             $(".open-in-new-tab").attr("href", data.src);
