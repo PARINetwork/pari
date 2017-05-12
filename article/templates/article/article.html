@@ -99,23 +99,35 @@
                     </span>
                  </li>
                  <li >
-{#                    {% if translations and translations|length > 1 %}#}
-                    <span class="filter-value">
-                        <span class="banner-label">Language</span>
-                        <i class="fa fa-angle-down pull-right" aria-hidden="true"></i>
-                      <select class="select-no-style pull-right" name="lang" onchange="location = this.value;">
-                      {% for translation in translations %}
-                          <option class = "banner-language-list"{% if translation.get_absolute_url == request.get_full_path %} selected="selected"{% endif %} value="{{ translation.get_absolute_url }}" >
-                          <a >{{ translation.get_language_display }}</a>
-{#                               {% blocktrans%}{{ translation.get_language_display }}{% endblocktrans %}#}
-                          </option>
-                      {% endfor %}
-                      </select>
-                    </span>
-{#                    {% endif %}#}
+                        <span class="filter-value language-box">
+                            <span class="banner-label">Language</span>
+                          <div class="dropdown custom-dropdown" id="language_dd">
+                              <button class="dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                  {% for lang in LANGUAGES %}
+                                  {% if lang.0 == LANGUAGE_CODE %}
+                                  <span class="selected">{{ lang.1 }}</span>
+                                      {% endif %}
+                              {% endfor %}
+                                  <span class="fa fa-angle-down pull-right" aria-hidden="true"></span>
+                              </button>
+                              <ul class="dropdown-menu banner-language-list" name="lang">
+                                  {% for translation in translations %}
+                                      <li value="{{ translation.get_absolute_url }}">{{ translation.get_language_display }}</li>
+                                  {% endfor %}
+                              </ul>
+                          </div>
+                          <script type="text/javascript">
+                            document.addEventListener("DOMContentLoaded", function() {
+                              $("#language_dd ul li").on("click", function() {
+                                $("#language_dd button .selected").text($(this).text());
+                                window.location.href = $(this).attr("value");
+                              });
+                            });
+                          </script>
 
-
-                            </li><li>
+                      </span>
+                 </li>
+                 <li>
                                 <a href="#">
                                     <i class="fa fa-photo"></i>
                                     <span class="preview">Read the story in pictures</span>
