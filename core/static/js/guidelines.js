@@ -1,10 +1,8 @@
 $(function () {
-    if (!window.location.hash) {
-        window.location.hash = '#section-1-1';
+    if (window.location.hash) {
+        $("a[href='" + window.location.hash + "']").addClass("current-link");
+        scrollToElement(window.location.hash);
     }
-    $("a[href='" + window.location.hash + "']").addClass("current-link");
-    scrollToElement(window.location.hash);
-
 
     $("a.index-link").on('click', function () {
         $("a.index-link").each(function () {
@@ -20,11 +18,20 @@ $(function () {
     });
 
     function scrollToElement(hash) {
-        $("html, body").animate({
-            scrollTop: 0
-        });
+
         var parent = $('.guidelines-page .content'),
             childToScroll = $(hash);
-        parent.scrollTop(parent.scrollTop() + childToScroll.position().top);
+
+        if ($(window).width() > 992) {
+            $("html, body").animate({
+                scrollTop: 0
+            });
+            parent.scrollTop(parent.scrollTop() - childToScroll.position().top - $("#header").height());
+        }
+        else {
+            $("html, body").animate({
+                scrollTop: childToScroll.offset().top - $("#header").height()
+            });
+        }
     }
 });
