@@ -198,6 +198,38 @@
 
 #myCarousel-2 {
   margin-bottom: 60px;
+
+  .carousel-inner {
+    .item {
+
+      & > div > div:last-child {
+        & > a {
+          display: block;
+          position: relative;
+          max-width: 770px;
+          height: 520px;
+          overflow: hidden;
+
+          img {
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 100%;
+            display: block;
+            vertical-align: middle;
+
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+          }
+        }
+      }
+    }
+  }
+
   .carousel-title {
     h4 {
       color: @primary-color;
@@ -596,6 +628,19 @@
 
   #myCarousel-2 {
     margin-bottom: 20px;
+
+      .carousel-inner {
+        .item {
+          & > div > div:last-child {
+            & > a {
+              height: 320px;
+              img {
+                margin: 0;
+              }
+            }
+          }
+        }
+      }
   }
 
   #myCarousel-1 {
