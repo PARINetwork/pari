@@ -1,4 +1,5 @@
 from django import template
+from bs4 import BeautifulSoup
 
 register = template.Library()
 
@@ -35,3 +36,12 @@ def get_photographers(obj):
     if type_ == 'album' or type_ == 'face':
         return obj.photographers
     return []
+
+@register.filter
+def get_strap(obj):
+    type_ = obj.__class__.__name__.lower()
+    if type_ == 'article':
+        return obj.strap
+    if type_ == 'album':
+        return BeautifulSoup(obj.description).get_text()
+    return ''

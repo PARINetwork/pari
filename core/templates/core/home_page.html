@@ -98,7 +98,7 @@
                                     <div class="gallery-tile-info">
                                         <div class="latest-item-title">{{ item.title }}</div>
                                         <div class="desc-module line-clamp">
-                                            <p>{% if item.specific.strap %} {{ item.specific.strap }}{% else %}
+                                            <p>{% if item.specific|get_strap %} {{ item.specific|get_strap }}{% else %}
                                                 &nbsp;{% endif %}</p>
                                         </div>
                                         <div class="name-primary">
