@@ -100,7 +100,7 @@
                     <span class="selected"></span>
                     <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu" name="lang">
+                <ul class="dropdown-menu fix-height-dropdown fix-width-list-dropdown" name="lang">
                     {% for letter in "abcdefghijklmnopqrstuvwxyz" %}
                         <li {% ifequal alphabet letter %}selected='selected'{% endifequal %} value="{% url "face-detail" alphabet=letter %}">{{ letter|capfirst }}</li>
                     {% endfor %}

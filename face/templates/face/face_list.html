@@ -84,7 +84,7 @@
                       <span class="selected">{% trans "District" %}</span>
                       <span class="caret"></span>
                   </button>
-                  <ul class="dropdown-menu" name="lang">
+                  <ul class="dropdown-menu fix-height-dropdown fix-width-dropdown" name="lang">
                       {% for face in faces %}
                           <li value="{% url "face-detail" alphabet=face.location.district|lower|first %}">{{ face.district|lower|first|capfirst }}</li>
                       {% endfor %}
