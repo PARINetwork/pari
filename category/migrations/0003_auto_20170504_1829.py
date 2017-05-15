@@ -38,10 +38,15 @@ def update_categories(apps, schema_editor):
     for slug, value in category_update_dict.iteritems():
         name = value["name"]
         description = value["description"]
-        category = Category.objects.get(slug=slug)
-        category.name = name
-        category.description = description
-        category.save()
+        try:
+            category = Category.objects.get(slug=slug)
+        except Category.DoesNotExist:
+            category = None
+
+        if(category):
+            category.name = name
+            category.description = description
+            category.save()
 
 class Migration(migrations.Migration):
 

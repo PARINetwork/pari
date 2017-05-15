@@ -18,4 +18,5 @@ pari/gunicorn_conf.py
 pari_env/
 pari_sql_*.sql
 scripts/
+geckodriver.log
 

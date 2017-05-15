@@ -2,3 +2,4 @@
 
 factory_boy==2.8.1
 nplusone==0.7.3
+selenium==3.4.1
