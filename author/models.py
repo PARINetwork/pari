@@ -45,7 +45,14 @@ class Author(models.Model):
 
     def save(self, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.name)
+            copySlug = self.slug = slugify(self.name)[:50]
+            import itertools
+            for x in itertools.count(1):
+                if not Author.objects.filter(slug=self.slug).exists():
+                    break
+
+                self.slug = "%s%d" % (copySlug[:50 - len(str(x))], x)
+
         return super(Author, self).save(**kwargs)
 
     def get_absolute_url(self):
