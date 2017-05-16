@@ -1,5 +1,7 @@
 class Page(object):
-    def __init__(self, driver):
+
+    def __init__(self, driver, relative_url='/'):
+        self.base_url = "http://localhost:8000"+relative_url
         self.driver = driver
 
     @property
@@ -11,5 +13,5 @@ class Page(object):
         return self.driver.current_url
 
     def open(self):
-        self.driver.get(self.URL)
+        self.driver.get(self.base_url)
         return self
