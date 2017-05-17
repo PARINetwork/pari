@@ -5,7 +5,6 @@ from django.core.management import call_command
 class Test(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        call_command('loaddata', 'fixtures/author', verbosity=0)
         cls.driver = webdriver.Firefox()
 
     def load_page_if_not_loaded(self, page, page_lambda):
