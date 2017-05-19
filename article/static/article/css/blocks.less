@@ -5,3 +5,33 @@
     width: 100%;
   }
 }
+
+.two-column-image-block {
+  background: white;
+
+  .image-container {
+    .image {
+      position: relative;
+      background: black;
+      height: 380px;
+      img {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+
+        width: auto !important;
+        max-width: 100%;
+        height: auto;
+        max-height: 100%;
+        display: block;
+        vertical-align: middle;
+      }
+    }
+    .caption {
+      font-style: italic;
+    }
+  }
+}

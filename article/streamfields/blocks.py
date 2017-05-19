@@ -10,3 +10,13 @@ class FullWidthImageBlock(blocks.StructBlock):
         icon = 'image'
         template = 'article/blocks/full_width_image.html'
 
+
+class TwoColumnImageBlock(blocks.StructBlock):
+    image_left = ImageChooserBlock()
+    caption_left = blocks.CharBlock()
+    image_right = ImageChooserBlock()
+    caption_right = blocks.CharBlock()
+
+    class Meta:
+        icon = 'image'
+        template = 'article/blocks/two_column_image.html'
