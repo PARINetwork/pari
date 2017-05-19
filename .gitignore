@@ -16,7 +16,8 @@ node-v4.5.0.tar.gz
 node-v4.5.0/
 pari/gunicorn_conf.py
 pari_env/
+scripts/db_backup.sh
+scripts/publish_scheduled_pages.sh
 pari_sql_*.sql
-scripts/
 geckodriver.log
 
