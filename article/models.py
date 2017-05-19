@@ -12,16 +12,17 @@ from elasticsearch import ConnectionError
 from modelcluster.fields import M2MField
 
 from wagtail.wagtailcore.models import Page, Site
-from wagtail.wagtailcore.fields import RichTextField
+from wagtail.wagtailcore.fields import RichTextField, StreamField
 
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, \
-    MultiFieldPanel, InlinePanel, PageChooserPanel
+    MultiFieldPanel, InlinePanel, PageChooserPanel, StreamFieldPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 from wagtail.wagtailsearch.backends import get_search_backend
 from wagtail.wagtailsearch.backends.elasticsearch import ElasticSearchMapping, \
     ElasticSearchResults
 
+from article.streamfields.blocks import SingleImageBlock
 from core.edit_handlers import M2MFieldPanel
 
 
@@ -46,7 +47,6 @@ class Article(Page):
                            related_name="translations_by_author",
                            blank=True)
     strap = models.TextField(blank=True)
-    content = RichTextField()
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
     original_published_date = models.DateField(null=True, blank=True)
     featured_image = models.ForeignKey('core.AffixImage',
@@ -54,6 +54,11 @@ class Article(Page):
                                        on_delete=models.SET_NULL)
     categories = M2MField("category.Category", related_name="articles_by_category")
     locations  = M2MField("location.Location", related_name="articles_by_location")
+    content = RichTextField()
+
+    modular_content = StreamField([
+        ('image', SingleImageBlock())
+    ], null=True, blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('strap'),
@@ -61,10 +66,11 @@ class Article(Page):
         M2MFieldPanel('translators'),
         FieldPanel('language'),
         FieldPanel('original_published_date'),
-        FieldPanel('content'),
         ImageChooserPanel('featured_image'),
         FieldPanel('categories'),
         M2MFieldPanel('locations'),
+        StreamFieldPanel('modular_content'),
+        FieldPanel('content')
     ]
 
     search_fields = Page.search_fields + (
@@ -72,6 +78,7 @@ class Article(Page):
         index.SearchField('authors', partial_match=True, boost=2),
         index.SearchField('translators', partial_match=True, boost=2),
         index.SearchField('strap', partial_match=True),
+        index.SearchField('modular_content', partial_match=True),
         index.SearchField('content', partial_match=True),
         index.FilterField('categories'),
         index.SearchField('locations', partial_match=True, boost=2),
