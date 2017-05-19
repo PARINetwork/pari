@@ -17,6 +17,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='article',
             name='modular_content',
-            field=wagtail.wagtailcore.fields.StreamField([('image', wagtail.wagtailcore.blocks.StructBlock([(b'image', wagtail.wagtailimages.blocks.ImageChooserBlock(icon=b'image')), (b'caption', wagtail.wagtailcore.blocks.CharBlock())]))], null=True, blank=True),
+            field=wagtail.wagtailcore.fields.StreamField([('full_width_image', wagtail.wagtailcore.blocks.StructBlock([(b'image', wagtail.wagtailimages.blocks.ImageChooserBlock(icon=b'image')), (b'caption', wagtail.wagtailcore.blocks.CharBlock())])), ('two_column_image', wagtail.wagtailcore.blocks.StructBlock([(b'image_left', wagtail.wagtailimages.blocks.ImageChooserBlock()), (b'caption_left', wagtail.wagtailcore.blocks.CharBlock()), (b'image_right', wagtail.wagtailimages.blocks.ImageChooserBlock()), (b'caption_right', wagtail.wagtailcore.blocks.CharBlock())]))], null=True, blank=True),
         ),
     ]

@@ -57,7 +57,7 @@ class Article(Page):
     content = RichTextField()
 
     modular_content = StreamField([
-        ('image', FullWidthImageBlock()),
+        ('full_width_image', FullWidthImageBlock()),
         ('two_column_image', TwoColumnImageBlock())
     ], null=True, blank=True)
 
