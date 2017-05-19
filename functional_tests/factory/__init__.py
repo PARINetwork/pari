@@ -4,3 +4,4 @@ from page_factory import ContentTypeFactory
 from home_page_factory import HomePageFactory
 from article_factory import ArticleFactory
 from category_factory import CategoryFactory
+from location_factory import LocationFactory
