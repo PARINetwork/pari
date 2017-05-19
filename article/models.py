@@ -22,7 +22,7 @@ from wagtail.wagtailsearch.backends import get_search_backend
 from wagtail.wagtailsearch.backends.elasticsearch import ElasticSearchMapping, \
     ElasticSearchResults
 
-from article.streamfields.blocks import SingleImageBlock
+from article.streamfields.blocks import FullWidthImageBlock
 from core.edit_handlers import M2MFieldPanel
 
 
@@ -57,7 +57,7 @@ class Article(Page):
     content = RichTextField()
 
     modular_content = StreamField([
-        ('image', SingleImageBlock())
+        ('image', FullWidthImageBlock())
     ], null=True, blank=True)
 
     content_panels = Page.content_panels + [

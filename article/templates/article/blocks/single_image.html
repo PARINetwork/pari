@@ -1,9 +1,0 @@
-{% load wagtailcore_tags wagtailimages_tags %}
-
-<div class="single-image">
-    {% image value.image width-1440 as single_image %}
-    <img src="{{ single_image.url }}"/>
-    <p>
-        <i>{{ value.caption }} </i>
-    </p>
-</div>
