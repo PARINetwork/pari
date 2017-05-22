@@ -7,6 +7,7 @@ from django.core import serializers
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.utils.encoding import python_2_unicode_compatible
+from elasticsearch import ConnectionError
 
 from modelcluster.fields import M2MField
 
@@ -132,11 +133,15 @@ class Article(Page):
                 }
             }
         }
-        mlt = es_backend.es.search(
+
+        try:
+            mlt = es_backend.es.search(
             index=es_backend.index_name,
             doc_type=mapping.get_document_type(),
             body=query
         )
+        except ConnectionError:
+            return []
         # Get pks from results
         pks = [hit['_source']['pk'] for hit in mlt['hits']['hits']][:max_results]
 
