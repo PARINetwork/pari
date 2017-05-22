@@ -20,3 +20,10 @@ class TwoColumnImageBlock(blocks.StructBlock):
     class Meta:
         icon = 'image'
         template = 'article/blocks/two_column_image.html'
+
+
+class RichTextBlock(blocks.StructBlock):
+    content = blocks.RichTextBlock()
+
+    class Meta:
+        template = 'article/blocks/rich_text.html'

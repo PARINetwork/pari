@@ -1,0 +1,6 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+{% load article_filters %}
+
+<div class="rich-text-block">
+    {{ value.content.source | expand_db_html | safe }}
+</div>

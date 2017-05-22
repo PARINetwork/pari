@@ -10,6 +10,7 @@ from django.utils.encoding import python_2_unicode_compatible
 from elasticsearch import ConnectionError
 
 from modelcluster.fields import M2MField
+from wagtail.wagtailcore.blocks import RichTextBlock
 
 from wagtail.wagtailcore.models import Page, Site
 from wagtail.wagtailcore.fields import RichTextField, StreamField
@@ -22,7 +23,7 @@ from wagtail.wagtailsearch.backends import get_search_backend
 from wagtail.wagtailsearch.backends.elasticsearch import ElasticSearchMapping, \
     ElasticSearchResults
 
-from article.streamfields.blocks import FullWidthImageBlock, TwoColumnImageBlock
+from article.streamfields.blocks import FullWidthImageBlock, TwoColumnImageBlock, RichTextBlock
 from core.edit_handlers import M2MFieldPanel
 
 
@@ -58,7 +59,8 @@ class Article(Page):
 
     modular_content = StreamField([
         ('full_width_image', FullWidthImageBlock()),
-        ('two_column_image', TwoColumnImageBlock())
+        ('two_column_image', TwoColumnImageBlock()),
+        ('rich_text', RichTextBlock())
     ], null=True, blank=True)
 
     content_panels = Page.content_panels + [
