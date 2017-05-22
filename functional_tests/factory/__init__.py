@@ -5,3 +5,6 @@ from home_page_factory import HomePageFactory
 from article_factory import ArticleFactory
 from category_factory import CategoryFactory
 from location_factory import LocationFactory
+from album_factory import TalkingAlbumSlideFactory
+from album_factory import PhotoAlbumSlideFactory
+from image_factory import ImageFactory

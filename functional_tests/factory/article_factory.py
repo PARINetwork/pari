@@ -28,7 +28,7 @@ class ArticleFactory(factory.django.DjangoModelFactory):
     go_live_at = '2011-10-24 12:43'
     expire_at = '2011-10-24 12:43'
     expired = False
-    content_type = factory.SubFactory(ContentTypeFactory, name="article", model="article")
+    content_type = factory.SubFactory(ContentTypeFactory, app_label="article", model="article")
     locked = False
     latest_revision_created_at = '2011-10-24 12:43'
     first_published_at = '2011-10-24 12:43'
@@ -40,6 +40,14 @@ class ArticleFactory(factory.django.DjangoModelFactory):
     @classmethod
     def _setup_next_sequence(cls):
         return getattr(cls, 'starting_seq_num', 20)
+
+    @factory.post_generation
+    def featured_image(self, create, extracted, **kwargs):
+        if not create:
+            return
+
+        if extracted:
+            self.featured_image = extracted
 
     @factory.post_generation
     def authors(self, create, extracted, **kwargs):

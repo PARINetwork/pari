@@ -11,6 +11,9 @@ createdb $DATABASE_NAME --owner $DATABASE_USER
 psql -d $DATABASE_NAME -c "CREATE EXTENSION postgis;"
 SCRIPT
 
+mkdir -p "media/uploads/"
+cp "core/static/img/stories-1.jpg" "media/uploads/stories-1.jpg"
+
 cd /vagrant && . pari_env/bin/activate
 python manage.py migrate --settings=pari.settings.test
 
