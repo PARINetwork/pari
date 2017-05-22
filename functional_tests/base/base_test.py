@@ -6,10 +6,12 @@ from location.models import Location
 from core.models import AffixImage, HomePage
 from article.models import Article
 from album.models import Album
+import shutil
 
 class Test(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        shutil.copy2('core/static/img/stories-1.jpg', 'media/uploads/stories-1.jpg')
         cls.driver = webdriver.Firefox()
 
     def load_page_if_not_loaded(self, page, page_lambda):

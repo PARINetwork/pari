@@ -1,7 +1,8 @@
 import factory
-from core.models import HomePage
+from core.models import HomePage, FeaturedSectionBlock
 from functional_tests.factory import ContentTypeFactory
 from functional_tests.factory.article_factory import ArticleFactory
+from core.models import AffixImage
 
 class HomePageFactory(factory.django.DjangoModelFactory):
     class Meta:
@@ -32,4 +33,11 @@ class HomePageFactory(factory.django.DjangoModelFactory):
     in_focus_page1 = factory.SubFactory(ArticleFactory, title="in_focus_page1", content_type__app_label="article", content_type__model="article")
     in_focus_page2 = factory.SubFactory(ArticleFactory, title="in_focus_page2", content_type__app_label="article", content_type__model="article")
     language = "en"
+
+    @factory.post_generation
+    def featured_content(self, create, extracted, **kwargs):
+        image = AffixImage.objects.first()
+        self.featured_content = [('featured_section', {'title': 'The loom is my love', 'link_text': 'Weaver loom',
+                                                  'url': 'https://ruralindiaonline.org/articles/the-loom-is-my-love-my-legacy/',
+                                                  'featured_image_label': 'FEATURED', 'featured_image': image})]
 
