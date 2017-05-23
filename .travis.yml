@@ -4,7 +4,7 @@ python:
 before_install:
   openssl aes-256-cbc -K $encrypted_2d62c455ca1f_key -iv $encrypted_2d62c455ca1f_iv -in pari_qa.pem.enc -out pari_qa.pem -d
 install:
-- pip install ansible==2.0
+- pip install ansible==2.2.1
 - pip install six
 - pip install -r requirements.dev.txt
 services: postgresql
