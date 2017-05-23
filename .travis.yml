@@ -2,9 +2,7 @@ language: python
 python:
 - '2.7'
 before_install:
-  #todo add the enc key in env variables.
-  - openssl aes-256-cbc -k "$encrypted_cbd4cd1910df_key" -in pari_qa.pem.enc -out pari_qa.pem -d
-
+  openssl aes-256-cbc -K $encrypted_2d62c455ca1f_key -iv $encrypted_2d62c455ca1f_iv -in pari_qa.pem.enc -out pari_qa.pem -d
 install:
 - pip install ansible==2.0
 - pip install six
@@ -15,8 +13,6 @@ before_script:
 - psql -c 'create database  test_pari;' -U postgres
 - psql -d test_pari -c "CREATE EXTENSION postgis;"
 script: python manage.py test author --keepdb
-dd:
-  secure: RvscMiSET77RvxJhNNjjH6vem0WtW7pW7hQSUVfjAJysgZV73/LOwD0woRZ6G2t6ku65sNdcobX+++oODcza4xCrwvoxZK6lqL2aeFJ0zzvjT6GP1WU/OPb8x0GI3ahvq5ZNGUSdMjhatTjIOaZrlIcZGmCpd2V9eq0/61p5F0mEYCxBrHdLN20ZVFjx+Jdw5RDEqIMCZN0IBCcf3sRV93Xqdy1xCASG0ChSK8dIbO1OUdAUEtd1SjAXXxOSQ2bXbAT6Xwn7h77DQGKaYVOTU9N51OVqgQ8O9fkt6gxkBKZOBrPzKtt7OMI2rhJxnzQMP1xhAqDKnv48sQVJM/lExEL/rYJRsphbRcJciuy7q3atIoQ8dQU1GZ2rve0cG4rpkdKR/IYFlLBlHuFoHqoDicG1Bac+l9HQVZjvVu6wIBqIeN0d/tmJ2uytkrnHpBMfva2dhIjU3xAeqcrq8F1OAObL0+5De/IBbf3ghT6jxQWmMtaZn0RJdjJk/5ErZPyeWd+vu0lCtbTGIILUL47ZtG/Lrt1oEQziOikuLIsBn5M0e5w6TLy9mLWjw4Rw228AAULLB5ngCT2aH4MnuHpAIFIn/WJ2Et+QiXYH7p2lsnnsamh0bjIsj0ahXENjdE8gbytRQ7kkOxlqTZ35nfiQzeAKawNr5qXkyOI9KxbCPbk=
 deploy:
   provider: script
   script: sh deploy.sh
