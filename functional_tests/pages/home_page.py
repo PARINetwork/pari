@@ -1,6 +1,4 @@
 from selenium.webdriver.common.by import By
-# from selenium.webdriver.support.wait import WebDriverWait
-
 from functional_tests.base import Page
 
 
@@ -15,6 +13,9 @@ class HomePage(Page):
 
     def in_focus_section(self):
         return InFocusSection(self.driver)
+
+    def featured_section(self):
+        return FeaturedSection(self.driver)
 
 class AllThatYouCanDiscoverOnPARISection():
     def __init__(self, driver):
@@ -79,3 +80,18 @@ class InFocusSection():
 
     def location_of_second_article(self):
         return self.driver.find_element(By.XPATH, "//div[@class='row in_focus_page2']//span[@class='date-infocus']").text
+
+class FeaturedSection():
+    def __init__(self, driver):
+        self.driver = driver
+
+    def featured_label(self):
+        return self.driver.find_element(By.XPATH, "//div[@class=' active item content-1']//span[@class='featured']").text
+
+    def title(self):
+        return self.driver.find_element(By.XPATH,
+                                        "//div[@class=' active item content-1']//div[@class='featured-content-title']").text
+
+    def link_text(self):
+        return self.driver.find_element(By.XPATH,
+                                        "//div[@class=' active item content-1']//div[@class='link-to-page']/a/span").text

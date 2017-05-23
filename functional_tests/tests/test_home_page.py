@@ -70,3 +70,9 @@ class TestHomePage(Test):
         assert in_focus_section.authors_of_second_article() == "Karthik"
         assert in_focus_section.date_of_second_article() == "Madurai"
         assert in_focus_section.location_of_second_article() == "October 24, 2011"
+
+    def test_featured_section(self):
+        featured_section = self.home_page.featured_section()
+        assert featured_section.featured_label() == "FEATURED"
+        assert featured_section.title() == "The loom is my love"
+        assert featured_section.link_text() == "Weaver loom"

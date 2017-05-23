@@ -56,7 +56,7 @@
             <div class="carousel-inner" role="listbox">
                 {% for featured_content in page.featured_content %}
 
-                    <div class=" {% if forloop.first %}active{% endif %} item" onclick="location.href='{{ featured_content.value.url }}';" style="cursor: pointer">
+                    <div class=" {% if forloop.first %}active{% endif %} item content-{{ forloop.counter }}" onclick="location.href='{{ featured_content.value.url }}';" style="cursor: pointer">
                       {% image featured_content.value.featured_image width-1440 as featured_image %}
                         <img src="{{featured_image.url}}" alt="sample">
                         <div class="floating-container container">
