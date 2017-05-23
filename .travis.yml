@@ -1,19 +1,24 @@
 language: python
-
 python:
-  - "2.7"
-
+- '2.7'
+before_install:
+  openssl aes-256-cbc -K $encrypted_2d62c455ca1f_key -iv $encrypted_2d62c455ca1f_iv -in pari_qa.pem.enc -out pari_qa.pem -d
 install:
-        - "pip install ansible==2.0"
-        - "pip install six"
-        - "pip install -r requirements.dev.txt"
-
-services:
-     postgresql
-
+- pip install ansible==2.0
+- pip install six
+- pip install -r requirements.dev.txt
+services: postgresql
 before_script:
-       - createuser pari
-       - psql -c 'create database  test_pari;' -U postgres
-       - psql -d test_pari -c "CREATE EXTENSION postgis;"
-
+- createuser pari
+- psql -c 'create database  test_pari;' -U postgres
+- psql -d test_pari -c "CREATE EXTENSION postgis;"
 script: python manage.py test author --keepdb
+deploy:
+  provider: script
+  script: sh deploy.sh
+  skip_cleanup: true
+  on:
+    branch: release-candidate
+addons:
+  ssh_known_hosts:
+  - 54.255.193.26
