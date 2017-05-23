@@ -25,7 +25,7 @@ class TestHomePage(Test):
         setup = DataSetup()
         article1 = setup.create_article("article1", author1, category1, location1, image)
         article2 = setup.create_article("article2", author2, category2, location2, image)
-        video_article = setup.create_video_article("video article", author1, location1, image)
+        video_article = setup.create_video_article("video article", author2, location1, image)
         talking_album = setup.create_talking_album(image)
         photo_album = setup.create_photo_album(image)
         HomePageFactory.create(carousel_0=article1, carousel_1=article2, in_focus_page1=article1, in_focus_page2=article2, video=video_article, talking_album=talking_album, photo_album=photo_album)
@@ -33,9 +33,6 @@ class TestHomePage(Test):
     def setUp(self):
         page_lambda = lambda : HomePage(self.driver)
         self.__class__.home_page = self.load_page_if_not_loaded(self.home_page, page_lambda)
-
-    def test_home_page_title(self):
-        assert self.home_page.title == "People's Archive of Rural India"
 
     def test_first_category_of_all_that_you_can_discover_on_pari_section(self):
         discover_on_pari_section = self.home_page.all_that_you_can_discover_on_pari_section()
@@ -76,3 +73,13 @@ class TestHomePage(Test):
         assert featured_section.featured_label() == "FEATURED"
         assert featured_section.title() == "The loom is my love"
         assert featured_section.link_text() == "Weaver loom"
+
+    def test_audio_and_video_section(self):
+        audio_and_video_section = self.home_page.audio_and_video_section()
+        assert audio_and_video_section.title_of_talking_album() == "talking album"
+        assert audio_and_video_section.author_of_talking_album() == "V. Sasikumar"
+        assert audio_and_video_section.title_of_video() == "video article"
+        assert audio_and_video_section.author_of_video() == "Karthik"
+        assert audio_and_video_section.title_of_photo_album() == "photo album"
+        assert audio_and_video_section.author_of_photo_album() == "V. Sasikumar"
+

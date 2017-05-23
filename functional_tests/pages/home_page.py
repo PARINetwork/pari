@@ -17,6 +17,10 @@ class HomePage(Page):
     def featured_section(self):
         return FeaturedSection(self.driver)
 
+    def audio_and_video_section(self):
+        return ManyMoreStoriesInAudioAndVideoSection(self.driver)
+
+
 class AllThatYouCanDiscoverOnPARISection():
     def __init__(self, driver):
         self.driver = driver
@@ -53,6 +57,7 @@ class AllThatYouCanDiscoverOnPARISection():
         return self.driver.find_element(By.XPATH,
                                         "//div[@class='col-lg-6 col-md-6 col-sm-12 col-xs-12 grid category-3']//div[@class='title-grid']/div[2]").text
 
+
 class InFocusSection():
     def __init__(self, driver):
         self.driver = driver
@@ -81,6 +86,7 @@ class InFocusSection():
     def location_of_second_article(self):
         return self.driver.find_element(By.XPATH, "//div[@class='row in_focus_page2']//span[@class='date-infocus']").text
 
+
 class FeaturedSection():
     def __init__(self, driver):
         self.driver = driver
@@ -95,3 +101,26 @@ class FeaturedSection():
     def link_text(self):
         return self.driver.find_element(By.XPATH,
                                         "//div[@class=' active item content-1']//div[@class='link-to-page']/a/span").text
+
+    
+class ManyMoreStoriesInAudioAndVideoSection():
+    def __init__(self, driver):
+        self.driver = driver
+
+    def title_of_talking_album(self):
+        return self.driver.find_element(By.XPATH, "//div[@class='col-lg-6 col-md-6 col-sm-6 col-xs-12 grid talking-album']//h4[@class='item-section-title']").text
+
+    def author_of_talking_album(self):
+        return self.driver.find_element(By.XPATH, "//div[@class='col-lg-6 col-md-6 col-sm-6 col-xs-12 grid talking-album']//span[@class='author-name']").text
+
+    def title_of_video(self):
+        return self.driver.find_element(By.XPATH, "//div[@class='col-lg-6 col-md-6 col-sm-6 col-xs-12 grid video']//h4[@class='item-section-title']").text
+
+    def author_of_video(self):
+        return self.driver.find_element(By.XPATH, "//div[@class='col-lg-6 col-md-6 col-sm-6 col-xs-12 grid video']//span[@class='author-name']").text
+
+    def title_of_photo_album(self):
+        return self.driver.find_element(By.XPATH, "//div[@class='col-lg-6 col-md-6 col-sm-6 col-xs-12 grid photo-album']//h4[@class='item-section-title']").text
+
+    def author_of_photo_album(self):
+        return self.driver.find_element(By.XPATH, "//div[@class='col-lg-6 col-md-6 col-sm-6 col-xs-12 grid photo-album']//span[@class='author-name']").text

@@ -4,12 +4,14 @@ from django.utils.text import slugify
 from django.contrib.contenttypes.models import ContentType
 # from functional_tests.factory import ContentTypeFactory
 
+
 class ContentTypeFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = ContentType
         django_get_or_create = ('app_label', 'model')
     app_label = "core"
     model = "homepage"
+
 
 class ArticleFactory(factory.django.DjangoModelFactory):
     class Meta:
