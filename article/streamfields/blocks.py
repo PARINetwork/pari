@@ -2,9 +2,13 @@ from wagtail.wagtailadmin import blocks
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 
-class FullWidthImageBlock(blocks.StructBlock):
-    image = ImageChooserBlock(icon='image')
+class ImageBlock(blocks.StructBlock):
+    image = ImageChooserBlock()
     caption = blocks.CharBlock()
+
+
+class FullWidthImageBlock(blocks.StructBlock):
+    image = ImageBlock()
 
     class Meta:
         icon = 'image'
@@ -12,10 +16,8 @@ class FullWidthImageBlock(blocks.StructBlock):
 
 
 class TwoColumnImageBlock(blocks.StructBlock):
-    image_left = ImageChooserBlock()
-    caption_left = blocks.CharBlock()
-    image_right = ImageChooserBlock()
-    caption_right = blocks.CharBlock()
+    image_left = ImageBlock()
+    image_right = ImageBlock()
 
     class Meta:
         icon = 'image'

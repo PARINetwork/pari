@@ -1,26 +1,26 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 <div class="two-column-image-block">
-    {% image value.image_left width-570 as image_left %}
+    {% image value.image_left.image width-570 as image_left %}
     <div class="col-lg-6 image-container ">
         <div class="image">
             <img src="{{ image_left.url }}"/>
         </div>
         <div class="caption">
             <p>
-                {{ value.caption_left }}
+                {{ value.image_left.caption }}
             </p>
         </div>
     </div>
 
-    {% image value.image_right width-570 as image_right %}
+    {% image value.image_right.image width-570 as image_right %}
     <div class="col-lg-6 image-container ">
         <div class="image">
             <img src="{{ image_right.url }}"/>
         </div>
         <div class="caption">
             <p>
-                {{ value.caption_right }}
+                {{ value.image_right.caption }}
             </p>
         </div>
     </div>

@@ -1,9 +1,9 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 <div class="full-width-image-block">
-    {% image value.image width-1440 as full_width_image %}
+    {% image value.image.image width-1440 as full_width_image %}
     <img src="{{ full_width_image.url }}"/>
     <p>
-        <i>{{ value.caption }} </i>
+        <i>{{ value.image.caption }} </i>
     </p>
 </div>
