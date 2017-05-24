@@ -28,4 +28,5 @@ class RichTextBlock(blocks.StructBlock):
     content = blocks.RichTextBlock()
 
     class Meta:
+        icon='doc-full'
         template = 'article/blocks/rich_text.html'

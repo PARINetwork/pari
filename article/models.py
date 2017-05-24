@@ -60,7 +60,7 @@ class Article(Page):
     modular_content = StreamField([
         ('full_width_image', FullWidthImageBlock()),
         ('two_column_image', TwoColumnImageBlock()),
-        ('rich_text', RichTextBlock())
+        ('paragraph', RichTextBlock())
     ], null=True, blank=True)
 
     content_panels = Page.content_panels + [
