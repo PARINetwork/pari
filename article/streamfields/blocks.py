@@ -24,9 +24,10 @@ class TwoColumnImageBlock(blocks.StructBlock):
         template = 'article/blocks/two_column_image.html'
 
 
-class RichTextBlock(blocks.StructBlock):
+class ParagraphBlock(blocks.StructBlock):
     content = blocks.RichTextBlock()
 
     class Meta:
-        icon='doc-full'
-        template = 'article/blocks/rich_text.html'
+        icon = 'doc-full'
+        label = 'Paragraphs'
+        template = 'article/blocks/paragraph.html'
