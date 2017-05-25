@@ -31,3 +31,13 @@ class ParagraphBlock(blocks.StructBlock):
         icon = 'doc-full'
         label = 'Paragraphs'
         template = 'article/blocks/paragraph.html'
+
+
+class ParagraphWithImageBlock(blocks.StructBlock):
+    image = ImageBlock()
+    content = ParagraphBlock()
+
+    class Meta:
+        icon = 'doc-full'
+        label = 'Paragraphs with an image'
+        template = 'article/blocks/paragraph_with_image.html'
