@@ -7,8 +7,8 @@ class ContentTypeFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = ContentType
         django_get_or_create = ('app_label', 'model')
-    app_label = "core"
-    model = "homepage"
+    app_label = "wagtailcore"
+    model = "page"
 
 class PageFactory(factory.django.DjangoModelFactory):
     class Meta:
@@ -27,7 +27,7 @@ class PageFactory(factory.django.DjangoModelFactory):
     go_live_at = '2011-10-24 12:43'
     expire_at = '2011-10-24 12:43'
     expired = False
-    content_type = factory.SubFactory(ContentTypeFactory, name="core", model="homepage")
+    content_type = factory.SubFactory(ContentTypeFactory)
     locked = False
     latest_revision_created_at = '2011-10-24 12:43'
     first_published_at = '2011-10-24 12:43'

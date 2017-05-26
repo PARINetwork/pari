@@ -8,3 +8,5 @@ from location_factory import LocationFactory
 from album_factory import TalkingAlbumSlideFactory
 from album_factory import PhotoAlbumSlideFactory
 from image_factory import ImageFactory
+from gallery_home_page_factory import GalleryHomePageFactory
+from guidelines_page_factory import GuidelinesPageFactory
