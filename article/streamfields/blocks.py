@@ -6,6 +6,10 @@ class ImageBlock(blocks.StructBlock):
     image = ImageChooserBlock()
     caption = blocks.CharBlock()
 
+    class Meta:
+        icon = 'image'
+        template = 'article/blocks/image.html'
+
 
 class FullWidthImageBlock(blocks.StructBlock):
     image = ImageBlock()

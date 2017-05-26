@@ -2,17 +2,9 @@
 {% load article_filters %}
 
 <div class="paragraph-with-image-block">
-    {% image value.image.image width-570 as image %}
 
-    <div class="image-container" style="float:left;">
-        <div class="image">
-            <img src="{{ image.url }}"/>
-        </div>
-        <div class="caption">
-            <p>
-                {{ value.image.caption }}
-            </p>
-        </div>
+    <div class="align-left">
+        {{ value.image }}
     </div>
 
     {{ value.content }}
