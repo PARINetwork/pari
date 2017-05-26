@@ -24,7 +24,7 @@ from wagtail.wagtailsearch.backends.elasticsearch import ElasticSearchMapping, \
     ElasticSearchResults
 
 from article.streamfields.blocks import FullWidthImageBlock, TwoColumnImageBlock, ParagraphBlock, \
-    ParagraphWithImageBlock
+    ParagraphWithImageBlock, FaceBlock
 from core.edit_handlers import M2MFieldPanel
 
 
@@ -62,7 +62,8 @@ class Article(Page):
         ('full_width_image', FullWidthImageBlock()),
         ('two_column_image', TwoColumnImageBlock()),
         ('paragraph', ParagraphBlock()),
-        ('paragraph_with_image', ParagraphWithImageBlock())
+        ('paragraph_with_image', ParagraphWithImageBlock()),
+        ('face', FaceBlock())
     ], null=True, blank=True)
 
     content_panels = Page.content_panels + [

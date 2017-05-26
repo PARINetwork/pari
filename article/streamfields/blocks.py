@@ -73,3 +73,11 @@ class ParagraphWithImageBlock(blocks.StructBlock):
         icon = 'doc-full'
         label = 'Paragraphs with an image'
         template = 'article/blocks/paragraph_with_image.html'
+
+
+class FaceBlock(blocks.StructBlock):
+    face = FaceChooserBlock()
+
+    class Meta:
+        icon = 'image'
+        template = 'article/blocks/face.html'
