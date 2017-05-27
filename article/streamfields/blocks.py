@@ -2,6 +2,7 @@ from django.utils.functional import cached_property
 
 from wagtail.wagtailadmin import blocks
 from wagtail.wagtailcore.blocks import PageChooserBlock
+from wagtail.wagtailcore.models import Page
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 from face.models import Face
@@ -22,6 +23,8 @@ class PageTypeChooserBlock(PageChooserBlock):
     """
 
     def __init__(self, for_model, **kwargs):
+        if not issubclass(for_model, Page):
+            raise TypeError("for_model should be a sub-class of wagtail.wagtailcore.models.Page")
         self.for_model = for_model
         super(PageTypeChooserBlock, self).__init__(**kwargs)
 
