@@ -4,6 +4,8 @@ from wagtail.wagtailadmin import blocks
 from wagtail.wagtailcore.blocks import PageChooserBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
+from face.models import Face
+
 
 class ImageBlock(blocks.StructBlock):
     image = ImageChooserBlock()
@@ -14,26 +16,30 @@ class ImageBlock(blocks.StructBlock):
         template = 'article/blocks/image.html'
 
 
-class FaceChooserBlock(PageChooserBlock):
-    def __init__(self, can_choose_root=False, **kwargs):
-        super(FaceChooserBlock, self).__init__(can_choose_root=can_choose_root, **kwargs)
+class PageTypeChooserBlock(PageChooserBlock):
+    """Custom implementation of PageChooserBlock to limit page selection to specific page types.
+    Note: This has been addressed in the latest wagtail version.
+    """
+
+    def __init__(self, for_model, **kwargs):
+        self.for_model = for_model
+        super(PageTypeChooserBlock, self).__init__(**kwargs)
 
     @cached_property
     def target_model(self):
-        from face.models import Face
-        return Face
+        return self.for_model
 
     @cached_property
     def widget(self):
         from django.utils.translation import ugettext_lazy as _
         from wagtail.wagtailadmin.widgets import AdminPageChooser
-        from face.models import Face
 
-        admin_face_chooser = AdminPageChooser(target_models=[Face], can_choose_root=self.can_choose_root)
-        admin_face_chooser.choose_one_text = _('Choose a face')
-        admin_face_chooser.choose_another_text = _('Choose another face')
-        admin_face_chooser.link_to_chosen_text = _('Edit this face')
-        return admin_face_chooser
+        model_name = self.for_model.__name__.lower()
+        admin_page_chooser = AdminPageChooser(target_models=[self.for_model])
+        admin_page_chooser.choose_one_text = _('Choose a %s' % model_name)
+        admin_page_chooser.choose_another_text = _('Choose another %s' % model_name)
+        admin_page_chooser.link_to_chosen_text = _('Edit this %s' % model_name)
+        return admin_page_chooser
 
 
 class FullWidthImageBlock(blocks.StructBlock):
@@ -76,7 +82,7 @@ class ParagraphWithImageBlock(blocks.StructBlock):
 
 
 class FaceBlock(blocks.StructBlock):
-    face = FaceChooserBlock()
+    face = PageTypeChooserBlock(for_model=Face)
 
     class Meta:
         icon = 'image'
