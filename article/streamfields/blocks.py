@@ -22,7 +22,7 @@ class PageTypeChooserBlock(PageChooserBlock):
     Note: This has been addressed in the latest wagtail version.
     """
 
-    def __init__(self, for_model, **kwargs):
+    def __init__(self, for_model=Page, **kwargs):
         if not issubclass(for_model, Page):
             raise TypeError("for_model should be a sub-class of wagtail.wagtailcore.models.Page")
         self.for_model = for_model
