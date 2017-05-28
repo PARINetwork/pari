@@ -1,13 +1,13 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 <div class="face-block">
-    {% image value.face.image fill-256x256 as face_image %}
+    {% image value.face.specific.image fill-256x256 as face_image %}
     <div class="image">
         <img src="{{ face_image.url }}"/>
     </div>
     <div class="title">
         <p>
-            {{ value.face.title }}
+            {{ value.face.specific.title }}
         </p>
     </div>
 </div>

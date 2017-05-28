@@ -22,26 +22,27 @@ class PageTypeChooserBlock(PageChooserBlock):
     Note: This has been addressed in the latest wagtail version.
     """
 
-    def __init__(self, for_model=Page, **kwargs):
-        if not issubclass(for_model, Page):
-            raise TypeError("for_model should be a sub-class of wagtail.wagtailcore.models.Page")
-        self.for_model = for_model
+    def __init__(self, for_models=[Page], **kwargs):
+        if any(not issubclass(each, Page) for each in for_models):
+            raise TypeError("All models passed should be a sub-class of wagtail.wagtailcore.models.Page")
+        self.for_models = for_models
         super(PageTypeChooserBlock, self).__init__(**kwargs)
 
     @cached_property
     def target_model(self):
-        return self.for_model
+        from wagtail.wagtailcore.models import Page
+        return Page
 
     @cached_property
     def widget(self):
         from django.utils.translation import ugettext_lazy as _
         from wagtail.wagtailadmin.widgets import AdminPageChooser
 
-        model_name = self.for_model.__name__.lower()
-        admin_page_chooser = AdminPageChooser(target_models=[self.for_model])
-        admin_page_chooser.choose_one_text = _('Choose a %s' % model_name)
-        admin_page_chooser.choose_another_text = _('Choose another %s' % model_name)
-        admin_page_chooser.link_to_chosen_text = _('Edit this %s' % model_name)
+        model_names = ' / '.join(each.__name__.lower() for each in self.for_models)
+        admin_page_chooser = AdminPageChooser(target_models=self.for_models)
+        admin_page_chooser.choose_one_text = _('Choose a %s' % model_names)
+        admin_page_chooser.choose_another_text = _('Choose another %s' % model_names)
+        admin_page_chooser.link_to_chosen_text = _('Edit this %s' % model_names)
         return admin_page_chooser
 
 
@@ -85,7 +86,7 @@ class ParagraphWithImageBlock(blocks.StructBlock):
 
 
 class FaceBlock(blocks.StructBlock):
-    face = PageTypeChooserBlock(for_model=Face)
+    face = PageTypeChooserBlock(for_models=[Face])
 
     class Meta:
         icon = 'image'
