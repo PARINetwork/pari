@@ -38,4 +38,4 @@ then
 fi
 
 echo "Running test......."
-python manage.py test --settings=pari.settings.test -k -v 3
+python manage.py test functional_tests.tests --settings=pari.settings.test -k -v 3
