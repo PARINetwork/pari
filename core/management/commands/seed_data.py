@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 from functional_tests.factory import *
 from category.models import Category
-from wagtail.wagtailcore.models import Page
+from django.template import loader, Context
 import shutil
 import os
 
@@ -27,9 +27,11 @@ class Command(BaseCommand):
         image1 = ImageFactory.create(photographers=(sainath,), locations=(chennai,), file="uploads/image1.jpg")
         image2 = ImageFactory.create(photographers=(sainath,), locations=(chennai,), file="uploads/image2.jpg")
         image3 = ImageFactory.create(photographers=(sainath, namita), locations=(chennai, mumbai),
-                                     file="uploads/image3.jpg")
+                                     file="uploads/image3.jpg", title="loom")
         image4 = ImageFactory.create(photographers=(namita,), locations=(mumbai,), file="uploads/image4.jpg")
         image5 = ImageFactory.create(photographers=(namita,), locations=(mumbai,), file="uploads/image5.jpg")
+        article_image1 = ImageFactory.create(photographers=(namita,), locations=(mumbai,), file="uploads/article1.jpg")
+        article_image2 = ImageFactory.create(photographers=(namita,), locations=(mumbai,), file="uploads/article2.jpg")
 
         PageFactory.create(title="Header", path="00010007")
         PageFactory.create(title="Articles", path="00010005")
@@ -37,10 +39,14 @@ class Command(BaseCommand):
 
         category = Category.objects.get(slug="photozone")
         video_category = Category.objects.get(slug="videozone")
+        get_tmpl = loader.get_template
+        article1_content = get_tmpl("core/article1.txt").render()
+        article2_content = get_tmpl("core/article2.txt").render()
+
         article1 = ArticleFactory.create(title="No longer a toy story", authors=(sainath,), categories=(category,),
-                                         locations=(chennai,), featured_image=image1, depth=3, path="000100050020")
+                                         locations=(chennai,), featured_image=article_image1, depth=3, path="000100050020", content=article1_content)
         article2 = ArticleFactory.create(title="The cows sons are praying in the fields", authors=(namita,), categories=(category,),
-                                         locations=(mumbai,), featured_image=image2, depth=3, path="000100050021")
+                                         locations=(mumbai,), featured_image=article_image2, depth=3, path="000100050021", content=article2_content)
         video_article = ArticleFactory.create(title="video article", authors=(sainath, namita), categories=(video_category,),
                                          locations=(mumbai,), featured_image=image3, depth=3, path="000100050022")
         talking_album = TalkingAlbumSlideFactory.create(image=image4, page__depth=3, page__path="000100060020").page
@@ -63,6 +69,8 @@ class Command(BaseCommand):
         shutil.copy2('core/management/commands/images/image3.jpg', 'media/uploads/image3.jpg')
         shutil.copy2('core/management/commands/images/image4.jpg', 'media/uploads/image4.jpg')
         shutil.copy2('core/management/commands/images/image5.jpg', 'media/uploads/image5.jpg')
+        shutil.copy2('core/management/commands/images/article1.jpg', 'media/uploads/article1.jpg')
+        shutil.copy2('core/management/commands/images/article2.jpg', 'media/uploads/article2.jpg')
 
     def create_categories(self):
         category_update_dict = {
