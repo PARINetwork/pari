@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n wagtailcore_tags wagtailimages_tags %}
+{% block meta_title %}Gallery{% endblock %}
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/gallery/gallery.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/home-page-face-tile.less">
@@ -11,23 +12,8 @@
     <script type="text/javascript" src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
 {% endblock %}
 {% block opengraph_block %}
-    <meta property="og:title" content="{% trans "PARI Gallery" %}">
-    <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
-    <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ page.photo_of_the_week.file.url }}">
-    <meta property="og:type" content="article">
-    <meta property="og:description" content="PARI hosts and combines video, still photo, audio and text archives.
-    There is content we already have and content we are newly generating. Both will take time and effort to organise and load.
-    The videos generated specifically for PARI record the lives and livelihoods of poor and everyday Indians. #RuralIndiaOnline"">
-    <meta property="og:published_time" content={{ talking_album.first.first_published_at|date:"c" }}>
+  {% include "core/includes/media_sharing_meta.html" with title='PARI Gallery' description='AN EVERGROWING ARCHIVE OF RURAL INDIA'  url="{{ request.get_full_path }}" image_url="{{ page.photo_of_the_week.file.url }}" date_of_item=talking_album.first.first_published_at%}
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
-    <meta name="twitter:title" content="{% trans "PARI Gallery" %}" >
-    <meta name="twitter:description" content="PARI hosts and combines video, still photo, audio and text archives.
-    There is content we already have and content we are newly generating. Both will take time and effort to organise and load.
-    The videos generated specifically for PARI record the lives and livelihoods of poor and everyday Indians. #RuralIndiaOnline"" >
-    <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ page.photo_of_the_week.file.url }}" >
-    <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
 {% endblock %}
 {% block main %}
     <div id="main_content" class="gallery-home">
