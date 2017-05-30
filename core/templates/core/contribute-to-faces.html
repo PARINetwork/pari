@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block opengraph_block %}
-    {% include "core/includes/media_sharing_meta.html" with title="Let’s FACE it" description="Contribute to FACES. Help PARI capture the sheer diversity of the people of our country." url=request.get_full_path image_url='{{ STATIC_URL }}img/faces-contr-banner.png' %}
+    {% include "core/includes/media_sharing_meta.html" with title="Let’s FACE it" description="Contribute to FACES. Help PARI capture the sheer diversity of the people of our country." url=request.get_full_path image_url=STATIC_URL|add:"img/faces-contr-banner.png" %}
 {% endblock %}
 
 {% block main %}
