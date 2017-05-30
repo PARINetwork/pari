@@ -11,7 +11,7 @@
 {% block title %}{% trans "Faces" %}{% endblock %}
 
 {% block opengraph_block %}
-    {% include "core/includes/media_sharing_meta.html" with title="FACES" description="PEOPLE FROM EVERY INDIAN DISTRICT" url=request.get_full_path type="faces" image_url='{{ STATIC_URL }}img/faces-tile-1.jpg' %}
+    {% include "core/includes/media_sharing_meta.html" with title="FACES" description="PEOPLE FROM EVERY INDIAN DISTRICT" url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/faces-tile-1.jpg" %}
 {% endblock %}
 
 {% block extra_js %}
