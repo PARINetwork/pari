@@ -77,8 +77,11 @@ class StoryDetail(DetailView):
         context = super(StoryDetail, self).get_context_data(**kwargs)
         qs = Article.objects.live().select_related('featured_image')
         qs = qs.filter(categories=context["category"])
+        lang='en'
         if self.request.GET.get("lang"):
-            qs = qs.filter(language=self.request.GET["lang"])
+            lang=self.request.GET["lang"]
+        if not lang == 'all':
+            qs = qs.filter(language=lang)
         qs = qs.order_by('-first_published_at')
         paginator = Paginator(qs, self.paginate_by)
         try:
