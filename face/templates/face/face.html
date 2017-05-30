@@ -11,20 +11,7 @@
 {% block title %}{% trans "Faces" %}{% endblock %}
 
 {% block opengraph_block %}
-
-<meta property="og:title" content="{{ face.title }}">
-<meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ request.path }}">
-<meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{% if face.featured_image %}{{ face.featured_image.file.url }}{% else %}{{ STATIC_URL }}img/default_featured_image.png{% endif %}">
-<meta property="og:type" content="face">
-<meta property="og:description" content="FACIAL DIVERSITY FROM EVERY INDIAN DISTRICT #RuralIndiaOnline">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
-<meta name="twitter:title" content="{{ face.title }}" >
-<meta name="twitter:description" content="View the face on {{ SITE_TITLE }}" >
-<meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{% if face.featured_image %}{{ face.featured_image.file.url }}{% else %}{{ STATIC_URL }}img/default_featured_image.png{% endif %}" >
-<meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ request.path }}" >
-
+    {% include "core/includes/media_sharing_meta.html" with title="FACES" description="PEOPLE FROM EVERY INDIAN DISTRICT" url=request.get_full_path type="faces" image_url='{{ STATIC_URL }}img/faces-tile-1.jpg' %}
 {% endblock %}
 
 {% block extra_js %}
@@ -80,7 +67,7 @@
             </span>
             {% with request.build_absolute_uri as url %}
                 <span class="gallery-social-icon">
-                    <a href="https://twitter.com/intent/tweet?url={{ url|urlencode }}&amp;hashtags=RuralIndiaOnline" target="_blank" class="link-light">
+                    <a href="https://twitter.com/intent/tweet?url={{ url|urlencode }}&amp;hashtags=RuralIndiaOnline&amp;via=PARINetwork" target="_blank" class="link-light">
                         <i class="fa fa-twitter" aria-hidden="true"></i>
                     </a>
                     <a href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}" target="_blank" class="link-light">

@@ -10,19 +10,7 @@
 {% block title %}{% trans "Albums" %}{% endblock %}
 
 {% block opengraph_block %}
-    <meta property="og:title" content="{{ album.title }}">
-    <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
-    <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ STATIC_URL }}img/default_featured_image.png">
-    <meta property="og:type" content="albums">
-    <meta property="og:description" content="{% trans sub_heading %} #RuralIndiaOnline">
-    <meta property="og:published_time" content={{ albums.first.first_published_at|date:"c" }}>
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
-    <meta name="twitter:title" content="{{ album.title }}" >
-    <meta name="twitter:description" content="{% trans sub_heading %} #RuralIndiaOnline" >
-    <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ STATIC_URL }}img/default_featured_image.png" >
-    <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
+    {% include "core/includes/media_sharing_meta.html" with title=title description=sub_heading url=request.get_full_path type="albums" image_url='{{ STATIC_URL }}img/default_featured_image.png' date_of_item=albums.first.first_published_at%}
 {% endblock %}
 
 {% block extra_uncompressed_js %}
