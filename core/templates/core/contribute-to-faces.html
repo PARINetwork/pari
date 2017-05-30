@@ -6,6 +6,10 @@
    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/contribute_faces.less">
 {% endblock %}
 
+{% block opengraph_block %}
+    {% include "core/includes/media_sharing_meta.html" with title="Let’s FACE it" description="Contribute to FACES. Help PARI capture the sheer diversity of the people of our country." url=request.get_full_path image_url='{{ STATIC_URL }}img/faces-contr-banner.png' %}
+{% endblock %}
+
 {% block main %}
     <div class="container" >
         <div class="contribute-title">

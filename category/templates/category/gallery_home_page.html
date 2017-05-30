@@ -11,10 +11,11 @@
     <script type="text/javascript" src="{{ STATIC_URL }}category/js/popup.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
 {% endblock %}
-{% block opengraph_block %}
-  {% include "core/includes/media_sharing_meta.html" with title='PARI Gallery' description='AN EVERGROWING ARCHIVE OF RURAL INDIA'  url="{{ request.get_full_path }}" image_url="{{ page.photo_of_the_week.file.url }}" date_of_item=talking_album.first.first_published_at%}
 
+{% block opengraph_block %}
+  {% include "core/includes/media_sharing_meta.html" with title="Gallery" description="An evergrowing archive of rural India"  url=request.get_full_path image_url=page.photo_of_the_week.file.url date_of_item=talking_album.first.first_published_at%}
 {% endblock %}
+
 {% block main %}
     <div id="main_content" class="gallery-home">
     <div class ="gallery-title gallery-home-title container">

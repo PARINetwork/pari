@@ -1,7 +1,8 @@
-<meta property="og:title" content={{ title }}>
+
+<meta property="og:title" content="{{ title }}">
 <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ url }}">
 <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ image_url }}">
-<meta property="og:type" content={{ type }}>
+<meta property="og:type" content="{{ type }}">
 <meta property="og:description" content="{{ description }} #RuralIndiaOnline ">
 <meta property="og:published_time" content="{{ date_of_item|date:"c" }}">
 
@@ -11,4 +12,3 @@
 <meta name="twitter:description" content="{{ description }}" >
 <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ image_url }}" >
 <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ url }}" >
-<h1 style="color:blue">{{ title }}</h1>
