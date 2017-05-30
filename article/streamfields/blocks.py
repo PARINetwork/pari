@@ -30,8 +30,11 @@ class PageTypeChooserBlock(PageChooserBlock):
 
     @cached_property
     def target_model(self):
-        from wagtail.wagtailcore.models import Page
-        return Page
+        if len(self.for_models) == 1:
+            return self.for_models[0]
+        else:
+            from wagtail.wagtailcore.models import Page
+            return Page
 
     @cached_property
     def widget(self):
