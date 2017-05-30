@@ -1,3 +1,33 @@
 from django.test import TestCase
+from django.test import RequestFactory
+from article.views import AuthorArticleList
+from functional_tests.factory import CategoryFactory
+from functional_tests.factory import ArticleFactory
+from functional_tests.factory import AuthorFactory
 
-# Create your tests here.
+
+class AuthorArticleListTests(TestCase):
+    def setUp(self):
+        self.category = CategoryFactory()
+        self.test_author = AuthorFactory(name='xyz', slug="xyz")
+        self.english_article = ArticleFactory(title="english_article", authors=(self.test_author,),
+                                              categories=(self.category,), language='en')
+        self.hindi_article = ArticleFactory(title="hindi_article", authors=(self.test_author,),
+                                            categories=(self.category,), language='hi')
+
+    def test_lang_is_used_from_query_params_(self):
+        request = RequestFactory().get('/authors/xyz/?lang=hi')
+        response = AuthorArticleList.as_view()(request, slug='xyz')
+        for article in response.context_data['articles']:
+            assert article.title == self.hindi_article.title
+
+    def test_lang_is_set_to_english_by_default(self):
+        request = RequestFactory().get('/stories/categories/things-we-do/')
+        response = AuthorArticleList.as_view()(request, object=self.category, slug="xyz")
+        for article in response.context_data['articles']:
+            assert article.title == self.english_article.title
+
+    def test_all_articles_are_returned_if_lang_is_all(self):
+        request = RequestFactory().get('/stories/categories/things-we-do/?lang=all')
+        response = AuthorArticleList.as_view()(request, object=self.category, slug="xyz")
+        assert len(response.context_data['articles']) == 2

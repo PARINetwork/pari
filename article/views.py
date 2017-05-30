@@ -118,8 +118,11 @@ class AuthorArticleList(ListView):
             authors__slug=self.kwargs["slug"]
         )
         qs = live_articles_by_author.order_by("-first_published_at")
+        lang = 'en'
         if self.request.GET.get("lang"):
-            qs = qs.filter(language=self.request.GET["lang"])
+            lang = self.request.GET["lang"]
+        if not lang == 'all':
+            qs = qs.filter(language=lang)
         return qs
 
     def get_context_data(self, **kwargs):
