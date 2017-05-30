@@ -15,6 +15,9 @@
 {% endblock %}
 
 {% block opengraph_block %}
+    {% include "core/includes/media_sharing_meta.html" with title="FACES" description="FACIAL DIVERSITY FROM EVERY INDIAN DISTRICT" url=face.get_absolute_url type="faces" x=category.image.file.url date_of_item=articles.first.original_published_date%}
+
+
 
 <meta property="og:title" content="FACES">
 <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ face.get_absolute_url }}">
@@ -28,6 +31,7 @@
 <meta name="twitter:description" content="FACIAL DIVERSITY FROM EVERY INDIAN DISTRICT #RuralIndiaOnline" >
 <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{% if face.featured_image %}{{ face.featured_image.file.url }}{% else %}{{ STATIC_URL }}img/default_featured_image.png{% endif %}" >
 <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ face.get_absolute_url }}" >
+
 
 {% endblock %}
 
