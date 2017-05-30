@@ -5,7 +5,7 @@ class ImageFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = AffixImage
 
-    title = "PARIImage.jpg"
+    title = "loom"
     file = "uploads/stories-1.jpg"
     width = 3216
     height = 2136

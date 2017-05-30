@@ -34,19 +34,12 @@
 
 {% block opengraph_block %}
     {% with album.slides.all|random as random_cover %}{% image random_cover.image fill-300x250 as cover_image %}
-    <meta property="og:title" content="{{ album.title }}">
-    <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
-    <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ cover_image.url }}">
-    <meta property="og:type" content="album">
-    <meta property="og:description" content=" {{ album.description|striptags }} #RuralIndiaOnline">
-    <meta property="og:published_time" content={{ albums.first.first_published_at|date:"c" }}>
+        {% if article.original_published_date %}
+            {% include "core/includes/media_sharing_meta.html" with title=album.title description=album.description|striptags url=request.get_full_path type="album" image_url=cover_image.url date_of_item=albums.first.original_published_date%}
+        {% else %}
+            {% include "core/includes/media_sharing_meta.html" with title=album.title description=album.description|striptags url=request.get_full_path type="album" image_url=cover_image.url date_of_item=albums.first.first_published_at%}
+    {% endif %}
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
-    <meta name="twitter:title" content="{{ album.title }}" >
-    <meta name="twitter:description" content="{{ album.description|striptags }} #RuralIndiaOnline" >
-    <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ cover_image.url }}" >
-    <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
     {% endwith %}
 {% endblock %}
 
@@ -230,7 +223,7 @@
               </span>
             </div>
             <div class="social-icons">
-                  <a href="https://twitter.com/intent/tweet?url={{:url}}&amp;hashtags=RuralIndiaOnline" target="_blank" >
+                  <a href="https://twitter.com/intent/tweet?url={{:url}}&amp;hashtags=RuralIndiaOnline&amp;via=PARINetwork" target="_blank" class="link-light">
                   <i class="fa fa-twitter"></i>
             </a>
             <a target="_blank" href="https://facebook.com/sharer.php?u={{:url}}&t={{:album_title}}">

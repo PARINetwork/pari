@@ -1,0 +1,20 @@
+{% load i18n wagtailcore_tags wagtailimages_tags %}
+{% load i18n wagtailimages_tags %}
+{% load i18n core_filters %}
+
+{% if article.featured_image %}
+
+<meta property="og:title" content="{{ title }}">
+<meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ url }}">
+<meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ image_url }}">
+<meta property="og:type" content="{{ type }}">
+<meta property="og:description" content="{{ description }} #RuralIndiaOnline ">
+<meta property="og:published_time" content="{{ date_of_item|date:"c" }}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
+<meta name="twitter:title" content="{{ title }}" >
+<meta name="twitter:description" content="{{ description }}" >
+<meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ image_url }}" >
+<meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ url }}" >
+{% endif %}

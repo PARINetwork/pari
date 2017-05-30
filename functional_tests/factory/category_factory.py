@@ -8,6 +8,6 @@ class CategoryFactory(factory.django.DjangoModelFactory):
         model = Category
 
     name = "Things we do"
-    slug = factory.LazyAttribute(lambda obj: slugify(obj.name))
+    slug = "things-we-do"
     description = "The world of rural labour"
     order = 1

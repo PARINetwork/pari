@@ -6,29 +6,17 @@
 {% block meta_title %}{{ article.title }}{% endblock %}
 
 {% block opengraph_block %}
-{% if article.featured_image %}
-{% image article.featured_image max-1400x1120 as featured_image %}
-<meta property="og:title" content="{{ article.title }}">
-<meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ article.get_absolute_url }}">
-<meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ featured_image.file.url }}">
-<meta property="og:type" content="article">
-<meta property="og:description" content="{{ article.strap }} #RuralIndiaOnline">
-<meta property="og:published_time" content="{% firstof article.original_published_date|date:"c" article.first_published_at|date:"c" %}">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@{{ SOCIAL_TWITTER }} #RuralIndiaOnline">
-<meta name="twitter:title" content="{{ article.title }}" >
-<meta name="twitter:description" content="{{ article.strap }} " >
-<meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ featured_image.file.url }}" >
-<meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ article.get_absolute_url }}" >
-{% endif %}
-
-{% if translations and translations|length > 1 %}
-{% for translation in translations %}
-<link rel="alternate" hreflang="{{ translation.language }}" href="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ translation.get_absolute_url }}" />
-{% endfor %}
-{% endif %}
-
+    {% image article.featured_image max-1400x1120 as featured_image %}
+    {% if article.original_published_date %}
+        {% include "core/includes/media_sharing_meta.html" with title=article.title description=article.strap url=article.get_absolute_url type="article" image_url=featured_image.file.url date_of_item=article.original_published_date%}
+    {% else %}
+        {% include "core/includes/media_sharing_meta.html" with title=article.title description=article.strap url=article.get_absolute_url type="article" image_url=featured_image.file.url date_of_item=article.first_published_at%}
+    {% endif %}
+    {% if translations and translations|length > 1 %}
+        {% for translation in translations %}
+            <link rel="alternate" hreflang="{{ translation.language }}" href="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ translation.get_absolute_url }}" />
+        {% endfor %}
+    {% endif %}
 {% endblock %}
 
 {% block breadcrumb_menu %}
@@ -134,7 +122,7 @@
                                 </a>
                             </li>{% with request.build_absolute_uri as url and item.title as title %}<li class="social-icon" data-url="{{ url }}">
                                     <span class="banner-label">Share</span>
-                                        <a href="https://twitter.com/intent/tweet?url={{ url }}&amp;hashtags=RuralIndiaOnline" target="_blank" class="link-light">
+                                        <a href="https://twitter.com/intent/tweet?url={{ url|urlencode }}&amp;hashtags=RuralIndiaOnline&amp;via=PARINetwork" target="_blank" class="link-light">
                                         <i class="fa fa-twitter"></i>
                                     </a>
                                     <a target="_blank"

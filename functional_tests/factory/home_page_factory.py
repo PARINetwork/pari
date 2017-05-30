@@ -20,7 +20,7 @@ class HomePageFactory(factory.django.DjangoModelFactory):
     go_live_at = '2011-10-24 12:43'
     expire_at = '2011-10-24 12:43'
     expired = False
-    content_type = factory.SubFactory(ContentTypeFactory, name="core", model="homepage")
+    content_type = factory.SubFactory(ContentTypeFactory, app_label="core", model="homepage")
     locked = False
     latest_revision_created_at = '2011-10-24 12:43'
     first_published_at = '2011-10-24 12:43'
@@ -36,7 +36,7 @@ class HomePageFactory(factory.django.DjangoModelFactory):
 
     @factory.post_generation
     def featured_content(self, create, extracted, **kwargs):
-        image = AffixImage.objects.first()
+        image = AffixImage.objects.get(title="loom")
         self.featured_content = [('featured_section', {'title': 'The loom is my love', 'link_text': 'Weaver loom',
                                                   'url': 'https://ruralindiaonline.org/articles/the-loom-is-my-love-my-legacy/',
                                                   'featured_image_label': 'FEATURED', 'featured_image': image})]
