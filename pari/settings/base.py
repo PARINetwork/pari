@@ -23,7 +23,7 @@ SECRET_KEY = 'vcg^g$-6bce@3hk+bmiyn^exoe4r()+a9g%ypo7p(+fy*q*8em'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '54.255.193.26']
+ALLOWED_HOSTS = []
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
