@@ -26,7 +26,7 @@ class StoryDetailTests(TestCase):
         request = RequestFactory().get('/stories/categories/things-we-do/')
         response = StoryDetail.as_view()(request, object=self.category, slug="things-we-do")
         title = get_title(response.context_data['articles'])
-        assert title == self.hindi_article.title
+        assert title == self.english_article.title
 
     def test_all_articles_are_returned_if_lang_is_all(self):
         request = RequestFactory().get('/stories/categories/things-we-do/?lang=all')
