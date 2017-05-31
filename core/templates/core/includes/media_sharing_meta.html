@@ -10,5 +10,5 @@
 <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
 <meta name="twitter:title" content="{{ title }}" >
 <meta name="twitter:description" content="{{ description }}" >
-<meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ image_url }}" >
-<meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ url }}" >
+<meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{{ image_url }}" >
+<meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{{ url }}" >
