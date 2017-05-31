@@ -21,3 +21,13 @@ def get_translations_for_page(page):
             if live_children:
                 translations.extend(live_children.specific())
     return translations
+
+def filter_by_language(request, *items_to_filter):
+    lang = 'en'
+    filtered_list = []
+    if request.GET.get("lang"):
+        lang = request.GET["lang"]
+    if not lang == 'all':
+        for item in items_to_filter:
+            filtered_list.append(item.filter(language=lang))
+    return tuple(items_to_filter) if len(filtered_list) == 0 else tuple(filtered_list)
