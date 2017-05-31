@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<select class="select-no-style" name="lang">
+<select class="select-no-style {{ select_class }}" name="lang">
     <option value="all">{% trans "All" %}</option>
     {% for lang in LANGUAGES %}
         {% if request.GET.lang %}

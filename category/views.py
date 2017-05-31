@@ -42,8 +42,7 @@ class GalleryDetail(DetailView):
         context = super(GalleryDetail, self).get_context_data(**kwargs)
         qs = Article.objects.live().select_related('featured_image')
         qs = qs.filter(categories=context["category"])
-        if self.request.GET.get("lang"):
-            qs = qs.filter(language=self.request.GET["lang"])
+        qs, = filter_by_language(self.request, qs)
         qs = qs.order_by('-first_published_at')
         paginator = Paginator(qs, self.paginate_by)
         try:
