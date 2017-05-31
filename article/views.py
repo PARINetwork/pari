@@ -94,8 +94,11 @@ class ArchiveDetail(ListView):
         month = self.kwargs['month']
         qs = Article.objects.live().filter(first_published_at__year=year,
                                       first_published_at__month=month)
+        lang = 'en'
         if self.request.GET.get("lang"):
-            qs = qs.filter(language=self.request.GET["lang"])
+            lang = self.request.GET["lang"]
+        if not lang == 'all':
+            qs = qs.filter(language=lang)
         return qs
 
     def get_context_data(self, **kwargs):

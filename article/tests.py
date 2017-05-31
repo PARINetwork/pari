@@ -15,7 +15,7 @@ class AuthorArticleListTests(TestCase):
         self.hindi_article = ArticleFactory(title="hindi_article", authors=(self.test_author,),
                                             categories=(self.category,), language='hi')
 
-    def test_lang_is_used_from_query_params_(self):
+    def test_lang_is_used_from_query_params(self):
         request = RequestFactory().get('/authors/xyz/?lang=hi')
         response = AuthorArticleList.as_view()(request, slug='xyz')
         for article in response.context_data['articles']:
@@ -31,3 +31,4 @@ class AuthorArticleListTests(TestCase):
         request = RequestFactory().get('/stories/categories/things-we-do/?lang=all')
         response = AuthorArticleList.as_view()(request, object=self.category, slug="xyz")
         assert len(response.context_data['articles']) == 2
+
