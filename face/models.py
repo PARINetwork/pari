@@ -49,6 +49,14 @@ class Face(Page):
         return self.image
 
     @property
+    def title_to_share(self):
+        title = "Meet " + self.title
+        title += ", " + self.occupation
+        title += " from " + self.location.district
+        title += ", " + self.location.state
+        return title
+
+    @property
     def locations(self):
         return [self.location]
 
