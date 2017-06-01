@@ -33,7 +33,7 @@
 {% endblock %}
 
 {% block opengraph_block %}
-    {% with album.slides.all|random as random_cover %}{% image random_cover.image fill-300x250 as cover_image %}
+    {% with album.slides.first as cover %}{% image cover.image fill-300x250 as cover_image %}
         {% include "core/includes/media_sharing_meta.html" with title=album.title description=album.description|striptags url=request.get_full_path type="url" image_url=cover_image.url date_of_item=albums.first.first_published_at%}
     {% endwith %}
 {% endblock %}

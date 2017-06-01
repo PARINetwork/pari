@@ -54,7 +54,7 @@ var Album = {
                 url = "https://"+window.location.hostname+author.author_url;
             }
             var fbShare = "https://facebook.com/sharer.php?u="+url;
-            var twitterShare = "https://twitter.com/intent/tweet?url="+url+"&amp;hashtags=RuralIndiaOnline";
+            var twitterShare = "https://twitter.com/intent/tweet?url="+url+"&amp;hashtags=RuralIndiaOnline&amp;via=PARINetwork";
             author["fbShare"] = encodeURI(fbShare);
             author["twitterShare"] = encodeURI(twitterShare);
             author["url"] = encodeURI(url);
