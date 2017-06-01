@@ -8,9 +8,9 @@
 {% block opengraph_block %}
     {% image article.featured_image max-1400x1120 as featured_image %}
     {% if article.original_published_date %}
-        {% include "core/includes/media_sharing_meta.html" with title=article.title description=article.strap url=article.get_absolute_url type="url" image_url=featured_image.file.url date_of_item=article.original_published_date%}
+        {% include "core/includes/media_sharing_meta.html" with title=article.title description=article.strap url=article.get_absolute_url type="article" image_url=featured_image.file.url date_of_item=article.original_published_date%}
     {% else %}
-        {% include "core/includes/media_sharing_meta.html" with title=article.title description=article.strap url=article.get_absolute_url type="url" image_url=featured_image.file.url date_of_item=article.first_published_at%}
+        {% include "core/includes/media_sharing_meta.html" with title=article.title description=article.strap url=article.get_absolute_url type="article" image_url=featured_image.file.url date_of_item=article.first_published_at%}
     {% endif %}
     {% if translations and translations|length > 1 %}
         {% for translation in translations %}
