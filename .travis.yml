@@ -20,6 +20,9 @@ before_script:
   - psql -d test_pari -c "CREATE EXTENSION postgis;"
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
+  - "mkdir -p media/uploads/"
+  - "cp -r core/static/img/stories-1.jpg media/uploads/stories-1.jpg"
+
 script:
   - source scripts/test.sh
 deploy:

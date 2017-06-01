@@ -14,10 +14,6 @@ python manage.py runserver --settings=pari.settings.test > /dev/null 2>&1 &
 expected_response=200
 end=$((SECONDS+60))
 
-echo "Creating media uploads........."
-mkdir -p "media/uploads/"
-cp "core/static/img/stories-1.jpg" "media/uploads/stories-1.jpg"
-
 while [ "$SECONDS" -lt "$end" ];
 do
   sleep 2
