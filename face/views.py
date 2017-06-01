@@ -20,7 +20,7 @@ class FaceList(ListView):
     def get_context_data(self):
         context = super(FaceList, self).get_context_data()
         context["title"] = 'FACES'
-        context["sub_heading"] = 'PEOPLE FROM EVERY INDIAN DISTRICT'
+        context["sub_heading"] = 'People from every indian district'
         context["tab"] = 'gallery'
         context["current_page"] = 'face-list'
         return context
@@ -47,6 +47,7 @@ class FaceDetail(ListView):
     def get_context_data(self):
         context = super(FaceDetail, self).get_context_data()
         context["alphabet"] = self.kwargs["alphabet"]
+        context["sub_heading"] = 'People from every indian district'
         context['site'] = RequestSite(self.request)
         context["slug"] = self.kwargs.get("slug")
         if context["slug"]:

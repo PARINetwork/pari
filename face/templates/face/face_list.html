@@ -9,13 +9,14 @@
 
 {% block meta_title %}{% trans "Faces" %}{% endblock %}
 {% block title %}{% trans "Faces" %}{% endblock %}
+{% block meta_description %}{{ sub_heading }}{% endblock %}
 
 {% block extra_js %}
 
 {% endblock %}
 
 {% block opengraph_block %}
-    {% include "core/includes/media_sharing_meta.html" with title="FACES" description="People from every Indian district" url=request.get_full_path type="faces" image_url=STATIC_URL|add:"img/faces-tile-1.jpg" %}
+    {% include "core/includes/media_sharing_meta.html" with title="FACES" description=sub_heading url=request.get_full_path type="faces" image_url=STATIC_URL|add:"img/faces-tile-1.jpg" %}
 {% endblock %}
 
 {% block extra_css %}

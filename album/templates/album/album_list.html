@@ -8,6 +8,7 @@
 
 {% block meta_title %}{% trans "Albums" %}{% endblock %}
 {% block title %}{% trans "Albums" %}{% endblock %}
+{% block meta_description %}{{sub_heading}}{% endblock %}
 
 {% block opengraph_block %}
     {% include "core/includes/media_sharing_meta.html" with title=title description=sub_heading url=request.get_full_path type="url" image_url=albums.first.slides.first.image.file.url date_of_item=albums.first.first_published_at%}
