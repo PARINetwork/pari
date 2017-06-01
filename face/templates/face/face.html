@@ -11,7 +11,13 @@
 {% block title %}{% trans "Faces" %}{% endblock %}
 
 {% block opengraph_block %}
-    {% include "core/includes/media_sharing_meta.html" with title="FACES" description="People from every Indian district" url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/faces-tile-1.jpg" %}
+     {% if slug %}
+        {% with "Meet"|add:face.title|add:", "|add:face.occupation as face_title %}
+            {% include "core/includes/media_sharing_meta.html" with title=face_title description="People from every Indian district" url=request.get_full_path type="url" image_url=face.featured_image.file.url %}
+        {% endwith %}
+    {% else %}
+        {% include "core/includes/media_sharing_meta.html" with title="FACES" description="People from every Indian district" url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/faces-tile-1.jpg" %}
+    {% endif %}
 {% endblock %}
 
 {% block extra_js %}
