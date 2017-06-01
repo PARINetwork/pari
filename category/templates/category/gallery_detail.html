@@ -6,9 +6,9 @@
 
 {% block opengraph_block %}
     {% if  articles.first.original_published_date %}
-        {% include "core/includes/media_sharing_meta.html" with title=category.name description=category.description url=request.get_full_path type="url" image_url=category.image.file.url date_of_item=articles.first.original_published_date%}
+        {% include "core/includes/media_sharing_meta.html" with title=category.name description=category.description url=request.get_full_path type="url" image_url=category.image.file.url %}
     {% else %}
-        {% include "core/includes/media_sharing_meta.html" with title=category.name description=category.description url=request.get_full_path type="url" image_url=category.image.file.url date_of_item=articles.first.first_published_at%}
+        {% include "core/includes/media_sharing_meta.html" with title=category.name description=category.description url=request.get_full_path type="url" image_url=category.image.file.url %}
     {% endif %}
 {% endblock %}
 
