@@ -3,6 +3,7 @@
 
 {% block meta_title %}{{ category.name }}{% if filter %} - {{ filter }}{% endif %} - {% trans "Page" %} {{ articles.number }}{% endblock %}
 {% block title %}{{ category.name }}{% endblock %}
+{% block meta_description %}{{ category.description }}{% endblock %}
 
 {% block opengraph_block %}
     {% if  articles.first.original_published_date %}
