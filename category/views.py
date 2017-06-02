@@ -8,6 +8,7 @@ from django.views.generic.list import ListView
 from article.models import Article
 from category.models import Category
 from core.models import GalleryHomePage
+from core.utils import filter_by_language
 
 
 class CategoriesList(ListView):
@@ -41,8 +42,7 @@ class GalleryDetail(DetailView):
         context = super(GalleryDetail, self).get_context_data(**kwargs)
         qs = Article.objects.live().select_related('featured_image')
         qs = qs.filter(categories=context["category"])
-        if self.request.GET.get("lang"):
-            qs = qs.filter(language=self.request.GET["lang"])
+        qs, = filter_by_language(self.request, qs)
         qs = qs.order_by('-first_published_at')
         paginator = Paginator(qs, self.paginate_by)
         try:
@@ -77,8 +77,7 @@ class StoryDetail(DetailView):
         context = super(StoryDetail, self).get_context_data(**kwargs)
         qs = Article.objects.live().select_related('featured_image')
         qs = qs.filter(categories=context["category"])
-        if self.request.GET.get("lang"):
-            qs = qs.filter(language=self.request.GET["lang"])
+        qs, = filter_by_language(self.request, qs)
         qs = qs.order_by('-first_published_at')
         paginator = Paginator(qs, self.paginate_by)
         try:

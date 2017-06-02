@@ -13,7 +13,7 @@ from wagtail.wagtailcore.models import Page
 
 from article.models import Article
 from author.models import Author
-from core.utils import get_translations_for_page
+from core.utils import get_translations_for_page, filter_by_language
 
 from album.models import Album
 from face.models import Face
@@ -94,8 +94,7 @@ class ArchiveDetail(ListView):
         month = self.kwargs['month']
         qs = Article.objects.live().filter(first_published_at__year=year,
                                       first_published_at__month=month)
-        if self.request.GET.get("lang"):
-            qs = qs.filter(language=self.request.GET["lang"])
+        qs, = filter_by_language(self.request, qs)
         return qs
 
     def get_context_data(self, **kwargs):
@@ -118,8 +117,7 @@ class AuthorArticleList(ListView):
             authors__slug=self.kwargs["slug"]
         )
         qs = live_articles_by_author.order_by("-first_published_at")
-        if self.request.GET.get("lang"):
-            qs = qs.filter(language=self.request.GET["lang"])
+        qs, = filter_by_language(self.request, qs)
         return qs
 
     def get_context_data(self, **kwargs):

@@ -44,16 +44,7 @@
                 <ul class="font-m">
                     <li>{% trans "Languages" %}:</li>
                     <li>
-                        <select class="select-no-style" name="lang">
-                            <option value="">{% trans "All" %}</option>
-                            #}
-                            {% for lang in LANGUAGES %}
-                                <option {% if request.GET.lang == lang.0 %}selected="selected"{% endif %}
-                                        value="{{ lang.0 }}">
-                                    {% blocktrans with tlang=lang.1 %}{{ tlang }}{% endblocktrans %}
-                                </option>
-                            {% endfor %}
-                        </select>
+                        {% include "includes/language_select.html"%}
                         <i class="fa fa-angle-down"></i>
                     </li>
                     {% with request.build_absolute_uri as url%}

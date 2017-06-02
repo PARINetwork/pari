@@ -61,7 +61,7 @@ def home_page(request, slug="home-page"):
         "categories": [category1, category2, category3, category4],
         "translations": translations,
         "translations_for_infocus_article1": get_translations_for_page(home_page.in_focus_page1.specific),
-        "translations_for_infocus_article2": len(get_translations_for_page(home_page.in_focus_page2.specific)),
+        "translations_for_infocus_article2": get_translations_for_page(home_page.in_focus_page2.specific),
         "current_page": 'home-page',
     }
     return render(request, "core/home_page.html", home_context)

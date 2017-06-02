@@ -16,6 +16,7 @@ from core.models import AffixImage
 from face.models import Face
 from .forms import LocationAdminForm
 from .models import Location
+from core.utils import filter_by_language
 
 
 class LocationList(ListView):
@@ -85,11 +86,7 @@ class LocationDetail(DetailView):
         albums_qs = Album.objects.live().filter(slides=albums_slides).distinct()
         live_faces = Face.objects.live()
         faces_qs = live_faces.filter(Q(location=location) | Q(image__in=images_qs))
-
-        if self.request.GET.get("lang"):
-            lang = self.request.GET["lang"]
-            articles_qs = articles_qs.filter(language=lang)
-            albums_qs = albums_qs.filter(language=lang)
+        articles_qs, albums_qs = filter_by_language(self.request, articles_qs, albums_qs)
         context['articles'] = itertools.chain(
             articles_qs,
             albums_qs,
