@@ -6,7 +6,8 @@
 {% block meta_description %}{{ category.description }}{% endblock %}
 
 {% block opengraph_block %}
-    {% include "core/includes/media_sharing_meta.html" with title=category.name description=category.description url=request.get_full_path type="url" image_url=category.image.file.url %}
+    {% image category.image fill-512x512 as category_image %}
+    {% include "core/includes/media_sharing_meta.html" with title=category.name description=category.description url=request.get_full_path type="url" image_url=category_image.file.url %}
 {% endblock %}
 
 {% block extra_js %}
