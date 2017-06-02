@@ -51,7 +51,7 @@ class Face(Page):
     @property
     def title_to_share(self):
         title = "Meet " + self.title
-        title += ", " + self.occupation
+        title += ", " + self.occupation if self.occupation else ""
         title += " from " + self.location.district
         title += ", " + self.location.state
         return title
