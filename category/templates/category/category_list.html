@@ -3,11 +3,15 @@
 
 {% block meta_title %}{% trans "Categories" %}{% endblock %}
 {% block title %}{% trans "Categories" %}{% endblock %}
+{% block meta_description %}Find hundreds of them in diverse categories{% endblock %}
 
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/layout/components/main-content/story-grid.less">
 {% endblock %}
 
+{% block opengraph_block %}
+    {% include "core/includes/media_sharing_meta.html" with title="Stories" description="Find hundreds of them in diverse categories" url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/share_all_categories.jpg" %}
+{% endblock %}
 
 {% block breadcrumb_menu %}
     <li class="active">{% trans "Categories" %}</li>

@@ -6,7 +6,7 @@
 <meta property="og:description" content="{{ description }} #RuralIndiaOnline ">
 <meta property="og:published_time" content="{{ date_of_item|date:"c" }}">
 
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="{% if twitter_card %} {{ twitter_card }} {% else %} summary_large_image {% endif %}">
 <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
 <meta name="twitter:title" content="{{ title }}" >
 <meta name="twitter:description" content="{{ description }}" >

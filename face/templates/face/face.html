@@ -13,7 +13,7 @@
 
 {% block opengraph_block %}
      {% if slug %}
-         {% include "core/includes/media_sharing_meta.html" with title=face.title_to_share description=sub_heading url=request.get_full_path type="url" image_url=face.featured_image.file.url %}
+         {% include "core/includes/media_sharing_meta.html" with title=face.title_to_share description=sub_heading url=request.get_full_path type="url" image_url=face.featured_image.file.url twitter_card="summary" %}
     {% else %}
         {% include "core/includes/media_sharing_meta.html" with title="FACES" description=sub_heading url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/faces-tile-1.jpg" %}
     {% endif %}
