@@ -34,6 +34,7 @@ class AlbumList(ListView):
         if filter_param == "talking":
             slide_id = AlbumSlide.objects.exclude(audio='').values_list('page__id')
             qs = album_qs.filter(id__in=slide_id)
+            qs = qs.order_by('-first_published_at')
             context['albums'] = qs
             context['tab'] = 'gallery'
             context["title"] = "Talking Albums"
@@ -41,6 +42,7 @@ class AlbumList(ListView):
         elif filter_param == "other":
             slide_id = AlbumSlide.objects.filter(audio='').values_list('page__id')
             qs = album_qs.filter(id__in=slide_id)
+            qs = qs.order_by('-first_published_at')
             context['albums'] = qs
             context['tab'] = 'gallery'
             context["title"] = "Photo Albums"
