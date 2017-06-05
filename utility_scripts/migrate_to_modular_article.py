@@ -1,6 +1,15 @@
 import json
+import os
+import sys
 
 from bs4 import BeautifulSoup
+import django
+
+if '__file__' in locals():
+    sys.path.append(os.path.join(os.path.dirname(__file__), os.path.pardir))
+
+django.setup()
+
 from article.models import Article
 
 
