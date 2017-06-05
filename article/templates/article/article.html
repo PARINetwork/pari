@@ -7,7 +7,7 @@
 {% block meta_description %}{{ article.strap }}{% endblock %}
 
 {% block opengraph_block %}
-    {% image article.featured_image max-1400x1120 as featured_image %}
+    {% image article.featured_image max-1000x500 as featured_image %}
     {% if article.original_published_date %}
         {% include "core/includes/media_sharing_meta.html" with title=article.title description=article.strap url=article.get_absolute_url type="article" image_url=featured_image.file.url date_of_item=article.original_published_date%}
     {% else %}
@@ -49,7 +49,7 @@
 
 {% block main_wrapper %}
 {% if article.featured_image %}
-{% image article.featured_image max-1200x630 as featured_image %}
+{% image article.featured_image max-1400 as featured_image %}
 <div class="full-row">
     <div class="banner-container">
         <img src="{{ featured_image.url }}" alt="{{ article.featured_image.alt_text }}">
