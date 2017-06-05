@@ -1,15 +1,21 @@
 @import "/colors/colors";
 
+.paginator-bottom {
+  z-index: 1;
+}
+
 .two-column-grid {
+  .result {
+    min-height: 182px;
+  }
 
   margin: 30px 0px 20px 0px;
-  overflow: auto;
+  overflow: visible;
   & > ul {
-    overflow: auto;
+    overflow: visible;
     min-height: 400px;
 
     li {
-      //overflow: auto;
       position: relative;
       padding: 0px;
       margin: 20px 0px 20px 0px;
@@ -29,6 +35,7 @@
         .dropdown.custom-dropdown {
           position: relative;
           button {
+            margin-right: 0px;
             border-style: solid;
             background-color: @lighter-grey;
             border-width: 1px;
@@ -49,27 +56,28 @@
           &.open > .dropdown-menu {
             z-index: 2;
             position: absolute;
-            max-width: 150px;
+            min-width: 105px;
             display: block;
             text-align: center;
             border-radius: 0;
             color: @grey;
-            left: 290px;
+            left: 0px;
             li {
               position: relative;
               font-size: 14px;
               padding: 10px 0px;
               cursor: pointer;
-              margin: 0px;
+              margin: 2px;
               a {
                 position: absolute;
                 width: 100%;
-                top:0;
+                top: 0;
+                left: 0;
                 margin: 0px;
                 padding: 0px;
 
               }
-              a:hover{
+              a:hover {
                 text-decoration: none;
               }
             }
@@ -98,7 +106,7 @@
         .margin-top-20px {
           margin-top: 10px !important;
           * {
-            margin-right: 20px;
+            //margin-right: 20px;
             font-size: 14px;
             letter-spacing: 0.3px;
           }
@@ -147,6 +155,9 @@
         padding-right: 15px;
         padding-left: 15px;
         margin: 20px 0px;
+        .dropdown-menu {
+          left: 0px !important;
+        }
         & > a {
           float: none;
           width: 100%;
