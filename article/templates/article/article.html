@@ -49,7 +49,7 @@
 
 {% block main_wrapper %}
 {% if article.featured_image %}
-{% image article.featured_image max-1400 as featured_image %}
+{% image article.featured_image width-1400 as featured_image %}
 <div class="full-row">
     <div class="banner-container">
         <img src="{{ featured_image.url }}" alt="{{ article.featured_image.alt_text }}">
