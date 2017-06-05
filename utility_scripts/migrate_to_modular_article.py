@@ -4,13 +4,17 @@ import sys
 
 from bs4 import BeautifulSoup
 import django
+from django.db.models import Q
 
 if '__file__' in locals():
     sys.path.append(os.path.join(os.path.dirname(__file__), os.path.pardir))
 
 django.setup()
 
+from django.conf import settings
 from article.models import Article
+
+from core.models import AffixImage
 
 
 class ArticleMigrator(object):
@@ -31,12 +35,16 @@ class ArticleMigrator(object):
                 self.unhandled_elements.append(element.name)
                 continue
 
-            # paragraph_images = element.find_all('img')
-            paragraph_embeded_images = element.find_all('embed', attrs={'embedtype': 'image'})
+            embedded_images = element.find_all('embed', attrs={'embedtype': 'image'})
+            images = element.find_all(lambda tag: tag.name == 'img' and not tag.has_attr('embedtype'))
 
-            if not paragraph_embeded_images:
+            if images and embedded_images:
+                self.unhandled_elements.append("Has both embedded and full-width images")
+                continue
+
+            if not embedded_images and not images:
                 paragraph_collector += str(element)
-            elif len(paragraph_embeded_images) == 1:
+            elif len(embedded_images) == 1:
                 if paragraph_collector:
                     self.modular_content.append(Module.paragraph("".join(paragraph_collector)))
                     paragraph_collector = []
@@ -44,12 +52,43 @@ class ArticleMigrator(object):
                 img = element.find('embed')
                 image_id = img.attrs.get('id')
                 if image_id:
-                    caption = img.attrs['alt'] or 'Caption place holder'
+                    caption = img.attrs['alt'] or ''
                     alignment = img.attrs.get('format')
                     img.decompose()
                     self.modular_content.append(Module.paragraph_with_image(str(element), image_id, caption, alignment))
+                else:
+                    self.unhandled_elements.append("Embeded image has no ID")
+            elif len(images) == 1:
+                if paragraph_collector:
+                    self.modular_content.append(Module.paragraph("".join(paragraph_collector)))
+                    paragraph_collector = []
+
+                img = element.find('img')
+
+                image_src = img.attrs.get('src')
+                image_srcset = img.attrs.get('srcset')
+
+                if image_src:
+                    image_file = image_src[len(settings.MEDIA_URL):]
+                elif image_srcset:
+                    image_file = image_srcset.split()[0][len(settings.MEDIA_URL):]
+                else:
+                    raise NotImplementedError
+
+                image = AffixImage.objects.filter(Q(file=image_file) | Q(renditions__file=image_file)).first()
+                caption = img.attrs.get('alt') or ''
+                img.decompose()
+
+                if image:
+                    self.modular_content.append(Module.full_width_image(image.id, caption))
+                else:
+                    self.unhandled_elements.append("Unable to find image with src: %s" % image_file)
+
+                text = element.getText().strip()
+                if text:
+                    self.modular_content.append(Module.paragraph(str(element)))
             else:
-                self.unhandled_elements.append('More than one images in  a pargraph')
+                self.unhandled_elements.append('More than one images/embedded-images in a pargraph')
                 continue
 
         if paragraph_collector:
@@ -60,6 +99,7 @@ class ArticleMigrator(object):
     def save_revision(self):
         self.article.modular_content = json.dumps(self.modular_content)
         self.article.save_revision()
+        return self
 
 
 class Module(object):
@@ -98,6 +138,8 @@ class Module(object):
 
 
 if __name__ == '__main__':
-    article = Article.objects.live().get(page_ptr_id=2689)
-    print article, article.page_ptr_id
-    ArticleMigrator(article).formulate_modular_content().save_revision()
+    for article in Article.objects.live().all():
+        print article.page_ptr_id, article
+        article_ = ArticleMigrator(article).formulate_modular_content().save_revision()
+        if article_.unhandled_elements:
+            print  article_.unhandled_elements
