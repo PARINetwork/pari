@@ -1,4 +1,7 @@
+@import "/colors/colors";
+
 .two-column-grid {
+
   margin: 30px 0px 20px 0px;
   overflow: auto;
   & > ul {
@@ -6,7 +9,7 @@
     min-height: 400px;
 
     li {
-      overflow: auto;
+      //overflow: auto;
       position: relative;
       padding: 0px;
       margin: 20px 0px 20px 0px;
@@ -22,19 +25,66 @@
       }
 
       .caption {
-        h3 {
-          // font-size: 22px;
-          // margin: 7px 0px;
-          // max-height: 48px;
-          // overflow: hidden;
-          // color: rgb(59, 59, 59);
+        position: relative;
+        .dropdown.custom-dropdown {
+          position: relative;
+          button {
+            border-style: solid;
+            background-color: @lighter-grey;
+            border-width: 1px;
+            border-color: lightgrey;
+            color: #b5b5b5;
+            margin-top: 6px;
+            padding: 5px 10px;
+            font-size: 11px;
+            border-radius: 3px;
+            letter-spacing: 0.3px;
+            font-weight: 400;
+            text-transform: uppercase;
+            &:hover {
+              color: #444;
+              border: 1px solid #444;
+            }
+          }
+          &.open > .dropdown-menu {
+            z-index: 2;
+            position: absolute;
+            max-width: 150px;
+            display: block;
+            text-align: center;
+            border-radius: 0;
+            color: @grey;
+            left: 290px;
+            li {
+              position: relative;
+              font-size: 14px;
+              padding: 10px 0px;
+              cursor: pointer;
+              margin: 0px;
+              a {
+                position: absolute;
+                width: 100%;
+                top:0;
+                margin: 0px;
+                padding: 0px;
 
+              }
+              a:hover{
+                text-decoration: none;
+              }
+            }
+            li:hover {
+              background-color: transparent;
+            }
+          }
+        }
+        h3 {
           font-family: 'Amiri', serif;
           font-weight: 700;
           font-size: 22px;
           margin: 0px;
           line-height: 1.1;
-          padding-top:10px;
+          padding-top: 10px;
           color: #444444;
           letter-spacing: -0.7px;
           a {
@@ -54,7 +104,7 @@
           }
         }
         .location-list {
-            margin-right: 0px !important;
+          margin-right: 0px !important;
         }
         .date a:hover {
           text-decoration: underline;
@@ -78,11 +128,11 @@
     margin: 0px;
     li {
       a {
-       color: #827c7c;
-     }
-     &.active a {
-       color: #FFF;
-     }
+        color: #827c7c;
+      }
+      &.active a {
+        color: #FFF;
+      }
     }
   }
 
@@ -125,8 +175,8 @@
           }
           .margin-top-20px {
             a, a span {
-             font-size: 14px;
-           }
+              font-size: 14px;
+            }
           }
         }
       }

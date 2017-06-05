@@ -8,7 +8,7 @@ from django.views.generic.list import ListView
 from article.models import Article
 from category.models import Category
 from core.models import GalleryHomePage
-from core.utils import filter_by_language
+from core.utils import filter_by_language, get_translations_for_articles
 
 
 class CategoriesList(ListView):

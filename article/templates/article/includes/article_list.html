@@ -1,5 +1,6 @@
 {% load i18n static wagtailimages_tags %}
 {% load i18n core_filters %}
+{% load filters %}
 
     <section class="two-column-grid">
         <ul>
@@ -24,7 +25,23 @@
                             <span class="date link-dark font-s">{{ article.first_published_at|date }}</span>
                         </a>
                     {% endif %}
-                  </div>
+                   {% with article.get_translation as article_translations %}
+                       {% if article_translations|length > 1 %}
+                        <div class="dropdown custom-dropdown">
+                            <button class="dropdown-toggle" type="button" id="dropdownMenu1"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                {{ article_translations | length }} languages
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                {% for translation in article_translations %}
+                                    <li><a href="{{ translation.get_absolute_url}}">{{ translation.get_language_display }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                   {% endwith %}
+                   </div>
                 </div>
           </li>
 
