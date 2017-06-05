@@ -1,7 +1,5 @@
 @import "layout/layout";
 
-
-
 #header {
   position: relative;
   height: 80px;
@@ -23,19 +21,19 @@
     display: none;
 
     li {
-     list-style-type: none;
-     display: inline-block;
-     vertical-align: middle;
-     padding: 0px 5px;
+      list-style-type: none;
+      display: inline-block;
+      vertical-align: middle;
+      padding: 0px 5px;
 
-     .fa {
-       font-size: 18px;
-     }
+      .fa {
+        font-size: 18px;
+      }
 
-     &.link-light {
-       display: none;
-     }
-   }
+      &.link-light {
+        display: none;
+      }
+    }
   }
 }
 
@@ -56,13 +54,12 @@
   }
 }
 
-
-
 @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
   .nav-header-icon-title {
     padding-right: 0px;
   }
 }
+
 @media only screen and (max-width: 768px) {
   #header, #header .fixed-header-wrapper {
     height: 56px;
@@ -73,6 +70,7 @@
     }
 
   }
+
   .album-list, .single-category, .Visible, .PhotoZone, .Little, .VideoZone, .AudioZone, .Tongues, .gallery-home,
   .face-list, .resource-list, .about-the-editor, .authors, .donate, .archive-detail, .location-detail {
 
@@ -88,8 +86,8 @@
   }
 
   .header-back-to-categories {
-      display: none;
-    }
+    display: none;
+  }
 
   .single-category {
     #header ul.header-social-icons {
@@ -107,6 +105,7 @@
       }
     }
   }
+
   .single-category, .Visible, .Little, .Tongues, .gallery-home, .about-the-editor, .authors, .donate, .archive-detail,
   .location-detail {
     #header ul.header-social-icons {
@@ -120,7 +119,6 @@
     }
   }
 }
-
 
 .listing-image {
   width: 100%;
@@ -170,28 +168,36 @@
     border-radius: 3px;
     letter-spacing: 0.3px;
     font-weight: 400;
-    text-transform: uppercase;
+    text-transform: lowercase;
     &:hover {
       color: #444;
       border: 1px solid #444;
     }
   }
   &.open > .dropdown-menu {
+    z-index: 2;
+    min-width: 105px;
     display: block;
     text-align: center;
     border-radius: 0;
     color: @grey;
-
     li {
       font-size: 14px;
-      padding: 10px 20px;
       cursor: pointer;
-
+      margin: 2px;
       &:hover {
-        color: #444;
         background: #f4f4f4;
       }
+      a {
+        width: 100%;
+        margin: 0px;
+        font-size: 14px;
+        display: inline-block;
+      }
+      a:hover {
+        color: @primary-color;
 
+      }
     }
   }
 }

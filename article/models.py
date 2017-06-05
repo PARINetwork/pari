@@ -27,6 +27,8 @@ from core.edit_handlers import M2MFieldPanel
 
 # Override the url property of the Page model
 # to accommodate for child pages
+from core.utils import get_translations_for_page
+
 Page.wg_url = Page.url
 @cached_property
 def url_property(self):
@@ -93,6 +95,9 @@ class Article(Page):
     def get_absolute_url(self):
         name = "article-detail"
         return reverse(name, kwargs={"slug": self.slug})
+
+    def get_translation(self):
+        return get_translations_for_page(self)
 
     def related_articles(self):
         if not self.pk:

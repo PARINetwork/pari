@@ -31,3 +31,9 @@ def filter_by_language(request, *items_to_filter):
         for item in items_to_filter:
             filtered_list.append(item.filter(language=lang))
     return tuple(items_to_filter) if len(filtered_list) == 0 else tuple(filtered_list)
+
+def get_translations_for_articles(articles):
+    article_translations = {}
+    for article in articles:
+        article_translations[article] = get_translations_for_page(article)
+    return article_translations

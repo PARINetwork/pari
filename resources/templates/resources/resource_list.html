@@ -10,19 +10,7 @@
 {% block title %}{% trans "Resources" %}{% endblock %}
 
 {% block opengraph_block %}
-    <meta property="og:title" content="{% trans "PARI Resources" %}">
-    <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}" >
-    <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ STATIC_URL }}img/default_featured_image.png" >
-    <meta property="og:type" content="Resource">
-    <meta property="og:description" content="All official and independent reports on rural India. #RuralIndiaOnline">
-    <meta property="og:published_time" content={{ object_list.first.first_published_at|date:"c" }}>
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
-    <meta name="twitter:title" content="{% trans "PARI Resources" %}" >
-    <meta name="twitter:description" content="All official and independent reports on rural India. #RuralIndiaOnline" >
-    <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ STATIC_URL }}img/default_featured_image.png" >
-    <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
+    {% include "core/includes/media_sharing_meta.html" with title="Resources" description="All official and independent reports on rural India" url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/share_all_resources.jpg" date_of_item=object_list.first.first_published_at%}
 {% endblock %}
 
 {% block extra_js %}
