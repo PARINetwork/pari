@@ -5,9 +5,9 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "resource_feeds" %}">
 <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "resource_feeds" %}">
 {% endblock %}
-
 {% block meta_title %}{% trans "Resources" %}{% endblock %}
 {% block title %}{% trans "Resources" %}{% endblock %}
+{% block meta_description %}All official and independent reports on rural India{% endblock %}
 
 {% block opengraph_block %}
     {% include "core/includes/media_sharing_meta.html" with title="Resources" description="All official and independent reports on rural India" url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/share_all_resources.jpg" date_of_item=object_list.first.first_published_at%}

@@ -3,6 +3,7 @@
 
 {% block meta_title %}{% trans resource.title %}{% if filter%} - {{ filter }}{% endif %}{% endblock %}
 {% block title %}{% trans resource.title %}{% endblock %}
+{% block meta_description%} {{ resource.content.2 }} {% endblock %}
 
 {% block meta_keywords %}
     {{ resource.title }}
@@ -22,20 +23,10 @@
 
 {% block opengraph_block %}
     {% with resource.content.2 as description %}
-    <meta property="og:title" content="{{ resource.title }}">
-    <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ resource.get_absolute_url }}" >
-    <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ STATIC_URL }}img/default_featured_image.png" >
-    <meta property="og:type" content="Resource Detail">
-    <meta property="og:description" content="{{ description|striptags }} #RuralIndiaOnline">
-    <meta property="og:published_time" content={{ object_list.first.first_published_at|date:"c" }}>
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
-    <meta name="twitter:title" content="{{ resource.title }}" >
-    <meta name="twitter:description" content="{{ description|striptags }} #RuralIndiaOnline" >
-    <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ STATIC_URL }}img/default_featured_image.png" >
-    <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ resource.get_absolute_url }}">
-{% endwith %}
+        {% include "core/includes/media_sharing_meta.html" with title=resource.title  description=description|striptags url=request.get_full_path type="url" %}
+        <meta property="og:image" content="http: {{ resource.embed_thumbnail }}">
+        <meta name="twitter:image" content="http: {{ resource.embed_thumbnail }}">
+    {% endwith %}
 {% endblock %}
 
 {% block main %}
