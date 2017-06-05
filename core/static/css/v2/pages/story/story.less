@@ -1,4 +1,3 @@
-
 @import "../../colors/colors";
 @import "../../layout/mixins";
 @import "../../layout/responsive";
@@ -20,6 +19,26 @@
   position: relative;
   margin-bottom: 20px;
   .banner-info {
+    .arrow-wrap {
+      position: absolute;
+      z-index: 1;
+      left: 50%;
+      top: -4em;
+      margin-left: -5em;
+      background: #111;
+      width: 8em;
+      height: 8em;
+      padding: 3.8em 1.5em;
+      border-radius: 50%;
+      font-size: 0.5em;
+      display: block;
+    }
+
+    .arrow-collapse {
+      font-size: x-large;
+      color: white;
+      top: -13px;
+    }
     position: absolute;
     z-index: 1;
     bottom: 0;
