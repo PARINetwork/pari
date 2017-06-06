@@ -3,6 +3,10 @@
 {% block meta_title %}{{ page.title }}{% endblock %}
 {% block meta_description %}PARI Guidelines page{% endblock %}
 
+{% block opengraph_block %}
+    {% include "core/includes/media_sharing_meta.html" with title="Guidelines for PARI contributors" description="Writers, photographers, filmmakers and others" url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/default_featured_image.png"%}
+{% endblock %}
+
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/guidelines.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/static_page.less">

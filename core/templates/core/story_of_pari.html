@@ -4,6 +4,10 @@
 {% block meta_title %} The story of PARI {% endblock %}
 {% block meta_description %} Rural India — a living journal, a breathing archive  {% endblock %}
 
+{% block opengraph_block %}
+    {% include "core/includes/media_sharing_meta.html" with title="Story of PARI" description=" " url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/farm_woman_bend_sharing.jpg"%}
+{% endblock %}
+
 {% block extra_css %}
    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/story_of_pari.less">
 {% endblock %}

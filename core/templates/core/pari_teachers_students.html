@@ -4,6 +4,10 @@
 {% block meta_description %}At PARI, we’re writing the textbooks of the future.  That’s happening with the numerous
     stories, photos, videos and audio material going up every week on our site.{% endblock %}
 
+{% block opengraph_block %}
+    {% include "core/includes/media_sharing_meta.html" with title="PARI for students and teachers" description="At PARI, we’re writing the textbooks of the future. That’s happening with the numerous stories, photos, videos and audio material going up every week on our site. It’s important that, over time, quite a bit of that is produced by students and teachers themselves." url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/pari_for_schools_sharing.jpg"%}
+{% endblock %}
+
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/pari_teachers_students.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/static_page.less">
