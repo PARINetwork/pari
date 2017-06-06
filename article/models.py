@@ -24,18 +24,21 @@ from wagtail.wagtailsearch.backends.elasticsearch import ElasticSearchMapping, \
 
 from core.edit_handlers import M2MFieldPanel
 
-
 # Override the url property of the Page model
 # to accommodate for child pages
 from core.utils import get_translations_for_page
 
 Page.wg_url = Page.url
+
+
 @cached_property
 def url_property(self):
     instance = self.specific
     if getattr(instance, 'get_absolute_url', None):
         return instance.get_absolute_url()
     return self.wg_url
+
+
 Page.url = url_property
 
 
@@ -52,9 +55,9 @@ class Article(Page):
     featured_image = models.ForeignKey('core.AffixImage',
                                        null=True, blank=True,
                                        on_delete=models.SET_NULL)
+    show_featured_image = models.BooleanField(default=True, help_text='Hide for One-off video')
     categories = M2MField("category.Category", related_name="articles_by_category")
-    locations  = M2MField("location.Location", related_name="articles_by_location")
-
+    locations = M2MField("location.Location", related_name="articles_by_location")
     content_panels = Page.content_panels + [
         FieldPanel('strap'),
         M2MFieldPanel('authors'),
@@ -62,7 +65,11 @@ class Article(Page):
         FieldPanel('language'),
         FieldPanel('original_published_date'),
         FieldPanel('content'),
-        ImageChooserPanel('featured_image'),
+        MultiFieldPanel(
+            [
+                ImageChooserPanel('featured_image'),
+                FieldPanel('show_featured_image'),
+            ], 'Cover Image'),
         FieldPanel('categories'),
         M2MFieldPanel('locations'),
     ]
