@@ -10,20 +10,7 @@
 {% endblock %}
 
 {% block opengraph_block %}
-
-<meta property="og:title" content="People's Archive of Rural India">
-<meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}">
-<meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ STATIC_URL }}img/default_featured_image.png">
-<meta property="og:type" content="HomePage">
-<meta property="og:description" content="The Everyday Lives Of Everyday People #RuralIndiaOnline">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
-<meta name="twitter:title" content="People's Archive of Rural India" >
-<meta name="twitter:description" content="The Everyday Lives Of Everyday People #RuralIndiaOnline" >
-<meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ STATIC_URL }}img/default_featured_image.png" >
-<meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ request.path }}" >
-
+    {% include "core/includes/media_sharing_meta.html" with title="The everyday lives of everyday people" description="Rural India is in many ways the most diverse part of the planet. Its 833 million people include distinct societies speaking well over 700 languages, some of them thousands of years old." url=request.get_full_path type="url" image_url=page.featured_content.0.value.featured_image.file.url %}
 {% endblock %}
 
 
