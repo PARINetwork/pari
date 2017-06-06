@@ -4,11 +4,17 @@ $(function () {
         $(".hidden.whatsapp").removeClass("hidden")
     }
 
-    $('.glyphicon-chevron-up').onclick(function () {
-        $(".arrow-collapse").removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");
+    $('.arrow-wrap').on("click", function () {
+        if ($(".arrow-collapse").hasClass("glyphicon-chevron-up"))
+        {
+            $(".arrow-collapse").removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");
+        }else
+        {
+            $(".arrow-collapse").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
+        }
     });
-
-    $('.glyphicon-chevron-down').onClick( function () {
-        $(".arrow-collapse").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
-    });
+    // $('.glyphicon-chevron-down').on("click", function () {
+    //     alert("i am also clicked");
+    //     $(".arrow-collapse").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
+    // });
 });
