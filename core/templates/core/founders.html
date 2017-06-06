@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% load i18n wagtailcore_tags %}
-{% block meta_description %}Contribute to faces{% endblock %}
+{% block meta_description %}P. Sainath is the Founder Editor of the People’s Archive of Rural India.{% endblock %}
 {% block meta_title %}
 Founder Editor P Sainath {% endblock %}
 
+{% block opengraph_block %}
+    {% include "core/includes/media_sharing_meta.html" with title="P. Sainath, Founder Editor" description="P. Sainath is the Founder Editor of the People’s Archive of Rural India. The archive is an outcome of his three decades-plus in journalism – including a quarter century of reporting from rural India." url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/founders/p_sainath.jpg"%}
+{% endblock %}
 
 {% block extra_css %}
    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/founders.less">
