@@ -2,8 +2,9 @@ import json
 import os
 import sys
 
-from bs4 import BeautifulSoup
 import django
+
+from bs4 import BeautifulSoup
 from django.db.models import Q
 
 if '__file__' in locals():
@@ -11,10 +12,9 @@ if '__file__' in locals():
 
 django.setup()
 
-from django.conf import settings
 from article.models import Article
-
 from core.models import AffixImage
+from django.conf import settings
 
 
 class ArticleMigrator(object):
@@ -22,109 +22,82 @@ class ArticleMigrator(object):
         self.article = article
         self.unhandled_elements = []
         self.modular_content = []
+        self.paragraph_collector = []
         self.content = BeautifulSoup(self.article.content).find('body').extract().contents
 
     def formulate_modular_content(self):
-        paragraph_collector = []
-
         for element in self.content:
             if element.name in (None, 'br'):
                 continue
 
-            if element.name not in ['p', 'img']:
-                self.unhandled_elements.append(element.name)
-                continue
-
             if element.name == 'img':
-                if paragraph_collector:
-                    self.modular_content.append(Module.paragraph("".join(paragraph_collector)))
-                    paragraph_collector = []
+                self._flush_collected_paragraphs_to_module()
+                self._add_full_width_image_module(element)
+            elif element.name == 'p':
+                embedded_images = element.find_all('embed', attrs={'embedtype': 'image'})
+                other_images = element.find_all(lambda tag: tag.name == 'img' and not tag.has_attr('embedtype'))
 
-                image_src = element.attrs.get('src')
-                image_srcset = element.attrs.get('srcset')
-
-                if image_src:
-                    image_file = image_src[len(settings.MEDIA_URL):]
-                elif image_srcset:
-                    image_file = image_srcset.split()[0][len(settings.MEDIA_URL):]
-                else:
-                    raise NotImplementedError
-
-                image = AffixImage.objects.filter(Q(file=image_file) | Q(renditions__file=image_file)).first()
-                caption = element.attrs.get('alt') or ''
-
-                if image:
-                    self.modular_content.append(Module.full_width_image(image.id, caption))
-                else:
-                    self.unhandled_elements.append("Unable to find top level image with src: %s" % image_file)
-
-                continue
-
-            embedded_images = element.find_all('embed', attrs={'embedtype': 'image'})
-            images = element.find_all(lambda tag: tag.name == 'img' and not tag.has_attr('embedtype'))
-
-            if images and embedded_images:
-                self.unhandled_elements.append("Has both embedded and full-width images")
-                continue
-
-            if not embedded_images and not images:
-                paragraph_collector += str(element)
-            elif len(embedded_images) == 1:
-                if paragraph_collector:
-                    self.modular_content.append(Module.paragraph("".join(paragraph_collector)))
-                    paragraph_collector = []
-
-                img = element.find('embed')
-                image_id = img.attrs.get('id')
-                if image_id:
-                    caption = img.attrs['alt'] or ''
-                    alignment = img.attrs.get('format')
+                if other_images and embedded_images:
+                    self.unhandled_elements.append("Paragraph has both embedded and full-width images")
+                elif not embedded_images and not other_images:
+                    self.paragraph_collector += str(element)
+                elif len(embedded_images) == 1:
+                    self._flush_collected_paragraphs_to_module()
+                    self._add_image_with_paragraph_module(element)
+                elif len(other_images) == 1:
+                    self._flush_collected_paragraphs_to_module()
+                    img = element.find('img')
+                    self._add_full_width_image_module(img)
                     img.decompose()
-                    self.modular_content.append(Module.paragraph_with_image(str(element), image_id, caption, alignment))
+                    text = element.getText().strip()
+                    if text:
+                        self.modular_content.append(Module.paragraph(str(element)))
                 else:
-                    self.unhandled_elements.append("Embeded image has no ID")
-            elif len(images) == 1:
-                if paragraph_collector:
-                    self.modular_content.append(Module.paragraph("".join(paragraph_collector)))
-                    paragraph_collector = []
-
-                img = element.find('img')
-
-                image_src = img.attrs.get('src')
-                image_srcset = img.attrs.get('srcset')
-
-                if image_src:
-                    image_file = image_src[len(settings.MEDIA_URL):]
-                elif image_srcset:
-                    image_file = image_srcset.split()[0][len(settings.MEDIA_URL):]
-                else:
-                    raise NotImplementedError
-
-                image = AffixImage.objects.filter(Q(file=image_file) | Q(renditions__file=image_file)).first()
-                caption = img.attrs.get('alt') or ''
-                img.decompose()
-
-                if image:
-                    self.modular_content.append(Module.full_width_image(image.id, caption))
-                else:
-                    self.unhandled_elements.append("Unable to find image with src: %s" % image_file)
-
-                text = element.getText().strip()
-                if text:
-                    self.modular_content.append(Module.paragraph(str(element)))
+                    self.unhandled_elements.append('Paragraph has more than one images/embedded-images')
             else:
-                self.unhandled_elements.append('More than one images/embedded-images in a pargraph')
-                continue
+                self.unhandled_elements.append(element.name)
 
-        if paragraph_collector:
-            self.modular_content.append(Module.paragraph("".join(paragraph_collector)))
-
+        self._flush_collected_paragraphs_to_module()
         return self
 
     def save_revision(self):
         self.article.modular_content = json.dumps(self.modular_content)
         self.article.save_revision()
         return self
+
+    def _add_full_width_image_module(self, img):
+        image_src = img.attrs.get('src')
+        image_srcset = img.attrs.get('srcset')
+        if image_src:
+            image_file = image_src[len(settings.MEDIA_URL):]
+        elif image_srcset:
+            image_file = image_srcset.split()[0][len(settings.MEDIA_URL):]
+        else:
+            raise NotImplementedError
+
+        image = AffixImage.objects.filter(Q(file=image_file) | Q(renditions__file=image_file)).first()
+        caption = img.attrs.get('alt') or ''
+        if image:
+            self.modular_content.append(Module.full_width_image(image.id, caption))
+        else:
+            self.unhandled_elements.append("Unable to find image with src: %s" % image_file)
+
+    def _add_image_with_paragraph_module(self, element):
+        img = element.find('embed')
+        image_id = img.attrs.get('id')
+        if image_id:
+            caption = img.attrs['alt'] or ''
+            alignment = img.attrs.get('format')
+            img.decompose()
+            self.modular_content.append(Module.paragraph_with_image(str(element), image_id, caption, alignment))
+        else:
+            self.unhandled_elements.append("Embeded image has no ID")
+
+    def _flush_collected_paragraphs_to_module(self):
+        if self.paragraph_collector:
+            paragraphs = "".join(self.paragraph_collector)
+            self.modular_content.append(Module.paragraph(paragraphs))
+            self.paragraph_collector = []
 
 
 class Module(object):
