@@ -10,7 +10,7 @@ from face.models import Face
 
 class ImageBlock(blocks.StructBlock):
     image = ImageChooserBlock()
-    caption = blocks.CharBlock()
+    caption = blocks.CharBlock(required=False)
 
     class Meta:
         icon = 'image'
