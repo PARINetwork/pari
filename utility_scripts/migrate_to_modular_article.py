@@ -31,8 +31,33 @@ class ArticleMigrator(object):
             if element.name in (None, 'br'):
                 continue
 
-            if element.name != 'p':
+            if element.name not in ['p', 'img']:
                 self.unhandled_elements.append(element.name)
+                continue
+
+            if element.name == 'img':
+                if paragraph_collector:
+                    self.modular_content.append(Module.paragraph("".join(paragraph_collector)))
+                    paragraph_collector = []
+
+                image_src = element.attrs.get('src')
+                image_srcset = element.attrs.get('srcset')
+
+                if image_src:
+                    image_file = image_src[len(settings.MEDIA_URL):]
+                elif image_srcset:
+                    image_file = image_srcset.split()[0][len(settings.MEDIA_URL):]
+                else:
+                    raise NotImplementedError
+
+                image = AffixImage.objects.filter(Q(file=image_file) | Q(renditions__file=image_file)).first()
+                caption = element.attrs.get('alt') or ''
+
+                if image:
+                    self.modular_content.append(Module.full_width_image(image.id, caption))
+                else:
+                    self.unhandled_elements.append("Unable to find top level image with src: %s" % image_file)
+
                 continue
 
             embedded_images = element.find_all('embed', attrs={'embedtype': 'image'})
@@ -139,7 +164,6 @@ class Module(object):
 
 if __name__ == '__main__':
     for article in Article.objects.live().all():
-        print article.page_ptr_id, article
+        print article.page_ptr_id, article,
         article_ = ArticleMigrator(article).formulate_modular_content().save_revision()
-        if article_.unhandled_elements:
-            print  article_.unhandled_elements
+        print  article_.unhandled_elements
