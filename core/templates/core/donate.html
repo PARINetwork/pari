@@ -4,26 +4,14 @@
 {% block meta_title %} Donate to PARI {% endblock %}
 {% block meta_description %} We can do this without governments – and will. We can’t do it without you.  {% endblock %}
 
+{% block opengraph_block %}
+    {% include "core/includes/media_sharing_meta.html" with title="Donate" description="PARI needs your help to pull off this most ambitious of Indian journalistic endeavours." url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/share_faces_collage.jpg"%}
+{% endblock %}
+
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/donate.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/static_page.less">
 {% endblock %}
-
-{% block opengraph_block %}
-<meta property="og:title" content="Donate to PARI">
-<meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}">
-<meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ STATIC_URL }}img/default_featured_image.png">
-<meta property="og:description" content="In 2014-15, only about 0.24% of front page news came out of rural India. We want to change that. #RuralIndiaOnline">
-<meta property="og:type" content="donation">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
-<meta name="twitter:title" content="Donate to PARI" >
-<meta name="twitter:description" content="In 2014-15, only about 0.24% of front page news came out of rural India. We want to change that. #RuralIndiaOnline" >
-<meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ STATIC_URL }}img/default_featured_image.png" >
-<meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ request.get_full_path }}" >
-{% endblock %}
-
 
 {% block main %}
     <div class="container donate-page">
