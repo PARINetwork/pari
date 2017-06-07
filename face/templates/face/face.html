@@ -9,7 +9,7 @@
 
 {% block meta_title %}{% trans "Faces" %}{% endblock %}
 {% block title %}{% trans "Faces" %}{% endblock %}
-{% block meta_description %}{{ share_sub_heading }}{% endblock %}
+{% block meta_description %}Meet {{ face.title }}, {{ face.occupation }} from {{ face.location.district }} in {{ face.location.state }}: one of the many rural Indians you can meet in PARI's vast FACES database.{% endblock %}
 
 {% block opengraph_block %}
      {% if slug %}
