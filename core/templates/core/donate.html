@@ -2,7 +2,7 @@
 
 {% load i18n wagtailcore_tags %}
 {% block meta_title %} Donate to PARI {% endblock %}
-{% block meta_description %} We can do this without governments – and will. We can’t do it without you.  {% endblock %}
+{% block meta_description %}We can do this without governments – and will. We can’t do it without you. A tax-exempt financial contribution will help PARI pull off this most ambitious of Indian journalistic endeavours. {% endblock %}
 
 {% block opengraph_block %}
     {% include "core/includes/media_sharing_meta.html" with title="Donate" description="PARI needs your help to pull off this most ambitious of Indian journalistic endeavours." url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/share_faces_collage.jpg"%}
@@ -130,7 +130,7 @@
 
                      <div class="gallery-social-icon">
                     {% with url=request.build_absolute_uri  title='Donate to PARI' %}
-                            <a href="https://twitter.com/intent/tweet?url={{ url|urlencode }}&amp;hashtags=RuralIndiaOnline" target="_blank" class="link-light">
+                            <a href="https://twitter.com/intent/tweet?url={{ url|urlencode }}&amp;hashtags=RuralIndiaOnline&amp;via=PARINetwork" target="_blank" class="link-light">
                                <i class="fa fa-twitter" aria-hidden="true"></i>
                             </a>
                             <a href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}"

@@ -29,7 +29,6 @@
 {% endblock %}
 
 {% block main %}
-
   <div class="row row-side pdf-container ">
       <div class="embed-container embed-container-tall ">
           <iframe src="{{ resource.embed_url }}" frameborder="0"  marginwidth="0" marginheight="0" scrolling="no" onload="resizeIframe(this)" style="border:1px solid #CCC;border-width:1px 1px 0;" allowFullscreen="true" allowfullscreen="true"  webkitallowfullscreen mozallowfullscreen> </iframe>
@@ -52,7 +51,7 @@
                             </li>
                             {% with request.build_absolute_uri as url and category.title as title %}
                                 <li class="share-icons">
-                                    <a href="https://twitter.com/intent/tweet?url={{ url }}&amp;hashtags=RuralIndiaOnline" target="_blank" class="link-light">
+                                    <a href="https://twitter.com/intent/tweet?url={{ url }}&amp;hashtags=RuralIndiaOnline&amp;via=PARINetwork" target="_blank" class="link-light">
                                     <i class="fa fa-twitter"></i>
                                     </a>
                                 </li>
