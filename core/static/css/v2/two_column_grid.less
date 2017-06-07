@@ -34,6 +34,7 @@
         position: relative;
         .dropdown.custom-dropdown {
           position: relative;
+           z-index: 2;
           button {
             margin-right: 0px;
             border-style: solid;
@@ -54,7 +55,6 @@
             }
           }
           &.open > .dropdown-menu {
-            z-index: 2;
             position: absolute;
             min-width: 105px;
             display: block;
