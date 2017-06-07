@@ -13,4 +13,8 @@ $(function () {
             $(".arrow-collapse").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
         }
     });
+    // $('.glyphicon-chevron-down').on("click", function () {
+    //     alert("i am also clicked");
+    //     $(".arrow-collapse").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
+    // });
 });
