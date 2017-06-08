@@ -156,6 +156,7 @@
 
 // common styles
 .dropdown.custom-dropdown {
+  z-index: 2;
   button {
     border-style: solid;
     background-color: @lighter-grey;
@@ -168,14 +169,13 @@
     border-radius: 3px;
     letter-spacing: 0.3px;
     font-weight: 400;
-    text-transform: lowercase;
+    text-transform: capitalize;
     &:hover {
       color: #444;
       border: 1px solid #444;
     }
   }
   &.open > .dropdown-menu {
-    z-index: 2;
     min-width: 105px;
     display: block;
     text-align: center;

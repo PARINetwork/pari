@@ -54,11 +54,7 @@
     <div class="banner-container">
         <img src="{{ featured_image.url }}" alt="{{ article.featured_image.alt_text }}">
         <div class="banner-info">
-        <button class="arrow-wrap" data-toggle="collapse" data-target="#banner-info">
-                <span class="glyphicon glyphicon-chevron-down arrow-collapse"></span>
-                <!--<span class="hint">scroll</span>-->
-        </button>
-        <div class="container collapse in" id="banner-info">
+        <div class="container">
             <div class="row-1">
                 <span class="tag">
                         {% if article.categories.count %}
