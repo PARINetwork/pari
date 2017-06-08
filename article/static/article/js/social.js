@@ -4,7 +4,6 @@ $(function(){
 	$(".hidden.whatsapp").removeClass("hidden")
     }
 
-
     $('.arrow-wrap').on("click", function () {
         if ($(".arrow-collapse").hasClass("glyphicon-chevron-up"))
         {
