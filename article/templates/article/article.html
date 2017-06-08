@@ -48,7 +48,7 @@
 {% endblock %}
 
 {% block main_wrapper %}
-{% if article.featured_image %}
+{% if article.featured_image and article.show_featured_image %}
 {% image article.featured_image width-1400 as featured_image %}
 <div class="full-row">
     <div class="banner-container">
