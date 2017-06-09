@@ -34,6 +34,7 @@
         position: relative;
         .dropdown.custom-dropdown {
           position: relative;
+           z-index: 2;
           button {
             margin-right: 0px;
             border-style: solid;
@@ -47,14 +48,13 @@
             border-radius: 3px;
             letter-spacing: 0.3px;
             font-weight: 400;
-            text-transform: lowercase;
+            text-transform: capitalize;
             &:hover {
               color: #444;
               border: 1px solid #444;
             }
           }
           &.open > .dropdown-menu {
-            z-index: 2;
             position: absolute;
             min-width: 105px;
             display: block;
@@ -208,11 +208,20 @@
 
         & > a, & > .caption {
           width: 100% !important;
-
           h3 {
             margin-top: 10px !important;
           }
         }
+        .caption {
+        .dropdown.custom-dropdown {
+          &.open > .dropdown-menu {
+            li {
+                margin: 10px 0px;
+                padding: 20px 10px 5px 10px;
+            }
+          }
+        }
+   }
       }
     }
   }

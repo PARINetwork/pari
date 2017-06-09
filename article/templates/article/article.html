@@ -48,12 +48,13 @@
 {% endblock %}
 
 {% block main_wrapper %}
-{% if article.featured_image %}
+{% if article.featured_image and article.show_featured_image %}
 {% image article.featured_image width-1400 as featured_image %}
 <div class="full-row">
     <div class="banner-container">
         <img src="{{ featured_image.url }}" alt="{{ article.featured_image.alt_text }}">
         <div class="banner-info">
+        <div class="container">
         <button class="arrow-wrap" data-toggle="collapse" data-target="#banner-info">
                 <span class="glyphicon glyphicon-chevron-down arrow-collapse"></span>
         </button>

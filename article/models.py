@@ -57,7 +57,7 @@ class Article(Page):
                                        on_delete=models.SET_NULL)
     show_featured_image = models.BooleanField(default=True, help_text='Hide for One-off video')
     categories = M2MField("category.Category", related_name="articles_by_category")
-    locations = M2MField("location.Location", related_name="articles_by_location")
+    locations = M2MField("location.Location", related_name="articles_by_location", blank=True)
     content_panels = Page.content_panels + [
         FieldPanel('strap'),
         M2MFieldPanel('authors'),
