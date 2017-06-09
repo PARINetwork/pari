@@ -23,8 +23,8 @@
 {% block opengraph_block %}
     {% with resource.content.2 as description %}
         {% include "core/includes/media_sharing_meta.html" with title=resource.title  description=description|striptags url=request.get_full_path type="url" twitter_card="summary"%}
-         <meta property="og:image" content="http:{{ resource.embed_thumbnail }}">
-         <meta name="twitter:image" content="http:{{ resource.embed_thumbnail }}">
+         <meta property="og:image" content="http:{{ resource.embed_thumbnail.strip}}">
+         <meta name="twitter:image" content="http:{{ resource.embed_thumbnail.strip }}">
     {% endwith %}
 {% endblock %}
 
