@@ -243,13 +243,9 @@
   .banner-container .banner-info {
     position: static;
     background: @bg-dark;
-  }
-}
-
-@media (max-width: @screen-xs-max) {
-  .banner-container .banner-info {
-    position: static;
-    background: @bg-dark;
+    .arrow-wrap {
+      display: none;
+    }
   }
 }
 
@@ -265,6 +261,10 @@
 }
 
 @media print {
+  .arrow-wrap {
+    display: none;
+  }
+
   #header {
     display: none;
   }
