@@ -1,14 +1,16 @@
 
 <meta property="og:title" content="{{ title }}">
 <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ url }}">
-<meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ image_url }}">
 <meta property="og:type" content="{{ type }}">
 <meta property="og:description" content="{{ description }} #RuralIndiaOnline ">
 <meta property="og:published_time" content="{{ date_of_item|date:"c" }}">
+{% if image_url|length > 0  %}
+    <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{{ image_url }}">
+    <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{{ image_url }}" >
+{% endif %}
 
 <meta name="twitter:card" content="{% if twitter_card %} {{ twitter_card }} {% else %} summary_large_image {% endif %}">
 <meta name="twitter:site" content="@{{ SOCIAL_TWITTER }}">
 <meta name="twitter:title" content="{{ title }}" >
 <meta name="twitter:description" content="{% if description %} {{ description }} {% else %} #RuralIndiaOnline {% endif %}" >
-<meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{{ image_url }}" >
 <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{{ url }}" >

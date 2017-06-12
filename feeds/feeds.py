@@ -114,6 +114,8 @@ class AllFeed(BaseFeed):
             return item.strap
         elif item.__class__.__name__.lower() == "album":
             return item.slides.all()[0].description
+        elif item.__class__.__name__.lower() == "resource":
+            return item.title
         return item.additional_info or ""
 
 
