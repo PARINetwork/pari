@@ -50,7 +50,7 @@
         <script id="photoAlbumTemplate" type="text/x-jsrender">
 
           <div class="photo-album-popup popup hide">
-            <div class="photo-album">
+            <div class="photo-album show-slide-info">
                 <header class="header clear-fix">
                     <div class="left left-icons">
                         <i id="playPause" href="#" class="fa fa-pause"></i>
@@ -85,7 +85,7 @@
                     </div>
                     <div class="right right-icons">
                         <a href="#" class="fa fa-external-link open-in-new-tab" target="_blank"></a>
-                        <i id="showSlideInfo" href="#" class="fa fa-info-circle show-slide-info"></i>
+                        <i id="showSlideInfo" href="#" class="fa fa-angle-right selected"></i>
                         <a {% endverbatim %}{% if album_type == 'talking_album' %} href="{% url "talking-album-list" %}" {% else %} href="{% url "other-album-list" %}"{% endif %}{% verbatim %}><i class="fa fa-close back-to-albums" ></i></a>
                     </div>
                     <div class="carousel-index"></div>

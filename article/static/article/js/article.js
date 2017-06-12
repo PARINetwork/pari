@@ -85,11 +85,10 @@ var ArticleAlbum = {
 
         $('#showSlideInfo').click(function () {
             $(this).toggleClass("selected");
-            $(this).removeClass("fa-info-circle").removeClass("fa-angle-right");
+            $(this).removeClass("fa-angle-right").removeClass("fa-info-circle");
             $(this).addClass($(this).hasClass("selected") ? "fa-angle-right" : "fa-info-circle");
             $(".photo-album").toggleClass("show-slide-info");
         });
-
 
         $('.back-to-albums').click(function () {
             $(".carousel-container").removeClass("carousel");
