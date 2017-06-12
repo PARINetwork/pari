@@ -15,7 +15,7 @@ from wagtail.wagtailcore.models import Page, Site
 from wagtail.wagtailcore.fields import RichTextField
 
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, \
-    MultiFieldPanel, InlinePanel, PageChooserPanel
+    MultiFieldPanel, InlinePanel, PageChooserPanel, FieldRowPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 from wagtail.wagtailsearch.backends import get_search_backend
@@ -52,10 +52,14 @@ class Article(Page):
     content = RichTextField()
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
     original_published_date = models.DateField(null=True, blank=True)
+    show_day = models.BooleanField(default=True)
+    show_month = models.BooleanField(default=True)
+    show_year = models.BooleanField(default=True)
     featured_image = models.ForeignKey('core.AffixImage',
                                        null=True, blank=True,
                                        on_delete=models.SET_NULL)
-    show_featured_image = models.BooleanField(default=True, help_text='Hide for One-off video')
+    show_featured_image = models.BooleanField(default=True)
+
     categories = M2MField("category.Category", related_name="articles_by_category")
     locations = M2MField("location.Location", related_name="articles_by_location", blank=True)
     content_panels = Page.content_panels + [
@@ -63,7 +67,16 @@ class Article(Page):
         M2MFieldPanel('authors'),
         M2MFieldPanel('translators'),
         FieldPanel('language'),
-        FieldPanel('original_published_date'),
+        MultiFieldPanel(
+            [
+                FieldPanel('original_published_date'),
+                FieldRowPanel(
+                    [
+                        FieldPanel('show_day',classname="col4"),
+                        FieldPanel('show_month',classname="col4"),
+                        FieldPanel('show_year',classname="col4")
+                    ])
+            ],'Date'),
         FieldPanel('content'),
         MultiFieldPanel(
             [
@@ -148,10 +161,10 @@ class Article(Page):
 
         try:
             mlt = es_backend.es.search(
-            index=es_backend.index_name,
-            doc_type=mapping.get_document_type(),
-            body=query
-        )
+                index=es_backend.index_name,
+                doc_type=mapping.get_document_type(),
+                body=query
+            )
         except ConnectionError:
             return []
         # Get pks from results
