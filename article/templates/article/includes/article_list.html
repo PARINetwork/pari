@@ -18,15 +18,11 @@
                     {% include "article/includes/default_atom.html" with article=article%}
 
                    <div class="margin-top-20px date">
-                    {% if article.original_published_date %}
-                        <a href="{% url "archive-detail" year=article.original_published_date.year month=article.original_published_date.month %}">
-                            <span class="date link-dark font-s">{{ article.original_published_date|date }}</span>
-                        </a>
-                    {% elif article.first_published_at %}
-                        <a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month  %}">
-                            <span class="date link-dark font-s">{{ article.first_published_at|date }}</span>
-                        </a>
-                    {% endif %}
+                       {% if article.original_published_date %}
+                            {% include "../../article/templates/article/includes/display_date.html" with display_date=article.original_published_date %}
+                       {% else %}
+                            {% include "../../article/templates/article/includes/display_date.html" with display_date=article.article.first_published_at %}
+                       {% endif %}
                    {% with article.get_translation as article_translations %}
                        {% if article_translations|length > 1 %}
                         <div class="dropdown custom-dropdown">

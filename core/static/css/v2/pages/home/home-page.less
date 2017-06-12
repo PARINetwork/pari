@@ -312,6 +312,13 @@
           font-weight: 800;
           color: @text-title-light;
         }
+
+        .link-dark{
+          color: @text-title-light;
+          &:hover {
+            color: @primary-color;
+          }
+        }
         a {
           &:hover {
             color: @primary-color;
@@ -425,6 +432,23 @@
     }
   }
 
+  .in_focus_page1 {
+     .link-dark {
+      &:hover {
+        color: @primary-color;
+      }
+      color: @grey;
+    }
+  }
+
+  .in_focus_page2 {
+     .link-dark {
+      &:hover {
+        color: @primary-color;
+      }
+      color: @grey;
+    }
+  }
   .link-dark {
     &:hover {
       color: @primary-color;

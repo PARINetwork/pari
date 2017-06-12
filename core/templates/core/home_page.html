@@ -103,9 +103,14 @@
                                                 </a>
                                                 {% if not forloop.last %}, {% endif %}{% endfor %} <span
                                                 class="dot-seperator">•</span>
-                                            <a href="{% url "archive-detail" year=item.specific.latest_revision_created_at.year month=item.specific.latest_revision_created_at.month %}">
-                                                {{ item.specific.latest_revision_created_at|date:"F d, Y" }}
-                                            </a>
+                                                {% if item.specific.original_published_date%}
+                                                  {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.original_published_date article=item.specific%}
+                                                {% else %}
+                                                  {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.first_published_at article=item.specific%}
+                                                {% endif %}
+{#                                            <a href="{% url "archive-detail" year=item.specific.latest_revision_created_at.year month=item.specific.latest_revision_created_at.month %}">#}
+{#                                                {{ item.specific.latest_revision_created_at|date:"F d, Y" }}#}
+{#                                            </a>#}
                                         </div>
                                     </div>
                                     <div class="view-all">
@@ -190,13 +195,11 @@
                                                 <span class="dot-seperator">•</span>
                                             {% endfor %}
                                         {% endif %}
-                                        <a href="{% url "archive-detail" year=item.specific.latest_revision_created_at.year month=item.specific.latest_revision_created_at.month %}">
-                                            {% if item.specific.original_published_date %}
-                                            <span class="date-infocus">{{ item.specific.original_published_date|date:"F d, Y" }}</span>
-                                            {% else %}
-                                            <span class="date-infocus">{{ item.specific.first_published_at|date:"F d, Y" }}</span>
-                                            {% endif %}
-                                        </a>
+                                        {% if item.specific.original_published_date%}
+                                          {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.original_published_date article=item.specific%}
+                                        {% else %}
+                                          {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.first_published_at article=item.specific%}
+                                        {% endif %}
                                     </div>
                                     {% if translations_for_infocus_article1|length > 1 %}
                                         <div class="dropdown custom-dropdown">
@@ -238,13 +241,11 @@
                                                 <span class="dot-seperator">•</span>
                                             {% endfor %}
                                         {% endif %}
-                                        <a href="{% url "archive-detail" year=item.specific.latest_revision_created_at.year month=item.specific.latest_revision_created_at.month %}">
-                                             {% if item.specific.original_published_date %}
-                                            <span class="date-infocus">{{ item.specific.original_published_date|date:"F d, Y" }}</span>
-                                            {% else %}
-                                            <span class="date-infocus">{{ item.specific.first_published_at|date:"F d, Y" }}</span>
-                                            {% endif %}
-                                        </a>
+                                        {% if item.specific.original_published_date%}
+                                          {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.original_published_date article=item.specific%}
+                                        {% else %}
+                                          {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.first_published_at article=item.specific%}
+                                        {% endif %}
                                     </div>
                                     {% if translations_for_infocus_article2|length > 1 %}
                                         <div class="dropdown custom-dropdown">

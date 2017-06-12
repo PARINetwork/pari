@@ -71,27 +71,9 @@
                         {% endif %}
                     </span>
                     {% if article.original_published_date %}
-                        <a href="{% url "archive-detail" year=article.original_published_date.year month=article.original_published_date.month %}">
-                            {% if article.show_day %}
-                                <span itemprop="datePublished" class="date">{{ article.original_published_date|date }}</span>
-                            {% elif article.show_month %}
-                                <span itemprop="datePublished" class="date">{{ article.original_published_date|date:"M, Y"}}</span>
-                            {% elif article.show_year %}
-                                <span itemprop="datePublished" class="date">{{ article.original_published_date|date:"Y" }}</span>
-                            {% endif %}
-                        </a>
+                        {% include "../../article/templates/article/includes/display_date.html" with display_date=article.original_published_date %}
                     {% else %}
-                        {% if article.first_published_at %}
-                            <a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month %}">
-                                {% if article.show_day %}
-                                    <span itemprop="datePublished" class="date">{{ article.first_published_at|date }}</span>
-                                {% elif article.show_month %}
-                                    <span itemprop="datePublished" class="date">{{ article.first_published_at|date:"M, Y"}}</span>
-                                {% elif article.show_year %}
-                                    <span itemprop="datePublished" class="date">{{ article.first_published_at|date:"Y" }}</span>
-                                {% endif %}
-                            </a>
-                        {% endif %}
+                        {% include "../../article/templates/article/includes/display_date.html" with display_date=article.article.first_published_at %}
                     {% endif %}
                 </div>
              <h1><span itemprop="headline" id="article-gallery-title">{{ article.title }}</span></h1>

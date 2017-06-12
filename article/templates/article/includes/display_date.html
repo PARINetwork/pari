@@ -1,0 +1,9 @@
+<a href="{% url "archive-detail" year=display_date.year month=display_date.month %}">
+    {% if article.show_day or type != 'article' %}
+        <span itemprop="datePublished" class="date link-dark">{{ display_date|date }}</span>
+    {% elif article.show_month %}
+        <span itemprop="datePublished" class="date link-dark">{{ display_date|date:"M, Y"}}</span>
+    {% elif article.show_year %}
+        <span itemprop="datePublished" class="date link-dark">{{ display_date|date:"Y" }}</span>
+    {% endif %}
+</a>
