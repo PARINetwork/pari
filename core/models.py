@@ -43,7 +43,7 @@ class StaticPage(Page):
 
 class FeaturedSectionBlock(StructBlock):
     title = blocks.CharBlock(required=False)
-    link_text = blocks.CharBlock(required=False, default='Read the story here')
+    link_text = blocks.CharBlock(required=False)
     url = blocks.CharBlock()
     featured_image = ImageChooserBlock()
     featured_image_label = blocks.CharBlock(required=False)
