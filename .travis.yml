@@ -1,4 +1,5 @@
 language: python
+cache: pip
 python:
 - '2.7'
 before_install:
@@ -24,7 +25,7 @@ before_script:
   - "cp -r core/static/img/stories-1.jpg media/uploads/stories-1.jpg"
 
 script:
-  - source scripts/test.sh
+  - travis_wait 20 source scripts/test.sh
 deploy:
   provider: script
   script: sh deploy.sh
@@ -39,3 +40,4 @@ addons:
   ssh_known_hosts:
   - 54.255.193.26
   - staging.ruralindiaonline.org
+

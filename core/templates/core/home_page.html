@@ -22,12 +22,11 @@
 {% block extra_js %}
     <script type="text/javascript">
         $(function () {
-            $("#homeCarousel").on('slide.bs.carousel', function () {
-                setTimeout(function () {
-                    $(window).trigger("scroll");
-                }, 1000);
-            });
             $("#myCarousel-1").carousel({
+                interval: 5000,
+                pause: false
+            });
+            $("#myCarousel-2").carousel({
                 interval: 5000,
                 pause: false
             });
@@ -53,11 +52,13 @@
                                     <div><span class="featured">{{ featured_content.value.featured_image_label }}</span></div>
                                 {% endif %}
                                 <div class="featured-content-title">{{ featured_content.value.title }}</div>
-                                <div class="link-to-page">
-                                    <a href="{{ featured_content.value.url }}">
-                                      <span>{{ featured_content.value.link_text }}</span>
-                                      <i class="fa fa-angle-right margin-left red-angle-right"></i></a>
-                                </div>
+                                {% if featured_content.value.link_text %}
+                                    <div class="link-to-page">
+                                        <a href="{{ featured_content.value.url }}">
+                                          <span>{{ featured_content.value.link_text }}</span>
+                                          <i class="fa fa-angle-right margin-left red-angle-right"></i></a>
+                                    </div>
+                                {% endif %}
                             </div>
                           </div>
                         </div>
@@ -79,7 +80,7 @@
             </div>
         </div>
         <div class="container">
-            <div id="myCarousel-2" class="carousel slide" data-ride="carousel">
+            <div id="myCarousel-2" class="carousel slide carousel-fade" data-ride="carousel">
                 <div class="carousel-title"><div>Latest on PARI</div></div>
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">

@@ -68,11 +68,11 @@ class InFocusSection():
     def authors_of_first_article(self):
         return self.driver.find_element(By.XPATH, "//div[@class='row in_focus_page1']//div[@class='authors']").text
 
-    def date_of_first_article(self):
+    def location_of_first_article(self):
         return self.driver.find_element(By.XPATH, "//div[@class='row in_focus_page1']//span[@class='location-name']").text
 
-    def location_of_first_article(self):
-        return self.driver.find_element(By.XPATH, "//div[@class='row in_focus_page1']//span[@class='date-infocus']").text
+    def date_of_first_article(self):
+        return self.driver.find_element(By.XPATH, "//div[@class='row in_focus_page1']//a/span[@class='date link-dark']").text
     
     def title_of_second_article(self):
         return self.driver.find_element(By.XPATH, "//div[@class='row in_focus_page2']//div[@class='infocus-item-title']").text
@@ -80,11 +80,11 @@ class InFocusSection():
     def authors_of_second_article(self):
         return self.driver.find_element(By.XPATH, "//div[@class='row in_focus_page2']//div[@class='authors']").text
 
-    def date_of_second_article(self):
+    def location_of_second_article(self):
         return self.driver.find_element(By.XPATH, "//div[@class='row in_focus_page2']//span[@class='location-name']").text
 
-    def location_of_second_article(self):
-        return self.driver.find_element(By.XPATH, "//div[@class='row in_focus_page2']//span[@class='date-infocus']").text
+    def date_of_second_article(self):
+        return self.driver.find_element(By.XPATH, "//div[@class='row in_focus_page2']//a/span[@class='date link-dark']").text
 
 
 class FeaturedSection():
