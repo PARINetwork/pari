@@ -134,7 +134,7 @@
         </div>
         <div class="container">
             <div id="myCarousel-2" class="carousel slide carousel-fade" data-ride="carousel">
-                <div class="carousel-title"><div>Latest on PARI</div></div>
+                <div class="carousel-title"><div>{% trans "Latest on PARI"%}</div></div>
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     {% for item in page.carousel %}
@@ -169,7 +169,7 @@
                                     </div>
                                     <div class="view-all">
                                         <a href="{{ item.specific.get_absolute_url }}">
-                                            <span>Read/ Watch/ Listen</span>
+                                            <span>{% trans "Read/ Watch/ Listen"%}</span>
                                             <i class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
                                         </a>
                                     </div>
@@ -219,7 +219,7 @@
                 <div class="row">
                     <div class="col-lg-6 margin-btm-20px">
                         <div class="infocus-tag">
-                            <span class="tags-label">IN FOCUS</span>
+                            <span class="tags-label">{% trans "IN FOCUS"%}</span>
                         </div>
                         <span class="infocus-title subtitle-primary font-l">{{ page.in_focus_title }}</span>
                     </div>
@@ -261,7 +261,7 @@
                                         <div class="dropdown custom-dropdown">
                                             <button class="dropdown-toggle" type="button" id="dropdownMenu1"
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                {{ translations_for_infocus_article1 | length }} languages
+                                                {{ translations_for_infocus_article1 | length }} {% trans "languages"%}
                                                 <span class="caret"></span>
                                             </button>
                                             <ul class="dropdown-menu">
@@ -306,7 +306,7 @@
                                         <div class="dropdown custom-dropdown">
                                             <button class="dropdown-toggle" type="button" id="dropdownMenu1"
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                {{ translations_for_infocus_article2 | length }} languages
+                                                {{ translations_for_infocus_article2 | length }} {% trans "languages" %}
                                                 <span class="caret"></span>
                                             </button>
                                             <ul class="dropdown-menu">
@@ -348,18 +348,18 @@
                         </a>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid share">
-                        <div class="subtitle">‘PARI is an insane project...</div>
+                        <div class="subtitle">‘{% trans "PARI is an insane project"%}...</div>
                         <div class="align-bottom">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
-                                    <h4>Rural India — a living journal, a breathing archive</h4>
+                                    <h4>{% trans "Rural India — a living journal, a breathing archive"%}</h4>
                                     <h5 class="mid-link">
-                                        <a href="{% url "static_page" slug="about" %}">The story of PARI <i
+                                        <a href="{% url "static_page" slug="about" %}">{% trans "The story of PARI"%}<i
                                                 class="fa fa-angle-right red-angle-right"
                                                 aria-hidden="true"></i></a>
                                     </h5>
                                     <h5 class="mid-below-link">
-                                        <a href="{% url "contribute" slug="contribute" %}">Here's how you can contribute
+                                        <a href="{% url "contribute" slug="contribute" %}">{% trans "Here's how you can contribute"%}
                                             <i class="fa fa-angle-right red-angle-right" aria-hidden="true"></i></a>
                                     </h5>
                                 </div>
@@ -405,7 +405,7 @@
                                 </a>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid">
-                                <div class="subtitle" style="line-height: 1.1">…and a wonderful one’</div>
+                                <div class="subtitle" style="line-height: 1.1">...{% trans "and a wonderful one"%}'</div>
                             </div>
                         </div>
                     </div>
@@ -431,15 +431,15 @@
                                 </a>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid">
-                                <h4 class="all-categ-head">Stories from all over in all languages</h4>
+                                <h4 class="all-categ-head">{% trans "Stories from all over in all languages"%}</h4>
                                 <h5 class="mid-link">
-                                    <a href="{% url "category-list" %}">Browse all Categories <i
+                                    <a href="{% url "category-list" %}">{% trans "Browse all Categories"%}<i
                                             class="fa fa-angle-right red-angle-right"
                                             aria-hidden="true"></i></a>
                                 </h5>
-                                <h6><i class="fa fa-language" aria-hidden="true"></i> Translate for PARI</h6>
-                                <p class="desc-para">Translate PARI content into languages you know
-                                    <a href="{% url "contribute" slug="contribute" %}">Learn more
+                                <h6><i class="fa fa-language" aria-hidden="true"></i>{% trans "Translate for PARI"%}</h6>
+                                <p class="desc-para">{% trans "Translate PARI content into languages you know"%}
+                                    <a href="{% url "contribute" slug="contribute" %}">{% trans "Learn more"%}
                                         <i class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
                                     </a></p>
                             </div>
@@ -452,7 +452,7 @@
         <div class="article-grid home-article-grid-2">
             <div class="container">
                 <div class="row">
-                    <div class="subtitle-primary font-l margin-btm-20px more-section">And many more stories in audio and video
+                    <div class="subtitle-primary font-l margin-btm-20px more-section">{% trans "And many more stories in audio and video"%}
                     </div>
                 </div>
                 <div class="row">
@@ -475,7 +475,7 @@
                                     <div class="view-article">
                                         <a href="{% url "talking-album-list" %}">
                                             <i class="fa  fa-music"
-                                               aria-hidden="true"></i><span>View all Talking Albums</span><i
+                                               aria-hidden="true"></i><span>{% trans "View all Talking Albums"%}</span><i
                                                 class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
                                         </a>
                                     </div>
@@ -501,7 +501,7 @@
                                     <div class="view-article">
                                         <a href="{% url "gallery-detail" slug="videozone" %}">
                                             <i class="fa  fa-film"
-                                               aria-hidden="true"></i><span>View all videos</span><i
+                                               aria-hidden="true"></i><span>{% trans "View all videos"%}</span><i
                                                 class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
                                         </a>
                                     </div>
@@ -528,7 +528,7 @@
                                     <div class="view-article">
                                         <a href="{% url "other-album-list" %}">
                                             <i class="fa  fa-picture-o"
-                                               aria-hidden="true"></i><span>View all Photo Albums</span><i
+                                               aria-hidden="true"></i><span>{% trans "View all Photo Albums"%}</span><i
                                                 class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
                                         </a>
                                     </div>
@@ -541,11 +541,11 @@
         </div>
         <div class="pari-doing-block ">
             <div class="container">
-                <div class="question-heading">Like what PARI is doing?</div>
-                <div class="pari-do-link"><a href="{% url "static_page" slug="donate" %}">Donate to PARI
+                <div class="question-heading">{% trans "Like what PARI is doing?"%}</div>
+                <div class="pari-do-link"><a href="{% url "static_page" slug="donate" %}">{% trans "Donate to PARI"%}
                     <i class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
                 </a></div>
-                <div class=" pari-do-link"><a href="{% url "contribute" slug="contribute" %}">Contribute to PARI
+                <div class=" pari-do-link"><a href="{% url "contribute" slug="contribute" %}">{% trans "Contribute to PARI"%}
                     <i class="fa fa-angle-right red-angle-right" aria-hidden="true"></i>
                 </a></div>
             </div>

@@ -8,6 +8,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
+# coding: utf-8
 from os.path import abspath, dirname, join
 from django.utils.translation import ugettext_lazy as _
 
@@ -117,7 +118,7 @@ CACHES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'hi'
 TIME_ZONE = 'Asia/Calcutta'
 USE_I18N = True
 USE_L10N = True
@@ -357,6 +358,7 @@ TEMPLATES = [
             'context_processors': global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
                 'django.core.context_processors.request',
                 'core.context_processors.settings',
+                'django.template.context_processors.i18n',
             ),
         },
     },
@@ -368,3 +370,7 @@ INSTAMOJO = {
 }
 
 GOOGLE_MAP_KEY = ""
+
+LOCALE_PATHS = (
+    join(PROJECT_ROOT, 'locale'),
+)
