@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -oe
-
 echo "Running Migrations...."
 python manage.py migrate --settings=pari.settings.test
 
