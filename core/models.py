@@ -42,12 +42,11 @@ class StaticPage(Page):
         return reverse("static_page", kwargs={"slug": self.slug})
 
 class FeaturedSectionBlock(StructBlock):
-    title = blocks.CharBlock()
-    link_text = blocks.CharBlock()
+    title = blocks.CharBlock(required=False)
+    link_text = blocks.CharBlock(required=False, default='Read the story here')
     url = blocks.CharBlock()
     featured_image = ImageChooserBlock()
     featured_image_label = blocks.CharBlock(required=False)
-
 
 class HomePageAdminMediaForm(WagtailAdminPageForm):
     def __init__(self, *args, **kwargs):
