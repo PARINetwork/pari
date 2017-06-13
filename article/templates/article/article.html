@@ -71,9 +71,9 @@
                         {% endif %}
                     </span>
                     {% if article.original_published_date %}
-                        {% include "../../article/templates/article/includes/display_date.html" with display_date=article.original_published_date %}
+                        {% include "../../article/templates/article/includes/display_date.html" with display_date=article.original_published_date article=article%}
                     {% else %}
-                        {% include "../../article/templates/article/includes/display_date.html" with display_date=article.article.first_published_at %}
+                        {% include "../../article/templates/article/includes/display_date.html" with display_date=article.article.first_published_at article=article%}
                     {% endif %}
                 </div>
              <h1><span itemprop="headline" id="article-gallery-title">{{ article.title }}</span></h1>
