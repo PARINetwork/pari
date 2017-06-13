@@ -58,15 +58,15 @@ class TestHomePage(Test):
         in_focus_section = self.home_page.in_focus_section()
         assert in_focus_section.title_of_first_article() == "article1"
         assert in_focus_section.authors_of_first_article() == "V. Sasikumar"
-        assert in_focus_section.date_of_first_article() == "Sivaganga"
-        assert in_focus_section.location_of_first_article() == "October 24, 2011"
+        assert in_focus_section.location_of_first_article() == "Sivaganga"
+        assert in_focus_section.date_of_first_article() == "Oct. 24, 2011"
 
     def test_in_focus_page_two(self):
         in_focus_section = self.home_page.in_focus_section()
         assert in_focus_section.title_of_second_article() == "article2"
         assert in_focus_section.authors_of_second_article() == "Karthik"
-        assert in_focus_section.date_of_second_article() == "Madurai"
-        assert in_focus_section.location_of_second_article() == "October 24, 2011"
+        assert in_focus_section.location_of_second_article() == "Madurai"
+        assert in_focus_section.date_of_second_article() == "Oct. 24, 2011"
 
     def test_featured_section(self):
         featured_section = self.home_page.featured_section()
