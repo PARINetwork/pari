@@ -198,7 +198,6 @@ class HomePage(Page):
         return {
             'page': self,
             'request': request,
-            'announcements': self.announcements
         }
 
     def carousel(self):

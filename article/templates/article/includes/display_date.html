@@ -1,9 +1,12 @@
+{% load i18n core_filters %}
 <a href="{% url "archive-detail" year=display_date.year month=display_date.month %}">
-    {% if article.show_day or type != 'article' %}
-        <span itemprop="datePublished" class="date link-dark">{{ display_date|date }}</span>
-    {% elif article.show_month %}
-        <span itemprop="datePublished" class="date link-dark">{{ display_date|date:"M, Y"}}</span>
-    {% elif article.show_year %}
-        <span itemprop="datePublished" class="date link-dark">{{ display_date|date:"Y" }}</span>
-    {% endif %}
+    {% with article|get_type as type %}
+        {% if article.show_day or type != 'article' and  type != 'video_zone' and type != 'audio_zone' %}
+            <span itemprop="datePublished" class="date link-dark">{{ display_date|date }}</span>
+        {% elif article.show_month %}
+            <span itemprop="datePublished" class="date link-dark">ca. {{ display_date|date:"M, Y"}}</span>
+        {% elif article.show_year %}
+            <span itemprop="datePublished" class="date link-dark">ca. {{ display_date|date:"Y" }}</span>
+        {% endif %}
+    {% endwith %}
 </a>

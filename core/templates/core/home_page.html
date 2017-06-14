@@ -97,21 +97,23 @@
                                         <div class="name-primary">
                                             {% include "../../core/templates/includes/author-links.html" with authors=item.specific|get_photographers author_link_class="author-link" author_name_class="author-name" %}
                                         </div>
-                                        <div class="date">
-                                            {% for location in item.specific|get_locations %}
+                                        <div class="date" style="color: #CCCCCC">
+                                        {% with item.specific|get_locations as locations%}
+                                            {% for location in locations %}
                                                 <a href="{% url "location-detail" location.slug %}">
                                                     {{ location.name }}
                                                 </a>
-                                                {% if not forloop.last %}, {% endif %}{% endfor %} <span
-                                                class="dot-seperator">•</span>
-                                                {% if item.specific.original_published_date%}
-                                                  {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.original_published_date article=item.specific%}
-                                                {% else %}
-                                                  {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.first_published_at article=item.specific%}
-                                                {% endif %}
-{#                                            <a href="{% url "archive-detail" year=item.specific.latest_revision_created_at.year month=item.specific.latest_revision_created_at.month %}">#}
-{#                                                {{ item.specific.latest_revision_created_at|date:"F d, Y" }}#}
-{#                                            </a>#}
+                                                {% if not forloop.last %}, {% endif %}
+                                            {% endfor %}
+                                            {% if item.specific|show_seperator and locations|length > 0 %}
+                                                <span class="dot-seperator">•</span>
+                                            {% endif %}
+                                            {% if item.specific.original_published_date%}
+                                              {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.original_published_date article=item.specific%}
+                                            {% else %}
+                                              {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.first_published_at article=item.specific%}
+                                            {% endif %}
+                                        {% endwith %}
                                         </div>
                                     </div>
                                     <div class="view-all">
@@ -131,7 +133,7 @@
                                                 <img class="img-responsive" src="{{ item.specific.embed_thumbnail }}"
                                                      alt="{{ item.specific.title }}">
                                             </noscript>
-                                        {% else %}
+                                        {% elif item.featured_image %}
                                             {% image item.specific.featured_image max-800x800 as featured_image %}
                                             <img class="img-responsive lazyload" src="{{ STATIC_URL }}img/1_1.png"
                                                  data-src="{{ featured_image.url }}" alt="{{ featured_image.title }}">
@@ -139,6 +141,8 @@
                                                 <img class="img-responsive" src="{{ featured_image.url }}"
                                                      alt="{{ featured_image.title }}">
                                             </noscript>
+                                        {% else %}
+                                            <img style="background: black;height: 90%;width: 80%" src="{{ STATIC_URL }}img/default_featured_image.png" alt="{{ item.specific.title }}" >
                                         {% endif %}
                                     </a>
                                 </div>
@@ -177,10 +181,15 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
                         <div class="row in_focus_page1">
                             {% with page.in_focus_page1 as item %}
+
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                    {% image item.specific.featured_image fill-500x320 as featured_image %}
+                                  {% if item.specific.featured_image %}
+                                    {% image item.specific.featured_image width-270 as featured_image %}
                                     <img class="img-responsive" src="{{ featured_image.url }}"
                                          alt="sample content" style="cursor: pointer" onclick="location.href='{{ item.url }}'">
+                                    {% else %}
+                                        <img style="background: black" src="{{ STATIC_URL }}img/default_featured_image.png" alt="{{ item.specific.title }}" width="250" height="180">
+                                  {% endif %}
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     <a href="{{ item.url }}" class="infocus-title-primary"><div class="infocus-item-title">{{ item.title }}</div></a>
@@ -188,19 +197,22 @@
                                         {% include "../../core/templates/includes/author-links.html" with authors=item.specific.authors.all  author_link_class="author-link" author_name_class="author-name" %}
                                     </div>
                                     <div class="date">
-                                        {% if item.specific.locations.all|length >= 1 %}
-                                            {% for location in item.specific.locations.all %}
+                                        {% with item.specific|get_locations as locations %}
+                                            {% for location in locations %}
                                                 <a  href="{% url "location-detail" location.slug %}">
                                                     <span class="location-name">{{ location.name }}</span>
                                                 </a>
-                                                <span class="dot-seperator">•</span>
+                                                {% if not forloop.last %}, {% endif %}
                                             {% endfor %}
-                                        {% endif %}
-                                        {% if item.specific.original_published_date%}
-                                          {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.original_published_date article=item.specific%}
-                                        {% else %}
-                                          {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.first_published_at article=item.specific%}
-                                        {% endif %}
+                                            {% if item.specific|show_seperator and locations|length > 0 %}
+                                                <span class="dot-seperator">•</span>
+                                            {% endif %}
+                                            {% if item.specific.original_published_date%}
+                                              {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.original_published_date article=item.specific%}
+                                            {% else %}
+                                              {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.first_published_at article=item.specific%}
+                                            {% endif %}
+                                        {% endwith %}
                                     </div>
                                     {% if translations_for_infocus_article1|length > 1 %}
                                         <div class="dropdown custom-dropdown">
@@ -224,9 +236,13 @@
                         <div class="row in_focus_page2">
                             {% with page.in_focus_page2 as item %}
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                    {% image item.specific.featured_image fill-500x320 as featured_image %}
+                                  {% if item.specific.featured_image %}
+                                    {% image item.specific.featured_image width-270 as featured_image %}
                                     <img class="img-responsive" src="{{ featured_image.url }}"
                                          alt="sample content" style="cursor: pointer" onclick="location.href='{{ item.url }}'">
+                                    {% else %}
+                                        <img style="background: black" src="{{ STATIC_URL }}img/default_featured_image.png" alt="{{ item.specific.title }}" width="250" height="180">
+                                  {% endif %}
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     <a href="{{ item.url }}" class="infocus-title-primary"><div class="infocus-item-title">{{ item.title }}</div></a>
@@ -234,19 +250,22 @@
                                         {% include "../../core/templates/includes/author-links.html" with authors=item.specific.authors.all  author_link_class="author-link" author_name_class="author-name" %}
                                     </div>
                                     <div class="date">
-                                        {% if item.specific.locations.all|length >= 1 %}
-                                            {% for location in item.specific.locations.all %}
+                                        {% with item.specific|get_locations as locations %}
+                                            {% for location in locations %}
                                                 <a  href="{% url "location-detail" location.slug %}">
                                                     <span class="location-name">{{ location.name }}</span>
                                                 </a>
-                                                <span class="dot-seperator">•</span>
+                                                {% if not forloop.last %}, {% endif %}
                                             {% endfor %}
-                                        {% endif %}
-                                        {% if item.specific.original_published_date%}
-                                          {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.original_published_date article=item.specific%}
-                                        {% else %}
-                                          {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.first_published_at article=item.specific%}
-                                        {% endif %}
+                                            {% if item.specific|show_seperator and locations|length > 0 %}
+                                                <span class="dot-seperator">•</span>
+                                            {% endif %}
+                                            {% if item.specific.original_published_date%}
+                                              {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.original_published_date article=item.specific%}
+                                            {% else %}
+                                              {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.first_published_at article=item.specific%}
+                                            {% endif %}
+                                        {% endwith %}
                                     </div>
                                     {% if translations_for_infocus_article2|length > 1 %}
                                         <div class="dropdown custom-dropdown">

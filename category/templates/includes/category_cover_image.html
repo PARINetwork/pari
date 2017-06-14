@@ -42,30 +42,31 @@
                     </div>
                 </div>
 
-            </div>
-            <div class="alternate-filter container">
-                <ul class="icons font-m">
-                    <li>{% trans "Languages" %}:</li>
-                    <li>
-                        <select class="select-no-style" name="lang">
-                            <option value="">{% trans "All" %}</option>
-                                {% for lang in LANGUAGES %}
-                                    {% if request.GET.lang %}
-                                        <option {% if request.GET.lang == lang.0 %}selected="selected"{% endif %}
-                                                value="{{ lang.0 }}">
-                                            {% blocktrans with tlang=lang.1 %}{{ tlang }}{% endblocktrans %}
-                                        </option>
-                                    {% else %}
-                                        <option {% if "en" == lang.0 %}selected="selected"{% endif %}
-                                                value="{{ lang.0 }}">
-                                            {% blocktrans with tlang=lang.1 %}{{ tlang }}{% endblocktrans %}
-                                        </option>
-                                    {% endif %}
-                            {% endfor %}
-                           </select>
-                        <i class="fa fa-angle-down"></i>
-                    </li>
-                </ul>
+
+                <div class="alternate-filter container">
+                    <ul class="icons font-m">
+                        <li>{% trans "Languages" %}:</li>
+                        <li>
+                            <select class="select-no-style" name="lang">
+                                <option value="">{% trans "All" %}</option>
+                                    {% for lang in LANGUAGES %}
+                                        {% if request.GET.lang %}
+                                            <option {% if request.GET.lang == lang.0 %}selected="selected"{% endif %}
+                                                    value="{{ lang.0 }}">
+                                                {% blocktrans with tlang=lang.1 %}{{ tlang }}{% endblocktrans %}
+                                            </option>
+                                        {% else %}
+                                            <option {% if "en" == lang.0 %}selected="selected"{% endif %}
+                                                    value="{{ lang.0 }}">
+                                                {% blocktrans with tlang=lang.1 %}{{ tlang }}{% endblocktrans %}
+                                            </option>
+                                        {% endif %}
+                                {% endfor %}
+                               </select>
+                            <i class="fa fa-angle-down"></i>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
