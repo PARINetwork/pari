@@ -133,7 +133,7 @@
                                                 <img class="img-responsive" src="{{ item.specific.embed_thumbnail }}"
                                                      alt="{{ item.specific.title }}">
                                             </noscript>
-                                        {% elif item.featured_image %}
+                                        {% elif item.specific.featured_image %}
                                             {% image item.specific.featured_image max-800x800 as featured_image %}
                                             <img class="img-responsive lazyload" src="{{ STATIC_URL }}img/1_1.png"
                                                  data-src="{{ featured_image.url }}" alt="{{ featured_image.title }}">
