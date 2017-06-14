@@ -18,6 +18,14 @@ def get_type(obj):
             return 'audio_zone'
     return type_
 
+@register.filter
+def show_seperator(obj):
+    type_ = obj.__class__.__name__.lower()
+    if type_ == 'article':
+        if not obj.show_year:
+            return False
+    return True
+
 
 @register.filter
 def get_locations(obj):
