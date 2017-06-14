@@ -121,8 +121,11 @@
                       </div>
                       <div class="col-lg-8 col-md-8 col-sm-10">
                           <div class="collapse navbar-collapse">
-                              <ul class="nav navbar-nav navbar-right" itemscope itemtype="http://schema.org/SiteNavigationElement">
+                              <ul class="nav navbar-nav navbar-right " itemscope itemtype="http://schema.org/SiteNavigationElement">
                                   {% include "pages/menus/dropdown.html" %}
+                                  <a href="#" class="home-hamburger">
+                                    <span class="glyphicon glyphicon-menu-hamburger hamburger-icon"></span>
+                                  </a>
                               </ul>
                           </div>
                       </div>
@@ -184,6 +187,9 @@
 <script src="{{ STATIC_URL }}bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <script>
     $(function () {
+        $('.home-hamburger').on("click", function() {
+                $(this).siblings().toggleClass('hidden');
+        });
         $('.middleinput:text, textarea').addClass('xlarge');
         $('.control-group label').addClass('control-label');
         if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
