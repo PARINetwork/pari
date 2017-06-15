@@ -112,11 +112,9 @@
                                             {% if item.specific|show_separator and locations|length > 0 %}
                                                 <span class="dot-seperator">•</span>
                                             {% endif %}
-                                            {% if item.specific.original_published_date%}
-                                              {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.original_published_date article=item.specific%}
-                                            {% else %}
-                                              {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.first_published_at article=item.specific%}
-                                            {% endif %}
+                                            <a href="{% url "archive-detail" year=item.specific.first_published_at.year month=item.specific.first_published_at.month %}">
+                                                <span itemprop="datePublished" class="date link-dark">{{ item.specific.first_published_at|date }}</span>
+                                            </a>
                                         {% endwith %}
                                         </div>
                                     </div>
@@ -205,11 +203,9 @@
                                             {% if item.specific|show_separator and locations|length > 0 %}
                                                 <span class="dot-seperator">•</span>
                                             {% endif %}
-                                            {% if item.specific.original_published_date%}
-                                              {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.original_published_date article=item.specific%}
-                                            {% else %}
-                                              {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.first_published_at article=item.specific%}
-                                            {% endif %}
+                                            <a href="{% url "archive-detail" year=item.specific.first_published_at.year month=item.specific.first_published_at.month %}">
+                                                <span itemprop="datePublished" class="date link-dark">{{ item.specific.first_published_at|date }}</span>
+                                            </a>
                                         {% endwith %}
                                     </div>
                                     {% if translations_for_infocus_article1|length > 1 %}
@@ -252,11 +248,9 @@
                                             {% if item.specific|show_separator and locations|length > 0 %}
                                                 <span class="dot-seperator">•</span>
                                             {% endif %}
-                                            {% if item.specific.original_published_date%}
-                                              {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.original_published_date article=item.specific%}
-                                            {% else %}
-                                              {% include "../../article/templates/article/includes/display_date.html" with display_date=item.specific.first_published_at article=item.specific%}
-                                            {% endif %}
+                                            <a href="{% url "archive-detail" year=item.specific.first_published_at.year month=item.specific.first_published_at.month %}">
+                                                <span itemprop="datePublished" class="date link-dark">{{ item.specific.first_published_at|date }}</span>
+                                            </a>
                                         {% endwith %}
                                     </div>
                                     {% if translations_for_infocus_article2|length > 1 %}
