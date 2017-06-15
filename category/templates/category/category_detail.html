@@ -3,7 +3,7 @@
 
 {% block meta_title %}{{ category.name }}{% if filter %} - {{ filter }}{% endif %} - {% trans "Page" %} {{ articles.number }}{% endblock %}
 {% block title %}{{ category.name }}{% endblock %}
-{% block meta_description %}{{ category.description }}: one of many story categories at PARI.{% endblock %}
+{% block meta_description %}{% trans "{{ category.description }}" %}: {% trans "one of many story categories at PARI." %}{% endblock %}
 
 {% block opengraph_block %}
     {% image category.image max-1000x500 as category_image %}

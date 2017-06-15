@@ -178,7 +178,7 @@
                  </li>
                  <li >
                         <span class="filter-value language-box">
-                            <span class="banner-label">Language</span>
+                            <span class="banner-label">{% trans "Language" %}</span>
                           <div class="dropdown custom-dropdown" id="language_dd">
                               <button class="dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                   {% for lang in LANGUAGES %}
@@ -208,10 +208,10 @@
                  <li>
                                 <a href="#">
                                     <i class="fa fa-photo"></i>
-                                    <span class="preview">Read the story in pictures</span>
+                                    <span class="preview">{% trans "Read the story in pictures" %}</span>
                                 </a>
                             </li>{% with request.build_absolute_uri as url and item.title as title %}<li class="social-icon" data-url="{{ url }}">
-                                    <span class="banner-label">Share</span>
+                                    <span class="banner-label">{% trans "Share" %}</span>
                                         <a href="https://twitter.com/intent/tweet?url={{ url|urlencode }}&amp;hashtags=RuralIndiaOnline&amp;via=PARINetwork" target="_blank" class="link-light">
                                         <i class="fa fa-twitter"></i>
                                     </a>
@@ -220,7 +220,7 @@
                                         <i class="fa fa-facebook"></i>
                                     </a>
                                 </li>{% endwith %}<li>
-                                <a class="#" onclick="window.print()">Print this story</a>
+                                <a class="#" onclick="window.print()">{% trans "Print this story" %}</a>
                             </li>{% if article.locations.count %}{% with article.locations.first as location %}<li>
                                         <a href="{% url 'map-list' %}?lat={{ location.point.x }}&long={{ location.point.y }}&title={{ location.name }}&slug={{ location.slug }}">
                                             <span itemprop="contentLocation">
@@ -233,7 +233,7 @@
                                         </a>
                                     </li><li>
                                         <a href="{% url "location-detail" location.slug %}">
-                                            <span>See more from this region</span>
+                                            <span>{% trans "See more from this region" %}</span>
                                         </a>
                                     </li>
                                 {% endwith %}
@@ -279,7 +279,7 @@
 {% include "article/includes/author_info.html" with authors=article.authors.all show_other_stories=True show_translated_bio=True%}
     <div class="container related-stories">
         {% if article.related_articles %}
-            <h4>RELATED STORIES</h4>
+            <h4>{% trans "RELATED STORIES" %}</h4>
         {% endif %}
     {% include "article/includes/article_list.html" with articles=article.related_articles %}
 </div>
@@ -305,11 +305,11 @@
                       </ul>
                       <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
                           <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                          <span class="sr-only">Previous</span>
+                          <span class="sr-only">{% trans "Previous" %}</span>
                       </a>
                       <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
                           <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
+                          <span class="sr-only">{% trans "Next" %}</span>
                       </a>
                   </div>
                   <div class="right slide-info">
