@@ -183,13 +183,7 @@
                             {% with page.in_focus_page1 as item %}
 
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                  {% if item.specific.featured_image %}
-                                    {% image item.specific.featured_image width-270 as featured_image %}
-                                    <img class="img-responsive" src="{{ featured_image.url }}"
-                                         alt="sample content" style="cursor: pointer" onclick="location.href='{{ item.url }}'">
-                                    {% else %}
-                                        <img style="background: black" src="{{ STATIC_URL }}img/default_featured_image.png" alt="{{ item.specific.title }}" width="250" height="180">
-                                  {% endif %}
+                                    {% include "includes/article_listing_image.html" with specific=item.specific alignment_class='full-image-center listing-image'%}
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     <a href="{{ item.url }}" class="infocus-title-primary"><div class="infocus-item-title">{{ item.title }}</div></a>
@@ -236,13 +230,7 @@
                         <div class="row in_focus_page2">
                             {% with page.in_focus_page2 as item %}
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                  {% if item.specific.featured_image %}
-                                    {% image item.specific.featured_image width-270 as featured_image %}
-                                    <img class="img-responsive" src="{{ featured_image.url }}"
-                                         alt="sample content" style="cursor: pointer" onclick="location.href='{{ item.url }}'">
-                                    {% else %}
-                                        <img style="background: black" src="{{ STATIC_URL }}img/default_featured_image.png" alt="{{ item.specific.title }}" width="250" height="180">
-                                  {% endif %}
+                                     {% include "includes/article_listing_image.html" with specific=item.specific alignment_class='full-image-center listing-image'%}
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     <a href="{{ item.url }}" class="infocus-title-primary"><div class="infocus-item-title">{{ item.title }}</div></a>
