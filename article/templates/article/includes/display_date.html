@@ -4,9 +4,9 @@
         {% if article.show_day or type != 'article' and  type != 'video_zone' and type != 'audio_zone' %}
             <span itemprop="datePublished" class="date link-dark">{{ display_date|date }}</span>
         {% elif article.show_month %}
-            <span itemprop="datePublished" class="date link-dark">ca. {{ display_date|date:"M, Y"}}</span>
+            <span itemprop="datePublished" class="date link-dark"><span class="lowercase">circa</span> {{ display_date|date:"M, Y"}}</span>
         {% elif article.show_year %}
-            <span itemprop="datePublished" class="date link-dark">ca. {{ display_date|date:"Y" }}</span>
+            <span itemprop="datePublished" class="date link-dark"><span class="lowercase">circa</span> {{ display_date|date:"Y" }}</span>
         {% endif %}
     {% endwith %}
 </a>

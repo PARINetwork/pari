@@ -23,6 +23,9 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 from album.models import Album
 from article.models import Article
+from category.models import Category
+from core.utils import get_translations_for_page
+
 
 @python_2_unicode_compatible
 class StaticPage(Page):
@@ -41,12 +44,14 @@ class StaticPage(Page):
     def get_absolute_url(self):
         return reverse("static_page", kwargs={"slug": self.slug})
 
+
 class FeaturedSectionBlock(StructBlock):
     title = blocks.CharBlock(required=False)
     link_text = blocks.CharBlock(required=False)
     url = blocks.CharBlock()
     featured_image = ImageChooserBlock()
     featured_image_label = blocks.CharBlock(required=False)
+
 
 class HomePageAdminMediaForm(WagtailAdminPageForm):
     def __init__(self, *args, **kwargs):
@@ -77,6 +82,7 @@ class HomePageAdminMediaForm(WagtailAdminPageForm):
         video = Article.objects.get(page_ptr_id=self.cleaned_data['video'])
         return video
 
+
 class HomePageAdminForm(HomePageAdminMediaForm):
     in_focus_title = forms.CharField(required=True)
     in_focus_link = forms.CharField(required=True)
@@ -93,6 +99,7 @@ class HomePageAdminForm(HomePageAdminMediaForm):
         if not page2:
             raise forms.ValidationError(_('Please add a page'))
         return page2
+
 
 @python_2_unicode_compatible
 class HomePage(Page):
@@ -145,13 +152,13 @@ class HomePage(Page):
     in_focus_link = models.TextField(blank=True, null=True, verbose_name="Link")
     in_focus_link_text = models.TextField(blank=True, null=True, verbose_name="Link Text")
     in_focus_page1 = models.ForeignKey("wagtailcore.Page",
-                                   null=True, blank=True,
-                                   on_delete=models.PROTECT,
-                                   related_name="+", verbose_name="Page one")
+                                       null=True, blank=True,
+                                       on_delete=models.PROTECT,
+                                       related_name="+", verbose_name="Page one")
     in_focus_page2 = models.ForeignKey("wagtailcore.Page",
-                                   null=True, blank=True,
-                                   on_delete=models.PROTECT,
-                                   related_name="+", verbose_name="Page two")
+                                       null=True, blank=True,
+                                       on_delete=models.PROTECT,
+                                       related_name="+", verbose_name="Page two")
 
     talking_album = models.ForeignKey("album.Album",
                                       null=True, blank=True, related_name='+', on_delete=models.PROTECT)
@@ -195,11 +202,37 @@ class HomePage(Page):
         return _("HomePage")
 
     def get_context(self, request, *args, **kwargs):
+        category1 = Category.objects.get(slug="resource-conflicts")
+        category2 = Category.objects.get(slug="adivasis")
+        category3 = Category.objects.get(slug="dalits")
+        category4 = Category.objects.get(slug="sports-games")
         return {
+            'talking_album': {
+                'image': self.talking_album.slides.first().image,
+                'count': self.talking_album.slides.count(),
+                'photographers': self.talking_album.photographers,
+                'section_model': self.talking_album,
+            },
+            'photo_album': {
+                'image': self.photo_album.slides.first().image,
+                'count': self.photo_album.slides.count(),
+                'photographers': self.photo_album.photographers,
+                'section_model': self.photo_album,
+            },
+            'video': {
+                'image': self.video.featured_image,
+                'photographers': self.video.authors.all(),
+                'section_model': self.video,
+            },
             'page': self,
+            'categories': [category1, category2, category3, category4],
+            'translations': get_translations_for_page(self),
+            'translations_for_infocus_article1': get_translations_for_page(self.in_focus_page1.specific),
+            'translations_for_infocus_article2': get_translations_for_page(self.in_focus_page2.specific),
+            'current_page': 'home-page',
             'request': request,
+            'categories': [category1, category2, category3, category4]
         }
-
     def carousel(self):
         items = []
         for ii in range(10):
@@ -215,6 +248,7 @@ class HomePage(Page):
 class SubSectionBlock(StructBlock):
     heading = blocks.CharBlock()
     content = blocks.RichTextBlock()
+
 
 @python_2_unicode_compatible
 class GuidelinesPage(Page):
@@ -234,6 +268,7 @@ class GuidelinesPage(Page):
     def __str__(self):
         return _("GuidelinesPage")
 
+
 class GalleryHomePageAdminForm(HomePageAdminMediaForm):
     photo_title = forms.CharField(required=True)
     photo_link = forms.CharField(required=False)
@@ -243,6 +278,7 @@ class GalleryHomePageAdminForm(HomePageAdminMediaForm):
         if photo_of_the_week and photo_of_the_week.photographers.count() == 0:
             raise forms.ValidationError(_('Please add photographers to the image'))
         return self.cleaned_data["photo_of_the_week"]
+
 
 @python_2_unicode_compatible
 class GalleryHomePage(Page):
@@ -255,7 +291,6 @@ class GalleryHomePage(Page):
                                     null=False, blank=False, related_name='photo', on_delete=models.PROTECT)
     video = models.ForeignKey("article.Article",
                               null=False, blank=False, on_delete=models.PROTECT)
-
 
     content_panels = Page.content_panels + [
         MultiFieldPanel([
@@ -272,6 +307,7 @@ class GalleryHomePage(Page):
 
     def __str__(self):
         return _("GalleryHomePage")
+
 
 @python_2_unicode_compatible
 class AffixImage(AbstractImage):
