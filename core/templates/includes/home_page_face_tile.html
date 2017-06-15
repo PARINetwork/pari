@@ -6,21 +6,21 @@
         <div class="faces-container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="subtitle-primary">FACES from across India</h4>
+                    <h4 class="subtitle-primary">{% trans "FACES from across India" %}</h4>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="title-light faces-overlay-text">PARI records the facial diversity of the people of India</div>
+                    <div class="title-light faces-overlay-text">{% trans "PARI records the facial diversity of the people of India" %}</div>
                 </div>
                 <div class="col-lg-6">
                     <div>
-                        <button class="btn" onclick="location.href='{% url "face-list" %}'">View all FACES
+                        <button class="btn" onclick="location.href='{% url "face-list" %}'">{% trans "View all FACES" %}
                         </button>
                     </div>
                     <p class="text"><a
                             href="{% url "static_page" slug="contribute-to-faces" %}"><u>{% trans "Contribute" %}</u></a>
-                        to this database</p>
+                        {% trans "to this database" %}</p>
                 </div>
             </div>
         </div>

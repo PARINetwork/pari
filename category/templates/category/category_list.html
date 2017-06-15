@@ -3,7 +3,7 @@
 
 {% block meta_title %}{% trans "Categories" %}{% endblock %}
 {% block title %}{% trans "Categories" %}{% endblock %}
-{% block meta_description %}Find hundreds of PARI stories on diverse topics such as rural occupations, crafts and sports, marginalised groups, resource conflicts, and many more.{% endblock %}
+{% block meta_description %}{% trans "Find hundreds of PARI stories on diverse topics such as rural occupations, crafts and sports, marginalised groups, resource conflicts, and many more." %}{% endblock %}
 
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/layout/components/main-content/story-grid.less">
@@ -22,8 +22,8 @@
         <div class="row">
             <div class="title-container">
                 <div class="categories-title gallery-title">
-                    <h1 class="title-light">Stories</h1>
-                    <div class="paragraph-dark text-center">Find hundreds of them in diverse categories</div>
+                    <h1 class="title-light">{% trans "Stories" %}</h1>
+                    <div class="paragraph-dark text-center">{% trans "Find hundreds of them in diverse categories" %}</div>
                 </div>
             </div>
         </div>

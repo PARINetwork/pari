@@ -98,11 +98,11 @@
                       </ul>
                       <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
                           <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                          <span class="sr-only">Previous</span>
+                          <span class="sr-only">{% trans "Previous" %}</span>
                       </a>
                       <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
                           <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
+                          <span class="sr-only">{% trans "Next" %}</span>
                       </a>
                   </div>
                   <div class="right slide-info">
@@ -179,7 +179,7 @@
                         <div>
                             <ul>
                                 <li class="social-icon">
-                                    <span class="banner-label">Share</span>
+                                    <span class="banner-label">{% trans "Share" %}</span>
                                     <a target="_blank"
                                        href="{{:twitterShare}}">
                                         <i class="fa fa-twitter"></i>
@@ -196,7 +196,7 @@
                         {{if bio}}
                             <p class="author-bio">{{:bio}}</p>
                         {{/if}}
-                        <a href="{{:url}}" class="btn primary">Other stories by {{:name}}</a>
+                        <a href="{{:url}}" class="btn primary">{% trans "Other stories by" %} {{:name}}</a>
                     </div>
                 </div>
             {{/for}}
