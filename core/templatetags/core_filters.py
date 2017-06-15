@@ -19,7 +19,7 @@ def get_type(obj):
     return type_
 
 @register.filter
-def show_seperator(obj):
+def show_separator(obj):
     type_ = obj.__class__.__name__.lower()
     if type_ == 'article':
         if not obj.show_year:

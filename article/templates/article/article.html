@@ -65,7 +65,7 @@
                             {% for category in article.categories.all %}
                                 <span class="tag-space">{{ category }}
                                 {% if not forloop.last %},</span>
-                                {% else %}  <span class="tag-space-both">•</span>
+                                {% elif article|show_separator%} <span class="tag-space-both">•</span>
                                 {%  endif  %}
                             {% endfor %}
                         {% endif %}
