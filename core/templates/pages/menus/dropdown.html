@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<li class="dropdown stories">
+<li class="dropdown stories hidden">
     <a class="dropdown-toggle" data-toggle="dropdown" itemprop="url" href="#">
         <span itemprop="name" {% if "stories" in tab %} class="active-tab" {%endif%}>{% trans "Stories" %}</span>
         <i class="fa fa-angle-down"></i>
@@ -70,7 +70,7 @@
         </div>
     </div>
 </li>
-<li class="dropdown gallery">
+<li class="dropdown gallery hidden">
     <a class="dropdown-toggle" data-toggle="dropdown" itemprop="url" href="#">
         <span itemprop="name" {% if 'gallery' in tab %} class="active-tab" {%endif%}>{% trans "Gallery" %}</span>
         <i class="fa fa-angle-down"></i>
@@ -174,12 +174,12 @@
         </div>
     </div>
 </li>
-<li class="dropdown">
+<li class="dropdown hidden">
     <a class="dropdown-toggle" itemprop="url" href="{% url "resource-list" %}">
     <span itemprop="name" {% if "resources" in tab %} class="active-tab" {%endif%}>{% trans "Resources" %}</span>
     </a>
 </li>
-<li class="dropdown about-pari">
+<li class="dropdown about-pari hidden">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
         <span {% if "about-pari" in tab %} class="active-tab" {%endif%}>{% trans "About PARI" %}</span>
         <i class="fa fa-angle-down"></i>
@@ -275,12 +275,12 @@
         </div>
     </div>
 </li>
-<li class="dropdown">
+<li class="dropdown hidden">
     <a class="dropdown-toggle" itemprop="url" href="{% url "static_page" slug="donate" %}">
     <span itemprop="name"  {% if "donate" in tab %} class="active-tab" {%endif%}>{% trans "Donate to PARI" %} </span>
     </a>
 </li>
-<li class="dropdown">
+<li class="dropdown search-icon">
     <a class="dropdown-toggle search-icon-container" itemprop="url" href="javascript:void(0)">
         <i class="fa fa-search"></i>
     </a>
