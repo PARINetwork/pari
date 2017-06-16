@@ -14,12 +14,9 @@
             {% include "article/includes/default_atom.html" with article=result.specific %}
             {% if result.specific.latest_revision_created_at %}
               <div class="margin-top-20px date">
-
-                  {% if  result.specific.original_published_date%}
-                      {% include "../../article/templates/article/includes/display_date.html" with display_date=result.specific.original_published_date article=result.specific%}
-                    {% else %}
-                      {% include "../../article/templates/article/includes/display_date.html" with display_date=result.specific.first_published_at article=result.specific%}
-                    {% endif %}
+                <a href="{% url "archive-detail" year=result.specific.first_published_at.year month=result.specific.first_published_at.month %}">
+                    <span itemprop="datePublished" class="date link-dark">{{ result.specific.first_published_at|date }}</span>
+                </a>
               </div>
             {% endif %}
             </div>

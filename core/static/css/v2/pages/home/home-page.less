@@ -41,6 +41,11 @@
   margin: 0;
 }
 
+.featured-image-container {
+    display: block;
+    overflow: auto;
+}
+
 #myCarousel-1 {
   margin-bottom: 60px;
   .featured-content-title{
@@ -59,7 +64,7 @@
         position: absolute;
         left: 0;
         right: 0;
-        top: 0;
+        top: -40px;
         bottom: 0;
         margin: auto;
         z-index: 1;
@@ -147,7 +152,7 @@
   }
 
   .floating-carousel-buttons {
-    position: absolute;
+    position: relative;
     top: 80%;
     left: 0;
     right: 0;
@@ -164,6 +169,10 @@
         height: 38px;
         display: inline-block;
         margin: auto;
+        width: 90px;
+        position: absolute;
+        bottom: 60px;
+        left: 145px;
 
         .carousel-control {
           &.left, &.right {
