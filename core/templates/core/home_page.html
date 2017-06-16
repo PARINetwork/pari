@@ -44,22 +44,7 @@
 
                     <div class=" {% if forloop.first %}active{% endif %} item content-{{ forloop.counter }}" onclick="location.href='{{ featured_content.value.url }}';" style="cursor: pointer">
                       {% image featured_content.value.featured_image width-1440 as featured_image %}
-                        <div class="featured-image-container">
-                            <img src="{{featured_image.url}}" alt="sample">
-                            <!-- Left and right controls -->
-                            <div class="floating-carousel-buttons container {% if... ">
-                              <div class="carousel-buttons-wrapper">
-                                <div class="carousel-control-container clearfix">
-                                    <a class="left carousel-control" href="#myCarousel-1" role="button" data-slide="prev">
-                                        <i class="fa fa-angle-left"></i>
-                                    </a>
-                                    <a class="right carousel-control" href="#myCarousel-1" role="button" data-slide="next">
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
+                        <img src="{{featured_image.url}}" alt="sample">
                         {% if featured_content.value.featured_image_label or featured_content.value.title or featured_content.value.link_text %}
                             <div class="floating-container container">
                               <div class="relative-container">
@@ -81,6 +66,19 @@
                         {% endif %}
                     </div>
                 {% endfor %}
+                <!-- Left and right controls -->
+                <div class="floating-carousel-buttons container">
+                  <div class="carousel-buttons-wrapper">
+                    <div class="carousel-control-container clearfix">
+                        <a class="left carousel-control" href="#myCarousel-1" role="button" data-slide="prev">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel-1" role="button" data-slide="next">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </div>
+                  </div>
+                </div>
             </div>
         </div>
         <div class="container">
