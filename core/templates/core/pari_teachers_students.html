@@ -23,7 +23,7 @@
                     <div class="cover-image">
                     </div>
                     <div class="banner-content container" itemscope itemtype="http://schema.org/headline">
-                        <h1 class="category-title" itemprop="headline"> PARI for students, teachers and researchers </h1>
+                        <h1 class="category-title" itemprop="headline"> {% trans "PARI for students, teachers and researchers" %} </h1>
                     </div>
                 </div>
             </div>
@@ -33,15 +33,15 @@
                 <h4 class="page-title">{% trans "REDEFINING LEARNING" %}</h4>
                 <ol>
                     <li>
-                        <h4> Creating the textbooks of the future </h4>
-                        <p> At PARI, we’re writing the textbooks of the future. That’s happening with the numerous
+                        <h4> {% trans "Creating the textbooks of the future" %} </h4>
+                        <p> {% blocktrans trimmed %}At PARI, we’re writing the textbooks of the future. That’s happening with the numerous
                             stories,
                             photos, videos and audio material going up every week on our site. It’s important that, over
                             time,
-                            quite a bit of that is produced by students and teachers themselves.
+                            quite a bit of that is produced by students and teachers themselves.{% endblocktrans %}
                         </p>
                         <p>
-                            PARI aims to help create informative and lively stories on rural India for students,
+                            {% blocktrans trimmed %}PARI aims to help create informative and lively stories on rural India for students,
                             teachers,
                             schools, colleges and universities. And for learners outside such formal institutions as
                             well.
@@ -55,12 +55,12 @@
                             broadband
                             access grows, it should also mean lower costs for many students, as PARI is a
                             free-access-to-public
-                            site.
+                            site.{% endblocktrans %}
                         </p>
                     </li>
                     <li>
-                        <h4> Helping students to develop course content </h4>
-                        <p>We have already added a vital element to this process: on PARI, students participate in the
+                        <h4> {% trans "Helping students to develop course content" %} </h4>
+                        <p>{% blocktrans trimmed %}We have already added a vital element to this process: on PARI, students participate in the
                             creation
                             of their own textbooks. If a teacher or an institution wants to set up learning resources
                             for a
@@ -68,10 +68,10 @@
                             that's on
                             rural labour or migrants or agriculture or artisans – we will try and involve the students
                             in
-                            creating living knowledge on their topics through field trips.
+                            creating living knowledge on their topics through field trips.{% endblocktrans %}
                         </p>
                         <p>
-                            So videos, audio recordings, photos and text articles of and by students could not only be
+                            {% blocktrans trimmed %}So videos, audio recordings, photos and text articles of and by students could not only be
                             fetching
                             them marks or grades in their courses, but also become part of a flexible and open textbook.
                             Also, a
@@ -86,12 +86,13 @@
                             dated
                             by some years. Especially since PARI’s approach will combine the power of text articles,
                             research
-                            papers, video, audio and still photographs.
+                            papers, video, audio and still photographs.{% endblocktrans %}
                         </p>
                     </li>
                     <li>
-                        <h4> Unleashing a powerful source of learning </h4>
-                        <p>PARI has specific <a href="{% url "guidelines" %}"> guidelines </a> for videos generated for and by us, which ensure recognition of
+                        <h4> {% trans "Unleashing a powerful source of learning" %} </h4>
+                        {% url "guidelines" as guidelines %}
+                        <p>{% blocktrans trimmed %}PARI has specific <a href="{[ guidelines }}"> guidelines </a> for videos generated for and by us, which ensure recognition of
                             primary
                             authorship of the narrators. Meanwhile, just the interaction of students with the people
                             whose
@@ -99,10 +100,10 @@
                             they're trying to study, and their joint effort with communities to produce authentic
                             material
                             from
-                            the field, is also a powerful source of learning. It’s already happening on PARI.
+                            the field, is also a powerful source of learning. It’s already happening on PARI.{% endblocktrans %}
                         </p>
                         <p>
-                            There's another thing: each year, countless students produce valuable output on India. In
+                            {% blocktrans trimmed %}There's another thing: each year, countless students produce valuable output on India. In
                             the
                             form
                             of research papers, articles, videos, documentaries, magazines, photographs and more.
@@ -116,19 +117,21 @@
                             accessible
                             and easy to view from anywhere in the world. In turn, knowing that their work can be viewed
                             across
-                            the globe would be an incentive for students to raise the level and quality of their work.
+                            the globe would be an incentive for students to raise the level and quality of their work.{% endblocktrans %}
                         </p>
                     </li>
                     <li>
-                        <h4> A one-stop library for researchers </h4>
-                        <p>Besides this, there are students in universities, colleges and high schools working on text
+                        <h4> {% trans "A one-stop library for researchers" %} </h4>
+                        {% url "article-detail" slug="a-newspaper-from-the-forest-of-learning" as forest%}
+                        <p>{% blocktrans trimmed %}Besides this, there are students in universities, colleges and high schools working on text
                             articles,
                             audio and video, independently of their course work, for PARI. Some very young students have
                             even
-                            produced <a href="{% url "article-detail" slug="a-newspaper-from-the-forest-of-learning" %}"> newspapers </a> for us.
+                            produced <a href="{{ forest }}"> newspapers </a> for us.{% endblocktrans %}
                         </p>
+                        {% url "resource-list" as resource_list%}
                         <p>
-                            And in our <a href="{% url "resource-list" %}"> Resources </a> section, we aim to put up (in full text and not just via links), all
+                            {% blocktrans trimmed %}And in our <a href="{{ resource_list }}"> Resources </a> section, we aim to put up (in full text and not just via links), all
                             official
                             (and unofficial but credible) reports related to rural India. For instance, every report of
                             the
@@ -137,10 +140,10 @@
                             (now NITI Aayog) and ministries, the United Nations and much more. Researchers will not have
                             to
                             surf
-                            multiple sites to access important documents and studies from different sources.
+                            multiple sites to access important documents and studies from different sources.{% endblocktrans %}
                         </p>
                         <p>
-                            PARI is a one-stop library for students, teachers and all other learners.
+                            {% trans "PARI is a one-stop library for students, teachers and all other learners." %}
                         </p>
                     </li>
                 </ol>

@@ -15,32 +15,32 @@
 {% block main %}
 <div id="acknowledgements">
     <div class="content container">
-        <h1>Acknowledgments</h1>
-        <p>It was the Founder Chairman of <a href="https://www.thoughtworks.com/" target="_blank">ThoughtWorks</a>,
+        <h1>{% trans "Acknowledgments" %}</h1>
+        {% url 'story-detail' slug='visible-work-invisible-women' as women%}
+        <p>{% blocktrans trimmed %}It was the Founder Chairman of <a href="https://www.thoughtworks.com/" target="_blank">ThoughtWorks</a>,
             Neville Roy Singham, who made me believe that the People’s Archive of Rural India in its present form was
             possible. Roy thought the project was nuts, but loved its audacity. Drawing from a (physical) photo
             exhibition of mine in 2011, he laid out the possibilities of a fully curated photo exhibition – and more –
             online. We were able to use the original text panels online too, and you can see the outcome of that effort
-            on <a href="{% url 'story-detail' slug='visible-work-invisible-women' %}">Visible
-                Work, Invisible Women</a>.</p>
+            on <a href="{{ women }}">Visible Work, Invisible Women</a>.{% endblocktrans %}</p>
         <br>
-        <p>At every stage, subsequently, Roy’s ideas and energy pushed forward the making of PARI. No acknowledgement of
-            his contribution can be strong enough.</p>
+        <p>{% blocktrans trimmed %}At every stage, subsequently, Roy’s ideas and energy pushed forward the making of PARI. No acknowledgement of
+            his contribution can be strong enough.{% endblocktrans %}</p>
         <br>
-        <p>When PARI was still a fledgling notion, Prof. Ananya Mukherjee-Reed, now Dean of Faculty, Liberal Arts &
+        <p>{% blocktrans trimmed %}When PARI was still a fledgling notion, Prof. Ananya Mukherjee-Reed, now Dean of Faculty, Liberal Arts &
             Professional Studies of York University, Toronto, made a critical contribution to its ideas, concepts and
-            clarity. The strong education-related component of PARI owes a great deal to her influence.</p>
+            clarity. The strong education-related component of PARI owes a great deal to her influence.{% endblocktrans %}</p>
         <br>
-        <p>Volunteer techies from ThoughtWorks India made the PARI platform possible. Without them, none of this would
+        <p>{% blocktrans trimmed %}Volunteer techies from ThoughtWorks India made the PARI platform possible. Without them, none of this would
             have materialised. Many helped in immeasurable ways, but Manoj Mahalingam (then with TW) and Satish
             Viswanathan played key roles in getting us off the ground. Siddharth Adelkar was and is central to our
-            overall effort. </p>
+            overall effort.{% endblocktrans %} </p>
         <br>
-        <p>As PARI enters Phase 2 of its existence, we have Aditya Dipankar making an astonishing difference to the
+        <p>{% blocktrans trimmed %}As PARI enters Phase 2 of its existence, we have Aditya Dipankar making an astonishing difference to the
             website’s design and appearance. We also have the inimitable Thejaswi Puthraya who is there for us, from
-            before the launch, on all matters tech and some beyond.</p>
+            before the launch, on all matters tech and some beyond.{% endblocktrans %}</p>
         <br>
-        <p>Scores of others helped in big and many ways:</p>
+        <p>{% trans "Scores of others helped in big and many ways" %}:</p>
 
         <hr/>
 
@@ -50,7 +50,7 @@
             <div class="acknowledgements-cols row">
 
                 <div class="col-sm-12 col-md-4 col-lg-4">
-                    <p class="acknowledgements-heading">Software Development Team: Launch Phase</p>
+                    <p class="acknowledgements-heading">{% trans "Software Development Team: Launch Phase" %}</p>
 
                     <p>Anilkumar Kodi </p>
                     <p>Aruna Shanmugakumar</p>
@@ -80,23 +80,23 @@
 
                 <div class="col-sm-12 col-md-4 col-lg-4">
 
-                    <p class="acknowledgements-heading">Logistics Team</p>
+                    <p class="acknowledgements-heading">{% trans "Logistics Team" %}</p>
                     <p>Baskar G.</p>
                     <p>Karthik T. </p>
                     <p>Poornima R. S.</p>
                     <p>Ratnakar Nath</p>
 
-                    <p class="acknowledgements-heading">Swecha Technology Team</p>
+                    <p class="acknowledgements-heading">{% trans "Swecha Technology Team" %}</p>
                     <p>Bhuvan Krishna</p>
                     <p>Kiran Chandra</p>
                     <p>Praveen Chandrahas</p>
 
 
-                    <p class="acknowledgements-heading">Digital Archivist </p>
+                    <p class="acknowledgements-heading">{% trans "Digital Archivist" %}</p>
                     <p>Venkataraaman S.</p>
 
 
-                    <p class="acknowledgements-heading">Software Development Team: Design Phase</p>
+                    <p class="acknowledgements-heading">{% trans "Software Development Team: Design Phase" %}</p>
                     <p>Deepan Rajkumar R.</p>
                     <p>Deepthi R. (Tech Lead)</p>
                     <p> Gayathri M. (Team Lead)</p>
@@ -107,12 +107,12 @@
                     <p>Sankar P.</p>
                     <p>Satish Viswanathan</p>
                     <p> Venkatesa Madhan </p>
-                    <p>Vidhyalakshmi S.</p>
+                    <p>Vidhyalakshimi S.</p>
                     <p>Vinoth Kumar R.</p>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-4">
 
-                    <p class="acknowledgements-heading">Inception Team</p>
+                    <p class="acknowledgements-heading">{% trans "Inception Team" %}</p>
                     <p>David Siang Fong Oh</p>
                     <p>Kartik Kannan</p>
                     <p>Koundinya Goparaju</p>
@@ -120,7 +120,7 @@
                     <p>Ruchi Mahajan</p>
                     <p>Shashank Raghavendra</p>
 
-                    <p class="acknowledgements-heading">Design Team</p>
+                    <p class="acknowledgements-heading">{% trans "Design Team" %}</p>
                     <p>Aditya Dipankar (Team Lead)</p>
                     <p>Gaurav Sharma</p>
                     <p>Samir Bellare</p>
@@ -128,7 +128,7 @@
                     <p>Suvani Suri</p>
 
 
-                    <p class="acknowledgements-heading">Legal Advisers</p>
+                    <p class="acknowledgements-heading">{% trans "Legal Advisers" %}</p>
                     <p>Rina Kamath</p>
                     <p>Rishab Bailey</p>
 
@@ -137,12 +137,12 @@
             </div>
             <hr/>
             <div>
-                <p class="acknowledgements-heading">Translators</p>
+                <p class="acknowledgements-heading">{% trans "Translators" %}</p>
                 <div class="acknowledgements-cols row">
 
                     <div class="col-sm-12 col-md-4 col-lg-4">
 
-                        <p class="acknowledgements-heading">Crazy Frog Media Team</p>
+                        <p class="acknowledgements-heading">{% trans "Crazy Frog Media Team" %}</p>
                         <p>Mohan G.N. (Lead)</p>
                         <p>Prasad Naik</p>
                         <p>Rajaram Tallur</p>
@@ -150,7 +150,7 @@
                         <p>Santosh Tamprapani</p>
                         <p>Shama Nandibetta</p>
 
-                        <p class="acknowledgements-heading">Other Translators</p>
+                        <p class="acknowledgements-heading">{% trans "Other Translators" %}</p>
                         <p>Chandan Dey</p>
                         <p>Chinta T. K.</p>
 
@@ -188,7 +188,7 @@
             <hr/>
 
             <div>
-                <p class="acknowledgements-heading">Core Group, Support, Admin</p>
+                <p class="acknowledgements-heading">{% trans "Core Group, Support, Admin" %}</p>
                 <div class="acknowledgements-cols row">
                     <div class="col-sm-12 col-md-4 col-lg-4">
 
@@ -243,20 +243,20 @@
             <hr/>
 
         </div>
-        <p>A very special thanks to P.R. Gandhi, Kartik Shah, Deepak Soni and Eesha Thakkar of P.R. Gandhi & Co, Mumbai,
-            and Prakash Shah of Delhi, for their invaluable assistance.</p>
+        <p>{% blocktrans trimmed %}A very special thanks to P.R. Gandhi, Kartik Shah, Deepak Soni and Eesha Thakkar of P.R. Gandhi & Co, Mumbai,
+            and Prakash Shah of Delhi, for their invaluable assistance.{% endblocktrans %}</p>
         <br>
-        <p>We also wish to acknowledge the huge encouragement and support we have got, and continue to get, from
+        <p>{% blocktrans trimmed %}We also wish to acknowledge the huge encouragement and support we have got, and continue to get, from
             individuals like  Abhijit Dutta, Anil Choudhury, Mariam Ram, Romi Mahajan, Sudarshan Loyalka, Sudhanva
-            Deshpande and Vijay Prashad. </p>
+            Deshpande and Vijay Prashad.{% endblocktrans %}</p>
         <br>
-        <p>We are greatly indebted to the volunteers, journalists, filmmakers and other contributors who continue to
+        <p>{% blocktrans trimmed %}We are greatly indebted to the volunteers, journalists, filmmakers and other contributors who continue to
             gift us so much time and labour. They are too many in number to list here. There may be a few names we’ve
             missed out for which we seek pardon. There are also some whom we cannot name because, alas, of where they
-            are working.</p>
+            are working.{% endblocktrans %}</p>
         <br>
         <h3>P. Sainath</h3>
-        <h3>Founder Editor, PARI</h3>
+        <h3>{% trans "Founder Editor, PARI" %}</h3>
 
     </div>
 </div>

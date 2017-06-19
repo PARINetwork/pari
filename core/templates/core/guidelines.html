@@ -23,7 +23,7 @@
             <div class="subtitle font-xl">{{ page.strap }}</div>
         </div>
         <div class="index col-lg-4 col-md-4 col-sm-12 col-xs-12 font-xl">
-            <h3>Index of contents</h3>
+            <h3>{% trans "Index of contents" %}</h3>
             {% for heading_title, heading_block in page_content.items %}
                 <div class="section-index">
                     <div data-toggle="collapse" data-target="#section-{{ forloop.counter }}">
