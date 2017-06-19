@@ -47,7 +47,7 @@
                     <div class="category-share">
                         <ul >
                             <li>
-                                <h6>Share</h6>
+                                <h6>{% trans "Share" %}</h6>
                             </li>
                             {% with request.build_absolute_uri as url and category.title as title %}
                                 <li class="share-icons">
@@ -83,17 +83,17 @@
         <div class="col-lg-4 col-md-4 col-sm-4 right-plane">
             <hr>
             <div class="category-focus">
-                <h4>FOCUS</h4>
+                <h4>{% trans "FOCUS" %}</h4>
                 <p>{{ resource.content.2 }}</p>
             </div>
             <hr>
             <div class="category-author">
-                <h4>AUTHOR</h4>
+                <h4>{% trans "AUTHOR" %}</h4>
                 <p>{{ resource.content.0 }}</p>
             </div>
             <hr>
             <div class="category-copyright">
-                    <h4>COPYRIGHT</h4>
+                    <h4>{% trans "COPYRIGHT" %}</h4>
                 <p>{{ resource.content.1 }}</p>
             </div>
         </div>

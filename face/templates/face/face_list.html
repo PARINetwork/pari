@@ -9,7 +9,7 @@
 
 {% block meta_title %}{% trans "Faces" %}{% endblock %}
 {% block title %}{% trans "Faces" %}{% endblock %}
-{% block meta_description %}PARI aims to collect a photo of one man, one woman, and one child from every district in India. Check out our progress so far.{% endblock %}
+{% block meta_description %}{% blocktrans %}PARI aims to collect a photo of one man, one woman, and one child from every district in India. Check out our progress so far.{% endblocktrans %}{% endblock %}
 
 {% block extra_js %}
 
@@ -65,7 +65,7 @@
         </div>
 
         <div class="row filter-lang">
-            <span class="filter-label">Alphabetical</span>
+            <span class="filter-label">{% trans "Alphabetical" %}</span>
             <span class="filter-value">
               <div class="dropdown custom-dropdown" id="language_dd">
                   <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -108,8 +108,9 @@
                     </li>
                     {% empty %}
                     <div class="error-message-holder">
-                        <p class="text-center text-danger">Sorry! There are no faces on this page. Please consider <a
-                                href="{% url "static_page" slug="contribute-to-faces" %}">contributing</a> one.</p>
+                        {% url "static_page" slug="contribute-to-faces" as contribute %}
+                        <p class="text-center text-danger">{% blocktrans %}Sorry! There are no faces on this page. Please consider <a
+                                href="{{ contribute }}">contributing</a> one.{% endblocktrans %}</p>
                     </div>
                 {% endfor %}
              </ul>

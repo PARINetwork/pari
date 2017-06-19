@@ -7,7 +7,7 @@
 {% endblock %}
 {% block meta_title %}{% trans "Resources" %}{% endblock %}
 {% block title %}{% trans "Resources" %}{% endblock %}
-{% block meta_description %}A collection of official and independent reports on rural India, from economic trends to policy briefings to census data.{% endblock %}
+{% block meta_description %}{% blocktrans %}A collection of official and independent reports on rural India, from economic trends to policy briefings to census data.{% endblocktrans %}{% endblock %}
 
 {% block opengraph_block %}
     {% include "core/includes/media_sharing_meta.html" with title="Resources" description="All official and independent reports on rural India" url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/share_all_resources.jpg" date_of_item=object_list.first.first_published_at%}
