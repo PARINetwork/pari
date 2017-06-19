@@ -112,8 +112,8 @@
                                   <img src="{{ STATIC_URL }}img/logo.png" title="{{ page.title }}" alt="{{ page.title }}" class="logo img-responsive">
                               </a>
                               <div class="header-title-wrapper-fullscreen">
-                                  <div class="navbar-brand-title-fullscreen hidden-sm">People's Archive of Rural India</div>
-                                  <div class="navbar-brand-sub-title hidden-sm center"><span>THE EVERYDAY LIVES OF EVERYDAY PEOPLE</span></div>
+                                  <div class="navbar-brand-title-fullscreen ">People's Archive of Rural India</div>
+                                  <div class="navbar-brand-sub-title center"><span>THE EVERYDAY LIVES OF EVERYDAY PEOPLE</span></div>
                               </div>
                               <div class="header-title-wrapper">
                                   <div class="navbar-brand-title hidden-sm hidden">People's Archive of Rural India</div>
@@ -189,16 +189,69 @@
 {% compress js %}
 <script src="{{ STATIC_URL }}bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <script>
+
     $(function () {
+        var isMainHeaderOnDisplay= true;
+        function toggleClassForDropdown() {
+            $('.home-hamburger').siblings().not('.search-icon').each(function () {
+                $(this).fadeToggle('200').toggleClass('hidden');
+            });
+            $('.header-title-wrapper .navbar-brand-title').fadeToggle('200').toggleClass('hidden');
+            $('.header-title-wrapper-fullscreen').fadeToggle('slow').toggleClass('hidden');
+        }
+        var windowsize = $(window).width();
+        var changedForSmallScreen =false;
+        if (windowsize < 768){
+            if (!changedForSmallScreen) {
+                  changedForSmallScreen=!changedForSmallScreen;
+                  if (!$('.header-title-wrapper-fullscreen').hasClass('hidden'))
+                      $('.header-title-wrapper-fullscreen').addClass('hidden');
+                  if (!$('.home-hamburger').hasClass('hidden'))
+                      $('.home-hamburger').addClass('hidden');
+                  $('.home-hamburger').siblings().not('.search-icon').each(function () {
+                      $(this).fadeToggle('200').removeClass('hidden');
+                  });
+                  $('.header-title-wrapper .navbar-brand-title').fadeToggle('200').removeClass('hidden');
+              }
+        }
+        $(window).resize(function() {
+          windowsize = $(window).width();
+          if (windowsize < 768){
+              if (!changedForSmallScreen) {
+                  changedForSmallScreen=!changedForSmallScreen;
+                  if (!$('.header-title-wrapper-fullscreen').hasClass('hidden'))
+                      $('.header-title-wrapper-fullscreen').addClass('hidden');
+                  if (!$('.home-hamburger').hasClass('hidden'))
+                      $('.home-hamburger').addClass('hidden');
+                  $('.home-hamburger').siblings().not('.search-icon').each(function () {
+                      if($(this).hasClass('hidden'))
+                        $(this).fadeToggle('200').removeClass('hidden');
+                  });
+                  $('.header-title-wrapper .navbar-brand-title').fadeToggle('200').removeClass('hidden');
+              }
+          }
+          if (windowsize >= 768){
+              if (changedForSmallScreen) {
+                  changedForSmallScreen=!changedForSmallScreen;
+                  if ($('.home-hamburger').hasClass('hidden'))
+                      $('.home-hamburger').removeClass('hidden');
+                  if (isMainHeaderOnDisplay) {
+                      $('.header-title-wrapper-fullscreen').removeClass('hidden');
+                      $('.home-hamburger').siblings().not('.search-icon').each(function () {
+                          $(this).fadeToggle('200').addClass('hidden');
+                      });
+                      $('.navbar-brand-title').fadeToggle('200').addClass('hidden');
+                  }
+                  else {
+                      $('.navbar-brand-title').fadeToggle('200').removeClass('hidden');
+                  }
+              }
+          }
+        });
         $('.home-hamburger').on("click", function() {
-
-                $('.home-hamburger').siblings().not('.search-icon').each(function() {
-                        $(this).fadeToggle('200').toggleClass('hidden');
-                    });
-                $('.navbar-brand-title').fadeToggle('200').toggleClass('hidden');
-
-                $('.header-title-wrapper-fullscreen').fadeToggle('slow').toggleClass('hidden');
-
+            event.preventDefault();
+            toggleClassForDropdown();
+            isMainHeaderOnDisplay = !isMainHeaderOnDisplay;
         });
         $('.middleinput:text, textarea').addClass('xlarge');
         $('.control-group label').addClass('control-label');
@@ -213,6 +266,7 @@
         }
 
         $(".search-icon-container").on("click", function() {
+
           $(".search-panel-toggle").toggleClass("show");
           if($(".search-panel-toggle").hasClass("show")) {
             $(".search-panel-toggle input").val("");
