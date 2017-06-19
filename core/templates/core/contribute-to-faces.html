@@ -16,13 +16,13 @@
     <div class="container" >
         <div class="contribute-title">
             <div class="col-lg-9 col-md-9 col-sm-12 make-left">
-                <h1>Let’s FACE it</h1>
-                <p class="title-strap" >Contribute to FACES. Help PARI capture the sheer diversity of the people of our country. Join us in our endeavour to create a facial map of the most diverse societies on earth – those across rural India.</p>
+                <h1>{% trans "Let’s FACE it" %}</h1>
+                <p class="title-strap" >{% blocktrans trimmed %}Contribute to FACES. Help PARI capture the sheer diversity of the people of our country. Join us in our endeavour to create a facial map of the most diverse societies on earth – those across rural India.{% endblocktrans %}</p>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 make-left">
                 <a href="{{ link }}" target="_blank"><div class="upload-button top-button" >
                     <i class="fa fa-upload"></i>
-                    <span>Upload a FACE photo</span>
+                    <span>{% trans "Upload a FACE photo" %}</span>
                 </div></a>
             </div>
         </div>
@@ -32,19 +32,20 @@
     </div>
     <div class="container" >
         <div class="col-lg-8 col-md-8 col-sm-12 contribute-description make-left">
-            <h4><a href="/categories/faces/k/tami/"> <span><u>Tami</u></span></a> in Kalahandi, Odisha, has a very Indian face. So does <a href="/categories/faces/k/kottavarayan-rajendran/"><span><u>Rajendran</u></span> </a> of Kanchipuram in Tamil Nadu. So too, <a href="/categories/faces/s/ohame/"><span><u>Ohame</u></span></a> of the Andamans and Michi Yaring of Arunachal Pradesh. And not one of them resembles the other in the slightest.</h4>
-            <p>PARI aims to record Indian faces from every single block and district in the country. That’s right — thousands and thousands of FACES, capturing the astonishing diversity of how Indians look. From every single district (and each block of every district) we aim to put up portraits of at least one adult male, one adult female and one child or adolescent. This is a gigantic exercise that will take years to complete and demands the widest participation. Anyone can take part in it provided the photograph is good enough.</p>
+            <h4>{% blocktrans trimmed %}<a href="/categories/faces/k/tami/"> <span><u>Tami</u></span></a> in Kalahandi, Odisha, has a very Indian face. So does <a href="/categories/faces/k/kottavarayan-rajendran/"><span><u>Rajendran</u></span> </a> of Kanchipuram in Tamil Nadu. So too, <a href="/categories/faces/s/ohame/"><span><u>Ohame</u></span></a> of the Andamans and Michi Yaring of Arunachal Pradesh. And not one of them resembles the other in the slightest.{% endblocktrans %}</h4>
+            <p>{% blocktrans trimmed %}PARI aims to record Indian faces from every single block and district in the country. That’s right — thousands and thousands of FACES, capturing the astonishing diversity of how Indians look. From every single district (and each block of every district) we aim to put up portraits of at least one adult male, one adult female and one child or adolescent. This is a gigantic exercise that will take years to complete and demands the widest participation. Anyone can take part in it provided the photograph is good enough.{% endblocktrans %}</p>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12 how-to-contri make-left ">
             <hr>
-            <h5 class="primary-contr-heading">HOW YOU CAN CONTRIBUTE</h5>
-            <h5 class="sub-contr-heading">Upload photos</h5>
-            <p class="sub-contr-desc">It is very important that the photograph you send to PARI is accompanied by the details of the person in the picture.</p>
-            <p class="primary-contr-link">For more on these details, please read the <a itemprop="url" href="{% url "static_page" slug="guidelines"  %}#section-1-7"><u>guidelines</u></a> for FACES.</p>
+            <h5 class="primary-contr-heading">{% trans "HOW YOU CAN CONTRIBUTE" %}</h5>
+            <h5 class="sub-contr-heading">{% trans "Upload photos" %}</h5>
+            <p class="sub-contr-desc">{% trans "It is very important that the photograph you send to PARI is accompanied by the details of the person in the picture." %}</p>
+             {% url "static_page" slug="guidelines" as guidelines %}
+            <p class="primary-contr-link">{% trans "For more on these details, please read the <a itemprop="url" href="{{ guidelines }}#section-1-7"><u>guidelines</u></a> for FACES." %}</p>
             <a href="{{ link }}" target="_blank">
                 <div class="upload-button bottom-button">
                     <i class="fa fa-upload"></i>
-                    <span>Upload a FACE photo</span>
+                    <span>{% trans "Upload a FACE photo" %}</span>
                 </div>
             </a>
         </div>

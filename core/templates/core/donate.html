@@ -31,11 +31,11 @@
                     Media Studies (CMS, Delhi) show us that reports from New Delhi account for 66 per cent of news on
                     the front pages of major dailies. The CMS also found that in 2014-15, only about 0.24 per cent of
                     front page news came out of rural India. The TV channels are not much better.{% endblocktrans %}</p>
-                <p>{% blocktrans %}PARI needs your help to pull off this most ambitious of Indian journalistic endeavours.{% endblocktrans %}</p>
+                <p>{% trans "PARI needs your help to pull off this most ambitious of Indian journalistic endeavours." %}</p>
             </div>
 
             <div class="donate-section">
-                <h4 class="header">THE PLAN</h4>
+                <h4 class="header">{% trans "THE PLAN" %}</h4>
                 <div class="special-bullets">
                     <ol>
                         <li>
@@ -86,15 +86,15 @@
                 <h4 class="header">{% trans "SPONSOR A FELLOW" %}</h4>
                 <div class="fellowship">
                     <div class="cost-label">{% trans "Cost of each fellowship:" %}</div>
-                    <div class="cost">Rs. 2 lakhs</div>
+                    <div class="cost">{% trans "Rs. 2 lakhs" %}</div>
                     <p>
-                        {% blocktrans %}+ associated costs related to the recording, documentation, collation, editing (text and video),
-                        training and more.{% endblocktrans %}
+                        {% trans "+ associated costs related to the recording, documentation, collation, editing (text and video),
+                        training and more." %}
                     </p>
                 </div>
                 <div class="fellowship">
                     <div class="cost-label">{% trans "Approximate total cost of PARI fellowships (per year):" %}</div>
-                    <div class="cost">Rs. 80 lakhs</div>
+                    <div class="cost">{% trans "Rs. 80 lakhs" %}</div>
                 </div>
             </div>
         </div>
@@ -108,9 +108,10 @@
                             Trust are <u>eligible for exemption</u> under Section 80G of the Income Tax Act, 1961.{% endblocktrans %}
                         </p>
                         <div class="faq-no-border">
-                            {% trans "Please see the" %} <a href="{%  url 'donate_form' %}" >{% trans "donations page" %}</a> {% trans "for more details." %}{% endblocktrans %}
+                            {%  url 'donate_form' as donate_form %}
+                            {% blocktrans trimmed %}Please see the <a href="{{ donate_form }}" >donations page</a> for more details. {% endblocktrans %}
                         </div>
-                        <button class="primary" onclick="location.href='{%  url 'donate_form' %}'">Send donation</button>
+                        <button class="primary" onclick="location.href='{%  url 'donate_form' %}'">{% trans "Send donation" %}</button>
                     </div>
                     <div class="side-panel-section">
                         <p class="sub-header">{% trans "Donate equipment" %}</p>
@@ -129,7 +130,8 @@
                     </p>
 
                      <div class="gallery-social-icon">
-                    {% with url=request.build_absolute_uri  title='Donate to PARI' %}
+                     {% trans "Donate to PARI" as donate %}
+                     {% with url=request.build_absolute_uri  title=donate %}
                             <a href="https://twitter.com/intent/tweet?url={{ url|urlencode }}&amp;hashtags=RuralIndiaOnline&amp;via=PARINetwork" target="_blank" class="link-light">
                                <i class="fa fa-twitter" aria-hidden="true"></i>
                             </a>
@@ -137,7 +139,7 @@
                                target="_blank" class="link-light">
                                 <i class="fa fa-facebook" aria-hidden="true"></i>
                             </a>
-                    {% endwith %}
+                     {% endwith %}
                      </div>
 
                 </div>

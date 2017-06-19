@@ -12,13 +12,13 @@
 {% block main %}
 <div class="content container">
       <div class="donate-form-title">
-          <h1>Donate to the People's Archive of Rural India</h1>
-          <p class="title-strap">At present, we can only accept donations in Indian rupees by Indian citizens. All donations made to the <strong>CounterMedia Trust</strong> are eligible for exemption under Section 80G of the Income Tax Act, 1961.
-              Here is a copy of our <a href="/media/uploads/Donate/80g_certificate.jpg" target="_blank">exemption certificate.</a></p>
+          <h1>{% trans "Donate to the People's Archive of Rural India" %}</h1>
+          <p class="title-strap">{% blocktrans trimmed %}At present, we can only accept donations in Indian rupees by Indian citizens. All donations made to the <strong>CounterMedia Trust</strong> are eligible for exemption under Section 80G of the Income Tax Act, 1961.
+              Here is a copy of our <a href="/media/uploads/Donate/80g_certificate.jpg" target="_blank">exemption certificate.</a>{% endblocktrans %}</p>
       </div>
 
     <div class="donate-form-content col-lg-offset-3 col-lg-6 col-md-6 col-sm-12">
-        <p class="donate-heading">PERSONAL INFO</p>
+        <p class="donate-heading">{% trans "PERSONAL INFO" %}</p>
       {% if errors %}<h5 class="errorlist">{{ errors }}</h5>{% endif %}
       <form method="post" action="{% url "core.views.donate_form" %}">{% csrf_token %}
         {% for field in form %}
@@ -29,67 +29,67 @@
         </div>
         {% endfor %}
         <input type="submit" class="btn btn-default" value="Make Payment" >
-        <p class="notify-info">You will be redirected to Instamojo where you can complete the donation either through a credit/debit card or net banking.</p>
+        <p class="notify-info">{% trans "You will be redirected to Instamojo where you can complete the donation either through a credit/debit card or net banking." %}</p>
         <div class="payment-powered-by">
-            <p class="notify-info">Payments powered by</p>
+            <p class="notify-info">{% trans "Payments powered by" %}</p>
             <img src="{{ STATIC_URL }}img/instamojo_logo.png" alt="Payment Gateway provided by Instamojo">
         </div>
       </form>
     </div>
 
     <div class="donate-form-section col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <p class="donate-heading">PAYMENT BY CHEQUE OR DEMAND DRAFT</p>
-        <p>Pay by cheque/DD in favour of the <strong>“CounterMedia Trust”</strong> and send it to us by courier/post along with your contact details – name, address, telephone number, e-mail ID and PAN number.</p>
-        <p>Send by courier / post to:<br/><strong> CounterMedia Trust</strong><br/> c/o P. Sainath, 27/43 Sagar Sangam, Bandra Reclamation, Mumbai 400050, Maharashtra, India.</p>
+        <p class="donate-heading">{% trans "PAYMENT BY CHEQUE OR DEMAND DRAFT" %}</p>
+        <p>{% blocktrans trimmed %}Pay by cheque/DD in favour of the <strong>“CounterMedia Trust”</strong> and send it to us by courier/post along with your contact details – name, address, telephone number, e-mail ID and PAN number.{% endblocktrans %}</p>
+        <p>{% blocktrans trimmed %}Send by courier / post to:<br/><strong> CounterMedia Trust</strong><br/> c/o P. Sainath, 27/43 Sagar Sangam, Bandra Reclamation, Mumbai 400050, Maharashtra, India.{% endblocktrans %}</p>
     </div>
     <div class="donate-form-section col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <p class="donate-heading">PAYMENT BY BANK/ WIRE TRANSFER</p>
-        <p>Payable to: <strong>CounterMedia Trust</strong></p>
-        <p>Bank and branch: HDFC Bank, Aundh<br/>
+        <p class="donate-heading">{% trans "PAYMENT BY BANK/ WIRE TRANSFER" %}</p>
+        <p>{% blocktrans trimmed %}Payable to: <strong>CounterMedia Trust</strong>{% endblocktrans %}</p>
+        <p>{% blocktrans trimmed %}Bank and branch: HDFC Bank, Aundh<br/>
             Address: 93, Anand Park, Rajyog Creations, Off ITI Road, Aundh, Pune 411007, Maharashtra.<br/>
             Account Number: 50100091804541<br/>
             MICR Code: 411240005<br/>
-            IFSC Code: HDFC0000052
+            IFSC Code: HDFC0000052{% endblocktrans %}
         </p>
-        <p>And send an email to donate@ruralindiaonline.org mentioning the transaction reference number, amount and date of transfer, along with your contact details.</p>
-        <p>Please fill the form below after you have sent in your donation.</p>
+        <p>{% trans "And send an email to donate@ruralindiaonline.org mentioning the transaction reference number, amount and date of transfer, along with your contact details." %}</p>
+        <p>{% trans "Please fill the form below after you have sent in your donation." %}</p>
     </div>
     <div class="donate-form-section col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <p class="donate-heading">IMPS</p>
-        <p>Payment by mobile phone using Immediate Payment Service (IMPS).<br/>
-             Please go through the following methods of mobile payment enabled by the National Payments Corporation of India (NPCI).
+        <p class="donate-heading">{% trans "IMPS" %}</p>
+        <p>{% blocktrans trimmed %}Payment by mobile phone using Immediate Payment Service (IMPS).<br/>
+             Please go through the following methods of mobile payment enabled by the National Payments Corporation of India (NPCI).{% endblocktrans %}
         </p>
         <p>One easy way to do this is through the National Unified USSD Platform (NUUP)</p>
-        <p>The following has been reproduced from <a href="http://www.npci.org.in/documents/FAQs-NUUP.pdf" target="_blank">http://www.npci.org.in/documents/FAQs-NUUP.pdf</a></p>
-        <p>Fund transfer using IFSC and account number:</p>
+        <p>{% blocktrans trimmed %}The following has been reproduced from <a href="http://www.npci.org.in/documents/FAQs-NUUP.pdf" target="_blank">http://www.npci.org.in/documents/FAQs-NUUP.pdf</a>{% endblocktrans %}</p>
+        <p>{% trans "Fund transfer using IFSC and account number:" %}</p>
         <div class="special-bullets">
             <ol>
                 <li>
-                    <p>Dial *99# from your mobile handset.</p>
+                    <p>{% trans "Dial *99# from your mobile handset." %}</p>
                 </li>
                 <li>
-                    <p>The NUUP welcome screen will appear asking you to enter your bank’s 4-digit IFS code.</p>
+                    <p>{% trans "The NUUP welcome screen will appear asking you to enter your bank’s 4-digit IFS code." %}</p>
                 </li>
                 <li>
-                    <p>After entering a valid IFS code, the NUUP menu will appear with different options of available services enabled for your bank.</p>
+                    <p>{% trans "After entering a valid IFS code, the NUUP menu will appear with different options of available services enabled for your bank." %}</p>
                 </li>
                 <li>
-                    <p>Enter 4 for Fund Transfer using IFSC and account number and submit.</p>
+                    <p>{% trans "Enter 4 for Fund Transfer using IFSC and account number and submit." %}</p>
                 </li>
                 <li>
-                    <p>On subsequent screens enter the MPIN and the last 4 digits of the account number (optional).</p>
+                    <p>{% trans "On subsequent screens enter the MPIN and the last 4 digits of the account number (optional)." %}</p>
                     <div class="account-details">
-                        <p>Beneficiary account number: 50100091804541</p>
-                        <p>IFS code: HDFC0000052</p>
-                        <p>Amount </p>
-                        <p>Remarks (optional) will appear.</p>
+                        <p>{% trans "Beneficiary account number" %}: 50100091804541</p>
+                        <p>{% trans "IFS code" %}: HDFC0000052</p>
+                        <p>{% trans "Amount" %} </p>
+                        <p>{% trans "Remarks (optional) will appear." %}</p>
                     </div>
                 </li>
                 <li>
-                    <p>A confirmation screen will appear.</p>
+                    <p>{% trans "A confirmation screen will appear." %}</p>
                 </li>
                 <li>
-                    <p>Please fill the form below after you have sent in your donation.</p>
+                    <p>{% trans "Please fill the form below after you have sent in your donation." %}</p>
                 </li>
 
             </ol>
@@ -99,7 +99,7 @@
     <div class="donate-form-section col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="the-form">
             <div class="donate-heading">
-                <a class="the-form" href="https://docs.google.com/forms/d/1X7BgvrHaQu2FR-yZy9u5D9bGmn91YLYRZ0jQ2KBC3C0/viewform?embedded=true" target="_blank">THE FORM</a>
+                <a class="the-form" href="https://docs.google.com/forms/d/1X7BgvrHaQu2FR-yZy9u5D9bGmn91YLYRZ0jQ2KBC3C0/viewform?embedded=true" target="_blank">{% trans "THE FORM" %}</a>
             </div>
         </div>
     </div>
