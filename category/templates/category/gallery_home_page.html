@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n wagtailcore_tags wagtailimages_tags %}
-{% block meta_title %}Gallery{% endblock %}
-{% block meta_description %}Explore PARI's evergrowing collection of multi-media content from rural India, including photos, videos, and audio clips.{% endblock %}
+{% block meta_title %}{% trans "Gallery" %}{% endblock %}
+{% block meta_description %}{% trans "Explore PARI's evergrowing collection of multi-media content from rural India, including photos, videos, and audio clips" %}.{% endblock %}
 
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/gallery/gallery.less">
@@ -24,8 +24,8 @@
         <div class="row ">
             <div class="col-lg-9 col-md-9 col-sm-10 col-xs-12">
                 <div>
-                    <h1> Gallery</h1>
-                    <div class="paragraph-dark font-xxs">AN EVERGROWING ARCHIVE OF RURAL INDIA</div>
+                    <h1> {% trans "Gallery" %}</h1>
+                    <div class="paragraph-dark font-xxs">{% trans "AN EVERGROWING ARCHIVE OF RURAL INDIA" %}</div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-2 col-xs-12 gallery-title-icon share-icon">
@@ -54,7 +54,7 @@
                 <div class="banner-info">
                     <div class="container">
                         <div class="info photo-of-the-week">
-                            <p href="{{ page.photo_of_the_week.file.url }}">Photo Of The Week</p>
+                            <p href="{{ page.photo_of_the_week.file.url }}">{% trans "Photo Of The Week" %}</p>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                             </p>
                             {% if page.photo_link %}
                                 <div>
-                                <a class="read_full_story" href="{{ page.photo_link }}">Read the full story <i class="fa fa-angle-right"></i></a>
+                                <a class="read_full_story" href="{{ page.photo_link }}">{% trans "Read the full story" %} <i class="fa fa-angle-right"></i></a>
                                 </div>
                             {% endif %}
                         </div>
@@ -76,7 +76,7 @@
                 <div class="banner-info footer">
                     <div class="container info-footer-banner">
                         <div class="go-full-screen preview ">
-                            <a ><i class="fa fa-arrows-alt"></i> View Fullscreen</a>
+                            <a ><i class="fa fa-arrows-alt"></i> {% trans "View Fullscreen" %}</a>
                         </div>
                     </div>
                 </div>
@@ -84,9 +84,18 @@
             </div>
         </div>
         <div class="container">
-            {% include "includes/gallery_home_section.html" with section_title="Pictures and their spoken stories" icon="fa-music" section_context=talking_album link_text="View this Talking Album" all_links_text="View all Talking Albums" all_links_url="talking-album-list" %}
-            {% include "includes/gallery_home_section.html" with section_title="Stories told in moving pictures" icon="fa-youtube-play" section_context=video link_text="View this video" all_links_text="View all videos"  all_links_url="gallery-detail" all_links_slug="videozone" %}
-            {% include "includes/gallery_home_section.html" with section_title="Through many different lenses" icon="fa-picture-o" section_context=photo_album link_text="View this Photo Album" all_links_text="View all Photo Albums" all_links_url="other-album-list" %}
+            {% trans "Pictures and their spoken stories" as spoken_stories %}
+            {% trans "View this Talking Album" as view_talking_album %}
+            {% trans "View all Talking Albums" as view_all_talking_albums %}
+            {% include "includes/gallery_home_section.html" with section_title=spoken_stories icon="fa-music" section_context=talking_album link_text=view_talking_album all_links_text=view_all_talking_albums all_links_url="talking-album-list" %}
+            {% trans "Stories told in moving pictures" as moving_pictures %}
+            {% trans "View this video" as view_video %}
+            {% trans "View all videos" as view_all_videos %}
+            {% include "includes/gallery_home_section.html" with section_title=moving_pictures icon="fa-youtube-play" section_context=video link_text=view_video all_links_text=view_all_videos  all_links_url="gallery-detail" all_links_slug="videozone" %}
+            {% trans "Through many different lenses" as many_lenses %}
+            {% trans "View this Photo Album" as view_photo_album %}
+            {% trans "View all Photo Albums" as view_all_photo_albums %}
+            {% include "includes/gallery_home_section.html" with section_title=many_lenses icon="fa-picture-o" section_context=photo_album link_text=view_photo_album all_links_text=view_all_photo_albums all_links_url="other-album-list" %}
                     </div>
         {% include "../../core/templates/includes/home_page_face_tile.html" %}
     </div>

@@ -85,7 +85,7 @@
     </div>
 
     <div class="row filter-lang">
-        <span  class="filter-label">Faces of <b>district names</b> starting with</span>
+        <span  class="filter-label">{% trans "Faces of <b>district names</b> starting with" %}</span>
         <span class="filter-value">
             <div class="dropdown custom-dropdown" id="language_dd">
                 <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -140,7 +140,8 @@
         </li>
     {% empty %}
       <div class="error-message-holder">
-	    <p class="text-center text-danger">Sorry! There are no faces on this page. Please consider <a href="{% url "static_page" slug="contribute-to-faces" %}">contributing</a> one.</p>
+          {% url "static_page" slug="contribute-to-faces" as contribute %}
+	    <p class="text-center text-danger">{% blocktrans trimmed %} Sorry! There are no faces on this page. Please consider <a href="{{ contribute }}">contributing</a> one. {% endblocktrans %}</p>
       </div>
     {% endfor %}
     </div>
