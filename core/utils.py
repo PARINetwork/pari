@@ -1,10 +1,11 @@
-from django.utils.translation import activate
+from django.utils.translation import activate, deactivate_all
 
 from wagtail.wagtailcore.models import Page
 
 
 def get_translations_for_page(page):
     translations = []
+    deactivate_all()
     activate(page.language)
     try:
         trans_holder = page.get_children().get(title="Translations")
