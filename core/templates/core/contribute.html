@@ -1,7 +1,7 @@
 {% extends "base.html" %}{% load i18n %}
 
 {% block meta_title %}
-    {% blocktrans with site_name=site.site_name %} Contribute to {{ site_name }}{% endblocktrans %}
+    {% blocktrans with site_name=site.site_name %} Contribute to {{ site_name }} {% endblocktrans %}
 {% endblock %}
 {% block meta_description %}Join us in building a unique national knowledge repository on rural India. We need writers, editors, photographers, filmmakers, translators, researchers, and more.{% endblock %}
 
@@ -96,7 +96,7 @@
                             building a fund of information, photographs and data on that subject. Besides, you can send
                             us
                             any studies or reports in electronic form which you know of and that are relevant to rural
-                            India. Have a look at PARI's <a href="{{ resource_list }}">'Resources'</a> section to know what’s already there and get a
+                            India. Have a look at PARI's <a href={{ resource_list }}>'Resources'</a> section to know what’s already there and get a
                             better
                             idea of what we’re looking for. Do share any relevant reports you find through this <a
                                     href="https://script.google.com/macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec"
@@ -133,7 +133,7 @@
                 <p class="contribute-heading">{% trans "READY TO UPLOAD?" %}</p>
                 {% url "static_page" slug="guidelines" as guidelines %}
                 <p>{% blocktrans trimmed %}Is your content ready to upload? Do go through the <a
-                        href="{{ guidelines }}">PARI content guidelines</a> to ensure you know what’s
+                        href={{ guidelines }}>PARI content guidelines</a> to ensure you know what’s
                     required.{% endblocktrans %}</p>
                 <a href="https://script.google.com/macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec"
                    target="_blank" class="btn primary">{% trans "Upload content" %}</a>
