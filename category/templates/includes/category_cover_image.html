@@ -14,55 +14,55 @@
                         <span style="padding-left:3px;">{% trans "All Categories" %}</span>
                     </a>
                 </div>
-                <h1 class="category-title" >{{ category.name }}</h1>
+                <h1 class="category-title">{{ category.name }}</h1>
                 <div class="category-description clear-fix">
                     <div class="left"><p>{{ category.description }}</p></div>
                     <div class="right">
                         <ul class="icons font-m">
                             <li>{% trans "Languages" %}:</li>
                             <li>
-                                {% include "includes/language_select.html"%}
+                                {% include "includes/language_select.html" %}
                                 <i class="fa fa-angle-down"></i>
                             </li>
 
                             {% with request.build_absolute_uri as url and category.title as title %}
                                 <li class="icon">
-                                    <a href="https://twitter.com/intent/tweet?url={{ url|urlencode }}&amp;hashtags=RuralIndiaOnline&amp;via=PARINetwork" target="_blank" class="link-light">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
+                                    <a href="https://twitter.com/intent/tweet?url={{ url|urlencode }}&amp;hashtags=RuralIndiaOnline&amp;via=PARINetwork"
+                                       target="_blank" class="link-light">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
                                 </li>
                                 <li class="icon">
                                     <a target="_blank"
-                                   href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}" class="link-light">
-                                    <i class="fa fa-facebook"></i>
+                                       href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}"
+                                       class="link-light">
+                                        <i class="fa fa-facebook"></i>
                                     </a>
                                 </li>
                             {% endwith %}
                         </ul>
                     </div>
                 </div>
-
-
                 <div class="alternate-filter container">
                     <ul class="icons font-m">
                         <li>{% trans "Languages" %}:</li>
                         <li>
                             <select class="select-no-style" name="lang">
                                 <option value="">{% trans "All" %}</option>
-                                    {% for lang in LANGUAGES %}
-                                        {% if request.GET.lang %}
-                                            <option {% if request.GET.lang == lang.0 %}selected="selected"{% endif %}
-                                                    value="{{ lang.0 }}">
-                                                {% blocktrans with tlang=lang.1 %}{{ tlang }}{% endblocktrans %}
-                                            </option>
-                                        {% else %}
-                                            <option {% if "en" == lang.0 %}selected="selected"{% endif %}
-                                                    value="{{ lang.0 }}">
-                                                {% blocktrans with tlang=lang.1 %}{{ tlang }}{% endblocktrans %}
-                                            </option>
-                                        {% endif %}
+                                {% for lang in LANGUAGES %}
+                                    {% if request.GET.lang %}
+                                        <option {% if request.GET.lang == lang.0 %}selected="selected"{% endif %}
+                                                value="{{ lang.0 }}">
+                                            {% blocktrans with tlang=lang.1 %}{{ tlang }}{% endblocktrans %}
+                                        </option>
+                                    {% else %}
+                                        <option {% if "en" == lang.0 %}selected="selected"{% endif %}
+                                                value="{{ lang.0 }}">
+                                            {% blocktrans with tlang=lang.1 %}{{ tlang }}{% endblocktrans %}
+                                        </option>
+                                    {% endif %}
                                 {% endfor %}
-                               </select>
+                            </select>
                             <i class="fa fa-angle-down"></i>
                         </li>
                     </ul>

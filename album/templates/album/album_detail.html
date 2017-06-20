@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n wagtailimages_tags wagtailcore_tags %}
-{% block meta_title %}{% blocktrans with album.title as title%}{{ title }}{% endblocktrans %}{% endblock %}
+{% block meta_title %}{% blocktrans with album.title as title%} {{ title }} {% endblocktrans %}{% endblock %}
 {% block meta_description %}{{ album.description|striptags }}{% endblock %}
 
 {% block feed_block %}

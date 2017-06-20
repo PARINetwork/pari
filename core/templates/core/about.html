@@ -65,10 +65,10 @@
                 <p>
                     {% url 'album-detail'  slug='toddy-tapper' as toddy_url %}
                     {% url 'album-detail' slug='when-meenakshi-beats-a-pot-3000-times' as potters_url %}
-                    {% blocktrans trimmed %}Then there are professions known only to a few nations. Like <a href="{{ toddy_url }}">toddy-tappers who climb 50 palm
+                    {% blocktrans trimmed %}Then there are professions known only to a few nations. Like <a href={{ toddy_url }}>toddy-tappers who climb 50 palm
                     trees daily</a>, each one thrice, in season. From the sap they make palm jaggery or a fermented
                     liquor called toddy. In peak season, a toddy tapper climbs a height greater than New York’s
-                    Empire State Building – every single day. But so many occupations are in collapse. <a href="{{ potters_url }}">Potters</a>,
+                    Empire State Building – every single day. But so many occupations are in collapse. <a href={{ potters_url }}>Potters</a>,
                     metal workers and millions of other highly skilled craftspeople are rapidly losing their
                     livelihoods.{% endblocktrans %}
                 </p>
@@ -95,8 +95,8 @@
                 {% url 'static_page' slug='copyright' as copyright %}
                 <p>{% blocktrans trimmed %}PARI is both a living journal and an archive. It will generate and host reporting on the
                     countryside that is current and contemporary, while also creating a database of already
-                    published <a href="{{ category_list }}">stories</a>, <a href="{{ resource_list }}">reports</a>, <a href="{{ gallery_detail_video }}">videos</a> and <a href="{{ gallery_detail_audio }}">audios</a> from as many sources as we can. All of PARI’s own
-                    content comes under the <a href="{{ copyright }}">Creative Commons </a>
+                    published <a href={{ category_list }}>stories</a>, <a href={{ resource_list }}>reports</a>, <a href={{ gallery_detail_video }}>videos</a> and <a href={{ gallery_detail_audio }}>audios</a> from as many sources as we can. All of PARI’s own
+                    content comes under the <a href={{ copyright }}>Creative Commons </a>
                     and the site is free to access. And anyone can
                     contribute to PARI. Write for us, shoot for us, record for us – your material is welcome so long
                     as it meets the standards of this site and falls within our mandate: the everyday lives of
@@ -154,7 +154,7 @@
                 </p>
                 <p>
                     {% url 'resource-list' as resource_list %}
-                    {% blocktrans trimmed %}PARI is also building a <a href="{{ resource_list }}">Resources</a> section, where we aim to put up (in full text and not just via
+                    {% blocktrans trimmed %}PARI is also building a <a href={{ resource_list }}>Resources</a> section, where we aim to put up (in full text and not just via
                     links), all official (and unofficial but credible) reports related to rural India. For instance,
                     every report of the National Commission for Enterprises in the Unorganised Sector, reports of
                     the Planning Commission (now NITI Aayog) and ministries, the United Nations and much more.

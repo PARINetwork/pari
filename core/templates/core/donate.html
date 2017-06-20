@@ -109,7 +109,7 @@
                         </p>
                         <div class="faq-no-border">
                             {%  url 'donate_form' as donate_form %}
-                            {% blocktrans trimmed %}Please see the <a href="{{ donate_form }}" >donations page</a> for more details. {% endblocktrans %}
+                            {% blocktrans trimmed %}Please see the <a href={{ donate_form }} >donations page</a> for more details. {% endblocktrans %}
                         </div>
                         <button class="primary" onclick="location.href='{%  url 'donate_form' %}'">{% trans "Send donation" %}</button>
                     </div>

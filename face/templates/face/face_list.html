@@ -109,8 +109,7 @@
                     {% empty %}
                     <div class="error-message-holder">
                         {% url "static_page" slug="contribute-to-faces" as contribute %}
-                        <p class="text-center text-danger">{% blocktrans %}Sorry! There are no faces on this page. Please consider <a
-                                href="{{ contribute }}">contributing</a> one.{% endblocktrans %}</p>
+                        <p class="text-center text-danger">{% blocktrans trimmed %}Sorry! There are no faces on this page. Please consider <a href={{ contribute }}>contributing</a> one.{% endblocktrans %}</p>
                     </div>
                 {% endfor %}
              </ul>
