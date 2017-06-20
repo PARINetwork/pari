@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n wagtailimages_tags %}
 
-{% block meta_title %}{% trans "Pages from" %} {{ location.address }}{% endblock %}
+{% block meta_title %}{% blocktrans %}Pages from {{ location.address }}{% endblocktrans %}{% endblock %}
 {% block title %}{{ title }}{% endblock %}
 
 {% block extra_css %}
@@ -17,7 +17,7 @@
 <div class="container content-container">
   <div id="articles" class="heading row">
     {% if location %}
-    <h3 class="col-lg-10">{% trans "Pages from" %} "{{ location.name }}, {{ location.district }}, {{ location.state }}"</h3>
+    <h3 class="col-lg-10">{% blocktrans trimmed %} Pages from {{ location.name }}, {{ location.district }}, {{ location.state }} {% endblocktrans %}</h3>
     {% endif %}
   </div>
   {% include "article/includes/article_list.html" %}
