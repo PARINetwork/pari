@@ -3,7 +3,7 @@
 {% load i18n core_filters %}
 
 {% block meta_title %}
-Search{% if search_results %} Results{% endif %}
+{% trans "Search" %}{% if search_results %} {% trans "Results" %}{% endif %}
 {% endblock %}
 
 {% block extra_css %}

@@ -5,7 +5,7 @@
 {% trans "Contact PARI" %}
 {% endblock %}
 
-{% block meta_description %}PARI Contact us{% endblock %}
+{% block meta_description %}{% trans "PARI Contact Us" %}{% endblock %}
 
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/contact-us.less">
@@ -23,7 +23,7 @@
     <p class="section-content">Please visit the <a href="https://script.google.com/macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec" target="_blank">content upload form</a> and the <a href="{{ guidelines_url }}">guidelines</a> for details.</p>
 
     <h4 class="font-xl">{% trans "TO DONATE TO PARI" %}</h4>
-    <p class="section-content">{% trans "Do see our <a href="{{ donate_url }}">donate</a> page for details." %}</p>
+    <p class="section-content">{% blocktrans trimmed %}Do see our <a href="{{ donate_url }}">donate</a> page for details.{% endblocktrans %}</p>
 
     <h4 class="font-xl">{% trans "WANT TO VOLUNTEER FOR PARI?" %}</h4>
     <p class="section-content">{% trans "Help us understand your skills and interests by filling up this" %} <a href="https://docs.google.com/forms/d/1IbwsyjTovsTnlSb2yC-KkkBlR_rPWOnGepi7XBD4b_k/viewform?usp=send_form" target="_blank">form</a>.</p>
