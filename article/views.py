@@ -8,6 +8,8 @@ from django.conf import settings
 from django.http import Http404
 from django.core.cache import caches
 from django.contrib.contenttypes.models import ContentType
+from django.utils.translation import activate
+
 
 from wagtail.wagtailcore.models import Page
 
@@ -52,6 +54,7 @@ class ArticleDetail(DetailView):
 
     def render_to_response(self, context, **kwargs):
         response = super(ArticleDetail, self).render_to_response(context, **kwargs)
+        activate(context['object'].language)
         if self.request.user.is_staff or self.request.GET.get("preview"):
             return response
         cache = caches['default']
