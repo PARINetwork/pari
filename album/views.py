@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.core.cache import cache
 from django.http import JsonResponse
+from django.utils.translation import ugettext_lazy as _
 
 from wagtail.wagtailcore.rich_text import RichText
 from wagtail.wagtailcore import blocks
@@ -24,29 +25,23 @@ class AlbumList(ListView):
         qs = qs.filter(live=True)
         return qs
 
+    def set_album_data(self, context, album_qs, title, subtitle, *args, **kwargs):
+        slide_id = AlbumSlide.objects.exclude(audio='').values_list('page__id')
+        qs = album_qs.filter(id__in=slide_id)
+        qs = qs.order_by('-first_published_at')
+        context['albums'] = qs
+        context['tab'] = _("gallery")
+        context["title"] = title
+        context["sub_heading"] = subtitle
+
     def get_context_data(self, *args, **kwargs):
-
         context = super(AlbumList, self).get_context_data(*args, **kwargs)
-
-        filter_param = self.kwargs['filter']
         album_qs = self.get_queryset().prefetch_related('slides')
-
+        filter_param = self.kwargs['filter']
         if filter_param == "talking":
-            slide_id = AlbumSlide.objects.exclude(audio='').values_list('page__id')
-            qs = album_qs.filter(id__in=slide_id)
-            qs = qs.order_by('-first_published_at')
-            context['albums'] = qs
-            context['tab'] = 'gallery'
-            context["title"] = "Talking Albums"
-            context["sub_heading"] = 'Pictures and their spoken story'
+            self.set_album_data(context, album_qs, _("Talking Albums"), _("Pictures and their spoken story"))
         elif filter_param == "other":
-            slide_id = AlbumSlide.objects.filter(audio='').values_list('page__id')
-            qs = album_qs.filter(id__in=slide_id)
-            qs = qs.order_by('-first_published_at')
-            context['albums'] = qs
-            context['tab'] = 'gallery'
-            context["title"] = "Photo Albums"
-            context["sub_heading"] = 'Through many different lenses'
+            self.set_album_data(context, album_qs, _("Photo Albums"), _("Through many different lenses"))
         else:
             context['albums'] = album_qs
         photographers = {}
