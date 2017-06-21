@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 {% load i18n wagtailcore_tags %}
-{% trans "Acknowledgements" as meta_ti %}
-{% trans "We are greatly indebted to the volunteers, journalists, filmmakers and other contributors who continue to gift us so much time and labour." as meta_desc %}
-{% block meta_title %}meta_ti{% endblock %}
-{% block meta_description %}meta_desc{% endblock %}
+{% block meta_title %}{% trans "Acknowledgements" %}{% endblock %}
+{% block meta_description %}{% trans "We are greatly indebted to the volunteers, journalists, filmmakers and other contributors who continue to gift us so much time and labour." %}{% endblock %}
 
 {% block opengraph_block %}
     {% include "core/includes/media_sharing_meta.html" with title=meta_ti description=meta_desc url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/default_featured_image.png"%}
