@@ -12,7 +12,7 @@
       margin: 25px 0 7px;
       font-family: Amiri;
       font-size: 31px;
-      color: black;
+      color: @darker-grey;
       line-height: 18px;
       letter-spacing: 0.3px;
       font-weight: 600;
@@ -36,16 +36,17 @@
   }
 
   .home-hamburger {
+    color: #9d9d9d;
     &:hover {
       color: @primary-color;
     }
     .hamburger-icon {
       padding: 30px 15px;
-      color: @grey;
-      font-size: 1.1666666666666667rem;
+      font-size: 17px;
       font-weight: 300;
       letter-spacing: .3px;
     }
+
   }
 
   ul.header-social-icons {
@@ -88,11 +89,20 @@
   }
 }
 
+@media (max-width: @screen-sm-max) and (min-width: @screen-sm-min){
+  #header .header-title-wrapper-fullscreen {
+      left: 20vw;
+  }
+}
+
+
 @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
   .nav-header-icon-title {
     padding-right: 0px;
   }
-
+  .navbar-collapse.collapse{
+    padding-left: 0;
+  }
   .stories {
     a {
       padding-left: 0 !important;

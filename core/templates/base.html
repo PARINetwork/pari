@@ -111,12 +111,12 @@
                               <a class="navbar-brand" href="/">
                                   <img src="{{ STATIC_URL }}img/logo.png" title="{{ page.title }}" alt="{{ page.title }}" class="logo img-responsive">
                               </a>
-                              <div class="header-title-wrapper-fullscreen">
+                              <div class="header-title-wrapper-fullscreen {% if current_page != 'home-page' %} hidden {% endif %}">
                                   <div class="navbar-brand-title-fullscreen ">People's Archive of Rural India</div>
                                   <div class="navbar-brand-sub-title center"><span>THE EVERYDAY LIVES OF EVERYDAY PEOPLE</span></div>
                               </div>
                               <div class="header-title-wrapper">
-                                  <div class="navbar-brand-title hidden-sm hidden">People's Archive of Rural India</div>
+                                  <div class="navbar-brand-title hidden-sm {% if current_page == 'home-page' %} hidden {% endif %}">People's Archive of Rural India</div>
                                   <div class="navbar-brand-sub-title hidden-sm hidden"><span>THE EVERYDAY LIVES OF EVERYDAY PEOPLE</span></div>
                               </div>
 
@@ -127,7 +127,7 @@
                               <ul class="nav navbar-nav navbar-right " itemscope itemtype="http://schema.org/SiteNavigationElement">
                                   {% include "pages/menus/dropdown.html" %}
                                   <a href="#" class="home-hamburger">
-                                    <span class="glyphicon glyphicon-menu-hamburger hamburger-icon"></span>
+                                    <span class="glyphicon glyphicon-menu-hamburger hamburger-icon {% if current_page != 'home-page' %} active-tab {% endif %}"></span>
                                   </a>
                               </ul>
                           </div>
@@ -191,13 +191,18 @@
 <script>
 
     $(function () {
-        var isMainHeaderOnDisplay= true;
+        var isMainHeaderOnDisplay= false;
+        if ($('#holder').hasClass('home-page')){
+             isMainHeaderOnDisplay= true;
+        }
         function toggleClassForDropdown() {
+            $('.home-hamburger .hamburger-icon').toggleClass('active-tab');
             $('.home-hamburger').siblings().not('.search-icon').each(function () {
                 $(this).fadeToggle('200').toggleClass('hidden');
             });
             $('.header-title-wrapper .navbar-brand-title').fadeToggle('200').toggleClass('hidden');
             $('.header-title-wrapper-fullscreen').fadeToggle('slow').toggleClass('hidden');
+
         }
         var windowsize = $(window).width();
         var changedForSmallScreen =false;
