@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-from django.utils import translation
 from django.conf import settings
 from django.http import Http404
 from django.core.cache import caches
