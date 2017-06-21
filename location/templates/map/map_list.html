@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block meta_title %}{% trans "Map"  %}{% endblock %}
-{% block meta_description %}{% trans "Find PARI stories by geographic location" %}.{% endblock %}
+{% block meta_description %}{% trans "Find PARI stories by geographic location." %}{% endblock %}
 
 {% block opengraph_block %}
     {% include "core/includes/media_sharing_meta.html" with title="Archive on a map" description="Stories from near you" url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/map.jpg"%}

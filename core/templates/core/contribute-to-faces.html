@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% load i18n wagtailcore_tags %}
 
-{% block meta_title %}Let’s FACE it{% endblock %}
-{% block meta_description %}Contribute to the growing FACES repository and help PARI capture the sheer diversity of the people of India.{% endblock %}
+{% block meta_title %}{% trans "Let’s FACE it" %}{% endblock %}
+{% block meta_description %}{% trans "Contribute to the growing FACES repository and help PARI capture the sheer diversity of the people of India." %}{% endblock %}
 
 {% block extra_css %}
    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/contribute_faces.less">
@@ -41,7 +41,7 @@
             <h5 class="sub-contr-heading">{% trans "Upload photos" %}</h5>
             <p class="sub-contr-desc">{% trans "It is very important that the photograph you send to PARI is accompanied by the details of the person in the picture." %}</p>
              {% url "static_page" slug="guidelines" as guidelines %}
-            <p class="primary-contr-link">{% trans "For more on these details, please read the <a itemprop="url" href="{{ guidelines }}#section-1-7"><u>guidelines</u></a> for FACES." %}</p>
+            <p class="primary-contr-link">{% blocktrans trimmed %}For more on these details, please read the <a itemprop="url" href="{{ guidelines }}#section-1-7"><u>guidelines</u></a> for FACES.{% endblocktrans %}</p>
             <a href="{{ link }}" target="_blank">
                 <div class="upload-button bottom-button">
                     <i class="fa fa-upload"></i>

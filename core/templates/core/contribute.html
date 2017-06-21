@@ -3,7 +3,7 @@
 {% block meta_title %}
     {% blocktrans with site_name=site.site_name %} Contribute to {{ site_name }} {% endblocktrans %}
 {% endblock %}
-{% block meta_description %}Join us in building a unique national knowledge repository on rural India. We need writers, editors, photographers, filmmakers, translators, researchers, and more.{% endblock %}
+{% block meta_description %}{% trans "Join us in building a unique national knowledge repository on rural India. We need writers, editors, photographers, filmmakers, translators, researchers, and more." %}{% endblock %}
 
 {% block opengraph_block %}
     {% include "core/includes/media_sharing_meta.html" with title="India’s biggest archive of itself needs everyone to participate" description="Join us in building a unique national knowledge repository on rural India. You can start by telling us something about yourself." url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/share_faces_collage.jpg"%}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n wagtailcore_tags %}
 {% block meta_title %}{{ page.title }}{% endblock %}
-{% block meta_description %}Want to contribute to PARI? Find out what types of content we are looking for.{% endblock %}
+{% block meta_description %}{% trans "Want to contribute to PARI? Find out what types of content we are looking for." %}{% endblock %}
 
 {% block opengraph_block %}
     {% include "core/includes/media_sharing_meta.html" with title="Guidelines for PARI contributors" description="Writers, photographers, filmmakers and others" url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/default_featured_image.png"%}

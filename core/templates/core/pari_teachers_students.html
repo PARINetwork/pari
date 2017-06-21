@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n wagtailcore_tags %}
-{% block meta_title %}PARI for students, teachers and researchers{% endblock %}
-{% block meta_description %}PARI will serve as a living, breathing textbook of Indian rural affairs for future generations of students and teachers. Find out how.{% endblock %}
+{% block meta_title %}{% trans "PARI for students, teachers and researchers" %}{% endblock %}
+{% block meta_description %}{% trans "PARI will serve as a living, breathing textbook of Indian rural affairs for future generations of students and teachers. Find out how." %}{% endblock %}
 
 {% block opengraph_block %}
     {% include "core/includes/media_sharing_meta.html" with title="PARI for students and teachers" description="At PARI, we’re writing the textbooks of the future. That’s happening with the numerous stories, photos, videos and audio material going up every week on our site. It’s important that, over time, quite a bit of that is produced by students and teachers themselves." url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/pari_for_schools_sharing.jpg"%}
