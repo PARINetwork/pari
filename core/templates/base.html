@@ -190,6 +190,24 @@
 <script src="{{ STATIC_URL }}bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <script>
 
+    function checkForSmallScreen(windowsize, changedForSmallScreen) {
+        if (windowsize < 768) {
+            if (!changedForSmallScreen) {
+                changedForSmallScreen = !changedForSmallScreen;
+                if (!$('.header-title-wrapper-fullscreen').hasClass('hidden'))
+                    $('.header-title-wrapper-fullscreen').addClass('hidden');
+                if (!$('.home-hamburger').hasClass('hidden'))
+                    $('.home-hamburger').addClass('hidden');
+                $('.home-hamburger').siblings().not('.search-icon').each(function () {
+                    if ($(this).hasClass('hidden'))
+                        $(this).fadeToggle('200').removeClass('hidden');
+                });
+                if ($('.header-title-wrapper .navbar-brand-title').hasClass('hidden'))
+                    $('.header-title-wrapper .navbar-brand-title').fadeToggle('200').removeClass('hidden');
+            }
+        }
+        return changedForSmallScreen;
+    }
     $(function () {
         var isMainHeaderOnDisplay= false;
         if ($('#holder').hasClass('home-page')){
@@ -206,35 +224,11 @@
         }
         var windowsize = $(window).width();
         var changedForSmallScreen =false;
-        if (windowsize < 768){
-            if (!changedForSmallScreen) {
-                  changedForSmallScreen=!changedForSmallScreen;
-                  if (!$('.header-title-wrapper-fullscreen').hasClass('hidden'))
-                      $('.header-title-wrapper-fullscreen').addClass('hidden');
-                  if (!$('.home-hamburger').hasClass('hidden'))
-                      $('.home-hamburger').addClass('hidden');
-                  $('.home-hamburger').siblings().not('.search-icon').each(function () {
-                      $(this).fadeToggle('200').removeClass('hidden');
-                  });
-                  $('.header-title-wrapper .navbar-brand-title').fadeToggle('200').removeClass('hidden');
-              }
-        }
+        changedForSmallScreen = checkForSmallScreen(windowsize, changedForSmallScreen);
         $(window).resize(function() {
           windowsize = $(window).width();
-          if (windowsize < 768){
-              if (!changedForSmallScreen) {
-                  changedForSmallScreen=!changedForSmallScreen;
-                  if (!$('.header-title-wrapper-fullscreen').hasClass('hidden'))
-                      $('.header-title-wrapper-fullscreen').addClass('hidden');
-                  if (!$('.home-hamburger').hasClass('hidden'))
-                      $('.home-hamburger').addClass('hidden');
-                  $('.home-hamburger').siblings().not('.search-icon').each(function () {
-                      if($(this).hasClass('hidden'))
-                        $(this).fadeToggle('200').removeClass('hidden');
-                  });
-                  $('.header-title-wrapper .navbar-brand-title').fadeToggle('200').removeClass('hidden');
-              }
-          }
+          changedForSmallScreen = checkForSmallScreen(windowsize, changedForSmallScreen);
+
           if (windowsize >= 768){
               if (changedForSmallScreen) {
                   changedForSmallScreen=!changedForSmallScreen;
@@ -248,7 +242,8 @@
                       $('.navbar-brand-title').fadeToggle('200').addClass('hidden');
                   }
                   else {
-                      $('.navbar-brand-title').fadeToggle('200').removeClass('hidden');
+                      if ($('.header-title-wrapper .navbar-brand-title').hasClass('hidden'))
+                          $('.header-title-wrapper .navbar-brand-title').fadeToggle('200').removeClass('hidden');
                   }
               }
           }
