@@ -70,9 +70,11 @@
                             {% endfor %}
                         {% endif %}
                     </span>
+                    {% if article.first_published_at %}
                     <a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month %}">
                         <span itemprop="datePublished" class="date link-dark">{{ article.first_published_at|date }}</span>
                     </a>
+                    {% endif %}
                 </div>
              <h1><span itemprop="headline" id="article-gallery-title">{{ article.title }}</span></h1>
              <p>{{ article.strap }}</p>
