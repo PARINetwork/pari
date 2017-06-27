@@ -231,7 +231,6 @@ class HomePage(Page):
             'translations_for_infocus_article2': get_translations_for_page(self.in_focus_page2.specific),
             'current_page': 'home-page',
             'request': request,
-            'categories': [category1, category2, category3, category4]
         }
     def carousel(self):
         items = []
