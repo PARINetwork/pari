@@ -31,6 +31,15 @@
                 pause: false
             });
         });
+        var position_from_left = $('.floating-container .position_from_left').val();
+        var position_from_top = $('.floating-container .position_from_top').val();
+        if( position_from_left > 50){
+            $(".floating-container").css("right", (100-position_from_left)+'%');
+        }
+        else{
+            $(".floating-container").css("left", position_from_left +'%');
+        }
+        $(".floating-container").css("top", position_from_top +'%');
     </script>
 {% endblock %}
 
@@ -46,7 +55,9 @@
                       {% image featured_content.value.featured_image width-1440 as featured_image %}
                         <img src="{{featured_image.url}}" alt="sample">
                         {% if featured_content.value.featured_image_label or featured_content.value.title or featured_content.value.link_text %}
-                            <div class="floating-container container">
+                            <div class="floating-container">
+                              <input type="hidden" class="position_from_left" value="{{ featured_content.value.position_from_left }}">
+                              <input type="hidden" class="position_from_top" value="{{ featured_content.value.position_from_left }}">
                               <div class="relative-container">
                                 <div class="floating-content item-container">
                                     {% if featured_content.value.featured_image_label %}
@@ -501,3 +512,4 @@
         </div>
     </div>
 {% endblock %}
+

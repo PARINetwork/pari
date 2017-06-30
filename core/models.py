@@ -49,6 +49,8 @@ class FeaturedSectionBlock(StructBlock):
     title = blocks.CharBlock(required=False)
     link_text = blocks.CharBlock(required=False)
     url = blocks.CharBlock()
+    position_from_left = blocks.CharBlock(default=10, required=True)
+    position_from_top = blocks.CharBlock(default=20, required=True)
     featured_image = ImageChooserBlock()
     featured_image_label = blocks.CharBlock(required=False)
 
