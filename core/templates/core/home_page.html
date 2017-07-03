@@ -30,16 +30,16 @@
                 interval: 5000,
                 pause: false
             });
+            var position_from_left = $('.floating-container .position_from_left').val();
+            var position_from_top = $('.floating-container .position_from_top').val();
+            if( position_from_left > 50){
+                $(".floating-container").css("right", (100-position_from_left)+'%');
+            }
+            else{
+                $(".floating-container").css("left", position_from_left +'%');
+            }
+            $(".floating-container").css("top", position_from_top +'%');
         });
-        var position_from_left = $('.floating-container .position_from_left').val();
-        var position_from_top = $('.floating-container .position_from_top').val();
-        if( position_from_left > 50){
-            $(".floating-container").css("right", (100-position_from_left)+'%');
-        }
-        else{
-            $(".floating-container").css("left", position_from_left +'%');
-        }
-        $(".floating-container").css("top", position_from_top +'%');
     </script>
 {% endblock %}
 
