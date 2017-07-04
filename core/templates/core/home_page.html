@@ -47,8 +47,7 @@
                         <img src="{{featured_image.url}}" alt="sample">
                         {% if featured_content.value.featured_image_label or featured_content.value.title or featured_content.value.link_text %}
                             <div class="floating-container"
-                                 style="{% if featured_content.value.position_from_left > 50%}right:100 - {{ featured_content.value.position_from_left }}%;{% else %}left:{{ featured_content.value.position_from_left }}%;
-                                 {% endif %}top:{{ featured_content.value.position_from_top }}%;">
+                                 style="{% if featured_content.value.position_from_left > 50%}right:{{ 100|sub:featured_content.value.position_from_left }}%;{% else %}left:{{ featured_content.value.position_from_left }}%;{% endif %}top:{{ featured_content.value.position_from_top }}%;">
                               <div class="relative-container">
                                 <div class="floating-content item-container">
                                     {% if featured_content.value.featured_image_label %}

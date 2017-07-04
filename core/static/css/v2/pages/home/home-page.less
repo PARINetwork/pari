@@ -616,7 +616,7 @@
   }
 }
 
-@media (max-width: @screen-xs-max) {
+@media (max-width: @screen-sm-max) {
   .navbar-header {
     position: relative;
     .header-title-wrapper {
@@ -697,7 +697,7 @@
     }
 
     .floating-carousel-buttons {
-      top: 160px;
+      top: 60%;
       .carousel-buttons-wrapper {
         margin: auto;
       }
@@ -705,7 +705,6 @@
   }
 
   #mainnav .navbar-header .navbar-brand-title {
-    display: block !important;
     margin: 4px;
     color: @dark-grey;
     font-size: 3.3vw;
@@ -713,7 +712,6 @@
   }
 
   .home-page #mainnav .navbar-header .navbar-brand-sub-title {
-    display: block !important;
     font-size: 1.4vw;
   }
 
@@ -771,7 +769,7 @@
   padding-bottom: 10px;
 }
 
-@media (max-width: @screen-xs-max) {
+@media (max-width: @screen-sm-max) {
   body {
     padding-top: 0px !important;
 
@@ -795,6 +793,21 @@
     .resource-description {
       top: 15px;
     }
+  }
+
+}
+
+@media (max-width: @screen-xs-max) {
+  #myCarousel-1.floating-carousel-buttons {
+    top: 165px;
+  }
+
+  #mainnav .navbar-header .navbar-brand-title {
+    display: block !important;
+  }
+
+  .home-page #mainnav .navbar-header .navbar-brand-sub-title {
+    display: block !important;
   }
 
 }
