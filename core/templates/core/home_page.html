@@ -30,6 +30,16 @@
                 interval: 5000,
                 pause: false
             });
+            $( ".carousel-control-container .left" ).click(function( event ) {
+                event.preventDefault();
+                event.stopPropagation();
+                $("#myCarousel-1").carousel("prev");
+            });
+            $( ".carousel-control-container .right" ).click(function( event ) {
+                event.preventDefault();
+                event.stopPropagation();
+                $("#myCarousel-1").carousel("next");
+            });
         });
     </script>
 {% endblock %}
@@ -41,21 +51,53 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 {% for featured_content in page.featured_content %}
-
-                    <div class=" {% if forloop.first %}active{% endif %} item content-{{ forloop.counter }}" >
-                      {% image featured_content.value.featured_image width-1440 as featured_image %}
-                        <img src="{{featured_image.url}}" alt="sample" style="cursor: pointer" onclick="location.href='{{ featured_content.value.url }}';">
-                        {% with featured_content.value.position_from_left as position_from_left %}
+                    {% with featured_content.value.position_from_left as position_from_left %}
                         {% with featured_content.value.position_from_top as position_from_top %}
+                    {% if  position_from_left != 9 or position_from_top != 30 %}
+                        <div class=" {% if forloop.first %}active{% endif %} item content-{{ forloop.counter }}" style="cursor: pointer" onclick="location.href='{{ featured_content.value.url }}';" >
+                          {% image featured_content.value.featured_image width-1440 as featured_image %}
+                            <img src="{{featured_image.url}}" alt="sample" >
+
+                            {% if featured_content.value.featured_image_label or featured_content.value.title or featured_content.value.link_text %}
+                                <div class="floating-container"
+                                     style="width: 380px;left:{{ position_from_left }}%;top:{{ position_from_top }}%;">
+                                  <div class="relative-container">
+                                    <div class="floating-content item-container">
+                                        {% if featured_content.value.featured_image_label %}
+                                            <div><span class="featured">{{ featured_content.value.featured_image_label }}</span></div>
+                                        {% endif %}
+                                        <div class="featured-content-title ">{{ featured_content.value.title }}</div>
+                                        {% if featured_content.value.link_text %}
+                                            <div class="link-to-page">
+                                                <a href="{{ featured_content.value.url }}">
+                                                  <span>{{ featured_content.value.link_text }}</span>
+                                                  <i class="fa fa-angle-right margin-left red-angle-right"></i></a>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                  </div>
+                                <div class="floating-carousel-buttons hidden-sm hidden-xs" style="position: relative;margin-top: 50px">
+                                  {% include "core/includes/carousel_navigator_buttons.html"%}
+                                </div>
+                                </div>
+                                {% else %}
+                                    <div class="floating-carousel-buttons hidden-sm hidden-xs" style="left:{{ position_from_left }}%;top:{{ position_from_top|add:25 }}%;">
+                                        {% include "core/includes/carousel_navigator_buttons.html"%}
+                                    </div>
+                            {% endif %}
+                        </div>
+                {% else %}
+                    <div class=" {% if forloop.first %}active{% endif %} item content-{{ forloop.counter }}" style="cursor: pointer" onclick="location.href='{{ featured_content.value.url }}';">
+                      {% image featured_content.value.featured_image width-1440 as featured_image %}
+                        <img src="{{featured_image.url}}" alt="sample" >
                         {% if featured_content.value.featured_image_label or featured_content.value.title or featured_content.value.link_text %}
-                            <div class="floating-container"
-                                 style="{% if position_from_left > 50%}right:{{ 100|sub:position_from_left }}%;{% else %}left:{{ position_from_left }}%;{% endif %}top:{{ position_from_top }}%;">
+                            <div class="floating-container container" style="bottom: 0px;top: 0px;right: 0px; left: 0px;" >
                               <div class="relative-container">
                                 <div class="floating-content item-container">
                                     {% if featured_content.value.featured_image_label %}
                                         <div><span class="featured">{{ featured_content.value.featured_image_label }}</span></div>
                                     {% endif %}
-                                    <div class="featured-content-title ">{{ featured_content.value.title }}</div>
+                                    <div class="featured-content-title">{{ featured_content.value.title }}</div>
                                     {% if featured_content.value.link_text %}
                                         <div class="link-to-page">
                                             <a href="{{ featured_content.value.url }}">
@@ -65,19 +107,17 @@
                                     {% endif %}
                                 </div>
                               </div>
-
-                            <div class="floating-carousel-buttons hidden-sm hidden-xs" style="position: relative;margin-top: 50px">
-                              {% include "core/includes/carousel_navigator_buttons.html"%}
                             </div>
-                            </div>
-                            {% else %}
-                                <div class="floating-carousel-buttons hidden-sm hidden-xs" style="{% if position_from_left > 50%}right:{{ 100|sub:position_from_left }}%;{% else %}left:{{ position_from_left }}%;{% endif %}top:{{ position_from_top|add:25 }}%;">
-                                    {% include "core/includes/carousel_navigator_buttons.html"%}
-                                </div>
                         {% endif %}
-                    {% endwith %}
-                    {% endwith %}
+
+                        <div class="floating-carousel-buttons container hidden-sm hidden-xs" style="z-index: 12">
+                            {% include "core/includes/carousel_navigator_buttons.html" %}
+                        </div>
                     </div>
+                {% endif %}
+
+                    {% endwith %}
+                    {% endwith %}
                 {% endfor %}
                 <!-- Left and right controls -->
                 <div class="floating-carousel-buttons container hidden-lg hidden-md">

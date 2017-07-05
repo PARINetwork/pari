@@ -53,7 +53,3 @@ def get_strap(obj):
     if type_ == 'album':
         return BeautifulSoup(obj.description).get_text()
     return ''
-
-@register.filter
-def sub(value, arg):
-    return value - arg
