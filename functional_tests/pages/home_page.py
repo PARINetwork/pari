@@ -96,7 +96,7 @@ class FeaturedSection():
 
     def title(self):
         return self.driver.find_element(By.XPATH,
-                                        "//div[@class=' active item content-1']//div[@class='featured-content-title']").text
+                                        "//div[@class[contains(.,'item content-1')]]//div[@class[contains(.,'featured-content-title')]]").text
 
     def link_text(self):
         return self.driver.find_element(By.XPATH,
