@@ -33,10 +33,11 @@ class AlbumFactory(factory.django.DjangoModelFactory):
         return getattr(cls, 'starting_seq_num', 50)
 
 class TalkingAlbumSlideFactory(factory.django.DjangoModelFactory):
+
     class Meta:
         model = AlbumSlide
 
-    page = factory.SubFactory(AlbumFactory, title="talking album")
+    page = factory.SubFactory(AlbumFactory, title='talking album')
     audio = "109687682"
     description = "<p><i>Varavattoor village, Desamangalam panchayat, Wadakkanchery, Kerala</i></p>"
     created_on = "2015-07-31 10:29:49"
