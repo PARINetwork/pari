@@ -56,7 +56,7 @@ class Album(Page):
             photographer_objects.extend(slide.image.photographers.all())
         return set(photographer_objects)
 
-    def get_lxocations_index(self):
+    def get_locations_index(self):
         locations_index = map(lambda slide: slide.image.get_locations_index(), self.slides.filter(image__isnull=False))
         return " ".join(locations_index)
 
