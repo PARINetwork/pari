@@ -23,13 +23,13 @@ class AuthorArticleListTests(TestCase):
     def test_lang_is_used_from_query_params(self):
         request = RequestFactory().get('/authors/xyz/?lang=hi')
         response = AuthorArticleList.as_view()(request, slug='xyz')
-        title=get_title(response.context_data['articles'])
+        title = get_title(response.context_data['articles'])
         assert title == self.hindi_article.title
 
     def test_lang_is_set_to_english_by_default(self):
         request = RequestFactory().get('/stories/categories/things-we-do/')
         response = AuthorArticleList.as_view()(request, object=self.category, slug="xyz")
-        title=get_title(response.context_data['articles'])
+        title = get_title(response.context_data['articles'])
         assert title == self.english_article.title
 
     def test_all_articles_are_returned_if_lang_is_all(self):
@@ -48,13 +48,13 @@ class ArchiveDetailTests(TestCase):
     def test_query_lang_is_used_from_query_params(self):
         request = RequestFactory().get('/archive/2017/4/?lang=hi')
         response = ArchiveDetail.as_view()(request, year='2017', month='4')
-        title=get_title(response.context_data['articles'])
+        title = get_title(response.context_data['articles'])
         assert title == self.hindi_article.title
 
     def test_lang_is_set_to_english_by_default(self):
         request = RequestFactory().get('/archive/2017/4/')
         response = ArchiveDetail.as_view()(request, year='2017', month='4')
-        title=get_title(response.context_data['articles'])
+        title = get_title(response.context_data['articles'])
         assert title == self.english_article.title
 
     def test_all_articles_are_returned_if_lang_is_all(self):
