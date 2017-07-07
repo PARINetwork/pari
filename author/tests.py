@@ -13,17 +13,16 @@ class AuthorTests(TestCase):
 
     def test_author_slug_for_multiple_unique_author_name(self):
         author_name = 'Author Name Author Name Author Name Author Name Author Name'
-        AuthorFactory(name=author_name)
-        AuthorFactory(name=author_name + ' ')
-        AuthorFactory(name=author_name + '. ')
+        author1 = Author(name=author_name)
+        author2 = Author(name=author_name + ' ')
+        author3 = Author(name=author_name + '. ')
+        author1.save()
+        author2.save()
+        author3.save()
 
-        self.assertEqual(Author.objects.get(name=author_name).slug,
-                         'author-name-author-name-author-name-author-name-au')
-        self.assertEqual(Author.objects.get(name=author_name + ' ').slug,
-                         'author-name-author-name-author-name-author-name-a1')
-        self.assertEqual(Author.objects.get(name=author_name + '. ').slug,
-                         'author-name-author-name-author-name-author-name-a2')
-
+        assert Author.objects.get(name=author_name).slug == 'author-name-author-name-author-name-author-name-au'
+        assert Author.objects.get(name=author_name + ' ').slug == 'author-name-author-name-author-name-author-name-a1'
+        assert Author.objects.get(name=author_name + '. ').slug == 'author-name-author-name-author-name-author-name-a2'
 
 class AuthorModelsExceptionTest(TestCase):
     def test_should_throw_error_if_author_name_exceeds_100_characters(self):
@@ -59,7 +58,7 @@ class AuthorAdminFormTest(TestCase):
         self.assertEqual('image' in author_form.fields, False, msg="AuthorAdminForm should not contain field image")
         self.assertEqual('slug' in author_form.fields, False, msg="AuthorAdminForm should not contain field slug")
 
-    def test_author_form_is_not_valid_if_mandatory_fields_are_empty(self):
+    def test_author_form_should_be_in_valid_if_mandatory_fields_are_empty(self):
         author_form = AuthorAdminForm()
         self.assertEqual(author_form.is_valid(), False)
 
