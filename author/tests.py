@@ -32,8 +32,6 @@ class AuthorModelsExceptionTest(TestCase):
         author_with_long_name = Author(name=author_name)
         with self.assertRaises(DataError) as context_message:
             author_with_long_name.save()
-            the_exception = context_message.exception
-            self.assertEqual(the_exception.error_code, 3)
 
     def test_should_throw_error_if_author_already_exist(self):
         author_one = Author(name='some author')
@@ -41,8 +39,6 @@ class AuthorModelsExceptionTest(TestCase):
         with self.assertRaises(IntegrityError) as context_message:
             author_one.save()
             author_two.save()
-            the_exception = context_message.exception
-            self.assertEqual(the_exception.error_code, 3)
 
     def test_should_throw_error_if_facebook_and_twitter_name__of_author_exceeds_fifty_characters(self):
         with self.assertRaises(DataError) as context_message:
@@ -50,8 +46,6 @@ class AuthorModelsExceptionTest(TestCase):
                           twitter_username='JAMIEREDGATE:OggtheCleverFullMetalHavokMoreKnowledgeNIntelligentThanSpockAndAll')
             AuthorFactory(name='some good author',
                           facebook_username='JAMIEREDGATE:OggtheCleverFullMetalHavokMoreKnowledgeNIntelligentThanSpockAndAll')
-            the_exception = context_message.exception
-            self.assertEqual(the_exception.error_code, 3)
 
 class AuthorAdminFormTest(TestCase):
 
@@ -68,6 +62,7 @@ class AuthorViewsTest(TestCase):
 
     def setUp(self):
         self.client = Client()
+        User.objects.create_superuser('pari', 'pari@test.com', "pari")
 
     def test_should_allow_only_authorized_user_to_add_author(self):
         response = self.client.post('/admin/authors/add/', content_type="application/json", data="{'name':'cool'}")
@@ -95,5 +90,4 @@ class AuthorViewsTest(TestCase):
         self.assertRegexpMatches(response_for_add_photgraphers.url, "/admin/authors/add/", msg="Add translators should redirect to add author")
 
     def login_admin(self):
-        User.objects.create_superuser('pari', 'pari@test.com', "pari")
         self.client.login(username="pari", password="pari")
