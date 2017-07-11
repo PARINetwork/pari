@@ -248,7 +248,7 @@
               }
           }
         });
-        $('.home-hamburger').on("click", function() {
+        $('.home-hamburger').on("click", function(event) {
             event.preventDefault();
             toggleClassForDropdown();
             isMainHeaderOnDisplay = !isMainHeaderOnDisplay;
