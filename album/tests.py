@@ -24,10 +24,11 @@ class TalkingAlbumSlideTest(TestCase):
     def test_album_photographers_returns_unique_photographers(self):
         photographers = self.album.photographers
         assert len(photographers) == 3
-        names_of_photographers = map(lambda photographer: photographer.name ,photographers)
+        names_of_photographers = map(lambda photographer: photographer.name, photographers)
         self.assertTrue(self.author1.name in names_of_photographers)
         self.assertTrue(self.author2.name in names_of_photographers)
         self.assertTrue(self.author3.name in names_of_photographers)
+
 
 class AlbumListTest(TestCase):
     def setUp(self):

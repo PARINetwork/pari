@@ -13,6 +13,12 @@ def get_title(articles):
     return title
 
 
+class ArticleDetailTest(TestCase):
+    def setUp(self):
+        self.author = AuthorFactory(name='test', slug="test")
+        self.article = ArticleFactory(title="article", authors=(self.test_author,), language='en')
+
+
 class AuthorArticleListTests(TestCase):
     def setUp(self):
         self.category = CategoryFactory()
