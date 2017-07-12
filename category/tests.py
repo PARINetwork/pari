@@ -49,21 +49,6 @@ class StoryDetailTests(TestCase):
         self.assertEqual(str(response.context_data['current_page']),'single-category')
         self.assertEqual(str(response.context_data['category']),'Things we do')
 
-    def test_story_detail_should_have_more_than_one_page_for_more_than_tweleve_articles(self):
-        for num in range(1,14):
-            ArticleFactory(title="Test_article_"+str(num), categories=(self.category,), language='en')
-        # Total articles is more than 15
-        # Count of articles in Page one should be 12
-        request_for_page_one = RequestFactory().get('/stories/categories/things-we-do/?page=1&lang=all')
-        response_for_page_one = StoryDetail.as_view()(request_for_page_one,object=self.category,slug="things-we-do")
-        self.assertEqual(len(response_for_page_one.context_data['articles']) , 12)
-        # Count of articles in Page one should be 3
-        request_for_page_two = RequestFactory().get('/stories/categories/things-we-do/?page=2&lang=all')
-        response_for_page_two = StoryDetail.as_view()(request_for_page_two, object=self.category, slug="things-we-do")
-        self.assertEqual(len(response_for_page_two.context_data[ 'articles' ]), 3)
-
-
-
 
 class CategoryModelTests(TestCase):
     def setUp(self):

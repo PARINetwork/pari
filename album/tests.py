@@ -68,5 +68,4 @@ class AlbumListTest(TestCase):
     def test_should_return_count_two_photographer_for_talking_album_2(self):
         response = self.request_for_albums('talking')
         id_of_talking_album1 = self.talking_album1.id
-        print id_of_talking_album1
-        print response.context_data['photographers']
+        self.assertEqual( len(response.context_data['photographers']), 2)
