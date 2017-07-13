@@ -200,7 +200,7 @@
                     $('.header-title-wrapper-fullscreen').addClass('hidden');
                 if (!$('.home-hamburger').hasClass('hidden'))
                     $('.home-hamburger').addClass('hidden');
-                $('.home-hamburger').siblings().not('.search-icon').each(function () {
+                $('.home-hamburger').parent().siblings().not('.search-icon').each(function () {
                     if ($(this).hasClass('hidden'))
                         $(this).fadeToggle('200').removeClass('hidden');
                 });
@@ -238,7 +238,7 @@
                       $('.home-hamburger').removeClass('hidden');
                   if (isMainHeaderOnDisplay) {
                       $('.header-title-wrapper-fullscreen').removeClass('hidden');
-                      $('.home-hamburger').siblings().not('.search-icon').each(function () {
+                      $('.home-hamburger').parent().siblings().not('.search-icon').each(function () {
                           $(this).fadeToggle('200').addClass('hidden');
                       });
                       $('.navbar-brand-title').fadeToggle('200').addClass('hidden');
