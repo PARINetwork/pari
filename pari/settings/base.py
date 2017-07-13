@@ -69,6 +69,7 @@ INSTALLED_APPS = (
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
     'wagtail.contrib.modeladmin',
+    'django_nose',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -137,6 +138,7 @@ STATICFILES_FINDERS = (
 MEDIA_ROOT = join(PROJECT_ROOT, 'media')
 MEDIA_URL = '/media/'
 
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 # Wagtail settings
 
@@ -298,3 +300,8 @@ INSTAMOJO = {
 }
 
 GOOGLE_MAP_KEY = ""
+
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-package=core,location,author,category,article,album,face,feeds,resources,news',
+]
