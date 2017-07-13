@@ -126,9 +126,11 @@
                           <div class="collapse navbar-collapse">
                               <ul class="nav navbar-nav navbar-right " itemscope itemtype="http://schema.org/SiteNavigationElement">
                                   {% include "pages/menus/dropdown.html" %}
-                                  <a href="#" class="home-hamburger">
-                                    <span class="glyphicon glyphicon-menu-hamburger hamburger-icon {% if current_page != 'home-page' %} active-tab {% endif %}"></span>
-                                  </a>
+                                  <li>
+                                          <a href="#" class="home-hamburger">
+                                            <span class="glyphicon glyphicon-menu-hamburger hamburger-icon {% if current_page != 'home-page' %} active-tab {% endif %}"></span>
+                                        </a>
+                                  </li>
                               </ul>
                           </div>
                       </div>
@@ -215,7 +217,7 @@
         }
         function toggleClassForDropdown() {
             $('.home-hamburger .hamburger-icon').toggleClass('active-tab');
-            $('.home-hamburger').siblings().not('.search-icon').each(function () {
+            $('.home-hamburger').parent().siblings().not('.search-icon').each(function () {
                 $(this).fadeToggle('200').toggleClass('hidden');
             });
             $('.header-title-wrapper .navbar-brand-title').fadeToggle('200').toggleClass('hidden');
