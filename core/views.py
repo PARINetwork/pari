@@ -181,6 +181,9 @@ def contact_us(request):
     })
 
 
+SITE_SEARCH_OPERATOR = 'and'
+
+
 def site_search(
         request,
         template=None,
@@ -221,9 +224,9 @@ def site_search(
             pages = pages.filter(**extra_filters)
 
         if search_title_only:
-            search_results = pages.search(query_string, fields=['title'])
+            search_results = pages.search(query_string, fields=['title'], operator=SITE_SEARCH_OPERATOR)
         else:
-            search_results = pages.search(query_string)
+            search_results = pages.search(query_string, operator=SITE_SEARCH_OPERATOR)
 
         # Get query object
         query = Query.get(query_string)
