@@ -23,7 +23,7 @@ class FaceFactory(factory.django.DjangoModelFactory):
     depth = 3
     numchild = 0
     title = 'Face Page'
-    slug = 'face-page'
+    slug = factory.LazyAttribute(lambda obj: slugify(obj.title))
     live = True
     has_unpublished_changes = False
     show_in_menus = False
