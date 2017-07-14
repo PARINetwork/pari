@@ -32,4 +32,4 @@ then
 fi
 
 echo "Running test......."
-python manage.py test --settings=pari.settings.test --keepdb --with-coverage -verbosity=3
+python manage.py test --settings=pari.settings.test --with-coverage --keepdb
