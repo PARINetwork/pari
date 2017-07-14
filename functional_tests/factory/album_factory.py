@@ -7,7 +7,7 @@ class AlbumFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Album
 
-    path = factory.Sequence(lambda n: u'000100{}'.format(n))  # Album sequence starts from 00010050
+    path = factory.Sequence(lambda n: u'001100{}'.format(n))  # Album sequence starts from 00010050
     depth = 2
     numchild = 0
     title = "Album Page"

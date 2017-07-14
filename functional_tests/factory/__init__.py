@@ -11,3 +11,4 @@ from album_factory import PhotoAlbumSlideFactory
 from image_factory import ImageFactory
 from gallery_home_page_factory import GalleryHomePageFactory
 from guidelines_page_factory import GuidelinesPageFactory
+from face_factory import *
