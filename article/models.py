@@ -26,7 +26,7 @@ from core.edit_handlers import M2MFieldPanel
 
 # Override the url property of the Page model
 # to accommodate for child pages
-from core.utils import get_translations_for_page
+from core.utils import get_translations_for_page, SearchBoost
 
 Page.wg_url = Page.url
 
@@ -87,16 +87,16 @@ class Article(Page):
         M2MFieldPanel('locations'),
     ]
 
-    search_fields = Page.search_fields + (
-        index.SearchField('title', partial_match=True),
-        index.SearchField('authors', partial_match=True, boost=2),
-        index.SearchField('translators', partial_match=True, boost=2),
-        index.SearchField('strap', partial_match=True),
-        index.SearchField('content', partial_match=True),
+    search_fields = Page.search_fields + [
+        index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE),
+        index.SearchField('authors', partial_match=True, boost=SearchBoost.AUTHOR),
+        index.SearchField('translators', partial_match=True, boost=SearchBoost.AUTHOR),
+        index.SearchField('strap', partial_match=True, boost=SearchBoost.DESCRIPTION),
+        index.SearchField('content', partial_match=True, boost=SearchBoost.CONTENT),
         index.FilterField('categories'),
-        index.SearchField('locations', partial_match=True, boost=2),
+        index.SearchField('locations', partial_match=True, boost=SearchBoost.LOCATION),
         index.FilterField('language'),
-    )
+    ]
 
     def __str__(self):
         return self.title
