@@ -303,5 +303,5 @@ GOOGLE_MAP_KEY = ""
 
 NOSE_ARGS = [
     '--with-coverage',
-    '--cover-package=core,location,author,category,article,album,face,feeds,resources,news',
+    '--cover-package=core,location,author,category,article,album,face,feeds,resources',
 ]

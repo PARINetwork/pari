@@ -4,3 +4,5 @@ omit =
     */migrations/*
     */urls.py
     */__init__.py
+    */admin.py
+    */wagtail_hooks.py
