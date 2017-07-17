@@ -2,7 +2,7 @@
 {% load i18n wagtailcore_tags %}
 
 <section class="search-result two-column-grid">
-  <ul>
+    <ul>
     {% for result in search_results %}
       <li class="result item col-lg-6 col-md-4 col-sm-6 col-xs-12">
         <a href="{{ result.specific.get_absolute_url }}">
@@ -19,10 +19,28 @@
                 </a>
               </div>
             {% endif %}
-            </div>
+                <div>
+                {% with result.specific.get_translation as article_translations %}
+                       {% if article_translations|length > 1 %}
+                        <div class="dropdown custom-dropdown">
+                            <button class="dropdown-toggle" type="button" id="dropdownMenu1"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                {{ article_translations | length }} languages
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" style="left: 50%;">
+                                {% for translation in article_translations %}
+                                    <li><a href="{{ translation.get_absolute_url}}">{{ translation.get_language_display }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                   {% endwith %}
+                </div>
+          </div>
         </a>
       </li>
       {% endfor %}
-  </ul>
-  {% include "includes/paginator.html" with results=search_results %}
+    </ul>
 </section>
+

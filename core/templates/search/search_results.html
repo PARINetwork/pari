@@ -36,6 +36,9 @@ Search{% if search_results %} Results{% endif %}
           </div>
       {% endif %}
     </div>
+    <div class="container search-result-pagination">
+    {% include "includes/paginator.html" with results=search_results %}
+    </div>
   </div>
 </div>
 {% endblock %}
