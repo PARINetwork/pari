@@ -123,13 +123,18 @@ class Article(Page):
         if not self.pk:
             # In preview mode
             return []
+
+        lookup_fields = ['authors', 'translators', 'locations']
+        higher_boost = 2
         max_results = getattr(settings, "MAX_RELATED_RESULTS", 4)
+
         es_backend = get_search_backend()
         mapping = ElasticSearchMapping(self.__class__)
         search_fields = []
+
         for ii in self.search_fields:
-            if getattr(ii, "boost", None):
-                search_fields.append("{0}^{1}".format(ii.field_name, ii.boost))
+            if ii.field_name in lookup_fields:
+                search_fields.append("{0}^{1}".format(ii.field_name, higher_boost))
             else:
                 search_fields.append(ii.field_name)
         query = {
