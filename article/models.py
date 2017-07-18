@@ -12,16 +12,18 @@ from elasticsearch import ConnectionError
 from modelcluster.fields import M2MField
 
 from wagtail.wagtailcore.models import Page, Site
-from wagtail.wagtailcore.fields import RichTextField
+from wagtail.wagtailcore.fields import RichTextField, StreamField
 
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, \
-    MultiFieldPanel, InlinePanel, PageChooserPanel, FieldRowPanel
+    MultiFieldPanel, InlinePanel, PageChooserPanel, FieldRowPanel, StreamFieldPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 from wagtail.wagtailsearch.backends import get_search_backend
 from wagtail.wagtailsearch.backends.elasticsearch import ElasticSearchMapping, \
     ElasticSearchResults
 
+from article.streamfields.blocks import FullWidthImageBlock, TwoColumnImageBlock, ParagraphBlock, \
+    ParagraphWithImageBlock, FaceBlock
 from core.edit_handlers import M2MFieldPanel
 
 # Override the url property of the Page model
@@ -50,6 +52,13 @@ class Article(Page):
                            blank=True)
     strap = models.TextField(blank=True)
     content = RichTextField()
+    modular_content = StreamField([
+        ('full_width_image', FullWidthImageBlock()),
+        ('two_column_image', TwoColumnImageBlock()),
+        ('paragraph', ParagraphBlock()),
+        ('paragraph_with_image', ParagraphWithImageBlock()),
+        ('face', FaceBlock())
+    ], null=True, blank=True)
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
     original_published_date = models.DateField(null=True, blank=True)
     show_day = models.BooleanField(default=True)
@@ -85,6 +94,8 @@ class Article(Page):
             ], 'Cover Image'),
         FieldPanel('categories'),
         M2MFieldPanel('locations'),
+        StreamFieldPanel('modular_content'),
+
     ]
 
     search_fields = Page.search_fields + (
@@ -93,6 +104,7 @@ class Article(Page):
         index.SearchField('translators', partial_match=True, boost=2),
         index.SearchField('strap', partial_match=True),
         index.SearchField('content', partial_match=True),
+        index.SearchField('modular_content', partial_match=True),
         index.FilterField('categories'),
         index.SearchField('locations', partial_match=True, boost=2),
         index.FilterField('language'),
