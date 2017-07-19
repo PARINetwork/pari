@@ -1,5 +1,4 @@
 from django.utils.functional import cached_property
-
 from wagtail.wagtailadmin import blocks
 from wagtail.wagtailcore.blocks import PageChooserBlock
 from wagtail.wagtailcore.models import Page
@@ -94,3 +93,16 @@ class FaceBlock(blocks.StructBlock):
     class Meta:
         icon = 'image'
         template = 'article/blocks/face.html'
+
+class ParagraphWithBlockQuoteBlock(blocks.StructBlock):
+
+    ALIGN_QUOTE_CHOICES = [('left', 'Left'), ('right', 'Right')]
+
+    quote = blocks.RichTextBlock(editor='tinymce')
+    align_quote = blocks.ChoiceBlock(choices=ALIGN_QUOTE_CHOICES, default=ALIGN_QUOTE_CHOICES[1][0])
+    paragraph = blocks.RichTextBlock()
+
+    class Meta:
+        icon = 'doc-full'
+        label = 'Paragraphs with Block Quote'
+        template = 'article/blocks/paragraph_with_block_quote.html'

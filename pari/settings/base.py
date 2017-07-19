@@ -69,6 +69,7 @@ INSTALLED_APPS = (
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
     'wagtail.contrib.modeladmin',
+    'wagtailtinymce',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -151,6 +152,15 @@ WAGTAILSEARCH_BACKENDS = {
         'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
         'INDEX': 'pari',
         'ATOMIC_REBUILD': True,
+    },
+}
+
+WAGTAILADMIN_RICH_TEXT_EDITORS = {
+    'default': {
+        'WIDGET': 'wagtail.wagtailadmin.rich_text.HalloRichTextArea'
+    },
+    'tinymce': {
+        'WIDGET': 'article.streamfields.blocks.TinyMCECustomTextArea'
     },
 }
 

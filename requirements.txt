@@ -10,6 +10,7 @@ elasticsearch==1.9.0
 
 # Recommended components to improve performance in production:
 django-redis==4.3.0
+wagtailtinymce==4.2.1.5
 
 # For M2M Field support.
 # TODO: Remove after M2MField lands into django-modelcluster

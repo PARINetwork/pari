@@ -23,7 +23,7 @@ from wagtail.wagtailsearch.backends.elasticsearch import ElasticSearchMapping, \
     ElasticSearchResults
 
 from article.streamfields.blocks import FullWidthImageBlock, TwoColumnImageBlock, ParagraphBlock, \
-    ParagraphWithImageBlock, FaceBlock
+    ParagraphWithImageBlock, FaceBlock, ParagraphWithBlockQuoteBlock
 from core.edit_handlers import M2MFieldPanel
 
 # Override the url property of the Page model
@@ -57,7 +57,8 @@ class Article(Page):
         ('two_column_image', TwoColumnImageBlock()),
         ('paragraph', ParagraphBlock()),
         ('paragraph_with_image', ParagraphWithImageBlock()),
-        ('face', FaceBlock())
+        ('face', FaceBlock()),
+        ('paragraph_with_block_quote', ParagraphWithBlockQuoteBlock()),
     ], null=True, blank=True)
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
     original_published_date = models.DateField(null=True, blank=True)
@@ -86,6 +87,7 @@ class Article(Page):
                         FieldPanel('show_year',classname="col4")
                     ])
             ],'Date'),
+        StreamFieldPanel('modular_content'),
         FieldPanel('content'),
         MultiFieldPanel(
             [
@@ -94,7 +96,7 @@ class Article(Page):
             ], 'Cover Image'),
         FieldPanel('categories'),
         M2MFieldPanel('locations'),
-        StreamFieldPanel('modular_content'),
+
 
     ]
 

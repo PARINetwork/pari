@@ -35,6 +35,39 @@
   }
 }
 
+.paragraph-with-block-quote{
+
+   .align-right {
+    float: right;
+    padding-left: 30px;
+  }
+
+  .align-left {
+    float: left;
+    padding-right: 30px;
+  }
+
+  .block-quote {
+    .rich-text {
+      .paragraph-holder {
+        border-bottom: 1px solid #FF3D08;
+        border-top: 1px solid #FF3D08;
+        color: #FF3D08 !important;
+        line-height: 2.2em;
+        padding: 12px 20px 12px 20px;
+
+      }
+    }
+  }
+  .align-left.block-quote {
+    .rich-text {
+      margin-left: 15%;
+      width: 100%;
+    }
+  }
+
+}
+
 .paragraph-with-image-block {
 
   .align-right {
@@ -45,5 +78,17 @@
   .align-left {
     float: left;
     padding-right: 30px;
+  }
+
+}
+
+@media (max-width: @screen-sm-max) {
+  .paragraph-with-block-quote {
+    .align-left.block-quote {
+      .rich-text {
+        margin-left: 10%;
+        width: 100%;
+      }
+    }
   }
 }
