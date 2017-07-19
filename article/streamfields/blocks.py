@@ -1,10 +1,14 @@
+from django import forms
+from django.conf import settings
 from django.utils.functional import cached_property
-
+from django.utils.module_loading import import_string
 from wagtail.wagtailadmin import blocks
-from wagtail.wagtailcore.blocks import PageChooserBlock
+from wagtail.wagtailadmin.rich_text import DEFAULT_RICH_TEXT_EDITORS
+from wagtail.wagtailcore.blocks import PageChooserBlock, RichTextBlock
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
+from article.streamfields.streamfields_utility import TinyMCEFormatingButtons
 from face.models import Face
 
 
@@ -94,3 +98,35 @@ class FaceBlock(blocks.StructBlock):
     class Meta:
         icon = 'image'
         template = 'article/blocks/face.html'
+
+class CustomRichTextBlock(RichTextBlock):
+
+    buttons = None
+
+    def __init__(self,buttons=None, **kwargs):
+        super(CustomRichTextBlock, self).__init__(**kwargs)
+        self.buttons = buttons
+
+    @cached_property
+    def field(self):
+        return forms.CharField(widget=get_rich_text_editor_widget_updated(self.editor,buttons=self.buttons),**self.field_options)
+
+
+def get_rich_text_editor_widget_updated(name='default',**kwargs):
+    editor_settings = getattr(settings, 'WAGTAILADMIN_RICH_TEXT_EDITORS', DEFAULT_RICH_TEXT_EDITORS)
+
+    editor = editor_settings[name]
+    return import_string(editor['WIDGET'])(**kwargs)
+
+class ParagraphWithBlockQuoteBlock(blocks.StructBlock):
+
+    ALIGN_QUOTE_CHOICES = [('left', 'Left'), ('right', 'Right')]
+
+    quote = CustomRichTextBlock(editor='tinymce',buttons=[[TinyMCEFormatingButtons.CHARACTER_STYLING.value,TinyMCEFormatingButtons.UNDO_REDO.value]])
+    align_quote = blocks.ChoiceBlock(choices=ALIGN_QUOTE_CHOICES, default=ALIGN_QUOTE_CHOICES[1][0])
+    paragraph = blocks.RichTextBlock()
+
+    class Meta:
+        icon = 'doc-full'
+        label = 'Paragraphs with Block Quote'
+        template = 'article/blocks/paragraph_with_block_quote.html'
