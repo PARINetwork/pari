@@ -1,33 +1,35 @@
-import hmac
-import json
-import urllib
-import hashlib
+from __future__ import absolute_import, unicode_literals
 
-from django.db.models import Max
-from django.shortcuts import render
-from django.http import Http404, HttpResponseRedirect, HttpResponse
+import hashlib
+import hmac
+import urllib
+from collections import OrderedDict
+
 from django.conf import settings
-from django.core.mail import send_mail
+from django.contrib.auth.decorators import login_required
 from django.contrib.messages import success
-from django.core.urlresolvers import reverse
+from django.core.mail import send_mail
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db.models import Max
+from django.http import Http404, HttpResponseRedirect, HttpResponse
+from django.http import JsonResponse
+from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _, activate, get_language
-from django.views.decorators.vary import vary_on_headers
+from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
-from django.contrib.auth.decorators import login_required
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.views.decorators.cache import cache_page
-
-from wagtail.wagtailcore.models import Page, Site
+from django.views.decorators.vary import vary_on_headers
 from wagtail.wagtailadmin.forms import SearchForm
 from wagtail.wagtailadmin.views.pages import preview_on_edit
+from wagtail.wagtailcore import models
+from wagtail.wagtailcore.models import Page, Site
+from wagtail.wagtailsearch.models import Query
 
-from .models import HomePage, StaticPage, GuidelinesPage
 from category.models import Category
-from .forms import ContactForm, DonateForm
-
 from core.utils import get_translations_for_page
-from collections import OrderedDict
+from .forms import ContactForm, DonateForm
+from .models import HomePage, GuidelinesPage
+
 
 def home_page(request, slug="home-page"):
     home_page = HomePage.objects.get(slug=slug)
@@ -178,6 +180,99 @@ def contact_us(request):
         "current_page": 'contact_us',
     })
 
+
+SITE_SEARCH_OPERATOR = 'and'
+
+
+def site_search(
+        request,
+        template=None,
+        template_ajax=None,
+        results_per_page=10,
+        use_json=False,
+        json_attrs=['title', 'url'],
+        show_unpublished=False,
+        search_title_only=False,
+        extra_filters={},
+        path=None):
+
+    # Get default templates
+    if template is None:
+        if hasattr(settings, 'WAGTAILSEARCH_RESULTS_TEMPLATE'):
+            template = settings.WAGTAILSEARCH_RESULTS_TEMPLATE
+        else:
+            template = 'wagtailsearch/search_results.html'
+
+    if template_ajax is None:
+        if hasattr(settings, 'WAGTAILSEARCH_RESULTS_TEMPLATE_AJAX'):
+            template_ajax = settings.WAGTAILSEARCH_RESULTS_TEMPLATE_AJAX
+        else:
+            template_ajax = template
+
+    # Get query string and page from GET paramters
+    query_string = request.GET.get('q', '')
+    page = request.GET.get('page', request.GET.get('p', 1))
+
+    # Search
+    if query_string != '':
+        pages = models.Page.objects.filter(path__startswith=(path or request.site.root_page.path))
+
+        if not show_unpublished:
+            pages = pages.live()
+
+        if extra_filters:
+            pages = pages.filter(**extra_filters)
+
+        if search_title_only:
+            search_results = pages.search(query_string, fields=['title'], operator=SITE_SEARCH_OPERATOR)
+        else:
+            search_results = pages.search(query_string, operator=SITE_SEARCH_OPERATOR)
+
+        # Get query object
+        query = Query.get(query_string)
+
+        # Add hit
+        query.add_hit()
+
+        # Pagination
+        paginator = Paginator(search_results, results_per_page)
+        try:
+            search_results = paginator.page(page)
+        except PageNotAnInteger:
+            search_results = paginator.page(1)
+        except EmptyPage:
+            search_results = paginator.page(paginator.num_pages)
+    else:
+        query = None
+        search_results = None
+
+    if use_json:
+        # Return a json response
+        if search_results:
+            search_results_json = []
+            for result in search_results:
+                result_specific = result.specific
+
+                search_results_json.append(dict(
+                    (attr, getattr(result_specific, attr))
+                    for attr in json_attrs
+                    if hasattr(result_specific, attr)
+                ))
+
+            return JsonResponse(search_results_json, safe=False)
+        else:
+            return JsonResponse([], safe=False)
+    else:
+        # Render a template
+        if request.is_ajax() and template_ajax:
+            template = template_ajax
+
+        return render(request, template, dict(
+            query_string=query_string,
+            search_results=search_results,
+            is_ajax=request.is_ajax(),
+            query=query
+        ))
 
 # TODO: Remove the below two functions when we migrate to wagtail 1.2
 
