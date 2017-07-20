@@ -84,6 +84,29 @@ def editor_css():
 	        display: block;
         }}
 
+        .mce-tinymce.mce-container.mce-panel {{
+            box-sizing: border-box;
+            border-radius: 6px;
+            width: 100%;
+            border: 1px solid #e6e6e6;
+            padding: 0 5px 5px 5px;
+            background-color: #fafafa;
+            -webkit-appearance: none;
+
+        }}
+        .mce-statusbar.mce-container.mce-panel.mce-stack-layout-item.mce-last {{
+            visibility: hidden;
+        }}
+        .mce-toolbar-grp.mce-container.mce-panel.mce-stack-layout-item.mce-first {{
+            background-color: white;
+
+        }}
+        .mce-edit-area.mce-container.mce-panel.mce-stack-layout-item {{
+            border: 0;
+        }}
+
+
+
         blockquote::before {{
             content: open-quote;
         }}
