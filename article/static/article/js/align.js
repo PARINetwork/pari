@@ -76,4 +76,20 @@ $(function() {
             }, 500);
         }
     });
+    initialize_tiny_editor();
+
 });
+
+var initialize_tiny_editor = function () {
+    $(".action-add-block-paragraph_with_block_quote").on("click",function () {
+        setTimeout(function() {
+            var tiny_editor_body = $("#modular_content-0-value-quote_ifr").contents().find("body");
+            $(tiny_editor_body).css("font-family","Roboto Slab, Georgia, serif");
+            $(tiny_editor_body).css("font-size","1.2em");
+            $(tiny_editor_body).css("font-weight","300");
+            $(tiny_editor_body).css("line-height","1.5em");
+        }, 100);
+
+    });
+}
+
