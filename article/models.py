@@ -96,6 +96,7 @@ class Article(Page):
         index.FilterField('categories'),
         index.SearchField('locations', partial_match=True, boost=SearchBoost.LOCATION),
         index.FilterField('language'),
+        index.FilterField('get_search_type')
     ]
 
     def __str__(self):
@@ -118,6 +119,17 @@ class Article(Page):
 
     def get_translation(self):
         return get_translations_for_page(self)
+
+    # Elastic search related methods
+    def get_search_type(self):
+        categories = [category.name for category in self.categories.all()]
+
+        if 'VideoZone' in categories:
+            return 'video'
+        elif 'AudioZone' in categories:
+            return 'audio'
+        else:
+            return 'article'
 
     def related_articles(self):
         if not self.pk:
