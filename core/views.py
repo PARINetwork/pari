@@ -23,6 +23,7 @@ from wagtail.wagtailadmin.forms import SearchForm
 from wagtail.wagtailadmin.views.pages import preview_on_edit
 from wagtail.wagtailcore import models
 from wagtail.wagtailcore.models import Page, Site
+from wagtail.wagtailsearch.backends import get_search_backend
 from wagtail.wagtailsearch.models import Query
 
 from category.models import Category
@@ -215,6 +216,8 @@ def site_search(
 
     # Search
     if query_string != '':
+        es_backend = get_search_backend()
+
         pages = models.Page.objects.filter(path__startswith=(path or request.site.root_page.path))
 
         if not show_unpublished:
@@ -226,7 +229,7 @@ def site_search(
         if search_title_only:
             search_results = pages.search(query_string, fields=['title'], operator=SITE_SEARCH_OPERATOR)
         else:
-            search_results = pages.search(query_string, operator=SITE_SEARCH_OPERATOR)
+            search_results = es_backend.search(query_string, pages, operator=SITE_SEARCH_OPERATOR)
 
         # Get query object
         query = Query.get(query_string)
