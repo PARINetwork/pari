@@ -12,16 +12,18 @@ from elasticsearch import ConnectionError
 from modelcluster.fields import M2MField
 
 from wagtail.wagtailcore.models import Page, Site
-from wagtail.wagtailcore.fields import RichTextField
+from wagtail.wagtailcore.fields import RichTextField, StreamField
 
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, \
-    MultiFieldPanel, InlinePanel, PageChooserPanel, FieldRowPanel
+    MultiFieldPanel, InlinePanel, PageChooserPanel, FieldRowPanel, StreamFieldPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 from wagtail.wagtailsearch.backends import get_search_backend
 from wagtail.wagtailsearch.backends.elasticsearch import ElasticSearchMapping, \
     ElasticSearchResults
 
+from article.streamfields.blocks import FullWidthImageBlock, TwoColumnImageBlock, ParagraphBlock, \
+    ParagraphWithImageBlock, FaceBlock, ParagraphWithBlockQuoteBlock
 from core.edit_handlers import M2MFieldPanel
 
 # Override the url property of the Page model
@@ -50,6 +52,15 @@ class Article(Page):
                            blank=True)
     strap = models.TextField(blank=True)
     content = RichTextField()
+    modular_content = StreamField([
+        ('full_width_image', FullWidthImageBlock()),
+        ('two_column_image', TwoColumnImageBlock()),
+        ('paragraph', ParagraphBlock()),
+        ('paragraph_with_image', ParagraphWithImageBlock()),
+        ('face', FaceBlock()),
+        ('paragraph_with_block_quote', ParagraphWithBlockQuoteBlock()),
+    ], null=True, blank=True)
+    show_modular_content = models.BooleanField(default=False)
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
     original_published_date = models.DateField(null=True, blank=True)
     show_day = models.BooleanField(default=True)
@@ -62,6 +73,7 @@ class Article(Page):
 
     categories = M2MField("category.Category", related_name="articles_by_category")
     locations = M2MField("location.Location", related_name="articles_by_location", blank=True)
+
     content_panels = Page.content_panels + [
         FieldPanel('strap'),
         M2MFieldPanel('authors'),
@@ -93,9 +105,11 @@ class Article(Page):
         index.SearchField('translators', partial_match=True, boost=SearchBoost.AUTHOR),
         index.SearchField('strap', partial_match=True, boost=SearchBoost.DESCRIPTION),
         index.SearchField('content', partial_match=True, boost=SearchBoost.CONTENT),
-        index.FilterField('categories'),
+        index.SearchField('modular_content', partial_match=True, boost=SearchBoost.CONTENT),
         index.SearchField('locations', partial_match=True, boost=SearchBoost.LOCATION),
+        index.FilterField('categories'),
         index.FilterField('language'),
+        index.FilterField('get_search_type')
     ]
 
     def __str__(self):
@@ -118,6 +132,17 @@ class Article(Page):
 
     def get_translation(self):
         return get_translations_for_page(self)
+
+    # Elastic search related methods
+    def get_search_type(self):
+        categories = [category.name for category in self.categories.all()]
+
+        if 'VideoZone' in categories:
+            return 'video'
+        elif 'AudioZone' in categories:
+            return 'audio'
+        else:
+            return 'article'
 
     def related_articles(self):
         if not self.pk:
@@ -185,3 +210,9 @@ class Article(Page):
 
         # Return results in order given by ElasticSearch
         return [results[str(pk)] for pk in pks if results[str(pk)]]
+
+
+if settings.MODULAR_ARTICLE:
+    Article.content_panels.insert(-4, MultiFieldPanel([FieldPanel('show_modular_content')],
+                                                      'Want to show modular content ?'))
+    Article.content_panels.insert(-5, StreamFieldPanel('modular_content'))

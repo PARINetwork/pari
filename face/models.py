@@ -83,6 +83,7 @@ class Face(Page):
         index.SearchField('get_locations_index', partial_match=True, boost=SearchBoost.LOCATION),
         index.SearchField('get_photographers_index', partial_match=True, boost=SearchBoost.AUTHOR),
         index.SearchField('adivasi'),
+        index.FilterField('get_search_type')
     ]
 
     def get_locations_index(self):
@@ -90,6 +91,9 @@ class Face(Page):
 
     def get_photographers_index(self):
         return self.image.get_all_photographers()
+
+    def get_search_type(self):
+        return self.__class__.__name__.lower()
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('image'),

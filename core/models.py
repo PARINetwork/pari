@@ -42,11 +42,16 @@ class StaticPage(Page):
     ]
 
     search_fields = Page.search_fields + [
-        index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE)
+        index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE),
+        index.FilterField('get_search_type'),
     ]
+
+    def get_search_type(self):
+        return self.__class__.__name__.lower()
 
     def get_absolute_url(self):
         return reverse("static_page", kwargs={"slug": self.slug})
+
 
 class IntegerBlock(blocks.CharBlock):
 

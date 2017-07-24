@@ -4,6 +4,8 @@ from .base import *
 # Disable debug mode
 DEBUG = False
 
+MODULAR_ARTICLE = True
+
 # Domain names that this Django site can serve
 ALLOWED_HOSTS = [u'staging.ruralindiaonline.org']
 

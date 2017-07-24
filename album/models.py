@@ -39,9 +39,10 @@ class Album(Page):
     search_fields = Page.search_fields + [
         index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE),
         index.SearchField('description', partial_match=True, boost=SearchBoost.DESCRIPTION),
-        index.FilterField('language'),
         index.SearchField('get_locations_index', partial_match=True, boost=SearchBoost.LOCATION),
-        index.SearchField('get_photographers_index', partial_match=True, boost=SearchBoost.AUTHOR)
+        index.SearchField('get_photographers_index', partial_match=True, boost=SearchBoost.AUTHOR),
+        index.FilterField('language'),
+        index.FilterField('get_search_type')
     ]
 
     @property
@@ -65,6 +66,9 @@ class Album(Page):
     def get_photographers_index(self):
         photographers_index = map(lambda slide: slide.image.get_all_photographers(), self.slides.filter(image__isnull=False))
         return " ".join(photographers_index)
+
+    def get_search_type(self):
+        return self.__class__.__name__.lower()
 
     def get_context(self, request, *args, **kwargs):
         return {

@@ -1,0 +1,13 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="image-block">
+    {% image value.image width-570 as image %}
+    <div class="image">
+        <img src="{{ image.url }}"/>
+    </div>
+    <div class="caption">
+        <p>
+            {{ value.caption }}
+        </p>
+    </div>
+</div>

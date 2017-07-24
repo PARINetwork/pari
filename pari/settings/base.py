@@ -69,6 +69,7 @@ INSTALLED_APPS = (
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
     'wagtail.contrib.modeladmin',
+    'wagtailtinymce',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -148,9 +149,18 @@ WAGTAIL_SITE_NAME = "pari"
 #
 WAGTAILSEARCH_BACKENDS = {
     'default': {
-        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
+        'BACKEND': 'search.custom_elasticsearch.CustomElasticSearch',
         'INDEX': 'pari',
         'ATOMIC_REBUILD': True,
+    },
+}
+
+WAGTAILADMIN_RICH_TEXT_EDITORS = {
+    'default': {
+        'WIDGET': 'wagtail.wagtailadmin.rich_text.HalloRichTextArea'
+    },
+    'tinymce': {
+        'WIDGET': 'article.streamfields.textarea.TinyMCECustomTextArea'
     },
 }
 
@@ -160,6 +170,9 @@ WAGTAILIMAGES_IMAGE_MODEL = 'core.AffixImage'
 WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = False
 WAGTAIL_USAGE_COUNT_ENABLED = True
 WAGTAILSEARCH_RESULTS_TEMPLATE = "search/search_results.html"
+
+# Flag to show modular content panel in article admin page
+MODULAR_ARTICLE = False
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 

@@ -38,7 +38,11 @@ class Resource(Page):
         index.SearchField('content', partial_match=True, boost=SearchBoost.CONTENT),
         index.FilterField('categories'),
         index.FilterField('language'),
+        index.FilterField('get_search_type'),
     ]
+
+    def get_search_type(self):
+        return self.__class__.__name__.lower()
 
     def get_absolute_url(self):
         return reverse("resource-detail", kwargs={"slug": self.slug})
