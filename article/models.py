@@ -60,6 +60,7 @@ class Article(Page):
         ('face', FaceBlock()),
         ('paragraph_with_block_quote', ParagraphWithBlockQuoteBlock()),
     ], null=True, blank=True)
+    show_modular_content = models.BooleanField(default=False)
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
     original_published_date = models.DateField(null=True, blank=True)
     show_day = models.BooleanField(default=True)
@@ -212,4 +213,6 @@ class Article(Page):
 
 
 if settings.MODULAR_ARTICLE:
-    Article.content_panels.insert(-4, StreamFieldPanel('modular_content'))
+    Article.content_panels.insert(-4, MultiFieldPanel([FieldPanel('show_modular_content')],
+                                                      'Want to show modular content ?'))
+    Article.content_panels.insert(-5, StreamFieldPanel('modular_content'))
