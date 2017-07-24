@@ -3,6 +3,8 @@ import logging
 
 DEBUG = True
 
+MODULAR_ARTICLE = True
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', u'development.ruralindiaonline.org']
 
