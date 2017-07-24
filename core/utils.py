@@ -38,3 +38,11 @@ def get_translations_for_articles(articles):
     for article in articles:
         article_translations[article] = get_translations_for_page(article)
     return article_translations
+
+
+class SearchBoost(object):
+    TITLE = 6
+    AUTHOR = 5
+    LOCATION = 4
+    DESCRIPTION = 3
+    CONTENT = 2

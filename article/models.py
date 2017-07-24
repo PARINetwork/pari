@@ -28,7 +28,7 @@ from core.edit_handlers import M2MFieldPanel
 
 # Override the url property of the Page model
 # to accommodate for child pages
-from core.utils import get_translations_for_page
+from core.utils import get_translations_for_page, SearchBoost
 
 Page.wg_url = Page.url
 
@@ -100,17 +100,18 @@ class Article(Page):
 
     ]
 
-    search_fields = Page.search_fields + (
-        index.SearchField('title', partial_match=True),
-        index.SearchField('authors', partial_match=True, boost=2),
-        index.SearchField('translators', partial_match=True, boost=2),
-        index.SearchField('strap', partial_match=True),
-        index.SearchField('content', partial_match=True),
-        index.SearchField('modular_content', partial_match=True),
+    search_fields = Page.search_fields + [
+        index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE),
+        index.SearchField('authors', partial_match=True, boost=SearchBoost.AUTHOR),
+        index.SearchField('translators', partial_match=True, boost=SearchBoost.AUTHOR),
+        index.SearchField('strap', partial_match=True, boost=SearchBoost.DESCRIPTION),
+        index.SearchField('content', partial_match=True, boost=SearchBoost.CONTENT),
+        index.SearchField('modular_content', partial_match=True, boost=SearchBoost.CONTENT),
+        index.SearchField('locations', partial_match=True, boost=SearchBoost.LOCATION),
         index.FilterField('categories'),
-        index.SearchField('locations', partial_match=True, boost=2),
         index.FilterField('language'),
-    )
+        index.FilterField('get_search_type')
+    ]
 
     def __str__(self):
         return self.title
@@ -133,17 +134,33 @@ class Article(Page):
     def get_translation(self):
         return get_translations_for_page(self)
 
+    # Elastic search related methods
+    def get_search_type(self):
+        categories = [category.name for category in self.categories.all()]
+
+        if 'VideoZone' in categories:
+            return 'video'
+        elif 'AudioZone' in categories:
+            return 'audio'
+        else:
+            return 'article'
+
     def related_articles(self):
         if not self.pk:
             # In preview mode
             return []
+
+        lookup_fields = ['authors', 'translators', 'locations']
+        higher_boost = 2
         max_results = getattr(settings, "MAX_RELATED_RESULTS", 4)
+
         es_backend = get_search_backend()
         mapping = ElasticSearchMapping(self.__class__)
         search_fields = []
+
         for ii in self.search_fields:
-            if getattr(ii, "boost", None):
-                search_fields.append("{0}^{1}".format(ii.field_name, ii.boost))
+            if ii.field_name in lookup_fields:
+                search_fields.append("{0}^{1}".format(ii.field_name, higher_boost))
             else:
                 search_fields.append(ii.field_name)
         query = {

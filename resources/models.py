@@ -14,6 +14,8 @@ from wagtail.wagtailsearch import index
 
 from modelcluster.fields import M2MField
 
+from core.utils import SearchBoost
+
 
 @python_2_unicode_compatible
 class Resource(Page):
@@ -30,12 +32,17 @@ class Resource(Page):
                           related_name="resources_by_category")
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
 
-    search_fields = Page.search_fields + (
+    search_fields = Page.search_fields + [
+        index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE),
         index.FilterField('date'),
-        index.SearchField('content', partial_match=True, boost=2),
+        index.SearchField('content', partial_match=True, boost=SearchBoost.CONTENT),
         index.FilterField('categories'),
         index.FilterField('language'),
-    )
+        index.FilterField('get_search_type'),
+    ]
+
+    def get_search_type(self):
+        return self.__class__.__name__.lower()
 
     def get_absolute_url(self):
         return reverse("resource-detail", kwargs={"slug": self.slug})
