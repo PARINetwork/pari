@@ -72,6 +72,7 @@ class Article(Page):
 
     categories = M2MField("category.Category", related_name="articles_by_category")
     locations = M2MField("location.Location", related_name="articles_by_location", blank=True)
+
     content_panels = Page.content_panels + [
         FieldPanel('strap'),
         M2MFieldPanel('authors'),
@@ -87,7 +88,6 @@ class Article(Page):
                         FieldPanel('show_year',classname="col4")
                     ])
             ],'Date'),
-        StreamFieldPanel('modular_content'),
         FieldPanel('content'),
         MultiFieldPanel(
             [
@@ -96,8 +96,6 @@ class Article(Page):
             ], 'Cover Image'),
         FieldPanel('categories'),
         M2MFieldPanel('locations'),
-
-
     ]
 
     search_fields = Page.search_fields + [
@@ -211,3 +209,7 @@ class Article(Page):
 
         # Return results in order given by ElasticSearch
         return [results[str(pk)] for pk in pks if results[str(pk)]]
+
+
+if settings.MODULAR_ARTICLE:
+    Article.content_panels.insert(-4, StreamFieldPanel('modular_content'))
