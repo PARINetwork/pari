@@ -11,6 +11,7 @@ class TinyMCEFormatingButtons(Enum):
     LINK=['link', 'unlink']
     WAGTAIL_FEATURES=['wagtaildoclink', 'wagtailimage', 'wagtailembed']
     MISCELLANEOUS=['pastetext', 'fullscreen']
+    HORIZONTAL_RULE = ['hr']
 
     def __str__(self):
         return str(self.value)

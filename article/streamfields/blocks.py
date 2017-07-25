@@ -12,6 +12,18 @@ from article.streamfields.streamfields_utility import TinyMCEFormatingButtons
 from face.models import Face
 
 
+class CustomRichTextBlock(RichTextBlock):
+
+    buttons = None
+
+    def __init__(self,buttons=None, **kwargs):
+        super(CustomRichTextBlock, self).__init__(**kwargs)
+        self.buttons = buttons
+
+    @cached_property
+    def field(self):
+        return forms.CharField(widget=get_rich_text_editor_widget_updated(self.editor,buttons=self.buttons),**self.field_options)
+
 class ImageBlock(blocks.StructBlock):
     image = ImageChooserBlock()
     caption = blocks.CharBlock(required=False)
@@ -71,7 +83,10 @@ class TwoColumnImageBlock(blocks.StructBlock):
 
 
 class ParagraphBlock(blocks.StructBlock):
-    content = blocks.RichTextBlock()
+    ALIGN_CONTENT_CHOICES = [('left', 'Left'), ('center', 'Center')]
+
+    content = CustomRichTextBlock(editor='tinymce',buttons=[[TinyMCEFormatingButtons.CHARACTER_STYLING.value,TinyMCEFormatingButtons.UNDO_REDO.value,TinyMCEFormatingButtons.HORIZONTAL_RULE.value,TinyMCEFormatingButtons.LISTING.value,TinyMCEFormatingButtons.LINK.value]])
+    align_content = blocks.ChoiceBlock(choices=ALIGN_CONTENT_CHOICES, default=ALIGN_CONTENT_CHOICES[0][0])
 
     class Meta:
         icon = 'doc-full'
@@ -99,17 +114,6 @@ class FaceBlock(blocks.StructBlock):
         icon = 'image'
         template = 'article/blocks/face.html'
 
-class CustomRichTextBlock(RichTextBlock):
-
-    buttons = None
-
-    def __init__(self,buttons=None, **kwargs):
-        super(CustomRichTextBlock, self).__init__(**kwargs)
-        self.buttons = buttons
-
-    @cached_property
-    def field(self):
-        return forms.CharField(widget=get_rich_text_editor_widget_updated(self.editor,buttons=self.buttons),**self.field_options)
 
 
 def get_rich_text_editor_widget_updated(name='default',**kwargs):

@@ -131,9 +131,9 @@ def tiny_css():
             border: 0;
         }}
 
-        .mce-edit-area iframe{{
-            height:100px !important;
-        }}
+        # .mce-edit-area iframe{{
+        #     height:100px !important;
+        # }}
 
         .mce-btn:hover, .mce-btn:focus {{
                 background-color: rgb(86, 202, 200) !important;
