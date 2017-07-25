@@ -59,6 +59,7 @@ Search{% if search_results %} Results{% endif %}
                 </div>
                 <div class="input-box col-lg-9 col-md-7">
                     <input type="text" name="q" value="{{ query_string }}" placeholder="Enter to search" itemprop="query-input">
+                    <input type="hidden" name="language" value="en" itemprop="query-default-language">
                     <span class="search-icon fa fa-search fa-in-results"></span>
                 </div>
             </div>
