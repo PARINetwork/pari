@@ -1,4 +1,5 @@
 @import "layout/responsive";
+@import "colors/colors";
 
 .search-panel, .search-panel-toggle {
     .container {
@@ -84,6 +85,9 @@
 
 .search-result-panel {
   background: #FFF;
+  h2 {
+    color: @light-grey;
+  }
 
   .search-panel {
     .container {
@@ -94,6 +98,16 @@
         height: auto;
         position: relative;
         margin-top: 10px;
+        .result-label {
+          width: auto;
+          padding-right: 0;
+        }
+        .input-box {
+          span.search-icon.fa-in-results {
+            top: 33px ;
+            right: 20px;
+          }
+        }
 
         input:-webkit-autofill {
             -webkit-box-shadow: 0 0 0px 1000px #FFF inset;
@@ -105,7 +119,7 @@
       }
 
       section.search-result {
-        margin: 5px 0px 20px 0px;
+        margin: 2px 0px 20px 0px;
         height: ~"calc(100% - 126px)";
       }
 

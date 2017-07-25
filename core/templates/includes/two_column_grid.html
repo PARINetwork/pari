@@ -1,7 +1,32 @@
 {% load i18n core_filters %}
 {% load i18n wagtailcore_tags %}
 
-<section class="search-result two-column-grid">
+<div class="no-of-results col-lg-12 col-md-12 col-xs-12 col-sm-12"><h3>{{search_results.paginator.count}} results</h3></div>
+<div class="col-lg-2 filters-list">
+    <hr>
+    <div class="search-filters">
+        <div class="type-filters col-sm-6 col-md-6 col-xs-6">
+            <h4 class="type-heading">Types</h4>
+            <ul >
+                <li class="squaredFour"><input id="squaredFour" type="checkbox" name="type" value="article"> <label for="squaredFour"></label><h5>Articles</h5></li>
+                <li class="squaredFour"><input id="squaredFour1" type="checkbox" name="type" value="video"> <label for="squaredFour1"></label><h5>Videos</h5></li>
+                <li class="squaredFour"><input id="squaredFour2" type="checkbox" name="type" value="audio"> <label for="squaredFour2"></label><h5>Audios</h5></li>
+                <li class="squaredFour"><input id="squaredFour3" type="checkbox" name="type" value="face"> <label for="squaredFour3"></label><h5>Faces</h5></li>
+                <li class="squaredFour"><input id="squaredFour4" type="checkbox" name="type" value="staticpage"> <label for="squaredFour4"></label><h5>PARI Pages</h5></li>
+            </ul>
+        </div>
+        <hr>
+        <div class="category-filters col-sm-6 col-md-6 col-xs-6">
+            <h4 class="category-heading">Categories</h4>
+            <ul >
+                <li class="squaredFour"><input id="squaredFour5" type="checkbox" name="category" value="VideoZone"><label for="squaredFour5"></label><h5>Video Zone</h5></li>
+                <li class="squaredFour"><input id="squaredFour6" type="checkbox" name="category" value="AudioZone"><label for="squaredFour6"></label><h5>Audio Zone</h5></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<section class="search-result two-column-grid col-lg-10">
+    <hr>
     <ul>
     {% for result in search_results %}
       <li class="result item col-lg-6 col-md-4 col-sm-6 col-xs-12">
