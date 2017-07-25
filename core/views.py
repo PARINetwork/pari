@@ -215,6 +215,7 @@ def site_search(
     page = request.GET.get('page', request.GET.get('p', 1))
     type_filters = request.GET.getlist('type')
     category_filters = request.GET.getlist('category')
+    language_filters = request.GET.getlist('language')
 
     raw_filters = []
 
@@ -243,6 +244,14 @@ def site_search(
                     "get_categories_filter": category_filters
                 }
             })
+
+        if language_filters:
+            raw_filters.append({
+                "terms": {
+                    "language_filter": language_filters
+                }
+            })
+
         if search_title_only:
             search_results = pages.search(query_string, fields=['title'], operator=SITE_SEARCH_OPERATOR)
         else:
@@ -290,6 +299,7 @@ def site_search(
 
         return render(request, template, dict(
             query_string=query_string,
+            languages=settings.LANGUAGES,
             search_results=search_results,
             is_ajax=request.is_ajax(),
             query=query

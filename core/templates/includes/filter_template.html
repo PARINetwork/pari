@@ -1,0 +1,54 @@
+<div class="col-lg-2 filters-list">
+    <hr>
+    <div class="search-filters">
+        <div class="type-filters">
+            <h4 class="type-heading">Types</h4>
+            <ul>
+                <li class="squaredFour"><input id="squaredFour" type="checkbox" name="type" value="article"> <label for="squaredFour"></label><h5>Articles</h5></li>
+                <li class="squaredFour"><input id="squaredFour1" type="checkbox" name="type" value="video"> <label for="squaredFour1"></label><h5>Videos</h5></li>
+                <li class="squaredFour"><input id="squaredFour2" type="checkbox" name="type" value="audio"> <label for="squaredFour2"></label><h5>Audios</h5></li>
+                <li class="squaredFour"><input id="squaredFour3" type="checkbox" name="type" value="face"> <label for="squaredFour3"></label><h5>Faces</h5></li>
+                <li class="squaredFour"><input id="squaredFour4" type="checkbox" name="type" value="staticpage"> <label for="squaredFour4"></label><h5>PARI Pages</h5></li>
+            </ul>
+        </div>
+        <hr>
+        <div class="category-filters">
+            <h4 class="category-heading">Categories</h4>
+            <ul >
+                <li class="squaredFour"><input id="squaredFour5" type="checkbox" name="category" value="Things We Do"><label for="squaredFour5"></label><h5>Things We Do</h5></li>
+                <li class="squaredFour"><input id="squaredFour6" type="checkbox" name="category" value="Things We Make"><label for="squaredFour6"></label><h5>Things We Make</h5></li>
+                <li class="squaredFour"><input id="squaredFour7" type="checkbox" name="category" value="Farming and its Crisis"><label for="squaredFour7"></label><h5>Farming and its Crisis</h5></li>
+                <li class="squaredFour"><input id="squaredFour8" type="checkbox" name="category" value="Little-Takes"><label for="squaredFour8"></label><h5>Little Takes</h5></li>
+                <li class="squaredFour"><input id="squaredFour9" type="checkbox" name="category" value="Women"><label for="squaredFour9"></label><h5>Women</h5></li>
+                <li class="squaredFour"><input id="squaredFour10" type="checkbox" name="category" value="Adivasis"><label for="squaredFour10"></label><h5>Adivasis</h5></li>
+                <li class="squaredFour"><input id="squaredFour11" type="checkbox" name="category" value="Dalits"><label for="squaredFour11"></label><h5>Dalits</h5></li>
+                <li class="squaredFour"><input id="squaredFour12" type="checkbox" name="category" value="We Are"><label for="squaredFour12"></label><h5>We Are</h5></li>
+                <li class="squaredFour"><input id="squaredFour13" type="checkbox" name="category" value="Resource Conflicts"><label for="squaredFour13"></label><h5>Resource Conflicts</h5></li>
+                <li class="squaredFour"><input id="squaredFour14" type="checkbox" name="category" value="Foot-Soldiers of Freedom"><label for="squaredFour14"></label><h5>Foot-Soldiers of Freedom</h5></li>
+                <li class="squaredFour"><input id="squaredFour15" type="checkbox" name="category" value="Small World"><label for="squaredFour15"></label><h5>Small World</h5></li>
+                <li class="squaredFour"><input id="squaredFour16" type="checkbox" name="category" value="Musafir"><label for="squaredFour16"></label><h5>Musafir</h5></li>
+                <li class="squaredFour"><input id="squaredFour17" type="checkbox" name="category" value="Getting There"><label for="squaredFour17"></label><h5>Getting There</h5></li>
+                <li class="squaredFour"><input id="squaredFour18" type="checkbox" name="category" value="The Wild"><label for="squaredFour18"></label><h5>The Wild</h5></li>
+                <li class="squaredFour"><input id="squaredFour19" type="checkbox" name="category" value="Rural Sports"><label for="squaredFour19"></label><h5>Rural Sports</h5></li>
+                <li class="squaredFour"><input id="squaredFour20" type="checkbox" name="category" value="Healthcare"><label for="squaredFour20"></label><h5>Healthcare</h5></li>
+                <li class="squaredFour"><input id="squaredFour21" type="checkbox" name="category" value="Mosaic"><label for="squaredFour21"></label><h5>Mosaic</h5></li>
+                <li class="squaredFour"><input id="squaredFour22" type="checkbox" name="category" value="Environment"><label for="squaredFour22"></label><h5>Environment</h5></li>
+                <li class="squaredFour"><input id="squaredFour23" type="checkbox" name="category" value="Tongues"><label for="squaredFour23"></label><h5>Tongues</h5></li>
+                <li class="squaredFour"><input id="squaredFour24" type="checkbox" name="category" value="Visible Work, Invisible Women"><label for="squaredFour24"></label><h5>Visible Work, Invisible Women</h5></li>
+                <li class="squaredFour"><input id="squaredFour25" type="checkbox" name="category" value="One-Offs"><label for="squaredFour25"></label><h5>One-Offs</h5></li>
+                <li class="squaredFour"><input id="squaredFour26" type="checkbox" name="category" value="Things We Wear"><label for="squaredFour26"></label><h5>Things We Wear</h5></li>
+                <li class="squaredFour"><input id="squaredFour27" type="checkbox" name="category" value="PARI for Schools"><label for="squaredFour27"></label><h5>PARI for Schools</h5></li>
+                <li class="squaredFour"><input id="squaredFour28" type="checkbox" name="category" value="PhotoZone"><label for="squaredFour28"></label><h5>PhotoZone</h5></li>
+            </ul>
+        </div>
+        <div class="language-filters">
+            <hr>
+            <h4 class="language-heading">Languages</h4>
+            <ul>
+                {% for lang in languages %}
+                    <li class="squaredFour"><input id="squaredFour{{ forloop.counter|add:29 }}" type="checkbox" name="language" value={{ lang.0 }}> <label for="squaredFour{{ forloop.counter|add:29 }}"></label><h5>{{ lang.1 }}</h5></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
