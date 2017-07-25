@@ -19,7 +19,8 @@ Search{% if search_results %} Results{% endif %}
                 if (!(z[0] in dic)) {
                     dic[z[0]] = [];
                 }
-                dic[z[0]].push(z[1]);
+                dic[z[0]].push(decodeURI(z[1]));
+
             }
             for(type in dic) {
                 $('input[name='+type+']').prop('checked', function () {
@@ -34,7 +35,9 @@ Search{% if search_results %} Results{% endif %}
                 var query = $(".search-form > input").val();
                 window.location = checked.length > 0 ? '/search/?q=' + query + '&' + checked.join('&') : '/search/?q=' + query;
             });
+
         });
+
     </script>
 {% endblock %}
 

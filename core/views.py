@@ -214,6 +214,7 @@ def site_search(
     query_string = request.GET.get('q', '')
     page = request.GET.get('page', request.GET.get('p', 1))
     type_filters = request.GET.getlist('type')
+    category_filters = request.GET.getlist('category')
 
     raw_filters = []
 
@@ -236,6 +237,12 @@ def site_search(
                 }
             })
 
+        if category_filters:
+            raw_filters.append({
+                "terms": {
+                    "get_categories_filter": category_filters
+                }
+            })
         if search_title_only:
             search_results = pages.search(query_string, fields=['title'], operator=SITE_SEARCH_OPERATOR)
         else:

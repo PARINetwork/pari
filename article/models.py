@@ -109,7 +109,8 @@ class Article(Page):
         index.SearchField('locations', partial_match=True, boost=SearchBoost.LOCATION),
         index.FilterField('categories'),
         index.FilterField('language'),
-        index.FilterField('get_search_type')
+        index.FilterField('get_search_type'),
+        index.FilterField('get_categories')
     ]
 
     def __str__(self):
@@ -143,6 +144,9 @@ class Article(Page):
             return 'audio'
         else:
             return 'article'
+
+    def get_categories(self):
+        return [category.name for category in self.categories.all()]
 
     def related_articles(self):
         if not self.pk:

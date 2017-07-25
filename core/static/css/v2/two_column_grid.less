@@ -12,7 +12,7 @@
 
 .filters-list {
   color: @grey;
-  h4{
+  h4 {
     color: @grey;
   }
   hr {
@@ -20,7 +20,13 @@
     border-top: 5px solid @light-grey;
   }
   .search-filters {
-    li{
+    .category-filters ul {
+      height: 250px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      margin-bottom: 15px;
+    }
+    li {
       display: -webkit-box;
     }
     .type-heading {
@@ -32,11 +38,15 @@
       color: @grey;
     }
     .type-filters, .category-filters {
-      margin-left: 5px;
+      margin-left: 3px;
+      ul {
+        width: 180px;
+      }
     }
 
   }
 }
+
 .squaredFour {
   //width: 20px;
   position: relative;
@@ -51,18 +61,18 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: #fcfff4;
+    background: white;
     background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
     border-radius: 3px;
     border: 1px solid #bfbfbf;
     &:after {
       content: '';
       width: 9px;
-      height: 4px;
+      height: 5px;
       position: absolute;
       top: 4px;
-      left: 3px;
-      border: 2.2px solid #FF3D08;
+      left: 2px;
+      border: 2.2px solid @grey;
       border-top: none;
       border-right: none;
       background: transparent;
@@ -82,7 +92,7 @@
 }
 
 .two-column-grid {
-  hr{
+  hr {
     color: @light-grey;
     margin-top: 0px;
   }
@@ -114,7 +124,7 @@
         position: relative;
         .dropdown.custom-dropdown {
           position: relative;
-           z-index: 2;
+          z-index: 2;
           button {
             margin-right: 0px;
             border-style: solid;
@@ -226,16 +236,17 @@
 
 }
 
- .search-result-pagination {
-    li {
-      a {
-        color: #827c7c;
-      }
-      &.active a {
-        color: #FFF;
-      }
+.search-result-pagination {
+  li {
+    a {
+      color: #827c7c;
+    }
+    &.active a {
+      color: #FFF;
     }
   }
+}
+
 // ends
 
 @media (max-width: 1199px) {
@@ -291,9 +302,9 @@
 @media (max-width: 500px) {
   #holder {
     overflow: visible !important;
-    .pagination > .active>a {
-        z-index: 0 !important;
-      }
+    .pagination > .active > a {
+      z-index: 0 !important;
+    }
 
     .two-column-grid {
       & > ul {
