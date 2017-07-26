@@ -6,6 +6,41 @@
 Search{% if search_results %} Results{% endif %}
 {% endblock %}
 
+{% block extra_js %}
+    <script type="text/javascript">
+        $(function () {
+            var i = document.location.href.lastIndexOf('?');
+            var types = document.location.href.substr(i + 2).split('&');
+            types.shift();
+            var dic = {};
+            for (typ in types) {
+                type = types[typ];
+                var z = type.split('=');
+                if (!(z[0] in dic)) {
+                    dic[z[0]] = [];
+                }
+                dic[z[0]].push(decodeURI(z[1]));
+
+            }
+            for(type in dic) {
+                $('input[name='+type+']').prop('checked', function () {
+                    return $.inArray(this.value, dic[type]) !== -1;
+                });
+            }
+            $(".search-filters li > input[type='checkbox']").on("change", function () {
+                var checked = [];
+                $(".search-filters li > input[type='checkbox']:checked").each(function () {
+                    checked.push($(this).attr('name') + '=' + $(this).val());
+                });
+                var query = $(".search-form > input").val();
+                window.location = checked.length > 0 ? '/search/?q=' + query + '&' + checked.join('&') : '/search/?q=' + query;
+            });
+
+        });
+
+    </script>
+{% endblock %}
+
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/two_column_grid.less">
 {% endblock %}
@@ -14,24 +49,31 @@ Search{% if search_results %} Results{% endif %}
 {% block main %}
 <div itemscope itemtype="http://schema.org/SearchResultsPage" class="search-result-panel">
 
-  <div class="search-panel">
+  <div class="search-panel ">
     <div class="container">
       <header class="seach-input-panel">
         <form action="/search/" role="search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction" class="search-form">
-          <div class="no-of-results">{{search_results.paginator.count}} results for </div>
-          <div class="input-box">
-            <input type="text" name="q" value="{{ query_string }}" placeholder="Enter to search" itemprop="query-input">
-            <span class="search-icon fa fa-search"></span>
-          </div>
+            <div>
+                <div class="col-lg-3 col-md-3 result-label">
+                    <h2>Search results for</h2>
+                </div>
+                <div class="input-box col-lg-9 col-md-7">
+                    <input type="text" name="q" value="{{ query_string }}" placeholder="Enter to search" itemprop="query-input">
+                    <input type="hidden" name="language" value="en" itemprop="query-default-language">
+                    <span class="search-icon fa fa-search fa-in-results"></span>
+                </div>
+            </div>
 
           <meta itemprop="target" content="/search/?q={q}">
 
         </form>
       </header>
+      <div class="no-of-results col-lg-12 col-md-12 col-xs-12 col-sm-12"><h3>{{search_results.paginator.count}} results</h3></div>
+        {% include "includes/filter_template.html" with languages=languages %}
       {% if search_results %}
-        {% include "includes/two_column_grid.html" with search_results=search_results %}
+        {% include "includes/two_column_grid.html" with search_results=search_results languages=languages%}
       {% else %}
-          <div class="result-not-found bg-danger">
+          <div class="result-not-found bg-danger col-lg-10 col-md-10">
             <p class="not-found-msg">Sorry, could not find any results for "{{ query }}". Please try a different query.</p>
           </div>
       {% endif %}

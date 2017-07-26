@@ -4,11 +4,101 @@
   z-index: 1;
 }
 
+.no-of-results {
+  h4 {
+    margin-bottom: 5px;
+  }
+}
+
+.filters-list {
+  color: @grey;
+  h4 {
+    color: @grey;
+  }
+  hr {
+    margin-top: 0px;
+    border-top: 5px solid @light-grey;
+  }
+  .search-filters {
+    .category-filters ul {
+      height: 250px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      margin-bottom: 15px;
+    }
+    li {
+      display: -webkit-box;
+    }
+    .type-heading {
+      font-weight: 500;
+    }
+    h5 {
+      margin-top: 1px;
+      font-weight: 400;
+      color: @grey;
+    }
+    .type-filters, .category-filters {
+      margin-left: 3px;
+      ul {
+        width: 180px;
+      }
+    }
+
+  }
+}
+
+.squaredFour {
+  //width: 20px;
+  position: relative;
+  //margin: 20px auto;
+  h5 {
+    margin-left: 10px;
+  }
+  label {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    border-radius: 3px;
+    border: 1px solid #bfbfbf;
+    &:after {
+      content: '';
+      width: 9px;
+      height: 5px;
+      position: absolute;
+      top: 4px;
+      left: 2px;
+      border: 2.2px solid @grey;
+      border-top: none;
+      border-right: none;
+      background: transparent;
+      opacity: 0;
+      transform: rotate(-45deg);
+    }
+    &:hover::after {
+      opacity: 0.5;
+    }
+  }
+  input[type=checkbox] {
+    visibility: hidden;
+    &:checked + label:after {
+      opacity: 1;
+    }
+  }
+}
+
 .two-column-grid {
+  hr {
+    color: @light-grey;
+    margin-top: 0px;
+  }
   .result {
     min-height: 182px;
   }
-
   margin: 30px 0px 20px 0px;
   overflow: visible;
   & > ul {
@@ -34,7 +124,7 @@
         position: relative;
         .dropdown.custom-dropdown {
           position: relative;
-           z-index: 2;
+          z-index: 2;
           button {
             margin-right: 0px;
             border-style: solid;
@@ -146,16 +236,17 @@
 
 }
 
- .search-result-pagination {
-    li {
-      a {
-        color: #827c7c;
-      }
-      &.active a {
-        color: #FFF;
-      }
+.search-result-pagination {
+  li {
+    a {
+      color: #827c7c;
+    }
+    &.active a {
+      color: #FFF;
     }
   }
+}
+
 // ends
 
 @media (max-width: 1199px) {
@@ -211,9 +302,9 @@
 @media (max-width: 500px) {
   #holder {
     overflow: visible !important;
-    .pagination > .active>a {
-        z-index: 0 !important;
-      }
+    .pagination > .active > a {
+      z-index: 0 !important;
+    }
 
     .two-column-grid {
       & > ul {
