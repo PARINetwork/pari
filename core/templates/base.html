@@ -167,6 +167,7 @@
             <form action="/search/"role="search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction" class="search-form">
               <meta itemprop="target" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{% url "site_search" %}?q={q}" />
               <input type="text" class="query" name="q" value="{{ query_string }}" placeholder="Enter to search" itemprop="query-input">
+              <input type="hidden" name="type" value="article" itemprop="query-default-content-type">
               <input type="hidden" name="language" value="en" itemprop="query-default-language">
                 <span class="search-icon fa fa-search"></span>
             </form>
@@ -300,7 +301,7 @@
           var value = input.val().trim();
           input.removeClass("error");
           if(value.length > 0) {
-            window.location.href = window.location.origin + "/search/?q="+value+"&language=en";
+            window.location.href = window.location.origin + "/search/?q="+value+"&type=article&language=en";
           } else {
             if(!input.hasClass("error")) {
                 input.addClass("error");
