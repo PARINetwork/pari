@@ -91,7 +91,7 @@ class TwoColumnImageBlock(blocks.StructBlock):
 class ParagraphBlock(blocks.StructBlock):
     ALIGN_CONTENT_CHOICES = [('left', 'Left'), ('center', 'Center')]
 
-    content = CustomRichTextBlock(editor='tinymce')
+    content = CustomRichTextBlock(editor='tinymce_paragraph')
     align_content = blocks.ChoiceBlock(choices=ALIGN_CONTENT_CHOICES, default=ALIGN_CONTENT_CHOICES[0][0])
 
     class Meta:
@@ -124,7 +124,7 @@ class FaceBlock(blocks.StructBlock):
 class ParagraphWithBlockQuoteBlock(blocks.StructBlock):
     ALIGN_QUOTE_CHOICES = [('left', 'Left'), ('right', 'Right')]
 
-    quote = CustomRichTextBlock(editor='tinymce')
+    quote = CustomRichTextBlock(editor='tinymce_quote')
     align_quote = blocks.ChoiceBlock(choices=ALIGN_QUOTE_CHOICES, default=ALIGN_QUOTE_CHOICES[1][0])
     paragraph = blocks.RichTextBlock()
 
