@@ -160,8 +160,15 @@ WAGTAILADMIN_RICH_TEXT_EDITORS = {
         'WIDGET': 'wagtail.wagtailadmin.rich_text.HalloRichTextArea'
     },
     'tinymce': {
-        'WIDGET': 'article.streamfields.textarea.TinyMCECustomTextArea'
-    },
+        'WIDGET': 'article.streamfields.textarea.TinyMCECustomTextArea',
+        'OPTIONS': {
+                'buttons': [
+                [
+                    ['bold', 'italic'],
+                ]
+            ]
+        }
+    }
 }
 
 
