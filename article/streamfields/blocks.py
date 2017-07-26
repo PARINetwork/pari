@@ -126,7 +126,7 @@ class ParagraphWithBlockQuoteBlock(blocks.StructBlock):
 
     quote = CustomRichTextBlock(editor='tinymce_quote')
     align_quote = blocks.ChoiceBlock(choices=ALIGN_QUOTE_CHOICES, default=ALIGN_QUOTE_CHOICES[1][0])
-    paragraph = blocks.RichTextBlock()
+    content = ParagraphBlock()
 
     class Meta:
         icon = 'doc-full'
