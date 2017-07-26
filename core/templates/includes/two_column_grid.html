@@ -29,7 +29,7 @@
                                 {{ article_translations | length }} languages
                                 <span class="caret"></span>
                             </button>
-                            <ul class="dropdown-menu" style="left: 50%;">
+                            <ul class="dropdown-menu">
                                 {% for translation in article_translations %}
                                     <li><a href="{{ translation.get_absolute_url}}">{{ translation.get_language_display }}</a></li>
                                 {% endfor %}
