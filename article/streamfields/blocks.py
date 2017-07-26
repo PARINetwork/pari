@@ -8,7 +8,6 @@ from wagtail.wagtailcore.blocks import PageChooserBlock, RichTextBlock
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
-from article.streamfields.streamfields_utility import TinyMCEFormatingButtons
 from face.models import Face
 
 
@@ -92,7 +91,7 @@ class TwoColumnImageBlock(blocks.StructBlock):
 class ParagraphBlock(blocks.StructBlock):
     ALIGN_CONTENT_CHOICES = [('left', 'Left'), ('center', 'Center')]
 
-    content = CustomRichTextBlock(editor='tinymce',buttons=[[TinyMCEFormatingButtons.CHARACTER_STYLING.value,TinyMCEFormatingButtons.UNDO_REDO.value,TinyMCEFormatingButtons.HORIZONTAL_RULE.value,TinyMCEFormatingButtons.LISTING.value,TinyMCEFormatingButtons.LINK.value]])
+    content = CustomRichTextBlock(editor='tinymce')
     align_content = blocks.ChoiceBlock(choices=ALIGN_CONTENT_CHOICES, default=ALIGN_CONTENT_CHOICES[0][0])
 
     class Meta:
@@ -122,16 +121,7 @@ class FaceBlock(blocks.StructBlock):
         template = 'article/blocks/face.html'
 
 
-
-def get_rich_text_editor_widget_updated(name='default',**kwargs):
-    editor_settings = getattr(settings, 'WAGTAILADMIN_RICH_TEXT_EDITORS', DEFAULT_RICH_TEXT_EDITORS)
-
-    editor = editor_settings[name]
-    return import_string(editor['WIDGET'])(**kwargs)
-
-
 class ParagraphWithBlockQuoteBlock(blocks.StructBlock):
-
     ALIGN_QUOTE_CHOICES = [('left', 'Left'), ('right', 'Right')]
 
     quote = CustomRichTextBlock(editor='tinymce')
