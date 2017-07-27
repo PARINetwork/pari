@@ -103,15 +103,15 @@
           padding-left: 0;
         }
         input {
-          height: 34px;
+          height: 60px;
           font-family: 'Amiri', serif;
-          padding: 7px 30px 8px 10px;
-          margin-top: 19px;
+          padding: 5px 0px 0px 10px;
+          margin-top: 4px;
         }
 
         .input-box {
           span.search-icon.fa-in-results {
-            top: 27px ;
+            top: 30px !important;
             right: 20px;
           }
         }
@@ -167,4 +167,26 @@
   .search-panel-toggle {
     margin-top: 56px !important;
   }
+  .input-box {
+    padding-left: 0px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .input-box {
+    width: 81%;
+  }
+}
+
+input::-webkit-input-placeholder { /* WebKit browsers */
+  line-height: 1.8em;
+}
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  line-height: 1.7em;
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+  line-height: 1.7em;
+}
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+  line-height: 1.7em;
 }

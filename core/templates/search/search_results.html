@@ -88,10 +88,10 @@ Search{% if search_results %} Results{% endif %}
       <header class="seach-input-panel">
         <form action="/search/" role="search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction" class="search-form">
             <div>
-                <div class="col-lg-3 col-md-3 result-label">
+                <div class="col-lg-3 col-md-3 col-sm-3 result-label">
                     <h2>Search results for</h2>
                 </div>
-                <div class="input-box col-lg-9 col-md-7">
+                <div class="input-box col-lg-9 col-md-9 col-sm-12">
                     <input type="text" name="q" value="{{ query_string }}" placeholder="Enter to search" itemprop="query-input">
                     <input type="hidden" name="type" value="article" itemprop="query-default-content-type">
                     <input type="hidden" name="type" value="video" itemprop="query-default-content-type">
@@ -105,13 +105,13 @@ Search{% if search_results %} Results{% endif %}
 
         </form>
       </header>
-      <div class="no-of-results col-lg-12 col-md-12 col-xs-12 col-sm-12"><h3>{{search_results.paginator.count}} Result{% if search_results.paginator.count > 1%}s{% endif %}</h3></div>
+      <div class="no-of-results col-lg-12 col-md-12 col-xs-12 col-sm-12"><h4>{{search_results.paginator.count}} Result{% if search_results.paginator.count > 1%}s{% endif %}</h4></div>
         {% include "includes/filter_template.html" with languages=languages %}
       {% if search_results %}
         {% include "includes/two_column_grid.html" with search_results=search_results languages=languages%}
       {% else %}
           <div class="result-not-found bg-danger col-lg-10 col-md-10">
-            <p class="not-found-msg " >No results found.</p>
+            <p class="not-found-msg">No results found for your query with current filters. Try another query with different filters.</p>
           </div>
       {% endif %}
     </div>

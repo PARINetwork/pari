@@ -43,7 +43,8 @@
     list-style: disc;
     padding-left: 40px;
   }
-  .align-center {
+
+  &.text-align-center {
     text-align: center;
 
     p {
@@ -54,18 +55,18 @@
 
 .paragraph-with-block-quote{
 
-   .align-right {
+   .quote-align-right {
      float: right;
      padding-left: 30px;
    }
-  .align-right:lang(ur) {
+  .quote-align-right:lang(ur) {
      margin-right: 8%;
    }
-  .align-left:lang(ur) {
+  .quote-align-left:lang(ur) {
      margin-left: 8%;
    }
 
-  .align-left {
+  .quote-align-left {
     float: left;
     padding-right: 30px;
   }
@@ -92,7 +93,7 @@
       }
     }
   }
-  .align-left.block-quote {
+  .quote-align-left.block-quote {
     .rich-text {
       margin-left: 15%;
       width: 100%;
@@ -103,12 +104,12 @@
 
 .paragraph-with-image-block {
 
-  .align-right {
+  .image-align-right {
     float: right;
     padding-left: 30px;
   }
 
-  .align-left {
+  .image-align-left {
     float: left;
     padding-right: 30px;
   }
@@ -117,19 +118,19 @@
 
 @media (max-width: @screen-sm-max) {
   .paragraph-with-block-quote {
-    .align-right:lang(ur) {
+    .quote-align-right:lang(ur) {
       margin-right: 0;
     }
-    .align-left:lang(ur) {
+    .quote-align-left:lang(ur) {
       margin-letf: 0;
     }
-    .align-left.block-quote {
+    .quote-align-left.block-quote {
       .rich-text {
         margin:7%;
         width: 100%;
       }
     }
-    .align-right.block-quote {
+    .quote-align-right.block-quote {
       .rich-text {
         margin:7%;
         width: 100%;

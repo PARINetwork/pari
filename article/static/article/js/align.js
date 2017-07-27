@@ -86,7 +86,13 @@ $(function() {
 });
 
 var initialize_tiny_editor = function () {
-    $('.action-add-block-paragraph_with_block_quote, .action-add-block-paragraph').on("click",function () {
+    $('.action-add-block-paragraph_with_block_quote').on("click",function () {
+        setTimeout(function() {
+            style_editor();
+        }, 100);
+    });
+
+    $('.action-add-block-paragraph').on("click",function () {
         setTimeout(function() {
             style_editor();
         }, 100);

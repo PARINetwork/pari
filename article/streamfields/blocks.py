@@ -96,7 +96,7 @@ class ParagraphBlock(blocks.StructBlock):
 
     class Meta:
         icon = 'doc-full'
-        label = 'Paragraphs'
+        label = 'Paragraph Module'
         template = 'article/blocks/paragraph.html'
 
 
