@@ -2,8 +2,7 @@
 {% load article_filters %}
 
 <div class="paragraph-block" >
-    <div class="{{ value.align_content }}-align">
+    <div class="align-{{ value.align_content }}">
            {{ value.content.source | expand_db_html | safe }}
-
     </div>
 </div>

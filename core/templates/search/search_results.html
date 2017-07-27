@@ -27,13 +27,47 @@ Search{% if search_results %} Results{% endif %}
                     return $.inArray(this.value, dic[type]) !== -1;
                 });
             }
-            $(".search-filters li > input[type='checkbox']").on("change", function () {
+            if(dic.hasOwnProperty('category') && !(dic["type"] && (dic["type"].includes("article") || dic["type"].includes("video") || dic["type"].includes("audio"))) ){
+                clearChildrenCheckBox.call($('.category-filters .clear-all'));
+            }
+
+            if(dic["type"] && (dic["type"].includes("article") || dic["type"].includes("video") || dic["type"].includes("audio"))){
+                removeDisableFromCategory();
+            }
+            function removeDisableFromCategory() {
+                $('.category-filters ul > li > input[name="category"]').each(function () {
+                    $(this).attr("disabled", false);
+                });
+            }
+            function addDisabletoCategory() {
+                $('.category-filters ul > li > input[name="category"]').each(function () {
+                    $(this).attr("disabled", true);
+
+                });
+            }
+
+            function clearChildrenCheckBox() {
+                $(this).parent().parent().find("input").each(function () {
+                    $(this).prop("checked", false);
+                });
+                formQueryParams();
+            }
+
+            $(".clear-all").on("click",function () {
+                clearChildrenCheckBox.call(this);
+            });
+
+            function formQueryParams() {
                 var checked = [];
                 $(".search-filters li > input[type='checkbox']:checked").each(function () {
                     checked.push($(this).attr('name') + '=' + $(this).val());
                 });
                 var query = $(".search-form > input").val();
                 window.location = checked.length > 0 ? '/search/?q=' + query + '&' + checked.join('&') : '/search/?q=' + query;
+            }
+
+            $(".search-filters li > input[type='checkbox']").on("change", function () {
+                formQueryParams();
             });
 
         });
@@ -59,6 +93,9 @@ Search{% if search_results %} Results{% endif %}
                 </div>
                 <div class="input-box col-lg-9 col-md-7">
                     <input type="text" name="q" value="{{ query_string }}" placeholder="Enter to search" itemprop="query-input">
+                    <input type="hidden" name="type" value="article" itemprop="query-default-content-type">
+                    <input type="hidden" name="type" value="video" itemprop="query-default-content-type">
+                    <input type="hidden" name="type" value="audio" itemprop="query-default-content-type">
                     <input type="hidden" name="language" value="en" itemprop="query-default-language">
                     <span class="search-icon fa fa-search fa-in-results"></span>
                 </div>
@@ -68,13 +105,13 @@ Search{% if search_results %} Results{% endif %}
 
         </form>
       </header>
-      <div class="no-of-results col-lg-12 col-md-12 col-xs-12 col-sm-12"><h3>{{search_results.paginator.count}} results</h3></div>
+      <div class="no-of-results col-lg-12 col-md-12 col-xs-12 col-sm-12"><h3>{{search_results.paginator.count}} Result{% if search_results.paginator.count > 1%}s{% endif %}</h3></div>
         {% include "includes/filter_template.html" with languages=languages %}
       {% if search_results %}
         {% include "includes/two_column_grid.html" with search_results=search_results languages=languages%}
       {% else %}
           <div class="result-not-found bg-danger col-lg-10 col-md-10">
-            <p class="not-found-msg">Sorry, could not find any results for "{{ query }}". Please try a different query.</p>
+            <p class="not-found-msg " >No results found.</p>
           </div>
       {% endif %}
     </div>

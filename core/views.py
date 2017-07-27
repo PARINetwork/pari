@@ -297,12 +297,16 @@ def site_search(
         if request.is_ajax() and template_ajax:
             template = template_ajax
 
+
         return render(request, template, dict(
             query_string=query_string,
             languages=settings.LANGUAGES,
             search_results=search_results,
             is_ajax=request.is_ajax(),
-            query=query
+            query=query,
+            type_filters=type_filters,
+            category_filters=category_filters,
+            language_filters=language_filters
         ))
 
 # TODO: Remove the below two functions when we migrate to wagtail 1.2

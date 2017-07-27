@@ -154,15 +154,43 @@ WAGTAILSEARCH_BACKENDS = {
         'ATOMIC_REBUILD': True,
     },
 }
-
 WAGTAILADMIN_RICH_TEXT_EDITORS = {
     'default': {
         'WIDGET': 'wagtail.wagtailadmin.rich_text.HalloRichTextArea'
     },
     'tinymce': {
-        'WIDGET': 'article.streamfields.textarea.TinyMCECustomTextArea'
+        'WIDGET': 'wagtailtinymce.rich_text.TinyMCERichTextArea',
+    },
+    'tinymce_paragraph': {
+        'WIDGET': 'wagtailtinymce.rich_text.TinyMCERichTextArea',
+        'OPTIONS': {
+            'buttons': [
+                [
+                    ['undo', 'redo'],
+                    ['formatselect'],
+                    ['bold', 'italic'],
+                    ['bullist', 'numlist'],
+                    ['hr'],
+                    ['link', 'unlink'],
+                    ['fullscreen'],
+                ]
+            ]
+        }
+    },
+    'tinymce_quote': {
+        'WIDGET': 'wagtailtinymce.rich_text.TinyMCERichTextArea',
+        'OPTIONS': {
+            'buttons': [
+                [
+                    ['undo', 'redo'],
+                    ['bold', 'italic'],
+                    ['fullscreen'],
+                ]
+            ]
+        }
     },
 }
+
 
 
 WAGTAILIMAGES_IMAGE_MODEL = 'core.AffixImage'

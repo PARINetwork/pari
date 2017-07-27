@@ -8,21 +8,27 @@ from wagtail.wagtailcore.blocks import PageChooserBlock, RichTextBlock
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
-from article.streamfields.streamfields_utility import TinyMCEFormatingButtons
 from face.models import Face
 
 
 class CustomRichTextBlock(RichTextBlock):
+    @classmethod
+    def get_rich_text_editor_widget(cls, name='default'):
+        editor_settings = getattr(settings, 'WAGTAILADMIN_RICH_TEXT_EDITORS', DEFAULT_RICH_TEXT_EDITORS)
 
-    buttons = None
+        kwargs = {}
+        editor = editor_settings[name]
+        options = editor.get('OPTIONS')
 
-    def __init__(self,buttons=None, **kwargs):
-        super(CustomRichTextBlock, self).__init__(**kwargs)
-        self.buttons = buttons
+        if options:
+            kwargs.update(options)
+
+        return import_string(editor['WIDGET'])(**kwargs)
 
     @cached_property
     def field(self):
-        return forms.CharField(widget=get_rich_text_editor_widget_updated(self.editor,buttons=self.buttons),**self.field_options)
+        return forms.CharField(widget=self.get_rich_text_editor_widget(self.editor), **self.field_options)
+
 
 class ImageBlock(blocks.StructBlock):
     image = ImageChooserBlock()
@@ -85,7 +91,7 @@ class TwoColumnImageBlock(blocks.StructBlock):
 class ParagraphBlock(blocks.StructBlock):
     ALIGN_CONTENT_CHOICES = [('left', 'Left'), ('center', 'Center')]
 
-    content = CustomRichTextBlock(editor='tinymce',buttons=[[TinyMCEFormatingButtons.CHARACTER_STYLING.value,TinyMCEFormatingButtons.UNDO_REDO.value,TinyMCEFormatingButtons.HORIZONTAL_RULE.value,TinyMCEFormatingButtons.LISTING.value,TinyMCEFormatingButtons.LINK.value]])
+    content = CustomRichTextBlock(editor='tinymce_paragraph')
     align_content = blocks.ChoiceBlock(choices=ALIGN_CONTENT_CHOICES, default=ALIGN_CONTENT_CHOICES[0][0])
 
     class Meta:
@@ -115,20 +121,12 @@ class FaceBlock(blocks.StructBlock):
         template = 'article/blocks/face.html'
 
 
-
-def get_rich_text_editor_widget_updated(name='default',**kwargs):
-    editor_settings = getattr(settings, 'WAGTAILADMIN_RICH_TEXT_EDITORS', DEFAULT_RICH_TEXT_EDITORS)
-
-    editor = editor_settings[name]
-    return import_string(editor['WIDGET'])(**kwargs)
-
 class ParagraphWithBlockQuoteBlock(blocks.StructBlock):
-
     ALIGN_QUOTE_CHOICES = [('left', 'Left'), ('right', 'Right')]
 
-    quote = CustomRichTextBlock(editor='tinymce',buttons=[[TinyMCEFormatingButtons.CHARACTER_STYLING.value,TinyMCEFormatingButtons.UNDO_REDO.value]])
+    quote = CustomRichTextBlock(editor='tinymce_quote')
     align_quote = blocks.ChoiceBlock(choices=ALIGN_QUOTE_CHOICES, default=ALIGN_QUOTE_CHOICES[1][0])
-    paragraph = blocks.RichTextBlock()
+    content = ParagraphBlock()
 
     class Meta:
         icon = 'doc-full'
