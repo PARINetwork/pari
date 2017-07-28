@@ -106,7 +106,7 @@ class Article(Page):
         index.SearchField('strap', partial_match=True, boost=SearchBoost.DESCRIPTION),
         index.SearchField('content', partial_match=True, boost=SearchBoost.CONTENT),
         index.SearchField('modular_content', partial_match=True, boost=SearchBoost.CONTENT),
-        index.SearchField('locations', partial_match=True, boost=SearchBoost.LOCATION),
+        index.SearchField('get_district_from_location', partial_match=True, boost=SearchBoost.LOCATION),
         index.SearchField('language'),
         index.FilterField('categories'),
         index.FilterField('language'),
@@ -119,6 +119,9 @@ class Article(Page):
 
     def get_authors(self):
         return [author.name for author in self.authors.all()]
+
+    def get_district_from_location(self):
+        return [location.address for location in self.locations.all()]
 
     def get_context(self, request, *args, **kwargs):
         try:
