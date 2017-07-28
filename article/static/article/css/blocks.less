@@ -1,145 +1,148 @@
 @import "static/css/common.less";
 
-.image-block {
-  background: white;
+.modular-content {
 
-  .image {
-    position: relative;
-    background: black;
-    height: 380px;
-    img {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      margin: auto;
+  .image-block {
+    background: white;
 
-      width: auto !important;
-      max-width: 100%;
-      height: auto;
-      max-height: 100%;
-      display: block;
-      vertical-align: middle;
-    }
-  }
-  .caption {
-    font-style: italic;
-  }
-}
+    .image {
+      position: relative;
+      background: black;
+      height: 380px;
+      img {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
 
-.full-width-image-block {
-  margin: 10px;
-  img {
-    width: 100%;
-  }
-}
-
-.paragraph-block {
-  padding-left: 15%;
-  padding-right: 15%;
-
-  ul {
-    list-style: disc;
-    padding-left: 40px;
-  }
-
-  &.text-align-center {
-    text-align: center;
-
-    p {
-      text-align: center;
-    }
-  }
-}
-
-.paragraph-with-block-quote{
-
-   .quote-align-right {
-     float: right;
-     padding-left: 30px;
-   }
-  .quote-align-right:lang(ur) {
-     margin-right: 8%;
-   }
-  .quote-align-left:lang(ur) {
-     margin-left: 8%;
-   }
-
-  .quote-align-left {
-    float: left;
-    padding-right: 30px;
-  }
-
-  .block-quote {
-    .rich-text {
-      margin-top: -27px;
-      border-bottom: 1px solid #FF3D08;
-      border-top: 1px solid #FF3D08;
-      width: 85%;
-      .paragraph-holder {
-        width: 96%;
-        color: #FF3D08 !important;
-        line-height: 1.9em;
-        padding: 12px 20px 12px 20px;
-        font-size: 2.0em;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        margin-left: 5px;
+        width: auto !important;
+        max-width: 100%;
+        height: auto;
+        max-height: 100%;
+        display: block;
+        vertical-align: middle;
       }
-      .paragraph-holder:lang(ur) {
-        width: 100%;
-        strong {
-          padding-right: 0;
+    }
+    .caption {
+      font-style: italic;
+    }
+  }
+
+  .full-width-image-block {
+    margin: 10px;
+    img {
+      width: 100%;
+    }
+  }
+
+  .paragraph-block {
+    padding-left: 15%;
+    padding-right: 15%;
+
+    ul {
+      list-style: disc;
+      padding-left: 40px;
+    }
+
+    &.text-align-center {
+      text-align: center;
+
+      p {
+        text-align: center;
+      }
+    }
+  }
+
+  .paragraph-with-block-quote {
+
+    .quote-align-right {
+      float: right;
+      padding-left: 30px;
+    }
+    .quote-align-right:lang(ur) {
+      margin-right: 8%;
+    }
+    .quote-align-left:lang(ur) {
+      margin-left: 8%;
+    }
+
+    .quote-align-left {
+      float: left;
+      padding-right: 30px;
+    }
+
+    .block-quote {
+      .rich-text {
+        margin-top: -27px;
+        border-bottom: 1px solid #FF3D08;
+        border-top: 1px solid #FF3D08;
+        width: 85%;
+        .paragraph-holder {
+          width: 96%;
+          color: #FF3D08 !important;
+          line-height: 1.9em;
+          padding: 12px 20px 12px 20px;
+          font-size: 2.0em;
+          margin-top: 0px;
+          margin-bottom: 0px;
+          margin-left: 5px;
+        }
+        .paragraph-holder:lang(ur) {
+          width: 100%;
+          strong {
+            padding-right: 0;
+          }
         }
       }
     }
-  }
-  .quote-align-left.block-quote {
-    .rich-text {
-        margin-left: 15%;
-    }
-  }
-
-}
-
-.paragraph-with-image-block {
-
-  .image-align-right {
-    float: right;
-    padding-left: 30px;
-  }
-
-  .image-align-left {
-    float: left;
-    padding-right: 30px;
-  }
-
-}
-
-@media (max-width: @screen-sm-max) {
-  .paragraph-with-block-quote {
-    .quote-align-right:lang(ur) {
-      margin-right: 0;
-    }
-    .quote-align-left:lang(ur) {
-      margin-left: 0;
-    }
     .quote-align-left.block-quote {
       .rich-text {
-        margin:2%;
-        width: 100%;
-        margin-top:1%;
-        margin-bottom: 5%;
-
+        margin-left: 15%;
       }
     }
-    .quote-align-right.block-quote {
-      .rich-text {
-        margin:2%;
-        width: 100%;
-        margin-top:1%;
-        margin-bottom: 5%;
+
+  }
+
+  .paragraph-with-image-block {
+
+    .image-align-right {
+      float: right;
+      padding-left: 30px;
+    }
+
+    .image-align-left {
+      float: left;
+      padding-right: 30px;
+    }
+
+  }
+
+  @media (max-width: @screen-sm-max) {
+    .paragraph-with-block-quote {
+      .quote-align-right:lang(ur) {
+        margin-right: 0;
+      }
+      .quote-align-left:lang(ur) {
+        margin-left: 0;
+      }
+      .quote-align-left.block-quote {
+        .rich-text {
+          margin: 2%;
+          width: 100%;
+          margin-top: 1%;
+          margin-bottom: 5%;
+
+        }
+      }
+      .quote-align-right.block-quote {
+        .rich-text {
+          margin: 2%;
+          width: 100%;
+          margin-top: 1%;
+          margin-bottom: 5%;
+        }
       }
     }
   }
