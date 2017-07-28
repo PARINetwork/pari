@@ -83,6 +83,7 @@ class Face(Page):
         index.SearchField('get_locations_index', partial_match=True, boost=SearchBoost.LOCATION),
         index.SearchField('get_photographers_index', partial_match=True, boost=SearchBoost.AUTHOR),
         index.SearchField('adivasi'),
+        index.SearchField('language'),
         index.FilterField('get_search_type'),
         index.FilterField('language')
     ]

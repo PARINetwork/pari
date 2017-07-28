@@ -34,8 +34,9 @@ class Resource(Page):
 
     search_fields = Page.search_fields + [
         index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE),
-        index.FilterField('date'),
+        index.SearchField('language'),
         index.SearchField('content', partial_match=True, boost=SearchBoost.CONTENT),
+        index.FilterField('date'),
         index.FilterField('categories'),
         index.FilterField('language'),
         index.FilterField('get_search_type'),

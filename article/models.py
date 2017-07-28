@@ -107,6 +107,7 @@ class Article(Page):
         index.SearchField('content', partial_match=True, boost=SearchBoost.CONTENT),
         index.SearchField('modular_content', partial_match=True, boost=SearchBoost.CONTENT),
         index.SearchField('locations', partial_match=True, boost=SearchBoost.LOCATION),
+        index.SearchField('language'),
         index.FilterField('categories'),
         index.FilterField('language'),
         index.FilterField('get_search_type'),
