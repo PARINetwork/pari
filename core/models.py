@@ -43,6 +43,7 @@ class StaticPage(Page):
 
     search_fields = Page.search_fields + [
         index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE),
+        index.SearchField('language'),
         index.FilterField('get_search_type'),
         index.FilterField('language')
     ]
