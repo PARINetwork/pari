@@ -101,7 +101,7 @@ class Article(Page):
 
     search_fields = Page.search_fields + [
         index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE),
-        index.SearchField('authors', partial_match=True, boost=SearchBoost.AUTHOR),
+        index.SearchField('get_authors', partial_match=True, boost=SearchBoost.AUTHOR),
         index.SearchField('translators', partial_match=True, boost=SearchBoost.AUTHOR),
         index.SearchField('strap', partial_match=True, boost=SearchBoost.DESCRIPTION),
         index.SearchField('content', partial_match=True, boost=SearchBoost.CONTENT),
@@ -115,6 +115,9 @@ class Article(Page):
 
     def __str__(self):
         return self.title
+
+    def get_authors(self):
+        return [author.name for author in self.authors.all()]
 
     def get_context(self, request, *args, **kwargs):
         try:
