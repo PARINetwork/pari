@@ -5,10 +5,6 @@
   line-height: 29px;
   font-size: 17px;
 
-  p {
-    margin: 20px 0;
-  }
-
   .image-block {
     background: white;
 
@@ -47,6 +43,16 @@
   .paragraph-block {
     padding-left: 15%;
     padding-right: 15%;
+    text-align: left;
+
+    p {
+      text-align: left;
+      margin: 20px 0;
+    }
+
+    p:lang(ur) {
+      text-align: right;
+    }
 
     ul {
       list-style: disc;
