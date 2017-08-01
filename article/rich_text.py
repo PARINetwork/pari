@@ -2,9 +2,11 @@ from __future__ import absolute_import, unicode_literals
 
 import json
 
+from django.conf import settings
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.forms import Media
-from wagtail.wagtailadmin.rich_text import HalloRichTextArea
+from django.utils.module_loading import import_string
+from wagtail.wagtailadmin.rich_text import HalloRichTextArea, DEFAULT_RICH_TEXT_EDITORS
 
 
 class CustomHalloRichTextArea(HalloRichTextArea):
@@ -40,3 +42,16 @@ class CustomHalloRichTextArea(HalloRichTextArea):
             static('wagtailadmin/js/hallo-plugins/hallo-hr.js'),
             static('wagtailadmin/js/hallo-plugins/hallo-requireparagraphs.js'),
         ])
+
+
+def get_rich_text_editor_widget(name='default'):
+    editor_settings = getattr(settings, 'WAGTAILADMIN_RICH_TEXT_EDITORS', DEFAULT_RICH_TEXT_EDITORS)
+
+    kwargs = {}
+    editor = editor_settings[name]
+    options = editor.get('OPTIONS')
+
+    if options:
+        kwargs.update(options)
+
+    return import_string(editor['WIDGET'])(**kwargs)

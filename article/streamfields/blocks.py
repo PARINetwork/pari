@@ -1,33 +1,18 @@
 from django import forms
-from django.conf import settings
 from django.utils.functional import cached_property
-from django.utils.module_loading import import_string
 from wagtail.wagtailadmin import blocks
-from wagtail.wagtailadmin.rich_text import DEFAULT_RICH_TEXT_EDITORS
 from wagtail.wagtailcore.blocks import PageChooserBlock, RichTextBlock
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
+from article.rich_text import get_rich_text_editor_widget
 from face.models import Face
 
 
 class CustomRichTextBlock(RichTextBlock):
-    @classmethod
-    def get_rich_text_editor_widget(cls, name='default'):
-        editor_settings = getattr(settings, 'WAGTAILADMIN_RICH_TEXT_EDITORS', DEFAULT_RICH_TEXT_EDITORS)
-
-        kwargs = {}
-        editor = editor_settings[name]
-        options = editor.get('OPTIONS')
-
-        if options:
-            kwargs.update(options)
-
-        return import_string(editor['WIDGET'])(**kwargs)
-
     @cached_property
     def field(self):
-        return forms.CharField(widget=self.get_rich_text_editor_widget(self.editor), **self.field_options)
+        return forms.CharField(widget=get_rich_text_editor_widget(self.editor), **self.field_options)
 
 
 class ImageBlock(blocks.StructBlock):
