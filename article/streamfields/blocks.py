@@ -89,7 +89,7 @@ class TwoColumnImageBlock(blocks.StructBlock):
 
 
 class ParagraphBlock(blocks.StructBlock):
-    ALIGN_CONTENT_CHOICES = [('left', 'Left'), ('center', 'Center')]
+    ALIGN_CONTENT_CHOICES = [('default', 'Default'), ('center', 'Center')]
 
     content = CustomRichTextBlock(editor='tinymce_paragraph')
     align_content = blocks.ChoiceBlock(choices=ALIGN_CONTENT_CHOICES, default=ALIGN_CONTENT_CHOICES[0][0])
