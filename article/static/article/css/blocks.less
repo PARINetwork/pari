@@ -4,6 +4,7 @@
   font-family: 'Fira Sans', 'Open Sans', sans-serif;
   line-height: 29px;
   font-size: 17px;
+  margin-bottom: 10px;
 
   .image-block {
     background: white;
@@ -47,7 +48,7 @@
 
     p {
       text-align: left;
-      margin: 20px 0;
+      margin: 10px 0;
     }
 
     p:lang(ur) {
@@ -69,7 +70,8 @@
   }
 
   .paragraph-with-quote-block {
-
+    clear: both;
+    display: table;
     .quote-align-right {
       float: right;
       padding-left: 30px;
@@ -106,7 +108,7 @@
         font-family: 'Amiri', serif;
         padding-right: 0px;
         margin-right: 0px;
-        margin-top: 5%;
+        margin-top: 20px;
         width: 84%;
         .paragraph-holder {
           width: 100%;
@@ -132,7 +134,7 @@
       .rich-text:lang(ur) {
         width: 93%;
         margin-right: 30px;
-        margin-top: 35px;
+        margin-top: 20px;
       }
     }
   }
@@ -153,14 +155,14 @@
 
   @media (max-width: @screen-sm-max) {
     .paragraph-with-quote-block {
-     
+
       .quote-align-left.block-quote {
+        margin-left: 0;
         .rich-text {
           margin: 2%;
           width: 100%;
           margin-top: 1%;
           margin-bottom: 5%;
-
         }
       }
       .quote-align-left.block-quote:lang(ur) {
