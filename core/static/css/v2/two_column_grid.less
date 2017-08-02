@@ -32,7 +32,7 @@
     li {
       display: -webkit-box;
     }
-    .type-heading, .language-heading, .category-heading {
+    .type-heading, .language-heading, .category-heading, .date-range-heading{
       font-weight: 500;
         margin-left: 3px;
         ul {
@@ -53,9 +53,21 @@
         }
     }
     .date-filters {
+      li{
+        margin-top: 10px;
+        button{
+          background-color: @primary-color;
+          margin-left: 40px;
+        }
+      }
       input {
         position: absolute;
-        left: 45px;
+        left: 35px;
+        width: 80px;
+        text-align: center;
+        &#end-date{
+          left: 52px;
+        }
       }
     }
     h5 {

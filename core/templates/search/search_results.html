@@ -62,6 +62,14 @@ Search{% if search_results %} Results{% endif %}
                 clearChildrenCheckBox.call(this);
             });
 
+            $(".clear-date").on("click",function () {
+                $("#start-date").val('');
+                $("#end-date").val('');
+                formQueryParams();
+            });
+
+
+
             function formQueryParams() {
                 var checked = [];
                 $(".search-filters li > input[type='checkbox']:checked").each(function () {
