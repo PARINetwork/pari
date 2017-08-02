@@ -48,11 +48,12 @@
 
     p {
       text-align: left;
-      margin: 10px 0;
+      margin: 20px 0;
     }
 
     p:lang(ur) {
       text-align: right;
+      margin: 10px 0;
     }
 
     ul {
@@ -72,6 +73,16 @@
   .paragraph-with-quote-block {
     clear: both;
     display: table;
+
+    .paragraph-block {
+      p {
+        margin: 0px;
+      }
+
+      p:lang(ur) {
+        margin: 10px;
+      }
+    }
     .quote-align-right {
       float: right;
       padding-left: 30px;
@@ -108,7 +119,7 @@
         font-family: 'Amiri', serif;
         padding-right: 0px;
         margin-right: 0px;
-        margin-top: 20px;
+        margin: 10px 0px;
         width: 84%;
         .paragraph-holder {
           width: 100%;
@@ -134,7 +145,7 @@
       .rich-text:lang(ur) {
         width: 93%;
         margin-right: 30px;
-        margin-top: 20px;
+        margin: 20px 0px;
       }
     }
   }
@@ -159,8 +170,7 @@
       .quote-align-left.block-quote {
         margin-left: 0;
         .rich-text {
-          margin: 2%;
-          width: 100%;
+          margin: 5%;
           margin-top: 1%;
           margin-bottom: 5%;
         }
@@ -168,7 +178,6 @@
       .quote-align-left.block-quote:lang(ur) {
         .rich-text {
           margin: 0%;
-          width: 100%;
           margin-top: 1%;
           margin-bottom: 5%;
 
@@ -176,8 +185,7 @@
       }
       .quote-align-right.block-quote {
         .rich-text {
-          margin: 2%;
-          width: 100%;
+          margin: 5%;
           margin-top: 1%;
           margin-bottom: 5%;
         }
@@ -186,7 +194,6 @@
     .quote-align-right.block-quote:lang(ur) {
         .rich-text {
           margin: 2%;
-          width: 100%;
           margin-top: 1%;
           margin-bottom: 5%;
         }

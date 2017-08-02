@@ -9,6 +9,7 @@ Search{% if search_results %} Results{% endif %}
 {% block extra_js %}
     <script type="text/javascript">
         $(function () {
+            $('.datepicker').dcalendarpicker();
             var i = document.location.href.lastIndexOf('?');
             var types = document.location.href.substr(i + 2).split('&');
             types.shift();
@@ -27,6 +28,10 @@ Search{% if search_results %} Results{% endif %}
                     return $.inArray(this.value, dic[type]) !== -1;
                 });
             }
+            if(dic['start-date'])
+                $("#start-date").val(dic['start-date']);
+            if(dic['end-date'])
+                $("#end-date").val(dic['end-date']);
             if(dic.hasOwnProperty('category') && !(dic["type"] && (dic["type"].includes("article") || dic["type"].includes("video") || dic["type"].includes("audio"))) ){
                 clearChildrenCheckBox.call($('.category-filters .clear-all'));
             }
@@ -62,6 +67,14 @@ Search{% if search_results %} Results{% endif %}
                 $(".search-filters li > input[type='checkbox']:checked").each(function () {
                     checked.push($(this).attr('name') + '=' + $(this).val());
                 });
+
+                var start_date = $("#start-date").val();
+                var end_date = $("#end-date").val();
+                if(start_date)
+                    checked.push('start-date' + '=' + start_date);
+                if(end_date)
+                    checked.push('end-date' + '=' + end_date);
+
                 var query = $(".search-form > input").val();
                 window.location = checked.length > 0 ? '/search/?q=' + query + '&' + checked.join('&') : '/search/?q=' + query;
             }
@@ -70,6 +83,12 @@ Search{% if search_results %} Results{% endif %}
                 formQueryParams();
             });
 
+
+            $("#date-range-button").on("click",function () {
+                formQueryParams();
+            });
+
+
         });
 
     </script>
@@ -77,6 +96,7 @@ Search{% if search_results %} Results{% endif %}
 
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/two_column_grid.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/datepicker.less">
 {% endblock %}
 
 

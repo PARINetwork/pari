@@ -39,7 +39,6 @@
     {% if LANGUAGE_BIDI %}
     <link rel="stylesheet" href="{{ STATIC_URL }}css/rtl.css">
     {% endif %}
-
     <script type="application/ld+json">
     {
         "@context": "http://schema.org",
@@ -190,6 +189,8 @@
 
 <script src="{{ STATIC_URL }}/js/vendor/jquery-3.1.1.min.js"></script>
 <script src="{{ STATIC_URL }}/js/vendor/jsrender.min.js"></script>
+<script src="{{ STATIC_URL }}/js/vendor/datepicker.js"></script>
+
 <script type="text/javascript" src="{{ STATIC_URL }}/js/vendor/retina.js"></script>
 {% block extra_uncompressed_js %}{% endblock %}
 {% compress js %}
