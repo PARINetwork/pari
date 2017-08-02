@@ -5,6 +5,7 @@ import hmac
 import urllib
 from collections import OrderedDict
 
+from django.utils import timezone
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages import success
@@ -216,6 +217,8 @@ def site_search(
     type_filters = request.GET.getlist('type')
     category_filters = request.GET.getlist('category')
     language_filters = request.GET.getlist('language')
+    start_date = request.GET.get('start-date')
+    end_date = request.GET.get('end-date')
 
     raw_filters = []
 
@@ -251,6 +254,9 @@ def site_search(
                     "language_filter": language_filters
                 }
             })
+
+        if start_date:
+            pages = pages.filter(first_published_at__range=(start_date, end_date or timezone.now()))
 
         if search_title_only:
             search_results = pages.search(query_string, fields=['title'], operator=SITE_SEARCH_OPERATOR)
