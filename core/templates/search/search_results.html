@@ -63,6 +63,14 @@ Search{% if search_results %} Results{% endif %}
                 $(".search-filters li > input[type='checkbox']:checked").each(function () {
                     checked.push($(this).attr('name') + '=' + $(this).val());
                 });
+
+                var start_date = $("#start-date").val();
+                var end_date = $("#end-date").val();
+                if(start_date)
+                    checked.push('start-date' + '=' + start_date);
+                if(end_date)
+                    checked.push('end-date' + '=' + end_date);
+
                 var query = $(".search-form > input").val();
                 window.location = checked.length > 0 ? '/search/?q=' + query + '&' + checked.join('&') : '/search/?q=' + query;
             }
@@ -70,6 +78,12 @@ Search{% if search_results %} Results{% endif %}
             $(".search-filters li > input[type='checkbox']").on("change", function () {
                 formQueryParams();
             });
+
+
+            $("#date-range-button").on("click",function () {
+                formQueryParams();
+            });
+
 
         });
 
