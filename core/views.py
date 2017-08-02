@@ -312,7 +312,9 @@ def site_search(
             query=query,
             type_filters=type_filters,
             category_filters=category_filters,
-            language_filters=language_filters
+            language_filters=language_filters,
+            start_date=start_date,
+            end_date=end_date
         ))
 
 # TODO: Remove the below two functions when we migrate to wagtail 1.2
