@@ -28,6 +28,10 @@ Search{% if search_results %} Results{% endif %}
                     return $.inArray(this.value, dic[type]) !== -1;
                 });
             }
+            if(dic['start-date'])
+                $("#start-date").val(dic['start-date']);
+            if(dic['end-date'])
+                $("#end-date").val(dic['end-date']);
             if(dic.hasOwnProperty('category') && !(dic["type"] && (dic["type"].includes("article") || dic["type"].includes("video") || dic["type"].includes("audio"))) ){
                 clearChildrenCheckBox.call($('.category-filters .clear-all'));
             }

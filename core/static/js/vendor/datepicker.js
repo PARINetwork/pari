@@ -330,7 +330,7 @@
 
 	$.fn.dcalendar.defaults = {
 		mode : 'calendar',
-		format: 'mm/dd/yyyy',
+		format: 'yyyy-mm-dd',
 	};
 
 	$.fn.dcalendar.Constructor = DCalendar;
