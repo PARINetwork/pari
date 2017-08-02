@@ -34,30 +34,34 @@
     }
     .type-heading, .language-heading, .category-heading {
       font-weight: 500;
+        margin-left: 3px;
+        ul {
+          width: 180px;
+        }
+        span {
+          font-size: 11px;
+          margin-left: 30px;
+          color: @side-text-link-light;
+          cursor: pointer;
+          position: absolute;
+          right: 16px;
+          padding-top: 4px;
+
+          &:hover {
+            color: @primary-color;
+          }
+        }
+    }
+    .date-filters {
+      input {
+        position: absolute;
+        left: 45px;
+      }
     }
     h5 {
       margin-top: 1px;
       font-weight: 400;
       color: @grey;
-    }
-    div {
-      margin-left: 3px;
-      ul {
-        width: 180px;
-      }
-      span {
-        font-size: 11px;
-        margin-left: 30px;
-        color: @side-text-link-light;
-        cursor: pointer;
-        position: absolute;
-        right: 16px;
-        padding-top: 4px;
-
-        &:hover {
-          color: @primary-color;
-        }
-      }
     }
 
   }
