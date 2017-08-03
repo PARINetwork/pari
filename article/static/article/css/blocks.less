@@ -4,7 +4,8 @@
   font-family: 'Fira Sans', 'Open Sans', sans-serif;
   line-height: 29px;
   font-size: 17px;
-  margin-bottom: 10px;
+  margin-top: 10px;
+  padding-bottom: 10px;
 
   .image-block {
     background: white;
@@ -50,10 +51,14 @@
       text-align: left;
       margin: 20px 0;
     }
-
+    p:last-child{
+      margin: 20px 0 10px 0;
+    }
+    p:first-child{
+      margin: 10px 0 10px 0;
+    }
     p:lang(ur) {
       text-align: right;
-      margin: 10px 0;
     }
 
     ul {
@@ -76,10 +81,6 @@
     margin: 20px 0;
 
     .paragraph-block {
-      p {
-        margin: 0px;
-      }
-
       p:lang(ur) {
         margin: 10px;
       }
@@ -113,6 +114,7 @@
     }
 
     .block-quote {
+      margin: 10px 0;
       .rich-text {
         border-bottom: 1px solid #FF3D08;
         border-top: 1px solid #FF3D08;
@@ -165,7 +167,45 @@
 
   }
 
+  .n-column-paragraph {
+    padding-left: 15%;
+    padding-right: 15%;
+    margin: 0;
+    .paragraph-block {
+      padding: 0px;
+      p:first-child {
+        margin: 10px 0 20px 0;
+      }
+      p:first-child:nth-last-child(1){
+        margin: 10px 0 10px 0;
+      }
+    }
+    .no-padding-right {
+      padding-left: 0;
+      padding-right: 10px;
+    }
+    .no-padding-left {
+      padding-left: 10px;
+      padding-right: 0px;
+    }
+    .no-padding-both {
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+  }
+
   @media (max-width: @screen-sm-max) {
+    .n-column-paragraph {
+      .no-padding-left{
+        padding-left: 0px;
+      }
+      .no-padding-right{
+        padding-right: 0px;
+      }
+      .no-padding-both{
+        padding: 0px;
+      }
+    }
     .paragraph-with-quote-block {
 
       .quote-align-left.block-quote {

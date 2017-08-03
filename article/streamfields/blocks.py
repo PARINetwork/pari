@@ -117,3 +117,11 @@ class ParagraphWithBlockQuoteBlock(blocks.StructBlock):
         icon = 'doc-full'
         label = 'Paragraphs with Block Quote'
         template = 'article/blocks/paragraph_with_block_quote.html'
+
+
+class NColumnParagraphBlock(blocks.StructBlock):
+    paragraph = blocks.ListBlock(ParagraphBlock())
+
+    class Meta:
+        template = 'article/blocks/columnar_paragraph.html'
+        label = 'Columnar Paragraphs'
