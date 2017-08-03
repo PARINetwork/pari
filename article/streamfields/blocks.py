@@ -118,6 +118,13 @@ class ParagraphWithBlockQuoteBlock(blocks.StructBlock):
         label = 'Paragraphs with Block Quote'
         template = 'article/blocks/paragraph_with_block_quote.html'
 
+class FullWidthBlockQuote(blocks.StructBlock):
+    quote = CustomRichTextBlock(editor='hallo_for_quote')
+
+    class Meta:
+        icon = 'doc-full'
+        label = 'Full width Block Quote'
+        template = 'article/blocks/full_width_block_quote.html'
 
 class NColumnParagraphBlock(blocks.StructBlock):
     paragraph = blocks.ListBlock(ParagraphBlock())

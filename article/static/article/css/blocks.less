@@ -74,7 +74,20 @@
       }
     }
   }
-
+  .paragraph-with-quote-block.full-width-quote{
+    margin: 0 15%;
+    .block-quote {
+      padding-left: 0;
+      padding-right: 0;
+      .rich-text {
+        width: 100%;
+      }
+      .rich-text:lang(ur) {
+        width: 100%;
+        padding-right: 20px;
+      }
+    }
+  }
   .paragraph-with-quote-block {
     clear: both;
     display: table;
@@ -133,6 +146,9 @@
           margin-top: 0px;
           margin-bottom: 0px;
           margin-left: 6px;
+          b {
+            padding: 0;
+          }
         }
         .paragraph-holder:lang(ur) {
           width: 100%;
@@ -195,6 +211,23 @@
   }
 
   @media (max-width: @screen-sm-max) {
+    .paragraph-with-quote-block.full-width-quote {
+      margin: 0 2%;
+      .block-quote:lang(ur) {
+        padding-left: 51px;
+        padding-right: 13px;
+        .rich-text {
+          margin: 0;
+        }
+      }
+      .block-quote {
+        padding-left: 51px;
+        padding-right: 78px;
+        .rich-text {
+          margin: 0;
+        }
+      }
+    }
     .n-column-paragraph {
       .no-padding-left{
         padding-left: 0px;
