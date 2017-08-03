@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.functional import cached_property
 from wagtail.wagtailadmin import blocks
-from wagtail.wagtailcore.blocks import PageChooserBlock, RichTextBlock
+from wagtail.wagtailcore.blocks import PageChooserBlock, RichTextBlock, FieldBlock
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
@@ -13,6 +13,22 @@ class CustomRichTextBlock(RichTextBlock):
     @cached_property
     def field(self):
         return forms.CharField(widget=get_rich_text_editor_widget(self.editor), **self.field_options)
+
+
+# TODO: This is implemented in the latest wagtail. Remove it after upgrading.
+class IntegerBlock(FieldBlock):
+    def __init__(self, required=True, help_text=None, min_value=None,
+                 max_value=None, **kwargs):
+        self.field = forms.IntegerField(
+            required=required,
+            help_text=help_text,
+            min_value=min_value,
+            max_value=max_value
+        )
+        super(IntegerBlock, self).__init__(**kwargs)
+
+    class Meta:
+        icon = "plus-inverse"
 
 
 class ImageBlock(blocks.StructBlock):
