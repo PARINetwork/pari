@@ -10,6 +10,7 @@ from django.utils.encoding import python_2_unicode_compatible
 from elasticsearch import ConnectionError
 
 from modelcluster.fields import M2MField
+from wagtail.wagtailadmin import blocks
 
 from wagtail.wagtailcore.models import Page, Site
 from wagtail.wagtailcore.fields import RichTextField, StreamField
@@ -23,7 +24,7 @@ from wagtail.wagtailsearch.backends.elasticsearch import ElasticSearchMapping, \
     ElasticSearchResults
 
 from article.streamfields.blocks import FullWidthImageBlock, TwoColumnImageBlock, ParagraphBlock, \
-    ParagraphWithImageBlock, FaceBlock, ParagraphWithBlockQuoteBlock
+    ParagraphWithImageBlock, FaceBlock, ParagraphWithBlockQuoteBlock, NColumnParagraphBlock
 from core.edit_handlers import M2MFieldPanel
 
 # Override the url property of the Page model
@@ -54,6 +55,7 @@ class Article(Page):
     content = RichTextField()
     modular_content = StreamField([
         ('full_width_image', FullWidthImageBlock()),
+        ('n_column_paragraph_block', NColumnParagraphBlock()),
         ('two_column_image', TwoColumnImageBlock()),
         ('paragraph', ParagraphBlock()),
         ('paragraph_with_image', ParagraphWithImageBlock()),
