@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.functional import cached_property
 from wagtail.wagtailadmin import blocks
-from wagtail.wagtailcore.blocks import PageChooserBlock, RichTextBlock, FieldBlock
+from wagtail.wagtailcore.blocks import PageChooserBlock, RichTextBlock, FieldBlock, URLBlock
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
@@ -134,6 +134,7 @@ class ParagraphWithBlockQuoteBlock(blocks.StructBlock):
         label = 'Paragraphs with Block Quote'
         template = 'article/blocks/paragraph_with_block_quote.html'
 
+
 class FullWidthBlockQuote(blocks.StructBlock):
     quote = CustomRichTextBlock(editor='hallo_for_quote')
 
@@ -142,9 +143,21 @@ class FullWidthBlockQuote(blocks.StructBlock):
         label = 'Full width Block Quote'
         template = 'article/blocks/full_width_block_quote.html'
 
+
 class NColumnParagraphBlock(blocks.StructBlock):
     paragraph = blocks.ListBlock(ParagraphBlock())
 
     class Meta:
         template = 'article/blocks/columnar_paragraph.html'
         label = 'Columnar Paragraphs'
+
+
+class ParagraphWithEmbedBlock(blocks.StructBlock):
+    embed = URLBlock()
+    embed_max_width = IntegerBlock()
+    content = ParagraphBlock()
+
+    class Meta:
+        icon = 'image'
+        label = 'Paragraphs with embed'
+        template = 'article/blocks/paragraph_with_embed.html'
