@@ -1,4 +1,5 @@
 @import "static/css/common.less";
+@import "static/css/v2/colors/colors.less";
 
 .modular-content {
   font-family: 'Fira Sans', 'Open Sans', sans-serif;
@@ -54,14 +55,15 @@
       text-align: left;
       margin: 20px 0;
     }
-    p:last-child{
+    p:last-child {
       margin: 20px 0 10px 0;
     }
-    p:first-child{
+    p:first-child {
       margin: 10px 0 10px 0;
     }
     p:lang(ur) {
       text-align: right;
+      margin: 10px 10px;
     }
 
     ul {
@@ -77,7 +79,7 @@
       }
     }
   }
-  .paragraph-with-quote-block.full-width-quote{
+  .paragraph-with-quote-block.full-width-quote {
     margin: 0 15%;
     .block-quote {
       padding-left: 0;
@@ -92,82 +94,40 @@
     }
   }
   .paragraph-with-quote-block {
-    clear: both;
+    margin: 10px 0 10px 0;
     display: table;
-    margin: 20px 0;
-
-    .paragraph-block {
-      p:lang(ur) {
-        margin: 10px;
-      }
-    }
-    .quote-align-right {
-      float: right;
-      padding-left: 30px;
-    }
-    .quote-align-left {
-      float: left;
-      padding-right: 0px;
-    }
-    .quote-align-left:lang(ur) {
-      margin-left: 1%;
-      padding-right: 15px;
-    }
-    &.row {
-      margin-left: 0px;
-      margin-right: 0px;
-    }
-    .quote-align-left.block-quote {
-      .rich-text {
-        margin-left: 10%;
-        .paragraph-holder{
-          margin-left: 15px;
-        }
-      }
-      .rich-text:lang(ur){
-        margin-right: 13px;
-      }
-    }
-
+    clear: both;
     .block-quote {
-      margin: 10px 0;
-      .rich-text {
-        border-bottom: 1px solid #FF3D08;
-        border-top: 1px solid #FF3D08;
-        width: 80%;
-        font-family: 'Amiri', serif;
-        padding-right: 0px;
-        margin-right: 0px;
-        margin: 10px 0px;
-        width: 84%;
-        .paragraph-holder {
-          width: 100%;
-          color: #FF3D08 !important;
-          line-height: 1.7em;
-          padding: 12px 20px 12px 20px;
-          font-size: 2.0em;
-          margin-top: 0px;
-          margin-bottom: 0px;
-          margin-left: 6px;
-          b {
-            padding: 0;
-          }
-        }
-        .paragraph-holder:lang(ur) {
-          width: 100%;
-          padding-right: 0;
-          em {
-            padding-right: 0;
-          }
-          strong {
-            padding-right: 0;
-          }
+      .paragraph-holder {
+        b {
+          padding: 0;
         }
       }
-      .rich-text:lang(ur) {
-        width: 93%;
-        margin-right: 30px;
-        margin: 20px 0px;
+      &.quote-align-left {
+        .rich-text {
+          margin: 2% 3% 2% 20%;
+        }
+      }
+      &.quote-align-right {
+        float: right;
+        .rich-text {
+          margin: 2% 20% 2% 2%;
+        }
+      }
+
+      .rich-text {
+        border-bottom: 1px solid @primary-color;
+        border-top: 1px solid @primary-color;
+        font-family: 'Amiri', serif;
+        padding: 0 15px 0 15px;
+        .paragraph-holder {
+          color: @primary-color;
+          width: 100%;
+          font-size: 2.0em;
+          line-height: 1.7em;
+          padding: 0;
+
+        }
       }
     }
   }
@@ -195,7 +155,7 @@
       p:first-child {
         margin: 10px 0 20px 0;
       }
-      p:first-child:nth-last-child(1){
+      p:first-child:nth-last-child(1) {
         margin: 10px 0 10px 0;
       }
     }
@@ -231,49 +191,25 @@
         }
       }
     }
+
     .n-column-paragraph {
-      .no-padding-left{
+      .no-padding-left {
         padding-left: 0px;
       }
-      .no-padding-right{
+      .no-padding-right {
         padding-right: 0px;
       }
-      .no-padding-both{
+      .no-padding-both {
         padding: 0px;
       }
     }
+
     .paragraph-with-quote-block {
-
-      .quote-align-left.block-quote {
-        margin-left: 0;
+      .quote-align-left.block-quote, .quote-align-right.block-quote {
         .rich-text {
-          margin: 5%;
-          margin-top: 1%;
-          margin-bottom: 5%;
-        }
-      }
-      .quote-align-left.block-quote:lang(ur) {
-        .rich-text {
-          margin: 0%;
-          margin-top: 1%;
-          margin-bottom: 5%;
-
-        }
-      }
-      .quote-align-right.block-quote {
-        .rich-text {
-          margin: 5%;
-          margin-top: 1%;
-          margin-bottom: 5%;
+          margin: 2% 8% 3% 8%;
         }
       }
     }
-    .quote-align-right.block-quote:lang(ur) {
-        .rich-text {
-          margin: 2%;
-          margin-top: 1%;
-          margin-bottom: 5%;
-        }
-      }
   }
 }
