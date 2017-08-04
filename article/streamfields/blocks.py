@@ -107,7 +107,7 @@ class FaceBlock(blocks.StructBlock):
 
 
 class ParagraphWithBlockQuoteBlock(blocks.StructBlock):
-    ALIGN_QUOTE_CHOICES = [('left', 'Left'), ('right', 'Right')]
+    ALIGN_QUOTE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
 
     quote = CustomRichTextBlock(editor='hallo_for_quote')
     align_quote = blocks.ChoiceBlock(choices=ALIGN_QUOTE_CHOICES, default=ALIGN_QUOTE_CHOICES[1][0])
