@@ -153,8 +153,11 @@ class NColumnParagraphBlock(blocks.StructBlock):
 
 
 class ParagraphWithEmbedBlock(blocks.StructBlock):
+    ALIGN_EMBED_CHOICES = [('left', 'Left'), ('right', 'Right')]
+
     embed = URLBlock()
     embed_max_width = IntegerBlock()
+    embed_align = blocks.ChoiceBlock(choices=ALIGN_EMBED_CHOICES, default=ALIGN_EMBED_CHOICES[0][0])
     content = ParagraphBlock()
 
     class Meta:
