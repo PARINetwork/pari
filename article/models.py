@@ -24,7 +24,9 @@ from wagtail.wagtailsearch.backends.elasticsearch import ElasticSearchMapping, \
     ElasticSearchResults
 
 from article.streamfields.blocks import FullWidthImageBlock, TwoColumnImageBlock, ParagraphBlock, \
-    ParagraphWithImageBlock, FaceBlock, ParagraphWithBlockQuoteBlock, NColumnParagraphBlock
+    ParagraphWithImageBlock, FaceBlock, ParagraphWithBlockQuoteBlock, NColumnParagraphBlock, FullWidthBlockQuote, \
+    ParagraphWithEmbedBlock
+
 from core.edit_handlers import M2MFieldPanel
 
 # Override the url property of the Page model
@@ -61,6 +63,8 @@ class Article(Page):
         ('paragraph_with_image', ParagraphWithImageBlock()),
         ('face', FaceBlock()),
         ('paragraph_with_block_quote', ParagraphWithBlockQuoteBlock()),
+        ('full_width_block_quote', FullWidthBlockQuote()),
+        ('paragraph_with_embed', ParagraphWithEmbedBlock()),
     ], null=True, blank=True)
     show_modular_content = models.BooleanField(default=False)
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)

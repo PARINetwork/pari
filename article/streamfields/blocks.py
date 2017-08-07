@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.functional import cached_property
 from wagtail.wagtailadmin import blocks
-from wagtail.wagtailcore.blocks import PageChooserBlock, RichTextBlock
+from wagtail.wagtailcore.blocks import PageChooserBlock, RichTextBlock, FieldBlock, URLBlock
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
@@ -13,6 +13,22 @@ class CustomRichTextBlock(RichTextBlock):
     @cached_property
     def field(self):
         return forms.CharField(widget=get_rich_text_editor_widget(self.editor), **self.field_options)
+
+
+# TODO: This is implemented in the latest wagtail. Remove it after upgrading.
+class IntegerBlock(FieldBlock):
+    def __init__(self, required=True, help_text=None, min_value=None,
+                 max_value=None, **kwargs):
+        self.field = forms.IntegerField(
+            required=required,
+            help_text=help_text,
+            min_value=min_value,
+            max_value=max_value
+        )
+        super(IntegerBlock, self).__init__(**kwargs)
+
+    class Meta:
+        icon = "plus-inverse"
 
 
 class ImageBlock(blocks.StructBlock):
@@ -107,7 +123,7 @@ class FaceBlock(blocks.StructBlock):
 
 
 class ParagraphWithBlockQuoteBlock(blocks.StructBlock):
-    ALIGN_QUOTE_CHOICES = [('left', 'Left'), ('right', 'Right')]
+    ALIGN_QUOTE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
 
     quote = CustomRichTextBlock(editor='hallo_for_quote')
     align_quote = blocks.ChoiceBlock(choices=ALIGN_QUOTE_CHOICES, default=ALIGN_QUOTE_CHOICES[1][0])
@@ -119,9 +135,29 @@ class ParagraphWithBlockQuoteBlock(blocks.StructBlock):
         template = 'article/blocks/paragraph_with_block_quote.html'
 
 
+class FullWidthBlockQuote(blocks.StructBlock):
+    quote = CustomRichTextBlock(editor='hallo_for_quote')
+
+    class Meta:
+        icon = 'doc-full'
+        label = 'Full width Block Quote'
+        template = 'article/blocks/full_width_block_quote.html'
+
+
 class NColumnParagraphBlock(blocks.StructBlock):
     paragraph = blocks.ListBlock(ParagraphBlock())
 
     class Meta:
         template = 'article/blocks/columnar_paragraph.html'
         label = 'Columnar Paragraphs'
+
+
+class ParagraphWithEmbedBlock(blocks.StructBlock):
+    embed = URLBlock()
+    embed_max_width = IntegerBlock()
+    content = ParagraphBlock()
+
+    class Meta:
+        icon = 'image'
+        label = 'Paragraphs with embed'
+        template = 'article/blocks/paragraph_with_embed.html'
