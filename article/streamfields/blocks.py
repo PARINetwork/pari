@@ -34,6 +34,8 @@ class IntegerBlock(FieldBlock):
 class ImageBlock(blocks.StructBlock):
     image = ImageChooserBlock()
     caption = blocks.CharBlock(required=False)
+    height = IntegerBlock(min_value=0, required=True, default=380)
+    width_in_columns = IntegerBlock(min_value=1,max_value=12, required=True , default=3)
 
     class Meta:
         icon = 'image'
@@ -161,3 +163,11 @@ class ParagraphWithEmbedBlock(blocks.StructBlock):
         icon = 'image'
         label = 'Paragraphs with embed'
         template = 'article/blocks/paragraph_with_embed.html'
+
+
+class NColumnImageBlock(blocks.StructBlock):
+    images = blocks.ListBlock(ImageBlock())
+
+    class Meta:
+        template = 'article/blocks/columnar_image.html'
+        label = 'Columnar Images'

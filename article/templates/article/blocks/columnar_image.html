@@ -1,0 +1,12 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+{% load article_filters %}
+
+<div class="n-column-image">
+    {% with value.images|length as images_length %}
+        {% for image in value.images %}
+            <div class="col-lg-{{ image.width_in_columns }} {% if forloop.first %}no-padding-right{% elif forloop.last %}no-padding-left{% else %}no-padding-both{% endif %}">
+                {{ image }}
+            </div>
+        {% endfor %}
+    {% endwith %}
+</div>
