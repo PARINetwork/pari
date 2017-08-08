@@ -188,7 +188,7 @@
     -webkit-transform: translate(0px, 0px);
 
     iframe {
-      margin: 20px;
+      margin: 2% 2%;
     }
 
     .embed-align-right {
@@ -217,6 +217,19 @@
         .rich-text {
           width: auto;
           margin: 2% 8% 3% 8%;;
+        }
+      }
+    }
+
+    .paragraph-with-raw-embed-block {
+      &.row {
+        margin: 0;
+      }
+      .embed-holder {
+        display: flex;
+        padding: 2% 15%;
+        iframe, object, embed {
+          margin: 0;
         }
       }
     }
