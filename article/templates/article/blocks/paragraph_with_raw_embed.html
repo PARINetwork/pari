@@ -1,0 +1,10 @@
+{% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags %}
+
+<div class="paragraph-with-raw-embed-block">
+
+    <div class="col-xs-12 col-sm-12 raw-embed">
+        {{ value.embed }}
+    </div>
+
+    {{ value.content }}
+</div>

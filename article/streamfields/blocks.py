@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.functional import cached_property
 from wagtail.wagtailadmin import blocks
-from wagtail.wagtailcore.blocks import PageChooserBlock, RichTextBlock, FieldBlock, URLBlock
+from wagtail.wagtailcore.blocks import PageChooserBlock, RichTextBlock, FieldBlock, URLBlock, RawHTMLBlock
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
@@ -164,3 +164,16 @@ class ParagraphWithEmbedBlock(blocks.StructBlock):
         icon = 'image'
         label = 'Paragraphs with embed'
         template = 'article/blocks/paragraph_with_embed.html'
+
+
+class ParagraphWithRawEmbedBlock(blocks.StructBlock):
+    ALIGN_EMBED_CHOICES = [('left', 'Left'), ('right', 'Right')]
+
+    embed = RawHTMLBlock()
+    embed_align = blocks.ChoiceBlock(choices=ALIGN_EMBED_CHOICES, default=ALIGN_EMBED_CHOICES[0][0])
+    content = ParagraphBlock()
+
+    class Meta:
+        icon = 'media'
+        label = 'Paragraphs with raw embed'
+        template = 'article/blocks/paragraph_with_raw_embed.html'
