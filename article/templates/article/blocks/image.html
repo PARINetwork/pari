@@ -6,8 +6,8 @@
     {% else %}
         {% image value.image width-720 as image %}
     {% endif %}
-    <div class="image" style="height:{{ value.height }}px">
-        <img src="{{ image.url }}"/>
+    <div class="image" style="height: {% if value.fill_container %}inherit {% else %}{{ value.height }}px {% endif %}">
+        <img src="{{ image.url }}" {% if value.fill_container %}style="position:relative;max-height:inherit"{% endif %}/>
     </div>
     <div class="caption">
         <p>
