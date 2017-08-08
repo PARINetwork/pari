@@ -3,6 +3,7 @@ from django.utils.functional import cached_property
 from wagtail.wagtailadmin import blocks
 from wagtail.wagtailcore.blocks import PageChooserBlock, RichTextBlock, FieldBlock, URLBlock, RawHTMLBlock
 from wagtail.wagtailcore.models import Page
+from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 from article.rich_text import get_rich_text_editor_widget
@@ -177,3 +178,16 @@ class ParagraphWithRawEmbedBlock(blocks.StructBlock):
         icon = 'media'
         label = 'Paragraphs with raw embed'
         template = 'article/blocks/paragraph_with_raw_embed.html'
+
+
+class VideoWithQuoteBlock(blocks.StructBlock):
+    ALIGN_QUOTE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
+
+    video = EmbedBlock(help_text="YouTube video URL")
+    quote = CustomRichTextBlock(editor='hallo_for_quote')
+    align_quote = blocks.ChoiceBlock(choices=ALIGN_QUOTE_CHOICES, default=ALIGN_QUOTE_CHOICES[0][1])
+
+    class Meta:
+        icon = 'doc-full'
+        label = 'Video with Block Quote'
+        template = 'article/blocks/video_with_block_quote.html'
