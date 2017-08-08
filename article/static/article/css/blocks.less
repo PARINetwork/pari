@@ -69,11 +69,11 @@
     ul {
       list-style: disc;
       padding: 1px;
-      list-style-position: inside;
+      list-style-position: outside;
     }
 
     ol{
-      list-style-position: inside;
+      list-style-position: outside;
     }
 
    
@@ -136,6 +136,11 @@
         }
       }
     }
+     .paragraph-block{
+        ol,ul{
+          list-style-position: inside;
+        }
+      }
   }
 
   .paragraph-with-image-block {
