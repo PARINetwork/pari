@@ -169,7 +169,7 @@ class ParagraphWithEmbedBlock(blocks.StructBlock):
 class ParagraphWithRawEmbedBlock(blocks.StructBlock):
     ALIGN_EMBED_CHOICES = [('left', 'Left'), ('right', 'Right')]
 
-    embed = RawHTMLBlock()
+    embed = RawHTMLBlock(help_text="Embed HTML code(an iframe)")
     embed_align = blocks.ChoiceBlock(choices=ALIGN_EMBED_CHOICES, default=ALIGN_EMBED_CHOICES[0][0])
     content = ParagraphBlock()
 
