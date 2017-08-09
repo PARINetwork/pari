@@ -157,7 +157,10 @@ class ParagraphWithEmbedBlock(blocks.StructBlock):
     ALIGN_EMBED_CHOICES = [('left', 'Left'), ('right', 'Right')]
 
     embed = URLBlock()
-    embed_max_width = IntegerBlock(required=False)
+    embed_max_width = IntegerBlock(required=False, help_text="Optional field. Maximum width of the content in pixels to"
+                                                             " be requested from the content provider(e.g YouTube). "
+                                                             "If the requested width is not supported, provider will be"
+                                                             " supplying the content with nearest available width.")
     embed_align = blocks.ChoiceBlock(choices=ALIGN_EMBED_CHOICES, default=ALIGN_EMBED_CHOICES[0][0])
     content = ParagraphBlock()
 
