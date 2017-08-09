@@ -87,12 +87,19 @@
     }
   }
   .paragraph-with-quote-block.full-width-quote {
-    margin: 0 15%;
+    width: 100%;
+    padding: 0 15%;
     .block-quote {
       padding-left: 0;
       padding-right: 0;
       .rich-text {
+        text-align: center;
         width: 100%;
+        .paragraph-holder {
+          width: auto;
+          display: inline-block;
+
+        }
       }
       .rich-text:lang(ur) {
         width: 100%;
@@ -100,13 +107,13 @@
       }
     }
   }
-  .paragraph-with-quote-block {
+  .paragraph-with-quote-block, .video-with-quote-block {
     margin: 10px 0 10px 0;
     display: table;
     clear: both;
     .block-quote {
       .paragraph-holder {
-        b {
+        b,strong {
           padding: 0;
         }
       }
@@ -127,20 +134,22 @@
         border-top: 1px solid @primary-color;
         font-family: 'Amiri', serif;
         padding: 0 15px 0 15px;
+        text-align: center;
         .paragraph-holder {
           color: @primary-color;
-          width: 100%;
+          width: auto;
+          display: inline-block;
           font-size: 2.0em;
           line-height: 1.7em;
           padding: 0;
         }
       }
     }
-     .paragraph-block{
-        ol,ul{
-          list-style-position: inside;
-        }
+    .paragraph-block {
+      ol, ul {
+        list-style-position: inside;
       }
+    }
   }
 
   .paragraph-with-image-block {
@@ -217,11 +226,29 @@
     margin-bottom: 20px;
   }
 
+  .video-with-quote-block {
+    width: 100%;
+    display: inline-table;
+    .embed-holder {
+      &.embed-align-right {
+        padding-right: 10.9%;
+      }
+      &.embed-align-left {
+        padding-left: 10.9%;
+      }
+    }
+    .block-quote {
+      .rich-text {
+        margin-top: 0px !important;
+      }
+    }
+  }
+
   @media (max-width: @screen-sm-max) {
     .paragraph-with-quote-block.full-width-quote {
       margin: 0 2%;
       .block-quote:lang(ur) {
-        .rich-text{
+        .rich-text {
           width: auto;
         }
 
@@ -237,7 +264,7 @@
     .paragraph-with-raw-embed-block, .paragraph-with-embed-block {
       .embed-holder {
         display: flex;
-        padding: 2% 9.8%;
+        padding: 10px 9.8%;
         iframe, object, embed {
           margin: 0;
           float: none;
@@ -259,9 +286,25 @@
     }
 
     .paragraph-with-quote-block {
+      margin: 0;
       .quote-align-left.block-quote, .quote-align-right.block-quote {
         .rich-text {
           margin: 2% 8% 3% 8%;
+        }
+      }
+    }
+
+    .video-with-quote-block {
+      margin-top: 0px;
+      margin-bottom: 0px;
+
+      .embed-holder {
+        padding: 0 9.8% !important;
+        margin: 10px 0;
+      }
+      .block-quote {
+        .rich-text {
+          margin: 10px 8% !important;
         }
       }
     }
