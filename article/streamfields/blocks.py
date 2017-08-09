@@ -180,6 +180,15 @@ class ParagraphWithRawEmbedBlock(blocks.StructBlock):
         template = 'article/blocks/paragraph_with_raw_embed.html'
 
 
+class FullWidthEmbedBlock(blocks.StructBlock):
+    embed = EmbedBlock()
+
+    class Meta:
+        icon = 'media'
+        label = 'Full width embed'
+        template = 'article/blocks/full_width_embed.html'
+
+
 class VideoWithQuoteBlock(blocks.StructBlock):
     ALIGN_QUOTE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
 
