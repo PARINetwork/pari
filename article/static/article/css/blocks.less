@@ -194,11 +194,15 @@
     .embed-align-right {
       iframe {
         float: right;
+        margin-top: 1.5%;
+        margin-right: 11.7%;
       }
     }
 
     .embed-align-left {
       iframe {
+        margin-left: 11.7%;
+        margin-top: 1.5%;
         float: left;
       }
     }
@@ -227,9 +231,11 @@
       }
       .embed-holder {
         display: flex;
-        padding: 2% 15%;
+        padding: 2% 9.8%;
         iframe, object, embed {
           margin: 0;
+          float: none;
+          width: 100%;
         }
       }
     }
@@ -250,6 +256,16 @@
       .quote-align-left.block-quote, .quote-align-right.block-quote {
         .rich-text {
           margin: 2% 8% 3% 8%;
+        }
+      }
+    }
+  }
+
+  @media (max-width: @screen-xs-max) {
+    .paragraph-with-raw-embed-block {
+      .embed-holder {
+        iframe, object, embed {
+          height: inherit;
         }
       }
     }
