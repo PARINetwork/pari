@@ -165,7 +165,7 @@ class ParagraphWithEmbedBlock(blocks.StructBlock):
     content = ParagraphBlock()
 
     class Meta:
-        icon = 'image'
+        icon = 'media'
         label = 'Paragraphs with embed'
         template = 'article/blocks/paragraph_with_embed.html'
 
