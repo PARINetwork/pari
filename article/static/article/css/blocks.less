@@ -184,7 +184,7 @@
     }
   }
 
-  .paragraph-with-raw-embed-block {
+  .paragraph-with-raw-embed-block, .paragraph-with-embed-block {
     -webkit-transform: translate(0px, 0px);
 
     iframe {
@@ -225,7 +225,7 @@
       }
     }
 
-    .paragraph-with-raw-embed-block {
+    .paragraph-with-raw-embed-block, .paragraph-with-embed-block {
       &.row {
         margin: 0;
       }
@@ -262,7 +262,7 @@
   }
 
   @media (max-width: @screen-xs-max) {
-    .paragraph-with-raw-embed-block {
+    .paragraph-with-raw-embed-block, .paragraph-with-embed-block {
       .embed-holder {
         iframe, object, embed {
           height: inherit;
