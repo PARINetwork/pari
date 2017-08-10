@@ -21,3 +21,4 @@ scripts/publish_scheduled_pages.sh
 pari_sql_*.sql
 geckodriver.log
 
+/.coverage

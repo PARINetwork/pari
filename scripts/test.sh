@@ -32,4 +32,4 @@ then
 fi
 
 echo "Running test......."
-python manage.py test --settings=pari.settings.test -k -v 3
+python manage.py test --settings=pari.settings.test --keepdb --nologcapture --verbosity=2
