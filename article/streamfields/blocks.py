@@ -1,8 +1,9 @@
 from django import forms
 from django.utils.functional import cached_property
 from wagtail.wagtailadmin import blocks
-from wagtail.wagtailcore.blocks import PageChooserBlock, RichTextBlock, FieldBlock, URLBlock
+from wagtail.wagtailcore.blocks import PageChooserBlock, RichTextBlock, FieldBlock, URLBlock, RawHTMLBlock
 from wagtail.wagtailcore.models import Page
+from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 from article.rich_text import get_rich_text_editor_widget
@@ -156,11 +157,49 @@ class ParagraphWithEmbedBlock(blocks.StructBlock):
     ALIGN_EMBED_CHOICES = [('left', 'Left'), ('right', 'Right')]
 
     embed = URLBlock()
-    embed_max_width = IntegerBlock(required=False)
+    embed_max_width = IntegerBlock(required=False, help_text="Optional field. Maximum width of the content in pixels to"
+                                                             " be requested from the content provider(e.g YouTube). "
+                                                             "If the requested width is not supported, provider will be"
+                                                             " supplying the content with nearest available width.")
     embed_align = blocks.ChoiceBlock(choices=ALIGN_EMBED_CHOICES, default=ALIGN_EMBED_CHOICES[0][0])
     content = ParagraphBlock()
 
     class Meta:
-        icon = 'image'
+        icon = 'media'
         label = 'Paragraphs with embed'
         template = 'article/blocks/paragraph_with_embed.html'
+
+
+class ParagraphWithRawEmbedBlock(blocks.StructBlock):
+    ALIGN_EMBED_CHOICES = [('left', 'Left'), ('right', 'Right')]
+
+    embed = RawHTMLBlock(help_text="Embed HTML code(an iframe)")
+    embed_align = blocks.ChoiceBlock(choices=ALIGN_EMBED_CHOICES, default=ALIGN_EMBED_CHOICES[0][0])
+    content = ParagraphBlock()
+
+    class Meta:
+        icon = 'media'
+        label = 'Paragraphs with raw embed'
+        template = 'article/blocks/paragraph_with_raw_embed.html'
+
+
+class FullWidthEmbedBlock(blocks.StructBlock):
+    embed = EmbedBlock()
+
+    class Meta:
+        icon = 'media'
+        label = 'Full width embed'
+        template = 'article/blocks/full_width_embed.html'
+
+
+class VideoWithQuoteBlock(blocks.StructBlock):
+    ALIGN_QUOTE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
+
+    video = EmbedBlock(help_text="YouTube video URL")
+    quote = CustomRichTextBlock(editor='hallo_for_quote')
+    align_quote = blocks.ChoiceBlock(choices=ALIGN_QUOTE_CHOICES, default=ALIGN_QUOTE_CHOICES[0][1])
+
+    class Meta:
+        icon = 'doc-full'
+        label = 'Video with Block Quote'
+        template = 'article/blocks/video_with_block_quote.html'

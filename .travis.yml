@@ -40,4 +40,5 @@ addons:
   ssh_known_hosts:
   - 54.255.193.26
   - staging.ruralindiaonline.org
+dist: precise
 
