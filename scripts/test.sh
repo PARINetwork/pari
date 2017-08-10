@@ -32,4 +32,4 @@ then
 fi
 
 echo "Running test......."
-python manage.py test functional_tests.tests --settings=pari.settings.test --nologcapture --verbosity=2
+python manage.py test --settings=pari.settings.test --keepdb --nologcapture --verbosity=2
