@@ -22,8 +22,7 @@ class ResourceListTest(TestCase):
         self.assertEqual(response.context_data['resources'][0].title, 'Resource2')
 
     def test_resources_should_be_paginated_be_fourty_eight_resources(self):
-        for num in range(3, 50):
-            ResourceFactory(title='Resource' + str(num))
+        ResourceFactory.create_batch(48)
         response = self.client.get('/resources/')
         self.assertEqual(len(response.context_data['resources']), 48)
         response = self.client.get('/resources/?page=2')

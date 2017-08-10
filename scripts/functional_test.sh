@@ -44,7 +44,7 @@ export DISPLAY=:99
 Xvfb -ac :99 > /dev/null 2>&1 &
 
 echo "Running test"
-python manage.py test --settings=pari.settings.test --with-coverage --keepdb
+python manage.py test --settings=pari.settings.test --keepdb --nologcapture --verbosity=2
 
 echo "Stop service"
 pid=$(lsof -i:8000 -t); kill -TERM $pid || kill -KILL $pid

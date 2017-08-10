@@ -19,7 +19,7 @@ class ResourceFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Resource
 
-    path = factory.Sequence(lambda n: u'0001000100{}'.format(n))  # from wagtailcore_pagerevision
+    path = factory.Sequence(lambda n: u'00010{}'.format(n))  # from wagtailcore_pagerevision
     depth = 3
     numchild = 0
     title = 'Dummy Resource Page'
