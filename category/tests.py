@@ -1,6 +1,8 @@
 from django.db import DataError, IntegrityError
 from django.test import TestCase, Client
 from django.test import RequestFactory
+
+from category.models import Category
 from .views import StoryDetail
 from functional_tests.factory import CategoryFactory
 from functional_tests.factory import ArticleFactory
@@ -53,11 +55,13 @@ class StoryDetailTests(TestCase):
 class CategoryModelTests(TestCase):
     def setUp(self):
         self.category = CategoryFactory()
+        self.my_category = Category(name="my_category")
 
     def test_should_throw_error_if_category_already_exists(self):
         with self.assertRaises(IntegrityError) as context_message:
-            CategoryFactory(name='my_category')
-            CategoryFactory(name='my_category')
+            self.my_category.save()
+            my_category_1 = Category(name="my_category")
+            my_category_1.save()
 
     def test_should_throw_error_if_name_exceeds_100_character(self):
         with self.assertRaises(DataError) as context_message:
@@ -65,7 +69,8 @@ class CategoryModelTests(TestCase):
 
     def test_should_throw_error_if_category_order_is_a_negative_value(self):
         with self.assertRaises(IntegrityError) as context_message:
-            CategoryFactory(order=-1)
+            self.my_category.order = -1
+            self.my_category.save()
 
     def test_absolute_url(self):
         absolute_url = self.category.get_absolute_url()

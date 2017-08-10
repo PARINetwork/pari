@@ -70,6 +70,7 @@ INSTALLED_APPS = (
     'wagtail.wagtailforms',
     'wagtail.contrib.modeladmin',
     'wagtailtinymce',
+    'django_nose'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -219,7 +220,7 @@ WAGTAILADMIN_RICH_TEXT_EDITORS = {
 }
 
 
-
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 WAGTAILIMAGES_IMAGE_MODEL = 'core.AffixImage'
 # Whether to use face/feature detection to improve image cropping - requires OpenCV
 WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = False
