@@ -3,6 +3,8 @@
   {% if specific.featured_image %}
     {% image specific.featured_image width-270 as featured_image %}
     <img src="{{ featured_image.url }}" alt="{{ specific.title }}">
+  {% elif specific.embed_thumbnail %}
+     <img src="{{ specific.embed_thumbnail }}" alt="{{ specific.title }}" width="278" height="225">
   {% else %}
     <img src="{{ STATIC_URL }}img/default_featured_image.png" alt="{{ specific.title }}" width="278" height="225">
   {% endif %}

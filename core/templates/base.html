@@ -39,7 +39,6 @@
     {% if LANGUAGE_BIDI %}
     <link rel="stylesheet" href="{{ STATIC_URL }}css/rtl.css">
     {% endif %}
-
     <script type="application/ld+json">
     {
         "@context": "http://schema.org",
@@ -126,9 +125,11 @@
                           <div class="collapse navbar-collapse">
                               <ul class="nav navbar-nav navbar-right " itemscope itemtype="http://schema.org/SiteNavigationElement">
                                   {% include "pages/menus/dropdown.html" %}
-                                  <a href="#" class="home-hamburger">
-                                    <span class="glyphicon glyphicon-menu-hamburger hamburger-icon {% if current_page != 'home-page' %} active-tab {% endif %}"></span>
-                                  </a>
+                                  <li>
+                                          <a href="#" class="home-hamburger">
+                                            <span class="glyphicon glyphicon-menu-hamburger hamburger-icon {% if current_page != 'home-page' %} active-tab {% endif %}"></span>
+                                        </a>
+                                  </li>
                               </ul>
                           </div>
                       </div>
@@ -162,10 +163,14 @@
         <div class="container">
           <header class="seach-input-panel"  itemscope itemtype="http://schema.org/WebSite">
             <meta itemprop="url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}/" />
-            <form action="/search/" role="search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction" class="search-form">
-              <meta itemprop="target" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{% url "wagtailsearch_search" %}?q={q}" />
-              <input type="text" name="q" value="{{ query_string }}" placeholder="Enter to search" itemprop="query-input">
-              <span class="search-icon fa fa-search"></span>
+            <form action="/search/"role="search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction" class="search-form">
+              <meta itemprop="target" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{% url "site_search" %}?q={q}" />
+              <input type="text" class="query" name="q" value="{{ query_string }}" placeholder="Enter to search" itemprop="query-input">
+              <input type="hidden" name="type" value="article" itemprop="query-default-content-type">
+              <input type="hidden" name="type" value="video" itemprop="query-default-content-type">
+              <input type="hidden" name="type" value="audio" itemprop="query-default-content-type">
+              <input type="hidden" name="language" value="en" itemprop="query-default-language">
+                <span class="search-icon fa fa-search"></span>
             </form>
             <span class="search-close fa fa-close"></span>
           </header>
@@ -184,6 +189,8 @@
 
 <script src="{{ STATIC_URL }}/js/vendor/jquery-3.1.1.min.js"></script>
 <script src="{{ STATIC_URL }}/js/vendor/jsrender.min.js"></script>
+<script src="{{ STATIC_URL }}/js/vendor/datepicker.js"></script>
+
 <script type="text/javascript" src="{{ STATIC_URL }}/js/vendor/retina.js"></script>
 {% block extra_uncompressed_js %}{% endblock %}
 {% compress js %}
@@ -198,7 +205,7 @@
                     $('.header-title-wrapper-fullscreen').addClass('hidden');
                 if (!$('.home-hamburger').hasClass('hidden'))
                     $('.home-hamburger').addClass('hidden');
-                $('.home-hamburger').siblings().not('.search-icon').each(function () {
+                $('.home-hamburger').parent().siblings().not('.search-icon').each(function () {
                     if ($(this).hasClass('hidden'))
                         $(this).fadeToggle('200').removeClass('hidden');
                 });
@@ -215,7 +222,7 @@
         }
         function toggleClassForDropdown() {
             $('.home-hamburger .hamburger-icon').toggleClass('active-tab');
-            $('.home-hamburger').siblings().not('.search-icon').each(function () {
+            $('.home-hamburger').parent().siblings().not('.search-icon').each(function () {
                 $(this).fadeToggle('200').toggleClass('hidden');
             });
             $('.header-title-wrapper .navbar-brand-title').fadeToggle('200').toggleClass('hidden');
@@ -236,7 +243,7 @@
                       $('.home-hamburger').removeClass('hidden');
                   if (isMainHeaderOnDisplay) {
                       $('.header-title-wrapper-fullscreen').removeClass('hidden');
-                      $('.home-hamburger').siblings().not('.search-icon').each(function () {
+                      $('.home-hamburger').parent().siblings().not('.search-icon').each(function () {
                           $(this).fadeToggle('200').addClass('hidden');
                       });
                       $('.navbar-brand-title').fadeToggle('200').addClass('hidden');
@@ -269,7 +276,7 @@
 
           $(".search-panel-toggle").toggleClass("show");
           if($(".search-panel-toggle").hasClass("show")) {
-            $(".search-panel-toggle input").val("");
+            $(".search-panel-toggle .query").val("");
             $(".search-panel-toggle input").focus();
           }
           if($("#header .navbar-collapse").hasClass("in")) {
@@ -297,7 +304,7 @@
           var value = input.val().trim();
           input.removeClass("error");
           if(value.length > 0) {
-            window.location.href = window.location.origin + "/search/?q="+value;
+            window.location.href = window.location.origin + "/search/?q="+value+"&type=article&type=video&type=audio&language=en";
           } else {
             if(!input.hasClass("error")) {
                 input.addClass("error");

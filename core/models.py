@@ -24,7 +24,8 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 from album.models import Album
 from article.models import Article
 from category.models import Category
-from core.utils import get_translations_for_page
+from core.utils import get_translations_for_page, SearchBoost
+
 
 @python_2_unicode_compatible
 class StaticPage(Page):
@@ -40,8 +41,19 @@ class StaticPage(Page):
         FieldPanel('language'),
     ]
 
+    search_fields = Page.search_fields + [
+        index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE),
+        index.SearchField('language'),
+        index.FilterField('get_search_type'),
+        index.FilterField('language')
+    ]
+
+    def get_search_type(self):
+        return self.__class__.__name__.lower()
+
     def get_absolute_url(self):
         return reverse("static_page", kwargs={"slug": self.slug})
+
 
 class IntegerBlock(blocks.CharBlock):
 

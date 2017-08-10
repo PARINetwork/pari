@@ -16,6 +16,7 @@ from wagtail.wagtailsearch import index
 from modelcluster.fields import M2MField, ParentalKey
 
 from core.edit_handlers import M2MFieldPanel, AudioPanel
+from core.utils import SearchBoost
 
 
 @python_2_unicode_compatible
@@ -35,12 +36,15 @@ class Album(Page):
 
     template = "album/album_detail.html"
 
-    search_fields = Page.search_fields + (
-        index.SearchField('description', partial_match=True, boost=2),
+    search_fields = Page.search_fields + [
+        index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE),
+        index.SearchField('description', partial_match=True, boost=SearchBoost.DESCRIPTION),
+        index.SearchField('get_locations_index', partial_match=True, boost=SearchBoost.LOCATION),
+        index.SearchField('get_photographers_index', partial_match=True, boost=SearchBoost.AUTHOR),
+        index.SearchField('language'),
         index.FilterField('language'),
-        index.SearchField('get_locations_index'),
-        index.SearchField('get_photographers_index'),
-    )
+        index.FilterField('get_search_type')
+    ]
 
     @property
     def locations(self):
@@ -63,6 +67,9 @@ class Album(Page):
     def get_photographers_index(self):
         photographers_index = map(lambda slide: slide.image.get_all_photographers(), self.slides.filter(image__isnull=False))
         return " ".join(photographers_index)
+
+    def get_search_type(self):
+        return self.__class__.__name__.lower()
 
     def get_context(self, request, *args, **kwargs):
         return {

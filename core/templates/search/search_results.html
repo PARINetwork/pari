@@ -6,35 +6,145 @@
 Search{% if search_results %} Results{% endif %}
 {% endblock %}
 
+{% block extra_js %}
+    <script type="text/javascript">
+        $(function () {
+            $('.datepicker').dcalendarpicker();
+            var i = document.location.href.lastIndexOf('?');
+            var types = document.location.href.substr(i + 2).split('&');
+            types.shift();
+            var dic = {};
+            for (typ in types) {
+                type = types[typ];
+                var z = type.split('=');
+                if (!(z[0] in dic)) {
+                    dic[z[0]] = [];
+                }
+                dic[z[0]].push(decodeURI(z[1]));
+
+            }
+            for(type in dic) {
+                $('input[name='+type+']').prop('checked', function () {
+                    return $.inArray(this.value, dic[type]) !== -1;
+                });
+            }
+            if(dic['start-date'])
+                $("#start-date").val(dic['start-date']);
+            if(dic['end-date'])
+                $("#end-date").val(dic['end-date']);
+            if(dic.hasOwnProperty('category') && !(dic["type"] && (dic["type"].includes("article") || dic["type"].includes("video") || dic["type"].includes("audio"))) ){
+                clearChildrenCheckBox.call($('.category-filters .clear-all'));
+            }
+
+            if(dic["type"] && (dic["type"].includes("article") || dic["type"].includes("video") || dic["type"].includes("audio"))){
+                removeDisableFromCategory();
+            }
+            function removeDisableFromCategory() {
+                $('.category-filters ul > li > input[name="category"]').each(function () {
+                    $(this).attr("disabled", false);
+                });
+            }
+            function addDisabletoCategory() {
+                $('.category-filters ul > li > input[name="category"]').each(function () {
+                    $(this).attr("disabled", true);
+
+                });
+            }
+
+            function clearChildrenCheckBox() {
+                $(this).parent().parent().find("input").each(function () {
+                    $(this).prop("checked", false);
+                });
+                formQueryParams();
+            }
+
+            $(".clear-all").on("click",function () {
+                clearChildrenCheckBox.call(this);
+            });
+
+            $(".clear-date").on("click",function () {
+                $("#start-date").val('');
+                $("#end-date").val('');
+                formQueryParams();
+            });
+
+
+
+            function formQueryParams() {
+                var checked = [];
+                $(".search-filters li > input[type='checkbox']:checked").each(function () {
+                    checked.push($(this).attr('name') + '=' + $(this).val());
+                });
+
+                var start_date = $("#start-date").val();
+                var end_date = $("#end-date").val();
+                if(start_date)
+                    checked.push('start-date' + '=' + start_date);
+                if(end_date)
+                    checked.push('end-date' + '=' + end_date);
+
+                var query = $(".search-form > input").val();
+                window.location = checked.length > 0 ? '/search/?q=' + query + '&' + checked.join('&') : '/search/?q=' + query;
+            }
+
+            $(".search-filters li > input[type='checkbox']").on("change", function () {
+                formQueryParams();
+            });
+
+
+            $("#date-range-button").on("click",function () {
+                formQueryParams();
+            });
+
+
+        });
+
+    </script>
+{% endblock %}
+
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/two_column_grid.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/datepicker.less">
 {% endblock %}
 
 
 {% block main %}
 <div itemscope itemtype="http://schema.org/SearchResultsPage" class="search-result-panel">
 
-  <div class="search-panel">
+  <div class="search-panel ">
     <div class="container">
       <header class="seach-input-panel">
         <form action="/search/" role="search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction" class="search-form">
-          <div class="no-of-results">{{search_results.paginator.count}} results for </div>
-          <div class="input-box">
-            <input type="text" name="q" value="{{ query_string }}" placeholder="Enter to search" itemprop="query-input">
-            <span class="search-icon fa fa-search"></span>
-          </div>
+            <div>
+                <div class="col-lg-3 col-md-3 col-sm-3 result-label">
+                    <h2>Search results for</h2>
+                </div>
+                <div class="input-box col-lg-9 col-md-9 col-sm-12">
+                    <input type="text" name="q" value="{{ query_string }}" placeholder="Enter to search" itemprop="query-input">
+                    <input type="hidden" name="type" value="article" itemprop="query-default-content-type">
+                    <input type="hidden" name="type" value="video" itemprop="query-default-content-type">
+                    <input type="hidden" name="type" value="audio" itemprop="query-default-content-type">
+                    <input type="hidden" name="language" value="en" itemprop="query-default-language">
+                    <span class="search-icon fa fa-search fa-in-results"></span>
+                </div>
+            </div>
 
           <meta itemprop="target" content="/search/?q={q}">
 
         </form>
       </header>
+      <div class="no-of-results col-lg-12 col-md-12 col-xs-12 col-sm-12"><h4>{{search_results.paginator.count}} Result{% if search_results.paginator.count > 1%}s{% endif %}</h4></div>
+        {% include "includes/filter_template.html" with languages=languages %}
       {% if search_results %}
-        {% include "includes/two_column_grid.html" with search_results=search_results %}
+        {% include "includes/two_column_grid.html" with search_results=search_results languages=languages%}
       {% else %}
-          <div class="result-not-found bg-danger">
-            <p class="not-found-msg">Sorry, could not find any results for "{{ query }}". Please try a different query.</p>
+          <div class="result-not-found bg-danger col-lg-10 col-md-10">
+            <p class="not-found-msg">No results found for your query with current filters. Try another query with different filters.</p>
           </div>
       {% endif %}
+    </div>
+    <div class="container search-result-pagination">
+    {% include "includes/paginator.html" with results=search_results %}
     </div>
   </div>
 </div>

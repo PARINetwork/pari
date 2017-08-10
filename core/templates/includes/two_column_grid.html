@@ -1,28 +1,51 @@
 {% load i18n core_filters %}
 {% load i18n wagtailcore_tags %}
 
-<section class="search-result two-column-grid">
-  <ul>
+<section class="search-result two-column-grid col-lg-10 col-md-12">
+    <hr>
+    <ul>
     {% for result in search_results %}
-      <li class="result item col-lg-6 col-md-4 col-sm-6 col-xs-12">
-        <a href="{{ result.specific.get_absolute_url }}">
+      <li class="result item col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding-right: 0px;">
+
+          <a href="{{ result.specific.get_absolute_url }}">
           {% include "includes/content_type.html" with type=result.specific|get_type %}
           {% include "includes/article_listing_image.html" with specific=result.specific alignment_class='full-image-center listing-image'%}
+          </a>
+
+        </div>
 
 
-          <div class="caption">
+          <div class="caption col-lg-6 col-md-6 col-sm-12 col-xs-12">
             {% include "article/includes/default_atom.html" with article=result.specific %}
             {% if result.specific.latest_revision_created_at %}
-              <div class="margin-top-20px date">
+              <div class="margin-top-6px date">
                 <a href="{% url "archive-detail" year=result.specific.first_published_at.year month=result.specific.first_published_at.month %}">
                     <span itemprop="datePublished" class="date link-dark">{{ result.specific.first_published_at|date }}</span>
                 </a>
               </div>
             {% endif %}
-            </div>
-        </a>
+                <div>
+                {% with result.specific.get_translation as article_translations %}
+                       {% if article_translations|length > 1 %}
+                        <div class="dropdown custom-dropdown">
+                            <button class="dropdown-toggle" type="button" id="dropdownMenu1"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                {{ article_translations | length }} languages
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                {% for translation in article_translations %}
+                                    <li><a href="{{ translation.get_absolute_url}}">{{ translation.get_language_display }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                   {% endwith %}
+                </div>
+          </div>
       </li>
       {% endfor %}
-  </ul>
-  {% include "includes/paginator.html" with results=search_results %}
+    </ul>
 </section>
+

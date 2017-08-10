@@ -69,7 +69,7 @@ INSTALLED_APPS = (
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
     'wagtail.contrib.modeladmin',
-    'django_nose',
+    'wagtailtinymce',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -138,7 +138,6 @@ STATICFILES_FINDERS = (
 MEDIA_ROOT = join(PROJECT_ROOT, 'media')
 MEDIA_URL = '/media/'
 
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 # Wagtail settings
 
@@ -150,11 +149,75 @@ WAGTAIL_SITE_NAME = "pari"
 #
 WAGTAILSEARCH_BACKENDS = {
     'default': {
-        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
+        'BACKEND': 'search.custom_elasticsearch.CustomElasticSearch',
         'INDEX': 'pari',
         'ATOMIC_REBUILD': True,
     },
 }
+WAGTAILADMIN_RICH_TEXT_EDITORS = {
+    'default': {
+        'WIDGET': 'wagtail.wagtailadmin.rich_text.HalloRichTextArea'
+    },
+    'hallo': {
+        'WIDGET': 'article.rich_text.CustomHalloRichTextArea',
+    },
+    'hallo_for_quote': {
+        'WIDGET': 'article.rich_text.CustomHalloRichTextArea',
+        'OPTIONS': {
+            "plugins": {
+                "halloformat": {},
+                "halloheadings": {"formatBlocks": ['p']},
+                "hallorequireparagraphs": {}
+            }
+        }
+    },
+    'hallo_for_paragraph': {
+        'WIDGET': 'article.rich_text.CustomHalloRichTextArea',
+        'OPTIONS': {
+            "plugins": {
+                "halloformat": {},
+                "halloheadings": {"formatBlocks": ['p', 'h2', 'h3', 'h4', 'h5']},
+                "hallolists": {},
+                "hallohr": {},
+                "halloreundo": {},
+                "hallowagtaillink": {},
+                "hallorequireparagraphs": {}
+            }
+        }
+    },
+    'tinymce': {
+        'WIDGET': 'wagtailtinymce.rich_text.TinyMCERichTextArea',
+    },
+    'tinymce_paragraph': {
+        'WIDGET': 'wagtailtinymce.rich_text.TinyMCERichTextArea',
+        'OPTIONS': {
+            'buttons': [
+                [
+                    ['undo', 'redo'],
+                    ['formatselect'],
+                    ['bold', 'italic'],
+                    ['bullist', 'numlist'],
+                    ['hr'],
+                    ['link', 'unlink'],
+                    ['fullscreen'],
+                ]
+            ]
+        }
+    },
+    'tinymce_quote': {
+        'WIDGET': 'wagtailtinymce.rich_text.TinyMCERichTextArea',
+        'OPTIONS': {
+            'buttons': [
+                [
+                    ['undo', 'redo'],
+                    ['bold', 'italic'],
+                    ['fullscreen'],
+                ]
+            ]
+        }
+    },
+}
+
 
 
 WAGTAILIMAGES_IMAGE_MODEL = 'core.AffixImage'
@@ -162,6 +225,9 @@ WAGTAILIMAGES_IMAGE_MODEL = 'core.AffixImage'
 WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = False
 WAGTAIL_USAGE_COUNT_ENABLED = True
 WAGTAILSEARCH_RESULTS_TEMPLATE = "search/search_results.html"
+
+# Flag to show modular content panel in article admin page
+MODULAR_ARTICLE = False
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 
@@ -300,8 +366,3 @@ INSTAMOJO = {
 }
 
 GOOGLE_MAP_KEY = ""
-
-NOSE_ARGS = [
-    '--with-coverage',
-    '--cover-package=core,location,author,category,article,album,face,feeds,resources',
-]

@@ -14,6 +14,7 @@ from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
 from core.edit_handlers import M2MFieldPanel
+from core.utils import SearchBoost
 
 
 @python_2_unicode_compatible
@@ -64,9 +65,10 @@ class Face(Page):
     def photographers(self):
         return self.image.photographers.all()
 
-    search_fields = Page.search_fields + (
+    search_fields = Page.search_fields + [
+        index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE),
         index.FilterField('image'),
-        index.SearchField('additional_info', partial_match=True, boost=2),
+        index.SearchField('additional_info', partial_match=True, boost=SearchBoost.CONTENT),
         index.FilterField('location'),
         index.RelatedFields('location', [
             index.SearchField('name'),
@@ -78,16 +80,22 @@ class Face(Page):
         index.SearchField('occupation'),
         index.SearchField('occupation_of_parent'),
         index.SearchField('quote'),
-        index.SearchField('get_locations_index'),
-        index.SearchField('get_photographers_index'),
+        index.SearchField('get_locations_index', partial_match=True, boost=SearchBoost.LOCATION),
+        index.SearchField('get_photographers_index', partial_match=True, boost=SearchBoost.AUTHOR),
         index.SearchField('adivasi'),
-    )
+        index.SearchField('language'),
+        index.FilterField('get_search_type'),
+        index.FilterField('language')
+    ]
 
     def get_locations_index(self):
         return self.image.get_locations_index()
 
     def get_photographers_index(self):
         return self.image.get_all_photographers()
+
+    def get_search_type(self):
+        return self.__class__.__name__.lower()
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('image'),

@@ -1,8 +1,14 @@
+import json
+
+from django.templatetags.static import static
+from django.utils import translation
 from django.utils.html import format_html
 from django.conf import settings
+from django.utils.safestring import mark_safe
 
 from wagtail.wagtailcore import hooks
 from wagtail.wagtailcore.whitelist import attribute_rule
+from wagtailtinymce.wagtail_hooks import to_js_primitive
 
 
 def blacklist_tag():
@@ -83,7 +89,7 @@ def editor_css():
 	        text-align: center;
 	        display: block;
         }}
-
+        
         blockquote::before {{
             content: open-quote;
         }}
@@ -98,3 +104,51 @@ def editor_css():
         """,
         settings.STATIC_URL
     )
+
+@hooks.register('insert_tinymce_css')
+def tiny_css():
+    return format_html(
+        """
+        <style>
+        .mce-tinymce.mce-container.mce-panel {{
+            box-sizing: border-box;
+            border-radius: 6px;
+            width: 100%;
+            border: 1px solid #e6e6e6;
+            padding: 0 5px 5px 5px;
+            background-color: #fafafa;
+            -webkit-appearance: none;
+        }}
+
+        .mce-statusbar.mce-container.mce-panel.mce-stack-layout-item.mce-last {{
+            visibility: hidden !important;
+        }}
+        .mce-toolbar-grp.mce-container.mce-panel.mce-stack-layout-item.mce-first {{
+            background-color: white;
+
+        }}
+        .mce-edit-area.mce-container.mce-panel.mce-stack-layout-item {{
+            border: 0;
+        }}
+
+        # .mce-edit-area iframe{{
+        #     height:100px !important;
+        # }}
+
+        .mce-btn:hover, .mce-btn:focus {{
+                background-color: rgb(86, 202, 200) !important;
+                border-color: blue !important;
+        }}
+        .mce-btn.mce-active {{
+            background-color: rgb(86, 202, 200) !important;
+        }}
+
+        .mce-content-body {{
+            font-weight : 300 !important;
+            font-size:1.0em !important;
+        }}
+
+        </style>
+        """
+    )
+
