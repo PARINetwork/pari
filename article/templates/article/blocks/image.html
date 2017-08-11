@@ -1,13 +1,18 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 <div class="image-block">
-    {% image value.image width-570 as image %}
-    <div class="image">
-        <img src="{{ image.url }}"/>
+    {% if value.height > 560 %}
+        {% image value.image max-1400x1120 as image %}
+    {% else %}
+        {% image value.image max-700x560 as image %}
+    {% endif %}
+    <div class="image" style="height:{{ value.height }}px">
+    {% image value.image max-1400x1120 as slide_image %}
+        <img src="{{ image.url }}" {% if value.fill_container %}style="position:relative;max-height:inherit"{% endif %} data-src="{{ slide_image.url }}"/>
     </div>
     <div class="caption">
-        <p>
+        <span>
             {{ value.caption }}
-        </p>
+        </span>
     </div>
 </div>

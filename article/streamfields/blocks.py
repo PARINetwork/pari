@@ -31,10 +31,9 @@ class IntegerBlock(FieldBlock):
     class Meta:
         icon = "plus-inverse"
 
-
+#TODO implement caption in the block it is implemented in.
 class ImageBlock(blocks.StructBlock):
     image = ImageChooserBlock()
-    caption = blocks.CharBlock(required=False)
 
     class Meta:
         icon = 'image'
@@ -169,6 +168,20 @@ class ParagraphWithEmbedBlock(blocks.StructBlock):
         label = 'Paragraphs with embed'
         template = 'article/blocks/paragraph_with_embed.html'
 
+
+class NColumnImageBlock(blocks.StructBlock):
+    images = blocks.ListBlock(ImageBlock())
+    height = IntegerBlock(min_value=0, required=True, default=380)
+    caption = blocks.CharBlock(required=False)
+
+    def get_context(self, value):
+        context = super(NColumnImageBlock, self).get_context(value)
+        context['height'] = value['height']
+        return context
+
+    class Meta:
+        template = 'article/blocks/columnar_image.html'
+        label = 'Columnar Images'
 
 class ParagraphWithRawEmbedBlock(blocks.StructBlock):
     ALIGN_EMBED_CHOICES = [('left', 'Left'), ('right', 'Right')]

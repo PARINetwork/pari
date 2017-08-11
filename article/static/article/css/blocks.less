@@ -10,30 +10,38 @@
 
   .image-block {
     background: white;
+    float: left;
+    margin: 0 10px;
 
     .image {
       position: relative;
       background: black;
-      height: 380px;
       img {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-
-        width: auto !important;
         max-width: 100%;
-        height: auto;
         max-height: 100%;
-        display: block;
-        vertical-align: middle;
+      }
+      i.fa-expand {
+        font-size: 30px !important;
+        z-index: 1;
+        color: white;
+        background-color: #151414;
+        opacity: .6;
+        //float: right;
+        position: absolute;
+        right: 0;
+        padding: 10px;
       }
     }
     .caption {
       font-style: italic;
     }
+  }
+
+  .caption {
+    font-style: italic;
+    text-align: center;
+    font-size: 15px;
+    color: grey;
   }
 
   .full-width-image-block {
@@ -75,8 +83,6 @@
     ol{
       list-style-position: outside;
     }
-
-   
 
     &.text-align-center {
       text-align: center;
