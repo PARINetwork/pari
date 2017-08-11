@@ -197,7 +197,7 @@ class ParagraphWithRawEmbedBlock(blocks.StructBlock):
 
 
 class FullWidthEmbedBlock(blocks.StructBlock):
-    embed = EmbedBlock()
+    embed = EmbedBlock(required=True, help_text="Enter URL for the embed block")
 
     class Meta:
         icon = 'media'
