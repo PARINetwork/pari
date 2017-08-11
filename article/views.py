@@ -92,7 +92,7 @@ class ArchiveDetail(ListView):
         year = self.kwargs['year']
         month = self.kwargs['month']
         qs = Article.objects.live().filter(first_published_at__year=year,
-                                      first_published_at__month=month)
+                                      first_published_at__month=month).order_by('-first_published_at')
         qs, = filter_by_language(self.request, qs)
         return qs
 

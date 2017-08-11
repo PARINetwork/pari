@@ -1,0 +1,23 @@
+{% load i18n wagtailcore_tags %}
+
+<div class="translator_bio">
+    {% for translator in article.translators.all %}
+        {% if translator not in article.authors.all %}
+            <p itemscope itemtype="http://schema.org/Person" itemprop="translator">
+                <i>
+                    {% if translator.bio %}
+                        <span class="hidden" itemprop="name">{{ translator.name }}</span>
+                        <span itemprop="description">{{ translator.bio }}</span>
+                    {% else %}
+                        {% trans "Translated by:" %} <span itemprop="name">{{ translator.name }}</span>
+                    {% endif %}
+                    {% if translator.twitter_username %}
+                        {% trans "You can contact the translator here:" %}
+                        <a itemprop="url"
+                           href="https://twitter.com/{{ translator.twitter_handle }}">{{ translator.twitter_username }}</a>
+                    {% endif %}
+                </i>
+            </p>
+        {% endif %}
+    {% endfor %}
+</div>

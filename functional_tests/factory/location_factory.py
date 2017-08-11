@@ -12,6 +12,8 @@ class FuzzyPoint(BaseFuzzyAttribute):
 class LocationFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Location
+        django_get_or_create = ('name',)
+
 
     name = "Sivaganga"
     slug = "45-sivaganga"

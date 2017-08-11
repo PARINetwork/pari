@@ -30,3 +30,12 @@ class ImageFactory(factory.django.DjangoModelFactory):
         if extracted:
             for photographer in extracted:
                 self.photographers.add(photographer)
+
+    @factory.post_generation
+    def categories(self, create, extracted, **kwargs):
+        if not create:
+            return
+
+        if extracted:
+            for category in extracted:
+                self.categories.add(category)
