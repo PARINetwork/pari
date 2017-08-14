@@ -17,7 +17,7 @@ class ArticleFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Article
 
-    path = factory.Sequence(lambda n: u'000100{}'.format(n))  # Article sequence starts from 00010020
+    path = factory.Sequence(lambda n: u'00010{}'.format(n))  # Article sequence starts from 0001020
     depth = 2
     numchild = 0
     title = "Article Page"

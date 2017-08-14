@@ -1,0 +1,26 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+{% load article_filters %}
+
+<div class="n-column-image">
+    {% with value.images|length as images_length %}
+        {% for image in value.images %}
+            <div class="image-block">
+                {% if value.height > 560 %}
+                    {% image image.image height-1120 as image %}
+                {% else %}
+                    {% image image.image height-560 as image %}
+                {% endif %}
+                <div class="image" style="height:{{ value.height }}px">
+                    {% image image.image max-1400x1120 as slide_image %}
+                    <img src="{{ image.url }}" data-src="{{ slide_image.url }}"/>
+                </div>
+            </div>
+        {% endfor %}
+    {% endwith %}
+
+    <div class="caption col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <span>
+            {{ value.caption }}
+        </span>
+    </div>
+</div>

@@ -41,4 +41,6 @@ addons:
   - 54.255.193.26
   - staging.ruralindiaonline.org
 dist: precise
+notifications:
+  slack: countermedia:TsEo2IDocyJtRqLR1Mzi0zuT
 

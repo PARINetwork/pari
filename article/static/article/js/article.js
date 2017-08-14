@@ -11,10 +11,7 @@ var ArticleAlbum = {
     },
 
     _convertToJson: function () {
-
-        console.log(this.getImageAndDescriptionOfRichtextImgHolder());
         return this.getImageAndDescriptionOfRichtextImgHolder();
-
     },
 
     getImageAndDescriptionOfRichtextImgHolder: function() {
@@ -26,7 +23,7 @@ var ArticleAlbum = {
                 id: 0
             }];
 
-        $(".article-content .rich-text > .gallery, .article-content .rich-text > .rich-text-image-holder").each(function(index) {
+        $(".article-content .rich-text > .gallery, .article-content .rich-text > .rich-text-image-holder, .image-block .image > .gallery ").each(function(index) {
             jsonArray.push({
                 src: self.getImageUrl($(this).find("img")),
                 description: self.getDescription(this),
@@ -100,7 +97,7 @@ var ArticleAlbum = {
 
         });
 
-        $('.rich-text .gallery').click(function (event) {
+        $('.rich-text .gallery, .modular-content .gallery').click(function (event) {
 
             $(".photo-album-popup").removeClass("hide");
             $(".carousel-container").addClass("carousel");
@@ -189,6 +186,11 @@ $(function () {
     $('.rich-text img').each(function (index) {
         $(this).wrap('<a class="gallery" id=' + index + '></a>');
         $(this).parents('a').first().prepend('<i class="fa fa-expand fa-invert"></i>').css("position", "relative");
+    });
+
+    $('.modular-content .n-column-image img').each(function (index) {
+        $(this).wrap('<a class="gallery" id=' + index + '></a>');
+        $(this).parents('a').first().prepend('<i class="fa fa-expand fa-invert"></i>');
     });
 
     ArticleAlbum.init();
