@@ -70,7 +70,6 @@ INSTALLED_APPS = (
     'wagtail.wagtailforms',
     'wagtail.contrib.modeladmin',
     'wagtailtinymce',
-    'django_nose'
 )
 
 MIDDLEWARE_CLASSES = (

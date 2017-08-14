@@ -1,6 +1,11 @@
 from .base import *
 
 ALLOWED_HOSTS = ['*']
+
+INSTALLED_APPS += (
+    'django_nose',
+)
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',

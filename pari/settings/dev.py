@@ -10,6 +10,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', u'development.ruralindiaonline.org']
 
 INSTALLED_APPS += (
     'nplusone.ext.django',
+    'django_nose',
 )
 
 MIDDLEWARE_CLASSES += (
