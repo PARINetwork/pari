@@ -8,7 +8,6 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 from article.rich_text import get_rich_text_editor_widget
 from face.models import Face
-from location.models import Location
 
 
 class CustomRichTextBlock(RichTextBlock):
@@ -34,9 +33,10 @@ class IntegerBlock(FieldBlock):
 
 
 class ModelMultipleChoiceBlock(FieldBlock):
-    def __init__(self, required=True, help_text=None, **kwargs):
+    def __init__(self, target_model, required=True, help_text=None, **kwargs):
+        self.target_model = target_model
         self.field = forms.ModelMultipleChoiceField(
-            queryset=Location.objects.all(),
+            queryset=self.target_model.objects.all(),
             required=required,
             help_text=help_text,
         )
@@ -46,7 +46,7 @@ class ModelMultipleChoiceBlock(FieldBlock):
         if not value:
             return value
         else:
-            return [each for each in Location.objects.filter(pk__in=value)]
+            return [each for each in self.target_model.objects.filter(pk__in=value)]
 
     def get_prep_value(self, value):
         if not value:
@@ -55,15 +55,15 @@ class ModelMultipleChoiceBlock(FieldBlock):
             return [each.pk for each in value]
 
     def value_from_form(self, value):
-        if not value or (isinstance(value, list) and isinstance(value[0], Location)):
+        if not value or (isinstance(value, list) and isinstance(value[0], self.target_model)):
             return value
         else:
-            return [each for each in Location.objects.filter(pk__in=value)]
+            return [each for each in self.target_model.objects.filter(pk__in=value)]
 
     def value_for_form(self, value):
         if not value:
             return value
-        if isinstance(value, list) and isinstance(value[0], Location):
+        if isinstance(value, list) and isinstance(value[0], self.target_model):
             return [each.pk for each in value]
 
 
