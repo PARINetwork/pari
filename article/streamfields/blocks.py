@@ -8,6 +8,7 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 from article.rich_text import get_rich_text_editor_widget
 from face.models import Face
+from location.models import Location
 
 
 class CustomRichTextBlock(RichTextBlock):
@@ -30,6 +31,41 @@ class IntegerBlock(FieldBlock):
 
     class Meta:
         icon = "plus-inverse"
+
+
+class ModelMultipleChoiceBlock(FieldBlock):
+    def __init__(self, required=True, help_text=None, **kwargs):
+        self.field = forms.ModelMultipleChoiceField(
+            queryset=Location.objects.all(),
+            required=required,
+            help_text=help_text,
+        )
+        super(ModelMultipleChoiceBlock, self).__init__(**kwargs)
+
+    def to_python(self, value):
+        if not value:
+            return value
+        else:
+            return [each for each in Location.objects.filter(pk__in=value)]
+
+    def get_prep_value(self, value):
+        if not value:
+            return value
+        else:
+            return [each.pk for each in value]
+
+    def value_from_form(self, value):
+        if not value or (isinstance(value, list) and isinstance(value[0], Location)):
+            return value
+        else:
+            return [each for each in Location.objects.filter(pk__in=value)]
+
+    def value_for_form(self, value):
+        if not value:
+            return value
+        if isinstance(value, list) and isinstance(value[0], Location):
+            return [each.pk for each in value]
+
 
 #TODO implement caption in the block it is implemented in.
 class ImageBlock(blocks.StructBlock):
