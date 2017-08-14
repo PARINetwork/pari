@@ -8,6 +8,7 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 from article.rich_text import get_rich_text_editor_widget
 from face.models import Face
+from location.models import Location
 
 
 class CustomRichTextBlock(RichTextBlock):
@@ -69,7 +70,7 @@ class ModelMultipleChoiceBlock(FieldBlock):
             return []
 
 
-#TODO implement caption in the block it is implemented in.
+# TODO implement caption in the block it is implemented in.
 class ImageBlock(blocks.StructBlock):
     image = ImageChooserBlock()
 
@@ -221,6 +222,7 @@ class NColumnImageBlock(blocks.StructBlock):
         template = 'article/blocks/columnar_image.html'
         label = 'Columnar Images'
 
+
 class ParagraphWithRawEmbedBlock(blocks.StructBlock):
     ALIGN_EMBED_CHOICES = [('left', 'Left'), ('right', 'Right')]
 
@@ -254,3 +256,11 @@ class VideoWithQuoteBlock(blocks.StructBlock):
         icon = 'doc-full'
         label = 'Video with Block Quote'
         template = 'article/blocks/video_with_block_quote.html'
+
+
+class ParagraphWithMapBlock(blocks.StructBlock):
+    content = ParagraphBlock()
+    locations = ModelMultipleChoiceBlock(target_model=Location)
+
+    class Meta:
+        label = 'Paragraphs with map'
