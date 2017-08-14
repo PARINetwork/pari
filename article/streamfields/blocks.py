@@ -46,7 +46,7 @@ class ModelMultipleChoiceBlock(FieldBlock):
         if not value:
             return value
         else:
-            return [each for each in self.target_model.objects.filter(pk__in=value)]
+            return self.target_model.objects.filter(pk__in=value)
 
     def get_prep_value(self, value):
         if not value:
@@ -55,16 +55,18 @@ class ModelMultipleChoiceBlock(FieldBlock):
             return [each.pk for each in value]
 
     def value_from_form(self, value):
-        if not value or (isinstance(value, list) and isinstance(value[0], self.target_model)):
+        if not value or all(isinstance(each, self.target_model) for each in value):
             return value
         else:
-            return [each for each in self.target_model.objects.filter(pk__in=value)]
+            return self.target_model.objects.filter(pk__in=value)
 
     def value_for_form(self, value):
         if not value:
             return value
-        if isinstance(value, list) and isinstance(value[0], self.target_model):
+        elif all(isinstance(each, self.target_model) for each in value):
             return [each.pk for each in value]
+        else:
+            return []
 
 
 #TODO implement caption in the block it is implemented in.
