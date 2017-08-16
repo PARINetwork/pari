@@ -61,7 +61,9 @@ class Command(BaseCommand):
         GuidelinesPageFactory.create(titlle='Guidelines Page')
 
         # Create initial super user
-        User.objects.create_superuser('admin', 'admin@development', 'admin')
+        admin_user_present = User.objects.filter(username='admin').exists()
+        if not admin_user_present:
+            User.objects.create_superuser('admin', 'admin@development', 'admin')
 
         self.stdout.write('Data setup successfully')
 
