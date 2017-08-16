@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.core.management.base import BaseCommand, CommandError
 from functional_tests.factory import *
 from category.models import Category
@@ -58,6 +59,10 @@ class Command(BaseCommand):
                                photo_album=photo_album, title='Gallery Home Page')
 
         GuidelinesPageFactory.create(titlle='Guidelines Page')
+
+        # Create initial super user
+        User.objects.create_superuser('admin', 'admin@development', 'admin')
+
         self.stdout.write('Data setup successfully')
 
     def copy_images(self):
