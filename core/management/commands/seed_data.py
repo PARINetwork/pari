@@ -46,12 +46,18 @@ class Command(BaseCommand):
 
         article1 = ArticleFactory.create(title="No longer a toy story", authors=(sainath,), categories=(category,),
                                          locations=(chennai,), featured_image=article_image1, depth=3, path="000100050020", content=article1_content)
+        article1.save_revision().publish()
         article2 = ArticleFactory.create(title="The cows sons are praying in the fields", authors=(namita,), categories=(category,),
                                          locations=(mumbai,), featured_image=article_image2, depth=3, path="000100050021", content=article2_content)
+        article2.save_revision().publish()
         video_article = ArticleFactory.create(title="video article", authors=(sainath, namita), categories=(video_category,),
                                          locations=(mumbai,), featured_image=image3, depth=3, path="000100050022")
+        video_article.save_revision().publish()
         talking_album = TalkingAlbumSlideFactory.create(image=image4, page__depth=3, page__path="000100060020").page
+        talking_album.save_revision().publish()
         photo_album = PhotoAlbumSlideFactory.create(image=image5, page__depth=3, page__path="000100060021").page
+        photo_album.save_revision().publish()
+
         HomePageFactory.create(carousel_0=article1, carousel_1=article2, in_focus_page1=article1,
                                in_focus_page2=article2, video=video_article, talking_album=talking_album,
                                photo_album=photo_album, title='Home Page')
