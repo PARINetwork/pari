@@ -27,10 +27,10 @@ Once after the initial provisioning is completed, local development instance of 
     http://development.ruralindiaonline.org/
              
     # To access admin console
-    # Username: pari
-    # Password: !abcd1234
-    
     http://development.ruralindiaonline.org/admin/
+    # Username: admin
+    # Password: admin
+
 
 Few basic commands to help development,
 
