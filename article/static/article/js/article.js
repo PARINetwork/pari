@@ -59,6 +59,11 @@ var ArticleAlbum = {
               }
           });
       }
+
+      if(!description){
+          description = $(item).parents(".image-block").siblings(".caption").text().trim();
+      }
+
       return description;
     },
     
