@@ -71,8 +71,8 @@ class TestHomePage(Test):
     def test_featured_section(self):
         featured_section = self.home_page.featured_section()
         assert featured_section.featured_label() == "FEATURED"
-        assert featured_section.title() == "The loom is my love"
-        assert featured_section.link_text() == "Weaver loom"
+        assert featured_section.title() == "No longer a toy story"
+        assert featured_section.link_text() == "A story"
 
     def test_audio_and_video_section(self):
         audio_and_video_section = self.home_page.audio_and_video_section()
