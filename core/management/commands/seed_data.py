@@ -31,7 +31,7 @@ class Command(BaseCommand):
                                      file="uploads/image3.jpg", title="loom")
         image4 = ImageFactory.create(photographers=(namita,), locations=(mumbai,), file="uploads/image4.jpg")
         image5 = ImageFactory.create(photographers=(namita,), locations=(mumbai,), file="uploads/image5.jpg")
-        article_image1 = ImageFactory.create(photographers=(namita,), locations=(mumbai,), file="uploads/article1.jpg")
+        article_image1 = ImageFactory.create(photographers=(namita,), locations=(mumbai,), file="uploads/article1.jpg", title='toy story')
         article_image2 = ImageFactory.create(photographers=(namita,), locations=(mumbai,), file="uploads/article2.jpg")
 
         PageFactory.create(title="Header", path="00010007")
