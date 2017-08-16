@@ -8,6 +8,7 @@ from functional_tests.factory.image_factory import ImageFactory
 class GalleryHomePageFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = GalleryHomePage
+        django_get_or_create = ('title',)
 
     path = "0001000A"
     depth = 2

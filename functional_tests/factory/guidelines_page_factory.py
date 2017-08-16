@@ -7,6 +7,7 @@ from wagtail.wagtailcore.rich_text import RichText
 class GuidelinesPageFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = GuidelinesPage
+        django_get_or_create = ('title',)
 
     path = "00010007000B"
     depth = 3

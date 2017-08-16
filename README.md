@@ -12,7 +12,7 @@ $ git clone https://github.com/PARINetwork/pari.git
 $ git clone https://github.com/PARINetwork/pari-ansible.git
 ```
 
-Make sure you have [Vagrant](https://www.vagrantup.com/downloads.html), [Virtualbox](https://www.virtualbox.org/wiki/Downloads) and [Ansible](http://docs.ansible.com/ansible/intro_installation.html) installed in your machine.
+Make sure you have [Vagrant](https://www.vagrantup.com/downloads.html), [Virtualbox](https://www.virtualbox.org/wiki/Downloads) and [Ansible(v2.2.1)](http://docs.ansible.com/ansible/intro_installation.html) installed in your machine.
 Also make sure you have internet connectivity. Then, you can get the vagrant box up and provisioned by:
 
 ```sh
@@ -20,17 +20,9 @@ $ cd pari
 $ vagrant up   # This would take a while to complete. You'll be prompted for SUDO password of your host machine for the first time.
 ```
 
-Once after the initial provisioning is completed, local development instance of PARI can be accessed in the browser. 
+Once after the initial provisioning is completed, local development instance of PARI can be accessed in the browser by visiting [http://development.ruralindiaonline.org/](http://development.ruralindiaonline.org/).
 
-    # To access home page
-    
-    http://development.ruralindiaonline.org/
-             
-    # To access admin console
-    # Username: pari
-    # Password: !abcd1234
-    
-    http://development.ruralindiaonline.org/admin/
+To access admin console: [http://development.ruralindiaonline.org/admin/](http://development.ruralindiaonline.org/admin/) (username: admin, password: admin).
 
 Few basic commands to help development,
 

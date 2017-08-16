@@ -8,6 +8,7 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 from article.rich_text import get_rich_text_editor_widget
 from face.models import Face
+from location.models import Location
 
 
 class CustomRichTextBlock(RichTextBlock):
@@ -31,7 +32,45 @@ class IntegerBlock(FieldBlock):
     class Meta:
         icon = "plus-inverse"
 
-#TODO implement caption in the block it is implemented in.
+
+class ModelMultipleChoiceBlock(FieldBlock):
+    def __init__(self, target_model, required=True, help_text=None, **kwargs):
+        self.target_model = target_model
+        self.field = forms.ModelMultipleChoiceField(
+            queryset=self.target_model.objects.all(),
+            required=required,
+            help_text=help_text,
+        )
+        super(ModelMultipleChoiceBlock, self).__init__(**kwargs)
+
+    def to_python(self, value):
+        if not value:
+            return value
+        else:
+            return self.target_model.objects.filter(pk__in=value)
+
+    def get_prep_value(self, value):
+        if not value:
+            return value
+        else:
+            return [each.pk for each in value]
+
+    def value_from_form(self, value):
+        if not value or all(isinstance(each, self.target_model) for each in value):
+            return value
+        else:
+            return self.target_model.objects.filter(pk__in=value)
+
+    def value_for_form(self, value):
+        if not value:
+            return value
+        elif all(isinstance(each, self.target_model) for each in value):
+            return [each.pk for each in value]
+        else:
+            return []
+
+
+# TODO implement caption in the block it is implemented in.
 class ImageBlock(blocks.StructBlock):
     image = ImageChooserBlock()
 
@@ -183,6 +222,7 @@ class NColumnImageBlock(blocks.StructBlock):
         template = 'article/blocks/columnar_image.html'
         label = 'Columnar Images'
 
+
 class ParagraphWithRawEmbedBlock(blocks.StructBlock):
     ALIGN_EMBED_CHOICES = [('left', 'Left'), ('right', 'Right')]
 
@@ -216,3 +256,11 @@ class VideoWithQuoteBlock(blocks.StructBlock):
         icon = 'doc-full'
         label = 'Video with Block Quote'
         template = 'article/blocks/video_with_block_quote.html'
+
+
+class ParagraphWithMapBlock(blocks.StructBlock):
+    content = ParagraphBlock()
+    locations = ModelMultipleChoiceBlock(target_model=Location)
+
+    class Meta:
+        label = 'Paragraphs with map'

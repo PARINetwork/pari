@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.core.management.base import BaseCommand, CommandError
 from functional_tests.factory import *
 from category.models import Category
@@ -53,11 +54,15 @@ class Command(BaseCommand):
         photo_album = PhotoAlbumSlideFactory.create(image=image5, page__depth=3, page__path="000100060021").page
         HomePageFactory.create(carousel_0=article1, carousel_1=article2, in_focus_page1=article1,
                                in_focus_page2=article2, video=video_article, talking_album=talking_album,
-                               photo_album=photo_album)
+                               photo_album=photo_album, title='Home Page')
         GalleryHomePageFactory.create(photo_of_the_week=image1, video=video_article, talking_album=talking_album,
-                               photo_album=photo_album)
+                               photo_album=photo_album, title='Gallery Home Page')
 
-        GuidelinesPageFactory.create()
+        GuidelinesPageFactory.create(titlle='Guidelines Page')
+
+        # Create initial super user
+        User.objects.create_superuser('admin', 'admin@development', 'admin')
+
         self.stdout.write('Data setup successfully')
 
     def copy_images(self):

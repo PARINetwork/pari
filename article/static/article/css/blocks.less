@@ -32,9 +32,7 @@
         padding: 10px;
       }
     }
-    .caption {
-      font-style: italic;
-    }
+    
   }
 
   .caption {
@@ -42,6 +40,9 @@
     text-align: center;
     font-size: 15px;
     color: grey;
+    p{
+      text-align: center;
+    }
   }
 
   .full-width-image-block {
@@ -268,14 +269,29 @@
     }
 
     .paragraph-with-raw-embed-block, .paragraph-with-embed-block {
+      display: flex;
+      flex-direction: column;
       .embed-holder {
-        display: flex;
         padding: 10px 9.8%;
         iframe, object, embed {
           margin: 0;
           float: none;
           width: 100%;
         }
+      }
+      .embed-align-right{
+        order: 2;
+      }
+
+      .embed-align-right ~ .paragraph-block{
+        order: 1;
+      }
+      .embed-align-left{
+        order: 1;
+      }
+
+      .embed-align-left ~ .paragraph-block{
+        order: 2;
       }
     }
 

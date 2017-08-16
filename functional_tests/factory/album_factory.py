@@ -6,6 +6,7 @@ from functional_tests.factory import ContentTypeFactory
 class AlbumFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Album
+        django_get_or_create = ('title',)
 
     path = factory.Sequence(lambda n: u'000100{}'.format(n))  # Album sequence starts from 00010050
     depth = 2
