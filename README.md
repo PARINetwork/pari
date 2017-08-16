@@ -20,17 +20,9 @@ $ cd pari
 $ vagrant up   # This would take a while to complete. You'll be prompted for SUDO password of your host machine for the first time.
 ```
 
-Once after the initial provisioning is completed, local development instance of PARI can be accessed in the browser. 
+Once after the initial provisioning is completed, local development instance of PARI can be accessed in the browser by visiting [http://development.ruralindiaonline.org/](http://development.ruralindiaonline.org/).
 
-    # To access home page
-    
-    http://development.ruralindiaonline.org/
-             
-    # To access admin console
-    http://development.ruralindiaonline.org/admin/
-    # Username: admin
-    # Password: admin
-
+To access admin console: [http://development.ruralindiaonline.org/admin/](http://development.ruralindiaonline.org/admin/) (username: admin, password: admin).
 
 Few basic commands to help development,
 
