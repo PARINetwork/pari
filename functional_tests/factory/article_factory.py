@@ -16,6 +16,7 @@ class ContentTypeFactory(factory.django.DjangoModelFactory):
 class ArticleFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Article
+        django_get_or_create = ('title', 'path')
 
     path = factory.Sequence(lambda n: u'00010{}'.format(n))  # Article sequence starts from 0001020
     depth = 2

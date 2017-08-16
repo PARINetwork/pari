@@ -1,20 +1,24 @@
 import factory
+from django.contrib.contenttypes.models import ContentType
 from django.utils.text import slugify
 from wagtail.wagtailcore.models import Page
-from django.contrib.contenttypes.models import ContentType
+
 
 class ContentTypeFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = ContentType
         django_get_or_create = ('app_label', 'model')
+
     app_label = "wagtailcore"
     model = "page"
+
 
 class PageFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Page
+        django_get_or_create = ('title', 'path')
 
-    path = factory.Sequence(lambda n: u'0001000{}'.format(n)) #00010003
+    path = factory.Sequence(lambda n: u'0001000{}'.format(n))  # 00010003
     depth = 2
     numchild = 0
     title = "Peoples Archive of rural india"

@@ -7,6 +7,7 @@ from core.models import AffixImage
 class HomePageFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = HomePage
+        django_get_or_create = ('title',)
 
     path = "00010002"
     depth = 2
