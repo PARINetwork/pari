@@ -28,9 +28,9 @@
             }
         };
     </script>
-    <div id="map" style="height: 300px; width: 400px;"></div>
+    <div class="map" style="height: 300px; width: 400px;"></div>
     <script type="text/javascript">
-        var mapElement = document.getElementById('map');
+        var mapElement = document.currentScript.parentNode.querySelector('div.map');
         var locations = [ {% for location in value.locations %} ["{{ location.name }}", {{ location.point.x }},
             {{ location.point.y }}], {% endfor %}];
 
