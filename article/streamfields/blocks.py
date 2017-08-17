@@ -259,3 +259,4 @@ class ParagraphWithMapBlock(blocks.StructBlock):
 
     class Meta:
         label = 'Paragraphs with map'
+        template = 'article/blocks/paragraph_with_map.html'
