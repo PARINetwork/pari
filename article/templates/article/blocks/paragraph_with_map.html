@@ -1,34 +1,10 @@
 {% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags %}
 
 <div class="paragraph-with-map-block">
-    <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
-    <script type="text/javascript">
-        var MapWidget = {
-            renderMap: function (mapElement, locations) {
-                var map = new google.maps.Map(mapElement, {
-                    zoom: 9,
-                    center: new google.maps.LatLng(locations[0][1], locations[0][2]),
-                });
-
-                var infoWindow = new google.maps.InfoWindow();
-
-                for (var i = 0; i < locations.length; i++) {
-                    var marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                        map: map
-                    });
-
-                    google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                        return function () {
-                            infoWindow.setContent(locations[i][0]);
-                            infoWindow.open(map, marker);
-                        }
-                    })(marker, i));
-                }
-            }
-        };
-    </script>
     <div class="map" style="height: 300px; width: 400px;"></div>
+
+    {{ value.content }}
+
     <script type="text/javascript">
         var mapElement = document.currentScript.parentNode.querySelector('div.map');
         var locations = [ {% for location in value.locations %} ["{{ location.name }}", {{ location.point.x }},
@@ -36,6 +12,4 @@
 
         MapWidget.renderMap(mapElement, locations);
     </script>
-
-    {{ value.content }}
 </div>
