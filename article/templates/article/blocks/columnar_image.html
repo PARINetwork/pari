@@ -4,7 +4,7 @@
 <div class="n-column-image clearfix">
     {% with value.images|length as images_length %}
         {% for image in value.images %}
-            <div class="image-block clearfix">
+            <div class="image-block">
                 {% if value.height > 560 %}
                     {% image image.image height-1120 as image %}
                 {% else %}
@@ -16,7 +16,7 @@
                 </div>
                 <div class= "photo-credits">
                     {% for photographer in image.image.photographers.all %}
-                        <p>PHOTO CREDIT • {{ photographer }}</p>
+                        PHOTO CREDIT • {{ photographer }}
                     {% endfor %}
                 </div>
             </div>
