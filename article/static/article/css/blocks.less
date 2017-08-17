@@ -40,7 +40,7 @@
     text-align: center;
     font-size: 15px;
     color: grey;
-    p{
+    p {
       text-align: center;
     }
   }
@@ -81,7 +81,7 @@
       list-style-position: outside;
     }
 
-    ol{
+    ol {
       list-style-position: outside;
     }
 
@@ -92,6 +92,33 @@
         text-align: center;
       }
     }
+  }
+
+  .n-column-image {
+    .image-block {
+      width: auto;
+      position: relative;
+      display: table;
+      .image{
+        display: table-cell;
+      }
+      .photo-credits {
+        position: absolute;
+        transform: rotate(-90deg);
+        width: 5%;
+        white-space: nowrap;
+        bottom: 0px;
+        p {
+          color: @grey;
+          margin: 0 5px;
+          text-align: left;
+          text-transform: uppercase;
+          font-size: xx-small;
+          white-space: nowrap;
+        }
+      }
+    }
+
   }
   .paragraph-with-quote-block.full-width-quote {
     width: 100%;
@@ -120,7 +147,7 @@
     clear: both;
     .block-quote {
       .paragraph-holder {
-        b,strong {
+        b, strong {
           padding: 0;
         }
       }
@@ -279,18 +306,18 @@
           width: 100%;
         }
       }
-      .embed-align-right{
+      .embed-align-right {
         order: 2;
       }
 
-      .embed-align-right ~ .paragraph-block{
+      .embed-align-right ~ .paragraph-block {
         order: 1;
       }
-      .embed-align-left{
+      .embed-align-left {
         order: 1;
       }
 
-      .embed-align-left ~ .paragraph-block{
+      .embed-align-left ~ .paragraph-block {
         order: 2;
       }
     }
