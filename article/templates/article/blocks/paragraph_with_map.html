@@ -10,6 +10,6 @@
         var locations = [ {% for location in value.locations %} ["{{ location.name }}", {{ location.point.x }},
             {{ location.point.y }}], {% endfor %}];
 
-        MapWidget.renderMap(mapElement, locations);
+        MapWidget.render(mapElement, locations);
     </script>
 </div>
