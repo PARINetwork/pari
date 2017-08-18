@@ -37,8 +37,8 @@ class HomePageFactory(factory.django.DjangoModelFactory):
 
     @factory.post_generation
     def featured_content(self, create, extracted, **kwargs):
-        image = AffixImage.objects.filter(title="loom").first()
-        self.featured_content = [('featured_section', {'title': 'The loom is my love', 'link_text': 'Weaver loom',
-                                                  'url': 'https://ruralindiaonline.org/articles/the-loom-is-my-love-my-legacy/',
+        image = AffixImage.objects.filter(title="toy story").first()
+        self.featured_content = [('featured_section', {'title': 'No longer a toy story', 'link_text': 'A story',
+                                                  'url': '/articles/no-longer-a-toy-story/',
                                                   'featured_image_label': 'FEATURED', 'featured_image': image})]
 

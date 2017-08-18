@@ -1,7 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 {% load article_filters %}
 
-<div class="n-column-image">
+<div class="n-column-image clearfix">
     {% with value.images|length as images_length %}
         {% for image in value.images %}
             <div class="image-block">
@@ -13,6 +13,11 @@
                 <div class="image" style="height:{{ value.height }}px">
                     {% image image.image max-1400x1120 as slide_image %}
                     <img src="{{ image.url }}" data-src="{{ slide_image.url }}"/>
+                </div>
+                <div class= "photo-credits">
+                    {% for photographer in image.image.photographers.all %}
+                        PHOTO CREDIT • {{ photographer }}
+                    {% endfor %}
                 </div>
             </div>
         {% endfor %}

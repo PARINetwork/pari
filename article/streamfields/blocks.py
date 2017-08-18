@@ -213,11 +213,6 @@ class NColumnImageBlock(blocks.StructBlock):
     height = IntegerBlock(min_value=0, required=True, default=380)
     caption = blocks.CharBlock(required=False)
 
-    def get_context(self, value):
-        context = super(NColumnImageBlock, self).get_context(value)
-        context['height'] = value['height']
-        return context
-
     class Meta:
         template = 'article/blocks/columnar_image.html'
         label = 'Columnar Images'
@@ -259,8 +254,11 @@ class VideoWithQuoteBlock(blocks.StructBlock):
 
 
 class ParagraphWithMapBlock(blocks.StructBlock):
+    ALIGN_MAP_CHOICES = [('left', 'Left'), ('right', 'Right')]
     content = ParagraphBlock()
     locations = ModelMultipleChoiceBlock(target_model=Location)
+    map_align = blocks.ChoiceBlock(choices=ALIGN_MAP_CHOICES, default=ALIGN_MAP_CHOICES[0][0])
 
     class Meta:
         label = 'Paragraphs with map'
+        template = 'article/blocks/paragraph_with_map.html'
