@@ -211,7 +211,7 @@ class ParagraphWithEmbedBlock(blocks.StructBlock):
 class NColumnImageBlock(blocks.StructBlock):
     images = blocks.ListBlock(ImageBlock())
     height = IntegerBlock(min_value=0, required=True, default=380)
-    caption = blocks.CharBlock(required=False)
+    caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
 
     class Meta:
         template = 'article/blocks/columnar_image.html'

@@ -21,12 +21,11 @@
         max-height: 100%;
       }
       i.fa-expand {
-        font-size: 30px !important;
+        font-size: 25px !important;
         z-index: 1;
         color: white;
         background-color: #151414;
         opacity: .6;
-        //float: right;
         position: absolute;
         right: 0;
         padding: 10px;
@@ -36,12 +35,12 @@
   }
 
   .caption {
-    font-style: italic;
     text-align: center;
     font-size: 15px;
     color: grey;
     p {
       text-align: center;
+      margin-top: 2px;
     }
   }
 
@@ -120,6 +119,16 @@
       }
       &:lang(ur) {
         direction: ltr;
+      }
+    }
+    .caption {
+      .rich-text, p {
+        text-align: center;
+        margin-top: 2px;
+        font-size: 15px;
+        width: 100%;
+        padding: 0 20px;
+        line-height: 29px !important;
       }
     }
 
@@ -385,18 +394,22 @@
         .image {
           height: auto !important;
           width: 100%;
-          img{
+          img {
             height: auto !important;
+          }
+          i.fa-expand {
+            font-size: 15px !important;
+            padding: 5px;
           }
         }
         .photo-credits {
           position: relative;
           transform: none;
           line-height: normal;
-          margin-bottom: 10px;
-          width: 100%;
+          margin-bottom: 0;
+          width: auto;
           text-align: right;
-          padding: 0 6px;
+          padding: 0;
         }
       }
       .caption {
@@ -409,19 +422,12 @@
 
   @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
     .n-column-image {
-      .caption {
-        p {
-          line-height: 10px;
-          font-size: 12px;
-          margin-top: 10px;
-        }
-      }
       .image-block {
         margin: 10px 10px;
         .image {
           height: auto !important;
           width: 100%;
-          img{
+          img {
             height: auto !important;
           }
         }
