@@ -292,21 +292,27 @@
   }
 
   .paragraph-with-map-block {
-    .map {
-      height: 300px;
-      width: 400px;
-      margin: 2% 2%;
+    &.row {
+      margin: 0;
+    }
 
-      &.map-align-left {
-        float: left;
-        margin-left: 11.7%;
-        margin-top: 1.5%;
-      }
+    .map-holder {
+      .map {
+        height: 300px;
+        width: 400px;
+        margin: 2% 2%;
 
-      &.map-align-right {
-        float: right;
-        margin-right: 11.7%;
-        margin-top: 1.5%;
+        &.map-align-left {
+          float: left;
+          margin-left: 10.7%;
+          margin-top: 1.5%;
+        }
+
+        &.map-align-right {
+          float: right;
+          margin-right: 10.7%;
+          margin-top: 1.5%;
+        }
       }
     }
   }
@@ -424,6 +430,26 @@
           margin-top: 10px;
         }
       }
+    }
+
+    .paragraph-with-map-block {
+      .map-holder {
+        margin-left: 10%;
+        margin-right: 10%;
+        .map {
+          width: 100%;
+          float: none !important;
+
+          &.map-align-left {
+            margin: 0;
+          }
+
+          &.map-align-right {
+            margin: 0;
+          }
+        }
+      }
+
     }
   }
 
