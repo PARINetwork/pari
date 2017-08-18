@@ -100,10 +100,10 @@
       position: relative;
       display: table;
       margin-bottom: 5px;
-      margin: 10px 5px;;
+      margin: 10px 7px;;
       .image {
         display: table-cell;
-        width: 95%;
+        width: 100%;
       }
       .photo-credits {
         position: absolute;
@@ -381,9 +381,13 @@
     .n-column-image {
       .image-block {
         display: inline-block;
+        margin: 10px 0px;
         .image {
           height: auto !important;
           width: 100%;
+          img{
+            height: auto !important;
+          }
         }
         .photo-credits {
           position: relative;
@@ -413,10 +417,13 @@
         }
       }
       .image-block {
-        margin: 10px 0;
+        margin: 10px 10px;
         .image {
           height: auto !important;
           width: 100%;
+          img{
+            height: auto !important;
+          }
         }
       }
     }
