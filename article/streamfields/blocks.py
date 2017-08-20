@@ -7,7 +7,7 @@ from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 from article.rich_text import get_rich_text_editor_widget
-from article.widgets import JqueryChosenSelectMultiple
+from core.widgets import JqueryChosenSelectMultiple
 from face.models import Face
 from location.models import Location
 
