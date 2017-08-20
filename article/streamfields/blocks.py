@@ -257,9 +257,9 @@ class VideoWithQuoteBlock(blocks.StructBlock):
 
 class ParagraphWithMapBlock(blocks.StructBlock):
     ALIGN_MAP_CHOICES = [('left', 'Left'), ('right', 'Right')]
-    content = ParagraphBlock()
     locations = ModelMultipleChoiceBlock(target_model=Location)
     map_align = blocks.ChoiceBlock(choices=ALIGN_MAP_CHOICES, default=ALIGN_MAP_CHOICES[0][0])
+    content = ParagraphBlock()
 
     class Meta:
         label = 'Paragraphs with map'
