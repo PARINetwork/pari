@@ -299,23 +299,29 @@
     .map-holder {
       margin: 10px;
 
+      .location {
+        font-size: 12px;
+        line-height: 15px;
+        color: @primary-color;
+      }
+
+      &.map-align-left {
+        float: left;
+        margin-right: 2%;
+        margin-top: 1.5%;
+      }
+
+      &.map-align-right {
+        float: right;
+        margin-left: 2%;
+        margin-top: 1.5%;
+      }
       .map {
         height: 250px;
         width: 300px;
         margin-top: 2%;
-        margin-bottom: 2%;
+        margin-bottom: 20px;
 
-        &.map-align-left {
-          float: left;
-          margin-right: 2%;
-          margin-top: 0.5%;
-        }
-
-        &.map-align-right {
-          float: right;
-          margin-left: 2%;
-          margin-top: 0.5%;
-        }
       }
     }
   }
@@ -437,22 +443,21 @@
 
     .paragraph-with-map-block {
       .map-holder {
-        margin-left: 10%;
-        margin-right: 10%;
+        float: none !important;
+
+        &.map-align-left {
+          margin-left: 10%;
+          margin-right: 10%;
+        }
+
+        &.map-align-right {
+          margin-right: 10%;
+          margin-left: 10%;
+        }
         .map {
           width: 100%;
-          float: none !important;
-
-          &.map-align-left {
-            margin: 0;
-          }
-
-          &.map-align-right {
-            margin: 0;
-          }
         }
       }
-
     }
   }
 
