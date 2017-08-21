@@ -1,12 +1,22 @@
 {% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags %}
 
 <div class="paragraph-with-map-block row">
-    <div class="map map-align-{{ value.map_align }}"></div>
+    <div class="map-holder map-align-{{ value.map_align }}">
+        <div class="location">
+            <b>{{ value.locations.first.name }},</b>
+            <span>{{ value.locations.first.state }}</span>
+        </div>
+        <div class="map"></div>
+        <hr>
+        <div class="location-detail">
+            <a href="{% url "location-detail" value.locations.first.slug %}">See more from this region    > </a>
+        </div>
+    </div>
 
     {{ value.content }}
 
     <script type="text/javascript">
-        var mapElement = document.currentScript.parentNode.querySelector('div.map');
+        var mapElement = document.currentScript.parentNode.querySelector('.map-holder .map');
         var locations = [ {% for location in value.locations %} ["{{ location.name }}", {{ location.point.x }},
             {{ location.point.y }}], {% endfor %}];
 

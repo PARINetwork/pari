@@ -21,12 +21,11 @@
         max-height: 100%;
       }
       i.fa-expand {
-        font-size: 30px !important;
+        font-size: 25px !important;
         z-index: 1;
         color: white;
         background-color: #151414;
         opacity: .6;
-        //float: right;
         position: absolute;
         right: 0;
         padding: 10px;
@@ -36,12 +35,12 @@
   }
 
   .caption {
-    font-style: italic;
     text-align: center;
     font-size: 15px;
     color: grey;
     p {
       text-align: center;
+      margin-top: 2px;
     }
   }
 
@@ -100,10 +99,10 @@
       position: relative;
       display: table;
       margin-bottom: 5px;
-      margin: 10px 5px;;
+      margin: 10px 7px;;
       .image {
         display: table-cell;
-        width: 95%;
+        width: 100%;
       }
       .photo-credits {
         position: absolute;
@@ -120,6 +119,16 @@
       }
       &:lang(ur) {
         direction: ltr;
+      }
+    }
+    .caption {
+      .rich-text, p {
+        text-align: center;
+        margin-top: 2px;
+        font-size: 15px;
+        width: 100%;
+        padding: 0 20px;
+        line-height: 29px !important;
       }
     }
 
@@ -283,15 +292,42 @@
   }
 
   .paragraph-with-map-block {
-    .map {
-      height: 300px;
-      width: 400px;
+    &.row {
+      margin: 0;
     }
-    .map-align-left {
-      float: left;
-    }
-    .map-align-right {
-      float: right;
+
+    .map-holder {
+      margin: 10px;
+      margin-bottom: 20px;
+
+      .location, .location-detail {
+        font-size: 12px;
+        line-height: 15px;
+        color: @primary-color;
+        margin: 5px 0px;
+      }
+
+      hr {
+        color: @primary-color;
+        border: solid 1px;
+        margin: 10px 0px;
+      }
+
+      &.map-align-left {
+        float: left;
+        margin-right: 2%;
+        margin-top: 1%;
+      }
+
+      &.map-align-right {
+        float: right;
+        margin-left: 2%;
+        margin-top: 1%;
+      }
+      .map {
+        height: 250px;
+        width: 300px;
+      }
     }
   }
 
@@ -381,18 +417,26 @@
     .n-column-image {
       .image-block {
         display: inline-block;
+        margin: 10px 0px;
         .image {
           height: auto !important;
           width: 100%;
+          img {
+            height: auto !important;
+          }
+          i.fa-expand {
+            font-size: 15px !important;
+            padding: 5px;
+          }
         }
         .photo-credits {
           position: relative;
           transform: none;
           line-height: normal;
-          margin-bottom: 10px;
-          width: 100%;
+          margin-bottom: 0;
+          width: auto;
           text-align: right;
-          padding: 0 6px;
+          padding: 0;
         }
       }
       .caption {
@@ -401,22 +445,37 @@
         }
       }
     }
+
+    .paragraph-with-map-block {
+      .map-holder {
+        float: none !important;
+
+        &.map-align-left {
+          margin-left: 10%;
+          margin-right: 10%;
+        }
+
+        &.map-align-right {
+          margin-right: 10%;
+          margin-left: 10%;
+        }
+        .map {
+          width: 100%;
+        }
+      }
+    }
   }
 
   @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
     .n-column-image {
-      .caption {
-        p {
-          line-height: 10px;
-          font-size: 12px;
-          margin-top: 10px;
-        }
-      }
       .image-block {
-        margin: 10px 0;
+        margin: 10px 10px;
         .image {
           height: auto !important;
           width: 100%;
+          img {
+            height: auto !important;
+          }
         }
       }
     }

@@ -7,6 +7,7 @@ from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 from article.rich_text import get_rich_text_editor_widget
+from core.widgets import JqueryChosenSelectMultiple
 from face.models import Face
 from location.models import Location
 
@@ -38,6 +39,7 @@ class ModelMultipleChoiceBlock(FieldBlock):
         self.target_model = target_model
         self.field = forms.ModelMultipleChoiceField(
             queryset=self.target_model.objects.all(),
+            widget=JqueryChosenSelectMultiple,
             required=required,
             help_text=help_text,
         )
@@ -211,7 +213,7 @@ class ParagraphWithEmbedBlock(blocks.StructBlock):
 class NColumnImageBlock(blocks.StructBlock):
     images = blocks.ListBlock(ImageBlock())
     height = IntegerBlock(min_value=0, required=True, default=380)
-    caption = blocks.CharBlock(required=False)
+    caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
 
     class Meta:
         template = 'article/blocks/columnar_image.html'
@@ -255,9 +257,9 @@ class VideoWithQuoteBlock(blocks.StructBlock):
 
 class ParagraphWithMapBlock(blocks.StructBlock):
     ALIGN_MAP_CHOICES = [('left', 'Left'), ('right', 'Right')]
-    content = ParagraphBlock()
     locations = ModelMultipleChoiceBlock(target_model=Location)
     map_align = blocks.ChoiceBlock(choices=ALIGN_MAP_CHOICES, default=ALIGN_MAP_CHOICES[0][0])
+    content = ParagraphBlock()
 
     class Meta:
         label = 'Paragraphs with map'

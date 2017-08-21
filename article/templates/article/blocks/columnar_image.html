@@ -12,20 +12,23 @@
                 {% endif %}
                 <div class="image" style="height:{{ value.height }}px">
                     {% image image.image max-1400x1120 as slide_image %}
-                    <img src="{{ image.url }}" data-src="{{ slide_image.url }}"/>
+                    <img src="{{ image.url }}" data-src="{{ slide_image.url }}" style="height:{{ value.height }}px" />
                 </div>
                 <div class= "photo-credits">
+                    {% if image.image.photographers.all %}
+                     PHOTO CREDIT •
                     {% for photographer in image.image.photographers.all %}
-                        PHOTO CREDIT • {{ photographer }}
+                       {{ photographer }}
+                        {% if not forloop.last %},&ensp;
+                        {% endif %}
                     {% endfor %}
+                {% endif %}
                 </div>
             </div>
         {% endfor %}
     {% endwith %}
 
     <div class="caption col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <p>
             {{ value.caption }}
-        </p>
     </div>
 </div>

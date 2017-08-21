@@ -64,7 +64,7 @@ class Command(BaseCommand):
         GalleryHomePageFactory.create(photo_of_the_week=image1, video=video_article, talking_album=talking_album,
                                photo_album=photo_album, title='Gallery Home Page')
 
-        GuidelinesPageFactory.create(titlle='Guidelines Page')
+        GuidelinesPageFactory.create(title='Guidelines Page')
 
         # Create initial super user
         admin_user_present = User.objects.filter(username='admin').exists()
