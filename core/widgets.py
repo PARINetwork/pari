@@ -30,15 +30,15 @@ class JqueryChosenSelectMultiple(SelectMultiple):
 class JqueryChosenAddModel(JqueryChosenSelectMultiple):
     def render(self, name, value, attrs=None, choices=()):
         out = super(JqueryChosenAddModel, self).render(name, value, attrs, choices)
+        obj = name.split('-')[-1]
 
-        field_name = name.split('-')[-1]
-        model_add_button = format_html('''
+        obj_add_button = format_html('''
         <div class="addbutton">
-            <a href="javascript:void(0);" onclick="addObject('{name}', '#id_{name}');"
-            class="button bicolor icon icon-plus">Add {name}</a>
-        </div>''', name=field_name)
+            <a href="javascript:void(0);" onclick="addObject('{obj}', 'select[name={name}]');"
+            class="button bicolor icon icon-plus">Add {obj}</a>
+        </div>''', obj=obj, name=name)
 
-        return mark_safe(out + model_add_button)
+        return mark_safe(out + obj_add_button)
 
     class Media:
         js = (
