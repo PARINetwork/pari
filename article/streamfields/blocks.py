@@ -219,6 +219,19 @@ class NColumnImageBlock(blocks.StructBlock):
         template = 'article/blocks/columnar_image.html'
         label = 'Columnar Images'
 
+class ImageWithBlockQuote(blocks.StructBlock):
+    ALIGN_QUOTE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
+    image = ImageChooserBlock(required=True)
+    width = IntegerBlock(min_value=0, required=True, default=50, help_text="Give the height in percentage. ")
+    caption = blocks.CharBlock(required=False)
+    quote = FullWidthBlockQuote(required=True)
+    align_quote = blocks.ChoiceBlock(choices=ALIGN_QUOTE_CHOICES, default=ALIGN_QUOTE_CHOICES[1][1])
+
+    class Meta:
+        icon = 'image'
+        template = 'article/blocks/image_with_block_quote.html'
+        label = 'Image with block quote'
+
 
 class ParagraphWithRawEmbedBlock(blocks.StructBlock):
     ALIGN_EMBED_CHOICES = [('left', 'Left'), ('right', 'Right')]

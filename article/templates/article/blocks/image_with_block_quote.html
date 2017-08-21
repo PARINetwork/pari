@@ -1,0 +1,33 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+{% load article_filters %}
+{% load mathfilters %}
+
+<div class="image-with-block-quote">
+    {% if value.align_quote == "left" %}
+        <div class="quote-container left" style="width: {{ 100|sub:value.width}}%">
+            {{ value.quote }}
+        </div>
+    {% endif %}
+    <div class="image-with-caption {{ value.align_quote }}" style="width: {{ value.width }}%">
+        <div class="image-block" >
+            <div class="image">
+                {% image image.image max-1400x1120 as slide_image %}
+                {% image value.image max-700x560 as image %}
+                <img src="{{ image.url }}" data-src="{{ slide_image.url }}"/>
+            </div>
+            <div class="photo-credits">
+                {% for photographer in value.image.photographers.all %}
+                    PHOTO CREDIT • {{ photographer }}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="caption col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            {{ value.caption }}
+        </div>
+    </div>
+    {% if value.align_quote == "right" %}
+        <div class="quote-container right" style="width: {{ 100|sub:value.width}}%">
+            {{ value.quote }}
+        </div>
+    {% endif %}
+</div>

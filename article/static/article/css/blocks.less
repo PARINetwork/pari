@@ -53,6 +53,20 @@
 
   }
 
+  .photo-credits {
+    position: absolute;
+    transform: rotate(-90deg);
+    width: 11px;
+    white-space: nowrap;
+    bottom: -9px;
+    color: @grey;
+    margin: 0 3px;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: xx-small;
+    white-space: nowrap;
+  }
+
   .caption {
     text-align: center;
     font-size: 15px;
@@ -111,7 +125,31 @@
       }
     }
   }
-
+  .image-with-block-quote {
+    display: flex;
+    margin: 20px 0;
+    .quote-container {
+      &.right {
+        .paragraph-with-quote-block {
+          padding-left: 10px;
+          margin: 0 0 0 20px;
+        }
+      }
+    }
+    .image-with-caption {
+      &.right {
+        margin-right: 15px;
+      }
+      .image-block {
+        margin: 20px 0;
+        position: relative;
+        display: table;
+        .image {
+          display: table-cell;
+        }
+      }
+    }
+  }
   .n-column-image {
     .image-block {
       width: auto;
