@@ -32,6 +32,25 @@
       }
     }
 
+    .photo-credits {
+      transform: rotate(-90deg);
+      width: 11px;
+      white-space: nowrap;
+      color: @grey;
+      margin-top: -19px;
+      margin-right: -12px;
+      margin-bottom: 0px;
+      margin-left: 0px;
+      text-align: left;
+      text-transform: uppercase;
+      font-size: xx-small;
+      white-space: nowrap;
+      float: right
+    }
+    &:lang(ur) {
+      direction: ltr;
+    }
+
   }
 
   .caption {
@@ -129,6 +148,52 @@
         width: 100%;
         padding: 0 20px;
         line-height: 29px !important;
+      }
+    }
+
+  }
+  .image-with-quote-and-paragraph {
+
+    .image {
+      .image-block {
+        margin-right: 30px;
+      }
+      &.image-align-left {
+        float: left;
+      }
+      &.image-align-right {
+        float: right;
+        }
+    }
+
+    .image-align-right ~ .text-content{
+      .block-quote{
+        margin-left: 10%;
+        width: 54%;
+      }
+    }
+
+    .block-quote {
+      width: 56%;
+      .paragraph-holder {
+        b, strong {
+          padding: 0;
+        }
+      }
+      .rich-text {
+        border-bottom: 1px solid @primary-color;
+        border-top: 1px solid @primary-color;
+        font-family: 'Amiri', serif;
+        padding: 0 15px 0 15px;
+        text-align: center;
+        .paragraph-holder {
+          color: @primary-color;
+          width: auto;
+          display: inline-block;
+          font-size: 2.0em;
+          line-height: 1.7em;
+          padding: 0;
+        }
       }
     }
 

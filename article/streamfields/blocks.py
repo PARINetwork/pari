@@ -264,3 +264,21 @@ class ParagraphWithMapBlock(blocks.StructBlock):
     class Meta:
         label = 'Paragraphs with map'
         template = 'article/blocks/paragraph_with_map.html'
+
+class ImageWithCaptionAndHeight(ImageBlock):
+    height = IntegerBlock(min_value=0, required=True, default=380)
+    caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
+
+
+class ImageWithQuoteAndParagraphBlock(blocks.StructBlock):
+    ALIGN_IMAGE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
+    image = ImageWithCaptionAndHeight()
+    align_image = blocks.ChoiceBlock(choices=ALIGN_IMAGE_CHOICES, default=ALIGN_IMAGE_CHOICES[0][0])
+    content_1 = ParagraphBlock()
+    quote = CustomRichTextBlock(editor='hallo_for_quote')
+    content_2 = ParagraphBlock()
+
+    class Meta:
+        label = 'Image with quote and paragraph block'
+        template = 'article/blocks/image_with_quote_and_paragraph.html'
+

@@ -64,6 +64,10 @@ var ArticleAlbum = {
           description = $(item).parents(".image-block").siblings(".caption").text().trim();
       }
 
+      if(!description){
+          description = $(item).parents('.image').siblings('.caption').text().trim()
+      }
+
       return description;
     },
     
@@ -194,6 +198,11 @@ $(function () {
     });
 
     $('.modular-content .n-column-image img').each(function (index) {
+        $(this).wrap('<a class="gallery" id=' + index + '></a>');
+        $(this).parents('a').first().prepend('<i class="fa fa-expand fa-invert"></i>');
+    });
+
+     $('.modular-content .image-with-quote-and-paragraph img').each(function (index) {
         $(this).wrap('<a class="gallery" id=' + index + '></a>');
         $(this).parents('a').first().prepend('<i class="fa fa-expand fa-invert"></i>');
     });
