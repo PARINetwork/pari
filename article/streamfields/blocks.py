@@ -7,7 +7,7 @@ from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 from article.rich_text import get_rich_text_editor_widget
-from core.widgets import JqueryChosenSelectMultiple
+from core.widgets import JqueryChosenSelectMultipleWithAddObject
 from face.models import Face
 from location.models import Location
 
@@ -39,7 +39,7 @@ class ModelMultipleChoiceBlock(FieldBlock):
         self.target_model = target_model
         self.field = forms.ModelMultipleChoiceField(
             queryset=self.target_model.objects.all(),
-            widget=JqueryChosenSelectMultiple,
+            widget=JqueryChosenSelectMultipleWithAddObject,
             required=required,
             help_text=help_text,
         )
