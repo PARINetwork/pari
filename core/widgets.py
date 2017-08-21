@@ -27,9 +27,9 @@ class JqueryChosenSelectMultiple(SelectMultiple):
         )
 
 
-class JqueryChosenAddModel(JqueryChosenSelectMultiple):
+class JqueryChosenSelectMultipleWithAddObject(JqueryChosenSelectMultiple):
     def render(self, name, value, attrs=None, choices=()):
-        out = super(JqueryChosenAddModel, self).render(name, value, attrs, choices)
+        out = super(JqueryChosenSelectMultipleWithAddObject, self).render(name, value, attrs, choices)
         obj = name.split('-')[-1]
 
         obj_add_button = format_html('''
