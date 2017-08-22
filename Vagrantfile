@@ -38,5 +38,6 @@ Vagrant.configure("2") do |config|
     ansible.limit = 'vagrant'
     #ansible.tags = 'install'
     ansible.verbose = '-v'
+    ansible.raw_ssh_args = ['-o ControlPath=/tmp/%r@%h:%p']
   end
 end
