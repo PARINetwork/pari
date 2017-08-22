@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.functional import cached_property
 from wagtail.wagtailadmin import blocks
-from wagtail.wagtailcore.blocks import PageChooserBlock, RichTextBlock, FieldBlock, URLBlock, RawHTMLBlock
+from wagtail.wagtailcore.blocks import PageChooserBlock, RichTextBlock, FieldBlock, RawHTMLBlock
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
@@ -196,7 +196,7 @@ class NColumnParagraphBlock(blocks.StructBlock):
 class ParagraphWithEmbedBlock(blocks.StructBlock):
     ALIGN_EMBED_CHOICES = [('left', 'Left'), ('right', 'Right')]
 
-    embed = URLBlock()
+    embed = EmbedBlock()
     embed_max_width = IntegerBlock(required=False, help_text="Optional field. Maximum width of the content in pixels to"
                                                              " be requested from the content provider(e.g YouTube). "
                                                              "If the requested width is not supported, provider will be"
@@ -218,8 +218,6 @@ class NColumnImageBlock(blocks.StructBlock):
     class Meta:
         template = 'article/blocks/columnar_image.html'
         label = 'Columnar Images'
-
-
 
 
 class ParagraphWithRawEmbedBlock(blocks.StructBlock):
@@ -267,6 +265,7 @@ class ParagraphWithMapBlock(blocks.StructBlock):
         label = 'Paragraphs with map'
         template = 'article/blocks/paragraph_with_map.html'
 
+
 class ImageWithCaptionAndHeightBlock(ImageBlock):
     height = IntegerBlock(min_value=0, required=True, default=380)
     caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
@@ -284,10 +283,12 @@ class ImageWithQuoteAndParagraphBlock(blocks.StructBlock):
         label = 'Image with quote and paragraph block'
         template = 'article/blocks/image_with_quote_and_paragraph.html'
 
+
 class ImageWithBlockQuote(blocks.StructBlock):
     ALIGN_QUOTE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
     image = ImageChooserBlock(required=False)
-    image_width = IntegerBlock(min_value=0, required=True, default=380, help_text="Give the width in Percentage(Total 100, divide as per the need).")
+    image_width = IntegerBlock(min_value=0, required=True, default=380,
+                               help_text="Give the width in Percentage(Total 100, divide as per the need).")
     caption = blocks.CharBlock(required=False)
     quote = FullWidthBlockQuote(required=True)
     align_quote = blocks.ChoiceBlock(choices=ALIGN_QUOTE_CHOICES, default=ALIGN_QUOTE_CHOICES[0][0])
@@ -296,4 +297,3 @@ class ImageWithBlockQuote(blocks.StructBlock):
         icon = 'image'
         template = 'article/blocks/image_with_block_quote.html'
         label = 'Image with block quote'
-
