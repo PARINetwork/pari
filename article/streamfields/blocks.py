@@ -286,8 +286,9 @@ class ImageWithQuoteAndParagraphBlock(blocks.StructBlock):
 
 class ImageWithBlockQuote(blocks.StructBlock):
     ALIGN_QUOTE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
-    image = ImageWithCaptionAndHeightBlock()
-    #caption = blocks.CharBlock(required=False)
+    image = ImageChooserBlock(required=False)
+    image_width = IntegerBlock(min_value=0, required=True, default=380, help_text="Give the width in Percentage(Total 100, divide as per the need).")
+    caption = blocks.CharBlock(required=False)
     quote = FullWidthBlockQuote(required=True)
     align_quote = blocks.ChoiceBlock(choices=ALIGN_QUOTE_CHOICES, default=ALIGN_QUOTE_CHOICES[0][0])
 
