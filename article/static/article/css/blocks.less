@@ -52,21 +52,6 @@
     }
 
   }
-
-  .photo-credits {
-    position: absolute;
-    transform: rotate(-90deg);
-    width: 11px;
-    white-space: nowrap;
-    bottom: -9px;
-    color: @grey;
-    margin: 0 3px;
-    text-align: left;
-    text-transform: uppercase;
-    font-size: xx-small;
-    white-space: nowrap;
-  }
-
   .caption {
     text-align: center;
     font-size: 15px;
@@ -127,25 +112,28 @@
   }
   .image-with-block-quote {
     display: flex;
-    margin: 20px 0;
-    .quote-container {
-      &.right {
-        .paragraph-with-quote-block {
-          padding-left: 10px;
-          margin: 0 0 0 20px;
-        }
-      }
-    }
+
     .image-with-caption {
+      margin-top: 20px;
       &.right {
         margin-right: 15px;
       }
       .image-block {
-        margin: 20px 0;
-        position: relative;
-        display: table;
-        .image {
-          display: table-cell;
+        width: max-content;
+      }
+    }
+    .quote-container {
+      margin: 0 10px;
+      .paragraph-with-quote-block.full-width-quote {
+        padding-left: 15px;
+        margin-top: 0;
+      }
+    }
+    .caption {
+      .rich-text {
+        .paragraph-holder {
+          width: 100%;
+          padding-left: 0;
         }
       }
     }
@@ -201,11 +189,11 @@
       }
       &.image-align-right {
         float: right;
-        }
+      }
     }
 
-    .image-align-right ~ .text-content{
-      .block-quote{
+    .image-align-right ~ .text-content {
+      .block-quote {
         margin-left: 10%;
         width: 54%;
       }
@@ -447,6 +435,58 @@
       .block-quote {
         .rich-text {
           width: 100%;
+        }
+      }
+    }
+
+    .image-with-block-quote {
+      display: inline-block;
+      .quote-container {
+        &.right {
+          .paragraph-with-quote-block {
+            margin: 0;
+            padding: 0 12%;
+          }
+        }
+      }
+      .image-with-caption {
+        height: auto;
+        width: 100%;
+        display: grid;
+        grid-template-rows: 100% 100%;
+        &.right {
+
+          margin-right: 0;
+        }
+        .image-block {
+          margin: 0;
+          position: relative;
+          display: inline-block;
+          width: initial;
+          .photo-credits {
+            position: relative;
+            transform: none;
+            line-height: normal;
+            margin-bottom: 0;
+            width: auto;
+            text-align: right;
+            padding: 0;
+            margin-right: 2px;
+            margin-top: 2px;
+          }
+          .image {
+            height: auto !important;
+            width: 100%;
+            img {
+              width: 100% !important;
+              height: auto !important;
+            }
+          }
+        }
+        .caption {
+          padding: 10px 5px;
+          width: 100% !important;
+          margin-bottom: 10px;
         }
       }
     }

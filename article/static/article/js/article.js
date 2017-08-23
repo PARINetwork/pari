@@ -2,7 +2,6 @@ var ArticleAlbum = {
     init: function () {
         this._initControls();
     },
-
     _initControls: function () {
         var articleAlbum = $.templates("#articleAlbumTemplate");
         var articleAlbumHtml = articleAlbum.render({});
@@ -197,7 +196,7 @@ $(function () {
         $(this).parents('a').first().prepend('<i class="fa fa-expand fa-invert"></i>').css("position", "relative");
     });
 
-    $('.modular-content .n-column-image img').each(function (index) {
+    $('.modular-content img').each(function (index) {
         $(this).wrap('<a class="gallery" id=' + index + '></a>');
         $(this).parents('a').first().prepend('<i class="fa fa-expand fa-invert"></i>');
     });

@@ -71,7 +71,7 @@ class Article(Page):
         ('full_width_embed', FullWidthEmbedBlock()),
         ('video_with_quote', VideoWithQuoteBlock()),
         ('paragraph_with_map', ParagraphWithMapBlock()),
-        ('image_with_quote_and_paragraph', ImageWithQuoteAndParagraphBlock())
+        ('image_with_quote_and_paragraph', ImageWithQuoteAndParagraphBlock()),
         ('image_with_block_quote', ImageWithBlockQuote()),
     ], null=True, blank=True)
     show_modular_content = models.BooleanField(default=False)
