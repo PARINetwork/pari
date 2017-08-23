@@ -68,6 +68,9 @@
       width: 100%;
     }
   }
+  p, .rich-text {
+    margin: 0;
+  }
 
   .paragraph-block {
     padding-left: 15%;
@@ -79,14 +82,17 @@
 
     p {
       text-align: left;
-      margin: 20px 0;
+      margin-bottom: 20px;
+      line-height: 29px;
+      font-size: 17px;
+      // margin: 20px 0;
     }
-    p:last-child {
-      margin: 20px 0 10px 0;
-    }
-    p:first-child {
-      margin: 10px 0 10px 0;
-    }
+    // p:last-child {
+    //   margin: 20px 0 10px 0;
+    // }
+    // p:first-child {
+    //   margin: 10px 0 10px 0;
+    // }
     p:lang(ur) {
       text-align: right;
       margin: 10px 10px;
@@ -236,6 +242,8 @@
     .block-quote {
       padding-left: 0;
       padding-right: 0;
+      margin-top: 10px;
+      margin-bottom: 30px;
       .rich-text {
         text-align: center;
         width: 100%;
@@ -252,10 +260,12 @@
     }
   }
   .paragraph-with-quote-block, .video-with-quote-block {
-    margin: 10px 0 10px 0;
-    display: table;
-    clear: both;
+    // margin: 10px 0 10px 0;
+    // display: table;
+    // clear: both;
     .block-quote {
+      margin-top: 10px;
+      margin-bottom: 30px;
       .paragraph-holder {
         b, strong {
           padding: 0;
@@ -263,13 +273,15 @@
       }
       &.quote-align-left {
         .rich-text {
-          margin: 2% 3% 2% 20%;
+          // margin: 2% 3% 2% 20%;
+          margin: 0% 3% 0% 20%;
         }
       }
       &.quote-align-right {
         float: right;
         .rich-text {
-          margin: 2% 20% 2% 2%;
+          // margin: 2% 20% 2% 2%;
+          margin: 0% 20% 0% 2%;
         }
       }
 
@@ -316,12 +328,12 @@
     margin: 0;
     .paragraph-block {
       padding: 0px;
-      p:first-child {
-        margin: 10px 0 20px 0;
-      }
-      p:first-child:nth-last-child(1) {
-        margin: 10px 0 10px 0;
-      }
+      // p:first-child {
+      //   margin: 10px 0 20px 0;
+      // }
+      // p:first-child:nth-last-child(1) {
+      //   margin: 10px 0 10px 0;
+      // }
     }
     .no-padding-right {
       padding-left: 0;
@@ -365,15 +377,18 @@
     }
   }
 
+
   .full-width-embed-block {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 30px;
   }
 
   .video-with-quote-block {
     width: 100%;
-    display: inline-table;
+    // display: inline-table;
     .embed-holder {
+      margin-top: 10px;
+      margin-bottom: 30px;
       &.embed-align-right {
         padding-right: 10.9%;
       }
@@ -382,6 +397,8 @@
       }
     }
     .block-quote {
+      margin-top: 10px;
+      margin-bottom: 30px;
       .rich-text {
         margin-top: 0px !important;
       }
@@ -429,6 +446,9 @@
   }
 
   @media (max-width: @screen-sm-max) {
+    .float-right, .float-left {
+      float: none;
+    }
     .paragraph-with-quote-block.full-width-quote {
       margin: 0;
       padding: 0 10%;
@@ -495,7 +515,9 @@
       }
     }
 
-    .paragraph-with-raw-embed-block, .paragraph-with-embed-block {
+
+
+    .paragraph-with-raw-embed-block, .paragraph-with-embed-block, .floating-element {
       display: flex;
       flex-direction: column;
       .embed-holder {
@@ -506,18 +528,18 @@
           width: 100%;
         }
       }
-      .embed-align-right {
+      .embed-align-right,.float-right {
         order: 2;
       }
 
-      .embed-align-right ~ .paragraph-block {
+      .embed-align-right ~ .paragraph-block, .float-right ~ .content {
         order: 1;
       }
-      .embed-align-left {
+      .embed-align-left , .float-left{
         order: 1;
       }
 
-      .embed-align-left ~ .paragraph-block {
+      .embed-align-left ~ .paragraph-block , .float-left ~ .content{
         order: 2;
       }
     }
@@ -538,25 +560,29 @@
       margin: 0;
       .quote-align-left.block-quote, .quote-align-right.block-quote {
         .rich-text {
-          margin: 2% 8% 3% 8%;
+          // margin: 2% 8% 3% 8%;
+          margin: 0% 8% 0% 8%;
         }
       }
     }
 
     .video-with-quote-block {
-      margin-top: 0px;
-      margin-bottom: 0px;
+      // margin-top: 0px;
+      // margin-bottom: 0px;
 
       .embed-holder {
-        padding: 15px 9.8% 0 9.8% !important;
-        margin: 10px 0;
+        // padding: 15px 9.8% 0 9.8% !important;
+        padding: 0px 9.8% 0 9.8% !important;
+
+        // margin: 10px 0;
       }
       .block-quote {
+
         &.quote-align-right {
-          margin-top: 10px !important;
+          // margin-top: 10px !important;
         }
         .rich-text {
-          margin: 10px 8% !important;
+          margin: 0px 8% !important;
         }
       }
     }
