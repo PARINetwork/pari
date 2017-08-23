@@ -46,7 +46,6 @@ INSTALLED_APPS = (
     'compressor',
     'taggit',
     'modelcluster',
-    'mathfilters',
 
     'core',
     'location',

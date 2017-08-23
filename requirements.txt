@@ -7,7 +7,6 @@ django-modeltranslation==0.11.0
 # Recommended components (require additional setup):
 psycopg2==2.6.1
 elasticsearch==1.9.0
-django-mathfilters==0.4.0
 
 # Recommended components to improve performance in production:
 django-redis==4.3.0
