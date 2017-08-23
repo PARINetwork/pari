@@ -159,6 +159,7 @@ $(function () {
 
     $(".scrollToTop").hide();
 
+
     $(".full-row .info a").on("click", function () {
         $("body").animate({
             scrollTop: $(".article-title").offset().top
