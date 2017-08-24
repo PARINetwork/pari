@@ -512,16 +512,24 @@
     .image-with-block-quote {
       display: inline-block;
       .quote-container {
+        margin: 20px 0 20px 0;
         float: none;
-        .paragraph-with-quote-block {
+        .block-quote {
+          padding: 0 15px !important;
           margin: 0;
-          padding: 0 9% !important;
+          .rich-text {
+            margin: 0 8%;
+          }
+        }
+        &.right {
+          padding-left: 0;
         }
       }
       .image-with-caption {
         width: auto !important;
         display: grid;
         grid-template-rows: 100% 100%;
+        float: none;
         &.right {
 
           margin-right: 0;
@@ -766,6 +774,23 @@
         }
         &.clearfix:after {
           content: "" !important;
+        }
+      }
+    }
+
+    .image-with-block-quote {
+      .quote-container {
+        margin-bottom: 20px;
+        &.left {
+          .block-quote {
+            padding-left: 25%;
+          }
+        }
+        &.right {
+          margin-left: 0;
+          .block-quote {
+            padding-right: 25%;
+          }
         }
       }
     }
