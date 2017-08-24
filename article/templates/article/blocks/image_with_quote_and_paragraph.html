@@ -1,0 +1,12 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="image-with-quote-and-paragraph clearfix">
+    <div class="image-content image-align-{{ value.align_image }}">
+        {{ value.image }}
+    </div>
+        {{ value.content_1 }}
+
+        {{ value.quote }}
+
+        {{ value.content_2 }}
+</div>

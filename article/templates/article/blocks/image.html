@@ -8,7 +8,17 @@
     {% endif %}
     <div class="image" style="height:{{ value.height }}px">
     {% image value.image max-1400x1120 as slide_image %}
-        <img src="{{ image.url }}" {% if value.fill_container %}style="position:relative;max-height:inherit"{% endif %} data-src="{{ slide_image.url }}"/>
+        <img src="{{ image.url }}" style="height:{{ value.height }}px" {% if value.fill_container %}style="position:relative;max-height:inherit;"{% endif %} data-src="{{ slide_image.url }}"/>
+    </div>
+    <div class= "photo-credits">
+        {% if image.image.photographers.all %}
+         PHOTO CREDIT •
+        {% for photographer in image.image.photographers.all %}
+           {{ photographer }}
+            {% if not forloop.last %},&ensp;
+            {% endif %}
+        {% endfor %}
+    {% endif %}
     </div>
     <div class="caption">
         <span>
