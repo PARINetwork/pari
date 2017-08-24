@@ -15,4 +15,28 @@
             {{ value.quote }}
         </div>
     {% endif %}
+    <script type="text/javascript">
+        var img = document.currentScript.parentNode.querySelector('img');
+        var caption = document.currentScript.parentNode.querySelector('.caption');
+
+        var handle = null;
+        function checkIfImageLoaded() {
+            if (!img.complete) {
+                return false;
+            }
+            if (img.clientWidth === 0) {
+                return false;
+            }
+            return true
+        }
+        function setCaptionWidth() {
+            if (checkIfImageLoaded()) {
+                var width = img.clientWidth;
+                caption.setAttribute('style', 'width:' + width + 'px;');
+                clearInterval(handle);
+            }
+
+        }
+        handle = setInterval(setCaptionWidth, 500);
+    </script>
 </div>
