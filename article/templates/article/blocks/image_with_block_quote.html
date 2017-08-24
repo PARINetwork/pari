@@ -16,45 +16,7 @@
         </div>
     {% endif %}
     <script type="text/javascript">
-        var images = document.currentScript.parentNode.querySelectorAll('img');
-        var caption = document.currentScript.parentNode.querySelector('.caption');
-
-        var handle = null;
-        function checkIfImageLoaded(img) {
-            if (!img.complete) {
-                return false;
-            }
-            if (img.clientWidth === 0) {
-                return false;
-            }
-            return true;
-        }
-
-        function checkIfAllImagesLoaded() {
-            for (var i = 0; i < images.length; i++) {
-                console.log(images[i]);
-                if (!checkIfImageLoaded(images[i]))
-                    return false;
-            }
-            return true;
-        }
-
-        function computeCaptionWidth() {
-            var width = 0;
-            for (var i = 0; i < images.length; i++) {
-                width += images[i].clientWidth;
-            }
-            return width;
-        }
-
-        function setCaptionWidth() {
-            if (checkIfAllImagesLoaded()) {
-                var width = computeCaptionWidth();
-                caption.setAttribute('style', 'width:' + width + 'px;');
-                clearInterval(handle);
-            }
-
-        }
-        handle = setInterval(setCaptionWidth, 500);
+        var container = document.currentScript.parentNode;
+        setImageCaptionWidth(container);
     </script>
 </div>
