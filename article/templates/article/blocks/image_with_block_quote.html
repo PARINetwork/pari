@@ -4,15 +4,19 @@
 <div class="image-with-block-quote">
     {% if value.align_quote == "left" %}
         <div class="quote-container left">
-            {{ value.quote }}
+            <div class="block-quote">
+                {{ value.quote }}
+            </div>
         </div>
     {% endif %}
-    <div class="image-with-caption {{ value.align_quote }} " style="width: {{ value.image_width }}px;">
+    <div class="image-with-caption {{ value.align_quote }} ">
         {{ value.image }}
     </div>
     {% if value.align_quote == "right" %}
         <div class="quote-container right">
-            {{ value.quote }}
+            <div class="block-quote">
+                {{ value.quote }}
+            </div>
         </div>
     {% endif %}
     <script async defer type="text/javascript">

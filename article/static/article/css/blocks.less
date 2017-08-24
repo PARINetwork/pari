@@ -126,7 +126,11 @@
     display: flex;
 
     .image-with-caption {
-      margin-top: 20px;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      .caption {
+        padding-top: 10px;
+      }
       &.right {
         margin-right: 15px;
       }
@@ -136,15 +140,18 @@
     }
     .quote-container {
       margin: 0 10px;
+      margin-bottom: 30px;
       width: 100%;
-      .paragraph-with-quote-block.full-width-quote {
-        padding-left: 15px;
-        margin-top: 0;
-      }
       &.left {
-        .paragraph-with-quote-block.full-width-quote {
-          padding-right: 20px;
-          padding-left: 15%;
+        padding-right: 20px;
+        .block-quote {
+          padding-left: 19%;
+        }
+      }
+      &.right {
+        padding-left: 20px;
+        .block-quote {
+          padding-right: 19%;
         }
       }
     }
@@ -267,6 +274,33 @@
       }
     }
   }
+
+  //common block quote style
+  .block-quote {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    .paragraph-holder {
+      b, strong {
+        padding: 0;
+      }
+    }
+    .rich-text {
+      border-bottom: 1px solid @primary-color;
+      border-top: 1px solid @primary-color;
+      font-family: 'Amiri', serif;
+      padding: 0 15px 0 15px;
+      text-align: center;
+      .paragraph-holder {
+        color: @primary-color;
+        width: auto;
+        display: inline-block;
+        font-size: 2.0em;
+        line-height: 1.7em;
+        padding: 0;
+      }
+    }
+  }
+
   .paragraph-with-quote-block, .video-with-quote-block {
     margin-left: 0;
     margin-right: 0;
