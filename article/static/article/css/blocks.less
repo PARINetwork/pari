@@ -192,47 +192,48 @@
   }
   .image-with-quote-and-paragraph {
 
-    .image {
-      .image-block {
-        margin-right: 30px;
-      }
+    .image-content {
+
       &.image-align-left {
+        margin-right: 10px;
         float: left;
+        .image-block {
+          margin-left: 7px;
+        }
       }
       &.image-align-right {
         float: right;
+        margin-left: 10px;
       }
-    }
 
-    .image-align-right ~ .text-content {
-      .block-quote {
-        margin-left: 10%;
-        width: 54%;
-      }
-    }
-
-    .block-quote {
-      width: 56%;
-      .paragraph-holder {
-        b, strong {
-          padding: 0;
+      &.image-align-right ~ .paragraph-with-quote-block {
+        .block-quote {
+          width: 60%;
+        }
+        padding-left: 11%;
+        padding-right: 19px;
+        &.clearfix:before {
+          content: none;
+        }
+        &.clearfix:after {
+          content: none;
         }
       }
-      .rich-text {
-        border-bottom: 1px solid @primary-color;
-        border-top: 1px solid @primary-color;
-        font-family: 'Amiri', serif;
-        padding: 0 15px 0 15px;
-        text-align: center;
-        .paragraph-holder {
-          color: @primary-color;
-          width: auto;
-          display: inline-block;
-          font-size: 2.0em;
-          line-height: 1.7em;
-          padding: 0;
+
+      &.image-align-left ~ .paragraph-with-quote-block {
+        .block-quote {
+          width: 60%;
+        }
+        padding-right: 20px;
+        padding-left: 5%;
+        &.clearfix:before {
+          content: none;
+        }
+        &.clearfix:after {
+          content: none;
         }
       }
+
     }
 
   }
@@ -377,7 +378,6 @@
     }
   }
 
-
   .full-width-embed-block {
     margin-top: 10px;
     margin-bottom: 30px;
@@ -449,6 +449,7 @@
     .float-right, .float-left {
       float: none;
     }
+
     .paragraph-with-quote-block.full-width-quote {
       margin: 0;
       padding: 0 10%;
@@ -469,12 +470,12 @@
       display: inline-block;
       .quote-container {
         .paragraph-with-quote-block {
-            margin: 0;
-            padding: 0 9%!important;
+          margin: 0;
+          padding: 0 9% !important;
         }
       }
       .image-with-caption {
-        width: auto!important;
+        width: auto !important;
         display: grid;
         grid-template-rows: 100% 100%;
         &.right {
@@ -513,8 +514,6 @@
       }
     }
 
-
-
     .paragraph-with-raw-embed-block, .paragraph-with-embed-block, .floating-element {
       display: flex;
       flex-direction: column;
@@ -526,18 +525,18 @@
           width: 100%;
         }
       }
-      .embed-align-right,.float-right {
+      .embed-align-right, .float-right {
         order: 2;
       }
 
       .embed-align-right ~ .paragraph-block, .float-right ~ .content {
         order: 1;
       }
-      .embed-align-left , .float-left{
+      .embed-align-left, .float-left {
         order: 1;
       }
 
-      .embed-align-left ~ .paragraph-block , .float-left ~ .content{
+      .embed-align-left ~ .paragraph-block, .float-left ~ .content {
         order: 2;
       }
     }

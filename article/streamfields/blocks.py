@@ -273,11 +273,11 @@ class ImageWithCaptionAndHeightBlock(ImageBlock):
 
 class ImageWithQuoteAndParagraphBlock(blocks.StructBlock):
     ALIGN_IMAGE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
-    image = ImageWithCaptionAndHeightBlock()
+    image = ImageWithCaptionAndHeightBlock(required=True)
     align_image = blocks.ChoiceBlock(choices=ALIGN_IMAGE_CHOICES, default=ALIGN_IMAGE_CHOICES[0][0])
-    content_1 = ParagraphBlock()
-    quote = CustomRichTextBlock(editor='hallo_for_quote')
-    content_2 = ParagraphBlock()
+    content_1 = ParagraphBlock(required=True)
+    quote = FullWidthBlockQuote(required=True)
+    content_2 = ParagraphBlock(required=True)
 
     class Meta:
         label = 'Image with quote and paragraph block'
