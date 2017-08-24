@@ -288,7 +288,7 @@ class ImageWithQuoteAndParagraphBlock(blocks.StructBlock):
 class ImageWithBlockQuote(blocks.StructBlock):
     ALIGN_QUOTE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
     image = ImageWithCaptionAndHeightBlock()
-    quote = FullWidthBlockQuote(required=True)
+    quote = CustomRichTextBlock(editor='hallo_for_quote', required=True)
     align_quote = blocks.ChoiceBlock(choices=ALIGN_QUOTE_CHOICES, default=ALIGN_QUOTE_CHOICES[0][0])
 
     class Meta:
