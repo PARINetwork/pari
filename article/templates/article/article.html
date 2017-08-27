@@ -119,9 +119,13 @@
         var setEmbedCaptionWidth = function (container) {
             var iframe = container.querySelector('iframe');
             var caption = container.querySelector('.caption');
-            var iframeWidth = iframe.width;
 
-            caption.setAttribute('style', 'width:' + iframeWidth + 'px;');
+            var iframeWidth = iframe.width;
+            var percentChar = '%';
+            widthInPercent = iframeWidth.indexOf(percentChar, iframeWidth.length - percentChar.length) !== -1;
+            var captionWidth = widthInPercent ? iframeWidth : iframeWidth + 'px';
+
+            caption.setAttribute('style', 'width:' + captionWidth);
         }
     </script>
 {% endblock %}
