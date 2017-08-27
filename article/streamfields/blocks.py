@@ -197,6 +197,7 @@ class ParagraphWithEmbedBlock(blocks.StructBlock):
     ALIGN_EMBED_CHOICES = [('left', 'Left'), ('right', 'Right')]
 
     embed = EmbedBlock()
+    embed_caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
     embed_max_width = IntegerBlock(required=False, help_text="Optional field. Maximum width of the content in pixels to"
                                                              " be requested from the content provider(e.g YouTube). "
                                                              "If the requested width is not supported, provider will be"
@@ -224,6 +225,7 @@ class ParagraphWithRawEmbedBlock(blocks.StructBlock):
     ALIGN_EMBED_CHOICES = [('left', 'Left'), ('right', 'Right')]
 
     embed = RawHTMLBlock(help_text="Embed HTML code(an iframe)")
+    embed_caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
     embed_align = blocks.ChoiceBlock(choices=ALIGN_EMBED_CHOICES, default=ALIGN_EMBED_CHOICES[0][0])
     content = ParagraphBlock()
 

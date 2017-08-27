@@ -4,6 +4,9 @@
 
     <div class="embed-holder embed-align-{{ value.embed_align }}">
         {{ value.embed.url | embed:value.embed_max_width }}
+        <div class="caption">
+            {{ value.embed_caption }}
+        </div>
     </div>
 
     {{ value.content }}
