@@ -115,6 +115,15 @@
             handle = setInterval(setCaptionWidth, 500);
         }
     </script>
+    <script type="text/javascript">
+        var setEmbedCaptionWidth = function (container) {
+            var iframe = container.querySelector('iframe');
+            var caption = container.querySelector('.caption');
+            var iframeWidth = iframe.width;
+
+            caption.setAttribute('style', 'width:' + iframeWidth + 'px;');
+        }
+    </script>
 {% endblock %}
 
 {% block extra_js %}
