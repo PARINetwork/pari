@@ -4,15 +4,27 @@
     {% with value.page.specific as page_model %}
 
         <div class="image-holder image-align-{{ value.align_image }}">
-            {% if page_model.content_type.model == "face" %}
-                {% image page_model.image height-250 as page_image %}
+            {% if page_model.content_type.model == "article" %}
+                {% image page_model.featured_image height-250 as page_image %}
                 <div class="image">
                     <img src="{{ page_image.url }}"/>
                 </div>
+                <div class="image-strap">
+                    <div class="title">
+                        {{ page_model.title }}
+                    </div>
+                    <div class="sub-header">
+                        {% if page_model.authors.count %}
+                            {% for author in page_model.authors.all %}
+                                {{ author.name }}{% if not forloop.last %},  {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                        {% with page_model.locations.first as location %}
+                            {% if location %}. {{ location.district }}, {{ location.state }}{% endif %}
+                        {% endwith %}
+                    </div>
+                </div>
             {% endif %}
-            <div class="image-strap">
-                {{ page_model.title }}
-            </div>
         </div>
 
     {% endwith %}
