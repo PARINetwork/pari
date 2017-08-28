@@ -249,6 +249,7 @@ class VideoWithQuoteBlock(blocks.StructBlock):
     ALIGN_QUOTE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
 
     video = EmbedBlock(help_text="YouTube video URL")
+    video_caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
     quote = CustomRichTextBlock(editor='hallo_for_quote')
     align_quote = blocks.ChoiceBlock(choices=ALIGN_QUOTE_CHOICES, default=ALIGN_QUOTE_CHOICES[0][1])
 
