@@ -4,27 +4,44 @@
     {% with value.page.specific as page_model %}
 
         <div class="image-holder image-align-{{ value.align_image }}">
-            {% if page_model.content_type.model == "article" %}
-                {% image page_model.featured_image height-250 as page_image %}
-                <div class="image">
+
+            <div class="image">
+                {% if page_model.content_type.model == "article" or page_model.content_type.model == "album" or page_model.content_type.model == "face" %}
+                    {% image page_model.featured_image height-250 as page_image %}
                     <img src="{{ page_image.url }}"/>
+                {% endif %}
+            </div>
+
+            <div class="image-strap">
+                <div class="strap">
+                    {{ page_model.title }}
                 </div>
-                <div class="image-strap">
-                    <div class="title">
-                        {{ page_model.title }}
-                    </div>
-                    <div class="sub-header">
-                        {% if page_model.authors.count %}
-                            {% for author in page_model.authors.all %}
-                                {{ author.name }}{% if not forloop.last %},  {% endif %}
-                            {% endfor %}
-                        {% endif %}
+                <div class="sub-strap">
+                    {% if page_model.content_type.model == "article" %}
+                        {% for author in page_model.authors.all %}
+                            {{ author.name }}{% if not forloop.last %},  {% endif %}
+                        {% endfor %}
                         {% with page_model.locations.first as location %}
                             {% if location %}. {{ location.district }}, {{ location.state }}{% endif %}
                         {% endwith %}
-                    </div>
+                    {% endif %}
+                    {% if page_model.content_type.model == "album" %}
+                        {% for photographer in page_model.photographers %}
+                            {{ photographer.name }}{% if not forloop.last %},  {% endif %}
+                        {% endfor %}
+                        {% for location in page_model.locations %}
+                            {% if forloop.first %}. {{ location.district }}, {{ location.state }}{% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if page_model.content_type.model == "face" %}
+                        {{ page_model.occupation }}
+                        {% with page_model.location as location %}
+                            {% if location %} from {{ location.name }}, {{ location.sub_district_name }},
+                                {{ location.district }}, {{ location.state }}{% endif %}
+                        {% endwith %}
+                    {% endif %}
                 </div>
-            {% endif %}
+            </div>
         </div>
 
     {% endwith %}
