@@ -1,0 +1,19 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="paragraph-with-page-block">
+    {% with value.page.specific as page_model %}
+
+        {% if page_model.content_type.model == "face" %}
+            {% image page_model.image height-250 as page_image %}
+            <div class="image">
+                <img src="{{ page_image.url }}"/>
+            </div>
+            <div class="title">
+                {{ page_model.title }}
+            </div>
+        {% endif %}
+
+    {% endwith %}
+
+    {{ value.content }}
+</div>
