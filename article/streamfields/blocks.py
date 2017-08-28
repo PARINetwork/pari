@@ -302,7 +302,10 @@ class ImageWithBlockQuote(blocks.StructBlock):
 
 
 class ParagraphWithPageBlock(blocks.StructBlock):
+    ALIGN_IMAGE_CHOICES = [('left', 'Left'), ('right', 'Right')]
+
     page = PageTypeChooserBlock()
+    align_image = blocks.ChoiceBlock(choices=ALIGN_IMAGE_CHOICES, default=ALIGN_IMAGE_CHOICES[0][0])
     content = ParagraphBlock()
 
     class Meta:

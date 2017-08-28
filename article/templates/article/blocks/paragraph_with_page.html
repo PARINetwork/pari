@@ -3,15 +3,17 @@
 <div class="paragraph-with-page-block">
     {% with value.page.specific as page_model %}
 
-        {% if page_model.content_type.model == "face" %}
-            {% image page_model.image height-250 as page_image %}
-            <div class="image">
-                <img src="{{ page_image.url }}"/>
-            </div>
-            <div class="title">
+        <div class="image-holder image-align-{{ value.align_image }}">
+            {% if page_model.content_type.model == "face" %}
+                {% image page_model.image height-250 as page_image %}
+                <div class="image">
+                    <img src="{{ page_image.url }}"/>
+                </div>
+            {% endif %}
+            <div class="image-strap">
                 {{ page_model.title }}
             </div>
-        {% endif %}
+        </div>
 
     {% endwith %}
 
