@@ -71,6 +71,63 @@
             }
         };
     </script>
+    <script type="text/javascript">
+        var setImageCaptionWidth = function (container) {
+            var images = container.querySelectorAll('img');
+            var caption = container.querySelector('.caption');
+
+            var handle = null;
+
+            function checkIfImageLoaded(img) {
+                if (!img.complete) {
+                    return false;
+                }
+                if (img.clientWidth === 0) {
+                    return false;
+                }
+                return true;
+            }
+
+            function checkIfAllImagesLoaded() {
+                for (var i = 0; i < images.length; i++) {
+                    if (!checkIfImageLoaded(images[i]))
+                        return false;
+                }
+                return true;
+            }
+
+            function computeCaptionWidth() {
+                var width = 0;
+                for (var i = 0; i < images.length; i++) {
+                    width += images[i].clientWidth;
+                }
+                return width;
+            }
+
+            function setCaptionWidth() {
+                if (checkIfAllImagesLoaded()) {
+                    var width = computeCaptionWidth();
+                    caption.setAttribute('style', 'width:' + width + 'px;');
+                    clearInterval(handle);
+                }
+            }
+
+            handle = setInterval(setCaptionWidth, 500);
+        }
+    </script>
+    <script type="text/javascript">
+        var setEmbedCaptionWidth = function (container) {
+            var iframe = container.querySelector('iframe');
+            var caption = container.querySelector('.caption');
+
+            var iframeWidth = iframe.width;
+            var percentChar = '%';
+            widthInPercent = iframeWidth.indexOf(percentChar, iframeWidth.length - percentChar.length) !== -1;
+            var captionWidth = widthInPercent ? iframeWidth : iframeWidth + 'px';
+
+            caption.setAttribute('style', 'width:' + captionWidth);
+        }
+    </script>
 {% endblock %}
 
 {% block extra_js %}

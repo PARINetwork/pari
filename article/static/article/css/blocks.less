@@ -126,7 +126,11 @@
     display: flex;
 
     .image-with-caption {
-      margin-top: 20px;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      .caption {
+        padding-top: 10px;
+      }
       &.right {
         margin-right: 15px;
       }
@@ -136,15 +140,17 @@
     }
     .quote-container {
       margin: 0 10px;
-      .paragraph-with-quote-block.full-width-quote {
-        padding-left: 15px;
-        margin-top: 0;
-      }
+      margin-bottom: 30px;
+      width: 100%;
       &.left {
-        .paragraph-with-quote-block.full-width-quote {
-          padding-right: 20px;
-          padding-left: 15%;
-        }
+        padding-left: 10.9%;
+        padding-right: 20px;
+        margin-left: 0;
+      }
+      &.right {
+        padding-right: 10.9%;
+        margin-right: 0;
+        padding-left: 20px;
       }
     }
     .caption {
@@ -161,8 +167,7 @@
       width: auto;
       position: relative;
       display: table;
-      margin-bottom: 5px;
-      margin: 10px 7px;;
+      margin:10px 7px 30px 7px;;
       .image {
         display: table-cell;
         width: 100%;
@@ -266,6 +271,33 @@
       }
     }
   }
+
+  //common block quote style
+  .block-quote {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    .paragraph-holder {
+      b, strong {
+        padding: 0;
+      }
+    }
+    .rich-text {
+      border-bottom: 1px solid @primary-color;
+      border-top: 1px solid @primary-color;
+      font-family: 'Amiri', serif;
+      padding: 0 15px 0 15px;
+      text-align: center;
+      .paragraph-holder {
+        color: @primary-color;
+        width: auto;
+        display: inline-block;
+        font-size: 2.0em;
+        line-height: 1.7em;
+        padding: 0;
+      }
+    }
+  }
+
   .paragraph-with-quote-block, .video-with-quote-block {
     margin-left: 0;
     margin-right: 0;
@@ -366,13 +398,18 @@
     }
 
     iframe {
-      margin: 2% 2%;
+      margin: 0 2%;
     }
 
     .embed-align-right {
       iframe {
         float: right;
         margin-top: 1.5%;
+        margin-right: 10.7%;
+      }
+      .caption {
+        float: right;
+        clear: right;
         margin-right: 10.7%;
       }
     }
@@ -383,12 +420,32 @@
         margin-top: 1.5%;
         float: left;
       }
+      .caption {
+        float: left;
+        clear: left;
+        margin-left: 10.7%;
+      }
+    }
+
+    .caption {
+      margin: 0 2%;
+      .paragraph-holder {
+        padding-left: 0px;
+        width: auto;
+      }
     }
   }
 
   .full-width-embed-block {
     margin-top: 10px;
     margin-bottom: 30px;
+
+    .caption {
+      .paragraph-holder {
+        width: auto;
+        padding-left: 0;
+      }
+    }
   }
 
   .video-with-quote-block {
@@ -402,6 +459,12 @@
       }
       &.embed-align-left {
         padding-left: 10.9%;
+      }
+    }
+    .caption {
+      .paragraph-holder {
+        width: auto;
+        padding-left: 0;
       }
     }
     .block-quote {
@@ -476,16 +539,30 @@
 
     .image-with-block-quote {
       display: inline-block;
+      width: 100%;
       .quote-container {
-        .paragraph-with-quote-block {
+        margin: 20px 0 20px 0;
+        padding: 0 !important;
+        float: none;
+        .block-quote {
+          padding: 0 15px !important;
           margin: 0;
-          padding: 0 9% !important;
+          .rich-text {
+            margin: 0 8%;
+          }
+        }
+        &.left {
+          margin-bottom: 30px;
+        }
+        &.right {
+          padding-left: 0;
         }
       }
       .image-with-caption {
         width: auto !important;
         display: grid;
         grid-template-rows: 100% 100%;
+        float: none;
         &.right {
 
           margin-right: 0;
@@ -508,6 +585,7 @@
           }
           .image {
             width: auto !important;
+            height: auto !important;
             img {
               width: 100% !important;
               height: auto !important;
@@ -517,7 +595,8 @@
         .caption {
           padding: 10px 5px;
           width: 100% !important;
-          margin-bottom: 10px;
+          margin-top: 10px;
+          //margin-bottom: 0 !important;
         }
       }
     }
@@ -588,6 +667,11 @@
           margin: 0;
           float: none;
           width: 100%;
+        }
+        .caption {
+          width: 100% !important;
+          float: none;
+          margin: 0;
         }
       }
       .embed-align-right, .float-right {
@@ -675,6 +759,7 @@
         }
       }
       .caption {
+        width: 100% !important;
         p {
           margin-top: 10px;
         }
@@ -713,6 +798,9 @@
           }
         }
       }
+      .caption {
+        width: 100% !important;
+      }
     }
 
     .image-with-quote-and-paragraph {
@@ -725,6 +813,15 @@
         }
         &.clearfix:after {
           content: "" !important;
+        }
+      }
+    }
+
+    .image-with-block-quote {
+      .quote-container {
+        margin-bottom: 20px;
+        &.right {
+          margin-left: 0;
         }
       }
     }

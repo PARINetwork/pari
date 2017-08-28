@@ -197,6 +197,7 @@ class ParagraphWithEmbedBlock(blocks.StructBlock):
     ALIGN_EMBED_CHOICES = [('left', 'Left'), ('right', 'Right')]
 
     embed = EmbedBlock()
+    embed_caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
     embed_max_width = IntegerBlock(required=False, help_text="Optional field. Maximum width of the content in pixels to"
                                                              " be requested from the content provider(e.g YouTube). "
                                                              "If the requested width is not supported, provider will be"
@@ -224,6 +225,7 @@ class ParagraphWithRawEmbedBlock(blocks.StructBlock):
     ALIGN_EMBED_CHOICES = [('left', 'Left'), ('right', 'Right')]
 
     embed = RawHTMLBlock(help_text="Embed HTML code(an iframe)")
+    embed_caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
     embed_align = blocks.ChoiceBlock(choices=ALIGN_EMBED_CHOICES, default=ALIGN_EMBED_CHOICES[0][0])
     content = ParagraphBlock()
 
@@ -235,6 +237,7 @@ class ParagraphWithRawEmbedBlock(blocks.StructBlock):
 
 class FullWidthEmbedBlock(blocks.StructBlock):
     embed = EmbedBlock(required=True, help_text="Enter URL for the embed block")
+    embed_caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
 
     class Meta:
         icon = 'media'
@@ -246,6 +249,7 @@ class VideoWithQuoteBlock(blocks.StructBlock):
     ALIGN_QUOTE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
 
     video = EmbedBlock(help_text="YouTube video URL")
+    video_caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
     quote = CustomRichTextBlock(editor='hallo_for_quote')
     align_quote = blocks.ChoiceBlock(choices=ALIGN_QUOTE_CHOICES, default=ALIGN_QUOTE_CHOICES[0][1])
 
@@ -280,17 +284,15 @@ class ImageWithQuoteAndParagraphBlock(blocks.StructBlock):
     content_2 = ParagraphBlock(required=True)
 
     class Meta:
+        icon = "doc-full-inverse"
         label = 'Image with quote and paragraph block'
         template = 'article/blocks/image_with_quote_and_paragraph.html'
 
 
 class ImageWithBlockQuote(blocks.StructBlock):
     ALIGN_QUOTE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
-    image = ImageChooserBlock(required=False)
-    image_width = IntegerBlock(min_value=0, required=True, default=380,
-                               help_text="Give the width in Percentage(Total 100, divide as per the need).")
-    caption = blocks.CharBlock(required=False)
-    quote = FullWidthBlockQuote(required=True)
+    image = ImageWithCaptionAndHeightBlock()
+    quote = CustomRichTextBlock(editor='hallo_for_quote', required=True)
     align_quote = blocks.ChoiceBlock(choices=ALIGN_QUOTE_CHOICES, default=ALIGN_QUOTE_CHOICES[0][0])
 
     class Meta:
