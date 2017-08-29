@@ -285,7 +285,7 @@ class ImageWithQuoteAndParagraphBlock(blocks.StructBlock):
 
     class Meta:
         icon = "doc-full-inverse"
-        label = 'Image with quote and paragraph block'
+        label = 'Image with quote and paragraph'
         template = 'article/blocks/image_with_quote_and_paragraph.html'
 
 
