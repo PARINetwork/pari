@@ -84,7 +84,7 @@
                 if (!img.complete) {
                     return false;
                 }
-                if (img.clientWidth === 0) {
+                if (!(img.clientWidth > 1)) {
                     return false;
                 }
                 return true;
