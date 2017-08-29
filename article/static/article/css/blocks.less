@@ -123,6 +123,8 @@
     }
   }
   .image-with-block-quote {
+    margin-left: -7px;
+    margin-right: -7px;
     display: flex;
 
     .image-with-caption {
@@ -153,21 +155,23 @@
         padding-left: 20px;
       }
     }
-    .caption {
-      .rich-text {
-        .paragraph-holder {
-          width: 100%;
-          padding-left: 0;
+      .caption {
+        .rich-text {
+          .paragraph-holder {
+            width: 100%;
+            padding-left: 0;
+          }
         }
       }
-    }
   }
   .n-column-image {
+    margin-left: -7px;
+    margin-right: -7px;
     .image-block {
       width: auto;
       position: relative;
       display: table;
-      margin:10px 7px 30px 7px;;
+      margin: 10px 7px 30px 7px;
       .image {
         display: table-cell;
         width: 100%;
@@ -190,6 +194,7 @@
       }
     }
     .caption {
+      margin-bottom: 20px;
       .rich-text, p {
         text-align: center;
         margin-top: 2px;
@@ -206,46 +211,45 @@
     .image-content {
 
       &.image-align-left {
-        margin-right: 10px;
+        margin-right: 18px;
         float: left;
-        .image-block {
-          margin-left: 7px;
+        ~.text-content{
+          padding-right: 11%;
         }
       }
       &.image-align-right {
+        margin-left: 18px;
         float: right;
-        margin-left: 10px;
-      }
-
-      &.image-align-right ~ .paragraph-with-quote-block {
-        .block-quote {
-          width: 60%;
+        ~.text-content{
+          .block-quote{
+            padding-left: 11%;
+          }
         }
-        padding-left: 11%;
-        padding-right: 19px;
-        &.clearfix:before {
-          content: none;
-        }
-        &.clearfix:after {
-          content: none;
-        }
-      }
-
-      &.image-align-left ~ .paragraph-with-quote-block {
-        .block-quote {
-          width: 60%;
-        }
-        padding-right: 20px;
-        padding-left: 5%;
-        &.clearfix:before {
-          content: none;
-        }
-        &.clearfix:after {
-          content: none;
-        }
+      ;
       }
 
     }
+    .text-content {
+
+      .block-quote {
+        display: grid;
+        .rich-text:lang(ur){
+          p b{
+            padding-right: 0;
+          }
+        }
+      }
+    }
+
+    .caption {
+        .rich-text {
+          .paragraph-holder {
+            width: 100%;
+            padding-left: 0;
+          }
+        }
+      }
+
 
   }
   .paragraph-with-quote-block.full-width-quote {
@@ -387,6 +391,24 @@
     .no-padding-both {
       padding-right: 10px;
       padding-left: 10px;
+    }
+  }
+  .paragraph-with-page-block {
+    margin: 10px;
+
+    .image-holder {
+
+      &.image-align-right {
+        float: right;
+        clear: right;
+        margin-left: 20px;
+      }
+
+      &.image-align-left {
+        float: left;
+        clear: left;
+        margin-right: 20px;
+      }
     }
   }
 
@@ -538,10 +560,11 @@
     }
 
     .image-with-block-quote {
-      display: inline-block;
+      display: grid;
+      margin: 0;
       width: 100%;
       .quote-container {
-        margin: 20px 0 20px 0;
+        margin: 10px 0 20px 0;
         padding: 0 !important;
         float: none;
         .block-quote {
@@ -559,9 +582,9 @@
         }
       }
       .image-with-caption {
+        margin-bottom: 20px !important;
         width: auto !important;
-        display: grid;
-        grid-template-rows: 100% 100%;
+        display: inline;
         float: none;
         &.right {
 
@@ -571,7 +594,7 @@
           margin: 0;
           position: relative;
           display: inline-block;
-          width: initial;
+          width: 100%;
           .photo-credits {
             position: relative;
             transform: none;
@@ -584,7 +607,7 @@
             margin-top: 2px;
           }
           .image {
-            width: auto !important;
+            width: 100% !important;
             height: auto !important;
             img {
               width: 100% !important;
@@ -637,20 +660,15 @@
         }
       }
 
-      .paragraph-with-quote-block {
-        margin: 0;
-        padding: 0 10% !important;
-        .block-quote:lang(ur) {
-          .rich-text {
-            width: auto;
-          }
-
-        }
-        .block-quote {
-          width: 100% !important;
-
-        }
-      }
+     .text-content{
+       .block-quote{
+         padding-left: 15px !important;
+         padding-right: 15px;
+         .rich-text{
+           margin:0% 8% 0% 8%;
+         }
+       }
+     }
 
       .image-align-right {
         order: 4;
@@ -691,6 +709,7 @@
     }
 
     .n-column-paragraph {
+      margin: 0 !important;
       .no-padding-left {
         padding-left: 0px;
       }
@@ -734,6 +753,7 @@
     }
 
     .n-column-image {
+      margin: 0;
       .image-block {
         display: inline-block;
         margin: 10px 0px;
@@ -800,6 +820,7 @@
       }
       .caption {
         width: 100% !important;
+        margin-bottom: 5px;
       }
     }
 
