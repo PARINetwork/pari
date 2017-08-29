@@ -279,9 +279,9 @@ class ImageWithQuoteAndParagraphBlock(blocks.StructBlock):
     ALIGN_IMAGE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
     image = ImageWithCaptionAndHeightBlock(required=True)
     align_image = blocks.ChoiceBlock(choices=ALIGN_IMAGE_CHOICES, default=ALIGN_IMAGE_CHOICES[0][0])
-    content_1 = ParagraphBlock(required=True)
+    content_1 = ParagraphBlock()
     quote = FullWidthBlockQuote(required=True)
-    content_2 = ParagraphBlock(required=True)
+    content_2 = ParagraphBlock()
 
     class Meta:
         icon = "doc-full-inverse"
