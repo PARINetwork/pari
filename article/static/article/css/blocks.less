@@ -123,6 +123,8 @@
     }
   }
   .image-with-block-quote {
+    margin-left: -7px;
+    margin-right: -7px;
     display: flex;
 
     .image-with-caption {
@@ -192,6 +194,7 @@
       }
     }
     .caption {
+      margin-bottom: 20px;
       .rich-text, p {
         text-align: center;
         margin-top: 2px;
@@ -557,10 +560,11 @@
     }
 
     .image-with-block-quote {
-      display: inline-block;
+      display: grid;
+      margin: 0;
       width: 100%;
       .quote-container {
-        margin: 20px 0 20px 0;
+        margin: 10px 0 20px 0;
         padding: 0 !important;
         float: none;
         .block-quote {
@@ -578,9 +582,9 @@
         }
       }
       .image-with-caption {
+        margin-bottom: 20px !important;
         width: auto !important;
-        display: grid;
-        grid-template-rows: 100% 100%;
+        display: inline;
         float: none;
         &.right {
 
@@ -590,7 +594,7 @@
           margin: 0;
           position: relative;
           display: inline-block;
-          width: initial;
+          width: 100%;
           .photo-credits {
             position: relative;
             transform: none;
@@ -603,7 +607,7 @@
             margin-top: 2px;
           }
           .image {
-            width: auto !important;
+            width: 100% !important;
             height: auto !important;
             img {
               width: 100% !important;
@@ -705,6 +709,7 @@
     }
 
     .n-column-paragraph {
+      margin: 0 !important;
       .no-padding-left {
         padding-left: 0px;
       }
@@ -748,6 +753,7 @@
     }
 
     .n-column-image {
+      margin: 0;
       .image-block {
         display: inline-block;
         margin: 10px 0px;
