@@ -10,6 +10,9 @@
                     {% image page_model.featured_image height-250 as page_image %}
                     <img src="{{ page_image.url }}"/>
                 {% endif %}
+                {% if page_model.content_type.model == "resource" %}
+                    <img src="{{ page_model.embed_thumbnail }}" class="resource"/>
+                {% endif %}
             </div>
 
             <div class="image-strap">
