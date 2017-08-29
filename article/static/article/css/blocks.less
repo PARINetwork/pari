@@ -153,12 +153,12 @@
         padding-left: 20px;
       }
     }
-    .caption {
-      .rich-text {
-        .paragraph-holder {
-          width: 100%;
-          padding-left: 0;
-        }
+  }
+  .caption {
+    .rich-text {
+      .paragraph-holder {
+        width: 100%;
+        padding-left: 0;
       }
     }
   }
@@ -167,7 +167,7 @@
       width: auto;
       position: relative;
       display: table;
-      margin:10px 7px 30px 7px;;
+      margin: 10px 7px 30px 7px;;
       .image {
         display: table-cell;
         width: 100%;
@@ -206,46 +206,36 @@
     .image-content {
 
       &.image-align-left {
-        margin-right: 10px;
+        margin-right: 18px;
         float: left;
-        .image-block {
-          margin-left: 7px;
+        ~.text-content{
+          padding-right: 11%;
         }
       }
       &.image-align-right {
+        margin-left: 18px;
         float: right;
-        margin-left: 10px;
-      }
-
-      &.image-align-right ~ .paragraph-with-quote-block {
-        .block-quote {
-          width: 60%;
+        ~.text-content{
+          .block-quote{
+            padding-left: 11%;
+          }
         }
-        padding-left: 11%;
-        padding-right: 19px;
-        &.clearfix:before {
-          content: none;
-        }
-        &.clearfix:after {
-          content: none;
-        }
-      }
-
-      &.image-align-left ~ .paragraph-with-quote-block {
-        .block-quote {
-          width: 60%;
-        }
-        padding-right: 20px;
-        padding-left: 5%;
-        &.clearfix:before {
-          content: none;
-        }
-        &.clearfix:after {
-          content: none;
-        }
+      ;
       }
 
     }
+    .text-content {
+
+      .block-quote {
+        display: grid;
+        .rich-text:lang(ur){
+          p b{
+            padding-right: 0;
+          }
+        }
+      }
+    }
+
 
   }
   .paragraph-with-quote-block.full-width-quote {
@@ -655,20 +645,15 @@
         }
       }
 
-      .paragraph-with-quote-block {
-        margin: 0;
-        padding: 0 10% !important;
-        .block-quote:lang(ur) {
-          .rich-text {
-            width: auto;
-          }
-
-        }
-        .block-quote {
-          width: 100% !important;
-
-        }
-      }
+     .text-content{
+       .block-quote{
+         padding-left: 15px !important;
+         padding-right: 15px;
+         .rich-text{
+           margin:0% 8% 0% 8%;
+         }
+       }
+     }
 
       .image-align-right {
         order: 4;
