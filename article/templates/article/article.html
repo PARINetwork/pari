@@ -72,9 +72,11 @@
         };
     </script>
     <script type="text/javascript">
-        var setImageCaptionWidth = function (container) {
+        var setImageCaptionWidth = function (container, captionSelector) {
+            var captionSelector = captionSelector || '.caption';
+
             var images = container.querySelectorAll('img');
-            var caption = container.querySelector('.caption');
+            var caption = container.querySelector(captionSelector);
 
             var handle = null;
 
