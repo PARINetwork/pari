@@ -5,14 +5,14 @@
         {{ value.image }}
     </div>
     <div class="text-content">
-        {% if value.content_1.content|length > 0%}
+        {% if value.content_1.content|striptags %}
         {{ value.content_1 }}
         {% endif %}
 
         <div class="block-quote quote-align-{{ value.align_image }} float-{{ value.align_image }} ">
         {{ value.quote.quote }}
         </div>
-        {% if value.content_2.content|length > 0 %}
+        {% if value.content_2.content|striptags %}
         {{ value.content_2 }}
         {% endif %}
     </div>
