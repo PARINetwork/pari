@@ -26,7 +26,7 @@ from wagtail.wagtailsearch.backends.elasticsearch import ElasticSearchMapping, \
 from article.streamfields.blocks import FullWidthImageBlock, TwoColumnImageBlock, ParagraphBlock, \
     ParagraphWithImageBlock, FaceBlock, ParagraphWithBlockQuoteBlock, NColumnParagraphBlock, FullWidthBlockQuote, \
     ParagraphWithEmbedBlock, ParagraphWithRawEmbedBlock, VideoWithQuoteBlock, FullWidthEmbedBlock, NColumnImageBlock, \
-    ParagraphWithMapBlock, ImageWithQuoteAndParagraphBlock, ImageWithBlockQuote, ParagraphWithPageBlock
+    ParagraphWithMapBlock, ImageWithQuoteAndParagraphBlock, ParagraphWithPageBlock
 
 from core.edit_handlers import M2MFieldPanel
 
@@ -72,7 +72,6 @@ class Article(Page):
         ('video_with_quote', VideoWithQuoteBlock()),
         ('paragraph_with_map', ParagraphWithMapBlock()),
         ('image_with_quote_and_paragraph', ImageWithQuoteAndParagraphBlock()),
-        ('image_with_block_quote', ImageWithBlockQuote()),
         ('paragraph_with_page', ParagraphWithPageBlock()),
     ], null=True, blank=True)
     show_modular_content = models.BooleanField(default=False)
