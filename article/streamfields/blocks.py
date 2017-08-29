@@ -177,7 +177,7 @@ class ParagraphWithBlockQuoteBlock(blocks.StructBlock):
 
 
 class FullWidthBlockQuote(blocks.StructBlock):
-    quote = CustomRichTextBlock(editor='hallo_for_quote')
+    quote = CustomRichTextBlock(editor='hallo_for_quote', required=True)
 
     class Meta:
         icon = 'doc-full'
