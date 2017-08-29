@@ -288,7 +288,7 @@ class ImageWithQuoteAndParagraphBlock(blocks.StructBlock):
         label = 'Image with quote and paragraph'
         template = 'article/blocks/image_with_quote_and_paragraph.html'
 
-
+#TODO remove this class , this module is deprecated.
 class ImageWithBlockQuote(blocks.StructBlock):
     ALIGN_QUOTE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
     image = ImageWithCaptionAndHeightBlock()
