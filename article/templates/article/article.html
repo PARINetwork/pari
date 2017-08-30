@@ -72,9 +72,11 @@
         };
     </script>
     <script type="text/javascript">
-        var setImageCaptionWidth = function (container) {
+        var setImageCaptionWidth = function (container, captionSelector) {
+            var captionSelector = captionSelector || '.caption';
+
             var images = container.querySelectorAll('img');
-            var caption = container.querySelector('.caption');
+            var caption = container.querySelector(captionSelector);
 
             var handle = null;
 
@@ -82,7 +84,7 @@
                 if (!img.complete) {
                     return false;
                 }
-                if (img.clientWidth === 0) {
+                if (!(img.clientWidth > 1)) {
                     return false;
                 }
                 return true;
