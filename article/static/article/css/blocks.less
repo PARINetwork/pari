@@ -166,6 +166,7 @@
 
   }
   .n-column-image {
+    clear: both;
     margin-left: -7px;
     margin-right: -7px;
     &.margin-right {
@@ -775,9 +776,17 @@
         }
       }
     }
-
-    .n-column-image {
-      margin: 0;
+    .n-column-image-with-paragraph{
+      display: flex;
+      flex-direction: column;
+      .n-column-image {
+      margin: 0 !important;
+      &.margin-left {
+        order: 2;
+      }
+      &.margin-right {
+        order: 1;
+      }
       .image-block {
         display: inline-block;
         margin: 10px 0px;
@@ -813,6 +822,8 @@
         }
       }
     }
+    }
+
 
     .paragraph-with-map-block {
       .map-holder {

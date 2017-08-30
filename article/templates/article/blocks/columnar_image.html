@@ -1,40 +1,42 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 {% load article_filters %}
 
-
-<div class="n-column-image clearfix {% if value.content and value.align_n_images == "left" %}margin-right{% elif value.content and value.align_n_images == "right"%}margin-left{% endif %}">
-    {% with value.images|length as images_length %}
-        {% for image in value.images %}
-            <div class="image-block">
-                {% if value.height > 560 %}
-                    {% image image.image height-1120 as image %}
-                {% else %}
-                    {% image image.image height-560 as image %}
-                {% endif %}
-                <div class="image" style="height:{{ value.height }}px">
-                    {% image image.image max-1400x1120 as slide_image %}
-                    <img class="lazyload" src="{{ image.url }}" data-src="{{ slide_image.url }}" style=" height:{{ value.height }}px;"/>
+<div class="n-column-image-with-paragraph">
+    <div class="n-column-image clearfix {% if value.content and value.align_n_images == "left" %}margin-right{% elif value.content and value.align_n_images == "right"%}margin-left{% endif %}">
+        {% with value.images|length as images_length %}
+            {% for image in value.images %}
+                <div class="image-block">
+                    {% if value.height > 560 %}
+                        {% image image.image height-1120 as image %}
+                    {% else %}
+                        {% image image.image height-560 as image %}
+                    {% endif %}
+                    <div class="image" style="height:{{ value.height }}px">
+                        {% image image.image max-1400x1120 as slide_image %}
+                        <img class="lazyload" src="{{ image.url }}" data-src="{{ slide_image.url }}" style=" height:{{ value.height }}px;"/>
+                    </div>
+                    <div class= "photo-credits">
+                        {% if image.image.photographers.all %}
+                         PHOTO CREDIT •
+                        {% for photographer in image.image.photographers.all %}
+                           {{ photographer }}
+                            {% if not forloop.last %},&ensp;
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    </div>
                 </div>
-                <div class= "photo-credits">
-                    {% if image.image.photographers.all %}
-                     PHOTO CREDIT •
-                    {% for photographer in image.image.photographers.all %}
-                       {{ photographer }}
-                        {% if not forloop.last %},&ensp;
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-                </div>
+            {% endfor %}
+        {% endwith %}
+            <div class="caption">
+                    {{ value.caption }}
             </div>
-        {% endfor %}
-    {% endwith %}
-        <div class="caption">
-                {{ value.caption }}
-        </div>
-    <script async defer type="text/javascript">
-        var container = document.currentScript.parentNode;
-        setImageCaptionWidth(container);
-    </script>
-</div>
+        <script async defer type="text/javascript">
+            var container = document.currentScript.parentNode;
+            setImageCaptionWidth(container);
+        </script>
+    </div>
 
-{{value.content}}
+    {{value.content}}
+
+</div>
