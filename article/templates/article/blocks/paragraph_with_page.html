@@ -3,59 +3,61 @@
 <div class="paragraph-with-page-block row">
     {% with value.page.specific as page_model %}
 
-        <div class="image-holder image-align-{{ value.align_image }}">
+        <div class="card-container">
+            <div class="image-holder image-align-{{ value.align_image }}">
 
-            <div class="image">
-                {% if page_model.content_type.model == "article" or page_model.content_type.model == "album" or page_model.content_type.model == "face" %}
-                    {% image page_model.featured_image width-270 as page_image %}
-                    <a href="{{ page_model.get_absolute_url }}">
-                        <img src="{{ page_image.url }}"/>
-                    </a>
-                {% endif %}
-                {% if page_model.content_type.model == "resource" %}
-                    <a href="{{ page_model.get_absolute_url }}">
-                        <img src="{{ page_model.embed_thumbnail }}" class="resource"/>
-                    </a>
-                {% endif %}
-            </div>
+                <div class="image">
+                    {% if page_model.content_type.model == "article" or page_model.content_type.model == "album" or page_model.content_type.model == "face" %}
+                        {% image page_model.featured_image width-270 as page_image %}
+                        <a href="{{ page_model.get_absolute_url }}">
+                            <img src="{{ page_image.url }}"/>
+                        </a>
+                    {% endif %}
+                    {% if page_model.content_type.model == "resource" %}
+                        <a href="{{ page_model.get_absolute_url }}">
+                            <img src="{{ page_model.embed_thumbnail }}" class="resource"/>
+                        </a>
+                    {% endif %}
+                </div>
 
-            <div class="strap">
-                <a href="{{ page_model.get_absolute_url }}">
-                    <div class="title-strap">
-                        {{ page_model.title }}
+                <div class="strap">
+                    <a href="{{ page_model.get_absolute_url }}">
+                        <div class="title-strap">
+                            {{ page_model.title }}
+                        </div>
+                    </a>
+                    <div class="location-strap">
+                        {% if page_model.content_type.model == "article" %}
+                            {% for author in page_model.authors.all %}
+                                {% if forloop.last and not forloop.first %} and
+                                {% elif not forloop.first %},
+                                {% endif %}
+                                {{ author.name }}
+                            {% endfor %}
+                            {% with page_model.locations.first as location %}
+                                {% if location %}• {{ location.district }}, {{ location.state }}{% endif %}
+                            {% endwith %}
+                        {% endif %}
+                        {% if page_model.content_type.model == "album" %}
+                            {% for photographer in page_model.photographers %}
+                                {% if forloop.last and not forloop.first %} and
+                                {% elif not forloop.first %},
+                                {% endif %}
+                                {{ photographer.name }}
+                            {% endfor %}
+                            {% for location in page_model.locations %}
+                                {% if forloop.first %}• {{ location.district }}, {{ location.state }}{% endif %}
+                            {% endfor %}
+                        {% endif %}
+                        {% if page_model.content_type.model == "face" %}
+                            {{ page_model.occupation }}
+                            {% with page_model.location as location %}
+                                {% if location %} from {{ location.name }},
+                                    {% if location.sub_district_name %}{{ location.sub_district_name }}, {% endif %}
+                                    {{ location.district }}, {{ location.state }}{% endif %}
+                            {% endwith %}
+                        {% endif %}
                     </div>
-                </a>
-                <div class="location-strap">
-                    {% if page_model.content_type.model == "article" %}
-                        {% for author in page_model.authors.all %}
-                            {% if forloop.last and not forloop.first %} and
-                            {% elif not forloop.first %},
-                            {% endif %}
-                            {{ author.name }}
-                        {% endfor %}
-                        {% with page_model.locations.first as location %}
-                            {% if location %}• {{ location.district }}, {{ location.state }}{% endif %}
-                        {% endwith %}
-                    {% endif %}
-                    {% if page_model.content_type.model == "album" %}
-                        {% for photographer in page_model.photographers %}
-                            {% if forloop.last and not forloop.first %} and
-                            {% elif not forloop.first %},
-                            {% endif %}
-                            {{ photographer.name }}
-                        {% endfor %}
-                        {% for location in page_model.locations %}
-                            {% if forloop.first %}• {{ location.district }}, {{ location.state }}{% endif %}
-                        {% endfor %}
-                    {% endif %}
-                    {% if page_model.content_type.model == "face" %}
-                        {{ page_model.occupation }}
-                        {% with page_model.location as location %}
-                            {% if location %} from {{ location.name }},
-                                {% if location.sub_district_name %}{{ location.sub_district_name }}, {% endif %}
-                                {{ location.district }}, {{ location.state }}{% endif %}
-                        {% endwith %}
-                    {% endif %}
                 </div>
             </div>
         </div>
