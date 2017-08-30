@@ -12,7 +12,7 @@
                 {% endif %}
                 <div class="image" style="height:{{ value.height }}px">
                     {% image image.image max-1400x1120 as slide_image %}
-                    <img src="{{ image.url }}" data-src="{{ slide_image.url }}" height="{{ value.height }}px"/>
+                    <img class="lazyload" src="{{ image.url }}" data-src="{{ slide_image.url }}" style=" height:{{ value.height }}px;"/>
                 </div>
                 <div class= "photo-credits">
                     {% if image.image.photographers.all %}
@@ -27,10 +27,9 @@
             </div>
         {% endfor %}
     {% endwith %}
-
-    <div class="caption">
-            {{ value.caption }}
-    </div>
+        <div class="caption">
+                {{ value.caption }}
+        </div>
     <script async defer type="text/javascript">
         var container = document.currentScript.parentNode;
         setImageCaptionWidth(container);
