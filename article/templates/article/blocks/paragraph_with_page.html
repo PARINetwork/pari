@@ -8,10 +8,14 @@
             <div class="image">
                 {% if page_model.content_type.model == "article" or page_model.content_type.model == "album" or page_model.content_type.model == "face" %}
                     {% image page_model.featured_image height-250 as page_image %}
-                    <img src="{{ page_image.url }}"/>
+                    <a href="{{ page_model.get_absolute_url }}">
+                        <img src="{{ page_image.url }}"/>
+                    </a>
                 {% endif %}
                 {% if page_model.content_type.model == "resource" %}
-                    <img src="{{ page_model.embed_thumbnail }}" class="resource"/>
+                    <a href="{{ page_model.get_absolute_url }}">
+                        <img src="{{ page_model.embed_thumbnail }}" class="resource"/>
+                    </a>
                 {% endif %}
             </div>
 
