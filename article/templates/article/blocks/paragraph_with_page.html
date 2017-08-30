@@ -1,6 +1,6 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<div class="paragraph-with-page-block">
+<div class="paragraph-with-page-block row">
     {% with value.page.specific as page_model %}
 
         <div class="image-holder image-align-{{ value.align_image }}">
@@ -32,7 +32,7 @@
                             {{ author.name }}
                         {% endfor %}
                         {% with page_model.locations.first as location %}
-                            {% if location %}. {{ location.district }}, {{ location.state }}{% endif %}
+                            {% if location %}• {{ location.district }}, {{ location.state }}{% endif %}
                         {% endwith %}
                     {% endif %}
                     {% if page_model.content_type.model == "album" %}
@@ -43,7 +43,7 @@
                             {{ photographer.name }}
                         {% endfor %}
                         {% for location in page_model.locations %}
-                            {% if forloop.first %}. {{ location.district }}, {{ location.state }}{% endif %}
+                            {% if forloop.first %}• {{ location.district }}, {{ location.state }}{% endif %}
                         {% endfor %}
                     {% endif %}
                     {% if page_model.content_type.model == "face" %}
