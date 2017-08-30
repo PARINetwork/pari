@@ -73,7 +73,7 @@ class Article(Page):
         ('paragraph_with_map', ParagraphWithMapBlock()),
         ('image_with_quote_and_paragraph', ImageWithQuoteAndParagraphBlock()),
         ('paragraph_with_page', ParagraphWithPageBlock()),
-        ('n_column_image_with_text', NColumnImageWithTextBlock()),
+        ('columnar_image_with_text', NColumnImageWithTextBlock()),
     ], null=True, blank=True)
     show_modular_content = models.BooleanField(default=False)
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
