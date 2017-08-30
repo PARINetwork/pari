@@ -22,7 +22,10 @@
                 <div class="location-strap">
                     {% if page_model.content_type.model == "article" %}
                         {% for author in page_model.authors.all %}
-                            {{ author.name }}{% if not forloop.last %},  {% endif %}
+                            {% if forloop.last and not forloop.first %} and
+                            {% elif not forloop.first %},
+                            {% endif %}
+                            {{ author.name }}
                         {% endfor %}
                         {% with page_model.locations.first as location %}
                             {% if location %}. {{ location.district }}, {{ location.state }}{% endif %}
@@ -30,7 +33,10 @@
                     {% endif %}
                     {% if page_model.content_type.model == "album" %}
                         {% for photographer in page_model.photographers %}
-                            {{ photographer.name }}{% if not forloop.last %},  {% endif %}
+                            {% if forloop.last and not forloop.first %} and
+                            {% elif not forloop.first %},
+                            {% endif %}
+                            {{ photographer.name }}
                         {% endfor %}
                         {% for location in page_model.locations %}
                             {% if forloop.first %}. {{ location.district }}, {{ location.state }}{% endif %}
