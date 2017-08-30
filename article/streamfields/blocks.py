@@ -320,3 +320,13 @@ class ParagraphWithPageBlock(blocks.StructBlock):
     class Meta:
         icon = 'image'
         template = 'article/blocks/paragraph_with_page.html'
+
+class NColumnImageWithTextBlock(NColumnImageBlock):
+    ALIGN_IMAGE_CHOICES = [('left', 'Left'), ('right', 'Right')]
+
+    content = ParagraphBlock()
+    align_n_images = blocks.ChoiceBlock(choices=ALIGN_IMAGE_CHOICES, default=ALIGN_IMAGE_CHOICES[0][0])
+
+    class Meta:
+        icon = 'image'
+        label = 'nImage with text'
