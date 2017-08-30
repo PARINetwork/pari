@@ -39,7 +39,8 @@
                     {% if page_model.content_type.model == "face" %}
                         {{ page_model.occupation }}
                         {% with page_model.location as location %}
-                            {% if location %} from {{ location.name }}, {{ location.sub_district_name }},
+                            {% if location %} from {{ location.name }},
+                                {% if location.sub_district_name %}{{ location.sub_district_name }}, {% endif %}
                                 {{ location.district }}, {{ location.state }}{% endif %}
                         {% endwith %}
                     {% endif %}
