@@ -7,7 +7,7 @@
 
             <div class="image">
                 {% if page_model.content_type.model == "article" or page_model.content_type.model == "album" or page_model.content_type.model == "face" %}
-                    {% image page_model.featured_image height-250 as page_image %}
+                    {% image page_model.featured_image width-270 as page_image %}
                     <a href="{{ page_model.get_absolute_url }}">
                         <img src="{{ page_image.url }}"/>
                     </a>
@@ -20,9 +20,11 @@
             </div>
 
             <div class="strap">
-                <div class="title-strap">
-                    {{ page_model.title }}
-                </div>
+                <a href="{{ page_model.get_absolute_url }}">
+                    <div class="title-strap">
+                        {{ page_model.title }}
+                    </div>
+                </a>
                 <div class="location-strap">
                     {% if page_model.content_type.model == "article" %}
                         {% for author in page_model.authors.all %}
@@ -61,9 +63,4 @@
     {% endwith %}
 
     {{ value.content }}
-
-    <script async defer type="text/javascript">
-        var container = document.currentScript.parentNode;
-        setImageCaptionWidth(container, '.strap');
-    </script>
 </div>
