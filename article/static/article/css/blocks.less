@@ -403,11 +403,8 @@
     }
 
     .image-holder {
-
-      img {
-        width: auto !important;
-        height: auto !important;
-      }
+      width: 270px !important;
+      border: 1px solid lightgray;
 
       &.image-align-right {
         float: right;
@@ -421,15 +418,40 @@
         margin-right: 20px;
       }
 
+      .image {
+        position: relative;
+        height: 180px !important;
+        max-width: 100%;
+
+        img {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+
+          width: auto !important;
+          max-width: 100%;
+          height: auto;
+          max-height: 100%;
+          display: block;
+          vertical-align: middle;
+          padding: 5px;
+        }
+      }
+
       .strap {
-        color: @text-title-light;
-        font-size: small;
+        border-top: 1px solid lightgray;
+        color: @grey;
+        font-size: x-small;
         line-height: 1.5;
-        border: 1px solid lightgray;
         padding-left: 5px;
         padding-top: 5px;
 
         .title-strap {
+          font-size: small;
+          color: #000;
           font-weight: 500;
         }
       }
