@@ -13,6 +13,10 @@ from location.models import Location
 
 
 class CustomRichTextBlock(RichTextBlock):
+
+    def __init__(self,**kwargs):
+        super(CustomRichTextBlock,self).__init__(**kwargs)
+
     @cached_property
     def field(self):
         return forms.CharField(widget=get_rich_text_editor_widget(self.editor), **self.field_options)
@@ -132,8 +136,13 @@ class TwoColumnImageBlock(blocks.StructBlock):
 
 class ParagraphBlock(blocks.StructBlock):
     ALIGN_CONTENT_CHOICES = [('default', 'Default'), ('center', 'Center')]
+    content_required = True
+    def __init__(self,**kwargs):
+        content_required = kwargs.get('required')
+        super(ParagraphBlock,self).__init__(**kwargs)
 
-    content = CustomRichTextBlock(editor='hallo_for_paragraph')
+
+    content = CustomRichTextBlock(editor='hallo_for_paragraph',required=content_required)
     align_content = blocks.ChoiceBlock(choices=ALIGN_CONTENT_CHOICES, default=ALIGN_CONTENT_CHOICES[0][0])
 
     class Meta:
@@ -279,9 +288,9 @@ class ImageWithQuoteAndParagraphBlock(blocks.StructBlock):
     ALIGN_IMAGE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
     image = ImageWithCaptionAndHeightBlock(required=True)
     align_image = blocks.ChoiceBlock(choices=ALIGN_IMAGE_CHOICES, default=ALIGN_IMAGE_CHOICES[0][0])
-    content_1 = ParagraphBlock()
+    content_1 = ParagraphBlock(required=False)
     quote = FullWidthBlockQuote(required=True)
-    content_2 = ParagraphBlock()
+    content_2 = ParagraphBlock(required=False)
 
     class Meta:
         icon = "doc-full-inverse"
@@ -311,3 +320,13 @@ class ParagraphWithPageBlock(blocks.StructBlock):
     class Meta:
         icon = 'image'
         template = 'article/blocks/paragraph_with_page.html'
+
+class NColumnImageWithTextBlock(NColumnImageBlock):
+    ALIGN_IMAGE_CHOICES = [('left', 'Left'), ('right', 'Right')]
+
+    content = ParagraphBlock()
+    align_n_images = blocks.ChoiceBlock(choices=ALIGN_IMAGE_CHOICES, default=ALIGN_IMAGE_CHOICES[0][0])
+
+    class Meta:
+        icon = 'image'
+        label = 'nImage with text'

@@ -1,6 +1,6 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<div class="paragraph-with-page-block">
+<div class="paragraph-with-page-block row">
     {% with value.page.specific as page_model %}
 
         <div class="image-holder image-align-{{ value.align_image }}">
@@ -8,10 +8,14 @@
             <div class="image">
                 {% if page_model.content_type.model == "article" or page_model.content_type.model == "album" or page_model.content_type.model == "face" %}
                     {% image page_model.featured_image height-250 as page_image %}
-                    <img src="{{ page_image.url }}"/>
+                    <a href="{{ page_model.get_absolute_url }}">
+                        <img src="{{ page_image.url }}"/>
+                    </a>
                 {% endif %}
                 {% if page_model.content_type.model == "resource" %}
-                    <img src="{{ page_model.embed_thumbnail }}" class="resource"/>
+                    <a href="{{ page_model.get_absolute_url }}">
+                        <img src="{{ page_model.embed_thumbnail }}" class="resource"/>
+                    </a>
                 {% endif %}
             </div>
 
@@ -22,24 +26,31 @@
                 <div class="location-strap">
                     {% if page_model.content_type.model == "article" %}
                         {% for author in page_model.authors.all %}
-                            {{ author.name }}{% if not forloop.last %},  {% endif %}
+                            {% if forloop.last and not forloop.first %} and
+                            {% elif not forloop.first %},
+                            {% endif %}
+                            {{ author.name }}
                         {% endfor %}
                         {% with page_model.locations.first as location %}
-                            {% if location %}. {{ location.district }}, {{ location.state }}{% endif %}
+                            {% if location %}• {{ location.district }}, {{ location.state }}{% endif %}
                         {% endwith %}
                     {% endif %}
                     {% if page_model.content_type.model == "album" %}
                         {% for photographer in page_model.photographers %}
-                            {{ photographer.name }}{% if not forloop.last %},  {% endif %}
+                            {% if forloop.last and not forloop.first %} and
+                            {% elif not forloop.first %},
+                            {% endif %}
+                            {{ photographer.name }}
                         {% endfor %}
                         {% for location in page_model.locations %}
-                            {% if forloop.first %}. {{ location.district }}, {{ location.state }}{% endif %}
+                            {% if forloop.first %}• {{ location.district }}, {{ location.state }}{% endif %}
                         {% endfor %}
                     {% endif %}
                     {% if page_model.content_type.model == "face" %}
                         {{ page_model.occupation }}
                         {% with page_model.location as location %}
-                            {% if location %} from {{ location.name }}, {{ location.sub_district_name }},
+                            {% if location %} from {{ location.name }},
+                                {% if location.sub_district_name %}{{ location.sub_district_name }}, {% endif %}
                                 {{ location.district }}, {{ location.state }}{% endif %}
                         {% endwith %}
                     {% endif %}

@@ -1,7 +1,8 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 {% load article_filters %}
 
-<div class="n-column-image clearfix">
+
+<div class="n-column-image clearfix {% if value.content and value.align_n_images == "left" %}margin-right{% elif value.content and value.align_n_images == "right"%}margin-left{% endif %}">
     {% with value.images|length as images_length %}
         {% for image in value.images %}
             <div class="image-block">
@@ -12,7 +13,7 @@
                 {% endif %}
                 <div class="image" style="height:{{ value.height }}px">
                     {% image image.image max-1400x1120 as slide_image %}
-                    <img src="{{ image.url }}" data-src="{{ slide_image.url }}" style="height:{{ value.height }}px" />
+                    <img class="lazyload" src="{{ image.url }}" data-src="{{ slide_image.url }}" style=" height:{{ value.height }}px;"/>
                 </div>
                 <div class= "photo-credits">
                     {% if image.image.photographers.all %}
@@ -27,12 +28,13 @@
             </div>
         {% endfor %}
     {% endwith %}
-
-    <div class="caption">
-            {{ value.caption }}
-    </div>
+        <div class="caption">
+                {{ value.caption }}
+        </div>
     <script async defer type="text/javascript">
         var container = document.currentScript.parentNode;
         setImageCaptionWidth(container);
     </script>
 </div>
+
+{{value.content}}
