@@ -197,7 +197,7 @@ $(function () {
         $(this).parents('a').first().prepend('<i class="fa fa-expand fa-invert"></i>').css("position", "relative");
     });
 
-    $('.modular-content img').each(function (index) {
+    $('.modular-content img').not(".ignore-carousel").each(function (index) {
         $(this).wrap('<a class="gallery" id=' + index + '></a>');
         $(this).parents('a').first().prepend('<i class="fa fa-expand fa-invert"></i>');
     });
