@@ -17,9 +17,11 @@
                 <div class="caption col-lg-6">
                     {% include "article/includes/default_atom.html" with article=article%}
                    <div class="margin-top-20px date">
-                        <a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month %}">
-                            <span itemprop="datePublished" class="date link-dark">{{ article.first_published_at|date }}</span>
-                        </a>
+                       {% if article.first_published_at.year %}
+                           <a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month %}">
+                                <span itemprop="datePublished" class="date link-dark">{{ article.first_published_at|date }}</span>
+                            </a>
+                       {% endif %}
                        {% with article.get_translation as article_translations %}
                        {% if article_translations|length > 1 %}
                         <div class="dropdown custom-dropdown">
