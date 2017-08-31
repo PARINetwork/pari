@@ -94,25 +94,22 @@
     :lang(ur) {
       text-align: right;
     }
-
+    h2,h3,h4,h5{
+      text-align: left;
+      margin-bottom: 20px;
+      margin-top: 0;
+    }
     p {
       text-align: left;
       margin-bottom: 20px;
       line-height: 29px;
       font-size: 17px;
-      // margin: 20px 0;
     }
-    // p:last-child {
-    //   margin: 20px 0 10px 0;
-    // }
-    // p:first-child {
-    //   margin: 10px 0 10px 0;
-    // }
+
     p:lang(ur) {
       text-align: right;
       margin-left: 10px;
       margin-right: 10px;
-      // margin: 10px 10px;
     }
 
     ul {
@@ -171,6 +168,7 @@
       clear: both;
       margin-left: -7px;
       margin-right: -7px;
+      margin-bottom: 10px;
       &.margin-right {
         margin-right: 30px;
         float: left;
@@ -178,6 +176,13 @@
       &.margin-left {
         margin-left: 30px;
         float: right;
+        &:lang(ur){
+          margin-left: 23px;
+        }
+      }
+      .caption{
+        margin: 0 7px;
+        padding-top: 3px;
       }
       .image-block {
         width: auto;
@@ -461,7 +466,7 @@
         }
       }
     }
-  }
+  } 
 
   .paragraph-with-raw-embed-block, .paragraph-with-embed-block {
     -webkit-transform: translate(0px, 0px);
@@ -681,14 +686,14 @@
       .image-content {
         margin: 0 !important;
         .image-block {
-          width: 100%;
+          width: 100% !important;
           height: auto !important;
           margin: 0 !important;
           .image {
             width: 100%;
             height: auto !important;
             img {
-              width: 100%;
+              width: 100% !important;
               height: auto !important;
             }
           }
@@ -882,7 +887,6 @@
         }
       }
       .caption {
-        width: 100% !important;
         margin-bottom: 5px;
       }
     }
@@ -918,6 +922,16 @@
         iframe, object, embed {
           height: inherit;
         }
+      }
+    }
+
+    .paragraph-with-page-block {
+      .card-container {
+        padding-right: 10%;
+        padding-left: 10%;
+      }
+      .image-holder {
+        width: 100% !important;
       }
     }
   }

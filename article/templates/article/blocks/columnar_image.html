@@ -1,8 +1,8 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 {% load article_filters %}
 
-<div class="n-column-image-with-paragraph">
-    <div class="n-column-image clearfix {% if value.content and value.align_n_images == "left" %}margin-right{% elif value.content and value.align_n_images == "right"%}margin-left{% endif %}">
+<div class="n-column-image-with-paragraph clearfix">
+    <div class="n-column-image clearfix {% if value.content and value.align_columnar_images == "left" %}margin-right{% elif value.content and value.align_columnar_images == "right"%}margin-left{% endif %}">
         {% with value.images|length as images_length %}
             {% for image in value.images %}
                 <div class="image-block">
