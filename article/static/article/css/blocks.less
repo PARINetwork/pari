@@ -250,7 +250,9 @@
     .text-content {
       .block-quote {
         display: grid;
-        padding-top: 10px;
+        padding-top: 5px;
+        padding-bottom: 25px;
+        margin-bottom: 0px;
         .rich-text:lang(ur) {
           p b {
             padding-right: 0;
@@ -265,7 +267,7 @@
     .block-quote {
       padding-left: 0;
       padding-right: 0;
-      margin-top: 10px;
+      margin-top: 0px;
       margin-bottom: 30px;
       .rich-text {
         text-align: center;
@@ -568,6 +570,7 @@
         line-height: 15px;
         color: @primary-color;
         margin: 5px 0px;
+        margin-bottom: 0px;
       }
 
       hr {
@@ -888,20 +891,6 @@
       }
       .caption {
         margin-bottom: 5px;
-      }
-    }
-
-    .image-with-quote-and-paragraph {
-      .paragraph-with-quote-block {
-        .block-quote {
-          width: 50% !important;
-        }
-        &.clearfix:before {
-          content: "" !important;
-        }
-        &.clearfix:after {
-          content: "" !important;
-        }
       }
     }
 
