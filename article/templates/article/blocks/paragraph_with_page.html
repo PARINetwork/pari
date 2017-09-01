@@ -3,8 +3,8 @@
 <div class="paragraph-with-page-block row">
     {% with value.page.specific as page_model %}
 
-        <div class="card-container">
-            <div class="image-holder image-align-{{ value.align_image }}">
+        <div class="card-container align-{{ value.align_image }}">
+            <div class="image-holder ">
 
                 <div class="image">
                     {% if page_model.content_type.model == "article" or page_model.content_type.model == "album" or page_model.content_type.model == "face" %}
