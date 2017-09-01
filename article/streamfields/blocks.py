@@ -120,6 +120,7 @@ class FullWidthImageBlock(blocks.StructBlock):
     class Meta:
         icon = 'image'
         template = 'article/blocks/full_width_image.html'
+        label = 'Full width image'
 
 
 class TwoColumnImageBlock(blocks.StructBlock):
@@ -138,7 +139,7 @@ class ParagraphBlock(blocks.StructBlock):
 
     class Meta:
         icon = 'doc-full'
-        label = 'Paragraph Module'
+        label = 'Text'
         template = 'article/blocks/paragraph.html'
 
 
@@ -172,7 +173,7 @@ class ParagraphWithBlockQuoteBlock(blocks.StructBlock):
 
     class Meta:
         icon = 'doc-full'
-        label = 'Paragraphs with Block Quote'
+        label = 'Quote with text'
         template = 'article/blocks/paragraph_with_block_quote.html'
 
 
@@ -181,7 +182,7 @@ class FullWidthBlockQuote(blocks.StructBlock):
 
     class Meta:
         icon = 'doc-full'
-        label = 'Full width Block Quote'
+        label = 'Full width quote'
         template = 'article/blocks/full_width_block_quote.html'
 
 
@@ -190,7 +191,7 @@ class NColumnParagraphBlock(blocks.StructBlock):
 
     class Meta:
         template = 'article/blocks/columnar_paragraph.html'
-        label = 'Columnar Paragraphs'
+        label = 'Columnar text'
 
 
 class ParagraphWithEmbedBlock(blocks.StructBlock):
@@ -207,7 +208,7 @@ class ParagraphWithEmbedBlock(blocks.StructBlock):
 
     class Meta:
         icon = 'media'
-        label = 'Paragraphs with embed'
+        label = 'Embed with text'
         template = 'article/blocks/paragraph_with_embed.html'
 
 
@@ -231,7 +232,7 @@ class ParagraphWithRawEmbedBlock(blocks.StructBlock):
 
     class Meta:
         icon = 'media'
-        label = 'Paragraphs with raw embed'
+        label = 'Raw embed with text'
         template = 'article/blocks/paragraph_with_raw_embed.html'
 
 
@@ -255,7 +256,7 @@ class VideoWithQuoteBlock(blocks.StructBlock):
 
     class Meta:
         icon = 'doc-full'
-        label = 'Video with Block Quote'
+        label = 'Video with quote'
         template = 'article/blocks/video_with_block_quote.html'
 
 
@@ -266,7 +267,7 @@ class ParagraphWithMapBlock(blocks.StructBlock):
     content = ParagraphBlock()
 
     class Meta:
-        label = 'Paragraphs with map'
+        label = 'Map with text'
         template = 'article/blocks/paragraph_with_map.html'
 
 
@@ -287,7 +288,7 @@ class ImageWithQuoteAndParagraphBlock(blocks.StructBlock):
 
     class Meta:
         icon = "doc-full-inverse"
-        label = 'Image with quote and paragraph'
+        label = 'Image with quote and text'
         template = 'article/blocks/image_with_quote_and_paragraph.html'
 
 #TODO remove this class , this module is deprecated.
@@ -313,6 +314,7 @@ class ParagraphWithPageBlock(blocks.StructBlock):
     class Meta:
         icon = 'image'
         template = 'article/blocks/paragraph_with_page.html'
+        label = 'Page reference with text'
 
 class NColumnImageWithTextBlock(NColumnImageBlock):
     ALIGN_IMAGE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
@@ -322,4 +324,4 @@ class NColumnImageWithTextBlock(NColumnImageBlock):
 
     class Meta:
         icon = 'image'
-        label = 'Columnar Images with text'
+        label = 'Columnar images with text'

@@ -57,22 +57,23 @@ class Article(Page):
     strap = models.TextField(blank=True)
     content = RichTextField()
     modular_content = StreamField([
-        ('full_width_image', FullWidthImageBlock()),
-        ('n_column_paragraph_block', NColumnParagraphBlock()),
-        ('two_column_image', TwoColumnImageBlock()),
         ('paragraph', ParagraphBlock()),
-        ('paragraph_with_image', ParagraphWithImageBlock()),
-        ('face', FaceBlock()),
+        ('n_column_paragraph_block', NColumnParagraphBlock()),
+        ('paragraph_with_map', ParagraphWithMapBlock()),
+        ('paragraph_with_page', ParagraphWithPageBlock()),
+
         ('paragraph_with_block_quote', ParagraphWithBlockQuoteBlock()),
         ('full_width_block_quote', FullWidthBlockQuote()),
+        ('video_with_quote', VideoWithQuoteBlock()),
+
+        ('image_with_quote_and_paragraph', ImageWithQuoteAndParagraphBlock()),
+        ('full_width_image', FullWidthImageBlock()),
+        ('columnar_image_with_text', NColumnImageWithTextBlock()),
+
+        ('full_width_embed', FullWidthEmbedBlock()),
         ('paragraph_with_embed', ParagraphWithEmbedBlock()),
         ('paragraph_with_raw_embed', ParagraphWithRawEmbedBlock()),
-        ('full_width_embed', FullWidthEmbedBlock()),
-        ('video_with_quote', VideoWithQuoteBlock()),
-        ('paragraph_with_map', ParagraphWithMapBlock()),
-        ('image_with_quote_and_paragraph', ImageWithQuoteAndParagraphBlock()),
-        ('paragraph_with_page', ParagraphWithPageBlock()),
-        ('columnar_image_with_text', NColumnImageWithTextBlock()),
+
     ], null=True, blank=True)
     show_modular_content = models.BooleanField(default=False)
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
