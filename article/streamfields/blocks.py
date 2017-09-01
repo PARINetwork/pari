@@ -138,7 +138,7 @@ class ParagraphBlock(blocks.StructBlock):
     align_content = blocks.ChoiceBlock(choices=ALIGN_CONTENT_CHOICES, default=ALIGN_CONTENT_CHOICES[0][0])
 
     class Meta:
-        icon = 'doc-full'
+        icon = 'title'
         label = 'Text'
         template = 'article/blocks/paragraph.html'
 
@@ -172,7 +172,7 @@ class ParagraphWithBlockQuoteBlock(blocks.StructBlock):
     content = ParagraphBlock()
 
     class Meta:
-        icon = 'doc-full'
+        icon = 'openquote'
         label = 'Quote with text'
         template = 'article/blocks/paragraph_with_block_quote.html'
 
@@ -181,7 +181,7 @@ class FullWidthBlockQuote(blocks.StructBlock):
     quote = CustomRichTextBlock(editor='hallo_for_quote', required=True)
 
     class Meta:
-        icon = 'doc-full'
+        icon = 'openquote'
         label = 'Full width quote'
         template = 'article/blocks/full_width_block_quote.html'
 
@@ -192,6 +192,7 @@ class NColumnParagraphBlock(blocks.StructBlock):
     class Meta:
         template = 'article/blocks/columnar_paragraph.html'
         label = 'Columnar text'
+        icon = 'title'
 
 
 class ParagraphWithEmbedBlock(blocks.StructBlock):
@@ -255,7 +256,7 @@ class VideoWithQuoteBlock(blocks.StructBlock):
     align_quote = blocks.ChoiceBlock(choices=ALIGN_QUOTE_CHOICES, default=ALIGN_QUOTE_CHOICES[0][1])
 
     class Meta:
-        icon = 'doc-full'
+        icon = 'openquote'
         label = 'Video with quote'
         template = 'article/blocks/video_with_block_quote.html'
 
@@ -269,6 +270,7 @@ class ParagraphWithMapBlock(blocks.StructBlock):
     class Meta:
         label = 'Map with text'
         template = 'article/blocks/paragraph_with_map.html'
+        icon = 'site'
 
 
 class ImageWithCaptionAndHeightBlock(ImageBlock):
@@ -287,7 +289,7 @@ class ImageWithQuoteAndParagraphBlock(blocks.StructBlock):
     content_2 = PargraphBlockWithOptionalContent(required=False)
 
     class Meta:
-        icon = "doc-full-inverse"
+        icon = "image"
         label = 'Image with quote and text'
         template = 'article/blocks/image_with_quote_and_paragraph.html'
 
@@ -312,7 +314,7 @@ class ParagraphWithPageBlock(blocks.StructBlock):
     content = ParagraphBlock()
 
     class Meta:
-        icon = 'image'
+        icon = 'link'
         template = 'article/blocks/paragraph_with_page.html'
         label = 'Page reference with text'
 
