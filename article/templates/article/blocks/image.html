@@ -15,7 +15,7 @@
          PHOTO CREDIT •
         {% for photographer in image.image.photographers.all %}
            {{ photographer }}
-            {% if not forloop.last %},&ensp;
+            {% if not forloop.last %},&nbsp;
             {% endif %}
         {% endfor %}
     {% endif %}
