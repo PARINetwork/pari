@@ -11,9 +11,10 @@ from core.widgets import JqueryChosenSelectMultipleWithAddObject
 from face.models import Face
 from location.models import Location
 
+ALIGNMENT_CHOICES = [('left', 'Left column'), ('right', 'Right column')]
+
 
 class CustomRichTextBlock(RichTextBlock):
-
     @cached_property
     def field(self):
         return forms.CharField(widget=get_rich_text_editor_widget(self.editor), **self.field_options)
@@ -144,10 +145,8 @@ class ParagraphBlock(blocks.StructBlock):
 
 
 class ParagraphWithImageBlock(blocks.StructBlock):
-    ALIGN_IMAGE_CHOICES = [('left', 'Left'), ('right', 'Right')]
-
     image = ImageBlock()
-    align_image = blocks.ChoiceBlock(choices=ALIGN_IMAGE_CHOICES, default=ALIGN_IMAGE_CHOICES[0][0])
+    align_image = blocks.ChoiceBlock(choices=ALIGNMENT_CHOICES, default=ALIGNMENT_CHOICES[0][0])
     content = ParagraphBlock()
 
     class Meta:
@@ -165,10 +164,8 @@ class FaceBlock(blocks.StructBlock):
 
 
 class ParagraphWithBlockQuoteBlock(blocks.StructBlock):
-    ALIGN_QUOTE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
-
     quote = CustomRichTextBlock(editor='hallo_for_quote')
-    align_quote = blocks.ChoiceBlock(choices=ALIGN_QUOTE_CHOICES, default=ALIGN_QUOTE_CHOICES[1][0])
+    align_quote = blocks.ChoiceBlock(choices=ALIGNMENT_CHOICES, default=ALIGNMENT_CHOICES[1][0])
     content = ParagraphBlock()
 
     class Meta:
@@ -196,15 +193,13 @@ class NColumnParagraphBlock(blocks.StructBlock):
 
 
 class ParagraphWithEmbedBlock(blocks.StructBlock):
-    ALIGN_EMBED_CHOICES = [('left', 'Left'), ('right', 'Right')]
-
     embed = EmbedBlock()
     embed_caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
     embed_max_width = IntegerBlock(required=False, help_text="Optional field. Maximum width of the content in pixels to"
                                                              " be requested from the content provider(e.g YouTube). "
                                                              "If the requested width is not supported, provider will be"
                                                              " supplying the content with nearest available width.")
-    embed_align = blocks.ChoiceBlock(choices=ALIGN_EMBED_CHOICES, default=ALIGN_EMBED_CHOICES[0][0])
+    embed_align = blocks.ChoiceBlock(choices=ALIGNMENT_CHOICES, default=ALIGNMENT_CHOICES[0][0])
     content = ParagraphBlock()
 
     class Meta:
@@ -224,11 +219,9 @@ class NColumnImageBlock(blocks.StructBlock):
 
 
 class ParagraphWithRawEmbedBlock(blocks.StructBlock):
-    ALIGN_EMBED_CHOICES = [('left', 'Left'), ('right', 'Right')]
-
     embed = RawHTMLBlock(help_text="Embed HTML code(an iframe)")
     embed_caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
-    embed_align = blocks.ChoiceBlock(choices=ALIGN_EMBED_CHOICES, default=ALIGN_EMBED_CHOICES[0][0])
+    embed_align = blocks.ChoiceBlock(choices=ALIGNMENT_CHOICES, default=ALIGNMENT_CHOICES[0][0])
     content = ParagraphBlock()
 
     class Meta:
@@ -248,12 +241,10 @@ class FullWidthEmbedBlock(blocks.StructBlock):
 
 
 class VideoWithQuoteBlock(blocks.StructBlock):
-    ALIGN_QUOTE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
-
     video = EmbedBlock(help_text="YouTube video URL")
     video_caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
     quote = CustomRichTextBlock(editor='hallo_for_quote')
-    align_quote = blocks.ChoiceBlock(choices=ALIGN_QUOTE_CHOICES, default=ALIGN_QUOTE_CHOICES[0][1])
+    align_quote = blocks.ChoiceBlock(choices=ALIGNMENT_CHOICES, default=ALIGNMENT_CHOICES[0][1])
 
     class Meta:
         icon = 'openquote'
@@ -262,9 +253,8 @@ class VideoWithQuoteBlock(blocks.StructBlock):
 
 
 class ParagraphWithMapBlock(blocks.StructBlock):
-    ALIGN_MAP_CHOICES = [('left', 'Left'), ('right', 'Right')]
     locations = ModelMultipleChoiceBlock(target_model=Location)
-    map_align = blocks.ChoiceBlock(choices=ALIGN_MAP_CHOICES, default=ALIGN_MAP_CHOICES[0][0])
+    map_align = blocks.ChoiceBlock(choices=ALIGNMENT_CHOICES, default=ALIGNMENT_CHOICES[0][0])
     content = ParagraphBlock()
 
     class Meta:
@@ -277,13 +267,14 @@ class ImageWithCaptionAndHeightBlock(ImageBlock):
     height = IntegerBlock(min_value=0, required=True, default=380)
     caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
 
+
 class PargraphBlockWithOptionalContent(ParagraphBlock):
-    content = CustomRichTextBlock(editor='hallo_for_paragraph',required=False)
+    content = CustomRichTextBlock(editor='hallo_for_paragraph', required=False)
+
 
 class ImageWithQuoteAndParagraphBlock(blocks.StructBlock):
-    ALIGN_IMAGE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
     image = ImageWithCaptionAndHeightBlock(required=True)
-    align_image = blocks.ChoiceBlock(choices=ALIGN_IMAGE_CHOICES, default=ALIGN_IMAGE_CHOICES[0][0])
+    align_image = blocks.ChoiceBlock(choices=ALIGNMENT_CHOICES, default=ALIGNMENT_CHOICES[0][0])
     content_1 = PargraphBlockWithOptionalContent(required=False)
     quote = FullWidthBlockQuote(required=True)
     content_2 = PargraphBlockWithOptionalContent(required=False)
@@ -293,12 +284,12 @@ class ImageWithQuoteAndParagraphBlock(blocks.StructBlock):
         label = 'Image with quote and text'
         template = 'article/blocks/image_with_quote_and_paragraph.html'
 
-#TODO remove this class , this module is deprecated.
+
+# TODO remove this class , this module is deprecated.
 class ImageWithBlockQuote(blocks.StructBlock):
-    ALIGN_QUOTE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
     image = ImageWithCaptionAndHeightBlock()
     quote = CustomRichTextBlock(editor='hallo_for_quote', required=True)
-    align_quote = blocks.ChoiceBlock(choices=ALIGN_QUOTE_CHOICES, default=ALIGN_QUOTE_CHOICES[0][0])
+    align_quote = blocks.ChoiceBlock(choices=ALIGNMENT_CHOICES, default=ALIGNMENT_CHOICES[0][0])
 
     class Meta:
         icon = 'image'
@@ -307,10 +298,8 @@ class ImageWithBlockQuote(blocks.StructBlock):
 
 
 class ParagraphWithPageBlock(blocks.StructBlock):
-    ALIGN_IMAGE_CHOICES = [('left', 'Left'), ('right', 'Right')]
-
     page = PageTypeChooserBlock()
-    align_image = blocks.ChoiceBlock(choices=ALIGN_IMAGE_CHOICES, default=ALIGN_IMAGE_CHOICES[0][0])
+    align_image = blocks.ChoiceBlock(choices=ALIGNMENT_CHOICES, default=ALIGNMENT_CHOICES[0][0])
     content = ParagraphBlock()
 
     class Meta:
@@ -318,10 +307,9 @@ class ParagraphWithPageBlock(blocks.StructBlock):
         template = 'article/blocks/paragraph_with_page.html'
         label = 'Page reference with text'
 
-class NColumnImageWithTextBlock(NColumnImageBlock):
-    ALIGN_IMAGE_CHOICES = [('left', 'Left Column'), ('right', 'Right Column')]
 
-    align_columnar_images = blocks.ChoiceBlock(choices=ALIGN_IMAGE_CHOICES, default=ALIGN_IMAGE_CHOICES[0][0])
+class NColumnImageWithTextBlock(NColumnImageBlock):
+    align_columnar_images = blocks.ChoiceBlock(choices=ALIGNMENT_CHOICES, default=ALIGNMENT_CHOICES[0][0])
     content = PargraphBlockWithOptionalContent(required=False)
 
     class Meta:
