@@ -2,7 +2,8 @@
 {% load article_filters %}
 
 <div class="n-column-image-with-paragraph clearfix">
-    <div class="n-column-image clearfix {% if value.content|striptags and value.ali1gn_columnar_images == "left" %}margin-right{% elif value.content|striptags and value.align_columnar_images == "right"%}margin-left{% endif %}">
+    <div class="n-column-image clearfix {% if value.content|striptags|length > 10 and value.align_columnar_images == "left" %}margin-right{% elif value.content|striptags|length > 10 and value.align_columnar_images == "right" %}margin-left{% endif %}">
+    {# For empty paragraph content the value of length is 10. If their is no paragraph content the image(s) should take entire width without any margin as full width image #}
         {% with value.images|length as images_length %}
             {% for image in value.images %}
                 <div class="image-block">

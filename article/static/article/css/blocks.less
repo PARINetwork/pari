@@ -95,14 +95,15 @@
     padding-left: 15%;
     padding-right: 15%;
     text-align: left;
+
     :lang(ur) {
       text-align: right;
     }
     h2, h3, h4, h5 {
-      text-align: left;
       margin-bottom: 20px;
       margin-top: 0;
     }
+
     p {
       text-align: left;
       margin-bottom: 20px;
@@ -187,6 +188,8 @@
       .caption {
         margin: 0 7px;
         padding-top: 3px;
+        max-width: 1200px;
+        float:left;
       }
       .image-block {
         width: auto;
@@ -215,11 +218,18 @@
       }
     }
   }
+  .image-with-quote-and-paragraph + .image-with-quote-and-paragraph{
+    padding-top: 10px;
+  }
   .image-with-quote-and-paragraph {
 
     img {
       height: auto !important;
       width: auto !important;
+    }
+
+    .default-bottom-padding{
+        padding-bottom: 5px !important;
     }
 
     .image-content {
@@ -901,6 +911,7 @@
         }
       }
       .caption {
+        max-width: 970px !important;
         margin-bottom: 5px;
       }
     }
