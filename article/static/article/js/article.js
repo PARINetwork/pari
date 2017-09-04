@@ -60,11 +60,11 @@ var ArticleAlbum = {
       }
 
       if(!description){
-          description = $(item).parents(".image-block").siblings(".caption").text().trim();
+          description = $(item).parents('.image-block').siblings('.caption').find("p").html();
       }
 
       if(!description){
-          description = $(item).parents('.image').siblings('.caption').text().trim()
+          description = $(item).parents('.image').siblings('.caption').find("p").html();
       }
 
       return description;
@@ -93,6 +93,7 @@ var ArticleAlbum = {
             $(this).removeClass("fa-angle-right").removeClass("fa-info-circle");
             $(this).addClass($(this).hasClass("selected") ? "fa-angle-right" : "fa-info-circle");
             $(".photo-album").toggleClass("show-slide-info");
+            $(".slide-info").toggleClass("hidden");
         });
 
         $('.back-to-albums').click(function () {
@@ -198,13 +199,10 @@ $(function () {
     });
 
     $('.modular-content img').not(".ignore-carousel").each(function (index) {
-        $(this).wrap('<a class="gallery" id=' + index + '></a>');
-        $(this).parents('a').first().prepend('<i class="fa fa-expand fa-invert"></i>');
-    });
-
-     $('.modular-content .image-with-quote-and-paragraph img').each(function (index) {
-        $(this).wrap('<a class="gallery" id=' + index + '></a>');
-        $(this).parents('a').first().prepend('<i class="fa fa-expand fa-invert"></i>');
+        if(!$(this).parents().is(".map-holder")) {
+            $(this).wrap('<a class="gallery" id=' + index + '></a>');
+            $(this).parents('a').first().prepend('<i class="fa fa-expand fa-invert"></i>');
+        }
     });
 
     ArticleAlbum.init();
