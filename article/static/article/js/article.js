@@ -93,6 +93,7 @@ var ArticleAlbum = {
             $(this).removeClass("fa-angle-right").removeClass("fa-info-circle");
             $(this).addClass($(this).hasClass("selected") ? "fa-angle-right" : "fa-info-circle");
             $(".photo-album").toggleClass("show-slide-info");
+            $(".slide-info").toggleClass("hidden");
         });
 
         $('.back-to-albums').click(function () {
