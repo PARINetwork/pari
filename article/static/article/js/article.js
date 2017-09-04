@@ -60,11 +60,11 @@ var ArticleAlbum = {
       }
 
       if(!description){
-          description = $(item).parents(".image-block").siblings(".caption").text().trim();
+          description = $(item).parents('.image-block').siblings('.caption').find("p").html();
       }
 
       if(!description){
-          description = $(item).parents('.image').siblings('.caption').text().trim()
+          description = $(item).parents('.image').siblings('.caption').find("p").html();
       }
 
       return description;
