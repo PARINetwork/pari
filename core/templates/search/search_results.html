@@ -68,23 +68,28 @@ Search{% if search_results %} Results{% endif %}
                 formQueryParams();
             });
 
-
+            $('select.sort-by').on('change', function () {
+                formQueryParams();
+            });
 
             function formQueryParams() {
-                var checked = [];
+                var queryParams = [];
                 $(".search-filters li > input[type='checkbox']:checked").each(function () {
-                    checked.push($(this).attr('name') + '=' + $(this).val());
+                    queryParams.push($(this).attr('name') + '=' + $(this).val());
                 });
 
                 var start_date = $("#start-date").val();
                 var end_date = $("#end-date").val();
                 if(start_date)
-                    checked.push('start-date' + '=' + start_date);
+                    queryParams.push('start-date' + '=' + start_date);
                 if(end_date)
-                    checked.push('end-date' + '=' + end_date);
+                    queryParams.push('end-date' + '=' + end_date);
+
+                var sortOption = $('select.sort-by').find(":selected").val();
+                queryParams.push('sort-by=' + sortOption);
 
                 var query = $(".search-form > input").val();
-                window.location = checked.length > 0 ? '/search/?q=' + query + '&' + checked.join('&') : '/search/?q=' + query;
+                window.location = queryParams.length > 0 ? '/search/?q=' + query + '&' + queryParams.join('&') : '/search/?q=' + query;
             }
 
             $(".search-filters li > input[type='checkbox']").on("change", function () {
@@ -95,7 +100,6 @@ Search{% if search_results %} Results{% endif %}
             $("#date-range-button").on("click",function () {
                 formQueryParams();
             });
-
 
         });
 
@@ -133,7 +137,17 @@ Search{% if search_results %} Results{% endif %}
 
         </form>
       </header>
-      <div class="no-of-results col-lg-12 col-md-12 col-xs-12 col-sm-12"><h4>{{search_results.paginator.count}} Result{% if search_results.paginator.count > 1%}s{% endif %}</h4></div>
+        <div class="no-of-results col-lg-12 col-md-12 col-xs-12 col-sm-12"><h4>{{ search_results.paginator.count }}
+            Result
+            {% if search_results.paginator.count > 1 %}s{% endif %}</h4></div>
+
+        <div>
+            <select class="sort-by">
+                <option value="relevance" {% if sort_by != "latest" %}selected{% endif %}>Relevance</option>
+                <option value="latest" {% if sort_by == "latest" %}selected{% endif %}>Latest</option>
+            </select>
+        </div>
+
         {% include "includes/filter_template.html" with languages=languages %}
       {% if search_results %}
         {% include "includes/two_column_grid.html" with search_results=search_results languages=languages%}
