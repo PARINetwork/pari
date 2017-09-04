@@ -219,6 +219,7 @@ def site_search(
     language_filters = request.GET.getlist('language')
     start_date = request.GET.get('start-date')
     end_date = request.GET.get('end-date')
+    sort_by = request.GET.get('sort-by')
 
     raw_filters = []
 
@@ -260,6 +261,11 @@ def site_search(
 
         if search_title_only:
             search_results = pages.search(query_string, fields=['title'], operator=SITE_SEARCH_OPERATOR)
+        elif sort_by == 'latest':
+            pages = pages.order_by('-first_published_at')
+            search_results = es_backend.search(query_string, pages, order_by_relevance=False,
+                                               operator=SITE_SEARCH_OPERATOR,
+                                               extra_raw_filters=raw_filters)
         else:
             search_results = es_backend.search(query_string, pages, operator=SITE_SEARCH_OPERATOR,
                                                extra_raw_filters=raw_filters)
@@ -302,7 +308,6 @@ def site_search(
         # Render a template
         if request.is_ajax() and template_ajax:
             template = template_ajax
-
 
         return render(request, template, dict(
             query_string=query_string,
