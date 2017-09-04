@@ -198,13 +198,10 @@ $(function () {
     });
 
     $('.modular-content img').not(".ignore-carousel").each(function (index) {
-        $(this).wrap('<a class="gallery" id=' + index + '></a>');
-        $(this).parents('a').first().prepend('<i class="fa fa-expand fa-invert"></i>');
-    });
-
-     $('.modular-content .image-with-quote-and-paragraph img').each(function (index) {
-        $(this).wrap('<a class="gallery" id=' + index + '></a>');
-        $(this).parents('a').first().prepend('<i class="fa fa-expand fa-invert"></i>');
+        if(!$(this).parents().is(".map-holder")) {
+            $(this).wrap('<a class="gallery" id=' + index + '></a>');
+            $(this).parents('a').first().prepend('<i class="fa fa-expand fa-invert"></i>');
+        }
     });
 
     ArticleAlbum.init();
