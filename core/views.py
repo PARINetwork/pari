@@ -29,6 +29,7 @@ from wagtail.wagtailsearch.models import Query
 
 from category.models import Category
 from core.utils import get_translations_for_page
+from location.models import Location
 from .forms import ContactForm, DonateForm
 from .models import HomePage, GuidelinesPage
 
@@ -220,6 +221,8 @@ def site_search(
     start_date = request.GET.get('start-date')
     end_date = request.GET.get('end-date')
     sort_by = request.GET.get('sort-by')
+    location_filters = request.GET.getlist('location')
+
 
     raw_filters = []
 
@@ -255,6 +258,15 @@ def site_search(
                     "language_filter": language_filters
                 }
             })
+
+        if location_filters:
+            raw_filters.append({
+                "terms": {
+                    "get_locations_index": location_filters,
+                    "get_district_from_location": location_filters
+                }
+            })
+
 
         if start_date:
             pages = pages.filter(first_published_at__range=(start_date, end_date or timezone.now()))
@@ -309,6 +321,8 @@ def site_search(
         if request.is_ajax() and template_ajax:
             template = template_ajax
 
+        locations=set(location.district+', '+location.state for location in Location.objects.all())
+
         return render(request, template, dict(
             query_string=query_string,
             languages=settings.LANGUAGES,
@@ -320,7 +334,8 @@ def site_search(
             language_filters=language_filters,
             start_date=start_date,
             end_date=end_date,
-            sort_by=sort_by
+            sort_by=sort_by,
+            locations=locations
         ))
 
 # TODO: Remove the below two functions when we migrate to wagtail 1.2
