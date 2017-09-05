@@ -67,6 +67,10 @@ var ArticleAlbum = {
           description = $(item).parents('.image').siblings('.caption').find("p").html();
       }
 
+       if(!description){
+          description = $(item).siblings('.caption').find("p").html();
+      }
+
       return description;
     },
     
@@ -107,7 +111,7 @@ var ArticleAlbum = {
         });
 
         $('.rich-text .gallery, .modular-content .gallery').click(function (event) {
-
+            event.preventDefault();
             $(".photo-album-popup").removeClass("hide");
             $(".carousel-container").addClass("carousel");
             $(".carousel-container").attr("data-ride", "carousel");
@@ -117,7 +121,8 @@ var ArticleAlbum = {
                 pause: true
             });
             var index = $(event.currentTarget).attr('id');
-            $("#carousel").carousel(parseInt(index) + 1);
+            var carousel_index  = parseInt(index) + 1;
+            $("#carousel").carousel(carousel_index);
 
         });
 
@@ -198,7 +203,7 @@ $(function () {
         $(this).parents('a').first().prepend('<i class="fa fa-expand fa-invert"></i>').css("position", "relative");
     });
 
-    $('.modular-content img').not(".ignore-carousel").each(function (index) {
+    $('.image-block img').not(".ignore-carousel").each(function (index) {
         if(!$(this).parents().is(".map-holder")) {
             $(this).wrap('<a class="gallery" id=' + index + '></a>');
             $(this).parents('a').first().prepend('<i class="fa fa-expand fa-invert"></i>');
