@@ -401,6 +401,12 @@ class AffixImage(AbstractImage):
                                        location.state or ""]))
         return " ".join(locations)
 
+    def get_locations_with_dist_and_state(self):
+        locations = []
+        for location in self.locations.all():
+            locations.append(location.minimal_address)
+        return locations
+
     def get_categories_index(self):
         return [category.pk for category in self.categories.all()]
 

@@ -85,11 +85,15 @@ class Face(Page):
         index.SearchField('adivasi'),
         index.SearchField('language'),
         index.FilterField('get_search_type'),
-        index.FilterField('language')
+        index.FilterField('language'),
+        index.FilterField('get_minimal_locations')
     ]
 
     def get_locations_index(self):
         return self.image.get_locations_index()
+
+    def get_minimal_locations(self):
+        return [self.location.minimal_address]
 
     def get_photographers_index(self):
         return self.image.get_all_photographers()

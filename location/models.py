@@ -44,6 +44,12 @@ class Location(models.Model):
         addr += ", " + self.state if self.state else ""
         return addr
 
+    @property
+    def minimal_address(self):
+        addr = self.district
+        addr += ", " + self.state if self.state else ""
+        return addr
+
     class Meta:
         unique_together = ["name", "district", "state", "panchayat", "sub_district_name"]
         ordering = ["name"]

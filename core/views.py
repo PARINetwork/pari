@@ -5,7 +5,6 @@ import hmac
 import urllib
 from collections import OrderedDict
 
-from django.utils import timezone
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages import success
@@ -15,6 +14,7 @@ from django.db.models import Max
 from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.http import JsonResponse
 from django.shortcuts import render
+from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _, activate, get_language
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_exempt
@@ -223,7 +223,6 @@ def site_search(
     sort_by = request.GET.get('sort-by')
     location_filters = request.GET.getlist('location')
 
-
     raw_filters = []
 
     # Search
@@ -259,14 +258,12 @@ def site_search(
                 }
             })
 
-        # if location_filters:
-        #     raw_filters.append({
-        #         "terms": {
-        #             "get_locations_index": location_filters,
-        #             "get_district_from_location": location_filters
-        #         }
-        #     })
-
+        if location_filters:
+            raw_filters.append({
+                "terms": {
+                    "get_minimal_locations_filter": location_filters
+                }
+            })
 
         if start_date:
             pages = pages.filter(first_published_at__range=(start_date, end_date or timezone.now()))
@@ -330,7 +327,7 @@ def site_search(
             ['&end-date=%s' % end_date if end_date else ''] +
             ['&sort-by=%s' % sort_by if sort_by else '']
         )
-        locations=set(location.district+', '+location.state for location in Location.objects.all())
+        locations = set(location.district + ', ' + location.state for location in Location.objects.all())
 
         return render(request, template, dict(
             query_string=query_string,

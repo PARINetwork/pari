@@ -1,21 +1,19 @@
 from __future__ import unicode_literals
 
-from django.contrib.gis.db import models
-from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+from django.contrib.gis.db import models
 from django.core.urlresolvers import reverse
 from django.utils.encoding import python_2_unicode_compatible
-
-from wagtail.wagtailcore.models import Page, Orderable
-from wagtail.wagtailcore.fields import RichTextField
+from django.utils.translation import ugettext_lazy as _
+from modelcluster.fields import ParentalKey
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, \
-    MultiFieldPanel, RichTextFieldPanel
+    RichTextFieldPanel
+from wagtail.wagtailcore.fields import RichTextField
+from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
-from modelcluster.fields import M2MField, ParentalKey
-
-from core.edit_handlers import M2MFieldPanel, AudioPanel
+from core.edit_handlers import AudioPanel
 from core.utils import SearchBoost
 
 
@@ -43,6 +41,7 @@ class Album(Page):
         index.SearchField('get_photographers_index', partial_match=True, boost=SearchBoost.AUTHOR),
         index.SearchField('language'),
         index.FilterField('language'),
+        index.FilterField('get_minimal_locations'),
         index.FilterField('get_search_type')
     ]
 
@@ -63,6 +62,11 @@ class Album(Page):
     def get_locations_index(self):
         locations_index = map(lambda slide: slide.image.get_locations_index(), self.slides.filter(image__isnull=False))
         return " ".join(locations_index)
+
+    def get_minimal_locations(self):
+        minimal_locations = map(lambda slide: slide.image.get_locations_with_dist_and_state(),
+                                self.slides.filter(image__isnull=False))
+        return minimal_locations
 
     def get_photographers_index(self):
         photographers_index = map(lambda slide: slide.image.get_all_photographers(), self.slides.filter(image__isnull=False))
