@@ -126,7 +126,8 @@ class Article(Page):
         index.FilterField('categories'),
         index.FilterField('language'),
         index.FilterField('get_search_type'),
-        index.FilterField('get_categories')
+        index.FilterField('get_categories'),
+        index.FilterField('get_minimal_locations')
     ]
 
     def __str__(self):
@@ -137,6 +138,9 @@ class Article(Page):
 
     def get_district_from_location(self):
         return [location.address for location in self.locations.all()]
+
+    def get_minimal_locations(self):
+        return [location.minimal_address for location in self.locations.all()]
 
     def get_context(self, request, *args, **kwargs):
         try:
