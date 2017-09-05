@@ -38,6 +38,12 @@ Search{% if search_results %} Results{% endif %}
             if (dic['end-date'])
                 $("#end-date").val(dic['end-date']);
 
+            if (String(dic['sort-by']) === 'latest') {
+                $("select#sort-by").val('latest');
+            } else {
+                $("select#sort-by").val('relevance');
+            }
+
             if (dic.hasOwnProperty('category') && !(dic["type"] && (dic["type"].includes("article") || dic["type"].includes("video") || dic["type"].includes("audio")))) {
                 clearChildrenCheckBox.call($('.category-filters .clear-all'));
             }
@@ -168,8 +174,8 @@ Search{% if search_results %} Results{% endif %}
             <div class="sort-by">
                 <label>Sort by : </label>
                 <select id="sort-by">
-                    <option value="relevance" {% if sort_by != "latest" %}selected{% endif %}>Relevance</option>
-                    <option value="latest" {% if sort_by == "latest" %}selected{% endif %}>Latest</option>
+                    <option value="relevance">Relevance</option>
+                    <option value="latest">Latest</option>
                 </select>
             </div>
         </div>
