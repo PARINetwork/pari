@@ -259,13 +259,13 @@ def site_search(
                 }
             })
 
-        if location_filters:
-            raw_filters.append({
-                "terms": {
-                    "get_locations_index": location_filters,
-                    "get_district_from_location": location_filters
-                }
-            })
+        # if location_filters:
+        #     raw_filters.append({
+        #         "terms": {
+        #             "get_locations_index": location_filters,
+        #             "get_district_from_location": location_filters
+        #         }
+        #     })
 
 
         if start_date:
