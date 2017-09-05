@@ -1,17 +1,17 @@
 <nav aria-label="Page navigation" class="text-center">
   <ul class="pagination">
     {% if results.has_previous %}
-    <li class="page-nav" data-page="1"><a href="?page=1{% if query %}&q={{ query_string }}{% endif %}{% if type_filters %}{%for type in type_filters %}&type={{ type }}{% endfor %}{% endif %}{% if category_filters %}{%for category in category_filters %}&category={{ category }}{% endfor %}{% endif %}{% if language_filters %}{%for language in language_filters %}&language={{ language }}{% endfor %}{% endif %}{% if start_date %}&start-date={{ start_date }}{% endif %}{% if end_date %}&end-date={{ end_date }}{% endif %}{% if sort_by %}&sort-by={{ sort_by }}{% endif %}"><i class="fa fa-angle-double-left"></i></a></li>
-    <li class="page-nav" data-page="{{ results.previous_page_number }}"><a href="?page={{ results.previous_page_number }}{% if query %}&q={{ query_string }}{% endif %}{% if type_filters %}{%for type in type_filters %}&type={{ type }}{% endfor %}{% endif %}{% if category_filters %}{%for category in category_filters %}&category={{ category }}{% endfor %}{% endif %}{% if language_filters %}{%for language in language_filters %}&language={{ language }}{% endfor %}{% endif %}{% if start_date %}&start-date={{ start_date }}{% endif %}{% if end_date %}&end-date={{ end_date }}{% endif %}{% if sort_by %}&sort-by={{ sort_by }}{% endif %}"><i class="fa fa-angle-left"></i></a></li>
+    <li class="page-nav" data-page="1"><a href="?page=1{{ query_params_string }}"><i class="fa fa-angle-double-left"></i></a></li>
+    <li class="page-nav" data-page="{{ results.previous_page_number }}"><a href="?page={{ results.previous_page_number }}{{ query_params_string }}"><i class="fa fa-angle-left"></i></a></li>
     {% endif %}
 
     {% for page in results.paginator.page_range %}
-    <li class="{% if page == results.number %}active{% endif %}" data-page="{{ page }}"><a href="?page={{ page }}{% if query %}&q={{ query_string }}{% endif %}{% if type_filters %}{%for type in type_filters %}&type={{ type }}{% endfor %}{% endif %}{% if category_filters %}{%for category in category_filters %}&category={{ category }}{% endfor %}{% endif %}{% if language_filters %}{%for language in language_filters %}&language={{ language }}{% endfor %}{% endif %}{% if start_date %}&start-date={{ start_date }}{% endif %}{% if end_date %}&end-date={{ end_date }}{% endif %}{% if sort_by %}&sort-by={{ sort_by }}{% endif %}">{{ page }}</a></li>
+    <li class="{% if page == results.number %}active{% endif %}" data-page="{{ page }}"><a href="?page={{ page }}{{ query_params_string }}">{{ page }}</a></li>
     {% endfor %}
 
     {% if results.has_next %}
-    <li class="page-nav" data-page="{{ results.next_page_number }}"><a href="?page={{ results.next_page_number }}{% if query %}&q={{ query_string }}{% endif %}{% if type_filters %}{%for type in type_filters %}&type={{ type }}{% endfor %}{% endif %}{% if category_filters %}{%for category in category_filters %}&category={{ category }}{% endfor %}{% endif %}{% if language_filters %}{%for language in language_filters %}&language={{ language }}{% endfor %}{% endif %}{% if start_date %}&start-date={{ start_date }}{% endif %}{% if end_date %}&end-date={{ end_date }}{% endif %}{% if sort_by %}&sort-by={{ sort_by }}{% endif %}"><i class="fa fa-angle-right"></i></a></li>
-    <li class="page-nav" data-page="{{ results.paginator.num_pages }}"><a href="?page={{ results.paginator.num_pages }}{% if query %}&q={{ query_string }}{% endif %}{% if type_filters %}{%for type in type_filters %}&type={{ type }}{% endfor %}{% endif %}{% if category_filters %}{%for category in category_filters %}&category={{ category }}{% endfor %}{% endif %}{% if language_filters %}{%for language in language_filters %}&language={{ language }}{% endfor %}{% endif %}{% if start_date %}&start-date={{ start_date }}{% endif %}{% if end_date %}&end-date={{ end_date }}{% endif %}{% if sort_by %}&sort-by={{ sort_by }}{% endif %}"><i class="fa fa-angle-double-right"></i></a></li>
+    <li class="page-nav" data-page="{{ results.next_page_number }}"><a href="?page={{ results.next_page_number }}{{ query_params_string }}"><i class="fa fa-angle-right"></i></a></li>
+    <li class="page-nav" data-page="{{ results.paginator.num_pages }}"><a href="?page={{ results.paginator.num_pages }}{{ query_params_string }}"><i class="fa fa-angle-double-right"></i></a></li>
     {% endif %}
   </    ul>
 </nav>

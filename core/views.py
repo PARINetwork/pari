@@ -321,6 +321,15 @@ def site_search(
         if request.is_ajax() and template_ajax:
             template = template_ajax
 
+        query_params_string = ''.join(
+            ['&q=%s' % query if query else ''] +
+            ['&type=%s' % _ for _ in type_filters] +
+            ['&category=%s' % _ for _ in category_filters] +
+            ['&language=%s' % _ for _ in language_filters] +
+            ['&start-date=%s' % start_date if start_date else ''] +
+            ['&end-date=%s' % end_date if end_date else ''] +
+            ['&sort-by=%s' % sort_by if sort_by else '']
+        )
         locations=set(location.district+', '+location.state for location in Location.objects.all())
 
         return render(request, template, dict(
@@ -329,13 +338,8 @@ def site_search(
             search_results=search_results,
             is_ajax=request.is_ajax(),
             query=query,
-            type_filters=type_filters,
-            category_filters=category_filters,
-            language_filters=language_filters,
-            start_date=start_date,
-            end_date=end_date,
-            sort_by=sort_by,
-            locations=locations
+            locations=locations,
+            query_params_string=query_params_string
         ))
 
 # TODO: Remove the below two functions when we migrate to wagtail 1.2

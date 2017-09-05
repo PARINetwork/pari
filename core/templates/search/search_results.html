@@ -184,7 +184,7 @@ Search{% if search_results %} Results{% endif %}
       {% endif %}
     </div>
     <div class="container search-result-pagination">
-    {% include "includes/paginator.html" with results=search_results %}
+    {% include "includes/paginator.html" with results=search_results query_params_string=query_params_string%}
     </div>
   </div>
 </div>
