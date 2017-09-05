@@ -29,6 +29,7 @@ from wagtail.wagtailsearch.models import Query
 
 from category.models import Category
 from core.utils import get_translations_for_page
+from location.models import Location
 from .forms import ContactForm, DonateForm
 from .models import HomePage, GuidelinesPage
 
@@ -219,6 +220,9 @@ def site_search(
     language_filters = request.GET.getlist('language')
     start_date = request.GET.get('start-date')
     end_date = request.GET.get('end-date')
+    sort_by = request.GET.get('sort-by')
+    location_filters = request.GET.getlist('location')
+
 
     raw_filters = []
 
@@ -255,11 +259,25 @@ def site_search(
                 }
             })
 
+        # if location_filters:
+        #     raw_filters.append({
+        #         "terms": {
+        #             "get_locations_index": location_filters,
+        #             "get_district_from_location": location_filters
+        #         }
+        #     })
+
+
         if start_date:
             pages = pages.filter(first_published_at__range=(start_date, end_date or timezone.now()))
 
         if search_title_only:
             search_results = pages.search(query_string, fields=['title'], operator=SITE_SEARCH_OPERATOR)
+        elif sort_by == 'latest':
+            pages = pages.order_by('-first_published_at')
+            search_results = es_backend.search(query_string, pages, order_by_relevance=False,
+                                               operator=SITE_SEARCH_OPERATOR,
+                                               extra_raw_filters=raw_filters)
         else:
             search_results = es_backend.search(query_string, pages, operator=SITE_SEARCH_OPERATOR,
                                                extra_raw_filters=raw_filters)
@@ -303,6 +321,7 @@ def site_search(
         if request.is_ajax() and template_ajax:
             template = template_ajax
 
+        locations=set(location.district+', '+location.state for location in Location.objects.all())
 
         return render(request, template, dict(
             query_string=query_string,
@@ -314,7 +333,9 @@ def site_search(
             category_filters=category_filters,
             language_filters=language_filters,
             start_date=start_date,
-            end_date=end_date
+            end_date=end_date,
+            sort_by=sort_by,
+            locations=locations
         ))
 
 # TODO: Remove the below two functions when we migrate to wagtail 1.2

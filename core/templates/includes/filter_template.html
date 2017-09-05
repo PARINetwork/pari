@@ -61,6 +61,17 @@
                 <li><button class= "btn-primary btn-sm" id="date-range-button">Go</button></li>
             </ul>
         </div>
+        <div class="district-filters">
+            <hr>
+            <h5 class="district-heading">Districts</h5>
+            <select id="location_districts" class="chosen" multiple="multiple" style="width:180px;">
+                {% for location in locations %}
+                    <option value="{{ location }}">{{ location }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+
     </div>
 </div>
 

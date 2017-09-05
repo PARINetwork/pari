@@ -9,6 +9,9 @@ Search{% if search_results %} Results{% endif %}
 {% block extra_js %}
     <script type="text/javascript">
         $(function () {
+            $(".chosen").chosen().change(function (e, params) {
+                formQueryParams();
+            });
             $('.datepicker').dcalendarpicker();
             var i = document.location.href.lastIndexOf('?');
             var types = document.location.href.substr(i + 2).split('&');
@@ -21,29 +24,43 @@ Search{% if search_results %} Results{% endif %}
                     dic[z[0]] = [];
                 }
                 dic[z[0]].push(decodeURI(z[1]));
-
             }
-            for(type in dic) {
-                $('input[name='+type+']').prop('checked', function () {
+
+            for (type in dic) {
+                $('input[name=' + type + ']').prop('checked', function () {
                     return $.inArray(this.value, dic[type]) !== -1;
                 });
             }
-            if(dic['start-date'])
+
+            if (dic['start-date'])
                 $("#start-date").val(dic['start-date']);
-            if(dic['end-date'])
+
+            if (dic['end-date'])
                 $("#end-date").val(dic['end-date']);
-            if(dic.hasOwnProperty('category') && !(dic["type"] && (dic["type"].includes("article") || dic["type"].includes("video") || dic["type"].includes("audio"))) ){
+
+            if (dic.hasOwnProperty('category') && !(dic["type"] && (dic["type"].includes("article") || dic["type"].includes("video") || dic["type"].includes("audio")))) {
                 clearChildrenCheckBox.call($('.category-filters .clear-all'));
             }
 
-            if(dic["type"] && (dic["type"].includes("article") || dic["type"].includes("video") || dic["type"].includes("audio"))){
+            if (dic["type"] && (dic["type"].includes("article") || dic["type"].includes("video") || dic["type"].includes("audio"))) {
                 removeDisableFromCategory();
             }
+
+            var locations = dic["location"];
+
+            if (locations) {
+                for (var location in locations) {
+                    $("select option[value='" + locations[location] + "']").attr("selected", "true");
+                }
+                $('.chosen').trigger("chosen:updated");
+            }
+
             function removeDisableFromCategory() {
                 $('.category-filters ul > li > input[name="category"]').each(function () {
                     $(this).attr("disabled", false);
                 });
             }
+
             function addDisabletoCategory() {
                 $('.category-filters ul > li > input[name="category"]').each(function () {
                     $(this).attr("disabled", true);
@@ -58,33 +75,46 @@ Search{% if search_results %} Results{% endif %}
                 formQueryParams();
             }
 
-            $(".clear-all").on("click",function () {
+            $(".clear-all").on("click", function () {
                 clearChildrenCheckBox.call(this);
             });
 
-            $(".clear-date").on("click",function () {
+            $(".clear-date").on("click", function () {
                 $("#start-date").val('');
                 $("#end-date").val('');
                 formQueryParams();
             });
 
-
+            $('select.sort-by').on('change', function () {
+                formQueryParams();
+            });
 
             function formQueryParams() {
-                var checked = [];
+                var queryParams = [];
                 $(".search-filters li > input[type='checkbox']:checked").each(function () {
-                    checked.push($(this).attr('name') + '=' + $(this).val());
+                    queryParams.push($(this).attr('name') + '=' + $(this).val());
                 });
 
                 var start_date = $("#start-date").val();
                 var end_date = $("#end-date").val();
+
                 if(start_date)
-                    checked.push('start-date' + '=' + start_date);
+                    queryParams.push('start-date' + '=' + start_date);
                 if(end_date)
-                    checked.push('end-date' + '=' + end_date);
+                    queryParams.push('end-date' + '=' + end_date);
+
+                var sortOption = $('select.sort-by').find(":selected").val();
+                queryParams.push('sort-by=' + sortOption);
+
+                var locations = $(".chosen").chosen().val();
+                if (locations) {
+                    for(var location in locations){
+                        queryParams.push('location' + '=' + locations[location]);
+                    }
+                }
 
                 var query = $(".search-form > input").val();
-                window.location = checked.length > 0 ? '/search/?q=' + query + '&' + checked.join('&') : '/search/?q=' + query;
+                window.location = queryParams.length > 0 ? '/search/?q=' + query + '&' + queryParams.join('&') : '/search/?q=' + query;
             }
 
             $(".search-filters li > input[type='checkbox']").on("change", function () {
@@ -92,10 +122,9 @@ Search{% if search_results %} Results{% endif %}
             });
 
 
-            $("#date-range-button").on("click",function () {
+            $("#date-range-button").on("click", function () {
                 formQueryParams();
             });
-
 
         });
 
@@ -133,7 +162,17 @@ Search{% if search_results %} Results{% endif %}
 
         </form>
       </header>
-      <div class="no-of-results col-lg-12 col-md-12 col-xs-12 col-sm-12"><h4>{{search_results.paginator.count}} Result{% if search_results.paginator.count > 1%}s{% endif %}</h4></div>
+        <div class="no-of-results col-lg-12 col-md-12 col-xs-12 col-sm-12"><h4>{{ search_results.paginator.count }}
+            Result
+            {% if search_results.paginator.count > 1 %}s{% endif %}</h4></div>
+
+        <div>
+            <select class="sort-by">
+                <option value="relevance" {% if sort_by != "latest" %}selected{% endif %}>Relevance</option>
+                <option value="latest" {% if sort_by == "latest" %}selected{% endif %}>Latest</option>
+            </select>
+        </div>
+
         {% include "includes/filter_template.html" with languages=languages %}
       {% if search_results %}
         {% include "includes/two_column_grid.html" with search_results=search_results languages=languages%}
