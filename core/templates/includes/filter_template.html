@@ -64,9 +64,18 @@
         <div class="district-filters">
             <hr>
             <h5 class="district-heading">Districts</h5>
-            <select id="location_districts" class="chosen" multiple="multiple" style="width:180px;">
+            <select id="location_districts" class="location chosen" multiple="multiple" style="width:180px;">
                 {% for location in locations %}
                     <option value="{{ location }}">{{ location }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="author-filters">
+            <hr>
+            <h5 class="author-heading">Authors/Photographers</h5>
+            <select id="location_districts" class="author chosen" multiple="multiple" style="width:180px;">
+                {% for author in authors %}
+                    <option value="{{ author }}">{{ author }}</option>
                 {% endfor %}
             </select>
         </div>

@@ -27,6 +27,7 @@ from wagtail.wagtailcore.models import Page, Site
 from wagtail.wagtailsearch.backends import get_search_backend
 from wagtail.wagtailsearch.models import Query
 
+from author.models import Author
 from category.models import Category
 from core.utils import get_translations_for_page
 from location.models import Location
@@ -222,6 +223,7 @@ def site_search(
     end_date = request.GET.get('end-date')
     sort_by = request.GET.get('sort-by')
     location_filters = request.GET.getlist('location')
+    author_filters = request.GET.getlist('author')
 
     raw_filters = []
 
@@ -262,6 +264,13 @@ def site_search(
             raw_filters.append({
                 "terms": {
                     "get_minimal_locations_filter": location_filters
+                }
+            })
+
+        if author_filters:
+            raw_filters.append({
+                "terms": {
+                    "get_authors_or_photographers_filter": author_filters
                 }
             })
 
@@ -327,7 +336,10 @@ def site_search(
             ['&end-date=%s' % end_date if end_date else ''] +
             ['&sort-by=%s' % sort_by if sort_by else '']
         )
+
         locations = set(location.district + ', ' + location.state for location in Location.objects.all())
+
+        authors = set(str(author) for author in Author.objects.all())
 
         return render(request, template, dict(
             query_string=query_string,
@@ -336,6 +348,7 @@ def site_search(
             is_ajax=request.is_ajax(),
             query=query,
             locations=locations,
+            authors=authors,
             query_params_string=query_params_string
         ))
 

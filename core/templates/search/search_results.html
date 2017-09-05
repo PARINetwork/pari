@@ -61,6 +61,15 @@ Search{% if search_results %} Results{% endif %}
                 $('.chosen').trigger("chosen:updated");
             }
 
+            var authors = dic["author"];
+
+            if (authors) {
+                for (var author in authors) {
+                    $("select option[value='" + authors[author] + "']").attr("selected", "true");
+                }
+                $('.chosen').trigger("chosen:updated");
+            }
+
             function removeDisableFromCategory() {
                 $('.category-filters ul > li > input[name="category"]').each(function () {
                     $(this).attr("disabled", false);
@@ -112,10 +121,17 @@ Search{% if search_results %} Results{% endif %}
                 var sortOption = $('select#sort-by').find(":selected").val();
                 queryParams.push('sort-by=' + sortOption);
 
-                var locations = $(".chosen").chosen().val();
+                var locations = $(".district-filters .location").chosen().val();
                 if (locations) {
                     for(var location in locations){
                         queryParams.push('location' + '=' + locations[location]);
+                    }
+                }
+
+                var authors = $(".author-filters .author").chosen().val();
+                if (authors) {
+                    for(var author in authors){
+                        queryParams.push('author' + '=' + authors[author]);
                     }
                 }
 

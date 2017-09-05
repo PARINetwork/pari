@@ -42,7 +42,8 @@ class Album(Page):
         index.SearchField('language'),
         index.FilterField('language'),
         index.FilterField('get_minimal_locations'),
-        index.FilterField('get_search_type')
+        index.FilterField('get_search_type'),
+        index.FilterField('get_authors_or_photographers')
     ]
 
     @property
@@ -58,6 +59,9 @@ class Album(Page):
         for slide in self.slides.filter(image__isnull=False):
             photographer_objects.extend(slide.image.photographers.all())
         return set(photographer_objects)
+
+    def get_authors_or_photographers(self):
+        return [photographer.name for photographer in self.photographers]
 
     def get_locations_index(self):
         locations_index = map(lambda slide: slide.image.get_locations_index(), self.slides.filter(image__isnull=False))
