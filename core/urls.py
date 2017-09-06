@@ -31,8 +31,6 @@ urlpatterns = patterns('core.views',
     url(r'^pages/about-the-editor/$', 'founders', name='founders'),
     url(r'^pages/(?P<slug>.+)/$', 'static_page', name='static_page'),
 
-    url(r'^search/', 'site_search', name='site_search'),
-
     url(r'^sitemap\.xml$', 'sitemap_index', name='sitemap_index'),
     url(r'^sitemap-(?P<year>\d+)\.xml', 'sitemap_year', name='sitemap_year'),
 )

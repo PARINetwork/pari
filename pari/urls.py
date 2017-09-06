@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^', include('face.urls')),
     url(r'^', include('category.urls')),
     url(r'^', include('location.urls')),
+    url(r'^', include('search.urls')),
 
     url(r'^', include('core.urls')),
 
