@@ -2,7 +2,7 @@
     <hr>
     <div class="search-filters">
         <div class="type-filters">
-            <h5 class="type-heading">TYPE OF CONTENT<span class="clear-all">Clear All</span></h5>
+            <h5 class="heading">TYPE OF CONTENT<span class="clear-all">Clear All</span></h5>
             <ul>
                 <li class="squaredFour"><input id="squaredFour" type="checkbox" name="type" value="article"> <label for="squaredFour"></label><h5>Articles</h5></li>
                 <li class="squaredFour"><input id="squaredFour1" type="checkbox" name="type" value="video"> <label for="squaredFour1"></label><h5>Videos</h5></li>
@@ -15,12 +15,12 @@
         </div>
         <hr>
         <div class="category-filters">
-            <h5 class="category-heading">CATEGORIES<span class="clear-all">Clear All</span></h5>
+            <h5 class="heading">CATEGORIES<span class="clear-all">Clear All</span></h5>
             <ul >
                 <li class="squaredFour"><input id="squaredFour5" type="checkbox" name="category" value="Things We Do" disabled><label for="squaredFour5"></label><h5>Things We Do</h5></li>
                 <li class="squaredFour"><input id="squaredFour6" type="checkbox" name="category" value="Things We Make" disabled><label for="squaredFour6"></label><h5>Things We Make</h5></li>
                 <li class="squaredFour"><input id="squaredFour7" type="checkbox" name="category" value="Farming and its Crisis" disabled ><label for="squaredFour7"></label><h5>Farming and its Crisis</h5></li>
-                <li class="squaredFour"><input id="squaredFour8" type="checkbox" name="category" value="Little-Takes" disabled ><label for="squaredFour8"></label><h5>Little Takes</h5></li>
+                <li class="squaredFour"><input id="squaredFour8" type="checkbox" name="category" value="Little Takes" disabled ><label for="squaredFour8"></label><h5>Little Takes</h5></li>
                 <li class="squaredFour"><input id="squaredFour9" type="checkbox" name="category" value="Women" disabled ><label for="squaredFour9"></label><h5>Women</h5></li>
                 <li class="squaredFour"><input id="squaredFour10" type="checkbox" name="category" value="Adivasis" disabled ><label for="squaredFour10"></label><h5>Adivasis</h5></li>
                 <li class="squaredFour"><input id="squaredFour11" type="checkbox" name="category" value="Dalits" disabled ><label for="squaredFour11"></label><h5>Dalits</h5></li>
@@ -45,7 +45,7 @@
         </div>
         <div class="language-filters">
             <hr>
-            <h5 class="language-heading">LANGUAGES<span class="clear-all">Clear All</span></h5>
+            <h5 class="heading">LANGUAGES<span class="clear-all">Clear All</span></h5>
             <ul>
                 {% for lang in languages %}
                     <li class="squaredFour"><input id="squaredFour{{ forloop.counter|add:29 }}" type="checkbox" name="language" value={{ lang.0 }}> <label for="squaredFour{{ forloop.counter|add:29 }}"></label><h5>{{ lang.1 }}</h5></li>
@@ -54,33 +54,31 @@
         </div>
         <div class="date-filters">
             <hr>
-            <h5 class="date-range-heading">DATE RANGE<span class="clear-date">Clear</span></h5>
+            <h5 class="heading">DATE RANGE<span class="clear-date">Clear</span></h5>
             <ul>
                 <li><h5>From</h5><input class="datepicker" type="text" name="start-date" id="start-date"></li>
                 <li><h5>To</h5><input class="datepicker" type="text" name="end-date" id="end-date"></li>
                 <li><button class= "btn-primary btn-sm" id="date-range-button">Go</button></li>
             </ul>
         </div>
-        <div class="district-filters">
+        <div class="district-filters bottom-margin">
             <hr>
-            <h5 class="district-heading">Districts</h5>
-            <select id="location_districts" class="location chosen" multiple="multiple" style="width:180px;">
+            <h5 class="heading">Districts<span class="clear-districts">Clear All</span></h5>
+            <select class="location chosen" multiple="multiple" style="width:180px;" data-placeholder="Type Some Districts">
                 {% for location in locations %}
                     <option value="{{ location }}">{{ location }}</option>
                 {% endfor %}
             </select>
         </div>
-        <div class="author-filters">
+        <div class="author-filters bottom-margin">
             <hr>
-            <h5 class="author-heading">Authors/Photographers</h5>
-            <select id="location_districts" class="author chosen" multiple="multiple" style="width:180px;">
+            <h5 class="heading">Authors<span class="clear-authors">Clear All</span></h5>
+            <select class="author chosen" multiple="multiple" style="width:180px;" data-placeholder="Type Authors/Photographers">
                 {% for author in authors %}
                     <option value="{{ author }}">{{ author }}</option>
                 {% endfor %}
             </select>
         </div>
-
-
     </div>
 </div>
 

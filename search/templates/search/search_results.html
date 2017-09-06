@@ -113,9 +113,9 @@ Search{% if search_results %} Results{% endif %}
                 var start_date = $("#start-date").val();
                 var end_date = $("#end-date").val();
 
-                if(start_date)
+                if (start_date)
                     queryParams.push('start-date' + '=' + start_date);
-                if(end_date)
+                if (end_date)
                     queryParams.push('end-date' + '=' + end_date);
 
                 var sortOption = $('select#sort-by').find(":selected").val();
@@ -123,14 +123,14 @@ Search{% if search_results %} Results{% endif %}
 
                 var locations = $(".district-filters .location").chosen().val();
                 if (locations) {
-                    for(var location in locations){
+                    for (var location in locations) {
                         queryParams.push('location' + '=' + locations[location]);
                     }
                 }
 
                 var authors = $(".author-filters .author").chosen().val();
                 if (authors) {
-                    for(var author in authors){
+                    for (var author in authors) {
                         queryParams.push('author' + '=' + authors[author]);
                     }
                 }
