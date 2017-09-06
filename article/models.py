@@ -174,7 +174,7 @@ class Article(Page):
             # In preview mode
             return []
 
-        lookup_fields = ['authors', 'translators', 'locations']
+        lookup_fields = ['authors', 'translators', 'locations','title']
         higher_boost = 2
         max_results = getattr(settings, "MAX_RELATED_RESULTS", 4)
 
@@ -187,6 +187,7 @@ class Article(Page):
                 search_fields.append("{0}^{1}".format(ii.field_name, higher_boost))
             else:
                 search_fields.append(ii.field_name)
+        search_fields.append("{0}^{1}".format("authors", higher_boost))
         query = {
             "query": {
                 "filtered": {
