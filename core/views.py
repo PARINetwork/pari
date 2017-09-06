@@ -9,28 +9,18 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages import success
 from django.core.mail import send_mail
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Max
 from django.http import Http404, HttpResponseRedirect, HttpResponse
-from django.http import JsonResponse
 from django.shortcuts import render
-from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _, activate, get_language
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
-from django.views.decorators.vary import vary_on_headers
-from wagtail.wagtailadmin.forms import SearchForm
 from wagtail.wagtailadmin.views.pages import preview_on_edit
-from wagtail.wagtailcore import models
 from wagtail.wagtailcore.models import Page, Site
-from wagtail.wagtailsearch.backends import get_search_backend
-from wagtail.wagtailsearch.models import Query
 
-from author.models import Author
 from category.models import Category
 from core.utils import get_translations_for_page
-from location.models import Location
 from .forms import ContactForm, DonateForm
 from .models import HomePage, GuidelinesPage
 
@@ -48,7 +38,7 @@ def home_page(request, slug="home-page"):
     home_context = {
         'talking_album': {
             'image': talking_album.slides.first().image,
-            'count':talking_album.slides.count(),
+            'count': talking_album.slides.count(),
             'photographers': get_unique_photographers(talking_album),
             'section_model': talking_album,
         },
@@ -71,6 +61,7 @@ def home_page(request, slug="home-page"):
         "current_page": 'home-page',
     }
     return render(request, "core/home_page.html", home_context)
+
 
 def get_unique_photographers(talking_album):
     photographers = []
@@ -97,6 +88,7 @@ def static_page(request, slug=None):
         "current_page": slug,
     })
 
+
 def guidelines(request):
     guideline = GuidelinesPage.objects.first()
     page_content = construct_guidelines(guideline.content)
@@ -107,7 +99,8 @@ def guidelines(request):
         "tab": active_tab,
     })
 
-def contribute_to_faces(request,slug=None):
+
+def contribute_to_faces(request, slug=None):
     active_tab = 'about-pari'
     link = 'https://script.google.com/macros/s/AKfycbzMQwyY8P1t7CT0_ylmPfSDz7WiSTVHWtL-Yf0UhtoYOIWQfMf5/exec'
     return render(request, "core/contribute-to-faces.html",
@@ -116,7 +109,8 @@ def contribute_to_faces(request,slug=None):
                    "current_page": 'contribute_to_faces',
                    })
 
-def acknowledgements(request,slug=None):
+
+def acknowledgements(request, slug=None):
     active_tab = 'about-pari'
     link = 'https://script.google.com/macros/s/AKfycbzMQwyY8P1t7CT0_ylmPfSDz7WiSTVHWtL-Yf0UhtoYOIWQfMf5/exec'
     return render(request, "core/acknowledgements.html",
@@ -162,6 +156,7 @@ def construct_guidelines(guideline_content):
             guideline_dict[current_heading]["sub_section"].append({"content": content.value})
     return guideline_dict
 
+
 def contribute(request, slug=None):
     return render(request, "core/contribute.html", {
         "tab": 'about-pari',
@@ -183,54 +178,6 @@ def contact_us(request):
         "tab": "about-pari",
         "current_page": 'contact_us',
     })
-
-# TODO: Remove the below two functions when we migrate to wagtail 1.2
-
-DEFAULT_PAGE_KEY = 'p'
-
-
-def paginate(request, items, page_key=DEFAULT_PAGE_KEY, per_page=20):
-    page = request.GET.get(page_key, 1)
-
-    paginator = Paginator(items, per_page)
-    try:
-        page = paginator.page(page)
-    except PageNotAnInteger:
-        page = paginator.page(1)
-    except EmptyPage:
-        page = paginator.page(paginator.num_pages)
-
-    return paginator, page
-
-
-@vary_on_headers('X-Requested-With')
-def search(request):
-    pages = []
-    q = None
-
-    if 'q' in request.GET:
-        form = SearchForm(request.GET)
-        if form.is_valid():
-            q = form.cleaned_data['q']
-
-            pages = Page.objects.all().prefetch_related('content_type').search(q)
-            paginator, pages = paginate(request, pages)
-    else:
-        form = SearchForm()
-
-    if request.is_ajax():
-        return render(request, "wagtailadmin/pages/search_results.html", {
-            'pages': pages,
-            'query_string': q,
-            'pagination_query_params': ('q=%s' % q) if q else ''
-        })
-    else:
-        return render(request, "wagtailadmin/pages/search.html", {
-            'search_form': form,
-            'pages': pages,
-            'query_string': q,
-            'pagination_query_params': ('q=%s' % q) if q else ''
-        })
 
 
 def donate_form(request):
