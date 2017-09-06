@@ -15,7 +15,7 @@ from wagtail.wagtailimages import urls as wagtailimages_urls
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
 
-    url(r'^admin/pages/search/$', 'core.views.search'),
+    url(r'^admin/pages/search/$', 'search.views.admin_search'),
     url(r'^admin/translators/add/$', 'author.views.add_translator'),
     url(r'^admin/photographers/add/$', 'author.views.add_photographer'),
     url(r'^admin/pages/(\d+)/edit/preview/$', 'core.views.page_preview'),
@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^', include('face.urls')),
     url(r'^', include('category.urls')),
     url(r'^', include('location.urls')),
+    url(r'^', include('search.urls')),
 
     url(r'^', include('core.urls')),
 

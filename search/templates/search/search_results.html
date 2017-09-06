@@ -61,6 +61,15 @@ Search{% if search_results %} Results{% endif %}
                 $('.chosen').trigger("chosen:updated");
             }
 
+            var authors = dic["author"];
+
+            if (authors) {
+                for (var author in authors) {
+                    $("select option[value='" + authors[author] + "']").attr("selected", "true");
+                }
+                $('.chosen').trigger("chosen:updated");
+            }
+
             function removeDisableFromCategory() {
                 $('.category-filters ul > li > input[name="category"]').each(function () {
                     $(this).attr("disabled", false);
@@ -91,6 +100,16 @@ Search{% if search_results %} Results{% endif %}
                 formQueryParams();
             });
 
+            $(".clear-districts").on("click", function () {
+                $('.location option').prop('selected', false).trigger('chosen:updated');
+                formQueryParams();
+            });
+
+            $(".clear-authors").on("click", function () {
+                $('.author option').prop('selected', false).trigger('chosen:updated');
+                formQueryParams();
+            });
+
             $('select#sort-by').on('change', function () {
                 formQueryParams();
             });
@@ -104,18 +123,25 @@ Search{% if search_results %} Results{% endif %}
                 var start_date = $("#start-date").val();
                 var end_date = $("#end-date").val();
 
-                if(start_date)
+                if (start_date)
                     queryParams.push('start-date' + '=' + start_date);
-                if(end_date)
+                if (end_date)
                     queryParams.push('end-date' + '=' + end_date);
 
                 var sortOption = $('select#sort-by').find(":selected").val();
                 queryParams.push('sort-by=' + sortOption);
 
-                var locations = $(".chosen").chosen().val();
+                var locations = $(".district-filters .location").chosen().val();
                 if (locations) {
-                    for(var location in locations){
+                    for (var location in locations) {
                         queryParams.push('location' + '=' + locations[location]);
+                    }
+                }
+
+                var authors = $(".author-filters .author").chosen().val();
+                if (authors) {
+                    for (var author in authors) {
+                        queryParams.push('author' + '=' + authors[author]);
                     }
                 }
 
@@ -180,7 +206,7 @@ Search{% if search_results %} Results{% endif %}
             </div>
         </div>
 
-        {% include "includes/filter_template.html" with languages=languages %}
+        {% include "includes/search_filters.html" with languages=languages %}
       {% if search_results %}
         {% include "includes/two_column_grid.html" with search_results=search_results languages=languages%}
       {% else %}

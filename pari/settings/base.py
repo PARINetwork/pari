@@ -56,6 +56,7 @@ INSTALLED_APPS = (
     'face',
     'feeds',
     'resources',
+    'search',
     'news',
     'wagtail.wagtailcore',
     'wagtail.wagtailadmin',

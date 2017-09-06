@@ -22,6 +22,11 @@
     border-top: 5px solid @light-grey;
   }
   .search-filters {
+
+    .bottom-margin {
+      margin-bottom: 15px;
+    }
+
     .language-filters ul, .category-filters ul, .type-filters ul {
       height: 125px;
       overflow-y: scroll;
@@ -32,32 +37,33 @@
     li {
       display: -webkit-box;
     }
-    .type-heading, .language-heading, .category-heading, .date-range-heading{
+    .heading {
       font-weight: 500;
-        margin-left: 3px;
-        ul {
-          width: 180px;
-        }
-        span {
-          font-size: 11px;
-          margin-left: 30px;
-          color: @side-text-link-light;
-          cursor: pointer;
-          position: absolute;
-          right: 16px;
-          padding-top: 4px;
+      margin-left: 3px;
+      ul {
+        width: 180px;
+      }
+      span {
+        font-size: 11px;
+        margin-left: 30px;
+        color: @side-text-link-light;
+        cursor: pointer;
+        position: absolute;
+        right: 16px;
+        padding-top: 4px;
 
-          &:hover {
-            color: @primary-color;
-          }
+        &:hover {
+          color: @primary-color;
         }
+      }
     }
     .date-filters {
-      li{
+      li {
         margin-top: 10px;
-        button{
+        button {
           background-color: @primary-color;
-          margin-left: 40px;
+          margin-left: 62px;
+          width: 90px;
         }
       }
       input {
@@ -65,7 +71,7 @@
         left: 35px;
         width: 80px;
         text-align: center;
-        &#end-date{
+        &#end-date {
           left: 52px;
         }
       }

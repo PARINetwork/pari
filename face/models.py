@@ -65,6 +65,9 @@ class Face(Page):
     def photographers(self):
         return self.image.photographers.all()
 
+    def get_authors_or_photographers(self):
+        return [photographer.name for photographer in self.photographers]
+
     search_fields = Page.search_fields + [
         index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE),
         index.FilterField('image'),
@@ -86,7 +89,8 @@ class Face(Page):
         index.SearchField('language'),
         index.FilterField('get_search_type'),
         index.FilterField('language'),
-        index.FilterField('get_minimal_locations')
+        index.FilterField('get_minimal_locations'),
+        index.FilterField('get_authors_or_photographers')
     ]
 
     def get_locations_index(self):

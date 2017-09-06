@@ -1,35 +1,26 @@
 from __future__ import unicode_literals
 
-from django.db import models
-from django.utils.translation import ugettext_lazy as _
-from django.utils.functional import cached_property
-from django.core import serializers
 from django.conf import settings
 from django.core.urlresolvers import reverse
+from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
+from django.utils.functional import cached_property
 from elasticsearch import ConnectionError
-
 from modelcluster.fields import M2MField
-from wagtail.wagtailadmin import blocks
-
-from wagtail.wagtailcore.models import Page, Site
-from wagtail.wagtailcore.fields import RichTextField, StreamField
-
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, \
-    MultiFieldPanel, InlinePanel, PageChooserPanel, FieldRowPanel, StreamFieldPanel
+    MultiFieldPanel, FieldRowPanel, StreamFieldPanel
+from wagtail.wagtailcore.fields import RichTextField, StreamField
+from wagtail.wagtailcore.models import Page, Site
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 from wagtail.wagtailsearch.backends import get_search_backend
-from wagtail.wagtailsearch.backends.elasticsearch import ElasticSearchMapping, \
-    ElasticSearchResults
+from wagtail.wagtailsearch.backends.elasticsearch import ElasticSearchMapping
 
-from article.streamfields.blocks import FullWidthImageBlock, TwoColumnImageBlock, ParagraphBlock, \
-    ParagraphWithImageBlock, FaceBlock, ParagraphWithBlockQuoteBlock, NColumnParagraphBlock, FullWidthBlockQuote, \
+from article.streamfields.blocks import FullWidthImageBlock, ParagraphBlock, \
+    ParagraphWithBlockQuoteBlock, NColumnParagraphBlock, FullWidthBlockQuote, \
     ParagraphWithEmbedBlock, ParagraphWithRawEmbedBlock, VideoWithQuoteBlock, FullWidthEmbedBlock, \
     ParagraphWithMapBlock, ImageWithQuoteAndParagraphBlock, ParagraphWithPageBlock, NColumnImageWithTextBlock
-
 from core.edit_handlers import M2MFieldPanel
-
 # Override the url property of the Page model
 # to accommodate for child pages
 from core.utils import get_translations_for_page, SearchBoost
@@ -127,7 +118,8 @@ class Article(Page):
         index.FilterField('language'),
         index.FilterField('get_search_type'),
         index.FilterField('get_categories'),
-        index.FilterField('get_minimal_locations')
+        index.FilterField('get_minimal_locations'),
+        index.FilterField('get_authors_or_photographers')
     ]
 
     def __str__(self):
@@ -135,6 +127,9 @@ class Article(Page):
 
     def get_authors(self):
         return [author.name for author in self.authors.all()]
+
+    def get_authors_or_photographers(self):
+        return self.get_authors()
 
     def get_district_from_location(self):
         return [location.address for location in self.locations.all()]
