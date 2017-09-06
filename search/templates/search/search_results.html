@@ -196,7 +196,7 @@ Search{% if search_results %} Results{% endif %}
             </div>
         </div>
 
-        {% include "includes/filter_template.html" with languages=languages %}
+        {% include "includes/search_filters.html" with languages=languages %}
       {% if search_results %}
         {% include "includes/two_column_grid.html" with search_results=search_results languages=languages%}
       {% else %}
