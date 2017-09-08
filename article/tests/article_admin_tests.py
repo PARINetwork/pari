@@ -25,10 +25,9 @@ class ArticleAdminFormTest(TestCase):
                                      "This field cannot be blank"):  # Slug and title fields cannot be null.
             ArticleFactory(title="")
 
-    def test_article_cannot_be_stored_without_content(self):
-        with self.assertRaisesRegexp(ValidationError,
-                                     "This field cannot be blank"):
-            ArticleFactory(title='Test', content='')
+    def test_article_can_be_stored_without_content(self):
+        article = ArticleFactory(title='Test', content='')
+        self.assertEqual(article.title, 'Test')
 
     def test_article_cannot_be_stored_without_language(self):
         with self.assertRaisesRegexp(ValidationError,

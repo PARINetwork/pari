@@ -3,7 +3,7 @@
 {% load i18n core_filters %}
 
 {% block meta_title %}
-Search{% if search_results %} Results{% endif %}
+    Search{% if search_results %} Results{% endif %}
 {% endblock %}
 
 {% block extra_js %}
@@ -90,8 +90,9 @@ Search{% if search_results %} Results{% endif %}
                 formQueryParams();
             }
 
-            $(".clear-all").on("click", function () {
+            $(".clear-all").on("click", function (e) {
                 clearChildrenCheckBox.call(this);
+                e.stopPropagation();
             });
 
             $(".clear-date").on("click", function () {
@@ -111,10 +112,10 @@ Search{% if search_results %} Results{% endif %}
             });
 
             $('select#sort-by').on('change', function () {
-                formQueryParams();
+                formQueryParams(true);
             });
 
-            function formQueryParams() {
+            function formQueryParams(media_device) {
                 var queryParams = [];
                 $(".search-filters li > input[type='checkbox']:checked").each(function () {
                     queryParams.push($(this).attr('name') + '=' + $(this).val());
@@ -146,7 +147,11 @@ Search{% if search_results %} Results{% endif %}
                 }
 
                 var query = $(".search-form > input").val();
-                window.location = queryParams.length > 0 ? '/search/?q=' + query + '&' + queryParams.join('&') : '/search/?q=' + query;
+                if ($(window).width() > 1199) {
+                    window.location = queryParams.length > 0 ? '/search/?q=' + query + '&' + queryParams.join('&') : '/search/?q=' + query;
+                } else if (media_device) {
+                    window.location = queryParams.length > 0 ? '/search/?q=' + query + '&' + queryParams.join('&') : '/search/?q=' + query;
+                }
             }
 
             $(".search-filters li > input[type='checkbox']").on("change", function () {
@@ -158,7 +163,21 @@ Search{% if search_results %} Results{% endif %}
                 formQueryParams();
             });
 
+            $('.apply-filter').on("click", function () {
+                $(".filter").removeClass("hidden");
+                formQueryParams(true);
+            });
+
+            $('.filter').on("click", function () {
+                $(".media-menu, .search-filters").toggleClass("visible");
+                $(".search-result-pagination,.search-result,.no-of-results,.apply-filter,.filter,.result-not-found").toggleClass("hidden");
+            });
+
+            $(".heading").on("click",function () {
+                $(this).toggleClass("collapsed expanded");
+            })
         });
+
 
     </script>
 {% endblock %}
@@ -166,58 +185,64 @@ Search{% if search_results %} Results{% endif %}
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/two_column_grid.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/datepicker.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/search_filters.less">
 {% endblock %}
 
 
 {% block main %}
-<div itemscope itemtype="http://schema.org/SearchResultsPage" class="search-result-panel">
+    <div itemscope itemtype="http://schema.org/SearchResultsPage" class="search-result-panel">
 
-  <div class="search-panel ">
-    <div class="container">
-      <header class="seach-input-panel">
-        <form action="/search/" role="search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction" class="search-form">
-            <div>
-                <div class="col-lg-3 col-md-3 col-sm-3 result-label">
-                    <h2>Search results for</h2>
+        <div class="search-panel ">
+            <div class="container">
+                <header class="seach-input-panel">
+                    <form action="/search/" role="search" itemprop="potentialAction" itemscope=""
+                          itemtype="http://schema.org/SearchAction" class="search-form">
+                        <div>
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 result-label">
+                                <h2>Search results for</h2>
+                            </div>
+                            <div class="input-box col-lg-9 col-md-9 col-sm-12">
+                                <input type="text" name="q" value="{{ query_string }}" placeholder="Enter to search"
+                                       itemprop="query-input">
+                                <input type="hidden" name="type" value="article" itemprop="query-default-content-type">
+                                <input type="hidden" name="type" value="video" itemprop="query-default-content-type">
+                                <input type="hidden" name="type" value="audio" itemprop="query-default-content-type">
+                                <input type="hidden" name="language" value="en" itemprop="query-default-language">
+                                <span class="search-icon fa fa-search fa-in-results"></span>
+                            </div>
+                        </div>
+
+                        <meta itemprop="target" content="/search/?q={q}">
+
+                    </form>
+                </header>
+
+                <div class="no-of-results col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                    <h4>{{ search_results.paginator.count }} Result{% if search_results.paginator.count > 1 %}s{% endif %}</h4>
+                    <div class="sort-by">
+                        <label>Sort by : </label>
+                        <select id="sort-by">
+                            <option value="relevance">Relevance</option>
+                            <option value="latest">Latest</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="input-box col-lg-9 col-md-9 col-sm-12">
-                    <input type="text" name="q" value="{{ query_string }}" placeholder="Enter to search" itemprop="query-input">
-                    <input type="hidden" name="type" value="article" itemprop="query-default-content-type">
-                    <input type="hidden" name="type" value="video" itemprop="query-default-content-type">
-                    <input type="hidden" name="type" value="audio" itemprop="query-default-content-type">
-                    <input type="hidden" name="language" value="en" itemprop="query-default-language">
-                    <span class="search-icon fa fa-search fa-in-results"></span>
-                </div>
+
+                {% include "includes/search_filters.html" with languages=languages %}
+                {% if search_results %}
+                    <div>
+                    {% include "includes/two_column_grid.html" with search_results=search_results languages=languages %}
+                    </div>
+                {% else %}
+                    <div class="result-not-found bg-danger col-lg-10 col-md-10">
+                        <p class="not-found-msg">No results found for your query with current filters. Try another query
+                            with different filters.</p>
+                    </div>
+                {% endif %}
             </div>
-
-          <meta itemprop="target" content="/search/?q={q}">
-
-        </form>
-      </header>
-
-        <div class="no-of-results col-lg-12 col-md-12 col-xs-12 col-sm-12">
-            <h4>{{ search_results.paginator.count }} Result{% if search_results.paginator.count > 1 %}s{% endif %}</h4>
-            <div class="sort-by">
-                <label>Sort by : </label>
-                <select id="sort-by">
-                    <option value="relevance">Relevance</option>
-                    <option value="latest">Latest</option>
-                </select>
+            <div class="container search-result-pagination">
+                {% include "includes/paginator.html" with results=search_results query_params_string=query_params_string %}
             </div>
         </div>
-
-        {% include "includes/search_filters.html" with languages=languages %}
-      {% if search_results %}
-        {% include "includes/two_column_grid.html" with search_results=search_results languages=languages%}
-      {% else %}
-          <div class="result-not-found bg-danger col-lg-10 col-md-10">
-            <p class="not-found-msg">No results found for your query with current filters. Try another query with different filters.</p>
-          </div>
-      {% endif %}
     </div>
-    <div class="container search-result-pagination">
-    {% include "includes/paginator.html" with results=search_results query_params_string=query_params_string%}
-    </div>
-  </div>
-</div>
 {% endblock %}
