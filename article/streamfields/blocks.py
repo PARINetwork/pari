@@ -7,10 +7,12 @@ from wagtail.wagtailcore.models import Page
 from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
+from album.models import Album
 from article.rich_text import get_rich_text_editor_widget
 from core.widgets import JqueryChosenSelectMultipleWithAddObject
 from face.models import Face
 from location.models import Location
+from resources.models import Resource
 
 ALIGNMENT_CHOICES = [('left', 'Left column'), ('right', 'Right column')]
 
@@ -302,7 +304,7 @@ class ImageWithBlockQuote(blocks.StructBlock):
 
 
 class ParagraphWithPageBlock(blocks.StructBlock):
-    page = PageTypeChooserBlock()
+    page = PageTypeChooserBlock(for_models=['article.models.Article', Album, Face, Resource])
     align_image = blocks.ChoiceBlock(choices=ALIGNMENT_CHOICES, default=ALIGNMENT_CHOICES[0][0])
     content = ParagraphBlock()
 
