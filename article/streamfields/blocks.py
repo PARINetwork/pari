@@ -1,5 +1,6 @@
 from django import forms
 from django.utils.functional import cached_property
+from django.utils.module_loading import import_string
 from wagtail.wagtailadmin import blocks
 from wagtail.wagtailcore.blocks import PageChooserBlock, RichTextBlock, FieldBlock, RawHTMLBlock
 from wagtail.wagtailcore.models import Page
@@ -83,14 +84,12 @@ class ImageBlock(blocks.StructBlock):
         template = 'article/blocks/image.html'
 
 
+# TODO: This is implemented in the latest wagtail. Remove it after upgrading.
 class PageTypeChooserBlock(PageChooserBlock):
     """Custom implementation of PageChooserBlock to limit page selection to specific page types.
-    Note: This has been addressed in the latest wagtail version.
     """
 
     def __init__(self, for_models=[Page], **kwargs):
-        if any(not issubclass(each, Page) for each in for_models):
-            raise TypeError("All models passed should be a sub-class of wagtail.wagtailcore.models.Page")
         self.for_models = for_models
         super(PageTypeChooserBlock, self).__init__(**kwargs)
 
@@ -106,6 +105,11 @@ class PageTypeChooserBlock(PageChooserBlock):
     def widget(self):
         from django.utils.translation import ugettext_lazy as _
         from wagtail.wagtailadmin.widgets import AdminPageChooser
+
+        # Support importing from dotted string in-order to prevent circular-import for certain models(Say Article)
+        self.for_models = [import_string(model) if isinstance(model, str) else model for model in self.for_models]
+        if any(not issubclass(each, Page) for each in self.for_models):
+            raise TypeError("All models passed should be a sub-class of wagtail.wagtailcore.models.Page")
 
         model_names = ' / '.join(each.__name__.lower() for each in self.for_models)
         admin_page_chooser = AdminPageChooser(target_models=self.for_models)
