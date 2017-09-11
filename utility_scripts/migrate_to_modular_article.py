@@ -3,7 +3,6 @@ import os
 import sys
 
 import django
-
 from bs4 import BeautifulSoup
 from django.db.models import Q
 
@@ -16,6 +15,10 @@ from article.models import Article
 from core.models import AffixImage
 from django.conf import settings
 
+DEFAULT_ALIGNMENT = 'left'
+EMPTY_CONTENT=''
+DEFAULT_HEIGHT = 380
+
 
 class ArticleMigrator(object):
     def __init__(self, article):
@@ -23,20 +26,19 @@ class ArticleMigrator(object):
         self.unhandled_elements = []
         self.modular_content = []
         self.paragraph_collector = []
-        self.content = BeautifulSoup(self.article.content).find('body').extract().contents
+        self.structured_content = BeautifulSoup(self.article.content).prettify()
+        self.content = BeautifulSoup(self.structured_content).find('body').extract().contents
 
     def formulate_modular_content(self):
         for element in self.content:
             if element.name in (None, 'br'):
                 continue
-
             if element.name == 'img':
                 self._flush_collected_paragraphs_to_module()
                 self._add_full_width_image_module(element)
             elif element.name == 'p':
                 embedded_images = element.find_all('embed', attrs={'embedtype': 'image'})
                 other_images = element.find_all(lambda tag: tag.name == 'img' and not tag.has_attr('embedtype'))
-
                 if other_images and embedded_images:
                     self.unhandled_elements.append("Paragraph has both embedded and full-width images")
                 elif not embedded_images and not other_images:
@@ -52,8 +54,28 @@ class ArticleMigrator(object):
                     text = element.getText().strip()
                     if text:
                         self.modular_content.append(Module.paragraph(str(element)))
+                elif len(other_images) > 1:
+                    self._flush_collected_paragraphs_to_module()
+                    columnar_image_ids = []
+                    for img in other_images:
+                        image, image_file = self._get_image_from_img_element(img)
+                        if image:
+                            columnar_image_ids.append(image.id)
+                        else:
+                            self.unhandled_elements.append("Unable to find image with src: %s" % image_file)
+                    caption = other_images[0].attrs['alt'] or ''
+                    height = other_images[0].attrs['height'] or DEFAULT_HEIGHT
+                    self.modular_content.append(
+                        Module.columnar_image_with_text(EMPTY_CONTENT, columnar_image_ids, caption, DEFAULT_ALIGNMENT,
+                                                        height))
                 else:
                     self.unhandled_elements.append('Paragraph has more than one images/embedded-images')
+            elif element.name == 'embed':
+                attr_name=element.attrs.get('embedtype')
+                if attr_name == 'image':
+                    self._flush_collected_paragraphs_to_module()
+                    self._add_image_with_paragraph_module(element,embed=True)
+
             else:
                 self.unhandled_elements.append(element.name)
 
@@ -66,6 +88,14 @@ class ArticleMigrator(object):
         return self
 
     def _add_full_width_image_module(self, img):
+        image, image_file = self._get_image_from_img_element(img)
+        caption = img.attrs.get('alt') or ''
+        if image:
+            self.modular_content.append(Module.full_width_image(image.id, caption))
+        else:
+            self.unhandled_elements.append("Unable to find image with src: %s" % image_file)
+
+    def _get_image_from_img_element(self, img):
         image_src = img.attrs.get('src')
         image_srcset = img.attrs.get('srcset')
         if image_src:
@@ -74,22 +104,22 @@ class ArticleMigrator(object):
             image_file = image_srcset.split()[0][len(settings.MEDIA_URL):]
         else:
             raise NotImplementedError
-
+        if str(image_file).startswith('/ruralindiaonline.org/'):
+            image_file = image_file[28:].replace('%20', " ")
         image = AffixImage.objects.filter(Q(file=image_file) | Q(renditions__file=image_file)).first()
-        caption = img.attrs.get('alt') or ''
-        if image:
-            self.modular_content.append(Module.full_width_image(image.id, caption))
-        else:
-            self.unhandled_elements.append("Unable to find image with src: %s" % image_file)
+        return image, image_file
 
-    def _add_image_with_paragraph_module(self, element):
-        img = element.find('embed')
+    def _add_image_with_paragraph_module(self, element, embed=False):
+        if not embed:
+            img = element.find('embed')
+        else:
+            img = element
         image_id = img.attrs.get('id')
         if image_id:
             caption = img.attrs['alt'] or ''
             alignment = img.attrs.get('format')
             img.decompose()
-            self.modular_content.append(Module.paragraph_with_image(str(element), image_id, caption, alignment))
+            self.modular_content.append(Module.columnar_image_with_text(str(element), [image_id], caption, alignment))
         else:
             self.unhandled_elements.append("Embeded image has no ID")
 
@@ -98,6 +128,14 @@ class ArticleMigrator(object):
             paragraphs = "".join(self.paragraph_collector)
             self.modular_content.append(Module.paragraph(paragraphs))
             self.paragraph_collector = []
+
+
+def generate_columnar_images_list(image_ids):
+    list = []
+    for id in image_ids:
+        list.append({"image":id})
+    return list
+
 
 
 class Module(object):
@@ -115,13 +153,16 @@ class Module(object):
                 }
 
     @staticmethod
-    def paragraph_with_image(content, image_id, caption, align_image):
-        return {"type": "paragraph_with_image",
+    def columnar_image_with_text(content, image_ids, caption, align_image,height=DEFAULT_HEIGHT):
+        return {"type": "columnar_image_with_text",
                 "value": {
+                    "images": generate_columnar_images_list(image_ids),
+                    "caption": caption,
+                    "align_columnar_images": align_image,
                     "content": Module.rich_text(content),
-                    "align_image": align_image,
-                    "image": Module.image(image_id, caption),
-                }}
+                    "height": height,
+                    }
+                }
 
     @staticmethod
     def image(image_id, caption):
@@ -132,8 +173,9 @@ class Module(object):
 
     @staticmethod
     def rich_text(content):
-        return {"content": content}
-
+        return {"content": content,
+                "align_content": "default",
+                }
 
 if __name__ == '__main__':
     for article in Article.objects.live().all():
