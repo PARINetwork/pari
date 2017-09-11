@@ -119,7 +119,8 @@ class Article(Page):
         index.FilterField('get_search_type'),
         index.FilterField('get_categories'),
         index.FilterField('get_minimal_locations'),
-        index.FilterField('get_authors_or_photographers')
+        index.FilterField('get_authors_or_photographers'),
+        index.FilterField('title')
     ]
 
     def __str__(self):
@@ -174,45 +175,52 @@ class Article(Page):
             # In preview mode
             return []
 
-        lookup_fields = ['authors', 'translators', 'locations','title']
-        higher_boost = 2
         max_results = getattr(settings, "MAX_RELATED_RESULTS", 4)
-
         es_backend = get_search_backend()
         mapping = ElasticSearchMapping(self.__class__)
-        search_fields = []
 
-        for ii in self.search_fields:
-            if ii.field_name in lookup_fields:
-                search_fields.append("{0}^{1}".format(ii.field_name, higher_boost))
-            else:
-                search_fields.append(ii.field_name)
         query = {
+            "track_scores": "true",
             "query": {
-                "filtered": {
-                    "filter": {
-                        "term": {
-                            "live_filter": True
+                "bool": {
+                    "must": [
+                        {"match": {"language": self.language}},
+                        {"term": {"live_filter": "true"}}
+                    ],
+                    "must_not": [
+                        {"term": {"title_filter": self.title}}
+
+                    ],
+                    "should": [
+                        {
+                            "multi_match":{
+                                "fields":"get_authors",
+                                "query":self.get_authors()
+                            }
+
+                        },
+                        {
+                            "multi_match": {
+                                "fields": "get_minimal_locations_filter",
+                                "query": self.get_minimal_locations(),
+                            }
+                        },
+                        {
+                            "match":{
+                                "title":self.title
+                            }
                         }
-                    },
-                    "query": {
-                        "more_like_this": {
-                            "docs": [
-                                {
-                                    "_id": mapping.get_document_id(self),
-                                    "_type": mapping.get_document_type()
-                                }
-                            ],
-                            "min_doc_freq": 1,
-                            "min_term_freq": 2,
-                            "max_query_terms": 500,
-                            "min_word_length": 4,
-                            "fields": search_fields
-                        }
-                    }
+                    ],
+                    "minimum_should_match": 1,
                 }
-            }
+            },
+            "sort": [
+                {"_score": {"order": "desc"}},
+                {"get_authors":{"order": "desc"}},
+                {"first_published_at_filter": "desc"}
+            ]
         }
+
 
         try:
             mlt = es_backend.es.search(
