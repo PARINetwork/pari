@@ -123,6 +123,7 @@ class PageTypeChooserBlock(PageChooserBlock):
 
 class FullWidthImageBlock(blocks.StructBlock):
     image = ImageBlock()
+    caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
 
     class Meta:
         icon = 'image'
