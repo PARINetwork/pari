@@ -42,7 +42,9 @@ class ArticleMigrator(object):
                 if other_images and embedded_images:
                     self.unhandled_elements.append("Paragraph has both embedded and full-width images")
                 elif not embedded_images and not other_images:
-                    self.paragraph_collector += str(element)
+                    text = element.getText().strip()
+                    if text:
+                        self.paragraph_collector += str(text)
                 elif len(embedded_images) == 1:
                     self._flush_collected_paragraphs_to_module()
                     self._add_image_with_paragraph_module(element)
