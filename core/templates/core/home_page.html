@@ -150,7 +150,7 @@
                                         <div class="name-primary">
                                             {% include "../../core/templates/includes/author-links.html" with authors=item.specific|get_photographers author_link_class="author-link" author_name_class="author-name" %}
                                         </div>
-                                        <div class="date" style="color: #CCCCCC">
+                                        <div class="date">
                                         {% with item.specific|get_locations as locations%}
                                             {% for location in locations %}
                                                 <a href="{% url "location-detail" location.slug %}">
@@ -162,7 +162,7 @@
                                                 <span class="dot-seperator">•</span>
                                             {% endif %}
                                             <a href="{% url "archive-detail" year=item.specific.first_published_at.year month=item.specific.first_published_at.month %}">
-                                                <span itemprop="datePublished" class="date link-dark">{{ item.specific.first_published_at|date }}</span>
+                                                <span itemprop="datePublished">{{ item.specific.first_published_at|date }}</span>
                                             </a>
                                         {% endwith %}
                                         </div>
