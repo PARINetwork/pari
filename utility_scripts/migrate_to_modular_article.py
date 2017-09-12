@@ -56,7 +56,7 @@ class ArticleMigrator(object):
                     text = element.getText().strip()
                     if text:
                         self.modular_content.append(Module.paragraph(str(element)))
-                elif len(other_images) > 1:
+                elif len(other_images) > 1 and len(embedded_images) == 0:
                     self._flush_collected_paragraphs_to_module()
                     columnar_image_ids = []
                     for img in other_images:
@@ -70,6 +70,12 @@ class ArticleMigrator(object):
                     self.modular_content.append(
                         Module.columnar_image_with_text(EMPTY_CONTENT, columnar_image_ids, caption, DEFAULT_ALIGNMENT,
                                                         height))
+                elif len(other_images) == 0 and len(embedded_images) > 1:
+                    self._flush_collected_paragraphs_to_module()
+                    columnar_image_ids = []
+                    for img in embedded_images:
+                        columnar_image_ids.append(img.attrs.get('id'))
+                    self.modular_content.append(Module.columnar_image_with_text(EMPTY_CONTENT, columnar_image_ids))
                 else:
                     self.unhandled_elements.append('Paragraph has more than one images/embedded-images')
             elif element.name == 'embed':
@@ -82,6 +88,12 @@ class ArticleMigrator(object):
                     self._add_embed_module(element)
                 else:
                     self.unhandled_elements.append("Embed element couldn't be recognised.")
+            elif element.name == 'i':
+                caption = element.getText().strip()
+                previous_image_module = self.modular_content.pop(len(self.modular_content) - 1)
+                if previous_image_module['type'] == 'full_width_image':
+                    previous_image_module['value']['caption'] = caption
+                self.modular_content.append(previous_image_module)
             else:
                 self.unhandled_elements.append(element.name)
 
@@ -155,7 +167,8 @@ class Module(object):
     def full_width_image(image_id, caption):
         return {"type": "full_width_image",
                 "value": {
-                    "image": Module.image(image_id, caption)
+                    "caption": caption,
+                    "image": Module.image(image_id)
                 }}
 
     @staticmethod
@@ -165,7 +178,8 @@ class Module(object):
                 }
 
     @staticmethod
-    def columnar_image_with_text(content, image_ids, caption, align_image, height=DEFAULT_HEIGHT):
+    def columnar_image_with_text(content, image_ids, caption=EMPTY_CONTENT, align_image=DEFAULT_ALIGNMENT,
+                                 height=DEFAULT_HEIGHT):
         return {"type": "columnar_image_with_text",
                 "value": {
                     "images": generate_columnar_images_list(image_ids),
@@ -185,9 +199,8 @@ class Module(object):
         }
 
     @staticmethod
-    def image(image_id, caption):
+    def image(image_id):
         return {
-            "caption": caption,
             "image": image_id
         }
 
