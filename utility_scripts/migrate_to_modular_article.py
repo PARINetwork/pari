@@ -16,7 +16,7 @@ from core.models import AffixImage
 from django.conf import settings
 
 DEFAULT_ALIGNMENT = 'left'
-EMPTY_CONTENT=''
+EMPTY_CONTENT = ''
 DEFAULT_HEIGHT = 380
 
 
@@ -71,11 +71,15 @@ class ArticleMigrator(object):
                 else:
                     self.unhandled_elements.append('Paragraph has more than one images/embedded-images')
             elif element.name == 'embed':
-                attr_name=element.attrs.get('embedtype')
+                attr_name = element.attrs.get('embedtype')
                 if attr_name == 'image':
                     self._flush_collected_paragraphs_to_module()
-                    self._add_image_with_paragraph_module(element,embed=True)
-
+                    self._add_image_with_paragraph_module(element, embed=True)
+                elif attr_name == 'media':
+                    self._flush_collected_paragraphs_to_module()
+                    self._add_embed_module(element)
+                else:
+                    self.unhandled_elements.append("Embed element couldn't be recognised.")
             else:
                 self.unhandled_elements.append(element.name)
 
@@ -129,13 +133,19 @@ class ArticleMigrator(object):
             self.modular_content.append(Module.paragraph(paragraphs))
             self.paragraph_collector = []
 
+    def _add_embed_module(self, element):
+        embed_url = element.attrs.get('url')
+        if embed_url:
+            self.modular_content.append(Module.full_width_embed(embed_url))
+        else:
+            self.unhandled_elements.append("Embeded video URL Not found.")
+
 
 def generate_columnar_images_list(image_ids):
     list = []
     for id in image_ids:
-        list.append({"image":id})
+        list.append({"image": id})
     return list
-
 
 
 class Module(object):
@@ -153,7 +163,7 @@ class Module(object):
                 }
 
     @staticmethod
-    def columnar_image_with_text(content, image_ids, caption, align_image,height=DEFAULT_HEIGHT):
+    def columnar_image_with_text(content, image_ids, caption, align_image, height=DEFAULT_HEIGHT):
         return {"type": "columnar_image_with_text",
                 "value": {
                     "images": generate_columnar_images_list(image_ids),
@@ -161,8 +171,16 @@ class Module(object):
                     "align_columnar_images": align_image,
                     "content": Module.rich_text(content),
                     "height": height,
-                    }
                 }
+                }
+
+    @staticmethod
+    def full_width_embed(embed_url):
+        return {
+            "type": "full_width_embed",
+            "value": {"embed": embed_url,
+                      }
+        }
 
     @staticmethod
     def image(image_id, caption):
@@ -176,6 +194,7 @@ class Module(object):
         return {"content": content,
                 "align_content": "default",
                 }
+
 
 if __name__ == '__main__':
     for article in Article.objects.live().all():
