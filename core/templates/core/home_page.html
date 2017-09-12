@@ -33,13 +33,20 @@
             $( ".carousel-control-container .left" ).click(function( event ) {
                 event.preventDefault();
                 event.stopPropagation();
-                $("#myCarousel-1").carousel("prev");
+                if($(this).attr("href") == "#myCarousel-1")
+                    $("#myCarousel-1").carousel("prev");
+                else
+                    $("#myCarousel-2").carousel("prev");
             });
             $( ".carousel-control-container .right" ).click(function( event ) {
                 event.preventDefault();
                 event.stopPropagation();
-                $("#myCarousel-1").carousel("next");
+                if($(this).attr("href") == "#myCarousel-1")
+                    $("#myCarousel-1").carousel("next");
+                else
+                    $("#myCarousel-2").carousel("next");
             });
+
         });
     </script>
 {% endblock %}
