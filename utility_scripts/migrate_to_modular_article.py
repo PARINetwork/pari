@@ -16,7 +16,7 @@ from core.models import AffixImage
 from django.conf import settings
 
 DEFAULT_ALIGNMENT = 'left'
-EMPTY_CONTENT=''
+EMPTY_CONTENT = ''
 DEFAULT_HEIGHT = 380
 
 
@@ -42,7 +42,9 @@ class ArticleMigrator(object):
                 if other_images and embedded_images:
                     self.unhandled_elements.append("Paragraph has both embedded and full-width images")
                 elif not embedded_images and not other_images:
-                    self.paragraph_collector += str(element)
+                    text = element.getText().strip()
+                    if text:
+                        self.paragraph_collector += str(text)
                 elif len(embedded_images) == 1:
                     self._flush_collected_paragraphs_to_module()
                     self._add_image_with_paragraph_module(element)
@@ -54,7 +56,7 @@ class ArticleMigrator(object):
                     text = element.getText().strip()
                     if text:
                         self.modular_content.append(Module.paragraph(str(element)))
-                elif len(other_images) > 1:
+                elif len(other_images) > 1 and len(embedded_images) == 0:
                     self._flush_collected_paragraphs_to_module()
                     columnar_image_ids = []
                     for img in other_images:
@@ -68,14 +70,30 @@ class ArticleMigrator(object):
                     self.modular_content.append(
                         Module.columnar_image_with_text(EMPTY_CONTENT, columnar_image_ids, caption, DEFAULT_ALIGNMENT,
                                                         height))
+                elif len(other_images) == 0 and len(embedded_images) > 1:
+                    self._flush_collected_paragraphs_to_module()
+                    columnar_image_ids = []
+                    for img in embedded_images:
+                        columnar_image_ids.append(img.attrs.get('id'))
+                    self.modular_content.append(Module.columnar_image_with_text(EMPTY_CONTENT, columnar_image_ids))
                 else:
                     self.unhandled_elements.append('Paragraph has more than one images/embedded-images')
             elif element.name == 'embed':
-                attr_name=element.attrs.get('embedtype')
+                attr_name = element.attrs.get('embedtype')
                 if attr_name == 'image':
                     self._flush_collected_paragraphs_to_module()
-                    self._add_image_with_paragraph_module(element,embed=True)
-
+                    self._add_image_with_paragraph_module(element, embed=True)
+                elif attr_name == 'media':
+                    self._flush_collected_paragraphs_to_module()
+                    self._add_embed_module(element)
+                else:
+                    self.unhandled_elements.append("Embed element couldn't be recognised.")
+            elif element.name == 'i':
+                caption = element.getText().strip()
+                previous_image_module = self.modular_content.pop(len(self.modular_content) - 1)
+                if previous_image_module['type'] == 'full_width_image':
+                    previous_image_module['value']['caption'] = caption
+                self.modular_content.append(previous_image_module)
             else:
                 self.unhandled_elements.append(element.name)
 
@@ -129,13 +147,19 @@ class ArticleMigrator(object):
             self.modular_content.append(Module.paragraph(paragraphs))
             self.paragraph_collector = []
 
+    def _add_embed_module(self, element):
+        embed_url = element.attrs.get('url')
+        if embed_url:
+            self.modular_content.append(Module.full_width_embed(embed_url))
+        else:
+            self.unhandled_elements.append("Embeded video URL Not found.")
+
 
 def generate_columnar_images_list(image_ids):
     list = []
     for id in image_ids:
-        list.append({"image":id})
+        list.append({"image": id})
     return list
-
 
 
 class Module(object):
@@ -143,7 +167,8 @@ class Module(object):
     def full_width_image(image_id, caption):
         return {"type": "full_width_image",
                 "value": {
-                    "image": Module.image(image_id, caption)
+                    "caption": caption,
+                    "image": Module.image(image_id)
                 }}
 
     @staticmethod
@@ -153,7 +178,8 @@ class Module(object):
                 }
 
     @staticmethod
-    def columnar_image_with_text(content, image_ids, caption, align_image,height=DEFAULT_HEIGHT):
+    def columnar_image_with_text(content, image_ids, caption=EMPTY_CONTENT, align_image=DEFAULT_ALIGNMENT,
+                                 height=DEFAULT_HEIGHT):
         return {"type": "columnar_image_with_text",
                 "value": {
                     "images": generate_columnar_images_list(image_ids),
@@ -161,13 +187,20 @@ class Module(object):
                     "align_columnar_images": align_image,
                     "content": Module.rich_text(content),
                     "height": height,
-                    }
+                }
                 }
 
     @staticmethod
-    def image(image_id, caption):
+    def full_width_embed(embed_url):
         return {
-            "caption": caption,
+            "type": "full_width_embed",
+            "value": {"embed": embed_url,
+                      }
+        }
+
+    @staticmethod
+    def image(image_id):
+        return {
             "image": image_id
         }
 
@@ -176,6 +209,7 @@ class Module(object):
         return {"content": content,
                 "align_content": "default",
                 }
+
 
 if __name__ == '__main__':
     for article in Article.objects.live().all():

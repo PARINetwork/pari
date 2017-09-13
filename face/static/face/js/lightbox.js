@@ -154,6 +154,6 @@ $(function () {
     Face.init();
 
     $(window).on("popstate", function () {
-        $('a[data-url="' + location.pathname + '"]').click();
+        window.history.back();
     });
 });
