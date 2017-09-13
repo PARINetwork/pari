@@ -36,7 +36,7 @@ class ArticleMigrator(object):
             if element.name == 'img':
                 self._flush_collected_paragraphs_to_module()
                 self._add_full_width_image_module(element)
-            elif element.name == 'p':
+            elif element.name == 'p' or element.name == 'em':
                 embedded_images = element.find_all('embed', attrs={'embedtype': 'image'})
                 other_images = element.find_all(lambda tag: tag.name == 'img' and not tag.has_attr('embedtype'))
                 if other_images and embedded_images:
@@ -44,7 +44,7 @@ class ArticleMigrator(object):
                 elif not embedded_images and not other_images:
                     text = element.getText().strip()
                     if text:
-                        self.paragraph_collector += str(text)
+                        self.paragraph_collector += str(element)
                 elif len(embedded_images) == 1:
                     self._flush_collected_paragraphs_to_module()
                     self._add_image_with_paragraph_module(element)
