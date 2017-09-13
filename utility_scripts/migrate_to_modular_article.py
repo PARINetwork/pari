@@ -93,10 +93,9 @@ class ArticleMigrator(object):
                     self.unhandled_elements.append("Embed element couldn't be recognised.")
             elif element.name == 'i':
                 caption = element.getText().strip()
-                previous_image_module = self.modular_content.pop(len(self.modular_content) - 1)
-                if previous_image_module['type'] == 'full_width_image':
+                previous_image_module = self.modular_content[-1] if self.modular_content else None
+                if previous_image_module and previous_image_module['type'] == 'full_width_image':
                     previous_image_module['value']['caption'] = caption
-                self.modular_content.append(previous_image_module)
             else:
                 self.unhandled_elements.append(element.name)
 
