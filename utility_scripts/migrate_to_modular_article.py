@@ -78,6 +78,9 @@ class ArticleMigrator(object):
                     self.modular_content.append(Module.columnar_image_with_text(EMPTY_CONTENT, columnar_image_ids))
                 else:
                     self.unhandled_elements.append('Paragraph has more than one images/embedded-images')
+            elif element.name == 'iframe':
+                self._flush_collected_paragraphs_to_module()
+                self.modular_content.append(Module.paragraph_with_raw_embed(str(element)))
             elif element.name == 'embed':
                 attr_name = element.attrs.get('embedtype')
                 if attr_name == 'image':
@@ -196,6 +199,18 @@ class Module(object):
             "type": "full_width_embed",
             "value": {"embed": embed_url,
                       }
+        }
+
+    @staticmethod
+    def paragraph_with_raw_embed(iframe, content=""):
+        return {
+            "type": "paragraph_with_raw_embed",
+            "value": {
+                "content": Module.rich_text(content),
+                "embed": iframe,
+                "embed_caption": "",
+                "embed_align": "left"
+            }
         }
 
     @staticmethod
