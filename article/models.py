@@ -179,6 +179,11 @@ class Article(Page):
         es_backend = get_search_backend()
         mapping = ElasticSearchMapping(self.__class__)
 
+        minimal_locations = ""
+        if (self.get_minimal_locations()):
+            minimal_locations = self.get_minimal_locations()
+
+
         query = {
             "track_scores": "true",
             "query": {
@@ -202,7 +207,7 @@ class Article(Page):
                         {
                             "multi_match": {
                                 "fields": "get_minimal_locations_filter",
-                                "query": self.get_minimal_locations(),
+                                "query":minimal_locations
                             }
                         },
                         {
