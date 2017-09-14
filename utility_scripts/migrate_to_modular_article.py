@@ -96,6 +96,11 @@ class ArticleMigrator(object):
                 previous_image_module = self.modular_content[-1] if self.modular_content else None
                 if previous_image_module and previous_image_module['type'] == 'full_width_image':
                     previous_image_module['value']['caption'] = caption
+            elif element.name == 'a':
+                if element.attrs.get('linktype') == 'page':
+                    page_id=element.attrs.get('id')
+                    content=element.getText().strip()
+                    self.modular_content.append(Module.paragraph_with_page(page_id,content=content))
             else:
                 self.unhandled_elements.append(element.name)
 
@@ -209,6 +214,17 @@ class Module(object):
                 "embed": iframe,
                 "embed_caption": "",
                 "embed_align": "left"
+            }
+        }
+
+    @staticmethod
+    def paragraph_with_page(page_id, content=""):
+        return {
+            "type": "paragraph_with_page",
+            "value": {
+                "content": Module.rich_text(content),
+                "align_image": "left",
+                "page": page_id
             }
         }
 
