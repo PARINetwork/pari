@@ -13,6 +13,12 @@
 
 @media (max-width: @screen-md-max) {
 
+  .sort-by{
+    label{
+      font-size: 12px;
+    }
+  }
+
   .search-result{
     display: flex;
   }
@@ -99,6 +105,15 @@
 
   .float-icon {
     margin-top: 15px;
+  }
+
+
+}
+
+@media (max-width: @screen-xs-max) {
+  .search-result-panel .search-panel .container header.seach-input-panel .input-box span.search-icon.fa-in-results {
+    top: 85px !important;
+    right: 20px !important;
   }
 
 }

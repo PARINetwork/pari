@@ -133,6 +133,7 @@ var ArticleAlbum = {
             $("#carousel").carousel("pause");
             $(".carousel-container").attr("data-ride", "carousel");
 
+
         });
 
         function updateIndexOnSlide() {

@@ -115,7 +115,16 @@
                 formQueryParams(true);
             });
 
+            var queryOn = $(".search-form > input").val();
+              $("input[name='q']").on("change keyup",function () {
+                queryOn = $(this).val();
+                console.log($(this).val());
+                $(this).val(queryOn);
+            });
+
             function formQueryParams(media_device) {
+
+
                 var queryParams = [];
                 $(".search-filters li > input[type='checkbox']:checked").each(function () {
                     queryParams.push($(this).attr('name') + '=' + $(this).val());
@@ -150,6 +159,7 @@
                 if ($(window).width() > 1199) {
                     window.location = queryParams.length > 0 ? '/search/?q=' + query + '&' + queryParams.join('&') : '/search/?q=' + query;
                 } else if (media_device) {
+                    query = queryOn;
                     window.location = queryParams.length > 0 ? '/search/?q=' + query + '&' + queryParams.join('&') : '/search/?q=' + query;
                 }
             }
@@ -240,9 +250,11 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="container search-result-pagination">
-                {% include "includes/paginator.html" with results=search_results query_params_string=query_params_string %}
-            </div>
+            {% if search_results %}
+                <div class="container search-result-pagination">
+                    {% include "includes/paginator.html" with results=search_results query_params_string=query_params_string %}
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

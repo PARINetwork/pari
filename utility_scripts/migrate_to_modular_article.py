@@ -36,7 +36,7 @@ class ArticleMigrator(object):
             if element.name == 'img':
                 self._flush_collected_paragraphs_to_module()
                 self._add_full_width_image_module(element)
-            elif element.name == 'p':
+            elif element.name == 'p' or element.name == 'em':
                 embedded_images = element.find_all('embed', attrs={'embedtype': 'image'})
                 other_images = element.find_all(lambda tag: tag.name == 'img' and not tag.has_attr('embedtype'))
                 if other_images and embedded_images:
@@ -44,7 +44,7 @@ class ArticleMigrator(object):
                 elif not embedded_images and not other_images:
                     text = element.getText().strip()
                     if text:
-                        self.paragraph_collector += str(text)
+                        self.paragraph_collector += str(element)
                 elif len(embedded_images) == 1:
                     self._flush_collected_paragraphs_to_module()
                     self._add_image_with_paragraph_module(element)
@@ -78,6 +78,9 @@ class ArticleMigrator(object):
                     self.modular_content.append(Module.columnar_image_with_text(EMPTY_CONTENT, columnar_image_ids))
                 else:
                     self.unhandled_elements.append('Paragraph has more than one images/embedded-images')
+            elif element.name == 'iframe':
+                self._flush_collected_paragraphs_to_module()
+                self.modular_content.append(Module.paragraph_with_raw_embed(str(element)))
             elif element.name == 'embed':
                 attr_name = element.attrs.get('embedtype')
                 if attr_name == 'image':
@@ -90,10 +93,9 @@ class ArticleMigrator(object):
                     self.unhandled_elements.append("Embed element couldn't be recognised.")
             elif element.name == 'i':
                 caption = element.getText().strip()
-                previous_image_module = self.modular_content.pop(len(self.modular_content) - 1)
-                if previous_image_module['type'] == 'full_width_image':
+                previous_image_module = self.modular_content[-1] if self.modular_content else None
+                if previous_image_module and previous_image_module['type'] == 'full_width_image':
                     previous_image_module['value']['caption'] = caption
-                self.modular_content.append(previous_image_module)
             else:
                 self.unhandled_elements.append(element.name)
 
@@ -196,6 +198,18 @@ class Module(object):
             "type": "full_width_embed",
             "value": {"embed": embed_url,
                       }
+        }
+
+    @staticmethod
+    def paragraph_with_raw_embed(iframe, content=""):
+        return {
+            "type": "paragraph_with_raw_embed",
+            "value": {
+                "content": Module.rich_text(content),
+                "embed": iframe,
+                "embed_caption": "",
+                "embed_align": "left"
+            }
         }
 
     @staticmethod
