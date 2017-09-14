@@ -26,8 +26,8 @@ class ArticleMigrator(object):
         self.unhandled_elements = []
         self.modular_content = []
         self.paragraph_collector = []
-        self.structured_content = BeautifulSoup(self.article.content).prettify()
-        self.content = BeautifulSoup(self.structured_content).find('body').extract().contents
+        prettified_content = BeautifulSoup(self.article.content).prettify()
+        self.content = BeautifulSoup(prettified_content).find('body').extract().contents
 
     def formulate_modular_content(self):
         for element in self.content:
@@ -96,11 +96,10 @@ class ArticleMigrator(object):
                 previous_image_module = self.modular_content[-1] if self.modular_content else None
                 if previous_image_module and previous_image_module['type'] == 'full_width_image':
                     previous_image_module['value']['caption'] = caption
-            elif element.name == 'a':
-                if element.attrs.get('linktype') == 'page':
-                    page_id=element.attrs.get('id')
-                    content=element.getText().strip()
-                    self.modular_content.append(Module.paragraph_with_page(page_id,content=content))
+            elif element.name == 'a' and element.attrs.get('linktype') == 'page':
+                page_id = element.attrs.get('id')
+                content = element.getText().strip()
+                self.modular_content.append(Module.paragraph_with_page(page_id, content=content))
             else:
                 self.unhandled_elements.append(element.name)
 
