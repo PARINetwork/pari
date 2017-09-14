@@ -97,6 +97,7 @@ class ArticleMigrator(object):
                 if previous_image_module and previous_image_module['type'] == 'full_width_image':
                     previous_image_module['value']['caption'] = caption
             elif element.name == 'a' and element.attrs.get('linktype') == 'page':
+                self._flush_collected_paragraphs_to_module()
                 page_id = element.attrs.get('id')
                 content = element.getText().strip()
                 self.modular_content.append(Module.paragraph_with_page(page_id, content=content))
