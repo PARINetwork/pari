@@ -178,14 +178,15 @@
                 formQueryParams(true);
             });
 
-            $('.filter').on("click", function () {
-                $(".media-menu, .search-filters").toggleClass("visible");
+            $('.filter, .go-back').on("click", function () {
+                $(".media-menu, .search-filters, .go-back").toggleClass("visible");
                 $(".search-result-pagination,.search-result,.no-of-results,.apply-filter,.filter,.result-not-found").toggleClass("hidden");
             });
 
             $(".heading").on("click",function () {
                 $(this).toggleClass("collapsed expanded");
-            })
+            });
+
         });
 
 
@@ -201,7 +202,12 @@
 
 {% block main %}
     <div itemscope itemtype="http://schema.org/SearchResultsPage" class="search-result-panel">
-
+        <div class="go-back">
+        <span class="prev">
+                <i class="fa fa-angle-left"></i>
+                <span>BACK</span>
+        </span>
+        </div>
         <div class="search-panel ">
             <div class="container">
                 <header class="seach-input-panel">
