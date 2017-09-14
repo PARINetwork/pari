@@ -116,7 +116,7 @@
             });
 
             var queryOn = $(".search-form > input").val();
-              $("input[name='q']").on("change keyup",function () {
+              $("input[name='q']").on("change keyup",function (e) {
                 queryOn = $(this).val();
                 console.log($(this).val());
                 $(this).val(queryOn);
@@ -169,24 +169,45 @@
             });
 
 
-            $("#date-range-button").on("click", function () {
+            $("#date-range-button").on("click", function (e) {
                 formQueryParams();
             });
 
-            $('.apply-filter').on("click", function () {
+            $('.apply-filter').on("click", function (e) {
                 $(".filter").removeClass("hidden");
                 formQueryParams(true);
             });
 
-            $('.filter, .go-back').on("click", function () {
+            $('.filter, .go-back').on("click", function (e) {
                 $(".media-menu, .search-filters, .go-back").toggleClass("visible");
                 $(".search-result-pagination,.search-result,.no-of-results,.apply-filter,.filter,.result-not-found").toggleClass("hidden");
             });
 
-            $(".heading").on("click",function () {
+            $(".heading").on("click",function (e) {
                 $(this).toggleClass("collapsed expanded");
             });
 
+            function hide_categories() {
+                if($(window).width() < 1199) {
+                    if ($("input[value='audio']").is(':not(:checked)') && $("input[value='video']").is(':not(:checked)') && $("input[value='article']").is(':not(:checked)')) {
+                        clearChildrenCheckBox.call($('.category-filters .clear-all'));
+                        $(".category-filters").prev('hr').addClass('hidden')
+                        $(".category-filters").addClass('hidden')
+                    } else if ($("input[value='audio']").is(':checked') || $("input[value='video']").is(':checked') || $("input[value='article']").is(':checked')) {
+                        $(".category-filters").removeClass('hidden')
+                        $(".category-filters").prev('hr').removeClass('hidden')
+                    }
+                }
+            }
+
+            $("li:contains('Articles'),li:contains('Videos'), li:contains('Audios')").children("input[type='checkbox']").on('change', function () {
+                  hide_categories.call();
+
+            });
+
+             $(".type-filters span.clear-all").on('click', function () {
+                  hide_categories.call();
+            });
         });
 
 
