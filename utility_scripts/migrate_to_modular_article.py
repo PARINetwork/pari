@@ -103,6 +103,8 @@ class ArticleMigrator(object):
                 page_id = element.attrs.get('id')
                 content = element.getText().strip()
                 self.modular_content.append(Module.paragraph_with_page(page_id, content=content))
+            elif element.name == 'hr' or element.name == 'ul':
+                self.paragraph_collector += str(element)
             else:
                 self.unhandled_elements.append(element.name)
 
