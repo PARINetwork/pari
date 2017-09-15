@@ -163,6 +163,8 @@ def site_search(
             ['&language=%s' % _ for _ in language_filters] +
             ['&start-date=%s' % start_date if start_date else ''] +
             ['&end-date=%s' % end_date if end_date else ''] +
+            ['&location=%s' % _ for _ in location_filters]+
+            ['&author=%s' % _ for _ in author_filters] +
             ['&sort-by=%s' % sort_by if sort_by else '']
         )
 
