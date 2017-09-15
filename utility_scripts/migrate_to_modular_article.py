@@ -18,6 +18,7 @@ from django.conf import settings
 DEFAULT_ALIGNMENT = 'left'
 EMPTY_CONTENT = ''
 DEFAULT_HEIGHT = 380
+HEADER_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
 
 
 class ArticleMigrator(object):
@@ -101,6 +102,8 @@ class ArticleMigrator(object):
                 page_id = element.attrs.get('id')
                 content = element.getText().strip()
                 self.modular_content.append(Module.paragraph_with_page(page_id, content=content))
+            elif element.name.lower() in HEADER_TAGS:
+                self.paragraph_collector += str(element)
             else:
                 self.unhandled_elements.append(element.name)
 
