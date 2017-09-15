@@ -15,6 +15,7 @@ from article.models import Article
 from core.models import AffixImage
 from django.conf import settings
 
+ALIGNMENT_CHOICES = ['left', 'right']
 DEFAULT_ALIGNMENT = 'left'
 EMPTY_CONTENT = ''
 DEFAULT_HEIGHT = 380
@@ -37,7 +38,7 @@ class ArticleMigrator(object):
             if element.name == 'img':
                 self._flush_collected_paragraphs_to_module()
                 self._add_full_width_image_module(element)
-            elif element.name == 'p' or element.name == 'em':
+            elif element.name == 'p' or element.name == 'em' or element.name.lower() in HEADER_TAGS:
                 embedded_images = element.find_all('embed', attrs={'embedtype': 'image'})
                 other_images = element.find_all(lambda tag: tag.name == 'img' and not tag.has_attr('embedtype'))
                 if other_images and embedded_images:
@@ -102,8 +103,6 @@ class ArticleMigrator(object):
                 page_id = element.attrs.get('id')
                 content = element.getText().strip()
                 self.modular_content.append(Module.paragraph_with_page(page_id, content=content))
-            elif element.name.lower() in HEADER_TAGS:
-                self.paragraph_collector += str(element)
             else:
                 self.unhandled_elements.append(element.name)
 
@@ -145,7 +144,8 @@ class ArticleMigrator(object):
         image_id = img.attrs.get('id')
         if image_id:
             caption = img.attrs['alt'] or ''
-            alignment = img.attrs.get('format')
+            format = img.attrs.get('format')
+            alignment = format if format in ALIGNMENT_CHOICES else DEFAULT_ALIGNMENT
             img.decompose()
             self.modular_content.append(Module.columnar_image_with_text(str(element), [image_id], caption, alignment))
         else:
