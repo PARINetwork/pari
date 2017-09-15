@@ -57,17 +57,20 @@
             if (locations) {
                 for (var location in locations) {
                     $("select option[value='" + locations[location] + "']").attr("selected", "true");
+                    $('.chosen').trigger("chosen:updated");
                 }
-                $('.chosen').trigger("chosen:updated");
             }
 
             var authors = dic["author"];
 
             if (authors) {
                 for (var author in authors) {
-                    $("select option[value='" + authors[author] + "']").attr("selected", "true");
+                    var authorString = authors[author];
+                    authorString = authorString.replace(/\++/g,' ');
+                    authorString = authorString.replace(/\%26+/g, '&');
+                    $("select option[value='" + authorString + "']").attr("selected", "true");
+                    $('.chosen').trigger("chosen:updated");
                 }
-                $('.chosen').trigger("chosen:updated");
             }
 
             function removeDisableFromCategory() {
@@ -118,7 +121,6 @@
             var queryOn = $(".search-form > input").val();
               $("input[name='q']").on("change keyup",function (e) {
                 queryOn = $(this).val();
-                console.log($(this).val());
                 $(this).val(queryOn);
             });
 
@@ -151,13 +153,16 @@
                 var authors = $(".author-filters .author").chosen().val();
                 if (authors) {
                     for (var author in authors) {
-                        queryParams.push('author' + '=' + authors[author]);
+                        var author_string = authors[author].trim();
+                        author_string = author_string.replace(/\s+/g,'+');
+                        author_string = author_string.replace(/\&+/g,'%26');
+                        queryParams.push('author' + '=' + author_string);
                     }
                 }
-
                 var query = $(".search-form > input").val();
+                query = query.replace(/\s+/g,'+').replace(/\&+/g,'%26');
                 if ($(window).width() > 1199) {
-                    window.location = queryParams.length > 0 ? '/search/?q=' + query + '&' + queryParams.join('&') : '/search/?q=' + query;
+                   window.location = queryParams.length > 0 ? '/search/?q=' + query + '&' + queryParams.join('&') : '/search/?q=' + query;
                 } else if (media_device) {
                     query = queryOn;
                     window.location = queryParams.length > 0 ? '/search/?q=' + query + '&' + queryParams.join('&') : '/search/?q=' + query;
