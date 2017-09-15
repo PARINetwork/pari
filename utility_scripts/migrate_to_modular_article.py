@@ -1,6 +1,7 @@
 import json
 import os
 import sys
+import urllib
 
 import django
 from bs4 import BeautifulSoup
@@ -127,15 +128,21 @@ class ArticleMigrator(object):
     def _get_image_from_img_element(self, img):
         image_src = img.attrs.get('src')
         image_srcset = img.attrs.get('srcset')
+
         if image_src:
             image_file = image_src[len(settings.MEDIA_URL):]
         elif image_srcset:
             image_file = image_srcset.split()[0][len(settings.MEDIA_URL):]
         else:
             raise NotImplementedError
+
         if str(image_file).startswith('/ruralindiaonline.org/'):
-            image_file = image_file[28:].replace('%20', " ")
-        image = AffixImage.objects.filter(Q(file=image_file) | Q(renditions__file=image_file)).first()
+            image_file = image_file[28:]
+        image_file_unquoted = urllib.unquote(image_file)
+
+        image = AffixImage.objects.filter(
+            Q(file=image_file) | Q(renditions__file=image_file) | Q(file=image_file_unquoted) | Q(
+                renditions__file=image_file_unquoted)).first()
         return image, image_file
 
     def _add_image_with_paragraph_module(self, element, embed=False):
