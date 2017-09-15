@@ -153,7 +153,7 @@
                 var authors = $(".author-filters .author").chosen().val();
                 if (authors) {
                     for (var author in authors) {
-                        var author_string = authors[author].trim();
+                        var author_string = authors[author];
                         author_string = author_string.replace(/\s+/g,'+');
                         author_string = author_string.replace(/\&+/g,'%26');
                         queryParams.push('author' + '=' + author_string);
@@ -185,8 +185,11 @@
 
             $('.filter, .go-back').on("click", function (e) {
                 $(".media-menu, .search-filters, .go-back ,.filter-title").toggleClass("visible");
-                $(".search-result-pagination,.search-result,.no-of-results,.apply-filter,.filter,.result-not-found,.seach-input-panel").toggleClass("hidden");
+                $(".search-result-pagination,.search-result,.no-of-results,.apply-filter,.filter,.result-not-found,.seach-input-panel,.search-icon").toggleClass("hidden");
+                $(".navbar-collapse").removeClass("in");
+                $(".search-panel-toggle").removeClass("show");
             });
+
 
             $(".heading").on("click",function (e) {
                 $(this).toggleClass("collapsed expanded");
