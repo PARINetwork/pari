@@ -1,5 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
+import urllib
+
 from django.conf import settings
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import JsonResponse
@@ -164,9 +166,12 @@ def site_search(
             ['&start-date=%s' % start_date if start_date else ''] +
             ['&end-date=%s' % end_date if end_date else ''] +
             ['&location=%s' % _ for _ in location_filters]+
-            ['&author=%s' % _ for _ in author_filters] +
             ['&sort-by=%s' % sort_by if sort_by else '']
         )
+        if author_filters:
+            for author in author_filters:
+              query_params_string+='&author='+urllib.quote_plus(author)
+
 
         locations = set(location.district + ', ' + location.state for location in Location.objects.all())
 
