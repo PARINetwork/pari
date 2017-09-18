@@ -10,17 +10,20 @@
 <div>
     <div class="image-block">
         {% image value.image.image width-1440 as full_width_image %}
-        <img class="lazyload" src="{{ full_width_image.url }}" data-src="{{ slide_image.url }}" style=" height:auto;"/>
-    </div>
-    <div class="photo-credits">
-        {% if image.image.photographers.all %}
-            PHOTO CREDIT •
-            {% for photographer in image.image.photographers.all %}
-                {{ photographer }}
-                {% if not forloop.last %},&nbsp;
-                {% endif %}
-            {% endfor %}
-        {% endif %}
+        <div class="image">
+            <img class="lazyload" src="{{ full_width_image.url }}" data-src="{{ slide_image.url }}" style=" height:auto;"/>
+        </div>
+        <div class="photo-credits">
+            {% if value.image.image.photographers.all %}
+                PHOTO CREDIT •
+                {% for photographer in value.image.image.photographers.all %}
+                    {{ photographer }}
+                    {% if not forloop.last %},&nbsp;
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+        </div>
     </div>
     <div class="caption">
         {{ value.caption }}
