@@ -183,6 +183,11 @@ class Article(Page):
         if (self.get_minimal_locations()):
             minimal_locations = self.get_minimal_locations()
 
+        authors_of_article = ""
+
+        if self.authors:
+            for author in self.authors.all():
+                authors_of_article += author.name
 
         query = {
             "track_scores": "true",
@@ -198,9 +203,16 @@ class Article(Page):
                     ],
                     "should": [
                         {
-                            "multi_match":{
-                                "fields":"get_authors",
-                                "query":self.get_authors()
+                            "multi_match": {
+                                "fields": "get_authors_or_photographers_filter",
+                                "query": ["" + authors_of_article + ""]
+                            }
+
+                        },
+                        {
+                            "multi_match": {
+                                "fields": "get_authors",
+                                "query": ["" + authors_of_article + ""]
                             }
 
                         },
