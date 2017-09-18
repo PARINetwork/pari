@@ -120,7 +120,8 @@ class Article(Page):
         index.FilterField('get_categories'),
         index.FilterField('get_minimal_locations'),
         index.FilterField('get_authors_or_photographers'),
-        index.FilterField('title')
+        index.FilterField('title'),
+        index.FilterField('get_state_from_locations')
     ]
 
     def __str__(self):
@@ -137,6 +138,9 @@ class Article(Page):
 
     def get_minimal_locations(self):
         return [location.minimal_address for location in self.locations.all()]
+
+    def get_state_from_locations(self):
+        return [location.state for location in self.locations.all()]
 
     def get_context(self, request, *args, **kwargs):
         try:
@@ -183,6 +187,10 @@ class Article(Page):
         if (self.get_minimal_locations()):
             minimal_locations = self.get_minimal_locations()
 
+        state_locations = ""
+        if (self.get_state_from_locations()):
+            state_locations = self.get_state_from_locations()
+
         authors_of_article = ""
 
         if self.authors:
@@ -221,6 +229,13 @@ class Article(Page):
                                 "fields": "get_minimal_locations_filter",
                                 "query":minimal_locations
                             }
+                        },
+                        {
+                            "multi_match":{
+                                "fields":"get_state_from_locations_filter",
+                                "query":state_locations
+                            }
+
                         },
                         {
                             "match":{

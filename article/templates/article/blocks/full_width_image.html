@@ -1,9 +1,21 @@
 {% load wagtailcore_tags wagtailimages_tags %}
-
-<div class="full-width-image-block">
+<div class="full-width-image-block image-block">
     {% image value.image.image width-1440 as full_width_image %}
-    <img src="{{ full_width_image.url }}"/>
-    <p>
-        <i>{{ value.image.caption }} </i>
-    </p>
+    <div class="image">
+        <img class="lazyload" src="{{ full_width_image.url }}" data-src="{{ slide_image.url }}" style=" height:auto;"/>
+    </div>
+    <div class="photo-credits">
+        {% if value.image.image.photographers.all %}
+            PHOTO CREDIT •
+            {% for photographer in value.image.image.photographers.all %}
+                {{ photographer }}
+                {% if not forloop.last %},&nbsp;
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+    </div>
+</div>
+<div class="caption">
+    {{ value.caption }}
 </div>
