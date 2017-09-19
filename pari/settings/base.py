@@ -228,7 +228,7 @@ WAGTAIL_USAGE_COUNT_ENABLED = True
 WAGTAILSEARCH_RESULTS_TEMPLATE = "search/search_results.html"
 
 # Flag to show modular content panel in article admin page
-MODULAR_ARTICLE = False
+MODULAR_ARTICLE = True
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 
