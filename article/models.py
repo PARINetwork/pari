@@ -243,7 +243,7 @@ class Article(Page):
                             }
                         }
                     ],
-                    "minimum_should_match": 1,
+                    "minimum_should_match": 2
                 }
             },
             "sort": [
