@@ -104,10 +104,12 @@ class ArticleMigrator(object):
                 page_id = element.attrs.get('id')
                 content = element.getText().strip()
                 self.modular_content.append(Module.paragraph_with_page(page_id, content=content))
-            elif element.name in ['hr', 'ul', 'b']:
+            elif element.name in [ 'ul', 'b']:
                 text = element.getText().strip()
                 if text:
                     self.paragraph_collector += str(element)
+            elif element.name=='hr':
+                self.paragraph_collector +=str(element)
             else:
                 self.unhandled_elements.append(element.name)
 
