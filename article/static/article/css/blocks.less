@@ -19,6 +19,14 @@
     background: white;
     float: left;
     margin: 0 10px;
+    &.full-width-image-block {
+      float: none;
+      .image {
+        img {
+          width: 100%;
+        }
+      }
+    }
 
     .image {
       position: relative;
@@ -109,6 +117,9 @@
       margin-bottom: 20px;
       line-height: 29px;
       font-size: 17px;
+      &.center {
+        text-align: center;
+      }
     }
 
     p:lang(ur) {
