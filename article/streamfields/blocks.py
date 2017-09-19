@@ -150,6 +150,8 @@ class ParagraphBlock(blocks.StructBlock):
         label = 'Text'
         template = 'article/blocks/paragraph.html'
 
+class PargraphBlockWithOptionalContent(ParagraphBlock):
+    content = CustomRichTextBlock(editor='hallo_for_paragraph', required=False)
 
 class ParagraphWithImageBlock(blocks.StructBlock):
     image = ImageBlock()
@@ -229,7 +231,7 @@ class ParagraphWithRawEmbedBlock(blocks.StructBlock):
     embed = RawHTMLBlock(help_text="Embed HTML code(an iframe)")
     embed_caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
     embed_align = blocks.ChoiceBlock(choices=ALIGNMENT_CHOICES, default=ALIGNMENT_CHOICES[0][0])
-    content = ParagraphBlock()
+    content = PargraphBlockWithOptionalContent(required=False)
 
     class Meta:
         icon = 'media'
@@ -273,10 +275,6 @@ class ParagraphWithMapBlock(blocks.StructBlock):
 class ImageWithCaptionAndHeightBlock(ImageBlock):
     height = IntegerBlock(min_value=0, required=True, default=380)
     caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
-
-
-class PargraphBlockWithOptionalContent(ParagraphBlock):
-    content = CustomRichTextBlock(editor='hallo_for_paragraph', required=False)
 
 
 class ImageWithQuoteAndParagraphBlock(blocks.StructBlock):
