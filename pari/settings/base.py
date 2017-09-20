@@ -153,6 +153,7 @@ WAGTAILSEARCH_BACKENDS = {
         'BACKEND': 'search.custom_elasticsearch.CustomElasticSearch',
         'INDEX': 'pari',
         'ATOMIC_REBUILD': True,
+        'TIMEOUT': 30,
     },
 }
 WAGTAILADMIN_RICH_TEXT_EDITORS = {
