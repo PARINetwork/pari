@@ -38,7 +38,6 @@ addons:
     - lessc
   firefox: 53.0.2
   ssh_known_hosts:
-  - 54.255.193.26
   - staging.ruralindiaonline.org
 dist: precise
 notifications:

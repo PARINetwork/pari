@@ -153,6 +153,7 @@ WAGTAILSEARCH_BACKENDS = {
         'BACKEND': 'search.custom_elasticsearch.CustomElasticSearch',
         'INDEX': 'pari',
         'ATOMIC_REBUILD': True,
+        'TIMEOUT': 30,
     },
 }
 WAGTAILADMIN_RICH_TEXT_EDITORS = {
@@ -228,7 +229,7 @@ WAGTAIL_USAGE_COUNT_ENABLED = True
 WAGTAILSEARCH_RESULTS_TEMPLATE = "search/search_results.html"
 
 # Flag to show modular content panel in article admin page
-MODULAR_ARTICLE = False
+MODULAR_ARTICLE = True
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 

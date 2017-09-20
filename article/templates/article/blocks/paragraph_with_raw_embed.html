@@ -2,7 +2,7 @@
 
 <div class="paragraph-with-raw-embed-block row">
 
-    <div class="embed-holder embed-align-{{ value.embed_align }}">
+    <div class="embed-holder {% if value.content|striptags|length > 10 %}embed-align-{{ value.embed_align }}{% else %}no-margin{% endif %}">
         {{ value.embed }}
         <div class="caption">
             {{ value.embed_caption }}

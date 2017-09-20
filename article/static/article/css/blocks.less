@@ -13,6 +13,17 @@
   }
   .full-width-image-block {
     margin: 10px 0px 20px 0px !important;
+
+    .caption {
+      padding-bottom: 3px;
+      padding-top: 3px;
+      .rich-text {
+        line-height: 25px;
+        font-size: 15px;
+        text-align: center;
+        margin-top: 10px;
+      }
+    }
   }
 
   .image-block {
@@ -507,6 +518,11 @@
     iframe {
       margin: 0 2%;
     }
+    .embed-holder.no-margin {
+      iframe {
+        margin: 0px;
+      }
+    }
 
     .embed-align-right {
       iframe {
@@ -778,7 +794,7 @@
       display: flex;
       flex-direction: column;
       .embed-holder {
-        padding: 10px 9.8%;
+        //padding: 10px 9.8%;
         iframe, object, embed {
           margin: 0;
           float: none;

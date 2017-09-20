@@ -49,12 +49,12 @@ class Article(Page):
     content = RichTextField(blank=True)
     modular_content = StreamField([
         ('paragraph', ParagraphBlock()),
-        ('n_column_paragraph_block', NColumnParagraphBlock()),
+        ('n_column_paragraph', NColumnParagraphBlock()),
         ('paragraph_with_map', ParagraphWithMapBlock()),
         ('paragraph_with_page', ParagraphWithPageBlock()),
 
-        ('paragraph_with_block_quote', ParagraphWithBlockQuoteBlock()),
-        ('full_width_block_quote', FullWidthBlockQuote()),
+        ('paragraph_with_quote', ParagraphWithBlockQuoteBlock()),
+        ('full_width_quote', FullWidthBlockQuote()),
         ('video_with_quote', VideoWithQuoteBlock()),
 
         ('image_with_quote_and_paragraph', ImageWithQuoteAndParagraphBlock()),
@@ -243,7 +243,7 @@ class Article(Page):
                             }
                         }
                     ],
-                    "minimum_should_match": 1,
+                    "minimum_should_match": 1
                 }
             },
             "sort": [

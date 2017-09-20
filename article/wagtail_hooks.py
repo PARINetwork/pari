@@ -67,6 +67,12 @@ def editor_js():
         </script>
         <script src="{0}article/js/slug.js"></script>
         <script src="{0}article/js/align.js"></script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {{
+                $('.char_field.hallo_rich_text_area .richtext').attr('contenteditable', false);
+            }});
+        </script>
         """,
         settings.STATIC_URL
     )
