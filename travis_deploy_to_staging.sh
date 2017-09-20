@@ -3,13 +3,7 @@
 # traivis_wait doesn't work with deploy script
 # Workaround to make travis wait for more than default wait time(10 mins) before aborting the build
 # Refer: https://github.com/travis-ci/travis-ci/issues/7961
-function bell {
-  while true; do
-    echo "Deploying..."
-    sleep 60
-  done
-}
-bell &
+while true; do echo "Deploying..."; sleep 60; done &
 
 # Deployment steps
 chmod 400 pari_qa.pem
