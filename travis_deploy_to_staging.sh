@@ -6,7 +6,7 @@
 function bell {
   while true; do
     echo "Deploying..."
-    sleep 300
+    sleep 60
   done
 }
 bell &
