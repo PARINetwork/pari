@@ -24,19 +24,19 @@
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:200,300,400,500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amiri:400,700" rel="stylesheet">
 
-    {% block extra_uncompressed_css %}{% endblock %}
-    {% compress css %}
-
     <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}font-awesome/css/font-awesome.min.css">
-    <!--<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/base.less">-->
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/main.less">
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/search-panel.less">
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/chosen.min.css">
 
+    {% block extra_uncompressed_css %}{% endblock %}
 
-    {% block extra_css %}{% endblock %}
+    {% compress css %}
+        <!--<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/base.less">-->
+        <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/main.less">
+        <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/search-panel.less">
+
+        {% block extra_css %}{% endblock %}
     {% endcompress %}
+
     {% if LANGUAGE_BIDI %}
     <link rel="stylesheet" href="{{ STATIC_URL }}css/rtl.css">
     {% endif %}

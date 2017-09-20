@@ -6,6 +6,10 @@
     Search{% if search_results %} Results{% endif %}
 {% endblock %}
 
+{% block extra_uncompressed_css %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/chosen.min.css">
+{% endblock %}
+
 {% block extra_js %}
     <script type="text/javascript">
         $(function () {
