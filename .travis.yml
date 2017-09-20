@@ -28,7 +28,7 @@ script:
   - travis_wait 20 source scripts/test.sh
 deploy:
   provider: script
-  script: travis_deploy_to_staging.sh
+  script: sh travis_deploy_to_staging.sh
   skip_cleanup: true
   on:
     branch: release-candidate
