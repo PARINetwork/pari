@@ -260,7 +260,8 @@ class Module(object):
 
 
 if __name__ == '__main__':
-    for article in Article.objects.live().all():
+    live_articles = Article.objects.live().filter(has_unpublished_changes=False).all()
+    for article in live_articles:
         print article.page_ptr_id, article,
         article_ = ArticleMigrator(article).formulate_modular_content().save_revision()
         print  article_.unhandled_elements
