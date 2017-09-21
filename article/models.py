@@ -46,7 +46,7 @@ class Article(Page):
                            related_name="translations_by_author",
                            blank=True)
     strap = models.TextField(blank=True)
-    content = RichTextField(blank=True)
+    content = RichTextField(blank=True, verbose_name="Content - Deprecated. Use 'MODULAR CONTENT' instead.")
     modular_content = StreamField([
         ('paragraph', ParagraphBlock()),
         ('n_column_paragraph', NColumnParagraphBlock()),
