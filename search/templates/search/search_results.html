@@ -243,10 +243,11 @@
                           itemtype="http://schema.org/SearchAction" class="search-form">
                         <div>
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 result-label">
-                                <h2>Search results for</h2>
+                                <h2>{% blocktrans trimmed %}Search results for{% endblocktrans %}</h2>
                             </div>
                             <div class="input-box col-lg-9 col-md-9 col-sm-12">
-                                <input type="text" name="q" value="{{ query_string }}" placeholder="Enter to search"
+                                {% trans "Enter to search" as enter %}
+                                <input type="text" name="q" value="{{ query_string }}" placeholder="{{ enter }}"
                                        itemprop="query-input">
                                 <input type="hidden" name="type" value="article" itemprop="query-default-content-type">
                                 <input type="hidden" name="type" value="video" itemprop="query-default-content-type">
@@ -262,7 +263,8 @@
                 </header>
 
                 <div class="no-of-results col-lg-12 col-md-12 col-xs-12 col-sm-12">
-                    <h4>{{ search_results.paginator.count }} Result{% if search_results.paginator.count > 1 %}s{% endif %}</h4>
+                    <h4>{{ search_results.paginator.count }} Result{% if search_results.paginator.count > 1 %}
+                        s{% endif %}</h4>
                     <div class="sort-by">
                         <label>Sort by : </label>
                         <select id="sort-by">
@@ -275,12 +277,13 @@
                 {% include "includes/search_filters.html" with languages=languages %}
                 {% if search_results %}
                     <div>
-                    {% include "includes/two_column_grid.html" with search_results=search_results languages=languages %}
+                        {% include "includes/two_column_grid.html" with search_results=search_results languages=languages %}
                     </div>
                 {% else %}
                     <div class="result-not-found bg-danger col-lg-10 col-md-12">
-                        <p class="not-found-msg">No results found for your query with current filters. Try another query
-                            with different filters.</p>
+                        <p class="not-found-msg">{% blocktrans trimmed %}No results found for your query with current
+                            filters. Try another query
+                            with different filters.{% endblocktrans %}</p>
                     </div>
                 {% endif %}
             </div>
