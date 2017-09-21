@@ -70,7 +70,7 @@
             if (authors) {
                 for (var author in authors) {
                     var authorString = authors[author];
-                    authorString = authorString.replace(/\++/g,' ');
+                    authorString = authorString.replace(/\++/g, ' ');
                     authorString = authorString.replace(/\%26+/g, '&');
                     $("select option[value='" + authorString + "']").attr("selected", "true");
                     $('.chosen').trigger("chosen:updated");
@@ -123,7 +123,7 @@
             });
 
             var queryOn = $(".search-form > input").val();
-              $("input[name='q']").on("change keyup",function (e) {
+            $("input[name='q']").on("change keyup", function (e) {
                 queryOn = $(this).val();
                 $(this).val(queryOn);
             });
@@ -158,15 +158,15 @@
                 if (authors) {
                     for (var author in authors) {
                         var author_string = authors[author];
-                        author_string = author_string.replace(/\s+/g,'+');
-                        author_string = author_string.replace(/\&+/g,'%26');
+                        author_string = author_string.replace(/\s+/g, '+');
+                        author_string = author_string.replace(/\&+/g, '%26');
                         queryParams.push('author' + '=' + author_string);
                     }
                 }
                 var query = $(".search-form > input").val();
-                query = query.replace(/\s+/g,'+').replace(/\&+/g,'%26');
+                query = query.replace(/\s+/g, '+').replace(/\&+/g, '%26');
                 if ($(window).width() > 1199) {
-                   window.location = queryParams.length > 0 ? '/search/?q=' + query + '&' + queryParams.join('&') : '/search/?q=' + query;
+                    window.location = queryParams.length > 0 ? '/search/?q=' + query + '&' + queryParams.join('&') : '/search/?q=' + query;
                 } else if (media_device) {
                     query = queryOn;
                     window.location = queryParams.length > 0 ? '/search/?q=' + query + '&' + queryParams.join('&') : '/search/?q=' + query;
@@ -195,12 +195,12 @@
             });
 
 
-            $(".heading").on("click",function (e) {
+            $(".heading").on("click", function (e) {
                 $(this).toggleClass("collapsed expanded");
             });
 
             function hide_categories() {
-                if($(window).width() < 1199) {
+                if ($(window).width() < 1199) {
                     if ($("input[value='audio']").is(':not(:checked)') && $("input[value='video']").is(':not(:checked)') && $("input[value='article']").is(':not(:checked)')) {
                         clearChildrenCheckBox.call($('.category-filters .clear-all'));
                         $(".category-filters").prev('hr').addClass('hidden')
@@ -213,12 +213,12 @@
             }
 
             $("li:contains('Articles'),li:contains('Videos'), li:contains('Audios')").children("input[type='checkbox']").on('change', function () {
-                  hide_categories.call();
+                hide_categories.call();
 
             });
 
-             $(".type-filters span.clear-all").on('click', function () {
-                  hide_categories.call();
+            $(".type-filters span.clear-all").on('click', function () {
+                hide_categories.call();
             });
         });
 
