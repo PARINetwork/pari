@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # coding: utf-8
 from os.path import abspath, dirname, join
+
 from django.utils.translation import ugettext_lazy as _
 
 # Absolute filesystem path to the Django project directory:
@@ -92,7 +93,6 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'pari.urls'
 WSGI_APPLICATION = 'pari.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
@@ -118,6 +118,7 @@ CACHES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
+INTERNATIONALIZATION = False
 LANGUAGE_CODE = 'en'
 TIME_ZONE = 'Asia/Calcutta'
 USE_I18N = True
@@ -358,7 +359,6 @@ TEMPLATES = [
             'context_processors': global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
                 'django.core.context_processors.request',
                 'core.context_processors.settings',
-                'django.template.context_processors.i18n',
             ),
         },
     },
