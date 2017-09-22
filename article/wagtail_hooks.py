@@ -70,7 +70,7 @@ def editor_js():
 
         <script>
             document.addEventListener("DOMContentLoaded", function() {{
-                $('.char_field.hallo_rich_text_area .richtext').attr('contenteditable', false);
+                $('h2:contains("Content - Deprecated") ~ fieldset .hallo_rich_text_area .richtext').attr('contenteditable', false);
             }});
         </script>
         """,
