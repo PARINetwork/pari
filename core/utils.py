@@ -2,11 +2,17 @@ from django.utils.translation import activate, deactivate_all
 
 from wagtail.wagtailcore.models import Page
 
+from pari import settings
+
 
 def get_translations_for_page(page):
     translations = []
     deactivate_all()
-    activate(page.language)
+    if settings.INTERNATIONALIZATION:
+        activate(settings.LANGUAGE_CODE)
+    else:
+        activate(page.language)
+
     try:
         trans_holder = page.get_children().get(title="Translations")
         if page.live:
@@ -24,7 +30,7 @@ def get_translations_for_page(page):
     return translations
 
 def filter_by_language(request, *items_to_filter):
-    lang = 'en'
+    lang = settings.LANGUAGE_CODE if settings.INTERNATIONALIZATION else 'en'
     filtered_list = []
     if request.GET.get("lang"):
         lang = request.GET["lang"]
