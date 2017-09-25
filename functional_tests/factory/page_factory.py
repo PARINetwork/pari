@@ -29,7 +29,7 @@ class PageFactory(factory.django.DjangoModelFactory):
     show_in_menus = False
     search_description = " "
     go_live_at = '2011-10-24 12:43'
-    expire_at = '2011-10-24 12:43'
+    expire_at = '2050-12-31 12:43'
     expired = False
     content_type = factory.SubFactory(ContentTypeFactory)
     locked = False
