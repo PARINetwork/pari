@@ -57,7 +57,7 @@ class AlbumListTest(TestCase):
         responseSet = self.request_for_albums('talking')
         assert len(responseSet.context_data['albums']) == 2
 
-    def test_count_of_photo_albums_created_should_be_two(self):
+    def test_count_of_photo_albums_created_should_be_one(self):
         response = self.request_for_albums('other')
         assert len(response.context_data['albums']) == 1
 

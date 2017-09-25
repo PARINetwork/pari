@@ -26,7 +26,10 @@ class AlbumList(ListView):
         return qs
 
     def set_album_data(self, context, album_qs, title, subtitle, *args, **kwargs):
-        slide_id = AlbumSlide.objects.exclude(audio='').values_list('page__id')
+        if title == 'Talking Albums':
+            slide_id = AlbumSlide.objects.exclude(audio='').values_list('page__id')
+        else:
+            slide_id = AlbumSlide.objects.filter(audio='').values_list('page__id')
         qs = album_qs.filter(id__in=slide_id)
         qs = qs.order_by('-first_published_at')
         context['albums'] = qs
