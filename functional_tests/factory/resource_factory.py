@@ -29,7 +29,7 @@ class ResourceFactory(factory.django.DjangoModelFactory):
     show_in_menus = False
     search_description = ''
     go_live_at = '1995-02-07 12:00'
-    expire_at = '1995-02-08 12:00'
+    expire_at = '2050-12-31 12:43'
     expired = False
     content_type = factory.SubFactory(ContentTypeFactory, app_label="resource", model="resource")
     locked = False
