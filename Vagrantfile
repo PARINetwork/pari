@@ -22,7 +22,7 @@ end
 Vagrant.configure("2") do |config|
 
   config.vm.define 'pari.machine' do |machine|
-    machine.vm.box = 'ubuntu/trusty64'
+    machine.vm.box = 'pari/devbox'
     machine.vm.network "private_network", ip: "#{IP}"
   end
 
