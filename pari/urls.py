@@ -41,7 +41,7 @@ urlpatterns = [
     url(r'', include(wagtail_urls)),
 ]
 
-if settings.INTERNATIONALIZATION:
+if settings.ENABLE_SITE_LOCALIZATION:
     urlpatterns = i18n_patterns(*urlpatterns)
 
 if settings.DEBUG:
