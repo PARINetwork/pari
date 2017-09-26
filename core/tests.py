@@ -1,16 +1,33 @@
+from bs4 import BeautifulSoup
 from django.core.exceptions import ValidationError
+from django.test import Client, override_settings
 from django.test import RequestFactory
 from django.test import TestCase
+from mock import MagicMock
 from wagtail.wagtailimages.models import Filter
 
 from core import models
-from core.models import HomePageAdminForm, AffixImage
 from core.utils import filter_by_language
-from mock import MagicMock
-
-from functional_tests.factory import ImageFactory, AuthorFactory, LocationFactory, CategoryFactory, \
-    GalleryHomePageFactory
+from functional_tests.factory import ImageFactory, AuthorFactory, LocationFactory, CategoryFactory
 from functional_tests.factory.image_rendition_factory import ImageRenditionFactory
+
+
+class LocalizationTests(TestCase):
+    def setUp(self):
+        self.client = Client()
+
+    def test_default_language_of_a_page_is_en_when_pari_internationalization_is_false(self):
+        response = self.client.get('/pages/acknowledgements/')
+        self.assertEqual(response['Content-Language'],'en')
+
+    @override_settings(ENABLE_SITE_LOCALIZATION = True, LANGUAGE_CODE= 'fr')
+    def test_making_internationalization_true_changes_url_with_language_code(self):
+        response = self.client.get('/pages/donate/')
+        html_response = BeautifulSoup(response.content, 'html5lib')
+        subtitle = html_response.findAll("div", { "class" : "subtitle" })[0].renderContents().strip()
+        subtitle_text_french = 'Nous pouvons le faire sans gouvernements - et le ferons. Nous ne pouvons pas le faire sans vous.'
+        self.assertEqual(response['Content-Language'],'fr')
+        assert subtitle == subtitle_text_french
 
 
 class FilterByLanguageTests(TestCase):

@@ -6,6 +6,10 @@ INSTALLED_APPS += (
     'django_nose',
 )
 
+ENABLE_SITE_LOCALIZATION = False
+LANGUAGE_CODE= 'en'
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',

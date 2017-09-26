@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+
 from functional_tests.base import Page
 
 
