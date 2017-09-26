@@ -18,7 +18,12 @@ class LocalizationTests(TestCase):
 
     def test_default_language_of_a_page_is_en_when_pari_internationalization_is_false(self):
         response = self.client.get('/pages/acknowledgements/')
+        self.assertEqual(response.status_code,200)
         self.assertEqual(response['Content-Language'],'en')
+
+    def test_404_error_when_language_code_in_url_prefix_when_pari_internationalization_is_false(self):
+        response = self.client.get('/en/pages/acknowledgements/')
+        self.assertEqual(response.status_code,404)
 
     @override_settings(ENABLE_SITE_LOCALIZATION = True, LANGUAGE_CODE= 'fr')
     def test_making_internationalization_true_changes_url_with_language_code(self):
