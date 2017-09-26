@@ -8,6 +8,7 @@ DEBUG = False
 # Domain names that this Django site can serve
 ALLOWED_HOSTS = [u'staging.ruralindiaonline.org']
 
+ENABLE_SITE_LOCALIZATION = True
 # Compress static files offline
 # http://django-compressor.readthedocs.org/en/latest/settings/#django.conf.settings.COMPRESS_OFFLINE
 
