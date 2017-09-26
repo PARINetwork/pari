@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n wagtailimages_tags %}
 {% load filters %}
-{% block meta_title %}{% blocktrans with album.title as title%}{{ title }}{% endblocktrans %}{% endblock %}
+{% block meta_title %}{% blocktrans with album.title as title%} {{ title }} {% endblocktrans %}{% endblock %}
 
 
 {% block extra_js %}

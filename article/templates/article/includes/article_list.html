@@ -28,7 +28,7 @@
                                 <div class="dropdown custom-dropdown">
                                     <button class="dropdown-toggle" type="button" id="dropdownMenu1"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        {{ article_translations | length }} languages
+                                        {{ article_translations | length }} {% trans "languages" %}
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu">
@@ -58,7 +58,7 @@
                                 {% trans " in this category." %}
                             {% endif %}
                         {% endfor %}
-                        Please help us
+                        {% trans "Please help us" %}
                         <a class="font-l" href="{% url "contribute" slug="contribute" %}">
                             <span itemprop="name">{% trans "translate." %}</span>
                         </a>

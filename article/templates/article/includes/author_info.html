@@ -40,7 +40,7 @@
                     {% with request.build_absolute_uri as url and author.name as title %}
                             <ul>
                                 <li class="social-icon" data-url="{{ author.get_absolute_url }}">
-                                    <span class="banner-label">Share</span>
+                                    <span class="banner-label">{% trans "Share" %}</span>
                                     <a href="https://twitter.com/intent/tweet?url=http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{% url "author-detail" slug=author.slug %}&amp;hashtags=RuralIndiaOnline&amp;via=PARINetwork" target="_blank" class="link-light">
                                         <i class="fa fa-twitter"></i>
                                     </a>
@@ -62,7 +62,7 @@
                         {% endif %}
                     {% endif %}
                     {%  if show_other_stories %}
-                    <a href="{{ author.get_absolute_url }}" class="btn primary">Other stories by {{ author.name }}</a>
+                    <a href="{{ author.get_absolute_url }}" class="btn primary">{% blocktrans trimmed %} Other stories by {{ author.name }} {% endblocktrans %}</a>
                     {% endif %}
                 </div>
             </div>

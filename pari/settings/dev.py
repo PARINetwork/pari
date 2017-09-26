@@ -3,6 +3,7 @@ import logging
 
 DEBUG = True
 
+ENABLE_SITE_LOCALIZATION = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', u'development.ruralindiaonline.org']

@@ -35,10 +35,10 @@
         {% trans "No articles available for " %}
         {% for lang in LANGUAGES %}
         {% if request.GET.lang == lang.0 %}
-        {% blocktrans with tlang=lang.1 %}{{ tlang }}.{% endblocktrans %}
+        {% blocktrans with tlang=lang.1 %} {{ tlang }} .{% endblocktrans %}
         {% endif %}
         {% endfor %}
-        Please help us
+        {% trans "Please help us" %}
         <a class="font-l" href="{% url "contribute" slug="contribute" %}">
         <span itemprop="name">{% trans "translate." %}</span>
         </a>

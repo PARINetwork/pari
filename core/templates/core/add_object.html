@@ -2,7 +2,7 @@
 <div class="tab-content">
   <header class="active nice-padding">
     <div class="row">
-      <h1>{% blocktrans %}Add {{ name }}{% endblocktrans %}</h1>
+      <h1>{% blocktrans %}Add {{ name }} {% endblocktrans %}</h1>
     </div>
   </header>
   <div class="tab-content">
@@ -16,7 +16,7 @@
 	        {% include "wagtailadmin/shared/field_as_li.html" with field=field %}
 	        {% endif %}
 	        {% endfor %}
-	        <li><input type="submit" value="{% blocktrans %}Add {{ name }}{% endblocktrans %}" /></li>
+	        <li><input type="submit" value="{% blocktrans %}Add {{ name }} {% endblocktrans %}" /></li>
 	      </ul>
       </form>
     </section>

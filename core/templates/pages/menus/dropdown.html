@@ -8,7 +8,7 @@
     <div class="dropdown-menu mega-nav">
         <div>
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <h5>CATEGORIES</h5>
+                <h5>{% trans "CATEGORIES" %}</h5>
                 <ul class="list-unstyled clear-margins">
                     <li>
                         <a itemprop="url" href="{% url "story-detail" slug="things-we-do" %}">
@@ -59,7 +59,7 @@
                         </div>
                     </li>
                     <li>
-                        <div>Stories from near you</div>
+                        <div>{% trans "Stories from near you" %}</div>
 
                         <a class="page-nav-link" href="{% url "map-list" %}">
                         <span itemprop="name">{% trans "The archive on a map" %} <i class="fa fa-angle-double-right"></i></span>
@@ -79,7 +79,7 @@
         <div class="col-lg-7 col-md-12 col-sm-12">
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-4">
-                    <h5>PHOTOS</h5>
+                    <h5>{% trans "PHOTOS" %}</h5>
                     <ul class="list-unstyled clear-margins">
                         <li>
                             <a itemprop="url" href="{% url "other-album-list" %}">
@@ -99,7 +99,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4">
-                    <h5>VIDEOS</h5>
+                    <h5>{% trans "VIDEOS" %}</h5>
                     <ul class="list-unstyled clear-margins">
                         <li>
                             <a itemprop="url" href="{% url "gallery-detail" slug="Little takes" %}">
@@ -115,7 +115,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4">
-                    <h5>AUDIO</h5>
+                    <h5>{% trans "AUDIO" %}</h5>
                     <ul class="list-unstyled clear-margins">
                         <li>
                             <a itemprop="url" href="{% url "gallery-detail" slug="audiozone" %}">
@@ -148,7 +148,7 @@
                             </div>
                         </li>
                         <li>
-                            <span>Explore India’s facial diversity</span>
+                            <span>{% trans "Explore India’s facial diversity" %}</span>
                             <a class="page-nav-link" itemprop="url" href="{% url "face-list" %}">
                             <span itemprop="name">{% trans "View FACES" %} <i class="fa fa-angle-double-right"></i></span>
                             </a>
@@ -163,7 +163,7 @@
                             </div>
                         </li>
                         <li>
-                            <span>Listen to photos speak</span>
+                            <span>{% trans "Listen to photos speak" %}</span>
                              <a class="page-nav-link" itemprop="url" href="{% url "talking-album-list" %}">
                                 <span itemprop="name">{% trans "View Talking Albums" %} <i class="fa fa-angle-double-right"></i></span>
                             </a>
@@ -188,7 +188,7 @@
         <div class="col-lg-7 col-md-12 col-sm-12">
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-4">
-                    <h5>ABOUT PARI</h5>
+                    <h5>{% trans "ABOUT PARI" %}</h5>
                     <ul class="list-unstyled clear-margins">
                         <li>
                             <a itemprop="url"  href="{% url "static_page" slug="about" %}">
@@ -206,7 +206,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4">
-                    <h5>GET INVOLVED</h5>
+                    <h5>{% trans "GET INVOLVED" %}</h5>
                     <ul class="list-unstyled clear-margins">
                         <li>
                             <a  href="{% url "contribute" slug="contribute" %}">
@@ -221,7 +221,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4">
-                    <h5>NOTES</h5>
+                    <h5>{% trans "NOTES" %}</h5>
                     <ul class="list-unstyled clear-margins">
                         <li>
                             <a itemprop="url" href="{% url "static_page" slug="acknowledgements" %}">
@@ -248,7 +248,7 @@
                             </div>
                         </li>
                         <li>
-                            <span>PARI for students, teachers and researchers </span>
+                            <span>{% trans "PARI for students, teachers and researchers" %}</span>
                             <a class="page-nav-link" itemprop="url"  href="{% url "static_page" slug="pari-teachers-students" %}">
                             <span itemprop="name">{% trans "Know more" %} <i class="fa fa-angle-double-right"></i></span>
                             </a>
@@ -264,7 +264,7 @@
                         </li>
                         <li>
 
-                            <span>P. Sainath, Founder Editor</span>
+                            <span>P. Sainath, {% trans "Founder Editor" %}</span>
                             <a class="page-nav-link" itemprop="url" href="{% url "static_page" slug="about-the-editor" %}">
                             <span itemprop="name">{% trans "Know more" %} <i class="fa fa-angle-double-right"></i></span>
                             </a>

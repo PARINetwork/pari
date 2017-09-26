@@ -70,7 +70,7 @@
             if (authors) {
                 for (var author in authors) {
                     var authorString = authors[author];
-                    authorString = authorString.replace(/\++/g,' ');
+                    authorString = authorString.replace(/\++/g, ' ');
                     authorString = authorString.replace(/\%26+/g, '&');
                     $("select option[value='" + authorString + "']").attr("selected", "true");
                     $('.chosen').trigger("chosen:updated");
@@ -123,7 +123,7 @@
             });
 
             var queryOn = $(".search-form > input").val();
-              $("input[name='q']").on("change keyup",function (e) {
+            $("input[name='q']").on("change keyup", function (e) {
                 queryOn = $(this).val();
                 $(this).val(queryOn);
             });
@@ -158,15 +158,15 @@
                 if (authors) {
                     for (var author in authors) {
                         var author_string = authors[author];
-                        author_string = author_string.replace(/\s+/g,'+');
-                        author_string = author_string.replace(/\&+/g,'%26');
+                        author_string = author_string.replace(/\s+/g, '+');
+                        author_string = author_string.replace(/\&+/g, '%26');
                         queryParams.push('author' + '=' + author_string);
                     }
                 }
                 var query = $(".search-form > input").val();
-                query = query.replace(/\s+/g,'+').replace(/\&+/g,'%26');
+                query = query.replace(/\s+/g, '+').replace(/\&+/g, '%26');
                 if ($(window).width() > 1199) {
-                   window.location = queryParams.length > 0 ? '/search/?q=' + query + '&' + queryParams.join('&') : '/search/?q=' + query;
+                    window.location = queryParams.length > 0 ? '/search/?q=' + query + '&' + queryParams.join('&') : '/search/?q=' + query;
                 } else if (media_device) {
                     query = queryOn;
                     window.location = queryParams.length > 0 ? '/search/?q=' + query + '&' + queryParams.join('&') : '/search/?q=' + query;
@@ -195,12 +195,12 @@
             });
 
 
-            $(".heading").on("click",function (e) {
+            $(".heading").on("click", function (e) {
                 $(this).toggleClass("collapsed expanded");
             });
 
             function hide_categories() {
-                if($(window).width() < 1199) {
+                if ($(window).width() < 1199) {
                     if ($("input[value='audio']").is(':not(:checked)') && $("input[value='video']").is(':not(:checked)') && $("input[value='article']").is(':not(:checked)')) {
                         clearChildrenCheckBox.call($('.category-filters .clear-all'));
                         $(".category-filters").prev('hr').addClass('hidden')
@@ -213,12 +213,12 @@
             }
 
             $("li:contains('Articles'),li:contains('Videos'), li:contains('Audios')").children("input[type='checkbox']").on('change', function () {
-                  hide_categories.call();
+                hide_categories.call();
 
             });
 
-             $(".type-filters span.clear-all").on('click', function () {
-                  hide_categories.call();
+            $(".type-filters span.clear-all").on('click', function () {
+                hide_categories.call();
             });
         });
 
@@ -243,10 +243,11 @@
                           itemtype="http://schema.org/SearchAction" class="search-form">
                         <div>
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 result-label">
-                                <h2>Search results for</h2>
+                                <h2>{% blocktrans trimmed %}Search results for{% endblocktrans %}</h2>
                             </div>
                             <div class="input-box col-lg-9 col-md-9 col-sm-12">
-                                <input type="text" name="q" value="{{ query_string }}" placeholder="Enter to search"
+                                {% trans "Enter to search" as enter %}
+                                <input type="text" name="q" value="{{ query_string }}" placeholder="{{ enter }}"
                                        itemprop="query-input">
                                 <input type="hidden" name="type" value="article" itemprop="query-default-content-type">
                                 <input type="hidden" name="type" value="video" itemprop="query-default-content-type">
@@ -262,7 +263,8 @@
                 </header>
 
                 <div class="no-of-results col-lg-12 col-md-12 col-xs-12 col-sm-12">
-                    <h4>{{ search_results.paginator.count }} Result{% if search_results.paginator.count > 1 %}s{% endif %}</h4>
+                    <h4>{{ search_results.paginator.count }} Result{% if search_results.paginator.count > 1 %}
+                        s{% endif %}</h4>
                     <div class="sort-by">
                         <label>Sort by : </label>
                         <select id="sort-by">
@@ -275,12 +277,13 @@
                 {% include "includes/search_filters.html" with languages=languages %}
                 {% if search_results %}
                     <div>
-                    {% include "includes/two_column_grid.html" with search_results=search_results languages=languages %}
+                        {% include "includes/two_column_grid.html" with search_results=search_results languages=languages %}
                     </div>
                 {% else %}
                     <div class="result-not-found bg-danger col-lg-10 col-md-12">
-                        <p class="not-found-msg">No results found for your query with current filters. Try another query
-                            with different filters.</p>
+                        <p class="not-found-msg">{% blocktrans trimmed %}No results found for your query with current
+                            filters. Try another query
+                            with different filters.{% endblocktrans %}</p>
                     </div>
                 {% endif %}
             </div>

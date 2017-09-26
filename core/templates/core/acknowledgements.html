@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% load i18n wagtailcore_tags %}
-{% block meta_title %}Acknowledgements{% endblock %}
-{% block meta_description %}We are greatly indebted to the volunteers, journalists, filmmakers and other contributors who continue to gift us so much time and labour.{% endblock %}
+{% block meta_title %}{% trans "Acknowledgements" %}{% endblock %}
+{% block meta_description %}{% trans "We are greatly indebted to the volunteers, journalists, filmmakers and other contributors who continue to gift us so much time and labour." %}{% endblock %}
 
 {% block opengraph_block %}
-    {% include "core/includes/media_sharing_meta.html" with title="Acknowledgements" description="We are greatly indebted to the volunteers, journalists, filmmakers and other contributors who continue to gift us so much time and labour." url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/default_featured_image.png"%}
+    {% include "core/includes/media_sharing_meta.html" with title=meta_ti description=meta_desc url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/default_featured_image.png"%}
 {% endblock %}
 
 {% block extra_css %}
@@ -15,32 +15,32 @@
 {% block main %}
 <div id="acknowledgements">
     <div class="content container">
-        <h1>Acknowledgments</h1>
-        <p>It was the Founder Chairman of <a href="https://www.thoughtworks.com/" target="_blank">ThoughtWorks</a>,
+        <h1>{% trans "Acknowledgments" %}</h1>
+        {% url 'story-detail' slug='visible-work-invisible-women' as women%}
+        <p>{% blocktrans trimmed %}It was the Founder Chairman of <a href="https://www.thoughtworks.com/" target="_blank">ThoughtWorks</a>,
             Neville Roy Singham, who made me believe that the People’s Archive of Rural India in its present form was
             possible. Roy thought the project was nuts, but loved its audacity. Drawing from a (physical) photo
             exhibition of mine in 2011, he laid out the possibilities of a fully curated photo exhibition – and more –
             online. We were able to use the original text panels online too, and you can see the outcome of that effort
-            on <a href="{% url 'story-detail' slug='visible-work-invisible-women' %}">Visible
-                Work, Invisible Women</a>.</p>
+            on <a href={{ women }}>Visible Work, Invisible Women</a>.{% endblocktrans %}</p>
         <br>
-        <p>At every stage, subsequently, Roy’s ideas and energy pushed forward the making of PARI. No acknowledgement of
-            his contribution can be strong enough.</p>
+        <p>{% blocktrans trimmed %}At every stage, subsequently, Roy’s ideas and energy pushed forward the making of PARI. No acknowledgement of
+            his contribution can be strong enough.{% endblocktrans %}</p>
         <br>
-        <p>When PARI was still a fledgling notion, Prof. Ananya Mukherjee-Reed, now Dean of Faculty, Liberal Arts &
+        <p>{% blocktrans trimmed %}When PARI was still a fledgling notion, Prof. Ananya Mukherjee-Reed, now Dean of Faculty, Liberal Arts &
             Professional Studies of York University, Toronto, made a critical contribution to its ideas, concepts and
-            clarity. The strong education-related component of PARI owes a great deal to her influence.</p>
+            clarity. The strong education-related component of PARI owes a great deal to her influence.{% endblocktrans %}</p>
         <br>
-        <p>Volunteer techies from ThoughtWorks India made the PARI platform possible. Without them, none of this would
+        <p>{% blocktrans trimmed %}Volunteer techies from ThoughtWorks India made the PARI platform possible. Without them, none of this would
             have materialised. Many helped in immeasurable ways, but Manoj Mahalingam (then with TW) and Satish
             Viswanathan played key roles in getting us off the ground. Siddharth Adelkar was and is central to our
-            overall effort. </p>
+            overall effort.{% endblocktrans %} </p>
         <br>
-        <p>As PARI enters Phase 2 of its existence, we have Aditya Dipankar making an astonishing difference to the
+        <p>{% blocktrans trimmed %}As PARI enters Phase 2 of its existence, we have Aditya Dipankar making an astonishing difference to the
             website’s design and appearance. We also have the inimitable Thejaswi Puthraya who is there for us, from
-            before the launch, on all matters tech and some beyond.</p>
+            before the launch, on all matters tech and some beyond.{% endblocktrans %}</p>
         <br>
-        <p>Scores of others helped in big and many ways:</p>
+        <p>{% trans "Scores of others helped in big and many ways" %}:</p>
 
         <hr/>
 
@@ -50,137 +50,138 @@
             <div class="acknowledgements-cols row">
 
                 <div class="col-sm-12 col-md-4 col-lg-4">
-                    <p class="acknowledgements-heading">Software Development Team: Launch Phase</p>
+                    <p class="acknowledgements-heading">{% trans "Software Development Team: Launch Phase" %}</p>
 
-                    <p>Anilkumar Kodi </p>
-                    <p>Aruna Shanmugakumar</p>
-                    <p>Arvind Ram A.</p>
-                    <p>Balachander Swaminathan</p>
-                    <p>Devarajan N.</p>
-                    <p>Dinesh Kumar</p>
-                    <p>Gaurav Manoharrav Ingalkar</p>
-                    <p>Gopinath Jayabalan</p>
-                    <p>Gowri Jayalakshmi R.</p>
-                    <p>Jayakumar Chinnappan (Tech Lead, final lap)</p>
-                    <p>Jeyakar J. Vaiz</p>
-                    <p>Manoj S. Mahalingam (Tech Lead)</p>
-                    <p>Mohit Shankarrao Pote </p>
-                    <p>Mubashar Nadeem Sibgathullah </p>
-                    <p>Pradipta Kundu</p>
-                    <p>Raj Kumar </p>
-                    <p>Ram Ramalingam</p>
-                    <p>Ramalingam Singaravel</p>
-                    <p>Satish Viswanathan</p>
-                    <p>Senthil V. S. </p>
-                    <p>Suganthi Krishnavathi T. </p>
-                    <p>Thejaswi Puthraya </p>
-                    <p>Vivek Singh </p>
+                    {% comment %}Translators: If your target language uses a non-Roman script, please do your best to transliterate the names that follow.{% endcomment %}
+                    <p>{% trans "Anilkumar Kodi " %}</p>
+                    <p>{% trans "Aruna Shanmugakumar" %}</p>
+                    <p>{% trans "Arvind Ram A." %}</p>
+                    <p>{% trans "Balachander Swaminathan" %}</p>
+                    <p>{% trans "Devarajan N." %}</p>
+                    <p>{% trans "Dinesh Kumar" %}</p>
+                    <p>{% trans "Gaurav Manoharrav Ingalkar" %}</p>
+                    <p>{% trans "Gopinath Jayabalan" %}</p>
+                    <p>{% trans "Gowri Jayalakshmi R." %}</p>
+                    <p>{% trans "Jayakumar Chinnappan (Tech Lead, final lap)" %}</p>
+                    <p>{% trans "Jeyakar J. Vaiz" %}</p>
+                    <p>{% trans "Manoj S. Mahalingam (Tech Lead)" %}</p>
+                    <p>{% trans "Mohit Shankarrao Pote " %}</p>
+                    <p>{% trans "Mubashar Nadeem Sibgathullah " %}</p>
+                    <p>{% trans "Pradipta Kundu" %}</p>
+                    <p>{% trans "Raj Kumar" %} </p>
+                    <p>{% trans "Ram Ramalingam" %}</p>
+                    <p>{% trans "Ramalingam Singaravel" %}</p>
+                    <p>{% trans "Satish Viswanathan" %}</p>
+                    <p>{% trans "Senthil V. S. " %}</p>
+                    <p>{% trans "Suganthi Krishnavathi T. " %}</p>
+                    <p>{% trans "Thejaswi Puthraya " %}</p>
+                    <p>{% trans "Vivek Singh " %}</p>
 
                 </div>
 
                 <div class="col-sm-12 col-md-4 col-lg-4">
 
-                    <p class="acknowledgements-heading">Logistics Team</p>
-                    <p>Baskar G.</p>
-                    <p>Karthik T. </p>
-                    <p>Poornima R. S.</p>
-                    <p>Ratnakar Nath</p>
+                    <p class="acknowledgements-heading">{% trans "Logistics Team" %}</p>
+                    <p>{% trans "Baskar G." %}</p>
+                    <p>{% trans "Karthik T. " %}</p>
+                    <p>{% trans "Poornima R. S." %}</p>
+                    <p>{% trans "Ratnakar Nath" %}</p>
 
-                    <p class="acknowledgements-heading">Swecha Technology Team</p>
-                    <p>Bhuvan Krishna</p>
-                    <p>Kiran Chandra</p>
-                    <p>Praveen Chandrahas</p>
-
-
-                    <p class="acknowledgements-heading">Digital Archivist </p>
-                    <p>Venkataraaman S.</p>
+                    <p class="acknowledgements-heading">{% trans "Swecha Technology Team" %}</p>
+                    <p>{% trans "Bhuvan Krishna" %}</p>
+                    <p>{% trans "Kiran Chandra" %}</p>
+                    <p>{% trans "Praveen Chandrahas" %}</p>
 
 
-                    <p class="acknowledgements-heading">Software Development Team: Design Phase</p>
-                    <p>Deepan Rajkumar R.</p>
-                    <p>Deepthi R. (Tech Lead)</p>
-                    <p> Gayathri M. (Team Lead)</p>
-                    <p>Jayakumar Chinnappan (Tech Lead)</p>
-                    <p>Lokesh S.</p>
-                    <p> Nimesh P.</p>
-                    <p>Olivia Waring</p>
-                    <p>Sankar P.</p>
-                    <p>Satish Viswanathan</p>
-                    <p> Venkatesa Madhan </p>
-                    <p>Vidhyalakshmi S.</p>
-                    <p>Vinoth Kumar R.</p>
+                    <p class="acknowledgements-heading">{% trans "Digital Archivist" %}</p>
+                    <p>{% trans "Venkataraaman S." %}</p>
+
+
+                    <p class="acknowledgements-heading">{% trans "Software Development Team: Design Phase" %}</p>
+                    <p>{% trans "Deepan Rajkumar R." %}</p>
+                    <p>{% trans "Deepthi R. (Tech Lead)" %}</p>
+                    <p>{% trans "Gayathri M. (Team Lead)" %}</p>
+                    <p>{% trans "Jayakumar Chinnappan (Tech Lead)" %}</p>
+                    <p>{% trans "Lokesh S." %}</p>
+                    <p> {% trans "Nimesh P." %}</p>
+                    <p>{% trans "Olivia Waring" %}</p>
+                    <p>{% trans "Sankar P." %}</p>
+                    <p>{% trans "Satish Viswanathan" %}</p>
+                    <p> {% trans "Venkatesa Madhan" %}</p>
+                    <p>{% trans "Vidhyalakshimi S." %}</p>
+                    <p>{% trans "Vinoth Kumar R." %}</p>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-4">
 
-                    <p class="acknowledgements-heading">Inception Team</p>
-                    <p>David Siang Fong Oh</p>
-                    <p>Kartik Kannan</p>
-                    <p>Koundinya Goparaju</p>
-                    <p>Nikhileshwar Gamedhar</p>
-                    <p>Ruchi Mahajan</p>
-                    <p>Shashank Raghavendra</p>
+                    <p class="acknowledgements-heading">{% trans "Inception Team" %}</p>
+                    <p>{% trans "David Siang Fong Oh" %}</p>
+                    <p>{% trans "Kartik Kannan" %}</p>
+                    <p>{% trans "Koundinya Goparaju" %}</p>
+                    <p>{% trans "Nikhileshwar Gamedhar" %}</p>
+                    <p>{% trans "Ruchi Mahajan" %}</p>
+                    <p>{% trans "Shashank Raghavendra" %}</p>
 
-                    <p class="acknowledgements-heading">Design Team</p>
-                    <p>Aditya Dipankar (Team Lead)</p>
-                    <p>Gaurav Sharma</p>
-                    <p>Samir Bellare</p>
-                    <p>Shiraz Iqbal</p>
-                    <p>Suvani Suri</p>
+                    <p class="acknowledgements-heading">{% trans "Design Team" %}</p>
+                    <p>{% trans "Aditya Dipankar (Team Lead)" %}</p>
+                    <p>{% trans "Gaurav Sharma" %}</p>
+                    <p>{% trans "Samir Bellare" %}</p>
+                    <p>{% trans "Shiraz Iqbal" %}</p>
+                    <p>{% trans "Suvani Suri" %}</p>
 
 
-                    <p class="acknowledgements-heading">Legal Advisers</p>
-                    <p>Rina Kamath</p>
-                    <p>Rishab Bailey</p>
+                    <p class="acknowledgements-heading">{% trans "Legal Advisers" %}</p>
+                    <p>{% trans "Rina Kamath" %}</p>
+                    <p>{% trans "Rishab Bailey" %}</p>
 
 
                 </div>
             </div>
             <hr/>
             <div>
-                <p class="acknowledgements-heading">Translators</p>
+                <p class="acknowledgements-heading">{% trans "Translators" %}</p>
                 <div class="acknowledgements-cols row">
 
                     <div class="col-sm-12 col-md-4 col-lg-4">
 
-                        <p class="acknowledgements-heading">Crazy Frog Media Team</p>
-                        <p>Mohan G.N. (Lead)</p>
-                        <p>Prasad Naik</p>
-                        <p>Rajaram Tallur</p>
-                        <p>Sandhyarani N.</p>
-                        <p>Santosh Tamprapani</p>
-                        <p>Shama Nandibetta</p>
+                        <p class="acknowledgements-heading">{% trans "Crazy Frog Media Team" %}</p>
+                        <p>{% trans "Mohan G.N. (Lead)" %}</p>
+                        <p>{% trans "Prasad Naik" %}</p>
+                        <p>{% trans "Rajaram Tallur" %}</p>
+                        <p>{% trans "Sandhyarani N." %}</p>
+                        <p>{% trans "Santosh Tamprapani" %}</p>
+                        <p>{% trans "Shama Nandibetta" %}</p>
 
-                        <p class="acknowledgements-heading">Other Translators</p>
-                        <p>Chandan Dey</p>
-                        <p>Chinta T. K.</p>
-
-
-                    </div>
-                    <div class="col-sm-12 col-md-4 col-lg-4">
-                        <p>Debasmita Bhowmik</p>
-                        <p>Hemant Shah</p>
-                        <p>Jyotsna V.</p>
-                        <p>Medha Kale</p>
-                        <p>Naren H.R.</p>
-                        <p>Nibha Rani Roy</p>
-                        <p>Pallavi Kulkarni</p>
-                        <p>Pallavi Malshe</p>
-                        <p>Pushpa Kandaswamy</p>
-                        <p>Qamar Tabrez</p>
+                        <p class="acknowledgements-heading">{% trans "Other Translators" %}</p>
+                        <p>{% trans "Chandan Dey" %}</p>
+                        <p>{% trans "Chinta T. K." %}</p>
 
 
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-4">
-                        <p>Ratna Bharali Talukdar</p>
-                        <p>Saravanan P.K.</p>
-                        <p>Shaji K.A.</p>
-                        <p>Shirish Khare</p>
-                        <p>Siddharth Chakrabarti</p>
-                        <p>Subramanian Sundararaman</p>
-                        <p>Uma Maheshwari</p>
-                        <p>Usha Turaga-Revelli</p>
-                        <p>Vilasini</p>
-                        <p>Vishnu Varatharajan</p>
+                        <p>{% trans "Debasmita Bhowmik" %}</p>
+                        <p>{% trans "Hemant Shah" %}</p>
+                        <p>{% trans "Jyotsna V." %}</p>
+                        <p>{% trans "Medha Kale" %}</p>
+                        <p>{% trans "Naren H.R." %}</p>
+                        <p>{% trans "Nibha Rani Roy" %}</p>
+                        <p>{% trans "Pallavi Kulkarni" %}</p>
+                        <p>{% trans "Pallavi Malshe" %}</p>
+                        <p>{% trans "Pushpa Kandaswamy" %}</p>
+                        <p>{% trans "Qamar Tabrez" %}</p>
+
+
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                        <p>{% trans "Ratna Bharali Talukdar" %}</p>
+                        <p>{% trans "Saravanan P.K." %}</p>
+                        <p>{% trans "Shaji K.A." %}</p>
+                        <p>{% trans "Shirish Khare" %}</p>
+                        <p>{% trans "Siddharth Chakrabarti" %}</p>
+                        <p>{% trans "Subramanian Sundararaman" %}</p>
+                        <p>{% trans "Uma Maheshwari" %}</p>
+                        <p>{% trans "Usha Turaga-Revelli" %}</p>
+                        <p>{% trans "Vilasini" %}</p>
+                        <p>{% trans "Vishnu Varatharajan" %}</p>
 
                     </div>
                 </div>
@@ -188,54 +189,54 @@
             <hr/>
 
             <div>
-                <p class="acknowledgements-heading">Core Group, Support, Admin</p>
+                <p class="acknowledgements-heading">{% trans "Core Group, Support, Admin" %}</p>
                 <div class="acknowledgements-cols row">
                     <div class="col-sm-12 col-md-4 col-lg-4">
 
-                        <p>Aditi Chandrasekhar</p>
-                        <p>Amita Joseph</p>
-                        <p>Amiya Pani</p>
-                        <p>Aparna Karthikeyan</p>
-                        <p>Bharat Patil</p>
-                        <p>Bini Bharucha</p>
-                        <p>Biraj Patnaik</p>
-                        <p>Chitrangada Choudhury</p>
-                        <p>Deepa Bhatia</p>
-                        <p>Divya Jain</p>
-                        <p>Gauri Adelkar</p>
-                        <p>Hutokshi Doctor</p>
-                        <p>Jaideep Hardikar</p>
-                        <p>Jayati Vora</p>
+                        <p>{% trans "Aditi Chandrasekhar" %}</p>
+                        <p>{% trans "Amita Joseph" %}</p>
+                        <p>{% trans "Amiya Pani" %}</p>
+                        <p>{% trans "Aparna Karthikeyan" %}</p>
+                        <p>{% trans "Bharat Patil" %}</p>
+                        <p>{% trans "Bini Bharucha" %}</p>
+                        <p>{% trans "Biraj Patnaik" %}</p>
+                        <p>{% trans "Chitrangada Choudhury" %}</p>
+                        <p>{% trans "Deepa Bhatia" %}</p>
+                        <p>{% trans "Divya Jain" %}</p>
+                        <p>{% trans "Gauri Adelkar" %}</p>
+                        <p>{% trans "Hutokshi Doctor" %}</p>
+                        <p>{% trans "Jaideep Hardikar" %}</p>
+                        <p>{% trans "Jayati Vora" %}</p>
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-4">
-                        <p>Kavita Carneiro</p>
-                        <p>Lubaina Kitabi</p>
-                        <p>Madhusree Mukerjee</p>
-                        <p>Mathew Cherian</p>
-                        <p>Mausumi Bhattacharyya</p>
-                        <p>Namita Waikar</p>
-                        <p>Naveen Roy Benadict</p>
-                        <p>Olivia Waring</p>
-                        <p>Onkar Mandlekar</p>
-                        <p>Praveen Chandrahas</p>
-                        <p>Purusottam Thakur</p>
-                        <p>Revathi R.</p>
-                        <p>Rishab Bailey</p>
+                        <p>{% trans "Kavita Carneiro" %}</p>
+                        <p>{% trans "Lubaina Kitabi" %}</p>
+                        <p>{% trans "Madhusree Mukerjee" %}</p>
+                        <p>{% trans "Mathew Cherian" %}</p>
+                        <p>{% trans "Mausumi Bhattacharyya" %}</p>
+                        <p>{% trans "Namita Waikar" %}</p>
+                        <p>{% trans "Naveen Roy Benadict" %}</p>
+                        <p>{% trans "Olivia Waring" %}</p>
+                        <p>{% trans "Onkar Mandlekar" %}</p>
+                        <p>{% trans "Praveen Chandrahas" %}</p>
+                        <p>{% trans "Purusottam Thakur" %}</p>
+                        <p>{% trans "Revathi R." %}</p>
+                        <p>{% trans "Rishab Bailey" %}</p>
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-4">
-                        <p>Sainath P.</p>
-                        <p>Samyukta Shastri</p>
-                        <p>Satish Viswanathan</p>
-                        <p>Shalini Singh</p>
-                        <p>Sharmila Joshi</p>
-                        <p>Shreya Katyayini</p>
-                        <p>Siddharth Adelkar</p>
-                        <p>Sinchita Maji</p>
-                        <p>Sweta Daga</p>
-                        <p>Sukhada Tatke</p>
-                        <p>Thejaswi Puthraya</p>
-                        <p>Urvashi Sarkar</p>
-                        <p>Vidyut Kale</p>
+                        <p>{% trans "Sainath P." %}</p>
+                        <p>{% trans "Samyukta Shastri" %}</p>
+                        <p>{% trans "Satish Viswanathan" %}</p>
+                        <p>{% trans "Shalini Singh" %}</p>
+                        <p>{% trans "Sharmila Joshi" %}</p>
+                        <p>{% trans "Shreya Katyayini" %}</p>
+                        <p>{% trans "Siddharth Adelkar" %}</p>
+                        <p>{% trans "Sinchita Maji" %}</p>
+                        <p>{% trans "Sweta Daga" %}</p>
+                        <p>{% trans "Sukhada Tatke" %}</p>
+                        <p>{% trans "Thejaswi Puthraya" %}</p>
+                        <p>{% trans "Urvashi Sarkar" %}</p>
+                        <p>{% trans "Vidyut Kale" %}</p>
                     </div>
 
                 </div>
@@ -243,20 +244,20 @@
             <hr/>
 
         </div>
-        <p>A very special thanks to P.R. Gandhi, Kartik Shah, Deepak Soni and Eesha Thakkar of P.R. Gandhi & Co, Mumbai,
-            and Prakash Shah of Delhi, for their invaluable assistance.</p>
+        <p>{% blocktrans trimmed %}A very special thanks to P.R. Gandhi, Kartik Shah, Deepak Soni and Eesha Thakkar of P.R. Gandhi & Co, Mumbai,
+            and Prakash Shah of Delhi, for their invaluable assistance.{% endblocktrans %}</p>
         <br>
-        <p>We also wish to acknowledge the huge encouragement and support we have got, and continue to get, from
+        <p>{% blocktrans trimmed %}We also wish to acknowledge the huge encouragement and support we have got, and continue to get, from
             individuals like  Abhijit Dutta, Anil Choudhury, Mariam Ram, Romi Mahajan, Sudarshan Loyalka, Sudhanva
-            Deshpande and Vijay Prashad. </p>
+            Deshpande and Vijay Prashad.{% endblocktrans %}</p>
         <br>
-        <p>We are greatly indebted to the volunteers, journalists, filmmakers and other contributors who continue to
+        <p>{% blocktrans trimmed %}We are greatly indebted to the volunteers, journalists, filmmakers and other contributors who continue to
             gift us so much time and labour. They are too many in number to list here. There may be a few names we’ve
             missed out for which we seek pardon. There are also some whom we cannot name because, alas, of where they
-            are working.</p>
+            are working.{% endblocktrans %}</p>
         <br>
         <h3>P. Sainath</h3>
-        <h3>Founder Editor, PARI</h3>
+        <h3>{% trans "Founder Editor, PARI" %}</h3>
 
     </div>
 </div>

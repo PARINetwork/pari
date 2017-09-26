@@ -112,14 +112,13 @@
                                   <img src="{{ STATIC_URL }}img/logo.png" title="{{ page.title }}" alt="{{ page.title }}" class="logo img-responsive">
                               </a>
                               <div class="header-title-wrapper-fullscreen {% if current_page != 'home-page' %} hidden {% endif %}">
-                                  <div class="navbar-brand-title-fullscreen ">People's Archive of Rural India</div>
-                                  <div class="navbar-brand-sub-title center"><span>THE EVERYDAY LIVES OF EVERYDAY PEOPLE</span></div>
+                                  <div class="navbar-brand-title-fullscreen ">{% trans "People's Archive of Rural India" %}</div>
+                                  <div class="navbar-brand-sub-title center"><span>{% trans "THE EVERYDAY LIVES OF EVERYDAY PEOPLE" %}</span></div>
                               </div>
                               <div class="header-title-wrapper">
-                                  <div class="navbar-brand-title hidden-sm {% if current_page == 'home-page' %} hidden {% endif %}">People's Archive of Rural India</div>
-                                  <div class="navbar-brand-sub-title hidden-sm hidden"><span>THE EVERYDAY LIVES OF EVERYDAY PEOPLE</span></div>
+                                  <div class="navbar-brand-title hidden-sm {% if current_page == 'home-page' %} hidden {% endif %}">{% trans "People's Archive of Rural India" %}</div>
+                                  <div class="navbar-brand-sub-title hidden-sm hidden"><span>{% trans "THE EVERYDAY LIVES OF EVERYDAY PEOPLE" %}</span></div>
                               </div>
-
                           </div>
                       </div>
                       <div class="col-lg-8 col-md-8 col-sm-11">

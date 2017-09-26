@@ -5,32 +5,32 @@
 {% endif %}
 
 {% if face.age %}
-    <div class='face-label'>AGE</div>
+    <div class='face-label'>{% trans "AGE" %}</div>
     <div class='face-value'>{{ face.age }}</div>
 {% endif %}
 
 {% if face.occupation %}
-    <div class='face-label'>OCCUPATION</div>
+    <div class='face-label'>{% trans "OCCUPATION" %}</div>
     <div class='face-value'>{{ face.occupation }}</div>
 {% endif %}
 
 {% if face.occupation_of_parent %}
-    <div class='face-label'>PARENTS' OCCUPATION</div>
+    <div class='face-label'>{% trans "PARENTS' OCCUPATION" %}</div>
     <div class='face-value'>{{ face.occupation_of_parent }}</div>
 {% endif %}
 
 {% if face.adivasi %}
-    <div class='face-label'>ADIVASI</div>
+    <div class='face-label'>{% trans "ADIVASI" %}</div>
     <div class='face-value'>{{ face.adivasi }}</div>
 {% endif %}
 
 {% if face.location.name %}
-    <div class='face-label'>VILLAGE</div>
+    <div class='face-label'>{% trans "VILLAGE" %}</div>
     <div class='face-value'>{{ face.location.name }}</div>
 {% endif %}
 
 {% if face.location.panchayat %}
-    <div class='face-label'>PANCHAYAT</div>
+    <div class='face-label'>{% trans "PANCHAYAT" %}</div>
     <div class='face-value'>{{ face.location.panchayat }}</div>
 {% endif %}
 
@@ -40,42 +40,42 @@
 {% endif %}
 
 {% if face.location.district %}
-    <div class='face-label'>DISTRICT</div>
+    <div class='face-label'>{% trans "DISTRICT" %}</div>
     <div class='face-value'>{{ face.location.district }}</div>
 {% endif %}
 
 {% if face.location.state %}
-    <div class='face-label'>STATE</div>
+    <div class='face-label'>{% trans "STATE" %}</div>
     <div class='face-value'>{{ face.location.state }}</div>
 {% endif %}
 
 {% if face.image.photographers.all %}
-    <div class='face-label'>PHOTOGRAPHER</div>
+    <div class='face-label'>{% trans "PHOTOGRAPHER" %}</div>
     <div class='face-value'>{{ face.image.photographers.all|join:", "}}</div>
 {% endif %}
 
 {% if face.image.camera %}
-    <div class='face-label'>CAMERA</div>
+    <div class='face-label'>{% trans "CAMERA" %}</div>
     <div class='face-value'>{{ face.image.camera }}</div>
 {% endif %}
 
 {% if face.image.date %}
-    <div class='face-label'>DATE PHOTO WAS TAKEN</div>
+    <div class='face-label'>{% trans "DATE PHOTO WAS TAKEN" %}</div>
     <div class='face-value'>{{ face.image.date|date:'M d, Y' }}</div>
 {% endif %}
 
 {% if face.location not in face.image.locations.all and face.image.locations.all %}
-    <div class='face-label'>PHOTO TAKEN IN</div>
+    <div class='face-label'>{% trans "PHOTO TAKEN IN" %}</div>
     <div class='face-value'>{{ face.image.locations.all|join:". "}}</div>
 {% endif %}
 
 {% if face.quote  %}
-    <div class='face-label'>QUOTE</div>
+    <div class='face-label'>{% trans "QUOTE" %}</div>
     <div class='face-value'>{{ face.quote }}</div>
 {% endif %}
 
 {% if face.additional_info %}
-    <div class='face-label'>ADDITIONAL INFORMATION</div>
+    <div class='face-label'>{% trans "ADDITIONAL INFORMATION" %}</div>
     <div class='face-value'>{{ face.additional_info }}</div>
 {% endif %}
 

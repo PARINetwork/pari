@@ -1,11 +1,11 @@
 from functional_tests.base import Test
-from functional_tests.pages import HomePage
-from functional_tests.factory import HomePageFactory
-from functional_tests.factory import AuthorFactory
-from functional_tests.factory import LocationFactory
-from functional_tests.factory import CategoryFactory
-from functional_tests.factory import ImageFactory
 from functional_tests.data_setup import DataSetup
+from functional_tests.factory import AuthorFactory
+from functional_tests.factory import CategoryFactory
+from functional_tests.factory import HomePageFactory
+from functional_tests.factory import ImageFactory
+from functional_tests.factory import LocationFactory
+from functional_tests.pages import HomePage
 
 class TestHomePage(Test):
     home_page = None

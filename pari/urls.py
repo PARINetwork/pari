@@ -1,6 +1,7 @@
 import os
 
 from django.conf.urls import include, url
+from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
@@ -10,7 +11,6 @@ from wagtail.wagtailsearch import urls as wagtailsearch_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtailimages import urls as wagtailimages_urls
-
 
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
@@ -41,6 +41,8 @@ urlpatterns = [
     url(r'', include(wagtail_urls)),
 ]
 
+if settings.ENABLE_SITE_LOCALIZATION:
+    urlpatterns = i18n_patterns(*urlpatterns)
 
 if settings.DEBUG:
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
