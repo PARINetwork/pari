@@ -8,7 +8,7 @@ from pari import settings
 def get_translations_for_page(page):
     translations = []
     deactivate_all()
-    if settings.INTERNATIONALIZATION:
+    if settings.ENABLE_SITE_LOCALIZATION:
         activate(settings.LANGUAGE_CODE)
     else:
         activate(page.language)
@@ -30,7 +30,7 @@ def get_translations_for_page(page):
     return translations
 
 def filter_by_language(request, *items_to_filter):
-    lang = settings.LANGUAGE_CODE if settings.INTERNATIONALIZATION else 'en'
+    lang = settings.LANGUAGE_CODE if settings.ENABLE_SITE_LOCALIZATION else 'en'
     filtered_list = []
     if request.GET.get("lang"):
         lang = request.GET["lang"]

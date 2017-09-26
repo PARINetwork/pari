@@ -118,7 +118,7 @@ CACHES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-INTERNATIONALIZATION = False
+ENABLE_SITE_LOCALIZATION = False
 LANGUAGE_CODE = 'en'
 TIME_ZONE = 'Asia/Calcutta'
 USE_I18N = True

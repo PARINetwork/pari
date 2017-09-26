@@ -43,6 +43,8 @@ echo "Starting xvfb"
 export DISPLAY=:99
 Xvfb -ac :99 > /dev/null 2>&1 &
 
+export PATH=$PATH:$PWD/geckodriver
+
 echo "Running test"
 python manage.py test --settings=pari.settings.test --keepdb --nologcapture --verbosity=2
 
