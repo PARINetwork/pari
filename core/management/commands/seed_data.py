@@ -1,8 +1,11 @@
 from django.contrib.auth.models import User
 from django.core.management.base import BaseCommand, CommandError
+from wagtail.wagtailcore.models import Site
 from functional_tests.factory import *
 from category.models import Category
 from django.template import loader, Context
+from wagtail.wagtailcore.models import Page
+
 import shutil
 import os
 
@@ -11,6 +14,9 @@ class Command(BaseCommand):
     help = 'Setup initial data for the application'
 
     def handle(self, *args, **options):
+        site = Site.objects.all()[ 0 ]
+        site.root_page = Page.objects.get(title='Root')
+        site.save()
         sainath_bio = "P. Sainath is the founder-editor of the People's Archive of Rural India. He has been a rural reporter for decades and is the author of 'Everybody Loves a Good Drought'"
         namita_bio = "Namita Waikar is a writer, translator and the managing editor of PARI. She is a partner in a chemistry databases firm, and has worked as a biochemist and a software project manager"
         sainath = AuthorFactory(name="P.Sainath", slug="sainath", email="psainath@gmail.com", facebook_username="",
