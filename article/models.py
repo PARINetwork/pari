@@ -6,7 +6,7 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.functional import cached_property
 from elasticsearch import ConnectionError
-from modelcluster.fields import M2MField
+from modelcluster.fields import ParentalManyToManyField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, \
     MultiFieldPanel, FieldRowPanel, StreamFieldPanel
 from wagtail.wagtailcore.fields import RichTextField, StreamField
@@ -41,8 +41,8 @@ Page.url = url_property
 
 @python_2_unicode_compatible
 class Article(Page):
-    authors = M2MField("author.Author", related_name="articles_by_author")
-    translators = M2MField("author.Author",
+    authors = ParentalManyToManyField("author.Author", related_name="articles_by_author")
+    translators = ParentalManyToManyField("author.Author",
                            related_name="translations_by_author",
                            blank=True)
     strap = models.TextField(blank=True)
@@ -77,8 +77,8 @@ class Article(Page):
                                        on_delete=models.SET_NULL)
     show_featured_image = models.BooleanField(default=True)
 
-    categories = M2MField("category.Category", related_name="articles_by_category")
-    locations = M2MField("location.Location", related_name="articles_by_location", blank=True)
+    categories = ParentalManyToManyField("category.Category", related_name="articles_by_category")
+    locations = ParentalManyToManyField("location.Location", related_name="articles_by_location", blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('strap'),

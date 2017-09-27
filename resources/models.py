@@ -12,7 +12,7 @@ from wagtail.wagtailadmin.edit_handlers import FieldPanel, \
     StreamFieldPanel
 from wagtail.wagtailsearch import index
 
-from modelcluster.fields import M2MField
+from modelcluster.fields import ParentalManyToManyField
 
 from core.utils import SearchBoost
 
@@ -28,7 +28,7 @@ class Resource(Page):
     ])
     embed_url = models.URLField()
     embed_thumbnail = models.TextField(blank=True, null=True)
-    categories = M2MField("category.Category",
+    categories = ParentalManyToManyField("category.Category",
                           related_name="resources_by_category")
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
 
