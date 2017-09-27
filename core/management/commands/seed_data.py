@@ -14,9 +14,13 @@ class Command(BaseCommand):
     help = 'Setup initial data for the application'
 
     def handle(self, *args, **options):
+        # Setting up root
         site = Site.objects.all()[ 0 ]
+        site.hostname = "development.ruralindiaonline.org"
         site.root_page = Page.objects.get(title='Root')
         site.save()
+
+        #seed data setup
         sainath_bio = "P. Sainath is the founder-editor of the People's Archive of Rural India. He has been a rural reporter for decades and is the author of 'Everybody Loves a Good Drought'"
         namita_bio = "Namita Waikar is a writer, translator and the managing editor of PARI. She is a partner in a chemistry databases firm, and has worked as a biochemist and a software project manager"
         sainath = AuthorFactory(name="P.Sainath", slug="sainath", email="psainath@gmail.com", facebook_username="",
@@ -66,7 +70,7 @@ class Command(BaseCommand):
 
         HomePageFactory.create(carousel_0=article1, carousel_1=article2, in_focus_page1=article1,
                                in_focus_page2=article2, video=video_article, talking_album=talking_album,
-                               photo_album=photo_album, title='Home Page')
+                               photo_album=photo_album, title='Peoples Archive of rural india', slug="home-page")
         GalleryHomePageFactory.create(photo_of_the_week=image1, video=video_article, talking_album=talking_album,
                                photo_album=photo_album, title='Gallery Home Page')
 
