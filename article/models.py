@@ -14,7 +14,7 @@ from wagtail.wagtailcore.models import Page, Site
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 from wagtail.wagtailsearch.backends import get_search_backend
-from wagtail.wagtailsearch.backends.elasticsearch import ElasticSearchMapping
+from wagtail.wagtailsearch.backends.elasticsearch import ElasticsearchMapping
 
 from article.streamfields.blocks import FullWidthImageBlock, ParagraphBlock, \
     ParagraphWithBlockQuoteBlock, NColumnParagraphBlock, FullWidthBlockQuote, \
@@ -181,7 +181,7 @@ class Article(Page):
 
         max_results = getattr(settings, "MAX_RELATED_RESULTS", 4)
         es_backend = get_search_backend()
-        mapping = ElasticSearchMapping(self.__class__)
+        mapping = ElasticsearchMapping(self.__class__)
 
         minimal_locations = ""
         if (self.get_minimal_locations()):

@@ -374,7 +374,7 @@ class AffixImage(AbstractImage):
     def __str__(self):
         return self.title
 
-    search_fields = AbstractImage.search_fields + (
+    search_fields = AbstractImage.search_fields + [
         index.SearchField('get_locations_index', partial_match=True),
         index.SearchField('people', partial_match=True),
         index.SearchField('event', partial_match=True),
@@ -383,7 +383,7 @@ class AffixImage(AbstractImage):
         index.FilterField('published_date'),
         index.FilterField('camera'),
         index.FilterField('get_all_photographers'),
-    )
+    ]
 
     def get_all_photographers(self):
         photographers = []

@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models, migrations
 import django.db.models.deletion
-import wagtail.wagtailadmin.taggable
+import wagtail.wagtailsearch.index
 import wagtail.wagtailimages.models
 import wagtail.wagtailcore.blocks
 import wagtail.wagtailcore.fields
@@ -49,7 +49,7 @@ class Migration(migrations.Migration):
             options={
                 'abstract': False,
             },
-            bases=(models.Model, wagtail.wagtailadmin.taggable.TagSearchable),
+            bases=(models.Model, wagtail.wagtailsearch.index.Indexed),
         ),
         migrations.CreateModel(
             name='AffixImageRendition',
