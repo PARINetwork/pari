@@ -62,7 +62,7 @@
                         {% endif %}
                     {% endif %}
                     {%  if show_other_stories %}
-                    <a href="{{ author.get_absolute_url }}" class="btn primary">{% blocktrans trimmed %} Other stories by {{ author.name }} {% endblocktrans %}</a>
+                    <a href="{{ author.get_absolute_url }}" class="btn primary">{% blocktrans%} Other stories by {% endblocktrans %} {%  trans author.name %}</a>
                     {% endif %}
                 </div>
             </div>
