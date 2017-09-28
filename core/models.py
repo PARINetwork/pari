@@ -425,13 +425,13 @@ class AffixImageRendition(AbstractRendition):
 
     class Meta:
         unique_together = (
-            ('image', 'filter', 'focal_point_key'),
+            ('image', 'filter_spec', 'focal_point_key'),
         )
 
     def img_tag(self, extra_attributes=''):
         fw_format = get_image_format("fullwidth")
         extra_attrs = extra_attributes or ''
-        if fw_format.filter_spec == self.filter.spec:
+        if fw_format.filter_spec == self.filter_spec:
             return fw_format.image_to_html(
                 self.image, self.image.title, extra_attrs
             )
