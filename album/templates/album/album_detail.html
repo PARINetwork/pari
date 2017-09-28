@@ -179,7 +179,7 @@
                         <div>
                             <ul>
                                 <li class="social-icon">
-                                    <span class="banner-label">{% trans "Share" %}</span>
+                                    <span class="banner-label">{% endverbatim %}{% trans "Share" %}{% verbatim %}</span>
                                     <a target="_blank"
                                        href="{{:twitterShare}}">
                                         <i class="fa fa-twitter"></i>
@@ -196,7 +196,7 @@
                         {{if bio}}
                             <p class="author-bio">{{:bio}}</p>
                         {{/if}}
-                        <a href="{{:url}}" class="btn primary">{% trans "Other stories by" %} {{:name}}</a>
+                        <a href="{{:url}}" class="btn primary">{% endverbatim %}{% trans "Other stories by" %}{% verbatim %} {{:name}}</a>
                     </div>
                 </div>
             {{/for}}
