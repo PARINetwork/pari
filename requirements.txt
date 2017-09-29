@@ -20,5 +20,3 @@ wagtailtinymce==4.2.1.5
 django-compressor==1.6
 
 requests
-PyWavelets==0.5.2
-numpy==1.13.2
