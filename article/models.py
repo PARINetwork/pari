@@ -6,7 +6,7 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.functional import cached_property
 from elasticsearch import ConnectionError
-from modelcluster.fields import M2MField
+from modelcluster.fields import ParentalManyToManyField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, \
     MultiFieldPanel, FieldRowPanel, StreamFieldPanel
 from wagtail.wagtailcore.fields import RichTextField, StreamField
@@ -14,7 +14,7 @@ from wagtail.wagtailcore.models import Page, Site
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 from wagtail.wagtailsearch.backends import get_search_backend
-from wagtail.wagtailsearch.backends.elasticsearch import ElasticSearchMapping
+from wagtail.wagtailsearch.backends.elasticsearch import ElasticsearchMapping
 
 from article.streamfields.blocks import FullWidthImageBlock, ParagraphBlock, \
     ParagraphWithBlockQuoteBlock, NColumnParagraphBlock, FullWidthBlockQuote, \
@@ -41,8 +41,8 @@ Page.url = url_property
 
 @python_2_unicode_compatible
 class Article(Page):
-    authors = M2MField("author.Author", related_name="articles_by_author")
-    translators = M2MField("author.Author",
+    authors = ParentalManyToManyField("author.Author", related_name="articles_by_author")
+    translators = ParentalManyToManyField("author.Author",
                            related_name="translations_by_author",
                            blank=True)
     strap = models.TextField(blank=True)
@@ -77,8 +77,8 @@ class Article(Page):
                                        on_delete=models.SET_NULL)
     show_featured_image = models.BooleanField(default=True)
 
-    categories = M2MField("category.Category", related_name="articles_by_category")
-    locations = M2MField("location.Location", related_name="articles_by_location", blank=True)
+    categories = ParentalManyToManyField("category.Category", related_name="articles_by_category")
+    locations = ParentalManyToManyField("location.Location", related_name="articles_by_location", blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('strap'),
@@ -108,13 +108,12 @@ class Article(Page):
     search_fields = Page.search_fields + [
         index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE),
         index.SearchField('get_authors', partial_match=True, boost=SearchBoost.AUTHOR),
-        index.SearchField('translators', partial_match=True, boost=SearchBoost.AUTHOR),
+        index.SearchField('get_translators', partial_match=True, boost=SearchBoost.AUTHOR),
         index.SearchField('strap', partial_match=True, boost=SearchBoost.DESCRIPTION),
         index.SearchField('content', partial_match=True, boost=SearchBoost.CONTENT),
         index.SearchField('modular_content', partial_match=True, boost=SearchBoost.CONTENT),
         index.SearchField('get_district_from_location', partial_match=True, boost=SearchBoost.LOCATION),
         index.SearchField('language', partial_match=True),
-        index.FilterField('categories'),
         index.FilterField('language'),
         index.FilterField('get_search_type'),
         index.FilterField('get_categories'),
@@ -129,6 +128,9 @@ class Article(Page):
 
     def get_authors(self):
         return [author.name for author in self.authors.all()]
+
+    def get_translators(self):
+        return [translator.name for translator in self.translators.all()]
 
     def get_authors_or_photographers(self):
         return self.get_authors()
@@ -181,7 +183,7 @@ class Article(Page):
 
         max_results = getattr(settings, "MAX_RELATED_RESULTS", 4)
         es_backend = get_search_backend()
-        mapping = ElasticSearchMapping(self.__class__)
+        mapping = ElasticsearchMapping(self.__class__)
 
         minimal_locations = ""
         if (self.get_minimal_locations()):

@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='article',
             name='locations',
-            field=modelcluster.fields.M2MField(related_name='articles_by_location', to='location.Location', blank=True),
+            field=modelcluster.fields.ParentalManyToManyField(related_name='articles_by_location', to='location.Location', blank=True),
         ),
         migrations.AlterField(
             model_name='article',

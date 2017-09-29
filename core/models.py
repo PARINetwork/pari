@@ -374,7 +374,7 @@ class AffixImage(AbstractImage):
     def __str__(self):
         return self.title
 
-    search_fields = AbstractImage.search_fields + (
+    search_fields = AbstractImage.search_fields + [
         index.SearchField('get_locations_index', partial_match=True),
         index.SearchField('people', partial_match=True),
         index.SearchField('event', partial_match=True),
@@ -383,7 +383,7 @@ class AffixImage(AbstractImage):
         index.FilterField('published_date'),
         index.FilterField('camera'),
         index.FilterField('get_all_photographers'),
-    )
+    ]
 
     def get_all_photographers(self):
         photographers = []
@@ -425,13 +425,13 @@ class AffixImageRendition(AbstractRendition):
 
     class Meta:
         unique_together = (
-            ('image', 'filter', 'focal_point_key'),
+            ('image', 'filter_spec', 'focal_point_key'),
         )
 
     def img_tag(self, extra_attributes=''):
         fw_format = get_image_format("fullwidth")
         extra_attrs = extra_attributes or ''
-        if fw_format.filter_spec == self.filter.spec:
+        if fw_format.filter_spec == self.filter_spec:
             return fw_format.image_to_html(
                 self.image, self.image.title, extra_attrs
             )

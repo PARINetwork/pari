@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='article',
             name='translators',
-            field=modelcluster.fields.M2MField(related_name='translations_by_author', to='author.Author', blank=True),
+            field=modelcluster.fields.ParentalManyToManyField(related_name='translations_by_author', to='author.Author', blank=True),
         ),
         migrations.AlterField(
             model_name='article',

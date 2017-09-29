@@ -152,7 +152,7 @@ WAGTAIL_SITE_NAME = "pari"
 #
 WAGTAILSEARCH_BACKENDS = {
     'default': {
-        'BACKEND': 'search.custom_elasticsearch.CustomElasticSearch',
+        'BACKEND': 'search.custom_elasticsearch.CustomElasticsearchSearchBackend',
         'INDEX': 'pari',
         'ATOMIC_REBUILD': True,
         'TIMEOUT': 30,

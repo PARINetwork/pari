@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='album',
             name='photographers',
-            field=modelcluster.fields.M2MField(related_name='albums_by_photographer', to='author.Author', blank=True),
+            field=modelcluster.fields.ParentalManyToManyField(related_name='albums_by_photographer', to='author.Author', blank=True),
         ),
         migrations.AlterField(
             model_name='album',
