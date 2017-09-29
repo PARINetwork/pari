@@ -108,13 +108,12 @@ class Article(Page):
     search_fields = Page.search_fields + [
         index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE),
         index.SearchField('get_authors', partial_match=True, boost=SearchBoost.AUTHOR),
-        index.SearchField('translators', partial_match=True, boost=SearchBoost.AUTHOR),
+        index.SearchField('get_translators', partial_match=True, boost=SearchBoost.AUTHOR),
         index.SearchField('strap', partial_match=True, boost=SearchBoost.DESCRIPTION),
         index.SearchField('content', partial_match=True, boost=SearchBoost.CONTENT),
         index.SearchField('modular_content', partial_match=True, boost=SearchBoost.CONTENT),
         index.SearchField('get_district_from_location', partial_match=True, boost=SearchBoost.LOCATION),
         index.SearchField('language', partial_match=True),
-        index.FilterField('categories'),
         index.FilterField('language'),
         index.FilterField('get_search_type'),
         index.FilterField('get_categories'),
@@ -129,6 +128,9 @@ class Article(Page):
 
     def get_authors(self):
         return [author.name for author in self.authors.all()]
+
+    def get_translators(self):
+        return [translator.name for translator in self.translators.all()]
 
     def get_authors_or_photographers(self):
         return self.get_authors()
