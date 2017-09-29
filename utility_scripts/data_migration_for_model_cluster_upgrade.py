@@ -1,6 +1,7 @@
+import gc
 import json
 
-from wagtail.wagtailcore.models import Page
+from wagtail.wagtailcore.models import PageRevision
 
 
 def update_m2m_fields(revision):
@@ -18,7 +19,16 @@ def update_m2m_fields(revision):
             revision.save()
 
 
+def batch_qs(qs, batch_size=200):
+    total = qs.count()
+    for start in range(0, total, batch_size):
+        end = min(start + batch_size, total)
+        yield qs[start:end]
+
+
 if __name__ == '__main__':
-    for page in Page.objects.all():
-        for revision_ in page.revisions.all():
+    for revision_qs in batch_qs(PageRevision.objects.all()):
+        revisions = list(revision_qs)
+        for revision_ in revisions:
             update_m2m_fields(revision_)
+        gc.collect()
