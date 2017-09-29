@@ -11,6 +11,6 @@ class ImageRenditionFactory(factory.django.DjangoModelFactory):
     image = factory.SubFactory(ImageFactory)
     width = 800
     height = 1200
-    filter_id = 1
+    filter_spec = "fill-355"
     focal_point_key = 200
     file = 'uploads/stories-1.jpg'

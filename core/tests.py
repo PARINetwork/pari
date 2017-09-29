@@ -131,9 +131,7 @@ class AffixImageTests(TestCase):
 class AffixImageRenditionTests(TestCase):
 
     def setUp(self):
-        filter = Filter(spec="fill-355")
-        filter.save()
-        self.image_rendition = ImageRenditionFactory(filter_id=filter.id)
+        self.image_rendition = ImageRenditionFactory(filter_spec="fill-355")
 
     def test_img_tag(self):
         image_rendition_tag = self.image_rendition.img_tag()
