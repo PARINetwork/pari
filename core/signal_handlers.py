@@ -10,7 +10,7 @@ try:
 except ImportError:
     import urllib.parse as urlparse
 
-from django.db.models.signals import post_save, pre_delete
+from django.db.models.signals import post_save
 from django.conf import settings
 from django.dispatch import receiver
 from django.core import mail
@@ -22,19 +22,7 @@ from wagtail.wagtailembeds.models import Embed
 from wagtail.wagtailsearch.signal_handlers import post_delete_signal_handler
 from wagtail.wagtailimages.formats import get_image_format
 
-from .models import AffixImage, AffixImageRendition, Page, Contact
-
-
-@receiver(pre_delete, sender=AffixImage)
-def image_delete(sender, instance, **kwargs):
-    # Pass false so FileField doesn't save the model.
-    instance.file.delete(False)
-
-
-@receiver(pre_delete, sender=AffixImageRendition)
-def rendition_delete(sender, instance, **kwargs):
-    # Pass false so FileField doesn't save the model.
-    instance.file.delete(False)
+from .models import AffixImage, Page, Contact
 
 
 @receiver(post_save, sender=AffixImage)
