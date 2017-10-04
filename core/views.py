@@ -253,10 +253,11 @@ class ModelTranslatedPagePreviewMixin(object):
     def get(self, request, *args, **kwargs):
         curr_lang = get_language()
         response = super(ModelTranslatedPagePreviewMixin, self).get(request, *args, **kwargs)
-        page = self.get_form().instance
 
-        if getattr(page, 'language', None):
-            activate(page.language)
+        post_data_dict, timestamp = self.request.session[self.session_key]
+        language = post_data_dict.get('language')
+        if language:
+            activate(language[0])
         else:
             activate(curr_lang)
 
