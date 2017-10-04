@@ -12,7 +12,7 @@ from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtailimages import urls as wagtailimages_urls
 
-from core.views import PagePreview
+from core.views import PreviewOnEditPage, PreviewOnCreatePage
 
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
@@ -20,7 +20,8 @@ urlpatterns = [
     url(r'^admin/pages/search/$', 'search.views.admin_search'),
     url(r'^admin/translators/add/$', 'author.views.add_translator'),
     url(r'^admin/photographers/add/$', 'author.views.add_photographer'),
-    url(r'^admin/pages/(\d+)/edit/preview/$', PagePreview.as_view()),
+    url(r'^admin/pages/add/(\w+)/(\w+)/(\d+)/preview/$', PreviewOnCreatePage.as_view()),
+    url(r'^admin/pages/(\d+)/edit/preview/$', PreviewOnEditPage.as_view()),
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^parinews/', include('news.urls')),

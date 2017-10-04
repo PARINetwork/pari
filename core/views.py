@@ -16,7 +16,7 @@ from django.utils.translation import ugettext_lazy as _, activate, get_language
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
-from wagtail.wagtailadmin.views.pages import PreviewOnEdit
+from wagtail.wagtailadmin.views.pages import PreviewOnEdit, PreviewOnCreate
 from wagtail.wagtailcore.models import Page, Site
 
 from category.models import Category
@@ -249,18 +249,26 @@ def donate_webhook(request):
     return HttpResponse("", status=status)
 
 
-class PagePreview(PreviewOnEdit):
+class ModelTranslatedPagePreviewMixin(object):
     def get(self, request, *args, **kwargs):
         curr_lang = get_language()
-        response = super(PagePreview, self).get(request, *args, **kwargs)
-        page_model = self.get_page().specific
+        response = super(ModelTranslatedPagePreviewMixin, self).get(request, *args, **kwargs)
+        page = self.get_form().instance
 
-        if getattr(page_model, 'language', None):
-            activate(page_model.language)
+        if getattr(page, 'language', None):
+            activate(page.language)
         else:
             activate(curr_lang)
 
         return response
+
+
+class PreviewOnEditPage(ModelTranslatedPagePreviewMixin, PreviewOnEdit):
+    pass
+
+
+class PreviewOnCreatePage(ModelTranslatedPagePreviewMixin, PreviewOnCreate):
+    pass
 
 
 @cache_page(86400)
