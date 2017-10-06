@@ -3,7 +3,7 @@ from functools import partial
 from django import forms
 from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
-from wagtail.wagtailadmin import blocks
+from wagtail.wagtailcore import blocks
 from wagtail.wagtailcore.blocks import PageChooserBlock, RichTextBlock, FieldBlock, RawHTMLBlock, IntegerBlock
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailembeds.blocks import EmbedBlock
