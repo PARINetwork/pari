@@ -162,33 +162,6 @@ WAGTAILADMIN_RICH_TEXT_EDITORS = {
     'default': {
         'WIDGET': 'wagtail.wagtailadmin.rich_text.HalloRichTextArea'
     },
-    'hallo': {
-        'WIDGET': 'article.rich_text.CustomHalloRichTextArea',
-    },
-    'hallo_for_quote': {
-        'WIDGET': 'article.rich_text.CustomHalloRichTextArea',
-        'OPTIONS': {
-            "plugins": {
-                "halloformat": {},
-                "halloheadings": {"formatBlocks": ['p']},
-                "hallorequireparagraphs": {}
-            }
-        }
-    },
-    'hallo_for_paragraph': {
-        'WIDGET': 'article.rich_text.CustomHalloRichTextArea',
-        'OPTIONS': {
-            "plugins": {
-                "halloformat": {},
-                "halloheadings": {"formatBlocks": ['p', 'h2', 'h3', 'h4', 'h5']},
-                "hallolists": {},
-                "hallohr": {},
-                "halloreundo": {},
-                "hallowagtaillink": {},
-                "hallorequireparagraphs": {}
-            }
-        }
-    },
     'tinymce': {
         'WIDGET': 'wagtailtinymce.rich_text.TinyMCERichTextArea',
     },

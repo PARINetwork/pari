@@ -10,7 +10,6 @@ from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 from album.models import Album
-from article.rich_text import get_rich_text_editor_widget
 from core.widgets import JqueryChosenSelectMultipleWithAddObject
 from face.models import Face
 from location.models import Location
@@ -22,13 +21,6 @@ RichTextMiniBlock = partial(RichTextBlock, features=['bold', 'italic'])
 RichTextParagraphBlock = partial(RichTextBlock,
                                  features=['h2', 'h3', 'h4', 'h5', 'h6', 'bold', 'italic', 'ol', 'ul', 'hr', 'link',
                                            'document-link'])
-
-
-# TODO: Remove CustomRichTextBlock which is no longer needed
-class CustomRichTextBlock(RichTextBlock):
-    @cached_property
-    def field(self):
-        return forms.CharField(widget=get_rich_text_editor_widget(self.editor), **self.field_options)
 
 
 # TODO: This is implemented in the latest wagtail. Remove it after upgrading.
