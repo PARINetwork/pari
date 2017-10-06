@@ -1,12 +1,9 @@
 from bs4 import BeautifulSoup
-from django.core.exceptions import ValidationError
 from django.test import Client, override_settings
 from django.test import RequestFactory
 from django.test import TestCase
 from mock import MagicMock
-from wagtail.wagtailimages.models import Filter
 
-from core import models
 from core.utils import filter_by_language
 from functional_tests.factory import ImageFactory, AuthorFactory, LocationFactory, CategoryFactory
 from functional_tests.factory.image_rendition_factory import ImageRenditionFactory
@@ -80,17 +77,6 @@ class FilterByLanguageTests(TestCase):
         albums_query_to_filter.filter.assert_called_with(language="en")
         assert filtered_result == (articles_result_after_filter, albums_result_after_filter)
 
-class CoreModelTests(TestCase):
-
-    def test_integer_block_should_accept_only_positive_values(self):
-        with self.assertRaises(ValidationError) as context_message:
-            #arrange
-            integer_block = models.IntegerBlock(max_value=100, default=20,)
-            #act
-            html = integer_block.render_form(100, prefix="integer_field")
-            #assert
-            self.assertIn('<input id="integer_field" name="integer_field" placeholder="" type="text" value="100" />', html)
-            integer_block.clean(-25)
 
 class AffixImageTests(TestCase):
 
