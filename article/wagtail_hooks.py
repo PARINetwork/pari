@@ -59,12 +59,6 @@ def whitelist_blockquote():
 def editor_js():
     return format_html(
         """
-        <script>
-        registerHalloPlugin('hallojustify');
-        registerHalloPlugin('halloblock', {{ "elements": ["blockquote"] }});
-        registerHalloPlugin('hallorequireparagraphs', {{ "blockElements": ['dd', 'div', 'dl', 'figure', 'form', 'ul', 'ol', 'table', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote'] }});
-        registerHalloPlugin('hallohtml');
-        </script>
         <script src="{0}article/js/slug.js"></script>
         <script src="{0}article/js/align.js"></script>
 

@@ -5,7 +5,7 @@
     {% with value.paragraph|length as paragraph_size %}
         {% for para in value.paragraph %}
             <div class="col-lg-{% widthratio 12 paragraph_size 1 %} col-md-{% widthratio 12 paragraph_size 1 %} {% if forloop.first %}no-padding-right{% elif forloop.last %}no-padding-left{% else %}no-padding-both{% endif %}">
-            {{ para }}
+            {% include_block  para %}
             </div>
         {% endfor %}
     {% endwith %}
