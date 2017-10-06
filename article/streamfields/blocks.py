@@ -1,3 +1,5 @@
+from functools import partial
+
 from django import forms
 from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
@@ -16,7 +18,13 @@ from resources.models import Resource
 
 ALIGNMENT_CHOICES = [('left', 'Left column'), ('right', 'Right column')]
 
+RichTextMiniBlock = partial(RichTextBlock, features=['bold', 'italic'])
+RichTextParagraphBlock = partial(RichTextBlock,
+                                 features=['h2', 'h3', 'h4', 'h5', 'h6', 'bold', 'italic', 'ol', 'ul', 'hr', 'link',
+                                           'document-link'])
 
+
+# TODO: Remove CustomRichTextBlock which is no longer needed
 class CustomRichTextBlock(RichTextBlock):
     @cached_property
     def field(self):
@@ -123,7 +131,7 @@ class PageTypeChooserBlock(PageChooserBlock):
 
 class FullWidthImageBlock(blocks.StructBlock):
     image = ImageBlock()
-    caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
+    caption = RichTextMiniBlock(required=False)
 
     class Meta:
         icon = 'image'
@@ -142,7 +150,7 @@ class TwoColumnImageBlock(blocks.StructBlock):
 
 class ParagraphBlock(blocks.StructBlock):
     ALIGN_CONTENT_CHOICES = [('default', 'Default'), ('center', 'Center')]
-    content = CustomRichTextBlock(editor='hallo_for_paragraph')
+    content = RichTextParagraphBlock()
     align_content = blocks.ChoiceBlock(choices=ALIGN_CONTENT_CHOICES, default=ALIGN_CONTENT_CHOICES[0][0])
 
     class Meta:
@@ -150,8 +158,10 @@ class ParagraphBlock(blocks.StructBlock):
         label = 'Text'
         template = 'article/blocks/paragraph.html'
 
+
 class PargraphBlockWithOptionalContent(ParagraphBlock):
-    content = CustomRichTextBlock(editor='hallo_for_paragraph', required=False)
+    content = RichTextParagraphBlock(required=False)
+
 
 class ParagraphWithImageBlock(blocks.StructBlock):
     image = ImageBlock()
@@ -173,7 +183,7 @@ class FaceBlock(blocks.StructBlock):
 
 
 class ParagraphWithBlockQuoteBlock(blocks.StructBlock):
-    quote = CustomRichTextBlock(editor='hallo_for_quote')
+    quote = RichTextMiniBlock()
     align_quote = blocks.ChoiceBlock(choices=ALIGNMENT_CHOICES, default=ALIGNMENT_CHOICES[1][0])
     content = ParagraphBlock()
 
@@ -184,7 +194,7 @@ class ParagraphWithBlockQuoteBlock(blocks.StructBlock):
 
 
 class FullWidthBlockQuote(blocks.StructBlock):
-    quote = CustomRichTextBlock(editor='hallo_for_quote', required=True)
+    quote = RichTextMiniBlock()
 
     class Meta:
         icon = 'openquote'
@@ -203,7 +213,7 @@ class NColumnParagraphBlock(blocks.StructBlock):
 
 class ParagraphWithEmbedBlock(blocks.StructBlock):
     embed = EmbedBlock()
-    embed_caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
+    embed_caption = RichTextMiniBlock(required=False)
     embed_max_width = IntegerBlock(required=False, help_text="Optional field. Maximum width of the content in pixels to"
                                                              " be requested from the content provider(e.g YouTube). "
                                                              "If the requested width is not supported, provider will be"
@@ -220,7 +230,7 @@ class ParagraphWithEmbedBlock(blocks.StructBlock):
 class NColumnImageBlock(blocks.StructBlock):
     images = blocks.ListBlock(ImageBlock())
     height = IntegerBlock(min_value=0, required=True, default=380)
-    caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
+    caption = RichTextMiniBlock(required=False)
 
     class Meta:
         template = 'article/blocks/columnar_image.html'
@@ -229,7 +239,7 @@ class NColumnImageBlock(blocks.StructBlock):
 
 class ParagraphWithRawEmbedBlock(blocks.StructBlock):
     embed = RawHTMLBlock(help_text="Embed HTML code(an iframe)")
-    embed_caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
+    embed_caption = RichTextMiniBlock(required=False)
     embed_align = blocks.ChoiceBlock(choices=ALIGNMENT_CHOICES, default=ALIGNMENT_CHOICES[0][0])
     content = PargraphBlockWithOptionalContent(required=False)
 
@@ -241,7 +251,7 @@ class ParagraphWithRawEmbedBlock(blocks.StructBlock):
 
 class FullWidthEmbedBlock(blocks.StructBlock):
     embed = EmbedBlock(required=True, help_text="Enter URL for the embed block")
-    embed_caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
+    embed_caption = RichTextMiniBlock(required=False)
 
     class Meta:
         icon = 'media'
@@ -251,8 +261,8 @@ class FullWidthEmbedBlock(blocks.StructBlock):
 
 class VideoWithQuoteBlock(blocks.StructBlock):
     video = EmbedBlock(help_text="YouTube video URL")
-    video_caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
-    quote = CustomRichTextBlock(editor='hallo_for_quote')
+    video_caption = RichTextMiniBlock(required=False)
+    quote = RichTextMiniBlock()
     align_quote = blocks.ChoiceBlock(choices=ALIGNMENT_CHOICES, default=ALIGNMENT_CHOICES[0][1])
 
     class Meta:
@@ -274,7 +284,7 @@ class ParagraphWithMapBlock(blocks.StructBlock):
 
 class ImageWithCaptionAndHeightBlock(ImageBlock):
     height = IntegerBlock(min_value=0, required=True, default=380)
-    caption = CustomRichTextBlock(editor='hallo_for_quote', required=False)
+    caption = RichTextMiniBlock(required=False)
 
 
 class ImageWithQuoteAndParagraphBlock(blocks.StructBlock):
@@ -293,7 +303,7 @@ class ImageWithQuoteAndParagraphBlock(blocks.StructBlock):
 # TODO remove this class , this module is deprecated.
 class ImageWithBlockQuote(blocks.StructBlock):
     image = ImageWithCaptionAndHeightBlock()
-    quote = CustomRichTextBlock(editor='hallo_for_quote', required=True)
+    quote = RichTextMiniBlock()
     align_quote = blocks.ChoiceBlock(choices=ALIGNMENT_CHOICES, default=ALIGNMENT_CHOICES[0][0])
 
     class Meta:

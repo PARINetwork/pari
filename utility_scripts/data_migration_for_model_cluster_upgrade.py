@@ -27,7 +27,8 @@ def batch_qs(qs, batch_size=200):
 
 
 if __name__ == '__main__':
-    for revision_qs in batch_qs(PageRevision.objects.all()):
+    qs = PageRevision.objects.all().order_by('pk')
+    for revision_qs in batch_qs(qs):
         revisions = list(revision_qs)
         for revision_ in revisions:
             update_m2m_fields(revision_)
