@@ -11,7 +11,7 @@ from wagtail.wagtailadmin.edit_handlers import MultiFieldPanel, \
     StreamFieldPanel, PageChooserPanel, FieldPanel
 from wagtail.wagtailadmin.forms import WagtailAdminPageForm
 from wagtail.wagtailcore import blocks
-from wagtail.wagtailcore.blocks import StructBlock
+from wagtail.wagtailcore.blocks import StructBlock, IntegerBlock
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailcore.models import Page
@@ -55,29 +55,14 @@ class StaticPage(Page):
         return reverse("static_page", kwargs={"slug": self.slug})
 
 
-class IntegerBlock(blocks.CharBlock):
-
-    def __init__(self,**kwargs):
-        super(IntegerBlock, self).__init__(**kwargs)
-        self.max_value = kwargs['max_value']
-
-    def clean(self, value):
-        value = super(IntegerBlock, self).clean(value)
-        try:
-            value = int(value)
-        except:
-            raise forms.ValidationError(_('Please input a valid number between 0 and '+str(self.max_value)))
-        if value > self.max_value or value < 0:
-            raise forms.ValidationError(_('Please input a valid number not exceeding '+str(self.max_value)))
-        return value
-
-
 class FeaturedSectionBlock(StructBlock):
     title = blocks.CharBlock(required=False)
     link_text = blocks.CharBlock(required=False)
     url = blocks.CharBlock()
-    position_from_left = IntegerBlock(default=9, required=True, max_value=75, help_text="Value in percentage (Max: 75)")
-    position_from_top = IntegerBlock(default=30, required=True, max_value=40, help_text="Value in percentage (Max: 40)")
+    position_from_left = IntegerBlock(default=9, required=True, min_value=0, max_value=75,
+                                      help_text="Value in percentage (Max: 75)")
+    position_from_top = IntegerBlock(default=30, required=True, min_value=0, max_value=40,
+                                     help_text="Value in percentage (Max: 40)")
     featured_image = ImageChooserBlock()
     featured_image_label = blocks.CharBlock(required=False)
 
