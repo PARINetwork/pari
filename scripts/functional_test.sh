@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eo pipefail
 
 DATABASE_NAME="test_pari"
 DATABASE_USER="pari"
@@ -15,7 +16,7 @@ mkdir -p "media/uploads/"
 cp "core/static/img/stories-1.jpg" "media/uploads/stories-1.jpg"
 
 cd /vagrant && . pari_env/bin/activate
-python manage.py migrate --settings=pari.settings.test
+python manage.py migrate --settings=pari.settings.test --noinput
 
 echo "Starting Server..........."
 python manage.py runserver --settings=pari.settings.test > /dev/null 2>&1 &
