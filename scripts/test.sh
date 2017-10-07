@@ -10,10 +10,10 @@ python manage.py collectstatic --noinput
 echo "Starting Server..........."
 python manage.py runserver --settings=pari.settings.test > /dev/null 2>&1 &
 
-CURRENT_TIME='date +%s'
-TIMEOUT_TIME=$((`eval $CURRENT_TIME`+60))
+CURRENT_TIME=$(date +%s)
+TIMEOUT_TIME=$(($CURRENT_TIME+60))
 
-while [ `eval $CURRENT_TIME` -lt "$TIMEOUT_TIME" ];
+while [ "$(date +%s)" -lt "$TIMEOUT_TIME" ];
 do
   sleep 2
   response=`curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/pages/donate/`
