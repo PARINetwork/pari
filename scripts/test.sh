@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Running Migrations...."
-python manage.py migrate --settings=pari.settings.test
+python manage.py migrate --settings=pari.settings.test --noinput
 
 echo "Running Collectstatic...."
 python manage.py collectstatic --noinput
