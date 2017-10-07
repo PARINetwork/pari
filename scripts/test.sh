@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eo pipefail
 
 echo "Running Migrations...."
 python manage.py migrate --settings=pari.settings.test --noinput
