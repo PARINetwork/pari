@@ -27,7 +27,7 @@ before_script:
   - "cp -r core/static/img/stories-1.jpg media/uploads/stories-1.jpg"
 
 script:
-  - sh scripts/test.sh
+  - source scripts/test.sh
 deploy:
   provider: script
   script: sh travis_deploy_to_staging.sh
