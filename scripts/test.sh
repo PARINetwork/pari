@@ -10,16 +10,16 @@ python manage.py collectstatic --noinput
 echo "Starting Server..........."
 python manage.py runserver --settings=pari.settings.test > /dev/null 2>&1 &
 
-expected_response=200
-end=$((SECONDS+60))
+CURRENT_TIME='date +%s'
+TIMEOUT_TIME=$((`eval $CURRENT_TIME`+60))
 
-while [ "$SECONDS" -lt "$end" ];
+while [ `eval $CURRENT_TIME` -lt "$TIMEOUT_TIME" ];
 do
   sleep 2
   response=`curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/pages/donate/`
 
   echo "Waiting for service to start...."
-  if [ "$response" == "$expected_response" ]
+  if [ $response -eq 200 ]
   then
     is_service_started='true'
     echo "Service Started........."
