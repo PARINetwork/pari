@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 echo "Running Migrations...."
 python manage.py migrate --settings=pari.settings.test --noinput
