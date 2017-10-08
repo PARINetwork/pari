@@ -35,9 +35,6 @@ deploy:
   on:
     branch: release-candidate
 addons:
-  apt:
-    packages:
-    - lessc
   firefox: 53.0.2
   ssh_known_hosts:
   - staging.ruralindiaonline.org
