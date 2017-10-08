@@ -11,11 +11,9 @@ before_install:
   - tar -xzf geckodriver-v0.11.1-linux64.tar.gz -C geckodriver
   - export PATH=$PATH:$PWD/geckodriver
 install:
-- pip install ansible==2.2.1
-- pip install six
-- pip install -r requirements.dev.txt
 - npm install -g less
-- pip install selenium
+- pip install ansible==2.2.1
+- pip install -r requirements.dev.txt
 before_script:
   - createuser pari
   - psql -c 'create database  test_pari;' -U postgres
