@@ -29,7 +29,7 @@ class Face(Page):
 
     occupation = models.CharField(max_length=100, null=True, blank=True,
                                   help_text="Enter the occupation of the person")
-    occupation_of_parent = models.CharField(max_length=50, null=True, blank=True)
+    occupation_of_parent = models.CharField(max_length=100, null=True, blank=True)
     adivasi = models.CharField(max_length=100, null=True, blank=True)
     quote = RichTextField(blank=True)
     child = models.BooleanField(default=False)
