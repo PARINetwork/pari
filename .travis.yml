@@ -11,12 +11,9 @@ before_install:
   - tar -xzf geckodriver-v0.11.1-linux64.tar.gz -C geckodriver
   - export PATH=$PATH:$PWD/geckodriver
 install:
-- pip install ansible==2.2.1
-- pip install six
-- pip install -r requirements.dev.txt
 - npm install -g less
-- pip install selenium
-services: postgresql
+- pip install ansible==2.2.1
+- pip install -r requirements.dev.txt
 before_script:
   - createuser pari
   - psql -c 'create database  test_pari;' -U postgres
@@ -27,7 +24,7 @@ before_script:
   - "cp -r core/static/img/stories-1.jpg media/uploads/stories-1.jpg"
 
 script:
-  - travis_wait 20 source scripts/test.sh
+  - source scripts/test.sh
 deploy:
   provider: script
   script: sh travis_deploy_to_staging.sh
@@ -35,13 +32,13 @@ deploy:
   on:
     branch: release-candidate
 addons:
+  postgresql: 9.3
   apt:
     packages:
-    - lessc
+    - postgresql-9.3-postgis-2.3
   firefox: 53.0.2
   ssh_known_hosts:
   - staging.ruralindiaonline.org
-dist: precise
 notifications:
   slack: countermedia:TsEo2IDocyJtRqLR1Mzi0zuT
 
