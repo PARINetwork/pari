@@ -8,7 +8,7 @@ from django.views.generic.list import ListView
 from article.models import Article
 from category.models import Category
 from core.models import GalleryHomePage
-from core.utils import filter_by_language, get_translations_for_articles
+from core.utils import filter_by_language, get_translations_for_articles, get_unique_photographers
 
 
 class CategoriesList(ListView):
@@ -123,9 +123,3 @@ def gallery_home_page(request, slug="gallery"):
         'current_page': 'gallery-home',
     }
     return render(request, "category/gallery_home_page.html", gallery_context)
-
-def get_unique_photographers(talking_album):
-    photographers = []
-    for slide in talking_album.slides.all():
-        photographers.extend(slide.image.photographers.all())
-    return set(photographers)
