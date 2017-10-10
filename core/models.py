@@ -15,16 +15,16 @@ from wagtail.wagtailcore.blocks import StructBlock, IntegerBlock
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailcore.models import Page
+from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailimages.formats import get_image_format
 from wagtail.wagtailimages.models import AbstractImage, AbstractRendition
 from wagtail.wagtailsearch import index
-from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 from album.models import Album
 from article.models import Article
 from category.models import Category
-from core.utils import get_translations_for_page, SearchBoost
+from core.utils import get_translations_for_page, SearchBoost, get_unique_photographers
 
 
 @python_2_unicode_compatible
@@ -114,6 +114,7 @@ class HomePageAdminForm(HomePageAdminMediaForm):
         if not page2:
             raise forms.ValidationError(_('Please add a page'))
         return page2
+
 
 @python_2_unicode_compatible
 class HomePage(Page):
@@ -300,6 +301,8 @@ class GalleryHomePageAdminForm(HomePageAdminMediaForm):
 
 @python_2_unicode_compatible
 class GalleryHomePage(Page):
+    template = 'category/gallery_home_page.html'
+
     photo_of_the_week = models.ForeignKey("core.AffixImage", null=False, blank=False, on_delete=models.PROTECT)
     photo_title = models.TextField(blank=False, null=False)
     photo_link = models.TextField(blank=True, null=True)
@@ -322,6 +325,33 @@ class GalleryHomePage(Page):
     ]
 
     base_form_class = GalleryHomePageAdminForm
+
+    def get_context(self, request, *args, **kwargs):
+        gallery_page = self
+        video = gallery_page.video
+        talking_album = gallery_page.talking_album
+        photo_album = gallery_page.photo_album
+        gallery_context = {
+            'talking_album': {
+                'image': talking_album.slides.first().image,
+                'photographers': get_unique_photographers(talking_album),
+                'section_model': talking_album,
+            },
+            'photo_album': {
+                'image': photo_album.slides.first().image,
+                'photographers': get_unique_photographers(photo_album),
+                'section_model': photo_album,
+            },
+            'video': {
+                'image': video.featured_image,
+                'photographers': video.authors.all(),
+                'section_model': video,
+            },
+            'page': gallery_page,
+            'tab': 'gallery',
+            'current_page': 'gallery-home',
+        }
+        return gallery_context
 
     def __str__(self):
         return _("GalleryHomePage")

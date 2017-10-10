@@ -1,5 +1,4 @@
 from django.utils.translation import activate, deactivate_all
-
 from wagtail.wagtailcore.models import Page
 
 from pari import settings
@@ -29,6 +28,7 @@ def get_translations_for_page(page):
                 translations.extend(live_children.specific())
     return translations
 
+
 def filter_by_language(request, *items_to_filter):
     lang = settings.LANGUAGE_CODE if settings.ENABLE_SITE_LOCALIZATION else 'en'
     filtered_list = []
@@ -39,11 +39,19 @@ def filter_by_language(request, *items_to_filter):
             filtered_list.append(item.filter(language=lang))
     return tuple(items_to_filter) if len(filtered_list) == 0 else tuple(filtered_list)
 
+
 def get_translations_for_articles(articles):
     article_translations = {}
     for article in articles:
         article_translations[article] = get_translations_for_page(article)
     return article_translations
+
+
+def get_unique_photographers(album):
+    photographers = []
+    for slide in album.slides.all():
+        photographers.extend(slide.image.photographers.all())
+    return set(photographers)
 
 
 class SearchBoost(object):
