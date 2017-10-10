@@ -45,7 +45,8 @@ class StaticPage(Page):
         index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE),
         index.SearchField('language'),
         index.FilterField('get_search_type'),
-        index.FilterField('language')
+        index.FilterField('language'),
+        index.SearchField('content')
     ]
 
     def get_search_type(self):
@@ -276,6 +277,10 @@ class GuidelinesPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('strap'),
         MultiFieldPanel([StreamFieldPanel('content')], heading="Content", classname="collapsible "),
+    ]
+
+    search_fields = Page.search_fields + [
+        index.SearchField('content')
     ]
 
     def __str__(self):
