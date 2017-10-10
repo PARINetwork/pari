@@ -10,7 +10,7 @@ class ResourceList(ListView):
     model = Resource
 
     def get_queryset(self, *args, **kwargs):
-        qs = super(ResourceList, self).get_queryset(*args, **kwargs)
+        qs = super(ResourceList, self).get_queryset(*args, **kwargs).filter(live=True)
         return qs.order_by('-first_published_at')
 
     def get_context_data(self, **kwargs):
