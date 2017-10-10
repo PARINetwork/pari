@@ -19,7 +19,8 @@ from wagtail.wagtailsearch.backends.elasticsearch import ElasticsearchMapping
 from article.streamfields.blocks import FullWidthImageBlock, ParagraphBlock, \
     ParagraphWithBlockQuoteBlock, NColumnParagraphBlock, FullWidthBlockQuote, \
     ParagraphWithEmbedBlock, ParagraphWithRawEmbedBlock, VideoWithQuoteBlock, FullWidthEmbedBlock, \
-    ParagraphWithMapBlock, ImageWithQuoteAndParagraphBlock, ParagraphWithPageBlock, NColumnImageWithTextBlock
+    ParagraphWithMapBlock, ImageWithQuoteAndParagraphBlock, ParagraphWithPageBlock, NColumnImageWithTextBlock, \
+    RawEmbedWithQuoteBlock
 from core.edit_handlers import M2MFieldPanel
 # Override the url property of the Page model
 # to accommodate for child pages
@@ -56,6 +57,7 @@ class Article(Page):
         ('paragraph_with_quote', ParagraphWithBlockQuoteBlock()),
         ('full_width_quote', FullWidthBlockQuote()),
         ('video_with_quote', VideoWithQuoteBlock()),
+        ('raw_embed_with_quote', RawEmbedWithQuoteBlock()),
 
         ('image_with_quote_and_paragraph', ImageWithQuoteAndParagraphBlock()),
         ('full_width_image', FullWidthImageBlock()),

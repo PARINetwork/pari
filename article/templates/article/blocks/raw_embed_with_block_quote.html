@@ -1,0 +1,21 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+{% load article_filters %}
+
+<div class="raw-embed_with_block_quote clearfix floating-element">
+    {% if value.align_quote == 'left' %}
+        <div class="col-xs-12 col-sm-12 block-quote quote-align-left">
+            {{ value.quote }}
+        </div>
+    {% endif %}
+    <div class="col-xs-12 col-sm-12 embed-holder content content-{{ value.align_quote }}">
+        {{ value.video }}
+        <div class="caption">
+            {{ value.video_caption }}
+        </div>
+    </div>
+    {% if value.align_quote == 'right' %}
+        <div class="col-xs-12 col-sm-12 block-quote quote-align-right">
+            {{ value.quote }}
+        </div>
+    {% endif %}
+</div>
