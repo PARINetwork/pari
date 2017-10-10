@@ -576,7 +576,7 @@
     }
   }
 
-  .video-with-quote-block {
+  .video-with-quote-block , .raw-embed_with_block_quote {
     width: 100%;
     .embed-holder {
       margin-top: 10px;
@@ -599,6 +599,32 @@
       margin-bottom: 30px;
       .rich-text {
         margin-top: 0px !important;
+      }
+    }
+  }
+
+  .raw-embed_with_block_quote {
+    display: flex;
+    .embed-holder {
+      &.content-right {
+        padding-left: 10.9%;
+      }
+      &.content-left {
+        padding-right: 10.9%;
+      }
+    }
+    .block-quote {
+      &.quote-align-right {
+          .rich-text {
+          margin: 0% 25% 0% 2%;
+          margin-top: 0px !important;
+        }
+      }
+       &.quote-align-left {
+         .rich-text {
+          margin: 0% 3% 0% 25%;
+          margin-top: 0px !important;
+        }
       }
     }
   }
@@ -849,7 +875,7 @@
       }
     }
 
-    .video-with-quote-block {
+    .video-with-quote-block, .raw-embed_with_block_quote {
 
       .embed-holder {
         padding: 0px 9.8% 0 9.8% !important;
@@ -955,6 +981,14 @@
       .embed-holder {
         iframe, object, embed {
           height: inherit;
+        }
+      }
+    }
+
+    .raw-embed_with_block_quote {
+      .embed-holder {
+        iframe {
+          height: auto;
         }
       }
     }

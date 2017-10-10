@@ -246,6 +246,17 @@ class VideoWithQuoteBlock(blocks.StructBlock):
         label = 'Video with quote'
         template = 'article/blocks/video_with_block_quote.html'
 
+class RawEmbedWithQuoteBlock(blocks.StructBlock):
+    video = RawHTMLBlock(help_text="Embed HTML code(an iframe)")
+    video_caption = RichTextMiniBlock(required=False)
+    quote = RichTextMiniBlock()
+    align_quote = blocks.ChoiceBlock(choices=ALIGNMENT_CHOICES, default=ALIGNMENT_CHOICES[0][1])
+
+    class Meta:
+        icon = 'openquote'
+        label = 'Raw Embed with quote'
+        template = 'article/blocks/raw_embed_with_block_quote.html'
+
 
 class ParagraphWithMapBlock(blocks.StructBlock):
     locations = ModelMultipleChoiceBlock(target_model=Location)
