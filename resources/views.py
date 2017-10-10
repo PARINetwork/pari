@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.views.generic import DetailView, ListView
 from django.contrib.sites.requests import RequestSite
 
@@ -23,6 +24,15 @@ class ResourceList(ListView):
 class ResourceDetail(DetailView):
     context_object_name = "resource"
     model = Resource
+
+    def get_object(self, queryset=None):
+        obj = super(ResourceDetail, self).get_object(queryset)
+        if self.request.GET.get("preview"):
+            obj = obj.get_latest_revision_as_page()
+            return obj
+        if not obj.live:
+            raise Http404
+        return obj
 
     def get_context_data(self, **kwargs):
         context = super(ResourceDetail, self).get_context_data(**kwargs)
