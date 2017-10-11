@@ -72,6 +72,12 @@
         };
     </script>
     <script type="text/javascript">
+        var setHeightOfVideo = function (container,height) {
+            console.log("Inside height of video")
+            var iframe_element = container.querySelector('iframe');
+            iframe_element.style.height = height+"px";
+
+        };
         var setImageCaptionWidth = function (container, captionSelector) {
             var captionSelector = captionSelector || '.caption';
 

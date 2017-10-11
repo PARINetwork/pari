@@ -30,21 +30,22 @@
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/album/home.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/album/slide_show.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/album/photo-album.less">
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/layout/components/main-content/author-info.less">
+    <link type="text/less" rel="stylesheet"
+          href="{{ STATIC_URL }}css/v2/layout/components/main-content/author-info.less">
 {% endblock %}
 
 {% block opengraph_block %}
     {% with album.slides.first as cover %}{% image cover.image fill-300x250 as cover_image %}
-        {% include "core/includes/media_sharing_meta.html" with title=album.title description=album.description|striptags url=request.get_full_path type="url" image_url=cover_image.url date_of_item=albums.first.first_published_at%}
+        {% include "core/includes/media_sharing_meta.html" with title=album.title description=album.description|striptags url=request.get_full_path type="url" image_url=cover_image.url date_of_item=albums.first.first_published_at %}
     {% endwith %}
 {% endblock %}
 
 {% block main %}
 
-<div style="display:none;" id="slug-identifier">{{ album.slug }}</div>
-<div style="display:none;" id="type-identifier">{{ album_type }}</div>
+    <div style="display:none;" id="type-identifier">{{ album_type }}</div>
+    <div style="display:none;" id="json-identifier">{{ json_response }}</div>
 
-<!--  photo album starts here -->
+    <!--  photo album starts here -->
 
     {% verbatim %}
         <script id="photoAlbumTemplate" type="text/x-jsrender">

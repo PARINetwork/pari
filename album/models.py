@@ -14,7 +14,7 @@ from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
 from core.edit_handlers import AudioPanel
-from core.utils import SearchBoost
+from core.utils import SearchBoost, get_slide_detail
 
 
 @python_2_unicode_compatible
@@ -80,9 +80,16 @@ class Album(Page):
         return self.__class__.__name__.lower()
 
     def get_context(self, request, *args, **kwargs):
+        if self.slides.last().audio != '':
+            album_type = 'talking_album'
+        else:
+            album_type = 'photo_album'
+        json_response = get_slide_detail(self)
         return {
             'album': self,
-            'request': request
+            'json_response':json_response,
+            'request': request,
+            'album_type':album_type
         }
 
     def __str__(self):
