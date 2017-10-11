@@ -12,6 +12,10 @@
             <div class="caption">
                 {{ value.video_caption }}
             </div>
+            <script async defer type="text/javascript">
+                var container = document.currentScript.parentNode;
+                setHeightOfVideo(container,{{ value.video_height }});
+            </script>
         </div>
     {% else %}
 
