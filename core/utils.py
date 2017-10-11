@@ -1,5 +1,11 @@
+import datetime
+
+from django.core.urlresolvers import reverse
+from django.http import JsonResponse
 from django.utils.translation import activate, deactivate_all
+from wagtail.wagtailcore import blocks
 from wagtail.wagtailcore.models import Page
+from wagtail.wagtailcore.rich_text import RichText
 
 from pari import settings
 
@@ -52,6 +58,53 @@ def get_unique_photographers(album):
     for slide in album.slides.all():
         photographers.extend(slide.image.photographers.all())
     return set(photographers)
+
+
+def get_slide_detail(album):
+    response_data = {}
+    response_data['slides'] = []
+    photographers = []
+    slide_photo_graphers = []
+    for slide in album.slides.all():
+        slide_photo_graphers.extend(map(lambda photographer_name: photographer_name.name.encode('UTF-8'),
+                                        slide.image.photographers.all()))
+    photographers_of_album = list(set(slide_photo_graphers))
+    for index, slide in enumerate(album.slides.all(), start=0):
+        slide_dict = dict([('type', 'image'), ('show_title', "True"), ('album_title', album.title)])
+        slide_dict['src'] = slide.image.file.url
+        slide_dict['src_resized'] = slide.image.get_rendition('height-876').url
+        block = blocks.RichTextBlock()
+        description_value = RichText(slide.description)
+        slide_dict['description'] = block.render(description_value)
+        slide_dict['album_description'] = album.description
+        slide_dict['url'] = album.get_absolute_url()
+        slide_dict['slide_photographer'] = map(lambda photographer_name: photographer_name.name.encode('UTF-8'),
+                                               slide.image.photographers.all())
+        if index == 0:
+            slide_dict['slide_photographer'] = photographers_of_album
+            print index
+        photographers.extend(set(slide.image.photographers.all()))
+        if album.first_published_at:
+            published_date = datetime.datetime.strptime(str(album.first_published_at)[:10], "%Y-%m-%d")
+        else:
+            published_date = datetime.datetime.now()
+        date = published_date.strftime('%d %b,%Y')
+        slide_dict['image_captured_date'] = date
+        image_location = slide.image.locations.first()
+        slide_dict['slide_location'] = "%s, %s" % (
+        image_location.district, image_location.state) if image_location else ''
+        slide_dict['track_id'] = slide.audio
+        response_data['slides'].append(slide_dict)
+
+    response_data['authors'] = []
+    for photographer in set(photographers):
+        photographer_dict = dict(
+            [('type', 'inline'), ('show_title', "False"), ('name', photographer.name), ('bio', photographer.bio_en),
+             ('twitter_username', photographer.twitter_handle), ('facebook_username', photographer.facebook_username),
+             ('email', photographer.email), ('website', photographer.website),
+             ('author_url', reverse('author-detail', kwargs={'slug': photographer.slug}))])
+        response_data['authors'].append(photographer_dict)
+    return JsonResponse(response_data)
 
 
 class SearchBoost(object):

@@ -12,10 +12,9 @@ var Album = {
             $(".volume-control").removeClass("hidden");
             $(".seek-bar-control").removeClass("hidden");
         }
-        var slug = $("div#slug-identifier").text();
-        $.get("/albums/" + slug + ".json/", $.proxy(function (response) {
-            this.generateCarousel(response);
-        }, this));
+        var album_json = $("div#json-identifier").text().substring(30);
+        album_json = jQuery.parseJSON(album_json);
+        this.generateCarousel(album_json);
     },
 
     generateCarousel: function (data) {
