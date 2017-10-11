@@ -6,7 +6,7 @@
     </div>
     <div class="photo-credits">
         {% if value.image.image.photographers.all %}
-            PHOTO CREDIT •
+            PHOTO •
             {% for photographer in value.image.image.photographers.all %}
                 {{ photographer }}
                 {% if not forloop.last %},&nbsp;
