@@ -8,7 +8,7 @@ import wagtail.wagtailimages.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0024_add_language_to_guidelines_page'),
+        ('core', '0023_alter_homepage_featured_section_integer_block'),
     ]
 
     operations = [
