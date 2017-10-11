@@ -274,18 +274,27 @@ class GuidelinesPage(Page):
         ("sub_section_with_heading", SubSectionBlock()),
         ("sub_section_without_heading", blocks.RichTextBlock()),
     ], blank=True)
+    language = models.CharField(max_length=7, choices=settings.LANGUAGES, default="English")
+
 
     content_panels = Page.content_panels + [
         FieldPanel('strap'),
         MultiFieldPanel([StreamFieldPanel('content')], heading="Content", classname="collapsible "),
+        FieldPanel('language'),
     ]
 
     search_fields = Page.search_fields + [
-        index.SearchField('content')
+        index.FilterField('content',partial_match=True),
+        index.SearchField('content'),
+        index.FilterField('language'),
+        index.SearchField('language')
     ]
 
     def __str__(self):
         return _("GuidelinesPage")
+
+    def get_absolute_url(self):
+        return reverse("static_page", kwargs={"slug": self.slug})
 
 
 class GalleryHomePageAdminForm(HomePageAdminMediaForm):
