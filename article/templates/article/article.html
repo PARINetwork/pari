@@ -76,7 +76,10 @@
              if (window.innerWidth > 780) {
                  var iframe_element = container.querySelector('iframe');
                  iframe_element.style.height = height + "px";
-                 iframe_element.parentNode.style.height = height + "px";
+                 var parentnode = iframe_element.parentNode;
+                 parentnode.style.height = height + "px";
+                 parentnode.style.paddingBottom = "0px";
+
              }
         };
         var setImageCaptionWidth = function (container, captionSelector) {
