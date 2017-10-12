@@ -9,9 +9,11 @@
 
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 embed-holder embed-align-right content">
             {{ value.video }}
-            <div class="caption">
-                {{ value.video_caption }}
-            </div>
+            {% if value.video_caption|striptags %}
+                <div class="caption">
+                    {{ value.video_caption }}
+                </div>
+            {% endif %}
             <script async defer type="text/javascript">
                 var container = document.currentScript.parentNode;
                 setHeightOfVideo(container,{{ value.video_height }});
@@ -21,9 +23,15 @@
 
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 embed-holder embed-align-left content">
             {{ value.video }}
-            <div class="caption">
-                {{ value.video_caption }}
-            </div>
+            {% if value.video_caption|striptags %}
+                <div class="caption">
+                    {{ value.video_caption }}
+                </div>
+            {% endif %}
+            <script async defer type="text/javascript">
+                    var container = document.currentScript.parentNode;
+                    setHeightOfVideo(container,{{ value.video_height }});
+            </script>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 block-quote quote-align-right float-right">
