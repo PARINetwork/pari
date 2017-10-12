@@ -2,6 +2,7 @@ from django.db.models import Q
 from django.views.generic import ListView
 from django.contrib.sites.requests import RequestSite
 
+
 from .models import Face
 
 

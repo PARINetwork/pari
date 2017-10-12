@@ -122,6 +122,7 @@ class HomePage(Page):
         ("featured_section", FeaturedSectionBlock()),
     ], blank=True, null=True)
 
+    carousel_title = models.TextField(blank=False, null=False, default='Latest On PARI')
     # TODO: Carousel is temporary and being phased out
     carousel_0 = models.ForeignKey("wagtailcore.Page",
                                    null=True, blank=True,
@@ -187,6 +188,7 @@ class HomePage(Page):
     content_panels = Page.content_panels + [
         MultiFieldPanel([StreamFieldPanel('featured_content')], heading="Featured Content", classname="collapsible "),
         MultiFieldPanel([
+            FieldPanel('carousel_title'),
             PageChooserPanel('carousel_0'),
             PageChooserPanel('carousel_1'),
             PageChooserPanel('carousel_2'),
