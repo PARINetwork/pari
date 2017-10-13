@@ -264,7 +264,7 @@
             twitterUsername: '',
             twitterHashtag: '',
             facebookAppID: '',
-            facebookDisplayMode: FACEBOOK_DISPLAY_MODES.page,
+            facebookDisplayMode: FACEBOOK_DISPLAY_MODES.popup,
             tooltipTimeout: TOOLTIP_TIMEOUT
         }, args);
 
