@@ -102,7 +102,7 @@ class ArchiveDetail(ListView):
         context['month'] = self.kwargs["month"]
         context['month_as_name'] = calendar.month_name[int(context["month"])]
         context['title'] = "{0} {1}".format(context['month_as_name'], context["year"])
-        context['LANGAUAGES'] = settings.LANGUAGES
+        context['LANGUAGES'] = settings.LANGUAGES
         context['current_page'] = 'archive-detail'
         return context
 
@@ -136,6 +136,7 @@ class ArticleList(ListView):
     context_object_name = "articles"
     model = Article
     paginate_by = 12
+    template_name="article/archive_article_list.html"
 
     def get_queryset(self):
         url_name = self.request.resolver_match.url_name
@@ -146,8 +147,7 @@ class ArticleList(ListView):
             qs = live_articles_by_author.order_by("-first_published_at")
         else:
             qs = super(ArticleList, self).get_queryset()
-        if self.request.GET.get("lang"):
-            qs = qs.filter(language=self.request.GET["lang"])
+        qs, = filter_by_language(self.request, qs)
         return qs
 
     def get_context_data(self, **kwargs):
