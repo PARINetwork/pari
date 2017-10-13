@@ -85,6 +85,7 @@
         var sociaType = arguments.length <= 1 || arguments[1] === undefined ? '' : arguments[1];
 
         var author = '';
+        var hashtag = '';
         var tweetLimit = REAL_TWITTER_LIMIT;
 
         if (!text) {
@@ -94,6 +95,11 @@
         if (parameters.twitterUsername && sociaType === SOCIAL.twitter) {
             author = ' via @' + parameters.twitterUsername;
             tweetLimit = REAL_TWITTER_LIMIT - author.length;
+        }
+
+        if (parameters.twitterHashtag && sociaType === SOCIAL.twitter) {
+            hashtag = ' #' + parameters.twitterHashtag;
+            tweetLimit = tweetLimit - hashtag.length;
         }
 
         if (text.length > REAL_TWITTER_LIMIT) {
