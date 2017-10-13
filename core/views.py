@@ -3,10 +3,8 @@ from __future__ import absolute_import, unicode_literals
 import hashlib
 import hmac
 import urllib
-from collections import OrderedDict
 
 from django.conf import settings
-from django.contrib.auth.decorators import login_required
 from django.contrib.messages import success
 from django.core.mail import send_mail
 from django.db.models import Max
@@ -20,7 +18,7 @@ from wagtail.wagtailadmin.views.pages import PreviewOnEdit, PreviewOnCreate
 from wagtail.wagtailcore.models import Page, Site
 
 from category.models import Category
-from core.utils import get_translations_for_page
+from core.utils import get_translations_for_page, construct_guidelines
 from .forms import ContactForm, DonateForm
 from .models import HomePage, GuidelinesPage
 
@@ -138,23 +136,6 @@ def pari_teachers_students(request):
         "tab": active_tab,
         "current_page": 'pari_teachers_students',
     })
-
-
-def construct_guidelines(guideline_content):
-    guideline_dict = OrderedDict()
-    for content in guideline_content:
-        if content.block_type == "heading_title":
-            current_heading = content.value
-            guideline_dict[current_heading] = {"sub_section": []}
-        if content.block_type == "heading_content":
-            guideline_dict[current_heading]["heading_content"] = content.value
-        if content.block_type == "sub_section_with_heading":
-            guideline_dict[current_heading]["has_sub_section_with_heading"] = True
-            guideline_dict[current_heading]["sub_section"].append(content.value)
-        if content.block_type == "sub_section_without_heading":
-            guideline_dict[current_heading]["has_sub_section_with_heading"] = False
-            guideline_dict[current_heading]["sub_section"].append({"content": content.value})
-    return guideline_dict
 
 
 def contribute(request, slug=None):

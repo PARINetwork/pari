@@ -24,7 +24,7 @@ from wagtail.wagtailsearch import index
 from album.models import Album
 from article.models import Article
 from category.models import Category
-from core.utils import get_translations_for_page, SearchBoost, get_unique_photographers
+from core.utils import get_translations_for_page, SearchBoost, get_unique_photographers,construct_guidelines
 
 
 @python_2_unicode_compatible
@@ -270,6 +270,7 @@ class SubSectionBlock(StructBlock):
 @python_2_unicode_compatible
 class GuidelinesPage(Page):
     strap = models.TextField(blank=True)
+    template = 'core/guidelines.html'
     content = StreamField([
         ("heading_title", blocks.CharBlock()),
         ("heading_content", blocks.RichTextBlock()),
@@ -291,6 +292,16 @@ class GuidelinesPage(Page):
         index.FilterField('language'),
         index.SearchField('language')
     ]
+
+
+    def get_context(self, request, *args, **kwargs):
+        guideline_dict = construct_guidelines(self.content)
+        return {
+            'page':self,
+            'request':request,
+            'page_content':guideline_dict,
+            "tab": 'about-pari'
+        }
 
     def __str__(self):
         return _("GuidelinesPage")
