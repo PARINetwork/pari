@@ -1,4 +1,5 @@
 import datetime
+from collections import OrderedDict
 
 from django.core.urlresolvers import reverse
 from django.http import JsonResponse
@@ -113,3 +114,20 @@ class SearchBoost(object):
     LOCATION = 4
     DESCRIPTION = 3
     CONTENT = 2
+
+
+def construct_guidelines(guideline_content):
+    guideline_dict = OrderedDict()
+    for content in guideline_content:
+        if content.block_type == "heading_title":
+            current_heading = content.value
+            guideline_dict[current_heading] = {"sub_section": []}
+        if content.block_type == "heading_content":
+            guideline_dict[current_heading]["heading_content"] = content.value
+        if content.block_type == "sub_section_with_heading":
+            guideline_dict[current_heading]["has_sub_section_with_heading"] = True
+            guideline_dict[current_heading]["sub_section"].append(content.value)
+        if content.block_type == "sub_section_without_heading":
+            guideline_dict[current_heading]["has_sub_section_with_heading"] = False
+            guideline_dict[current_heading]["sub_section"].append({"content": content.value})
+    return guideline_dict

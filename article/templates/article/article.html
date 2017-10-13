@@ -34,6 +34,7 @@
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/two_column_grid.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/album/photo-album.less">
 
+    <link rel="stylesheet" href="{{ STATIC_URL }}article/css/social_media_sharer.css">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}article/css/blocks.less">
 {% endblock %}
 
@@ -41,6 +42,15 @@
     <style>
       .lazyload { display: none; }
     </style>
+{% endblock %}
+
+
+{% block extra_js %}
+    <script type="text/javascript" src="{{ STATIC_URL }}article/js/social_media_sharer.js"></script>
+
+    <script type="text/javascript" src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}article/js/social.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}article/js/article.js"></script>
 {% endblock %}
 
 {% block extra_head %}
@@ -142,11 +152,6 @@
     </script>
 {% endblock %}
 
-{% block extra_js %}
-    <script type="text/javascript" src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}article/js/social.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}article/js/article.js"></script>
-{% endblock %}
 
 {% block main_wrapper %}
 {% if article.featured_image and article.show_featured_image %}
