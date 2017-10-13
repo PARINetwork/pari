@@ -1,5 +1,16 @@
 var ArticleAlbum = {
     init: function () {
+        shareSelectedText('p', {
+            tooltipClass: '',    // cool, if you want to customize the tooltip
+            sanitize: true,      // will sanitize the user selection to respect the Twitter Max length (recommended)
+            buttons: [           // services that you want to enable you can add :
+                'twitter','facebook'       // - twitter, tumblr, buffer, stumbleupon, digg, reddit, linkedin, facebook
+            ],
+            anchorsClass: '',    // class given to each tooltip's links
+            twitterUsername: 'PARINetwork', // for twitter widget, will add 'via @twitterUsername' at the end of the tweet.
+            twitterHashtag: 'RuralIndiaOnline',
+            tooltipTimeout: 250  //Timeout before that the tooltip appear in ms
+        });
         this._initControls();
     },
     _initControls: function () {
