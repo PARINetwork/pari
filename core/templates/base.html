@@ -159,7 +159,7 @@
 
     {% block main_wrapper %}
     <div id="main_content">
-      <div class="search-panel-toggle">
+      <div id="main_search_panel" class="search-panel-toggle">
         <div class="container">
           <header class="seach-input-panel"  itemscope itemtype="http://schema.org/WebSite">
             <meta itemprop="url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}/" />

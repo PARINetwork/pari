@@ -47,7 +47,7 @@
 
 {% block extra_js %}
     <script type="text/javascript" src="{{ STATIC_URL }}article/js/social_media_sharer.js"></script>
-
+    <script type="text/javascript" src="{{ STATIC_URL }}article/js/read_time.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}article/js/social.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}article/js/article.js"></script>
@@ -297,7 +297,11 @@
             <h4>{% trans "RELATED STORIES" %}</h4>
         {% endif %}
     {% include "article/includes/article_list.html" with articles=article.related_articles %}
-</div>
+    </div>
+
+    <div id="article-read-time" class="article-read-time-estimation">
+        <span class="readt-time-info">This article take approximately <b>{{ article_read_time }} minuts</b> to read excluding streaming contents</span>
+    </div>
 
     {% verbatim %}
         <script id="articleAlbumTemplate" type="text/x-jsrender">
