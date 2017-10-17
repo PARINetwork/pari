@@ -50,14 +50,20 @@
     font-weight: 700;
   }
   .item {
+    cursor: pointer;
     img {
       width: 100%;
     }
 
     & > .floating-container {
       position: absolute;
+      width: 380px;
       margin: auto;
       z-index: 1;
+      .floating-carousel-buttons {
+        position: relative;
+        margin-top: 50px
+      }
 
       .relative-container {
         position: relative;
