@@ -512,6 +512,7 @@
       .font-size(16);
     }
     img {
+      cursor: pointer;
       + div {
         top: 0;
         left: 15px;
@@ -592,6 +593,10 @@
       font-weight: 300;
     }
     .subtitle {
+      &.large-second{
+        line-height: 1.1em;
+        word-wrap: break-word;
+      }
       .font-size(58);
       margin: 0;
       color: @text-title-light;
