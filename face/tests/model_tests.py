@@ -16,4 +16,4 @@ class Facetest(TestCase):
         self.assertEqual(str(self.face),'Lokesh Sivaganga')
 
     def test_get_absolute_url_return_path_with_faces_s_face_page(self):
-        self.assertEqual(self.face.get_absolute_url(),'/categories/faces/s/lokesh/')
+        self.assertRegexpMatches(self.face.get_absolute_url(),'/categories/faces/s/lokesh/?')
