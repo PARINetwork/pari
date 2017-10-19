@@ -1,5 +1,4 @@
 #!/bin/bash
-set -eo pipefail
 
 DATABASE_NAME="test_pari"
 DATABASE_USER="pari"
