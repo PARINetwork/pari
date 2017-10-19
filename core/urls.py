@@ -4,7 +4,7 @@ from django.conf.urls import patterns, url
 urlpatterns = patterns('core.views',
     url(r'^$', 'home_page', name='home-page'),
 
-    url(r'^(?P<slug>contribute)/$', 'contribute', name='contribute'),
+    url(r'^(?P<slug>contribute)/?$', 'contribute', name='contribute'),
     url(r'^contribute/(?P<slug>guidelines)/$', 'static_page', name='static_page'),
 
     url(r'^(?P<slug>about)/$', 'static_page', name='static_page'),
@@ -15,20 +15,20 @@ urlpatterns = patterns('core.views',
     url(r'^legal/(?P<slug>terms\-and\-conditions)/$', 'static_page', name='static_page'),
     url(r'^legal/(?P<slug>copyright)/$', 'static_page', name='static_page'),
 
-    url(r'^donate/$', 'donate_form', name='donate_form'),
+    url(r'^donate/?$', 'donate_form', name='donate_form'),
     url(r'^donate/success/$', 'donate_success', name='donate_success'),
     url(r'^donate/webhook/$', 'donate_webhook', name='donate_webhook'),
 
     url(r'^contact-us/$', 'contact_us', name='contact_us'),
     url(r'^(?P<slug>donate)/$', 'static_page', name='static_page'),
 
-    url(r'^pages/guidelines/$', 'guidelines', name='guidelines'),
-    url(r'^pages/pari-teachers-students/$', 'pari_teachers_students', name='pari_teachers_students'),
-    url(r'^pages/contribute-to-faces/$', 'contribute_to_faces', name='contribute_to_faces'),
-    url(r'^pages/donate/$', 'donate', name='donate'),
-    url(r'^pages/about/$', 'about', name='about'),
-    url(r'^pages/acknowledgements/$', 'acknowledgements', name='acknowledgements'),
-    url(r'^pages/about-the-editor/$', 'founders', name='founders'),
+    url(r'^pages/guidelines/?$', 'guidelines', name='guidelines'),
+    url(r'^pages/pari-teachers-students/?$', 'pari_teachers_students', name='pari_teachers_students'),
+    url(r'^pages/contribute-to-faces/?$', 'contribute_to_faces', name='contribute_to_faces'),
+    url(r'^pages/donate/?$', 'donate', name='donate'),
+    url(r'^pages/about/?$', 'about', name='about'),
+    url(r'^pages/acknowledgements/?$', 'acknowledgements', name='acknowledgements'),
+    url(r'^pages/about-the-editor/?$', 'founders', name='founders'),
     url(r'^pages/(?P<slug>.+)/$', 'static_page', name='static_page'),
 
     url(r'^sitemap\.xml$', 'sitemap_index', name='sitemap_index'),
