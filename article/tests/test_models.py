@@ -16,7 +16,7 @@ class ArticleTests(TestCase):
         self.assertEqual(str(self.article), 'english_article')
 
     def test_article_get_absolute_url_returns_the_path_to_the_article(self):
-        self.assertEqual(self.article.get_absolute_url(), '/articles/english_article/')
+        self.assertRegexpMatches(self.article.get_absolute_url(), '/articles/english_article/?$')
 
     def test_get_context_of_article_should_have_english_article(self):
         request = MagicMock()

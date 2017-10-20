@@ -50,14 +50,20 @@
     font-weight: 700;
   }
   .item {
+    cursor: pointer;
     img {
       width: 100%;
     }
 
     & > .floating-container {
       position: absolute;
+      width: 380px;
       margin: auto;
       z-index: 1;
+      .floating-carousel-buttons {
+        position: relative;
+        margin-top: 50px
+      }
 
       .relative-container {
         position: relative;
@@ -506,6 +512,7 @@
       .font-size(16);
     }
     img {
+      cursor: pointer;
       + div {
         top: 0;
         left: 15px;
@@ -529,6 +536,13 @@
         margin: 0 auto;
       }
     }
+    .category-0, .category-1, .category-2, .category-3 {
+      img {
+        width:370px;
+        margin:0 auto;
+      }
+    }
+
   }
 
   &.story-grid .row .grid.large .grid-container {
@@ -579,6 +593,10 @@
       font-weight: 300;
     }
     .subtitle {
+      &.large-second{
+        line-height: 1.1em;
+        word-wrap: break-word;
+      }
       .font-size(58);
       margin: 0;
       color: @text-title-light;

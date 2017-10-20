@@ -60,75 +60,85 @@
                 {% for featured_content in page.featured_content %}
                     {% with featured_content.value.position_from_left as position_from_left %}
                         {% with featured_content.value.position_from_top as position_from_top %}
-                    {% if  position_from_left != 9 or position_from_top != 30 %}
-                        <div class=" {% if forloop.first %}active{% endif %} item content-{{ forloop.counter }}" style="cursor: pointer" onclick="location.href='{{ featured_content.value.url }}';" >
-                          {% image featured_content.value.featured_image width-1440 as featured_image %}
-                            <img src="{{featured_image.url}}" alt="sample" >
+                            {% if  position_from_left != 9 or position_from_top != 30 %}
+                                <div class=" {% if forloop.first %}active{% endif %} item content-{{ forloop.counter }}"
+                                     onclick="location.href='{{ featured_content.value.url }}';">
+                                    {% image featured_content.value.featured_image width-1440 as featured_image %}
+                                    <img src="{{ featured_image.url }}" alt="sample">
 
-                            {% if featured_content.value.featured_image_label or featured_content.value.title or featured_content.value.link_text %}
-                                <div class="floating-container"
-                                     style="width: 380px;left:{{ position_from_left }}%;top:{{ position_from_top }}%;">
-                                  <div class="relative-container">
-                                    <div class="floating-content item-container">
-                                        {% if featured_content.value.featured_image_label %}
-                                            <div><span class="featured">{{ featured_content.value.featured_image_label }}</span></div>
-                                        {% endif %}
-                                        <div class="featured-content-title ">{{ featured_content.value.title }}</div>
-                                        {% if featured_content.value.link_text %}
-                                            <div class="link-to-page">
-                                                <a href="{{ featured_content.value.url }}">
-                                                  <span>{{ featured_content.value.link_text }}</span>
-                                                  <i class="fa fa-angle-right margin-left red-angle-right"></i></a>
+                                    {% if featured_content.value.featured_image_label or featured_content.value.title or featured_content.value.link_text %}
+                                        <div class="floating-container"
+                                             style="left:{{ position_from_left }}%;top:{{ position_from_top }}%;">
+                                            <div class="relative-container">
+                                                <div class="floating-content item-container">
+                                                    {% if featured_content.value.featured_image_label %}
+                                                        <div><span
+                                                                class="featured">{{ featured_content.value.featured_image_label }}</span>
+                                                        </div>
+                                                    {% endif %}
+                                                    <div class="featured-content-title ">{{ featured_content.value.title }}</div>
+                                                    {% if featured_content.value.link_text %}
+                                                        <div class="link-to-page">
+                                                            <a href="{{ featured_content.value.url }}">
+                                                                <span>{{ featured_content.value.link_text }}</span>
+                                                                <i class="fa fa-angle-right margin-left red-angle-right"></i></a>
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
                                             </div>
-                                        {% endif %}
-                                    </div>
-                                  </div>
-                                <div class="floating-carousel-buttons hidden-sm hidden-xs" style="position: relative;margin-top: 50px">
-                                  {% include "core/includes/carousel_navigator_buttons.html"%}
-                                </div>
-                                </div>
-                                {% else %}
-                                    <div class="floating-carousel-buttons hidden-sm hidden-xs" style="left:{{ position_from_left }}%;top:{{ position_from_top|add:25 }}%;">
-                                        {% include "core/includes/carousel_navigator_buttons.html"%}
-                                    </div>
-                            {% endif %}
-                        </div>
-                {% else %}
-                    <div class=" {% if forloop.first %}active{% endif %} item content-{{ forloop.counter }}" style="cursor: pointer" onclick="location.href='{{ featured_content.value.url }}';">
-                      {% image featured_content.value.featured_image width-1440 as featured_image %}
-                        <img src="{{featured_image.url}}" alt="sample" >
-                        {% if featured_content.value.featured_image_label or featured_content.value.title or featured_content.value.link_text %}
-                            <div class="floating-container container" style="bottom: 0px;top: 0px;right: 0px; left: 0px;" >
-                              <div class="relative-container">
-                                <div class="floating-content item-container">
-                                    {% if featured_content.value.featured_image_label %}
-                                        <div><span class="featured">{{ featured_content.value.featured_image_label }}</span></div>
-                                    {% endif %}
-                                    <div class="featured-content-title">{{ featured_content.value.title }}</div>
-                                    {% if featured_content.value.link_text %}
-                                        <div class="link-to-page">
-                                            <a href="{{ featured_content.value.url }}">
-                                              <span>{{ featured_content.value.link_text }}</span>
-                                              <i class="fa fa-angle-right margin-left red-angle-right"></i></a>
+                                            <div class="floating-carousel-buttons hidden-sm hidden-xs">
+                                                {% include "core/includes/carousel_navigator_buttons.html" %}
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <div class="floating-carousel-buttons hidden-sm hidden-xs"
+                                             style="left:{{ position_from_left }}%;top:
+                                                     {{ position_from_top|add:25 }}%;">
+                                            {% include "core/includes/carousel_navigator_buttons.html" %}
                                         </div>
                                     {% endif %}
                                 </div>
-                              </div>
-                            </div>
-                        {% endif %}
+                            {% else %}
+                                <div class=" {% if forloop.first %}active{% endif %} item content-{{ forloop.counter }}"
+                                     onclick="location.href='{{ featured_content.value.url }}';">
+                                    {% image featured_content.value.featured_image width-1440 as featured_image %}
+                                    <img src="{{ featured_image.url }}" alt="sample">
+                                    {% if featured_content.value.featured_image_label or featured_content.value.title or featured_content.value.link_text %}
+                                        <div class="floating-container container"
+                                             style="bottom: 0px;top: 0px;right: 0px; left: 0px;">
+                                            <div class="relative-container">
+                                                <div class="floating-content item-container">
+                                                    {% if featured_content.value.featured_image_label %}
+                                                        <div><span
+                                                                class="featured">{{ featured_content.value.featured_image_label }}</span>
+                                                        </div>
+                                                    {% endif %}
+                                                    <div class="featured-content-title">{{ featured_content.value.title }}</div>
+                                                    {% if featured_content.value.link_text %}
+                                                        <div class="link-to-page">
+                                                            <a href="{{ featured_content.value.url }}">
+                                                                <span>{{ featured_content.value.link_text }}</span>
+                                                                <i class="fa fa-angle-right margin-left red-angle-right"></i></a>
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
 
-                        <div class="floating-carousel-buttons container hidden-sm hidden-xs" style="z-index: 12">
-                            {% include "core/includes/carousel_navigator_buttons.html" %}
-                        </div>
-                    </div>
-                {% endif %}
+                                    <div class="floating-carousel-buttons container hidden-sm hidden-xs"
+                                         style="z-index: 12">
+                                        {% include "core/includes/carousel_navigator_buttons.html" %}
+                                    </div>
+                                </div>
+                            {% endif %}
 
-                    {% endwith %}
+                        {% endwith %}
                     {% endwith %}
                 {% endfor %}
                 <!-- Left and right controls -->
                 <div class="floating-carousel-buttons container hidden-lg hidden-md">
-                  {% include "core/includes/carousel_navigator_buttons.html" %}
+                    {% include "core/includes/carousel_navigator_buttons.html" %}
                 </div>
             </div>
         </div>
@@ -334,8 +344,7 @@
                         {% image categories.0.image fill-512x512 as category_image %}
                         <a href="{{ categories.0.get_absolute_url }}">
                             <img src="{{ STATIC_URL }}img/1_1.png" data-src="{{ category_image.url }}"
-                                 alt="{{ categories.0.name }}" style="width:370px;margin:0 auto;"
-                                 class="img-responsive lazyload">
+                                 alt="{{ categories.0.name }}" class="img-responsive lazyload">
                             <div class="grid-container">
                                 <div class="category-name resource-title">
                                   <h3 class="category-image-overlay-text">{{ categories.0.name }}</h3>
@@ -367,8 +376,7 @@
                                     {% image categories.1.image fill-512x512 as category_image %}
                                     <a href="{{ categories.1.get_absolute_url }}">
                                         <img src="{{ STATIC_URL }}img/1_1.png" data-src="{{ category_image.url }}"
-                                             alt="{{ categories.1.name }}" style="width:370px;margin:0 auto;"
-                                             class="img-responsive lazyload">
+                                             alt="{{ categories.1.name }}" class="img-responsive lazyload">
                                         <div class="grid-container">
                                           <div class="category-name">
                                             <h3>{{ categories.1.name }}</h3>
@@ -391,8 +399,7 @@
                                 {% image categories.2.image fill-512x512 as category_image %}
                                 <a href="{{ categories.2.get_absolute_url }}">
                                     <img src="{{ STATIC_URL }}img/1_1.png" data-src="{{ category_image.url }}"
-                                         alt="{{ categories.2.name }}" style="width:370px;margin:0 auto;"
-                                         class="img-responsive lazyload">
+                                         alt="{{ categories.2.name }}" class="img-responsive lazyload">
                                     <div class="grid-container">
                                       <div class="category-name">
                                         <h3>{{ categories.2.name }}</h3>
@@ -405,7 +412,7 @@
                                 </a>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 grid">
-                                <div class="subtitle" style="line-height: 1.1; word-wrap: break-word;">...{% trans "and a wonderful one"%}'</div>
+                                <div class="subtitle large-second">...{% trans "and a wonderful one"%}'</div>
                             </div>
                         </div>
                     </div>
@@ -415,8 +422,7 @@
                                 {% image categories.3.image fill-512x512 as category_image %}
                                 <a href="{{ categories.3.get_absolute_url }}">
                                     <img src="{{ STATIC_URL }}img/1_1.png" data-src="{{ category_image.url }}"
-                                         alt="{{ categories.3.name }}" style="width:370px;margin:0 auto;"
-                                         class="img-responsive lazyload">
+                                         alt="{{ categories.3.name }}" class="img-responsive lazyload">
                                     <div class="grid-container">
                                       <div class="category-name">
                                         <h3>{{ categories.3.name }}</h3>
@@ -462,7 +468,7 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 article-image-icon">
                                     {% image item.image fill-500x320 as featured_image %}
                                     <img class="img-responsive" src="{{ featured_image.url }}"
-                                         alt="{{ item.image.alt_text }}" style="cursor: pointer" onclick="location.href='{{ item.section_model.get_absolute_url }}'">
+                                         alt="{{ item.image.alt_text }}" onclick="location.href='{{ item.section_model.get_absolute_url }}'">
                                     <div><i class="fa fa-music" aria-hidden="true"></i></div>
                                     <div>{{ item.count }}</div>
                                 </div>
@@ -489,7 +495,7 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 article-image-icon">
                                     {% image item.image fill-500x320 as featured_image %}
                                     <img class="img-responsive" src="{{ featured_image.url }}"
-                                         alt="{{ item.image.alt_text }}" style="cursor: pointer" onclick="location.href='{{ item.section_model.get_absolute_url }}'">
+                                         alt="{{ item.image.alt_text }}" onclick="location.href='{{ item.section_model.get_absolute_url }}'">
                                     <div><i class="fa fa-film" aria-hidden="true"></i></div>
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
@@ -515,7 +521,7 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 article-image-icon">
                                     {% image item.image fill-500x320 as featured_image %}
                                     <img class="img-responsive" src="{{ featured_image.url }}"
-                                         alt="{{ item.image.alt_text }}" style="cursor: pointer" onclick="location.href='{{ item.section_model.get_absolute_url }}'">
+                                         alt="{{ item.image.alt_text }}" onclick="location.href='{{ item.section_model.get_absolute_url }}'">
                                     <div><i class="fa  fa-picture-o" aria-hidden="true"></i></div>
                                     <div>{{ item.count }}</div>
                                 </div>
