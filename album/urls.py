@@ -10,4 +10,5 @@ urlpatterns = patterns('album.views',
         url(r'^(?P<slug>.+)/all/?$', AlbumDetail.as_view(), name='image-collection-image-list'),
         url(r'^(?P<slug>.+).json/$', get_slide_detail, name='album_slide_detail'),
         url(r'^(?P<slug>.+)/$', AlbumDetail.as_view(), name='album-detail'),
+        url(r'^(?P<slug>.+)/?$', AlbumDetail.as_view(), name='album-detail'),
 )

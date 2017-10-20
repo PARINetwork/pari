@@ -12,14 +12,14 @@ urlpatterns = patterns('core.views',
     url(r'^about/(?P<slug>about\-the\-editor)/$', 'static_page', name='static_page'),
     url(r'^about/(?P<slug>acknowledgements)/$', 'static_page', name='static_page'),
 
-    url(r'^legal/(?P<slug>terms\-and\-conditions)/$', 'static_page', name='static_page'),
-    url(r'^legal/(?P<slug>copyright)/$', 'static_page', name='static_page'),
+    url(r'^legal/(?P<slug>terms\-and\-conditions)/?$', 'static_page', name='static_page'),
+    url(r'^legal/(?P<slug>copyright)/?$', 'static_page', name='static_page'),
 
     url(r'^donate/?$', 'donate_form', name='donate_form'),
     url(r'^donate/success/$', 'donate_success', name='donate_success'),
     url(r'^donate/webhook/$', 'donate_webhook', name='donate_webhook'),
 
-    url(r'^contact-us/$', 'contact_us', name='contact_us'),
+    url(r'^contact-us/?$', 'contact_us', name='contact_us'),
     url(r'^(?P<slug>donate)/$', 'static_page', name='static_page'),
 
     url(r'^pages/guidelines/?$', 'guidelines', name='guidelines'),
@@ -30,7 +30,7 @@ urlpatterns = patterns('core.views',
     url(r'^pages/acknowledgements/?$', 'acknowledgements', name='acknowledgements'),
     url(r'^pages/about-the-editor/?$', 'founders', name='founders'),
     url(r'^pages/(?P<slug>.+)/$', 'static_page', name='static_page'),
-
+    url(r'^pages/(?P<slug>.+)/?$','static_page',name='static_page'),
     url(r'^sitemap\.xml$', 'sitemap_index', name='sitemap_index'),
     url(r'^sitemap-(?P<year>\d+)\.xml', 'sitemap_year', name='sitemap_year'),
 )
