@@ -11,5 +11,6 @@ urlpatterns = patterns('article.views',
     url(r'^locations/(?P<slug>.+)/$', LocationDetail.as_view(), name='location-detail'),
     url(r'^locations/(?P<slug>.+)/?$', LocationDetail.as_view(), name='location-detail'),
     url(r'^archive/(?P<year>\d{4})/(?P<month>\d+)/$', ArchiveDetail.as_view(), name='archive-detail'),
+    url(r'^archive/(?P<year>\d{4})/(?P<month>\d+)/?$', ArchiveDetail.as_view(), name='archive-detail'),
 )
 
