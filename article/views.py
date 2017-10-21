@@ -32,10 +32,30 @@ class ArticleDetail(DetailView):
             raise Http404
         return obj
 
+    def extract_text(self,document):
+        soup = BeautifulSoup(document, 'html.parser')
+        text = soup.findAll(text=True)
+        return text
+
+    def count_words_in_text(self,text_list,word_length):
+        total_words = 0
+        for current_text in text_list:
+            total_words += len(current_text) / word_length
+        return total_words
+
+    def get_read_time(self,content):
+        WPM = 200
+        WORD_LENGTH = 5
+        text_list = self.extract_text(content)
+        total_words = self.count_words_in_text(text_list, WORD_LENGTH)
+        return total_words / WPM
+
     def get_context_data(self, **kwargs):
         context = super(ArticleDetail, self).get_context_data(**kwargs)
         translations = get_translations_for_page(context['object'])
         context['translations'] = translations
+        content =  context['article'].content
+        context['article_read_time'] = self.get_read_time(content)
         arc = ContentType.objects.get_for_model(Article)
         alc = ContentType.objects.get_for_model(Album)
         fac = ContentType.objects.get_for_model(Face)

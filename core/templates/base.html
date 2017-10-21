@@ -21,8 +21,6 @@
     <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "all_feeds" %}">
     {% block feed_block %}{% endblock %}
 
-    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:200,300,400,500,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Amiri:400,700" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}font-awesome/css/font-awesome.min.css">
@@ -159,7 +157,7 @@
 
     {% block main_wrapper %}
     <div id="main_content">
-      <div class="search-panel-toggle">
+      <div id="main_search_panel" class="search-panel-toggle">
         <div class="container">
           <header class="seach-input-panel"  itemscope itemtype="http://schema.org/WebSite">
             <meta itemprop="url" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}/" />
