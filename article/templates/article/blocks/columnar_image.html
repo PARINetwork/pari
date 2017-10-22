@@ -31,12 +31,12 @@
             <div class="caption">
                     {{ value.caption }}
             </div>
+        <script async defer type="text/javascript">
+            var container = document.currentScript.parentNode;
+            setImageCaptionWidth(container);
+        </script>
     </div>
 
     {% include_block value.content %}
 
-     <script async defer type="text/javascript">
-            var container = document.currentScript.parentNode;
-            setImageCaptionWidth(container);
-     </script>
 </div>
