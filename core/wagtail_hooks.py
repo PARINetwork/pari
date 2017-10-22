@@ -8,8 +8,6 @@ def editor_js():
     return format_html(
         """
         <script src="{0}article/js/slug.js"></script>
-        <script src="{0}article/js/align.js"></script>
-
         <script>
             document.addEventListener("DOMContentLoaded", function() {{
                 $('h1:contains("Editing Static page Acknowledgements"),h1:contains("Editing Static page About PARI"),h1:contains("Editing Static page PARI Students & Teachers"), h1:contains("Editing Static page Founder Editor P Sainath"),h1:contains("Editing Static page Contribute"),h1:contains("Editing Static page Donate to Pari"),h1:contains("Editing Static page Donate")').parents('header').siblings('form').find('h2:contains("Content")').children('label').text('CONTENT is not used anywhere. Purpose of having text here is only for elastic search indexing')
