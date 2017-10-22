@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://ruralindiaonline.org'
 
-WAGTAIL_AUTO_UPDATE_PREVIEW = False
+WAGTAIL_AUTO_UPDATE_PREVIEW = True
 
 # Application definition
 
