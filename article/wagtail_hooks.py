@@ -53,8 +53,6 @@ def editor_js():
     return format_html(
         """
         <script src="{0}article/js/slug.js"></script>
-        <script src="{0}article/js/align.js"></script>
-
         <script>
             document.addEventListener("DOMContentLoaded", function() {{
                 $('h2:contains("Content - Deprecated") ~ fieldset .hallo_rich_text_area .richtext').attr('contenteditable', false);
