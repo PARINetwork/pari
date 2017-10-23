@@ -441,6 +441,10 @@
     .article-holder {
         width: 100%;
     }
+
+    .search-panel-toggle {
+      visibility: hidden;
+    }
     .rich-text {
         width: 100%;
 
@@ -468,6 +472,19 @@
             page-break-after: auto;
             page-break-inside: avoid;
         }
+    }
+
+    a[href]:after {
+      content: none !important;
+    }
+
+    .author-info {
+      .social-icon {
+        visibility: hidden!important;
+      }
+      .author-bio + a {
+        visibility: hidden;
+      }
     }
     .translations {
         display: none;
