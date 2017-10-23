@@ -29,7 +29,7 @@ class Resource(Page):
     embed_url = models.URLField()
     embed_thumbnail = models.TextField(blank=True, null=True)
     categories = ParentalManyToManyField("category.Category",
-                          related_name="resources_by_category")
+                          related_name="resources_by_category", blank=True)
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
 
     search_fields = Page.search_fields + [
