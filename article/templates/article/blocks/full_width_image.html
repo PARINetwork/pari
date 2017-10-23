@@ -2,7 +2,7 @@
 <div class="full-width-image-block image-block">
     {% image value.image.image width-1440 as full_width_image %}
     <div class="image">
-        <img class="lazyload" src="{{ full_width_image.url }}" data-src="{{ slide_image.url }}" style=" height:auto;"/>
+        <img class="lazyload" src="{{ full_width_image.url }}" data-src="{{ slide_image.url }}" style=" height:auto;" alt="{{ slide_image.image.alt_text }}"/>
     </div>
     <div class="photo-credits">
         {% if value.image.image.photographers.all %}
