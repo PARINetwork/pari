@@ -28,7 +28,7 @@ class Resource(Page):
         ("focus", blocks.RichTextBlock(blank=True)),
         ("factoids", blocks.RichTextBlock(blank=True)),
     ])
-    url = models.URLField(blank=True,null=True)
+    absolute_url = models.URLField(blank=True,null=True)
     embed_url = models.URLField()
     embed_thumbnail = models.TextField(blank=True, null=True)
     categories = ParentalManyToManyField("category.Category",
@@ -66,7 +66,7 @@ class Resource(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('language'),
-        FieldPanel('url'),
+        FieldPanel('absolute_url'),
         FieldPanel('embed_url'),
         FieldPanel('embed_thumbnail'),
         StreamFieldPanel('content'),
@@ -75,8 +75,8 @@ class Resource(Page):
     ]
 
     def clean(self):
-        if self.url and self.url == self.embed_url:
-            slideshare_api = "https://www.slideshare.net/api/oembed/2/?url=" + self.url + '&format=json'
+        if self.url and self.absolute_url == self.embed_url:
+            slideshare_api = "https://www.slideshare.net/api/oembed/2/?url=" + self.absolute_url + '&format=json'
             try:
                 data_from_slideshare = urllib2.urlopen(slideshare_api).read()
             except:
