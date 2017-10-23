@@ -75,7 +75,7 @@ class Resource(Page):
     ]
 
     def clean(self):
-        if self.url and self.absolute_url == self.embed_url:
+        if self.absolute_url and self.absolute_url == self.embed_url:
             slideshare_api = "https://www.slideshare.net/api/oembed/2/?url=" + self.absolute_url + '&format=json'
             try:
                 data_from_slideshare = urllib2.urlopen(slideshare_api).read()
