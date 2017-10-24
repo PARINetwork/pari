@@ -25,6 +25,7 @@ class GuidelinesPageFactory(factory.django.DjangoModelFactory):
     locked = False
     latest_revision_created_at = '2011-10-24 12:43'
     first_published_at = '2011-10-24 12:43'
+    language='en'
 
     strap = "Writers, photographers, filmmakers and others"
     content = [('heading_title', 'Types of Articles and Other Content'), (
