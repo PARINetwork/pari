@@ -1,18 +1,20 @@
 from __future__ import unicode_literals
 
-from django.db import models
-from django.conf import settings
-from django.core.urlresolvers import reverse
-from django.utils.encoding import python_2_unicode_compatible
+import json
+import urllib2
 
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailcore.fields import StreamField
-from wagtail.wagtailcore import blocks
+from django.conf import settings
+from django.core.exceptions import ValidationError
+from django.core.urlresolvers import reverse
+from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
+from modelcluster.fields import ParentalManyToManyField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, \
     StreamFieldPanel
+from wagtail.wagtailcore import blocks
+from wagtail.wagtailcore.fields import StreamField
+from wagtail.wagtailcore.models import Page
 from wagtail.wagtailsearch import index
-
-from modelcluster.fields import ParentalManyToManyField
 
 from core.utils import SearchBoost
 
@@ -26,6 +28,7 @@ class Resource(Page):
         ("focus", blocks.RichTextBlock(blank=True)),
         ("factoids", blocks.RichTextBlock(blank=True)),
     ])
+    absolute_url = models.URLField(blank=True,null=True)
     embed_url = models.URLField()
     embed_thumbnail = models.TextField(blank=True, null=True)
     categories = ParentalManyToManyField("category.Category",
@@ -63,12 +66,30 @@ class Resource(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('language'),
+        FieldPanel('absolute_url'),
         FieldPanel('embed_url'),
         FieldPanel('embed_thumbnail'),
         StreamFieldPanel('content'),
         FieldPanel('categories'),
         FieldPanel('date'),
     ]
+
+    def clean(self):
+        if self.absolute_url and self.absolute_url == self.embed_url:
+            slideshare_api = "https://www.slideshare.net/api/oembed/2/?url=" + self.absolute_url + '&format=json'
+            try:
+                data_from_slideshare = urllib2.urlopen(slideshare_api).read()
+            except:
+                raise ValidationError({'url': "This Url is not a Valid SlideShare Url"})
+            data = json.loads(data_from_slideshare)
+
+            slideshare_embed_url = 'https://www.slideshare.net/slideshow/embed_code/' + str(data['slideshow_id']) + '/'
+
+            self.embed_url = slideshare_embed_url
+            self.embed_thumbnail = data['thumbnail'].replace('.jpg?cb=',
+                                                             '-4.jpg?cb=')  # the "-4" before jpg is for high resolution thumbnail image
+
+        super(Resource, self).clean()
 
     @property
     def featured_image(self):
