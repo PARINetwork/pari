@@ -235,7 +235,7 @@
                                         <i class="fa fa-facebook"></i>
                                     </a>
                                 </li>{% endwith %}<li>
-                                <a class="#" onclick="window.print()">{% trans "Print this story" %}</a>
+                                <a class="# print-story" onclick="window.print()">{% trans "Print this story" %}</a>
                             </li>{% if article.locations.count %}{% with article.locations.first as location %}<li>
                                         <a href="{% url 'map-list' %}?lat={{ location.point.x }}&long={{ location.point.y }}&title={{ location.name }}&slug={{ location.slug }}">
                                             <span itemprop="contentLocation">
