@@ -1,7 +1,10 @@
 import factory
-from article.models import Article
-from django.utils.text import slugify
 from django.contrib.contenttypes.models import ContentType
+from django.utils.text import slugify
+
+from article.models import Article
+
+
 # from functional_tests.factory import ContentTypeFactory
 
 
@@ -9,6 +12,7 @@ class ContentTypeFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = ContentType
         django_get_or_create = ('app_label', 'model')
+
     app_label = "core"
     model = "homepage"
 
@@ -38,6 +42,10 @@ class ArticleFactory(factory.django.DjangoModelFactory):
 
     strap = "Article strap"
     content = "<p> Article Content </p>"
+
+    show_modular_content = False
+    modular_content = '[{"type": "paragraph", "id": "b5f88ce7-057f-4c3c-9901-1d675157800c", "value": {"content": "<p>This is a text</p>", "align_content": "default"}}]'
+
     language = "en"
 
     @classmethod
