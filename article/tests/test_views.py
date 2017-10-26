@@ -1,12 +1,12 @@
 from django.contrib.auth.models import User
-from django.test import TestCase
+from django.test import Client
 from django.test import RequestFactory
+from django.test import TestCase
 
-from article.views import AuthorArticleList, ArchiveDetail, ArticleDetail
-from functional_tests.factory import CategoryFactory
+from article.views import AuthorArticleList, ArchiveDetail
 from functional_tests.factory import ArticleFactory
 from functional_tests.factory import AuthorFactory
-from django.test import Client
+from functional_tests.factory import CategoryFactory
 
 
 def get_title(articles):
@@ -21,6 +21,7 @@ class ArticleDetailTest(TestCase):
         self.client = Client()
         self.author = AuthorFactory(name='test', slug="test")
         self.article = ArticleFactory(title="test article", authors=(self.author,), language='en')
+        self.article = ArticleFactory(title="test modular article", show_modular_content=True)
 
     def login_admin(self):
         User.objects.create_superuser('pari', 'pari@test.com', "pari")
@@ -28,7 +29,15 @@ class ArticleDetailTest(TestCase):
 
     def test_curent_page_should_return_article_detail(self):
         response = self.client.get('/articles/test-article/')
-        self.assertEqual(response.context_data['current_page'], 'article-detail')
+        self.assertEqual(response.context_data['current_page'], 'article-details')
+
+    def test_curent_page_should_return_article_template(self):
+        response = self.client.get('/articles/test-article/')
+        self.assertTemplateUsed(response, 'article/article.html')
+
+    def test_curent_page_should_return_modular_article_paragraph_template(self):
+        response = self.client.get('/articles/test-modular-article/')
+        self.assertTemplateUsed(response, 'article/blocks/paragraph.html')
 
 
 class AuthorArticleListTests(TestCase):
