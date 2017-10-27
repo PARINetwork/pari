@@ -29,7 +29,7 @@ class ArticleDetailTest(TestCase):
 
     def test_curent_page_should_return_article_detail(self):
         response = self.client.get('/articles/test-article/')
-        self.assertEqual(response.context_data['current_page'], 'article-details')
+        self.assertEqual(response.context_data['current_page'], 'article-detail')
 
     def test_curent_page_should_return_article_template(self):
         response = self.client.get('/articles/test-article/')
