@@ -172,6 +172,4 @@ class TestArticlePage(Test):
 
     def test_article_columnar_paragraph_module_should_contain_expected_text(self):
         article_modular_content = self.article_page.modular_content()
-        import pdb
-        pdb.set_trace()
         assert article_modular_content.columnar_paragraph_module_text() == 'A test that make test'
