@@ -41,10 +41,10 @@ class ArticleFactory(factory.django.DjangoModelFactory):
     first_published_at = '2011-10-24 12:43'
 
     strap = "Article strap"
-    content = "<p> Article Content </p>"
+    content = "<p> Article Content ok </p>"
 
     show_modular_content = False
-    modular_content = '[{"type": "paragraph", "id": "b5f88ce7-057f-4c3c-9901-1d675157800c", "value": {"content": "<p>This is a text</p>", "align_content": "default"}}]'
+    modular_content = '[{"type": "paragraph", "value": {"content": "<p>This is a test</p>", "align_content": "default"}}, {"type": "n_column_paragraph", "value": {"paragraph": [{"content": "<p>A test that make test</p>", "align_content": "default"}]}}, {"type": "n_column_paragraph", "id": "f9908f13-68ad-4eb5-9943-5e1cd92a944a", "value": {"paragraph": [{"content": "<p>A test that make test</p>", "align_content": "default"}]}}]'
 
     language = "en"
 
