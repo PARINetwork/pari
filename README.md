@@ -67,7 +67,8 @@ https://drive.google.com/drive/folders/0B4TMsel2baWuY1otS0hUM3NxQ2c?usp=sharing
 ```
 
 ## Collaboration channels
-To keep in tech with technical team and the pari team,you can use the [**google group**](). If you thought of contributing to **PARI** this is one of the media that you can use. In the case of doubts and queries you can use the group.
+To keep in tech with technical team and the pari team,you can use the [**google group**](https://groups.google.com/d/forum/tech-pari
+). If you thought of contributing to **PARI** this is one of the media that you can use. In the case of doubts and queries you can use the group.
 And you can participate in the IPM's and showcase for the PARI project.
 
 ## Roadmap of features
