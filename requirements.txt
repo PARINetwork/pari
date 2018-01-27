@@ -8,7 +8,7 @@ django-modeltranslation==0.11.0
 djangorestframework>=3.1.3,<3.7
 
 # Recommended components (require additional setup):
-psycopg2==2.6.1
+psycopg2==2.7
 elasticsearch==1.9.0
 
 # Recommended components to improve performance in production:
