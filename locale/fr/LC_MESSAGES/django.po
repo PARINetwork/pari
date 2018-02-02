@@ -2312,7 +2312,7 @@ msgstr ""
 
 #: core/templates/core/pari_teachers_students.html:95
 msgid ""
-"PARI has specific <a href=\"{[ guidelines }}\"> guidelines </a> for videos "
+"PARI has specific <a href=\"{{ guidelines }}#section-6-1\"> guidelines </a> for videos "
 "generated for and by us, which ensure recognition of primary authorship of "
 "the narrators. Meanwhile, just the interaction of students with the people "
 "whose lives they're trying to study, and their joint effort with communities "
