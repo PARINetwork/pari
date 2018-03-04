@@ -21,6 +21,8 @@ end
 
 Vagrant.configure("2") do |config|
 
+  config.vm.synced_folder ".", "/vagrant", type: "nfs",  mount_options: ['rw', 'vers=3', 'tcp', 'fsc' ,'actimeo=2']
+
   config.vm.define 'pari.machine' do |machine|
     machine.vm.box = 'pari/devbox'
     machine.vm.network "private_network", ip: "#{IP}"
