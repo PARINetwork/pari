@@ -9,7 +9,6 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('wagtaildocs', '0007_merge'),
-        ('core', '0026_auto_20180306_1150'),
         ('resources', '0006_add_field_for_absolute_slideshare_url'),
     ]
 
