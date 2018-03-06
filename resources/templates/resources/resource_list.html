@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n wagtailimages_tags %}
 
 {% block feed_block %}
 <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "resource_feeds" %}">
@@ -41,7 +41,7 @@
                                 <div class="gallery-image-container">
                                     <a href="{{ resource.get_absolute_url }}">
                                         <div class="image-container">
-                                          <img src="{{ resource.embed_thumbnail }}" alt="{{ resource.title }}" width="250" height="240">
+                                            {% image resource.thumbnail original %}
                                         </div>
                                     </a>
                                 </div>

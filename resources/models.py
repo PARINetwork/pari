@@ -15,12 +15,32 @@ from wagtail.wagtailcore import blocks
 from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailsearch import index
+from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
+from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 
 from core.utils import SearchBoost
 
 
 @python_2_unicode_compatible
 class Resource(Page):
+    document = models.ForeignKey(
+        'wagtaildocs.Document',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        max_length=500,
+        related_name='+'
+    )
+
+    thumbnail = models.ForeignKey(
+        'core.AffixImage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        max_length=500,
+        related_name='+'
+    )
+
     date = models.DateField(blank=True, null=True)
     content = StreamField([
         ("authors", blocks.RichTextBlock(blank=True)),
@@ -28,9 +48,7 @@ class Resource(Page):
         ("focus", blocks.RichTextBlock(blank=True)),
         ("factoids", blocks.RichTextBlock(blank=True)),
     ])
-    absolute_url = models.URLField(blank=True,null=True)
-    embed_url = models.URLField()
-    embed_thumbnail = models.TextField(blank=True, null=True)
+    
     categories = ParentalManyToManyField("category.Category",
                           related_name="resources_by_category", blank=True)
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
@@ -65,30 +83,15 @@ class Resource(Page):
         }
 
     content_panels = Page.content_panels + [
+        DocumentChooserPanel('document'),
+        ImageChooserPanel('thumbnail'),
         FieldPanel('language'),
-        FieldPanel('absolute_url'),
-        FieldPanel('embed_url'),
-        FieldPanel('embed_thumbnail'),
         StreamFieldPanel('content'),
         FieldPanel('categories'),
         FieldPanel('date'),
     ]
 
     def clean(self):
-        if self.absolute_url and self.absolute_url == self.embed_url:
-            slideshare_api = "https://www.slideshare.net/api/oembed/2/?url=" + self.absolute_url + '&format=json'
-            try:
-                data_from_slideshare = urllib2.urlopen(slideshare_api).read()
-            except:
-                raise ValidationError({'url': "This Url is not a Valid SlideShare Url"})
-            data = json.loads(data_from_slideshare)
-
-            slideshare_embed_url = 'https://www.slideshare.net/slideshow/embed_code/' + str(data['slideshow_id']) + '/'
-
-            self.embed_url = slideshare_embed_url
-            self.embed_thumbnail = data['thumbnail'].replace('.jpg?cb=',
-                                                             '-4.jpg?cb=')  # the "-4" before jpg is for high resolution thumbnail image
-
         super(Resource, self).clean()
 
     @property

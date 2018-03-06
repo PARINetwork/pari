@@ -31,7 +31,7 @@
 {% block main %}
   <div class="row row-side pdf-container ">
       <div class="embed-container embed-container-tall ">
-          <iframe src="{{ resource.embed_url }}" frameborder="0"  marginwidth="0" marginheight="0" scrolling="no" onload="resizeIframe(this)" style="border:1px solid #CCC;border-width:1px 1px 0;" allowFullscreen="true" allowfullscreen="true"  webkitallowfullscreen mozallowfullscreen> </iframe>
+          <iframe src="{{ resource.document.file.url }}" frameborder="0"  marginwidth="0" marginheight="0" scrolling="no" onload="resizeIframe(this)" style="border:1px solid #CCC;border-width:1px 1px 0;" allowFullscreen="true" allowfullscreen="true"  webkitallowfullscreen mozallowfullscreen> </iframe>
       </div>
       <div class="bottom-arrow">
         <a href="#section02"><span></span><i class="fa fa-arrow-circle-down bottom-arr"></i></a>
