@@ -37,9 +37,6 @@ class ResourceFactory(factory.django.DjangoModelFactory):
     first_published_at = '1995-02-07 12:00'
     language = 'en'
 
-    embed_url = 'https://www.slideshare.net/slideshow/embed_code/23090740/'
-    embed_thumbnail = '//cdn.slidesharecdn.com/ss_thumbnails/jayatighoshonspeculation-130617001506-phpapp02-thumbnail-4.jpg?cb=1371446113'
-
     content = [('authors', RichText('<p>XYZ</p>')),
                ('copyright', RichText('<p>XYZ, Professor, Centre for Economic Studies and Planning</p><p>\u00a0</p>')),
                ('focus',
