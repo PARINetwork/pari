@@ -145,7 +145,7 @@ MEDIA_URL = '/media/'
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "pari"
+WAGTAIL_SITE_NAME = "PARI"
 
 # Use Elasticsearch as the search backend for extra performance and better search results:
 # http://wagtail.readthedocs.org/en/latest/howto/performance.html#search
@@ -317,3 +317,6 @@ GOOGLE_MAP_KEY = ""
 LOCALE_PATHS = (
     join(PROJECT_ROOT, 'locale'),
 )
+
+APPEND_SLASH = True
+WAGTAIL_APPEND_SLASH = True
