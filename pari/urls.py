@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^parinews/', include('news.urls')),
     url(r'^feeds/', include('feeds.urls')),
 
-    url(r'^resources/', include('resources.urls')),
+    url(r'^resources/?', include('resources.urls')),
     url(r'^article/', include('article.urls')),
     url(r'^albums/', include('album.urls')),
 
