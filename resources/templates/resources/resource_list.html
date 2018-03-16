@@ -17,7 +17,6 @@
 {% endblock %}
 
 {% block extra_css %}
-{#    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/resources.less">#}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/article.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/resources/home.less">
 {% endblock %}
@@ -36,22 +35,14 @@
             <div class="gallery-tile-row">
                 <div class="row">
                     {% for resource in object_list %}
+                    <a href="{{ resource.get_absolute_url }}">
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 grid-list">
                             <div class="grid-container">
-                                <div class="gallery-image-container">
-                                    <a href="{{ resource.get_absolute_url }}">
-                                        <div class="image-container">
-                                            {% image resource.thumbnail original %}
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="caption margin-top-10px">
-                                <h5>
-                                    <a href="{{ resource.get_absolute_url }}">{{ resource.title|truncatechars:50 }}</a>
-                                </h5>
+                                <div class="image-container">{% image resource.thumbnail original %}</div>
+                                <h5 class="caption">{{ resource.title }}</h5>
                             </div>
                         </div>
+                    </a>
                     {% endfor %}
                 </div>
             </div>
