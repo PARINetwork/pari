@@ -1,4 +1,5 @@
 *.pyc
+.vscode/
 .DS_Store
 /.venv/
 /*/settings/local.py
