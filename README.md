@@ -1,50 +1,60 @@
-![N|Solid](https://ruralindiaonline.org/static/img/logo.png)    **People's Archive Of Rural India**
+![N|Solid](https://ruralindiaonline.org/static/img/logo.png)
+
+# People's Archive of Rural India
 
 [![Build Status](https://travis-ci.org/PARINetwork/pari.svg?branch=master)](https://travis-ci.org/PARINetwork/pari)
 
-**[PARI](https://ruralindiaonline.org/)** is a digital journalism platform in India, founded by veteran journalist and former rural affairs editor of 'The Hindu', **Palagummi Sainath**. **PARI** is a volunteer-run rural journalism platform.
+---
 
-## Development setup
+[PARI](https://ruralindiaonline.org/) is a volunteer-run rural journalism platform founded by veteran journalist and former rural affairs editor of 'The Hindu', Palagummi Sainath.
 
-To start with local development setup, clone both pari.git and pari-ansible.git repositories in a directory.
+## Developer Guide
+
+### Pre-requisites
+
+* [Vagrant](https://www.vagrantup.com/downloads.html)
+* [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
+* [Ansible(v2.2.1)](http://docs.ansible.com/ansible/intro_installation.html)
+
+### Setup
+
+Clone both [pari](https://github.com/PARINetwork/pari.git) and [pari-ansible](https://github.com/PARINetwork/pari-ansible.git) repository (ideally in the same parent directory).
+
 ```sh
 $ git clone https://github.com/PARINetwork/pari.git
 $ git clone https://github.com/PARINetwork/pari-ansible.git
-```
-
-Make sure you have [Vagrant](https://www.vagrantup.com/downloads.html), [Virtualbox](https://www.virtualbox.org/wiki/Downloads) and [Ansible(v2.2.1)](http://docs.ansible.com/ansible/intro_installation.html) installed in your machine.
-Also make sure you have internet connectivity. Then, you can get the vagrant box up and provisioned by:
-
-```sh
 $ cd pari
 $ vagrant up   # This would take a while to complete. You'll be prompted for SUDO password of your host machine for the first time.
 ```
 
-Once after the initial provisioning is completed, local development instance of PARI can be accessed in the browser by visiting [http://development.ruralindiaonline.org/](http://development.ruralindiaonline.org/).
-
-To access admin console: [http://development.ruralindiaonline.org/admin/](http://development.ruralindiaonline.org/admin/) (username: admin, password: admin).
-
-Few basic commands to help development,
+### Development-specific commands
 
 ```sh
 $ vagrant ssh                                   # Login to vagrant box
-$ cd /vagrant && source pari_env/bin/activate   # Change to project directory and activate project virtualenv   
+$ cd /vagrant && source pari_env/bin/activate   # Change to project directory and activate project virtualenv
+$ python manage.py runserver                    # Run python HTTP server (Open development.ruralindiaonline.org to view local instance)
+```
+
+Admin console can be accessed at [http://development.ruralindiaonline.org/admin/](http://development.ruralindiaonline.org/admin/) (username: admin, password: admin)
+
+```sh
 $ python manage.py shell                        # Access django shell
 $ python manage.py dbshell                      # Access postgres DB. Password: pari
 $ python manage.py test --keepdb                # Run all the tests
 $ deactivate                                    # Exit from project virtualenv
 ```
+
 ## Tech stack:
 
-* [Python](https://www.python.org/) - Features a dynamic type system and automatic memory management and supports multiple programming paradigms.
-* [Django](https://www.djangoproject.com/) - Ease the creation of complex, database-driven websites.
-* [Wagtail](https://wagtail.io/) - CMS on top of Django framework
-* [PostgreSQL](https://www.postgresql.org/) - Database system
-* [Nginx](https://www.nginx.com/) - High performance web server and a reverse proxy
-* [Gunicorn](http://gunicorn.org/) - WSGI HTTP Server
-* [Supervisor](http://supervisord.org/) - Process Control System
-* [Elasticsearch](https://www.elastic.co/) - Search engine
-* [Bootstrap](http://getbootstrap.com/) - Great UI boilerplate for modern web apps
+* [Python](https://www.python.org/)
+* [Django](https://www.djangoproject.com/)
+* [Wagtail](https://wagtail.io/)
+* [PostgreSQL](https://www.postgresql.org/)
+* [Nginx](https://www.nginx.com/)
+* [Gunicorn](http://gunicorn.org/)
+* [Supervisor](http://supervisord.org/)
+* [Elasticsearch](https://www.elastic.co/)
+* [Bootstrap](http://getbootstrap.com/)
 * [jQuery](https://jquery.com/)
 
 ## How to Contribute?
@@ -118,12 +128,6 @@ And you can participate in the IPM's and showcase for the PARI project.
 |`CMS - Editing `|
 |`Showcase grindmill content`|
 |`Manage Grindmill Content`|
-
-
-
-
-
-
 
 ### Copyright
 
