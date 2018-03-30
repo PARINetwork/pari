@@ -66,7 +66,7 @@
                             every part of the country. A database that will be truly representative of the Indian people,
                             particularly of 833 million rural citizens. Of their labour, crafts, stories, songs, poems, art
                             and more. The network of Fellows we build will also reflect the social composition of the
-                            country. Half of the nearly 100 Fellows will be women.  And Dalit journalists,
+                            country. Half of the nearly 100 Fellows will be women. And Dalit journalists,
                             Adivasi journalists and those from the minorities, will also be represented in a fair manner.
                             Many stories will be told directly by everyday people themselves. Among other legacies, this
                             will give generations of students, all our children, living textbooks on the world around them.
@@ -101,63 +101,59 @@
                     <h4 class="header">{% trans "HOW YOU CAN HELP" %}</h4>
                     <div class="side-panel-section">
                         <p class="sub-header">{% trans "Donate money" %}</p>
-                        <p>
+                        <p class="text">
                             {% blocktrans trimmed %}You can send in donations using a range of payment methods. All donations made to the CounterMedia
-                            Trust are <u>eligible for exemption</u> under Section 80G of the Income Tax Act, 1961.{% endblocktrans %}
+                            Trust are <a href="/media/uploads/Donate/80g_certificate.jpg" target="_blank">eligible for exemption</a> under Section 80G of the Income Tax Act, 1961.{% endblocktrans %}
                         </p>
-                        <div class="faq-no-border">
-                            {%  url 'donate_form' as donate_form %}
-                            {% blocktrans trimmed %}Please see the <a href={{ donate_form }} >donations page</a> for more details. {% endblocktrans %}
-                        </div>
+                        {%  url 'donate_form' as donate_form %}
                         <button class="primary" onclick="location.href='{%  url 'donate_form' %}'">{% trans "Send donation" %}</button>
                     </div>
                     <div class="side-panel-section">
                         <p class="sub-header">{% trans "Donate equipment" %}</p>
-                        <p>
+                        <p class="text">
+                            {%  url "contact_us" as contact_us %}
                             {% blocktrans trimmed %}If you would like to send over equipment (new or used) that PARI Fellows and rural contributors
-                            could use, please get in touch. That could include still and video cameras, audio digital
+                            could use, please get in <a href="{{ contact_us }}">touch</a>. That could include still and video cameras, audio digital
                             recorders, laptops, hard disks and other equipment.{% endblocktrans %}
                         </p>
                     </div>
                 </div>
                 <div class="side-panel-section">
                     <p class="sub-header">{% trans "Share the message in your network" %}</p>
-                    <p>
+                    <p class="text">
                         {% blocktrans trimmed %}Ask your friends to connect and contribute to this endeavour. Help us cover your country. Join us
-                        in building a unique national knowledge repository on rural India{% endblocktrans %}
+                        in building a unique national knowledge repository on rural India.{% endblocktrans %}
                     </p>
 
                      <div class="gallery-social-icon">
                      {% trans "Donate to PARI" as donate %}
                      {% with url=request.build_absolute_uri  title=donate %}
-                            <a href="https://twitter.com/intent/tweet?url={{ url|urlencode }}&amp;hashtags=RuralIndiaOnline&amp;via=PARINetwork" target="_blank" class="link-light">
-                               <i class="fa fa-twitter" aria-hidden="true"></i>
-                            </a>
-                            <a href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}"
-                               target="_blank" class="link-light">
-                                <i class="fa fa-facebook" aria-hidden="true"></i>
-                            </a>
+                            <a href="https://twitter.com/intent/tweet?url={{ url|urlencode }}&amp;hashtags=RuralIndiaOnline&amp;via=PARINetwork" target="_blank" class="link-light"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}" target="_blank" class="link-light"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                      {% endwith %}
                      </div>
 
                 </div>
                 <div class="faqs">
-                    <div class="header">{% trans "FAQs" %}</div>
-                    <p class="faq" >
-                        <a href="{% url 'guidelines' %}#section-7-1">{% trans "I sent PARI a donation. How do I get a receipt?" %}</a>
-                    </p>
-                    <p class="faq">
-                        <a href="{% url 'guidelines' %}#section-7-1">{% trans "I live in the U.S. Can I send PARI a donation?" %}</a>
-                    </p>
-                    <p class="faq">
-                        <a href="{% url 'guidelines' %}#section-7-2">{% trans "Is there any other way in which I can contribute?" %}</a>
-                    </p>
+                    <h4 class="header">{% trans "FAQs" %}</h4>
+                    <div class="faq">
+                        <p class="question">{% trans "I sent PARI a donation. How do I get a receipt?" %}</p>
+                        <p class="answer">Please make sure you include your email address in the donation form when you make a contribution to PARI.  A receipt will be sent to you in 4 to 8 weeks by email. The receipt includes the 80G certificate number and can be used while filing your tax returns.</p>
+                    </div>
+                    <div class="faq">
+                        <p class="question">{% trans "I live in the U.S. Can I send PARI a donation?" %}</p>
+                        <p class="answer">You can send PARI a donation from an Indian account, in Indian rupees. We are not registered for accepting foreign funds.</p>
+                    </div>
+                    <div class="faq">
+                        <p class="question">{% trans "Is there any other way in which I can contribute?" %}</p>
+                        <p class="answer">Apart from donating money and equipment, you can provide PARI copies of photo collections (new and old), pertaining to rural India. We are also always on the look out for people who can write/photograph for us. Please head over to our <a href="{% url "contribute" slug="contribute" %}">contribute</a> page to know more about the ways you can contribute.</p>
+                    </div>
                 </div>
         </div>
         <div class="founder-section col-lg-7 col-md-7 col-sm-12 col-xs-12">
             <div class="donate-section ">
                 <div class="header"></div>
-                <p>{% blocktrans trimmed %}A lot more, actually, but PARI’s core group and volunteers bear significant costs, personally. We appeal 
+                <p>{% blocktrans trimmed %}A lot more, actually, but PARI’s core group and volunteers bear significant costs, personally. We appeal 
                         to you to contribute generously and make this unique journalistic effort a success. We can do this
                         without governments and corporations – and will. We can’t do it without you.{% endblocktrans %}
                     </p>
