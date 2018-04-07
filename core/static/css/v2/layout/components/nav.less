@@ -112,11 +112,6 @@
             }
           }
         }
-        //&:hover{
-        //  .dropdown-menu {
-        //    display: block;
-        //  }
-        //}
       }
     }
   }
@@ -142,9 +137,10 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: @screen-xs-max) {
 
   #mainnav .navbar-header .navbar-brand-title {
+    margin: 0;
     .font-size(12);
   }
 
@@ -176,12 +172,8 @@
   }
 }
 
-@media (min-width: 768px) {
-  //.dropdown {
-  //  a:hover + ul {
-  //    display: block;
-  //  }
-  //}
+@media (min-width: @screen-sm-min) {
+
   .stories {
     .dropdown-menu {
       min-width: 500px;
@@ -203,9 +195,6 @@
   }
 
   .about-pari {
-    //.col-sm-4{
-    //  padding: 5px;
-    //}
     .dropdown-menu {
       min-width: 600px;
       right: -100px;
@@ -220,12 +209,8 @@
   }
 }
 
-@media (min-width: 992px) {
-  //.dropdown {
-  //  a:hover + ul {
-  //    display: block;
-  //  }
-  //}
+@media (min-width: @screen-md-min) {
+
   .stories {
     .dropdown-menu {
       min-width: 500px;
@@ -271,12 +256,8 @@
   }
 }
 
-@media (min-width: 1200px) {
-  //.dropdown {
-  //  &:hover > .dropdown-menu {
-  //    display: block;
-  //  }
-  //}
+@media (min-width: @screen-lg-min) {
+
   .stories {
     .dropdown-menu {
       min-width: 700px;

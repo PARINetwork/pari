@@ -6,50 +6,13 @@
   position: relative;
   height: 80px;
   z-index: 3;
-  .header-title-wrapper-fullscreen {
-    position: absolute;
-    left: 27vw;
-    .navbar-brand-title-fullscreen{
-      white-space: nowrap;
-      margin: 25px 0 7px;
-      font-family: Amiri;
-      font-size: 31px;
-      color: @darker-grey;
-      line-height: 18px;
-      letter-spacing: 0.3px;
-      font-weight: 600;
-    }
-    .navbar-brand-sub-title{
-      text-align: center;
-      span {
-        letter-spacing: 2px;
-        font-size: 13px;
-        font-weight: 500;
-        color: @grey;
-      }
-    }
-  }
+
   .fixed-header-wrapper {
     position: fixed;
     left: 0px;
     top: 0px;
     right: 0px;
     height: 82px;
-  }
-
-  .home-hamburger {
-    color: #9d9d9d;
-    padding: 0px;
-    &:hover {
-      color: @primary-color;
-    }
-    .hamburger-icon {
-      padding: 30px 15px;
-      font-size: 17px;
-      font-weight: 300;
-      letter-spacing: .3px;
-    }
-
   }
 
   ul.header-social-icons {
@@ -92,27 +55,39 @@
   }
 }
 
+// mobile screen
 @media (max-width: @screen-sm-max) and (min-width: @screen-sm-min){
-  #header .header-title-wrapper-fullscreen {
-      left: 20vw;
-  }
-}
 
+  #holder {
+    overflow: hidden;
 
-@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
-  .nav-header-icon-title {
-    padding-right: 0px;
+    &.single-category, &.article-detail, &.author-detail, &.archive-detail, &.location-detail {
+      overflow: visible;
+    }
   }
-  .navbar-collapse.collapse{
-    padding-left: 0;
+
+  .home-hamburger {
+    display: inline-block;
   }
-  .stories {
-    a {
-      padding-left: 0 !important;
+
+  .dropdown.custom-dropdown {
+    &.open > .dropdown-menu {
+
+      li {
+        padding: 8px 10px;
+      }
     }
   }
 }
 
+// breakpoint: desktop
+@media (min-width: @screen-md-min) {
+  .navbar-collapse.collapse{
+    padding-left: 0;
+  }
+}
+
+// TODO: what is this breakpoint? (possibly an intermediate)
 @media only screen and (max-width: 767px) {
 
   #header, #header .fixed-header-wrapper {
@@ -170,52 +145,6 @@
   .face-list {
     #header ul.header-social-icons li.link-light {
       display: inline-block;
-    }
-  }
-}
-
-.listing-image {
-  width: 100%;
-  height: 180px !important;
-}
-
-.full-image-center {
-  position: relative;
-  height: 100%;
-  background: #000;
-
-  img {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-
-    width: auto !important;
-    max-width: 100%;
-    height: auto;
-    max-height: 100%;
-    display: block;
-    vertical-align: middle;
-  }
-}
-
-@media (max-width: 500px) {
-  #holder {
-    overflow: hidden;
-
-    &.single-category, &.article-detail, &.author-detail, &.archive-detail, &.location-detail {
-      overflow: visible;
-    }
-  }
-
-  .dropdown.custom-dropdown {
-    &.open > .dropdown-menu {
-
-      li {
-        padding: 8px 10px;
-      }
     }
   }
 }
