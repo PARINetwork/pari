@@ -28,7 +28,6 @@
     {% block extra_uncompressed_css %}{% endblock %}
 
     {% compress css %}
-        <!--<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/base.less">-->
         <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/main.less">
         <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/search-panel.less">
 
@@ -109,13 +108,8 @@
                               <a class="navbar-brand" href="/">
                                   <img src="{{ STATIC_URL }}img/logo.png" title="{{ page.title }}" alt="{{ page.title }}" class="logo img-responsive">
                               </a>
-                              <div class="header-title-wrapper-fullscreen {% if current_page != 'home-page' %} hidden {% endif %}">
-                                  <div class="navbar-brand-title-fullscreen ">{% trans "People's Archive of Rural India" %}</div>
-                                  <div class="navbar-brand-sub-title center"><span>{% trans "THE EVERYDAY LIVES OF EVERYDAY PEOPLE" %}</span></div>
-                              </div>
                               <div class="header-title-wrapper">
-                                  <div class="navbar-brand-title hidden-sm {% if current_page == 'home-page' %} hidden {% endif %}">{% trans "People's Archive of Rural India" %}</div>
-                                  <div class="navbar-brand-sub-title hidden-sm hidden"><span>{% trans "THE EVERYDAY LIVES OF EVERYDAY PEOPLE" %}</span></div>
+                                  <div class="navbar-brand-title hidden-sm hidden-md">{% trans "People's Archive of Rural India" %}</div>
                               </div>
                           </div>
                       </div>
@@ -123,11 +117,6 @@
                           <div class="collapse navbar-collapse">
                               <ul class="nav navbar-nav navbar-right " itemscope itemtype="http://schema.org/SiteNavigationElement">
                                   {% include "pages/menus/dropdown.html" %}
-                                  <li>
-                                          <a href="#" class="home-hamburger">
-                                            <span class="glyphicon glyphicon-menu-hamburger hamburger-icon {% if current_page != 'home-page' %} active-tab {% endif %}"></span>
-                                        </a>
-                                  </li>
                               </ul>
                           </div>
                       </div>
@@ -195,69 +184,7 @@
 <script src="{{ STATIC_URL }}bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <script>
 
-    function checkForSmallScreen(windowsize, changedForSmallScreen) {
-        if (windowsize < 768) {
-            if (!changedForSmallScreen) {
-                changedForSmallScreen = !changedForSmallScreen;
-                if (!$('.header-title-wrapper-fullscreen').hasClass('hidden'))
-                    $('.header-title-wrapper-fullscreen').addClass('hidden');
-                if (!$('.home-hamburger').hasClass('hidden'))
-                    $('.home-hamburger').addClass('hidden');
-                $('.home-hamburger').parent().siblings().not('.search-icon').each(function () {
-                    if ($(this).hasClass('hidden'))
-                        $(this).fadeToggle('200').removeClass('hidden');
-                });
-                if ($('.header-title-wrapper .navbar-brand-title').hasClass('hidden'))
-                    $('.header-title-wrapper .navbar-brand-title').fadeToggle('200').removeClass('hidden');
-            }
-        }
-        return changedForSmallScreen;
-    }
     $(function () {
-        var isMainHeaderOnDisplay= false;
-        if ($('#holder').hasClass('home-page')){
-             isMainHeaderOnDisplay= true;
-        }
-        function toggleClassForDropdown() {
-            $('.home-hamburger .hamburger-icon').toggleClass('active-tab');
-            $('.home-hamburger').parent().siblings().not('.search-icon').each(function () {
-                $(this).fadeToggle('200').toggleClass('hidden');
-            });
-            $('.header-title-wrapper .navbar-brand-title').fadeToggle('200').toggleClass('hidden');
-            $('.header-title-wrapper-fullscreen').fadeToggle('slow').toggleClass('hidden');
-
-        }
-        var windowsize = $(window).width();
-        var changedForSmallScreen =false;
-        changedForSmallScreen = checkForSmallScreen(windowsize, changedForSmallScreen);
-        $(window).resize(function() {
-          windowsize = $(window).width();
-          changedForSmallScreen = checkForSmallScreen(windowsize, changedForSmallScreen);
-
-          if (windowsize >= 768){
-              if (changedForSmallScreen) {
-                  changedForSmallScreen=!changedForSmallScreen;
-                  if ($('.home-hamburger').hasClass('hidden'))
-                      $('.home-hamburger').removeClass('hidden');
-                  if (isMainHeaderOnDisplay) {
-                      $('.header-title-wrapper-fullscreen').removeClass('hidden');
-                      $('.home-hamburger').parent().siblings().not('.search-icon').each(function () {
-                          $(this).fadeToggle('200').addClass('hidden');
-                      });
-                      $('.navbar-brand-title').fadeToggle('200').addClass('hidden');
-                  }
-                  else {
-                      if ($('.header-title-wrapper .navbar-brand-title').hasClass('hidden'))
-                          $('.header-title-wrapper .navbar-brand-title').fadeToggle('200').removeClass('hidden');
-                  }
-              }
-          }
-        });
-        $('.home-hamburger').on("click", function(event) {
-            event.preventDefault();
-            toggleClassForDropdown();
-            isMainHeaderOnDisplay = !isMainHeaderOnDisplay;
-        });
         $('.middleinput:text, textarea').addClass('xlarge');
         $('.control-group label').addClass('control-label');
         if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
