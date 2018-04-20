@@ -14,8 +14,9 @@
                         </a>
                     {% endif %}
                     {% if page_model.content_type.model == "resource" %}
+                        {% image page_model.thumbnail width-270 as resource_thumbnail %}
                         <a href="{{ page_model.get_absolute_url }}">
-                            <img src="{{ page_model.embed_thumbnail }}" class="resource ignore-carousel"/>
+                            <img src="{{ resource_thumbnail.url }}" class="resource ignore-carousel"/>
                         </a>
                     {% endif %}
                 </div>
