@@ -4,8 +4,8 @@
     {% image specific.featured_image width-270 as featured_image %}
     <img src="{{ featured_image.url }}" alt="{{ specific.title }}">
   {% elif specific.thumbnail %}
-    {% image specific.thumbnail as resource_thumbnail %}
-    <img src="{{ resource_thumbnail.url }}" alt="{{ specific.title }}" width="278" height="225">
+    {% image specific.thumbnail width-270 as resource_thumbnail %}
+    <img src="{{ resource_thumbnail.url }}" alt="{{ specific.title }}">
   {% else %}
     <img src="{{ STATIC_URL }}img/default_featured_image.png" alt="{{ specific.title }}" width="278" height="225">
   {% endif %}

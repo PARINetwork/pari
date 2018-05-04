@@ -225,6 +225,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- IN FOCUS -->
         <div class="article-grid home-article-grid-1">
             <div class="container">
                 <div class="row">
@@ -240,6 +242,8 @@
                     </div>
                 </div>
                 <div class="row">
+                    
+                    <!-- COLUMN-ONE -->
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
                         <div class="row in_focus_page1">
                             {% with page.in_focus_page1 as item %}
@@ -247,6 +251,7 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     {% include "includes/article_listing_image.html" with specific=item.specific alignment_class='full-image-center listing-image'%}
                                 </div>
+
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     <a href="{{ item.url }}" class="infocus-title-primary"><div class="infocus-item-title">{{ item.title }}</div></a>
                                     <div class="name-primary">
@@ -286,6 +291,8 @@
                                 </div>
                             {% endwith %}
                     </div>
+
+                    <!-- COLUMN-TWO -->
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 grid">
                         <div class="row in_focus_page2">
                             {% with page.in_focus_page2 as item %}
@@ -334,6 +341,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- ALL THAT YOU CAN DISCOVER ON PARI -->
         <div class="story-grid home-article-grid-3">
             <div class="container">
                 <div class="row">
