@@ -46,7 +46,7 @@
                             </p>
                             <div class="fellows">
                                 <span><i class="fa fa-microphone"></i>{% trans "Reporters" %}</span>
-                                <span><i class="fa fa-pencil"></i>{% trans "Writers" %}</span>
+                                <span><i class="fa fa-pencil-alt"></i>{% trans "Writers" %}</span>
                                 <span><i class="fa fa-film"></i>{% trans "Filmmakers" %}</span>
                                 <span><i class="fa fa-camera"></i>{% trans "Photographers" %}</span>
                             </div>
@@ -128,8 +128,8 @@
                      <div class="gallery-social-icon">
                      {% trans "Donate to PARI" as donate %}
                      {% with url=request.build_absolute_uri  title=donate %}
-                            <a href="https://twitter.com/intent/tweet?url={{ url|urlencode }}&amp;hashtags=RuralIndiaOnline&amp;via=PARINetwork" target="_blank" class="link-light"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}" target="_blank" class="link-light"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="https://twitter.com/intent/tweet?url={{ url|urlencode }}&amp;hashtags=RuralIndiaOnline&amp;via=PARINetwork" target="_blank" class="link-light"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                            <a href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}" target="_blank" class="link-light"><i class="fab fa-facebook" aria-hidden="true"></i></a>
                      {% endwith %}
                      </div>
 
