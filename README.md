@@ -6,7 +6,7 @@
 
 ---
 
-[PARI](https://ruralindiaonline.org/) is a volunteer-run rural journalism platform founded by veteran journalist and former rural affairs editor of 'The Hindu', Palagummi Sainath.
+This repository contains the source code of the main website deployed for public consumption at ruralindiaonline.org
 
 ## Developer Guide
 
@@ -18,13 +18,13 @@
 
 ### Setup
 
-Clone both [pari](https://github.com/PARINetwork/pari.git) and [pari-ansible](https://github.com/PARINetwork/pari-ansible.git) repository (ideally in the same parent directory).
+Clone both [pari](https://github.com/PARINetwork/pari.git) and [pari-ansible](https://github.com/PARINetwork/pari-ansible.git) repositories (ideally in the same parent directory).
 
 ```sh
 $ git clone https://github.com/PARINetwork/pari.git
 $ git clone https://github.com/PARINetwork/pari-ansible.git
 $ cd pari
-$ vagrant up   # This would take a while to complete. You'll be prompted for SUDO password of your host machine for the first time.
+$ vagrant up   # You'll be prompted for SUDO password of your host machine for the first time.
 ```
 
 ### Development-specific commands
@@ -32,7 +32,7 @@ $ vagrant up   # This would take a while to complete. You'll be prompted for SUD
 ```sh
 $ vagrant ssh                                   # Login to vagrant box
 $ cd /vagrant && source pari_env/bin/activate   # Change to project directory and activate project virtualenv
-$ python manage.py runserver                    # Run python HTTP server (Open development.ruralindiaonline.org to view local instance)
+$ python manage.py runserver                    # Local instance available at development.ruralindiaonline.org
 ```
 
 Admin console can be accessed at [http://development.ruralindiaonline.org/admin/](http://development.ruralindiaonline.org/admin/) (username: admin, password: admin)

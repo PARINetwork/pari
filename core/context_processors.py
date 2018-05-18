@@ -15,6 +15,7 @@ def settings(request):
     return {
         "SOCIAL_FACEBOOK": django_settings.SOCIAL.get("FACEBOOK", ""),
         "SOCIAL_TWITTER": django_settings.SOCIAL.get("TWITTER", ""),
+        "SOCIAL_INSTAGRAM": django_settings.SOCIAL.get("INSTAGRAM", ""),
         "SOCIAL_YOUTUBE": django_settings.SOCIAL.get("YOUTUBE", ""),
         "SOCIAL_SOUND_CLOUD": django_settings.SOCIAL.get("SOUND_CLOUD", ""),
         "SOCIAL_GITHUB_REPO": django_settings.SOCIAL.get("GITHUB_REPO", ""),
