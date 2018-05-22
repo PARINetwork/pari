@@ -94,7 +94,7 @@ class Face(Page):
     ]
 
     def get_locations_index(self):
-        return self.image.get_locations_index()
+        return self.image and self.image.get_locations_index()
 
     def get_minimal_locations(self):
         return [self.location.minimal_address]
