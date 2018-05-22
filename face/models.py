@@ -100,7 +100,7 @@ class Face(Page):
         return [self.location.minimal_address]
 
     def get_photographers_index(self):
-        return self.image.get_all_photographers()
+        return self.image and self.image.get_all_photographers()
 
     def get_search_type(self):
         return self.__class__.__name__.lower()
