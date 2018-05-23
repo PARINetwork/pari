@@ -66,7 +66,10 @@ class Face(Page):
         return self.image and self.image.photographers.all()
 
     def get_authors_or_photographers(self):
-        return [photographer.name for photographer in self.photographers]
+        try:
+            return [photographer.name for photographer in self.photographers]
+        except TypeError:
+            return self.photographers
 
     search_fields = Page.search_fields + [
         index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE),
