@@ -63,7 +63,7 @@ class Face(Page):
 
     @property
     def photographers(self):
-        return self.image.photographers.all()
+        return self.image and self.image.photographers.all()
 
     def get_authors_or_photographers(self):
         return [photographer.name for photographer in self.photographers]
