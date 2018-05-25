@@ -46,7 +46,6 @@ h1, h3, h4 {
     position: relative;
     counter-increment: item;
     font-weight: 400;
-    padding-left: 35px;
     line-height: 40px;
     .font-size(16);
     margin: 20px 0;
@@ -60,16 +59,15 @@ h1, h3, h4 {
   }
   li:before {
     content: counter(item);
-    background: #FF3D08;
-    border-radius: 100%;
-    color: white;
-    width: 23px;
+    background: @lighter-grey;
+    color: @primary-color;
     font-weight: 900;
     text-align: center;
-    display: inline-block;
-    position: absolute;
-    margin-top: 10px;
-    left: 0;
     line-height: 22px;
+    float: left;
+    margin-right: 10px;
+    padding: 3px 10px 1px;
+    margin-top: 6px;
+    border-radius: 6px;
   }
 }

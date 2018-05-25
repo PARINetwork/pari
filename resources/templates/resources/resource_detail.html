@@ -83,7 +83,7 @@
       </div>
       <div class="col-lg-8 col-md-8 col-sm-12">
         <div class="category-focus">
-          <h4>{% trans "ABSTRACT" %}</h4>
+          <h4>{% trans "FOCUS" %}</h4>
           <p>{{ resource.content.2 }}</p>
         </div>
       </div>
@@ -93,7 +93,7 @@
         <div class="factoid-container special-bullets">
           <ol>
           {% if heading == 'yes' %}
-            <h4 class="title-factoid">{% trans "HIGHLIGHTS" %}</h4>
+            <h4 class="title-factoid">{% trans "FACTOIDS" %}</h4>
           {% endif %}
           {% for block in resource.content %}
           {% if block.block_type == "factoids" and block.value > 0 %}
