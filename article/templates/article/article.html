@@ -228,11 +228,11 @@
                             </li>{% with request.build_absolute_uri as url and item.title as title %}<li class="social-icon" data-url="{{ url }}">
                                     <span class="banner-label">{% trans "Share" %}</span>
                                         <a href="https://twitter.com/intent/tweet?url={{ url|urlencode }}&amp;hashtags=RuralIndiaOnline&amp;via=PARINetwork" target="_blank" class="link-light">
-                                        <i class="fa fa-twitter"></i>
+                                        <i class="fab fa-twitter"></i>
                                     </a>
                                     <a target="_blank"
                                        href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}" class="link-light">
-                                        <i class="fa fa-facebook"></i>
+                                        <i class="fab fa-facebook"></i>
                                     </a>
                                 </li>{% endwith %}<li>
                                 <a class="# print-story" onclick="window.print()">{% trans "Print this story" %}</a>

@@ -8,7 +8,7 @@
                     <div class="author-name">{{ author.name }}</div>
                     {% if author.twitter_username %}
                         <div>
-                            <i class="fa fa-twitter icon-handle"></i>
+                            <i class="fab fa-twitter icon-handle"></i>
                             <div class="handle">
                                 <a href="https://twitter.com/{{ author.twitter_handle }}">{{ author.twitter_username }}</a>
                             </div>
@@ -16,7 +16,7 @@
                     {% endif %}
                     {% if author.facebook_username %}
                         <div>
-                            <i class="fa fa-facebook icon-handle"></i>
+                            <i class="fab fa-facebook icon-handle"></i>
                             <div class="handle">
                                 <a href="https://www.facebook.com/{{ author.facebook_username }}">{{ author.facebook_username }}</a>
                             </div>
@@ -42,11 +42,11 @@
                                 <li class="social-icon" data-url="{{ author.get_absolute_url }}">
                                     <span class="banner-label">{% trans "Share" %}</span>
                                     <a href="https://twitter.com/intent/tweet?url=http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{% url "author-detail" slug=author.slug %}&amp;hashtags=RuralIndiaOnline&amp;via=PARINetwork" target="_blank" class="link-light">
-                                        <i class="fa fa-twitter"></i>
+                                        <i class="fab fa-twitter"></i>
                                     </a>
                                     <a target="_blank"
                                        href="https://facebook.com/sharer.php?u=http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{{ author.get_absolute_url|urlencode }}&t={{ title|urlencode }}" class="link-light">
-                                        <i class="fa fa-facebook"></i>
+                                        <i class="fab fa-facebook"></i>
                                     </a>
                                 </li>
                             </ul>

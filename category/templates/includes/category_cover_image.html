@@ -9,7 +9,7 @@
             </div>
             <div class="banner-content container">
                 <div class="back-to-categories">
-                    <a class="link-darker font-m right" href="{% url "category-list" %}">
+                    <a class="link-darker font-m" href="{% url "category-list" %}">
                         <i class="fa fa-angle-left"></i>
                         <span style="padding-left:3px;">{% trans "All Categories" %}</span>
                     </a>
@@ -29,14 +29,14 @@
                                 <li class="icon">
                                     <a href="https://twitter.com/intent/tweet?url={{ url|urlencode }}&amp;hashtags=RuralIndiaOnline&amp;via=PARINetwork"
                                        target="_blank" class="link-light">
-                                        <i class="fa fa-twitter"></i>
+                                        <i class="fab fa-twitter"></i>
                                     </a>
                                 </li>
                                 <li class="icon">
                                     <a target="_blank"
                                        href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}"
                                        class="link-light">
-                                        <i class="fa fa-facebook"></i>
+                                        <i class="fab fa-facebook"></i>
                                     </a>
                                 </li>
                             {% endwith %}
