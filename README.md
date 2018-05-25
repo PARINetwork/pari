@@ -131,4 +131,4 @@ And you can participate in the IPM's and showcase for the PARI project.
 
 ### Copyright
 
-Licensed under the 3-clause BSD License. Please refer the LICENSE.txt for details.
+Licensed under the 3-clause BSD License. Please refer to LICENSE.txt for details.

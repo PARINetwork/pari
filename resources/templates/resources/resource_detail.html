@@ -25,13 +25,14 @@
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/resources/resource_detail.less">
 {% endblock %}
 {% block extra_js %}
+    <script type="text/javascript" src="{{ STATIC_URL }}pdfjs/pdf.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/scroll.js"></script>
 {% endblock %}
 
 {% block main %}
   <div class="row row-side pdf-container ">
       <div class="embed-container embed-container-tall ">
-          <iframe src="{{ resource.document.file.url }}" frameborder="0"  marginwidth="0" marginheight="0" scrolling="no" onload="resizeIframe(this)" style="border:1px solid #CCC;border-width:1px 1px 0;" allowFullscreen="true" allowfullscreen="true"  webkitallowfullscreen mozallowfullscreen> </iframe>
+        <iframe src="{{ STATIC_URL }}pdfjs/viewer.html?file={{ resource.document.file.url }}" frameborder="0"  marginwidth="0" marginheight="0" scrolling="no" onload="resizeIframe(this)" style="border:1px solid #CCC;border-width:1px 1px 0;" allowFullscreen="true" allowfullscreen="true"  webkitallowfullscreen mozallowfullscreen></iframe>
       </div>
       <div class="bottom-arrow">
         <a href="#section02"><span></span><i class="fa fa-arrow-circle-down bottom-arr"></i></a>
@@ -39,64 +40,71 @@
 
   </div>
 <div class="container content-container" id="section02">
-    <div>
-        <div class="col-lg-8 col-md-8 col-sm-8 left-plane">
-            <div class="title-container">
-                <h1>{{ resource.title }}</h1>
-                <h4>{{ resource.date | date:"d M, Y"}}</h4>
-                    <div class="category-share">
-                        <ul >
-                            <li>
-                                <h6>{% trans "Share" %}</h6>
-                            </li>
-                            {% with request.build_absolute_uri as url and category.title as title %}
-                                <li class="share-icons">
-                                    <a href="https://twitter.com/intent/tweet?url={{ url }}&amp;hashtags=RuralIndiaOnline&amp;via=PARINetwork" target="_blank" class="link-light">
-                                    <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li class="share-icons">
-                                    <a target="_blank" href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}" class="link-light">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                                </li>
-                            {% endwith %}
-                        </ul>
-                    </div>
-            </div>
-            <hr>
-            <div class="factoid-container special-bullets">
-                <ol>
-                    {% if heading == 'yes' %}
-                        <h4 class="title-factoid">{% trans "FACTOIDS" %}</h4>
-                    {% endif %}
-                {% for block in resource.content %}
-                  {% if block.block_type == "factoids" and block.value > 0 %}
-                        <li>
-                            {{ block.value }}
-                        </li>
-                  {% endif %}
-                {% endfor %}
-                </ol>
-            </div>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="title-container">
+          <h1>{{ resource.title }}</h1>          
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 right-plane">
-            <hr>
-            <div class="category-focus">
-                <h4>{% trans "FOCUS" %}</h4>
-                <p>{{ resource.content.2 }}</p>
-            </div>
-            <hr>
-            <div class="category-author">
-                <h4>{% trans "AUTHOR" %}</h4>
-                <p>{{ resource.content.0 }}</p>
-            </div>
-            <hr>
-            <div class="category-copyright">
-                    <h4>{% trans "COPYRIGHT" %}</h4>
-                <p>{{ resource.content.1 }}</p>
-            </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12">
+        <div>
+          <h4>{% trans "AUTHOR" %}</h4>
+          <p>{{ resource.content.0 }}</p>
         </div>
+        <div>
+          <h4>{% trans "COPYRIGHT" %}</h4>
+          <p>{{ resource.content.1 }}</p>
+        </div>
+        <div>
+          <h4>{% trans "PUBLICATION DATE" %}</h4>
+          <p>{{ resource.date | date:"d M, Y"}}</p>
+        </div>
+        <div>
+          <h4>{% trans "SHARE" %}</h4>
+          <div class="category-share">
+            <ul >
+              {% with request.build_absolute_uri as url and category.title as title %}
+              <li class="share-icons">
+                <a href="https://twitter.com/intent/tweet?url={{ url }}&amp;hashtags=RuralIndiaOnline&amp;via=PARINetwork" target="_blank" class="link-light">
+                  <i class="fab fa-twitter-square"></i>
+                </a>
+              </li>
+              <li class="share-icons">
+                <a target="_blank" href="https://facebook.com/sharer.php?u={{ url|urlencode }}&t={{ title|urlencode }}" class="link-light">
+                  <i class="fab fa-facebook"></i>
+                </a>
+              </li>
+              {% endwith %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8 col-md-8 col-sm-12">
+        <div class="category-focus">
+          <h4>{% trans "ABSTRACT" %}</h4>
+          <p>{{ resource.content.2 }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-3 col-md-8 col-md-offset-3 col-sm-8">
+        <div class="factoid-container special-bullets">
+          <ol>
+          {% if heading == 'yes' %}
+            <h4 class="title-factoid">{% trans "HIGHLIGHTS" %}</h4>
+          {% endif %}
+          {% for block in resource.content %}
+          {% if block.block_type == "factoids" and block.value > 0 %}
+            <li>
+              {{ block.value }}
+            </li>
+            {% endif %}
+          {% endfor %}
+          </ol>
+        </div>
+      </div>
     </div>
 </div>
 {% endblock %}
