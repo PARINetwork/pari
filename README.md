@@ -46,16 +46,7 @@ $ deactivate                                    # Exit from project virtualenv
 
 ## Tech stack:
 
-* [Python](https://www.python.org/)
-* [Django](https://www.djangoproject.com/)
-* [Wagtail](https://wagtail.io/)
-* [PostgreSQL](https://www.postgresql.org/)
-* [Nginx](https://www.nginx.com/)
-* [Gunicorn](http://gunicorn.org/)
-* [Supervisor](http://supervisord.org/)
-* [Elasticsearch](https://www.elastic.co/)
-* [Bootstrap](http://getbootstrap.com/)
-* [jQuery](https://jquery.com/)
+[Python](https://www.python.org/), [Django](https://www.djangoproject.com/), [Wagtail](https://wagtail.io/), [PostgreSQL](https://www.postgresql.org/), [Nginx](https://www.nginx.com/), [Gunicorn](http://gunicorn.org/), [Supervisor](http://supervisord.org/), [Elasticsearch](https://www.elastic.co/), [Bootstrap](http://getbootstrap.com/), [jQuery](https://jquery.com/)
 
 ## How to Contribute?
 #### Sign up for stories
