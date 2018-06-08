@@ -2,6 +2,29 @@
 @import "../../layout/mixins";
 @import "../../layout/responsive";
 
+.announcement {
+  background-color: #ffeedc;
+  padding: 15px 0;
+
+  .profile-photo {
+    text-align: center;
+  }
+
+  .content {
+    font-size: 15px;
+    line-height: 46px;
+  }
+
+  .content .link-w-arrow {
+    color: @primary-color;
+
+    &:hover {
+      text-decoration: none;
+      color: @bg-red-transparant;
+    }
+  }
+}
+
 .carousel-fade {
   .carousel-inner {
     .item {
@@ -745,7 +768,11 @@
     width: 57px;
     left: 0px;
     position: absolute;
-    margin-left: 13px;
+  }
+
+  .announcement .content {
+    font-size: 12px;
+    line-height: 14px;
   }
 
 }
