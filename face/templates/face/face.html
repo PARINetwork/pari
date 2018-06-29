@@ -121,6 +121,7 @@
             {% image face.image original as face_image_original %}
             {% image face.image height-1080 as face_image_resized %}
             {% image face.image fill-514x514 as face_image_cropped %}
+            {% image face.original_image original as original_image %}
 
             <div class="image-wrapper">
                 <a href="{{ face.get_absolute_url }}"
@@ -128,6 +129,7 @@
                    data-face-details="{% spaceless %} {% include 'face/includes/face_details.html' with face=face face_image=face_image_original only %} {% endspaceless %}"
                    data-slug="{{ face.slug }}"
                    data-original-image-src="{{ face_image_resized.url }}"
+                   data-origin-image-src="{{ original_image.url }}"
                    data-url="{{ face.get_absolute_url }}">
                     <img class="img-responsive grid-image no-border" src="{{ face_image_cropped.url }}" alt="{{ face|alt_text }}">
                 </a>
