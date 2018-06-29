@@ -22,6 +22,7 @@
 
     }
   }
+
   .tile {
     .image-wrapper {
       width: 179px;
@@ -281,6 +282,7 @@ body .mfp-bg {
   .mfp-arrow:before, .mfp-arrow:after {
     display: none;
   }
+
   .mfp-figure {
     background: #000;
     &:after {
@@ -305,6 +307,30 @@ body .mfp-bg {
       @media (max-width: @switchOver) {
         right: 0;
       }
+    }
+  }
+
+  .mfp-switcher {
+    position: absolute;
+    right: 36%;
+    bottom: 2%;
+    border-radius: 4px;
+    color: @light-grey ;
+    background-color: @bg-lightest-transparent;
+    font-weight: 100;
+    padding: 6px 16px;
+    text-transform: uppercase;
+    border: 0;
+
+    &:hover {
+      color: @text-light;
+    }
+  }
+
+  @media (max-width: @screen-xs-max ) {
+    .mfp-switcher {
+      right: 3%;
+      bottom: 1%;
     }
   }
 

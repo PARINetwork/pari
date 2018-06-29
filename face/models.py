@@ -22,6 +22,9 @@ class Face(Page):
     image = models.ForeignKey("core.AffixImage",
                               related_name="face_for_image", null=True,
                               on_delete=models.SET_NULL)
+    original_image = models.ForeignKey("core.AffixImage",
+                              related_name="original_image", null=True,
+                              on_delete=models.SET_NULL, blank=True)
     location = models.ForeignKey("location.Location", null=True,
                                  on_delete=models.SET_NULL, verbose_name="Place of Origin")
     additional_info = RichTextField(blank=True)
@@ -74,6 +77,7 @@ class Face(Page):
     search_fields = Page.search_fields + [
         index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE),
         index.FilterField('image'),
+        index.FilterField('original_image'),
         index.SearchField('additional_info', partial_match=True, boost=SearchBoost.CONTENT),
         index.FilterField('location'),
         index.RelatedFields('location', [
@@ -110,6 +114,7 @@ class Face(Page):
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('image'),
+        ImageChooserPanel('original_image'),
         M2MFieldPanel('location'),
         FieldPanel('adivasi'),
         MultiFieldPanel(

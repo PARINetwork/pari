@@ -44,19 +44,26 @@ var Face = {
                 '<div class="mfp-title"></div>' +
                 '<div class="mfp-counter"></div>' +
                 '</div>' +
-                '</div>'
+                '</div>' +
+                '<button class="btn btn-default mfp-switcher" data-state="face"><i class="fas fa-expand"></i> <span class="text">Show Original</span></button>'
             },
+
             closeBtnInside: true,
+
             callbacks: {
+
                 updateStatus: $.proxy(function () {
                     this._initImage();
+                    this._initSwitcher();   
                 }, this),
+
                 close: $.proxy(function () {
                     this._popup.removeData('slideshow');
                     history.pushState(null, null, $(".popup-gallery").data("url"));
                     console.log("closed");
                     $(document).attr("overflow", "auto");
                 }, this),
+
                 open: function () {
                     var mfp = $.magnificPopup.instance;
                     var proto = $.magnificPopup.proto;
@@ -85,6 +92,7 @@ var Face = {
                 }
             }
         });
+
         $.magnificPopup.instance.updateItemHTML = function () {
             var $this = this;
             var items = [];
@@ -115,6 +123,7 @@ var Face = {
     },
 
     _initControls: function () {
+
         $('.album-controls').click($.proxy(function () {
             this._popup.data('slideshow', 'true');
             this._popup.magnificPopup('open');
@@ -122,6 +131,7 @@ var Face = {
     },
 
     _initImage: function () {
+ 
         $('.btn-fullscreen').on('click', function () {
             $('.mfp-container').addClass('mfp-container-fullscreen');
             return false;
@@ -146,8 +156,38 @@ var Face = {
 
         var mfp = $.magnificPopup.instance;
         history.pushState(null, null, $($(".mfp-image")[mfp.index]).data("url"));
-    }
+    },
 
+    _initSwitcher: function () {
+        var mfp = $.magnificPopup.instance;
+        var originImage = $($("a.mfp-image")[mfp.index]).attr("data-origin-image-src");
+        if(originImage.trim() === '') {
+            $('.mfp-switcher').hide();
+        } else {
+            $('.mfp-switcher').show();
+
+            $('.mfp-switcher').on('click', function (event) {
+                event.stopPropagation();
+    
+                var mfp = $.magnificPopup.instance;
+                var originImage = $($("a.mfp-image")[mfp.index]).attr("data-origin-image-src");
+                var faceImage = $($("a.mfp-image")[mfp.index]).attr("data-original-image-src");
+                var currentImage = originImage;
+    
+                if($('.mfp-switcher').data('state') === 'face') {
+                    currentImage = originImage;
+                    $(this).data('state', 'origin');
+                    $(this).find('.text').text('show face');
+                } else {
+                    currentImage = faceImage;
+                    $(this).data('state', 'face');
+                    $(this).find('.text').text('show original');
+                }
+    
+                $('.mfp-img').attr('src', currentImage);
+            });
+        }
+    }
 }
 
 $(function () {
