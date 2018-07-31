@@ -129,7 +129,11 @@
                    data-face-details="{% spaceless %} {% include 'face/includes/face_details.html' with face=face face_image=face_image_original only %} {% endspaceless %}"
                    data-slug="{{ face.slug }}"
                    data-original-image-src="{{ face_image_resized.url }}"
-                   data-origin-image-src="{{ original_image.url }}"
+                    {% if face.original_image %}
+                        data-origin-image-src="{{ original_image.url }}"
+                    {% else %}
+                        data-origin-image-src=""
+                    {% endif %}
                    data-url="{{ face.get_absolute_url }}">
                     <img class="img-responsive grid-image no-border" src="{{ face_image_cropped.url }}" alt="{{ face|alt_text }}">
                 </a>

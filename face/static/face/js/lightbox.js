@@ -45,7 +45,13 @@ var Face = {
                 '<div class="mfp-counter"></div>' +
                 '</div>' +
                 '</div>' +
-                '<button class="btn btn-default mfp-switcher" data-state="face"><i class="fas fa-expand"></i> <span class="text">Show Original</span></button>'
+                '<button class="btn btn-default mfp-show-original"><i class="fas fa-expand"></i> <span class="text">Show Original</span></button>' +
+                '<div class="origin-image">' +
+                '<div class="origin-image-container">' + 
+                '<div class="btn btn-default mfp-close-original"><i class="fas fa-times-circle"></i></div>' +
+                '<img src="" class="mfp-original"></img>' +
+                '</div>' +
+                '</div>'
             },
 
             closeBtnInside: true,
@@ -54,7 +60,7 @@ var Face = {
 
                 updateStatus: $.proxy(function () {
                     this._initImage();
-                    this._initSwitcher();   
+                    this._initShowOriginal();   
                 }, this),
 
                 close: $.proxy(function () {
@@ -137,6 +143,13 @@ var Face = {
             return false;
         });
 
+        $('.mfp-close-original').on('click', function (event) {
+            event.stopPropagation();
+            
+            $('.origin-image').removeClass('active');
+            $('.mfp-arrow').removeClass('hide');
+        });
+
         $('.btn-slideshow').on('click', $.proxy(function () {
             var slideshow = this._popup.data("slideshow");
             if (slideshow) {
@@ -158,33 +171,23 @@ var Face = {
         history.pushState(null, null, $($(".mfp-image")[mfp.index]).data("url"));
     },
 
-    _initSwitcher: function () {
+    _initShowOriginal: function () {
         var mfp = $.magnificPopup.instance;
         var originImage = $($("a.mfp-image")[mfp.index]).attr("data-origin-image-src");
         if(originImage.trim() === '') {
-            $('.mfp-switcher').hide();
+            $('.mfp-show-original').hide();
         } else {
-            $('.mfp-switcher').show();
+            $('.mfp-show-original').show();
 
-            $('.mfp-switcher').on('click', function (event) {
+            $('.mfp-show-original').on('click', function (event) {
                 event.stopPropagation();
     
                 var mfp = $.magnificPopup.instance;
                 var originImage = $($("a.mfp-image")[mfp.index]).attr("data-origin-image-src");
-                var faceImage = $($("a.mfp-image")[mfp.index]).attr("data-original-image-src");
-                var currentImage = originImage;
     
-                if($('.mfp-switcher').data('state') === 'face') {
-                    currentImage = originImage;
-                    $(this).data('state', 'origin');
-                    $(this).find('.text').text('show face');
-                } else {
-                    currentImage = faceImage;
-                    $(this).data('state', 'face');
-                    $(this).find('.text').text('show original');
-                }
-    
-                $('.mfp-img').attr('src', currentImage);
+                $('.mfp-original').attr('src', originImage);
+                $('.origin-image').addClass('active');
+                $('.mfp-arrow').addClass('hide');
             });
         }
     }
