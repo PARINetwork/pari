@@ -8,7 +8,6 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0026_auto_20180629_1241'),
         ('face', '0008_increase_parants_occupation_length_to_100'),
     ]
 
