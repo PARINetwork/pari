@@ -45,10 +45,10 @@ var Face = {
                 '<div class="mfp-counter"></div>' +
                 '</div>' +
                 '</div>' +
-                '<button class="btn btn-default mfp-show-original"><i class="fas fa-expand"></i> <span class="text">Show Original</span></button>' +
+                '<button class="btn btn-default mfp-show-original"><i class="fas fa-camera"></i> <span class="text">Show Original</span></button>' +
                 '<div class="origin-image">' +
                 '<div class="origin-image-container">' + 
-                '<div class="btn btn-default mfp-close-original"><i class="fas fa-times-circle"></i></div>' +
+                '<div class="btn btn-default mfp-close-original"><i class="fas fa-times-circle"></i> Close</div>' +
                 '<img src="" class="mfp-original"></img>' +
                 '</div>' +
                 '</div>'
