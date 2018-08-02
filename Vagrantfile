@@ -26,6 +26,7 @@ Vagrant.configure("2") do |config|
   config.vm.define 'pari.machine' do |machine|
     machine.vm.box = 'pari/devbox'
     machine.vm.network "private_network", ip: "#{IP}"
+    machine.vm.box_version = "0.0.2"
   end
 
   config.vm.provider "virtualbox" do |v|
