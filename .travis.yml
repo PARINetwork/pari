@@ -33,10 +33,10 @@ deploy:
   on:
     branch: release-candidate
 addons:
-  postgresql: 9.3
+  postgresql: 9.5
   apt:
     packages:
-    - postgresql-9.3-postgis-2.3
+    - postgresql-9.5-postgis-2.3
   firefox: 53.0.2
   ssh_known_hosts:
   - staging.ruralindiaonline.org
