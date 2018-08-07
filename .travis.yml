@@ -40,5 +40,6 @@ addons:
   firefox: 53.0.2
   ssh_known_hosts:
   - staging.ruralindiaonline.org
+  - 206.189.18.112
 notifications:
   slack: countermedia:TsEo2IDocyJtRqLR1Mzi0zuT
