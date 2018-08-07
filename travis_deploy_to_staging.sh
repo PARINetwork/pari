@@ -6,7 +6,7 @@
 while true; do echo "Deploying..."; sleep 60; done &
 
 # Deployment steps
-chmod 400 pari_qa.pem
+chmod 400 pari_qa
 #todo find a elegant way to instruct ansible to take right pem
 cp pari_qa ~/.ssh/id_rsa
 git clone https://github.com/PARINetwork/pari-ansible.git
