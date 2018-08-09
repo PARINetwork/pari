@@ -4,6 +4,8 @@ language: python
 cache: pip
 python:
 - '2.7'
+virtualenv:
+  system_site_packages: true
 before_install:
 - openssl aes-256-cbc -K $encrypted_dc72a5ae7e49_key -iv $encrypted_dc72a5ae7e49_iv
   -in pari_qa.enc -out pari_qa -d
