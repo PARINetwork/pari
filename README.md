@@ -27,7 +27,32 @@ $ cd pari
 $ vagrant up   # You'll be prompted for SUDO password of your host machine for the first time.
 ```
 
+### Ansible 2.2.1
+Make sure that you have installed Ansible 2.2.1.
+You can install Ansible 2.2.1 with the following command
+
+```sh
+$ pip install ansible==2.2.1
+```
+
+If, however, you have already installed some other version of Ansible you will need to uninstall it
+```sh
+$ sudo -H pip uninstall ansible
+$ #OR
+$ brew uninstall ansible # Only if you used homebrew to install ansible
+$ pip install ansible==2.2.1
+$ git checkout master
+$ git pull 
+$ rm -rf pari_env (if present)
+$ vagrant destroy ( Delete the old version of the box )
+$ rm -rf .vagrant (Delete old vagrant cache)
+$ vagrant up
+```
+
 ### Development-specific commands
+The above set-up will get the vagrant box up. That is, it will start the virtual machine that pretends to be a remote server at "development.ruralindiaonline.org".
+
+You will need to login via ssh into this pretend-remote virtual machine and start your django webapp server. Please follow the following steps for this.
 
 ```sh
 $ vagrant ssh                                   # Login to vagrant box
