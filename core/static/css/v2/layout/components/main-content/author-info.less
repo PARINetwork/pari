@@ -14,19 +14,30 @@
   padding-top: 40px;
   padding-bottom: 15px;
   margin-bottom: 25px;
-  background-color: @darker-grey;
-  color: @light-grey;
-  line-height: 40px;
-  a.btn {
+  background-color: #111111;
+  color: #E4E4E4;
+  line-height: 37px;
+    a.btn {
     &.primary {
-      background: #B25B46;
-      padding: 10px;
+      padding: 10px 15px;
       white-space: normal;
+      border: 1px solid #5a5a5a;
+      background: none;
+      font-size: 1.1rem;
+      letter-spacing: 0.3px;
+      font-weight: 400;
+      border-radius: 3px;
+    }
+    &:hover{
+      border: 1px solid @primary-color;
     }
   }
   .author-name {
-    color: #F64F28;
-    .font-size(30);
+    color: #ffffff;
+    font-size: 3.5rem;
+    font-family: amiri;
+    font-weight: bold;
+    letter-spacing: -0.7px;
   }
 
   .author-block:not(:last-child) {
@@ -35,8 +46,10 @@
   }
 
   .author-bio {
-    color: @grey;
+    color: white;
     margin-top: 3px;
+    line-height: 27px;
+    font-weight: 300;
   }
 
   i {

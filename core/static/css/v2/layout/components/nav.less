@@ -4,7 +4,12 @@
   .navbar-nav .dropdown .dropdown-menu.mega-nav {
     border: none;
   }
-
+  .keep-on-left{
+    float:left;
+  }
+  .keep-on-right{
+    float:right;
+  }
   &.navbar-inverse {
     border: none;
     .navbar-toggle {
@@ -27,6 +32,8 @@
       border-color: @border;
     }
     .navbar-nav {
+      float:none;
+      margin-left: 40px;
       .dropdown {
         .dropdown-toggle {
           padding-top: 30px;
@@ -114,14 +121,15 @@
         }
       }
     }
-  }
   .navbar-header {
 
     .navbar-brand {
       z-index: 99;
-      margin-top: 5px;
+      margin-top: 0px;
+      padding: 10px 0px 0px 15px;
       img {
-        max-width: 67px;
+        min-height: 60px;
+        min-width:197px;
       }
     }
     .navbar-brand-title {
@@ -136,12 +144,19 @@
     }
   }
 }
+}
 
 @media (max-width: @screen-xs-max) {
 
   #mainnav .navbar-header .navbar-brand-title {
     margin: 0;
     .font-size(12);
+  }
+  .keep-on-left{
+    float:none;
+  }
+  .keep-on-right{
+    float:none;
   }
 
   #mainnav.navbar-inverse {
@@ -174,6 +189,13 @@
 
 @media (min-width: @screen-sm-min) {
 
+  .keep-on-left{
+    float:none;
+  }
+  .keep-on-right{
+    float:none;
+  }
+
   .stories {
     .dropdown-menu {
       min-width: 500px;
@@ -197,7 +219,7 @@
   .about-pari {
     .dropdown-menu {
       min-width: 600px;
-      right: -100px;
+      right: 0px;
       ul {
         height: 150px;
       }
@@ -210,6 +232,13 @@
 }
 
 @media (min-width: @screen-md-min) {
+
+  .keep-on-left{
+    float:none;
+  }
+  .keep-on-right{
+    float:none;
+  }
 
   .stories {
     .dropdown-menu {
@@ -258,6 +287,13 @@
 
 @media (min-width: @screen-lg-min) {
 
+  .keep-on-left{
+    float:none;
+  }
+  .keep-on-right{
+    float:none;
+  }
+
   .stories {
     .dropdown-menu {
       min-width: 700px;
@@ -271,7 +307,7 @@
     }
     .dropdown-menu {
       min-width: 1100px;
-      right: -130px;
+      right: 0px;
     }
   }
 
@@ -285,4 +321,40 @@
   .active-tab {
     color: @text-color-primary-nav-hover;
   }
+}
+
+@media screen and (max-width : 520px) {
+  .keep-on-left{
+    float:none;
+  }
+  .keep-on-right{
+    float:none;
+  }
+}
+
+@media (max-width: 990) {
+
+  .keep-on-left{
+    float:none;
+  }
+  .keep-on-right{
+    float:none;
+  }
+
+  .navbar-brand {
+    z-index: 99;
+    margin-top: 0px;
+    padding: 10px 0px 0px 15px;
+    img {
+      min-height: 60px;
+      min-width:197px;
+    }
+  }
+}
+
+.donate-header{
+  background-color: #ff3c35;
+  padding: 5px 7px;
+  border-radius: 3px;
+  color: white;
 }

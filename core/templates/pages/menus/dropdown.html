@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<li class="dropdown stories">
+<li class="dropdown stories keep-on-left">
     <a class="dropdown-toggle" data-toggle="dropdown" itemprop="url" href="#">
         <span itemprop="name" {% if "stories" in tab %} class="active-tab" {%endif%}>{% trans "Stories" %}</span>
         <i class="fa fa-angle-down"></i>
@@ -70,7 +70,7 @@
         </div>
     </div>
 </li>
-<li class="dropdown gallery">
+<li class="dropdown gallery keep-on-left">
     <a class="dropdown-toggle" data-toggle="dropdown" itemprop="url" href="#">
         <span itemprop="name" {% if 'gallery' in tab %} class="active-tab" {%endif%}>{% trans "Gallery" %}</span>
         <i class="fa fa-angle-down"></i>
@@ -174,17 +174,27 @@
         </div>
     </div>
 </li>
-<li class="dropdown resources">
+<li class="dropdown resources keep-on-left">
     <a class="dropdown-toggle" itemprop="url" href="{% url "resource-list" %}">
     <span itemprop="name" {% if "resources" in tab %} class="active-tab" {%endif%}>{% trans "Resources" %}</span>
     </a>
 </li>
-<li class="dropdown about-pari">
+<li class="dropdown search-icon keep-on-left">
+    <a class="dropdown-toggle search-icon-container" itemprop="url" href="javascript:void(0)">
+        <i class="fa fa-search"></i>
+    </a>
+</li>
+<li class="dropdown donate keep-on-right">
+    <a class="dropdown-toggle" itemprop="url" href="{% url "static_page" slug="donate" %}">
+    <span style='background-color: #ff3c35;padding: 5px 7px;border-radius: 3px;color: white;' itemprop="name"  {% if "donate" in tab %} class="active-tab" {%endif%}>{% trans "Donate to PARI" %} </span>
+    </a>
+</li>
+<li class="dropdown about-pari keep-on-right">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
         <span {% if "about-pari" in tab %} class="active-tab" {%endif%}>{% trans "About PARI" %}</span>
         <i class="fa fa-angle-down"></i>
     </a>
-    <div class="dropdown-menu mega-nav">
+    <div class="dropdown-menu dropdown-menu-right mega-nav">
         <div class="col-lg-7 col-md-12 col-sm-12">
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-4">
@@ -274,14 +284,4 @@
             </div>
         </div>
     </div>
-</li>
-<li class="dropdown donate">
-    <a class="dropdown-toggle" itemprop="url" href="{% url "static_page" slug="donate" %}">
-    <span itemprop="name"  {% if "donate" in tab %} class="active-tab" {%endif%}>{% trans "Donate to PARI" %} </span>
-    </a>
-</li>
-<li class="dropdown search-icon ">
-    <a class="dropdown-toggle search-icon-container" itemprop="url" href="javascript:void(0)">
-        <i class="fa fa-search"></i>
-    </a>
 </li>
