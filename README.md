@@ -55,9 +55,9 @@ The above set-up will get the vagrant box up. That is, it will start the virtual
 You will need to login via ssh into this pretend-remote virtual machine and start your django webapp server. Please follow the following steps for this.
 
 ```sh
-$ vagrant ssh                                   # Login to vagrant box
-$ cd /vagrant && source pari_env/bin/activate   # Change to project directory and activate project virtualenv
-$ python manage.py runserver                    # Local instance available at development.ruralindiaonline.org
+$ vagrant ssh                                     # Login to vagrant box
+$ cd /vagrant && source ~/pari_env/bin/activate   # Change to project directory and activate project virtualenv
+$ python manage.py runserver                      # Local instance available at development.ruralindiaonline.org
 ```
 
 Admin console can be accessed at [http://development.ruralindiaonline.org/admin/](http://development.ruralindiaonline.org/admin/) (username: admin, password: admin)
