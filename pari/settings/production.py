@@ -1,4 +1,6 @@
 from .base import *
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 
 # Disable debug mode
@@ -32,3 +34,9 @@ try:
     from .local import *
 except ImportError:
     pass
+
+sentry_sdk.init(
+    dsn="https://e87c857ac5c248e5b4868cfdd71a2cbf@sentry.io/1377604",
+    environment='Prod',
+    integrations=[DjangoIntegration()]
+)

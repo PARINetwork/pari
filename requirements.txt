@@ -22,3 +22,6 @@ django-modelcluster==3.1
 django-compressor==1.6
 
 requests
+
+# Error reporting
+sentry-sdk==0.6.9
