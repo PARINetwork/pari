@@ -23,8 +23,7 @@ except ImportError:
 
 import os
 
-PARI_LOGLEVEL = os.environ.get('PARI_LOGLEVEL', 'debug').upper()
-# SENTRY_LOGLEVEL = os.environ.get('SENTRY_LOGLEVEL', 'error').upper()
+PARI_LOGLEVEL = os.environ.get('PARI_LOGLEVEL', 'info').upper()
 
 LOGGING = {
     'version': 1,
@@ -42,22 +41,16 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'console'
         },
-        # 'sentry': {
-        #    'level': SENTRY_LOGLEVEL,
-        #    'class': 'raven.handlers.logging.SentryHandler',
-        #    'dsn': SENTRY_DSN,
-        # },
         'file': {
             'level': PARI_LOGLEVEL,
             'class': 'logging.FileHandler',
-            'filename': os.environ.get('DJANGO_LOGFILE', '/var/log/pari.log'),
+            'filename': os.environ.get('DJANGO_LOGFILE', '/var/log/pari-django.log'),
             'formatter': 'console'
         },
     },
     'loggers': {
         '': {
             'handlers': ['console', 'file'],
-            # 'handlers': ['console', 'sentry', 'file'],
             'level': 'INFO',
             'propagate': False,
         },
