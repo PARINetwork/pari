@@ -136,6 +136,7 @@ class ArticleList(ListView):
     context_object_name = "articles"
     model = Article
     paginate_by = 12
+    template_name = 'article/archive_article_list.html'
 
     def get_queryset(self):
         url_name = self.request.resolver_match.url_name
