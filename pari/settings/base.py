@@ -62,6 +62,7 @@ INSTALLED_APPS = (
     'resources',
     'search',
     'news',
+    'donation',
     'wagtail.wagtailcore',
     'wagtail.wagtailadmin',
     'wagtail.wagtaildocs',
@@ -321,3 +322,12 @@ LOCALE_PATHS = (
 
 APPEND_SLASH = True
 WAGTAIL_APPEND_SLASH = True
+
+# initialize in local.py
+RAZORPAY = {
+    'API_KEY': '',
+    'SECRET_KEY': '',
+    'NUM_MONTHS_TO_RECUR': 0,
+    'NUM_YEARS_TO_RECUR': 0,
+}
+RAZORPAY_CLIENT = None

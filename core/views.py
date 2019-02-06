@@ -1,25 +1,17 @@
 from __future__ import absolute_import, unicode_literals
 
-import hashlib
-import hmac
-import urllib
-
-from django.conf import settings
 from django.contrib.messages import success
-from django.core.mail import send_mail
 from django.db.models import Max
-from django.http import Http404, HttpResponseRedirect, HttpResponse
+from django.http import Http404
 from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _, activate, get_language
 from django.views.decorators.cache import cache_page
-from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_POST
 from wagtail.wagtailadmin.views.pages import PreviewOnEdit, PreviewOnCreate
 from wagtail.wagtailcore.models import Page, Site
 
 from category.models import Category
 from core.utils import get_translations_for_page, construct_guidelines
-from .forms import ContactForm, DonateForm
+from .forms import ContactForm
 from .models import HomePage, GuidelinesPage
 
 
@@ -159,75 +151,6 @@ def contact_us(request):
         "tab": "about-pari",
         "current_page": 'contact_us',
     })
-
-
-def donate_form(request):
-    form = DonateForm()
-    errors = None
-    try:
-        site = Site.objects.get(hostname=request.get_host())
-    except Site.DoesNotExist:
-        site = Site.objects.filter(is_default_site=True)[0]
-    if request.method == "POST":
-        form = DonateForm(request.POST)
-        if form.is_valid():
-            pg_url = settings.INSTAMOJO["DONATE_URL"]
-            params = {
-                "data_name": form.cleaned_data["name"],
-                "data_email": form.cleaned_data["email"],
-                "data_phone": form.cleaned_data["phone"],
-                "data_Field_90444": form.cleaned_data["pan"],
-            }
-            pg_url += "?{0}".format(urllib.urlencode(params))
-            return HttpResponseRedirect(pg_url)
-    return render(request, 'core/donate_form.html', {
-        "form": form,
-        "errors": errors,
-        "site": site,
-        "current_page": 'donate_form',
-    })
-
-
-def donate_success(request):
-    try:
-        site = Site.objects.get(hostname=request.get_host())
-    except Site.DoesNotExist:
-        site = Site.objects.filter(is_default_site=True)[0]
-    return render(request, 'core/donate_success.html', {
-        "site": site,
-        "current_page": 'donate_success',
-    })
-
-
-def lower_first_item(item):
-    return item[0].lower()
-
-
-@csrf_exempt
-@require_POST
-def donate_webhook(request):
-    status = 400
-    data = request.POST.copy()
-    hook_mac = data.pop("mac", [None])[0]
-    keys = sorted(data.items(), key=lower_first_item)
-    vals = "|".join([ii[1] for ii in keys])
-    calc_mac = hmac.new(
-        settings.INSTAMOJO["SALT"],
-        vals,
-        hashlib.sha1).hexdigest()
-    if hook_mac == calc_mac:
-        if data["status"] == "Credit":
-            status = 200
-            subject = _("Donation received")
-            message = u""
-            for (kk, vv) in data.items():
-                message += unicode(kk) + u" : " + unicode(vv) + u"\r\n"
-            send_mail(
-                subject, message,
-                settings.DEFAULT_FROM_EMAIL,
-                settings.DONATE_EMAIL_RECIPIENTS
-            )
-    return HttpResponse("", status=status)
 
 
 class ModelTranslatedPagePreviewMixin(object):

@@ -38,6 +38,7 @@ urlpatterns = [
     url(r'^', include('category.urls')),
     url(r'^', include('location.urls')),
     url(r'^', include('search.urls')),
+    url(r'^', include('donation.urls')),
 
     url(r'^', include('core.urls')),
 

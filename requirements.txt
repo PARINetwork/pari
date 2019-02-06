@@ -25,3 +25,6 @@ requests
 
 # Error reporting
 sentry-sdk==0.6.9
+
+# Razorpay payment gateway
+razorpay==1.1.1
