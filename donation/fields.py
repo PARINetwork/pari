@@ -10,6 +10,8 @@ class AmountWidget(forms.MultiWidget):
         js = ('donation/js/amount_widget.js',)
 
     def __init__(self, choices):
+        if choices[-1][0].lower() != 'other':
+            raise ValueError("expecting item[0] of last choice to be 'Other'")
         widgets = [
             forms.RadioSelect(choices=choices),
             forms.TextInput(attrs={'class': 'other-amount'})
@@ -42,6 +44,8 @@ class AmountField(forms.MultiValueField):
         if self._was_required and not value or value[0] in (None, ''):
             raise forms.ValidationError(self.error_messages['required'])
         if not value:
-            return [None, None]
+            return None
 
-        return value[1] if force_unicode(value[0]) == force_unicode(self.fields[0].choices[-1][0]) else value[0]
+        return value[1] \
+            if force_unicode(value[0]) == force_unicode(self.fields[0].choices[-1][0]) \
+            else value[0]
