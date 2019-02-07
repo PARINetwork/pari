@@ -6,10 +6,13 @@ from django.utils.encoding import force_unicode
 
 
 class AmountWidget(forms.MultiWidget):
+    class Media:
+        js = ('donation/js/amount_widget.js',)
+
     def __init__(self, choices):
         widgets = [
             forms.RadioSelect(choices=choices),
-            forms.TextInput
+            forms.TextInput(attrs={'class': 'other-amount'})
         ]
         super(AmountWidget, self).__init__(widgets)
 
@@ -41,5 +44,4 @@ class AmountField(forms.MultiValueField):
         if not value:
             return [None, None]
 
-        return value[0], \
-               value[1] if force_unicode(value[0]) == force_unicode(self.fields[0].choices[-1][0]) else u''
+        return value[1] if force_unicode(value[0]) == force_unicode(self.fields[0].choices[-1][0]) else value[0]
