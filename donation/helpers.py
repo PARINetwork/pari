@@ -6,10 +6,12 @@ class DonationOptions(object):
         Rs500 = '500'
         Rs1000 = '1000'
         Rs2000 = '2000'
+        OTHER = 'Other'
         CHOICES = (
             (Rs500,  u'₹ 500'),
             (Rs1000, u'₹ 1000'),
             (Rs2000, u'₹ 2000'),
+            (OTHER, u''),
         )
 
     class Frequency(object):

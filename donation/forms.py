@@ -1,13 +1,14 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
+from .fields import AmountField
 from .helpers import DonationOptions
 
 
 class DonateForm(forms.Form):
-    amount = forms.ChoiceField(
+    amount = AmountField(
         choices=DonationOptions.Amount.CHOICES,
-        widget=forms.RadioSelect
+        label=_('Amount')
     )
     frequency = forms.ChoiceField(
         choices=DonationOptions.Frequency.FORM_CHOICES,
