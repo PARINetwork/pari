@@ -41,11 +41,12 @@ def handle_instamojo_payment(form_data):
 
 def create_razorpay_plan(amount, frequency):
     try:
+        plan_name = frequency[0].upper() + str(amount)
         plan = razorpay_client.plan.create(data={
             'period': frequency.lower(),
             'interval': 1,
             'item': {
-                'name': 'Plan B',
+                'name': plan_name,
                 'amount': int(amount) * 100,
                 'currency': 'INR',
             }
