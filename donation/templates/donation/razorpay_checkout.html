@@ -34,8 +34,6 @@
 {% endblock %}
 {% block extra_uncompressed_js %}
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-{% endblock %}
-{% block extra_js %}
 <script>
     var rzp = new Razorpay({
         "key": "{{ api_key }}",

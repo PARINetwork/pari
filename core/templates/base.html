@@ -181,11 +181,11 @@
 <script src="{{ STATIC_URL }}/js/chosen.jquery.min.js"></script>
 
 <script type="text/javascript" src="{{ STATIC_URL }}/js/vendor/retina.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/lazysizes.min.js"></script>
 {% block extra_uncompressed_js %}{% endblock %}
 {% compress js %}
 <script src="{{ STATIC_URL }}bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <script>
-
     $(function () {
         $('.middleinput:text, textarea').addClass('xlarge');
         $('.control-group label').addClass('control-label');
@@ -214,7 +214,7 @@
         $(".search-close").on("click", function() {
           $(".search-panel-toggle").removeClass("show");
         });
-        
+
         $(".dropdown-toggle .fa-search").bind('touchmove', function(e){
           e.preventDefault();
         });
@@ -244,7 +244,6 @@
     window.lazySizesConfig = window.lazySizesConfig || {};
     lazySizesConfig.loadMode = 1;
 </script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/lazysizes.min.js"></script>
 {% block extra_js %}{% endblock %}
 {% endcompress %}
 {% include "includes/footer_scripts.html" %}
