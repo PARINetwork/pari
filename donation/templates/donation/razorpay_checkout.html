@@ -1,0 +1,114 @@
+{% extends "base.html" %}{% load i18n %}
+
+{% block meta_title %}
+{% blocktrans with site_name=site.site_name %}Donate to {{ site_name }}{% endblocktrans %}
+{% endblock %}
+
+{% block main %}
+<div class="content container" style="margin-bottom: 20px;">
+  <div class="col-lg-8 col-md-8 col-sm-12">
+    <div id="verifying-msg" style="display: none">
+      <p>
+        Verifying transaction
+        <img src="{{ STATIC_URL }}/img/spinner-ellipsis.gif" alt="" width="60" />
+      </p>
+    </div>
+    <div id="verification-failure" style="display: none">
+      <h4>Payment verification failed</h4>
+      <p>
+        If money has been debited from your account, please fill up the form in
+        the <a href="{% url 'contact_us' %}">contact us</a> page
+        and someone will get back to you soon! Please mention Reference ID
+        <b>{{ subscription_id }}</b> in your message.
+      </p>
+    </div>
+    <div id="request-failure" style="display: none">
+      <h4>We're sorry! An unexpected error has occurred.</h4>
+      <p>
+        Please make note of the Reference ID <b>{{ subscription_id }}</b> in
+        case you want to <a href="{% url 'contact_us' %}">contact us</a>.
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block extra_uncompressed_js %}
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+{% endblock %}
+{% block extra_js %}
+<script>
+    var rzp = new Razorpay({
+        "key": "{{ api_key }}",
+        "subscription_id": "{{ subscription_id }}",
+        "amount": "{{ amount }}",
+        "name": "CounterMedia Trust",
+        "image": "{{ STATIC_URL }}img/logo.png",
+        "handler": function(response) {
+            $("#verifying-msg").show();
+            verifyPayment(response);
+        },
+        "prefill": {
+            "name": "{{ customer_name }}",
+            "email": "{{ customer_email }}",
+            "contact": "{{ customer_phone }}"
+        },
+        "notes": {
+            "customer_name": "{{ customer_name }}",
+            "customer_pan": "{{ customer_pan }}"
+        },
+        "modal": {
+            "ondismiss": function() {
+                logAboutDismissalAndGoBack();
+            }
+        },
+        "theme": {
+            "color": "#6A6D7E"
+        }
+    });
+
+    $(function() {
+       rzp.open();
+    });
+
+    function verifyPayment(response) {
+        $.ajax({
+            url: "{% url 'razorpay_verify' %}",
+            method: "POST",
+            headers: {'X-CSRFToken': '{{ csrf_token }}'},
+            data: {
+                'subscription_id': '{{ subscription_id }}',
+                'razorpay_signature': response.razorpay_signature,
+                'razorpay_payment_id': response.razorpay_payment_id,
+                'razorpay_subscription_id': response.razorpay_subscription_id
+            },
+            dataType:'json'
+        }).done(function(data) {
+            if (data.status === 'SUCCESS')
+                window.location.replace("{% url 'donate_success' %}");
+            else {
+                $("#verifying-msg").hide();
+                $("#verification-failure").show();
+            }
+        }).fail(function() {
+            $("#verifying-msg").hide();
+            $("#request-failure").show();
+        });
+    }
+
+    function logAboutDismissalAndGoBack() {
+        $.ajax({
+            url: "{% url 'log_modal_close' %}",
+            method: "POST",
+            headers: {'X-CSRFToken': '{{ csrf_token }}'},
+            data: {
+                'subscription_id': '{{ subscription_id }}',
+                "customer_name": "{{ customer_name }}",
+                "customer_email": "{{ customer_email }}"
+            },
+            dataType:'json'
+        }).always(function() {
+            window.history.back();
+        });
+    }
+</script>
+{% endblock %}

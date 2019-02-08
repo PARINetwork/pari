@@ -37,7 +37,7 @@ except ImportError:
 
 import os
 
-PARI_LOGLEVEL = os.environ.get('PARI_LOGLEVEL', 'info').upper()
+PARI_LOGLEVEL = os.environ.get('PARI_LOGLEVEL', 'debug').upper()
 
 LOGGING = {
     'version': 1,
@@ -69,6 +69,7 @@ LOGGING = {
             'propagate': False,
         },
         'pari': {
+            'handlers': ['console', 'file'],
             'level': PARI_LOGLEVEL,
             'propagate': True,
         },

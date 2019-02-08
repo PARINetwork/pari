@@ -50,9 +50,9 @@ $ vagrant up
 ```
 
 ### Development-specific commands
-The above set-up will get the vagrant box up. That is, it will start the virtual machine that pretends to be a remote server at "development.ruralindiaonline.org".
+The above set-up will get the vagrant box up. That is, it will start the virtual machine that pretends to be a remote server at "development.ruralindiaonline.org". The django development server also will be started and available at the same URL. You should see a working PARI installation at [http://development.ruralindiaonline.org](http://development.ruralindiaonline.org).
 
-You will need to login via ssh into this pretend-remote virtual machine and start your django webapp server. Please follow the following steps for this.
+To work with your django environment, you will need to login via ssh into this pretend-remote virtual machine and  follow the following steps for this.
 
 ```sh
 $ vagrant ssh                                     # Login to vagrant box

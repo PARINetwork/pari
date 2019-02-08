@@ -15,10 +15,6 @@ urlpatterns = patterns('core.views',
     url(r'^legal/(?P<slug>terms\-and\-conditions)/?$', 'static_page', name='static_page'),
     url(r'^legal/(?P<slug>copyright)/?$', 'static_page', name='static_page'),
 
-    url(r'^donate/?$', 'donate_form', name='donate_form'),
-    url(r'^donate/success/$', 'donate_success', name='donate_success'),
-    url(r'^donate/webhook/$', 'donate_webhook', name='donate_webhook'),
-
     url(r'^contact-us/?$', 'contact_us', name='contact_us'),
     url(r'^(?P<slug>donate)/$', 'static_page', name='static_page'),
 
