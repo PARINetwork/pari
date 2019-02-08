@@ -24,7 +24,7 @@ class AmountFieldTests(SimpleTestCase):
             f2 = AmountField(choices=bad_choices)
 
     def test_clean(self):
-        self.assertEqual(self.field.clean(['1']), '1')
+        self.assertEqual(self.field.clean(['1']), 1)
         self.assertEqual(self.field.clean(['Other', 10]), 10)
         with self.assertRaises(ValidationError):
             self.field.clean(['10'])
@@ -43,3 +43,6 @@ class AmountFieldTests(SimpleTestCase):
         form = self.AmountTestForm({'amt_0': 'Other', 'amt_1': 100})
         form.is_valid()
         self.assertEqual(form.cleaned_data['amt'], 100)
+        form = self.AmountTestForm({'amt_0': '1'})
+        form.is_valid()
+        self.assertEqual(form.cleaned_data['amt'], 1)

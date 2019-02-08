@@ -54,4 +54,4 @@ class AmountField(forms.MultiValueField):
 
         return value[1] \
             if force_unicode(value[0]) == force_unicode(self.fields[0].choices[-1][0]) \
-            else value[0]
+            else int(value[0])
