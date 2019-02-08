@@ -18,6 +18,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from wagtail.wagtailcore.models import Site
 
+from razorpay.errors import (BadRequestError, GatewayError, ServerError)
+
 from .helpers import DonationOptions
 from .forms import DonateForm
 
@@ -38,25 +40,33 @@ def handle_instamojo_payment(form_data):
 
 
 def create_razorpay_plan(amount, frequency):
-    plan = razorpay_client.plan.create(data={
-        'period': frequency.lower(),
-        'interval': 1,
-        'item': {
-            'name': 'Plan B',
-            'amount': int(amount) * 100,
-            'currency': 'INR',
-        }
-    })
-    return plan
+    try:
+        plan = razorpay_client.plan.create(data={
+            'period': frequency.lower(),
+            'interval': 1,
+            'item': {
+                'name': 'Plan B',
+                'amount': int(amount) * 100,
+                'currency': 'INR',
+            }
+        })
+        return plan
+    except (BadRequestError, GatewayError, ServerError) as e:
+        logger.error('RZP Request failed', exc_info=True)
+        return None
 
 
 def create_razorpay_subscription(plan_id, num_periods):
-    subscription = razorpay_client.subscription.create(data={
-        'plan_id': plan_id,
-        'total_count': num_periods,
-        'customer_notify': 0,
-    })
-    return subscription
+    try:
+        subscription = razorpay_client.subscription.create(data={
+            'plan_id': plan_id,
+            'total_count': num_periods,
+            'customer_notify': 0,
+        })
+        return subscription
+    except (BadRequestError, GatewayError, ServerError) as e:
+        logger.error('RZP Request failed', exc_info=True)
+        return None
 
 
 def handle_razorpay_payment(form_data):
@@ -68,12 +78,18 @@ def handle_razorpay_payment(form_data):
     logger.info(log_msg_prefix + "Initiating transaction")
 
     plan = create_razorpay_plan(form_data['amount'], form_data['frequency'])
+    if not plan:
+        # TODO: Render in a proper template
+        return HttpResponse("Payment gateway seems down. Please try again after some time.")
     logger.debug(log_msg_prefix + "Created plan_id={0}".format(plan['id']))
 
     num_periods = settings.RAZORPAY['NUM_MONTHS_TO_RECUR'] \
                     if form_data['frequency'] == DonationOptions.Frequency.M \
                     else settings.RAZORPAY['NUM_YEARS_TO_RECUR']
     subscription = create_razorpay_subscription(plan['id'], num_periods)
+    if not subscription:
+        # TODO: Render in a proper template
+        return HttpResponse("Payment gateway seems down. Please try again after some time.")
     logger.debug(log_msg_prefix + "Created subscription_id={0}".format(subscription['id']))
 
     params = {
