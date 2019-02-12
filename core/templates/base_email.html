@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static from staticfiles %}
+<head>
+  <style type="text/css">
+    @import url("https://fonts.googleapis.com/css?family=Fira+Sans:300,700");
+    @import url("https://fonts.googleapis.com/css?family=Amiri:400,700");
+    body {
+      font-family: 'Fira Sans', 'Open Sans', sans-serif;
+    }
+    h1,h2,h3,h4 {
+      font-family: 'Amiri', serif;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h2>
+      <img src="{% static 'img/logo.png' %}" alt="PARI logo" width="80px"/>
+      {% block heading %}
+      {% endblock %}
+    </h2>
+  </div>
+  <div>
+    {% block email_body %}{% endblock %}
+  </div>
+</body>
+</html>

@@ -34,33 +34,37 @@
 {% endblock %}
 {% block extra_uncompressed_js %}
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script type="text/javascript">
+    var paymentContext = JSON.parse('{{ checkout_params|safe }}');
+    var csrfToken = "{{ csrf_token }}";
+    var paymentVerificationURL = "{% url 'razorpay_verify' %}";
+    var logDismissalURL = "{% url 'log_modal_close' %}";
+</script>
+{% endblock %}
+{% block extra_js %}
 <script>
     var rzp = new Razorpay({
-        "key": "{{ api_key }}",
-        "subscription_id": "{{ subscription_id }}",
-        "amount": "{{ amount }}",
+        "key": paymentContext.api_key,
+        "subscription_id": paymentContext.subscription_id,
+        "amount": paymentContext.donated_amount * 100,
         "name": "CounterMedia Trust",
-        "image": "{{ STATIC_URL }}img/logo.png",
         "handler": function(response) {
             $("#verifying-msg").show();
             verifyPayment(response);
         },
         "prefill": {
-            "name": "{{ customer_name }}",
-            "email": "{{ customer_email }}",
-            "contact": "{{ customer_phone }}"
+            "name": paymentContext.customer_name,
+            "email": paymentContext.customer_email,
+            "contact": paymentContext.customer_phone
         },
         "notes": {
-            "customer_name": "{{ customer_name }}",
-            "customer_pan": "{{ customer_pan }}"
+            "customer_name": paymentContext.customer_name,
+            "customer_pan": paymentContext.customer_pan
         },
         "modal": {
             "ondismiss": function() {
                 logAboutDismissalAndGoBack();
             }
-        },
-        "theme": {
-            "color": "#6A6D7E"
         }
     });
 
@@ -70,14 +74,14 @@
 
     function verifyPayment(response) {
         $.ajax({
-            url: "{% url 'razorpay_verify' %}",
+            url: paymentVerificationURL,
             method: "POST",
-            headers: {'X-CSRFToken': '{{ csrf_token }}'},
+            headers: {'X-CSRFToken': csrfToken},
             data: {
-                'subscription_id': '{{ subscription_id }}',
                 'razorpay_signature': response.razorpay_signature,
                 'razorpay_payment_id': response.razorpay_payment_id,
-                'razorpay_subscription_id': response.razorpay_subscription_id
+                'razorpay_subscription_id': response.razorpay_subscription_id,
+                'payment_context': JSON.stringify(paymentContext)
             },
             dataType:'json'
         }).done(function(data) {
@@ -95,13 +99,13 @@
 
     function logAboutDismissalAndGoBack() {
         $.ajax({
-            url: "{% url 'log_modal_close' %}",
+            url: logDismissalURL,
             method: "POST",
-            headers: {'X-CSRFToken': '{{ csrf_token }}'},
+            headers: {'X-CSRFToken': csrfToken},
             data: {
-                'subscription_id': '{{ subscription_id }}',
-                "customer_name": "{{ customer_name }}",
-                "customer_email": "{{ customer_email }}"
+                'subscription_id': paymentContext.subscription_id,
+                "customer_name": paymentContext.customer_name,
+                "customer_email": paymentContext.customer_email
             },
             dataType:'json'
         }).always(function() {

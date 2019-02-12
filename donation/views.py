@@ -20,7 +20,7 @@ from wagtail.wagtailcore.models import Site
 
 from razorpay.errors import (BadRequestError, GatewayError, ServerError)
 
-from .helpers import DonationOptions
+from .helpers import DonationOptions, send_acknowledgement_mail
 from .forms import DonateForm
 from .models import RazorpayPlans
 
@@ -112,7 +112,8 @@ def handle_razorpay_payment(form_data):
     params = {
         'api_key': settings.RAZORPAY['API_KEY'],
         'subscription_id': subscription['id'],
-        'amount': int(form_data['amount']) * 100,
+        'donated_amount': int(form_data['amount']),
+        'donation_frequency': form_data['frequency'],
         'customer_name': form_data['name'],
         'customer_phone': form_data['phone'],
         'customer_email': form_data['email'],
@@ -203,38 +204,40 @@ def razorpay_checkout(request):
 
     log_msg_prefix = "{0}|{1}|Rs.{2} | RZP ".format(checkout_params['customer_email'],
                                                     checkout_params['customer_name'],
-                                                    checkout_params['amount'] / 100)
+                                                    checkout_params['donated_amount'])
     logger.info(log_msg_prefix +
                 "Initiating Checkout for subscription_id={0}"
                 .format(checkout_params['subscription_id']))
 
-    return render(request, 'donation/razorpay_checkout.html', checkout_params)
+    return render(request, 'donation/razorpay_checkout.html', {'checkout_params': base64.b64decode(params)})
 
 
 @require_POST
 def razorpay_verify(request):
     data = request.POST.copy()
+    payment_context = json.loads(data.get('payment_context'))
     received_data_str = ', '.join(['{0}={1}'.format(k, v) for k, v in data.items()])
     logger.debug("RZP Received {0} for verification".format(received_data_str))
 
     expected_signature = hmac.new(
         key=settings.RAZORPAY['SECRET_KEY'],
-        msg=data['razorpay_payment_id'] + '|' + data['subscription_id'],
+        msg=data['razorpay_payment_id'] + '|' + payment_context['subscription_id'],
         digestmod=hashlib.sha256
     ).hexdigest()
 
     if expected_signature != data['razorpay_signature']:
         logger.error("RZP Signature verification FAILED | subscription_id={0} | payment_id={1}"
-                     .format(data['subscription_id'],
+                     .format(payment_context['subscription_id'],
                              data['razorpay_payment_id']))
         return JsonResponse({'status': 'FAILED'})
 
     logger.debug("RZP Signature verification successful | subscription_id={0} | payment_id={1}"
-                 .format(data['subscription_id'],
+                 .format(payment_context['subscription_id'],
                          data['razorpay_payment_id']))
     logger.info("RZP Transaction successful | subscription_id={0} | payment_id={1}"
-                .format(data['subscription_id'],
+                .format(payment_context['subscription_id'],
                         data['razorpay_payment_id']))
+    send_acknowledgement_mail(payment_context)
     return JsonResponse({'status': 'SUCCESS'})
 
 

@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+from django.conf import settings
+from django.core.mail import send_mail
+from django.template import Context
+from django.template.loader import render_to_string
 
 
 class DonationOptions(object):
@@ -23,3 +27,13 @@ class DonationOptions(object):
             (Y, 'Yearly'),
         )
         FORM_CHOICES = MODEL_CHOICES + ((ONE_TIME, 'One-time'),)
+
+
+def send_acknowledgement_mail(payment_context):
+    email_msg = render_to_string('donation/acknowledgement_mail.html', Context(payment_context))
+    send_mail(
+        'We have received your donation', None,
+        settings.DEFAULT_FROM_EMAIL,
+        [payment_context['customer_email']],
+        html_message=email_msg
+    )

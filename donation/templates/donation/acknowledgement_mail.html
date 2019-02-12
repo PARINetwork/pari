@@ -1,0 +1,15 @@
+{% extends 'base_email.html' %}
+{% load i18n %}
+{% block heading %}Thank you for donating to People's Archive of Rural India!{% endblock %}
+{% block email_body %}
+<p>
+  We are delighted to accept your donation of <b>Rs.{{ donated_amount }}</b>
+  every {{ donation_frequency|lower|cut:"ly" }}.
+  We will soon send you a receipt for your donation with 80G certificate details.
+</p>
+<p>
+  At any time, if you wish to cancel your recurring donation, please write
+  to <a href="mailto:donate@ruralindiaonline.org">donate@ruralindiaonline.org</a>
+  and we will immediately cancel future recurring donations from you.
+</p>
+{% endblock %}
