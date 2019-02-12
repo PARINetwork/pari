@@ -37,3 +37,13 @@ def send_acknowledgement_mail(payment_context):
         [payment_context['customer_email']],
         html_message=email_msg
     )
+
+
+def send_verification_failure_mail(payment_context):
+    email_msg = render_to_string('donation/verification_failure_mail.html', Context(payment_context))
+    send_mail(
+        'Donation verification failed!', None,
+        settings.DEFAULT_FROM_EMAIL,
+        settings.DONATE_EMAIL_RECIPIENTS,
+        html_message=email_msg
+    )

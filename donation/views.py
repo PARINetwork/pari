@@ -20,7 +20,7 @@ from wagtail.wagtailcore.models import Site
 
 from razorpay.errors import (BadRequestError, GatewayError, ServerError)
 
-from .helpers import DonationOptions, send_acknowledgement_mail
+from .helpers import DonationOptions, send_acknowledgement_mail, send_verification_failure_mail
 from .forms import DonateForm
 from .models import RazorpayPlans
 
@@ -209,7 +209,10 @@ def razorpay_checkout(request):
                 "Initiating Checkout for subscription_id={0}"
                 .format(checkout_params['subscription_id']))
 
-    return render(request, 'donation/razorpay_checkout.html', {'checkout_params': base64.b64decode(params)})
+    return render(request, 'donation/razorpay_checkout.html', {
+        'checkout_params': base64.b64decode(params),
+        'subscription_id': checkout_params['subscription_id']
+    })
 
 
 @require_POST
@@ -229,6 +232,7 @@ def razorpay_verify(request):
         logger.error("RZP Signature verification FAILED | subscription_id={0} | payment_id={1}"
                      .format(payment_context['subscription_id'],
                              data['razorpay_payment_id']))
+        send_verification_failure_mail(payment_context)
         return JsonResponse({'status': 'FAILED'})
 
     logger.debug("RZP Signature verification successful | subscription_id={0} | payment_id={1}"
