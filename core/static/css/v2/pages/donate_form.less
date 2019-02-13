@@ -34,6 +34,7 @@ p{
   .errorlist {
     color: @link-primary;
     padding: 8px 0 0 5px;
+    clear: both;
   }
   label{
     display: inline-block;
@@ -55,8 +56,8 @@ p{
   }
   .btn {
     .font-size(16);
-    border-radius: 0;
-    background: @bg-red-transparant;
+    border-radius: 0.25em;
+    background: #F13502;
     color: @bg-light;
     padding:10px 50px;
     font-weight: 500;
@@ -78,9 +79,78 @@ p{
       opacity: 0.4;
     }
   }
-  input, textarea{
-      border-radius: 0 ;
+  input, textarea {
+      border-radius: 0.25em;
+  }
+
+  .other-amount {
+    border: 1px solid #555555;
+    width: 116px;
+    height: 1.4em;
+    background-color: inherit;
+    text-align: center;
+    padding: 0;
+  }
+
+  #id_amount_0, #id_frequency {
+    li {
+      float: left;
     }
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    label {
+      display: inline-block;
+      padding: 0.75em 0.75em;
+      margin: 0.5em;
+      cursor: pointer;
+      color: #ffffff;
+      border-radius: 0.25em;
+      background: #515151;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), inset 0 -3px 0 rgba(0, 0, 0, 0.22);
+      transition: 0.3s;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    label:hover {
+      background: #4e4e4e;
+      color: #ffffff;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2), inset 0 -3px 0 rgba(0, 0, 0, 0.32);
+    }
+    label:active {
+      -webkit-transform: translateY(2px);
+      transform: translateY(2px);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2), inset 0px -1px 0 rgba(0, 0, 0, 0.22);
+    }
+
+    .toggle-select {
+      background: #F73B08;
+      color: #ffffff;
+      .other-amount {
+        background: inherit;
+        color: inherit;
+        border: 0;
+      }
+    }
+    .toggle-select:hover {
+      background: #F73B08;
+      color: #fafafa;
+      .other-amount {
+        background: inherit;
+        color: inherit;
+        border: 0;
+      }
+    }
+  }
+
+  .help-text {
+    clear: both;
+  }
+
 }
 
 .donate-form-section {

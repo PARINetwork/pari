@@ -109,6 +109,17 @@
 
 </div>
 {% endblock %}
-{% block extra_uncompressed_js %}
+{% block extra_js %}
 {{ form.media }}
+<script type="text/javascript">
+    $(function () {
+        $('input[type="radio"]:checked').parent().addClass('toggle-select');
+        $('input[type="radio"]').click(function () {
+            $(this).closest('ul').find('.toggle-select').each(function() {
+                $(this).removeClass('toggle-select');
+            });
+            $(this).parent().addClass('toggle-select');
+        })
+    })
+</script>
 {% endblock %}

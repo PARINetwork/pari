@@ -6,14 +6,6 @@ from .helpers import DonationOptions
 
 
 class DonateForm(forms.Form):
-    amount = AmountField(
-        choices=DonationOptions.Amount.CHOICES,
-        label=_('Amount')
-    )
-    frequency = forms.ChoiceField(
-        choices=DonationOptions.Frequency.FORM_CHOICES,
-        widget=forms.RadioSelect
-    )
     name = forms.CharField(
         label=_("NAME"),
         max_length=100,
@@ -27,16 +19,20 @@ class DonateForm(forms.Form):
         label=_("PHONE NUMBER"),
         widget=forms.TextInput(attrs={"class": "form-control"})
     )
-    address = forms.CharField(
-        label=_("ADDRESS"),
-        widget=forms.Textarea(attrs={"class": "form-control", "rows": 3}),
-        required=False
-    )
     pan = forms.CharField(
         label=_("PAN NUMBER"),
         max_length=10,
         widget=forms.TextInput(attrs={"class": "form-control"}),
         help_text=_("PAN is required as per government regulations.")
+    )
+    amount = AmountField(
+        choices=DonationOptions.Amount.CHOICES,
+        label=_('AMOUNT')
+    )
+    frequency = forms.ChoiceField(
+        choices=DonationOptions.Frequency.FORM_CHOICES,
+        widget=forms.RadioSelect,
+        label=_('TYPE')
     )
     is_indian = forms.BooleanField(
         initial=False,
