@@ -39,6 +39,7 @@
     var csrfToken = "{{ csrf_token }}";
     var paymentVerificationURL = "{% url 'razorpay_verify' %}";
     var logDismissalURL = "{% url 'log_modal_close' %}";
+    var successfulDonationURL = "{% url 'donate_success' %}";
 </script>
 {% endblock %}
 {% block extra_js %}
@@ -86,7 +87,7 @@
             dataType:'json'
         }).done(function(data) {
             if (data.status === 'SUCCESS')
-                window.location.replace("{% url 'donate_success' %}");
+                window.location.replace(successfulDonationURL);
             else {
                 $("#verifying-msg").hide();
                 $("#verification-failure").show();
