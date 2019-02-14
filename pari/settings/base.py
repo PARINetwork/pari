@@ -326,8 +326,6 @@ WAGTAIL_APPEND_SLASH = True
 # initialize in local.py
 RAZORPAY = {
     'API_KEY': '',
-    'SECRET_KEY': '',
-    'NUM_MONTHS_TO_RECUR': 0,
-    'NUM_YEARS_TO_RECUR': 0,
+    'SECRET_KEY': ''
 }
 RAZORPAY_CLIENT = None

@@ -34,6 +34,12 @@ class DonateForm(forms.Form):
         widget=forms.RadioSelect,
         label=_('TYPE')
     )
+    term = forms.ChoiceField(
+        choices=DonationOptions.Term.CHOICES,
+        initial=DonationOptions.Term.Y5,
+        widget=forms.Select(attrs={"class": "form-control term-select"}),
+        label=_('DURATION')
+    )
     is_indian = forms.BooleanField(
         initial=False,
         label=_("I declare that I am an Indian citizen"),
@@ -46,3 +52,9 @@ class DonateForm(forms.Form):
             raise forms.ValidationError(_("Sorry, we can accept donations "
                                           "from Indians only."))
         return data
+
+    def clean_term(self):
+        if self.cleaned_data['frequency'] == DonationOptions.Frequency.Y and \
+                self.cleaned_data['term'] in (DonationOptions.Term.M6, DonationOptions.Term.Y1):
+                    raise forms.ValidationError(_('Term should be at least 2 years for Yearly donation'))
+        return self.cleaned_data['term']

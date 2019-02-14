@@ -28,6 +28,32 @@ class DonationOptions(object):
         )
         FORM_CHOICES = MODEL_CHOICES + ((ONE_TIME, 'One-time'),)
 
+    class Term(object):
+        M6 = '6 Months'
+        Y1 = '1 Year'
+        Y2 = '2 Years'
+        Y3 = '3 Years'
+        Y5 = '5 Years'
+        Y10 = '10 Years'
+        CHOICES = (
+            (M6, M6),
+            (Y1, Y1),
+            (Y2, Y2),
+            (Y3, Y3),
+            (Y5, Y5),
+            (Y10, Y10),
+        )
+
+        @classmethod
+        def get_num_periods(cls, frequency, term):
+            if frequency == DonationOptions.Frequency.M:
+                return 6 if term == cls.M6 else int(term[:2].rstrip()) * 12
+            elif frequency == DonationOptions.Frequency.Y:
+                if term == cls.M6 or term == cls.Y1:
+                    raise ValueError('Term should be at least 2 years for Yearly recurrence')
+                else:
+                    return int(term[:2].rstrip())
+
 
 def send_acknowledgement_mail(payment_context):
     email_msg = render_to_string('donation/acknowledgement_mail.html', Context(payment_context))

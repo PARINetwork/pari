@@ -39,7 +39,7 @@
             </p>
           </form>
         </div>
-        <div class="donate-form-message col-md-offset-1 col-md-6 col-sm-12">
+        <div class="donate-form-message hidden-xs hidden-sm col-md-offset-1 col-md-6">
             <br/>
             <h1>
                 In 2014-15, only about <span class="highlight">0.24% of front page news</span>
@@ -143,12 +143,39 @@
 {{ form.media }}
 <script type="text/javascript">
     $(function () {
-        $('input[type="radio"]:checked').parent().addClass('toggle-select');
+        var ONE_TIME = 'ONE-TIME';
+        var MONTHLY = 'Monthly';
+        var YEARLY = 'Yearly';
+        var checkedFrequencySelector = $('input[name="frequency"]:checked');
+        var termSelect = $('.term-select');
+
+        function toggleSelected(selectedItem) {
+            selectedItem.closest('ul').find('.selected-radio').removeClass('selected-radio');
+            selectedItem.parent().addClass('selected-radio');
+        }
+
+        if (checkedFrequencySelector.val() === ONE_TIME || !checkedFrequencySelector.length)
+            termSelect.parent().hide();
+
+        if (checkedFrequencySelector.val() === YEARLY) termSelect.children('option:lt(2)').hide();
+
+        $('input[type="radio"]:checked').parent().addClass('selected-radio');
         $('input[type="radio"]').click(function () {
-            $(this).closest('ul').find('.toggle-select').each(function() {
-                $(this).removeClass('toggle-select');
-            });
-            $(this).parent().addClass('toggle-select');
+            toggleSelected($(this));
+
+            switch ($(this).val()) {
+                case ONE_TIME:
+                    termSelect.parent().hide();
+                    break;
+                case YEARLY:
+                    termSelect.children('option:lt(2)').hide();
+                    termSelect.parent().show();
+                    break;
+                case MONTHLY:
+                    termSelect.children('option:lt(2)').show();
+                    termSelect.parent().show();
+                    break;
+            }
         })
     })
 </script>

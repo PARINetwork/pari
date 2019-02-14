@@ -100,9 +100,8 @@ def handle_razorpay_payment(form_data):
         return HttpResponse("Payment gateway seems down. Please try again after some time.")
     logger.debug(log_msg_prefix + "Created plan_id={0}".format(plan_id))
 
-    num_periods = settings.RAZORPAY['NUM_MONTHS_TO_RECUR'] \
-        if form_data['frequency'] == DonationOptions.Frequency.M \
-        else settings.RAZORPAY['NUM_YEARS_TO_RECUR']
+    num_periods = DonationOptions.Term.get_num_periods(form_data['frequency'], form_data['term'])
+
     subscription = create_razorpay_subscription(plan_id, num_periods)
     if not subscription:
         # TODO: Render in a proper template
@@ -114,6 +113,7 @@ def handle_razorpay_payment(form_data):
         'subscription_id': subscription['id'],
         'donated_amount': int(form_data['amount']),
         'donation_frequency': form_data['frequency'],
+        'donation_term': form_data['term'],
         'customer_name': form_data['name'],
         'customer_phone': form_data['phone'],
         'customer_email': form_data['email'],
@@ -235,9 +235,6 @@ def razorpay_verify(request):
         send_verification_failure_mail(payment_context)
         return JsonResponse({'status': 'FAILED'})
 
-    logger.debug("RZP Signature verification successful | subscription_id={0} | payment_id={1}"
-                 .format(payment_context['subscription_id'],
-                         data['razorpay_payment_id']))
     logger.info("RZP Transaction successful | subscription_id={0} | payment_id={1}"
                 .format(payment_context['subscription_id'],
                         data['razorpay_payment_id']))
