@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block heading %}A Razorpay transaction failed!{% endblock %}
 {% block email_body %}
-<p>
+<div>
   Donor details:
   <br/>
   <table>
@@ -12,5 +12,5 @@
     <tr><td>Amount</td><td>{{ donated_amount }} / {{ donation_frequency }}</td></tr>
     <tr><td>subscription_id</td><td>{{ subscription_id }}</td></tr>
   </table>
-</p>
+</div>
 {% endblock %}
