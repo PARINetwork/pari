@@ -5,24 +5,30 @@
 p{
   line-height:25px;
 }
+
 .donate-form-title {
-  .title-strap{
-    color:@darker-grey;
-    padding: 0;
-    margin: 0px;
-    line-height: normal;
+  h1 {
+    font-family: 'Fira Sans', 'Open Sans', sans-serif;
+    margin-left: 0.4em;
   }
 }
 
- .donate-heading {
-    color: @link-primary;
-    .font-size(15);
-    margin-bottom: 0px;
-    font-weight: bold;
-    padding-top:10px;
-  }
+.donate-heading {
+  color: @link-primary;
+  .font-size(15);
+  margin-bottom: 0px;
+  font-weight: bold;
+  padding-top:10px;
+}
 
 .donate-form-content {
+  .help-text {
+    margin: 0;
+    line-height: 22px;
+    color: @text-color-brand-title;
+    .font-size(12);
+  }
+
   .has-error {
     .form-control {
       border-color: @text-color-brand-title;
@@ -31,29 +37,35 @@ p{
       color: @grey;
     }
   }
+
   .errorlist {
     color: @link-primary;
     padding: 8px 0 0 5px;
     clear: both;
   }
+
   label{
     display: inline-block;
   }
+
   .form-group {
     border-radius: 0;
     #label_id_is_indian{
       color:@darker-grey;
-      padding: 0 0 0 20px;
+      padding: 0 0 0 26px;
       line-height: normal;
       .font-size(15);
     }
-   #id_is_indian{
-     position: absolute;
-     left: 0;
-     .font-size(30);
-     margin-top: 1px;
-   }
+    #id_is_indian{
+      position: absolute;
+      left: 0;
+      width: 30px;
+      height: 30px;
+      margin-top: -6px;
+      margin-left: 10px;
+    }
   }
+
   .btn {
     .font-size(16);
     border-radius: 0.25em;
@@ -65,11 +77,13 @@ p{
       background: @link-primary;
     }
   }
+
   .notify-info {
     line-height: 22px;
     color: @text-color-footer;
     .font-size(12);
   }
+
   .payment-powered-by{
     p{
       margin-bottom: 0;
@@ -153,10 +167,30 @@ p{
 
 }
 
+.donate-form-message {
+  border-left: @light-grey 1px dotted;
+  padding-left: 3em;
+  h1 {
+    font-size: 5em;
+    font-weight: lighter;
+    letter-spacing: -2px;
+    line-height: 1em;
+    color: #555555;
+    span {
+      color: @link-primary;
+    }
+  }
+
+  h3 {
+    font-size: 3em;
+    font-family: 'Fira Sans', 'Open Sans', sans-serif;
+    font-weight: lighter;
+  }
+}
+
 .donate-form-section {
   padding:0px;
   margin-top: 20px;
-  border-top: @grey 1px solid;
 
   .special-bullets {
     li:before {
@@ -178,5 +212,35 @@ p{
       color: @link-primary
     }
   }
+  .heading {
+    padding-top: 1em;
+  }
+}
 
+.hr {
+  border-top: @grey 1px dotted;
+}
+
+.faq {
+  color: @grey;
+  line-height: 38px;
+  border-bottom: @lighter-grey solid 1px;
+  font-size: 16px;
+  padding: 14px 0;
+
+  &:last-of-type {
+    border: 0;
+  }
+
+  .answer {
+    font-size: 14px;
+    color: #333;
+    line-height: 24px;
+  }
+}
+
+.faqs {
+  padding-bottom: 15px;
+  padding-top: 3em;
+  border-left: @light-grey 1px dotted;
 }
