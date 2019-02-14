@@ -17,7 +17,7 @@ class AmountWidget(forms.MultiWidget):
             raise ValueError(VALUE_ERROR_MSG)
         widgets = [
             forms.RadioSelect(choices=choices),
-            forms.TextInput(attrs={'class': 'other-amount'})
+            forms.TextInput(attrs={'placeholder': 'Other Amount', 'class': 'other-amount'})
         ]
         super(AmountWidget, self).__init__(widgets)
 
@@ -34,7 +34,7 @@ class AmountWidget(forms.MultiWidget):
 class AmountField(forms.MultiValueField):
     def __init__(self, *args, **kwargs):
         fields = [
-            forms.ChoiceField(widget=forms.RadioSelect, *args, **kwargs),
+            forms.ChoiceField(*args, **kwargs),
             forms.IntegerField(required=False, min_value=1)
         ]
         widget = AmountWidget(choices=kwargs['choices'])

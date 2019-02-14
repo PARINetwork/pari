@@ -1,0 +1,16 @@
+{% extends 'base_email.html' %}
+{% load i18n %}
+{% block heading %}A Razorpay transaction failed!{% endblock %}
+{% block email_body %}
+<div>
+  Donor details:
+  <br/>
+  <table>
+    <tr><td>Donor Name</td><td>{{ customer_name }}</td></tr>
+    <tr><td>Email</td><td>{{ customer_email }}</td></tr>
+    <tr><td>Phone</td><td>{{ customer_phone }}</td></tr>
+    <tr><td>Amount</td><td>{{ donated_amount }} / {{ donation_frequency }}</td></tr>
+    <tr><td>subscription_id</td><td>{{ subscription_id }}</td></tr>
+  </table>
+</div>
+{% endblock %}

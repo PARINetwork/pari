@@ -6,14 +6,6 @@ from .helpers import DonationOptions
 
 
 class DonateForm(forms.Form):
-    amount = AmountField(
-        choices=DonationOptions.Amount.CHOICES,
-        label=_('Amount')
-    )
-    frequency = forms.ChoiceField(
-        choices=DonationOptions.Frequency.FORM_CHOICES,
-        widget=forms.RadioSelect
-    )
     name = forms.CharField(
         label=_("NAME"),
         max_length=100,
@@ -27,22 +19,31 @@ class DonateForm(forms.Form):
         label=_("PHONE NUMBER"),
         widget=forms.TextInput(attrs={"class": "form-control"})
     )
-    address = forms.CharField(
-        label=_("ADDRESS"),
-        widget=forms.Textarea(attrs={"class": "form-control", "rows": 3}),
-        required=False
-    )
     pan = forms.CharField(
         label=_("PAN NUMBER"),
         max_length=10,
         widget=forms.TextInput(attrs={"class": "form-control"}),
         help_text=_("PAN is required as per government regulations.")
     )
+    amount = AmountField(
+        choices=DonationOptions.Amount.CHOICES,
+        label=_('AMOUNT')
+    )
+    frequency = forms.ChoiceField(
+        choices=DonationOptions.Frequency.FORM_CHOICES,
+        widget=forms.RadioSelect,
+        label=_('TYPE')
+    )
+    term = forms.ChoiceField(
+        choices=DonationOptions.Term.CHOICES,
+        initial=DonationOptions.Term.Y5,
+        widget=forms.Select(attrs={"class": "form-control term-select"}),
+        label=_('DURATION')
+    )
     is_indian = forms.BooleanField(
         initial=False,
         label=_("I declare that I am an Indian citizen"),
-        widget=forms.CheckboxInput(),
-        help_text=_("At this moment, we can accept donations from Indians only")
+        widget=forms.CheckboxInput()
     )
 
     def clean_is_indian(self):
@@ -51,3 +52,9 @@ class DonateForm(forms.Form):
             raise forms.ValidationError(_("Sorry, we can accept donations "
                                           "from Indians only."))
         return data
+
+    def clean_term(self):
+        if self.cleaned_data['frequency'] == DonationOptions.Frequency.Y and \
+                self.cleaned_data['term'] in (DonationOptions.Term.M6, DonationOptions.Term.Y1):
+                    raise forms.ValidationError(_('Term should be at least 2 years for Yearly donation'))
+        return self.cleaned_data['term']
