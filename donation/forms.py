@@ -54,7 +54,7 @@ class DonateForm(forms.Form):
         return data
 
     def clean_term(self):
-        if self.cleaned_data['frequency'] == DonationOptions.Frequency.Y and \
+        if self.cleaned_data.get('frequency', '') == DonationOptions.Frequency.Y and \
                 self.cleaned_data['term'] in (DonationOptions.Term.M6, DonationOptions.Term.Y1):
                     raise forms.ValidationError(_('Term should be at least 2 years for Yearly donation'))
         return self.cleaned_data['term']
