@@ -1,27 +1,29 @@
 <!DOCTYPE html>
+{% load i18n %}
 <html lang="en">
 <head>
-  <style type="text/css">
-    @import url("https://fonts.googleapis.com/css?family=Fira+Sans:300,700");
-    @import url("https://fonts.googleapis.com/css?family=Amiri:400,700");
-    body {
-      font-family: 'Fira Sans', 'Open Sans', sans-serif;
-    }
-    h1,h2,h3,h4 {
-      font-family: 'Amiri', 'Palatino', serif;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Amiri" rel="stylesheet" />
 </head>
-<body>
-  <div>
-    <h2>
-      <img src="https://ruralindiaonline.org/static/img/logo.png" alt="PARI logo" width="80px"/>
-      {% block heading %}
-      {% endblock %}
-    </h2>
-  </div>
-  <div>
-    {% block email_body %}{% endblock %}
+<body style="font-family: 'Fira Sans', 'Open Sans', sans-serif; font-size: 1.2em">
+  <div id="container" style="width:60%; margin-left: 4em; border: 1px solid #F4F4F4">
+    <div id="header" style="background-color: #F4F4F4; text-align: center;">
+      <img src="https://ruralindiaonline.org/static/img/logo.png" alt="PARI logo" />
+    </div>
+    <div id="contents">
+      <div style="text-align: center">
+        <h2 style="font-family: 'Amiri', 'Palatino', serif; font-size: 2em; line-height: 1.1em; display: inline-block">
+          {% block heading %}
+          {% endblock %}
+        </h2>
+      </div>
+      {% block email_body %}{% endblock %}
+    </div>
+    <div id="footer" style="background-color: #F4F4F4; font-size: small; text-align: center; padding: 2em;">
+      This is an automated email response. If you are not the intended recipient
+      of this message, please let us know at
+      <a href="mailto:contact@ruralindiaonline.org">contact@ruralindiaonline.org</a>.
+    </div>
   </div>
 </body>
 </html>
