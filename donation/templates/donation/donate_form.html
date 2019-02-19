@@ -1,0 +1,182 @@
+{% extends "base.html" %}{% load i18n %}
+
+{% block meta_title %}
+{% blocktrans with site_name=site.site_name %}Donate to {{ site_name }}{% endblocktrans %}
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/donate_form.less" />
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/forms/form-elements.less" />
+{% endblock %}
+
+{% block main %}
+<div class="content container">
+    <div class="row">
+        <div class="donate-form-title">
+            <h1>{% trans "Donate to PARI" %}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="donate-form-content col-md-5 col-xs-12">
+          {% if errors %}<h5 class="errorlist">{{ errors }}</h5>{% endif %}
+          <form method="post" action="{% url 'donation.views.donate_form' %}">{% csrf_token %}
+            {% for field in form %}
+            <div class="form-group {% if field.errors %}has-error{% endif %}">
+              {% if not field.is_hidden %}<label class="control-label" id="label_{{ field.id_for_label }}">{{ field.label }} </label>{% endif %}
+              {{ field }} {{ field.errors }}
+              <p class="help-text">{{ field.help_text }}</p>
+            </div>
+            {% endfor %}
+            <br/>
+            <input type="submit" class="btn btn-default" value="Submit" />
+            <p class="notify-info">
+                {% blocktrans trimmed %}
+                    At present, we can only accept donations in Indian rupees by Indian citizens.
+                    All donations made to the CounterMedia Trust are eligible for exemption
+                    under Section 80G of the Income Tax Act, 1961. Here is a copy of our 
+                    <a href="/media/uploads/Donate/80g_certificate.jpg" target="_blank">exemption certificate.</a>
+                {% endblocktrans %}
+            </p>
+          </form>
+        </div>
+        <div class="donate-form-message hidden-xs hidden-sm col-md-offset-1 col-md-6">
+            <br/>
+            <h1>
+                In 2014-15, only about <span class="highlight">0.24% of front page news</span>
+                came out of rural India.
+            </h1>
+            <h3>
+                We want to change that.<br/><br/>
+                We can do this without governments – and will. <u>We can’t do it without you.</u>
+            </h3>
+        </div>
+    </div>
+    <div class="row hr">
+        <div class="col-md-5 col-xs-12">
+            <div class="donate-form-section">
+                <h1 class="heading">{% trans "Other ways to donate" %}</h1>
+                <p class="donate-heading">{% trans "PAYMENT BY CHEQUE OR DEMAND DRAFT" %}</p>
+                <p>{% blocktrans trimmed %}Pay by cheque/DD in favour of the <strong>“CounterMedia Trust”</strong> and send it to us by courier/post along with your contact details – name, address, telephone number, e-mail ID and PAN number.{% endblocktrans %}</p>
+                <p>{% blocktrans trimmed %}Send by courier / post to:<br/><strong> CounterMedia Trust</strong><br/> c/o P. Sainath, 27/43 Sagar Sangam, Bandra Reclamation, Mumbai 400050, Maharashtra, India.{% endblocktrans %}</p>
+            </div>
+            <div class="donate-form-section">
+                <p class="donate-heading">{% trans "PAYMENT BY BANK/ WIRE TRANSFER" %}</p>
+                <p>{% blocktrans trimmed %}Payable to: <strong>CounterMedia Trust</strong>{% endblocktrans %}</p>
+                <p>{% blocktrans trimmed %}Bank and branch: HDFC Bank, Aundh<br/>
+                    Address: 93, Anand Park, Rajyog Creations, Off ITI Road, Aundh, Pune 411007, Maharashtra.<br/>
+                    Account Number: 50100091804541<br/>
+                    MICR Code: 411240005<br/>
+                    IFSC Code: HDFC0000052{% endblocktrans %}
+                </p>
+                <p>{% trans "And send an email to donate@ruralindiaonline.org mentioning the transaction reference number, amount and date of transfer, along with your contact details." %}</p>
+                <p>{% trans "Please fill the form below after you have sent in your donation." %}</p>
+            </div>
+            <div class="donate-form-section">
+                <p class="donate-heading">{% trans "IMPS" %}</p>
+                <p>{% blocktrans trimmed %}Payment by mobile phone using Immediate Payment Service (IMPS).<br/>
+                    Please go through the following methods of mobile payment enabled by the National Payments Corporation of India (NPCI).{% endblocktrans %}
+                </p>
+                <p>One easy way to do this is through the National Unified USSD Platform (NUUP)</p>
+                <p>{% blocktrans trimmed %}The following has been reproduced from <a href="http://www.npci.org.in/documents/FAQs-NUUP.pdf" target="_blank">http://www.npci.org.in/documents/FAQs-NUUP.pdf</a>{% endblocktrans %}</p>
+                <p>{% trans "Fund transfer using IFSC and account number:" %}</p>
+                <div class="special-bullets">
+                    <ol>
+                        <li>
+                            <p>{% trans "Dial *99# from your mobile handset." %}</p>
+                        </li>
+                        <li>
+                            <p>{% trans "The NUUP welcome screen will appear asking you to enter your bank’s 4-digit IFS code." %}</p>
+                        </li>
+                        <li>
+                            <p>{% trans "After entering a valid IFS code, the NUUP menu will appear with different options of available services enabled for your bank." %}</p>
+                        </li>
+                        <li>
+                            <p>{% trans "Enter 4 for Fund Transfer using IFSC and account number and submit." %}</p>
+                        </li>
+                        <li>
+                            <p>{% trans "On subsequent screens enter the MPIN and the last 4 digits of the account number (optional)." %}</p>
+                            <div class="account-details">
+                                <p>{% trans "Beneficiary account number" %}: 50100091804541</p>
+                                <p>{% trans "IFS code" %}: HDFC0000052</p>
+                                <p>{% trans "Amount" %} </p>
+                                <p>{% trans "Remarks (optional) will appear." %}</p>
+                            </div>
+                        </li>
+                        <li>
+                            <p>{% trans "A confirmation screen will appear." %}</p>
+                        </li>
+                        <li>
+                            <p>{% trans "Please fill the form below after you have sent in your donation." %}</p>
+                        </li>
+
+                    </ol>
+
+                </div>
+            </div>
+            <div class="donate-form-section">
+                <div class="the-form">
+                    <div class="donate-heading">
+                        <a class="the-form" href="https://docs.google.com/forms/d/1X7BgvrHaQu2FR-yZy9u5D9bGmn91YLYRZ0jQ2KBC3C0/viewform?embedded=true" target="_blank">{% trans "THE FORM" %}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="faqs col-md-offset-1 col-md-5 col-xs-12">
+            <h1 class="heading">{% trans "FAQs" %}</h1>
+            <div class="faq">
+                <p class="question">{% trans "I sent PARI a donation. How do I get a receipt?" %}</p>
+                <p class="answer">Please make sure you include your email address in the donation form when you make a contribution to PARI.  A receipt will be sent to you in 4 to 8 weeks by email. You may download the 80G certificate <a href="/media/uploads/Donate/80g_certificate.jpg" target="_blank">here</a>.</p>
+            </div>
+            <div class="faq">
+                <p class="question">{% trans "I live abroad. Can I send PARI a donation?" %}</p>
+                <p class="answer">You can send PARI a donation only from an Indian bank account, in Indian rupees. We are currently not registered with FCRA for accepting foreign funds.</p>
+            </div>
+            <div class="faq">
+                <p class="question">{% trans "Is there any other way in which I can contribute?" %}</p>
+                <p class="answer">Apart from donating money and equipment, you can provide PARI copies of photo collections (new and old), pertaining to rural India. We are also always on the look out for people who can write/photograph for us. Learn more about how you can contribute <a href="{% url "contribute" slug="contribute" %}">here</a>.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block extra_uncompressed_js %}
+{{ form.media }}
+<script type="text/javascript">
+    $(function () {
+        var ONE_TIME = 'ONE-TIME';
+        var MONTHLY = 'Monthly';
+        var YEARLY = 'Yearly';
+        var checkedFrequencySelector = $('input[name="frequency"]:checked');
+        var termSelect = $('.term-select');
+
+        function toggleSelected(selectedItem) {
+            selectedItem.closest('ul').find('.selected-radio').removeClass('selected-radio');
+            selectedItem.parent().addClass('selected-radio');
+        }
+
+        if (checkedFrequencySelector.val() === ONE_TIME || !checkedFrequencySelector.length)
+            termSelect.parent().hide();
+
+        if (checkedFrequencySelector.val() === YEARLY) termSelect.children('option:lt(2)').hide();
+
+        $('input[type="radio"]:checked').parent().addClass('selected-radio');
+        $('input[type="radio"]').click(function () {
+            toggleSelected($(this));
+
+            switch ($(this).val()) {
+                case ONE_TIME:
+                    termSelect.parent().hide();
+                    break;
+                case YEARLY:
+                    termSelect.children('option:lt(2)').hide();
+                    termSelect.parent().show();
+                    break;
+                case MONTHLY:
+                    termSelect.children('option:lt(2)').show();
+                    termSelect.parent().show();
+                    break;
+            }
+        })
+    })
+</script>
+{% endblock %}

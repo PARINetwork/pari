@@ -5,24 +5,30 @@
 p{
   line-height:25px;
 }
+
 .donate-form-title {
-  .title-strap{
-    color:@darker-grey;
-    padding: 0;
-    margin: 0px;
-    line-height: normal;
+  h1 {
+    font-family: 'Fira Sans', 'Open Sans', sans-serif;
+    margin-left: 0.4em;
   }
 }
 
- .donate-heading {
-    color: @link-primary;
-    .font-size(15);
-    margin-bottom: 0px;
-    font-weight: bold;
-    padding-top:10px;
-  }
+.donate-heading {
+  color: @link-primary;
+  .font-size(15);
+  margin-bottom: 0px;
+  font-weight: bold;
+  padding-top:10px;
+}
 
 .donate-form-content {
+  .help-text {
+    margin: 0;
+    line-height: 22px;
+    color: @text-color-brand-title;
+    .font-size(12);
+  }
+
   .has-error {
     .form-control {
       border-color: @text-color-brand-title;
@@ -31,32 +37,39 @@ p{
       color: @grey;
     }
   }
+
   .errorlist {
     color: @link-primary;
     padding: 8px 0 0 5px;
+    clear: both;
   }
+
   label{
     display: inline-block;
   }
+
   .form-group {
     border-radius: 0;
     #label_id_is_indian{
       color:@darker-grey;
-      padding: 0 0 0 20px;
+      padding: 0 0 0 26px;
       line-height: normal;
       .font-size(15);
     }
-   #id_is_indian{
-     position: absolute;
-     left: 0;
-     .font-size(30);
-     margin-top: 1px;
-   }
+    #id_is_indian{
+      position: absolute;
+      left: 0;
+      width: 30px;
+      height: 30px;
+      margin-top: -6px;
+      margin-left: 10px;
+    }
   }
+
   .btn {
     .font-size(16);
-    border-radius: 0;
-    background: @text-color-footer;
+    border-radius: 0.25em;
+    background: #F13502;
     color: @bg-light;
     padding:10px 50px;
     font-weight: 500;
@@ -64,11 +77,13 @@ p{
       background: @link-primary;
     }
   }
+
   .notify-info {
     line-height: 22px;
     color: @text-color-footer;
     .font-size(12);
   }
+
   .payment-powered-by{
     p{
       margin-bottom: 0;
@@ -78,15 +93,104 @@ p{
       opacity: 0.4;
     }
   }
-  input, textarea{
-      border-radius: 0 ;
+  input, textarea {
+      border-radius: 0.25em;
+  }
+
+  .other-amount {
+    border: 1px solid #555555;
+    width: 116px;
+    height: 1.4em;
+    background-color: inherit;
+    text-align: center;
+    padding: 0;
+  }
+
+  #id_amount_0, #id_frequency {
+    li {
+      float: left;
     }
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    label {
+      display: inline-block;
+      padding: 0.75em 0.75em;
+      margin: 0.5em;
+      cursor: pointer;
+      color: #ffffff;
+      border-radius: 0.25em;
+      background: #515151;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), inset 0 -3px 0 rgba(0, 0, 0, 0.22);
+      transition: 0.3s;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    label:hover {
+      background: #4e4e4e;
+      color: #ffffff;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2), inset 0 -3px 0 rgba(0, 0, 0, 0.32);
+    }
+    label:active {
+      -webkit-transform: translateY(2px);
+      transform: translateY(2px);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2), inset 0px -1px 0 rgba(0, 0, 0, 0.22);
+    }
+
+    .selected-radio {
+      background: #F73B08;
+      color: #ffffff;
+      .other-amount {
+        background: inherit;
+        color: inherit;
+        border: 0;
+      }
+    }
+    .selected-radio:hover {
+      background: #F73B08;
+      color: #fafafa;
+      .other-amount {
+        background: inherit;
+        color: inherit;
+        border: 0;
+      }
+    }
+  }
+
+  .help-text {
+    clear: both;
+  }
+
+}
+
+.donate-form-message {
+  border-left: @light-grey 1px dotted;
+  padding-left: 3em;
+  h1 {
+    font-size: 5em;
+    font-weight: lighter;
+    letter-spacing: -2px;
+    line-height: 1em;
+    color: #555555;
+    span {
+      color: @link-primary;
+    }
+  }
+
+  h3 {
+    font-size: 3em;
+    font-family: 'Fira Sans', 'Open Sans', sans-serif;
+    font-weight: lighter;
+  }
 }
 
 .donate-form-section {
   padding:0px;
   margin-top: 20px;
-  border-top: @grey 1px solid;
 
   .special-bullets {
     li:before {
@@ -108,5 +212,35 @@ p{
       color: @link-primary
     }
   }
+  .heading {
+    padding-top: 1em;
+  }
+}
 
+.hr {
+  border-top: @grey 1px dotted;
+}
+
+.faq {
+  color: @grey;
+  line-height: 38px;
+  border-bottom: @lighter-grey solid 1px;
+  font-size: 16px;
+  padding: 14px 0;
+
+  &:last-of-type {
+    border: 0;
+  }
+
+  .answer {
+    font-size: 14px;
+    color: #333;
+    line-height: 24px;
+  }
+}
+
+.faqs {
+  padding-bottom: 15px;
+  padding-top: 3em;
+  border-left: @light-grey 1px dotted;
 }
