@@ -1,11 +1,12 @@
 from django.conf.urls import patterns, url
 
-from .views import ArticleDetail, ArticleList, ArchiveDetail, AuthorArticleList
+from .views import ArticleDetail, ArticleList, ArchiveDetail, AuthorArticleList, TaggedArticleList
 from location.views import LocationDetail
 urlpatterns = patterns('article.views',
     url(r'^authors/(?P<slug>.+)/$',AuthorArticleList.as_view(), name='author-detail'),
     url(r'^authors/(?P<slug>.+)/?$', AuthorArticleList.as_view(), name='author-detail'),
     url(r'^articles/$', ArticleList.as_view(), {'filter': 'article-list'}, name='article-list'),
+    url(r'^articles/tags/(?P<tag>.+)/?$', TaggedArticleList.as_view(), {'filter': 'article-list'}, name='tagged-article-list'),
     url(r'^articles/(?P<slug>.+)/$', ArticleDetail.as_view(), name='article-detail'),
     url(r'^articles/(?P<slug>.+)/?$', ArticleDetail.as_view(), name='article-detail'),
     url(r'^locations/(?P<slug>.+)/$', LocationDetail.as_view(), name='location-detail'),
