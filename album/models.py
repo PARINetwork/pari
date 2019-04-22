@@ -6,6 +6,8 @@ from django.core.urlresolvers import reverse
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from modelcluster.fields import ParentalKey
+from modelcluster.contrib.taggit import ClusterTaggableManager
+from taggit.models import TaggedItemBase
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, \
     RichTextFieldPanel
 from wagtail.wagtailcore.fields import RichTextField
@@ -15,6 +17,10 @@ from wagtail.wagtailsearch import index
 
 from core.edit_handlers import AudioPanel
 from core.utils import SearchBoost, get_slide_detail
+
+
+class AlbumTag(TaggedItemBase):
+    content_object = ParentalKey('album.Album', related_name='tagged_items')
 
 
 @python_2_unicode_compatible
@@ -33,6 +39,11 @@ class Album(Page):
     ]
 
     template = "album/album_detail.html"
+
+    tags = ClusterTaggableManager(through=AlbumTag, blank=True)
+    promote_panels = Page.promote_panels + [
+        FieldPanel('tags'),
+    ]
 
     search_fields = Page.search_fields + [
         index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE),

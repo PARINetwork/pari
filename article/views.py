@@ -106,6 +106,7 @@ class ArchiveDetail(ListView):
         context['current_page'] = 'archive-detail'
         return context
 
+
 class AuthorArticleList(ListView):
     context_object_name = "articles"
     paginate_by = 12
@@ -131,6 +132,7 @@ class AuthorArticleList(ListView):
         context['LANGUAGES'] = settings.LANGUAGES
         context['current_page'] = 'author-detail'
         return context
+
 
 class ArticleList(ListView):
     context_object_name = "articles"
@@ -200,4 +202,16 @@ class GalleryArticleList(ListView):
         context["articles"] = context["page_obj"]
         context['LANGUAGES'] = settings.LANGUAGES
         context['current_page'] = 'gallery-article-list'
+        return context
+
+
+class TaggedArticleList(ArticleList):
+    def get_queryset(self):
+        qs = super(TaggedArticleList, self).get_queryset()
+        qs = qs.filter(tags__name=self.kwargs['tag'])
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super(TaggedArticleList, self).get_context_data(**kwargs)
+        context['title'] = "All articles tagged \"{}\"".format(self.kwargs['tag'])
         return context
