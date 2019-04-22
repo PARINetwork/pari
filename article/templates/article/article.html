@@ -288,7 +288,7 @@
             {% include "article/includes/translator_info.html" with article=article %}
             <div class="row tags">
               {% for tag in article.tags.all %}
-              <a href="{% url 'tagged-article-list' tag %}">#{{ tag }}</a>
+              <a class="tag" href="{% url 'tagged-article-list' tag %}">#{{ tag }}</a>
               {% endfor %}
             </div>
         </div>
