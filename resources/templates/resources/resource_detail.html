@@ -83,6 +83,12 @@
         <h4>{% trans "PUBLICATION DATE" %}</h4>
         <p class='resource-detail'>{{ resource.date | date:"d M, Y"}}</p>
       </div>
+      <div class="tags">
+        <h4>{% trans "TAGS" %}</h4>
+        {% for tag in resource.tags.all %}
+        <a class="tag" href="{% url 'tagged-resource-list' tag %}"><small>#</small>{{ tag }}</a>
+        {% endfor %}
+      </div>
       <div>
         <h4>{% trans "SHARE" %}</h4>
         <div class="category-share">

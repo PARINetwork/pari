@@ -21,6 +21,13 @@ class ResourceList(ListView):
         return context
 
 
+class TaggedResourceList(ResourceList):
+    def get_context_data(self, **kwargs):
+        context = super(TaggedResourceList, self).get_context_data(**kwargs)
+        context['tag'] = self.kwargs['tag']
+        return context
+
+
 class ResourceDetail(DetailView):
     context_object_name = "resource"
     model = Resource
