@@ -8,7 +8,8 @@ from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-from modelcluster.fields import ParentalManyToManyField
+from modelcluster.fields import ParentalManyToManyField, ParentalKey
+
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, \
     StreamFieldPanel
 from wagtail.wagtailcore import blocks
@@ -17,8 +18,14 @@ from wagtail.wagtailcore.models import Page
 from wagtail.wagtailsearch import index
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
+from modelcluster.contrib.taggit import ClusterTaggableManager
+from taggit.models import TaggedItemBase
 
 from core.utils import SearchBoost
+
+
+class ResourceTag(TaggedItemBase):
+    content_object = ParentalKey('resources.Resource', related_name='tagged_items')
 
 
 @python_2_unicode_compatible
@@ -48,10 +55,15 @@ class Resource(Page):
         ("focus", blocks.RichTextBlock(blank=True)),
         ("factoids", blocks.RichTextBlock(blank=True)),
     ])
-    
+
     categories = ParentalManyToManyField("category.Category",
                           related_name="resources_by_category", blank=True)
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
+
+    tags = ClusterTaggableManager(through=ResourceTag, blank=True)
+    promote_panels = Page.promote_panels + [
+        FieldPanel('tags'),
+    ]
 
     search_fields = Page.search_fields + [
         index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE),

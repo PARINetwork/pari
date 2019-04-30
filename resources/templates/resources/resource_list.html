@@ -31,6 +31,11 @@
         {% trans "ALL OFFICIAL AND INDEPENDENT REPORTS ON RURAL INDIA" as sub_heading %}
         {% include "includes/grid_title.html" with title=title sub_heading=sub_heading %}
 
+        {% if tag %}
+        <div class="row">
+            <h4>Resources tagged <b>#{{ tag }}</b></h4>
+        </div>
+        {% endif %}
         <div class="filter-list-container">
             <div class="gallery-tile-row">
                 <div class="row">
