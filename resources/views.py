@@ -27,6 +27,10 @@ class TaggedResourceList(ResourceList):
         context['tag'] = self.kwargs['tag']
         return context
 
+    def get_queryset(self, *args, **kwargs):
+        qs = super(TaggedResourceList, self).get_queryset(*args, **kwargs)
+        return qs.filter(tags__name__iexact=self.kwargs['tag'])
+
 
 class ResourceDetail(DetailView):
     context_object_name = "resource"

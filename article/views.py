@@ -208,7 +208,7 @@ class GalleryArticleList(ListView):
 class TaggedArticleList(ArticleList):
     def get_queryset(self):
         qs = super(TaggedArticleList, self).get_queryset()
-        qs = qs.filter(tags__name=self.kwargs['tag'])
+        qs = qs.filter(tags__name__iexact=self.kwargs['tag'])
         return qs
 
     def get_context_data(self, **kwargs):

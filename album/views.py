@@ -58,7 +58,7 @@ class AlbumList(ListView):
 class TaggedAlbumList(AlbumList):
     def get_queryset(self):
         qs = super(TaggedAlbumList, self).get_queryset()
-        qs = qs.filter(tags__name=self.kwargs['tag'])
+        qs = qs.filter(tags__name__iexact=self.kwargs['tag'])
         return qs
 
 
