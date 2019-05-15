@@ -63,6 +63,12 @@
                                     </h3>
                                     <div class="margin-top-20px">
                                         <span class="link-dark font-xs">{{ album.description|striptags }}</span>
+                                        <br/>
+                                        {% for tag in album.tags.all %}
+                                        <a href="{% url 'tagged-album-list' tag %}">
+                                            <span class="link-dark font-xs">#{{ tag }}</span>
+                                        </a>
+                                        {% endfor %}
                                     </div>
                                     <div class="margin-top-20px">
                                         {% include "../../core/templates/includes/author-links.html" with authors=photographers|get_item:album.id author_link_class="" author_name_class="link-dark-primary font-xs"  %}

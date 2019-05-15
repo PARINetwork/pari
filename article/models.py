@@ -6,7 +6,7 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.functional import cached_property
 from elasticsearch import ConnectionError
-from modelcluster.fields import ParentalManyToManyField
+from modelcluster.fields import ParentalManyToManyField, ParentalKey
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, \
     MultiFieldPanel, FieldRowPanel, StreamFieldPanel
 from wagtail.wagtailcore.fields import RichTextField, StreamField
@@ -24,6 +24,9 @@ from core.edit_handlers import M2MFieldPanel
 # Override the url property of the Page model
 # to accommodate for child pages
 from core.utils import get_translations_for_page, SearchBoost
+from modelcluster.contrib.taggit import ClusterTaggableManager
+from taggit.models import TaggedItemBase
+
 
 Page.wg_url = Page.url
 
@@ -37,6 +40,10 @@ def url_property(self):
 
 
 Page.url = url_property
+
+
+class ArticleTag(TaggedItemBase):
+    content_object = ParentalKey('article.Article', related_name='tagged_items')
 
 
 @python_2_unicode_compatible
@@ -103,6 +110,11 @@ class Article(Page):
             ], 'Cover Image'),
         FieldPanel('categories'),
         M2MFieldPanel('locations'),
+    ]
+
+    tags = ClusterTaggableManager(through=ArticleTag, blank=True)
+    promote_panels = Page.promote_panels + [
+        FieldPanel('tags'),
     ]
 
     search_fields = Page.search_fields + [

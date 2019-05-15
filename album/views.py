@@ -1,5 +1,4 @@
 import requests
-import datetime
 
 from django.views.generic import DetailView, ListView
 from django.core.urlresolvers import reverse
@@ -8,13 +7,9 @@ from django.core.cache import cache
 from django.http import JsonResponse, Http404
 from django.utils.translation import ugettext_lazy as _
 
-from wagtail.wagtailcore.rich_text import RichText
-from wagtail.wagtailcore import blocks
 from wagtail.wagtailadmin.modal_workflow import render_modal_workflow
 
 from album.models import Album, AlbumSlide
-from author.models import Author
-from django.template.defaulttags import register
 
 from core.utils import get_slide_detail
 
@@ -58,6 +53,13 @@ class AlbumList(ListView):
         context["photographers"] = photographers
         context["current_page"] = 'album-list'
         return context
+
+
+class TaggedAlbumList(AlbumList):
+    def get_queryset(self):
+        qs = super(TaggedAlbumList, self).get_queryset()
+        qs = qs.filter(tags__name__iexact=self.kwargs['tag'])
+        return qs
 
 
 class AlbumDetail(DetailView):

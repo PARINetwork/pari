@@ -114,6 +114,13 @@
                         <div class="image-captured-date info"></div>
                         <div class="slide-location info"></div>
                       </div>
+                      <div class="tags">
+                        {% endverbatim %}
+                        {% for tag in album.tags.all %}
+                        <a href="{% url 'tagged-album-list' tag %}">#{{ tag }}</a>
+                        {% endfor %}
+                        {% verbatim %}
+                      </div>
                   </div>
                   <div class="thumbnails">
                     <header>
