@@ -8,7 +8,10 @@ DEBUG = False
 
 
 # Domain names that this Django site can serve
-ALLOWED_HOSTS = [u'staging.ruralindiaonline.org']
+ALLOWED_HOSTS = [
+    u'staging.ruralindiaonline.org',
+    u'ruralindiaonline.org'
+]
 
 # Compress static files offline
 # http://django-compressor.readthedocs.org/en/latest/settings/#django.conf.settings.COMPRESS_OFFLINE
