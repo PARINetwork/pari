@@ -31,6 +31,17 @@
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/author-article-list.less">
 {% endblock %}
 
+{% block extra_head %}
+    {% if articles.paginator %}
+        {%  if articles.has_previous %}
+            <link rel="prev" href="{{ request.path }}?page={{ articles.previous_page_number }}"/>
+        {%  endif %}
+        {%  if articles.has_next %}
+            <link rel="next" href="{{ request.path }}?page={{ articles.next_page_number }}"/>
+        {%  endif %}
+    {%  endif %}
+{% endblock %}
+
 {% block extra_js %}
     <script type="text/javascript" src="{{ STATIC_URL }}article/js/category.js"></script>
 {% endblock %}
