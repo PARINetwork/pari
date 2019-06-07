@@ -3,9 +3,10 @@ from django.views.generic import DetailView, ListView
 from wagtail.wagtailcore.models import Site
 
 from .models import Resource
+from core.mixins import ListViewWithCustomPagination
 
 
-class ResourceList(ListView):
+class ResourceList(ListViewWithCustomPagination):
     paginate_by = 48
     context_object_name = "resources"
     model = Resource
