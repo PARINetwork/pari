@@ -21,6 +21,17 @@
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/resources/home.less">
 {% endblock %}
 
+{% block extra_head %}
+    {% if page_obj.paginator %}
+        {%  if page_obj.has_previous %}
+            <link rel="prev" href="{{ request.path }}?page={{ page_obj.previous_page_number }}"/>
+        {%  endif %}
+        {%  if page_obj.has_next %}
+            <link rel="next" href="{{ request.path }}?page={{ page_obj.next_page_number }}"/>
+        {%  endif %}
+    {%  endif %}
+{% endblock %}
+
 {% block breadcrumb_menu %}
     <li class="active">{% trans "Resources" %}</li>
 {% endblock %}

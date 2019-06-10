@@ -1,7 +1,6 @@
 from django.db.models import Q
 from django.views.generic import ListView
-from django.contrib.sites.requests import RequestSite
-
+from wagtail.wagtailcore.models import Site
 
 from .models import Face
 
@@ -49,7 +48,7 @@ class FaceDetail(ListView):
         context = super(FaceDetail, self).get_context_data()
         context["alphabet"] = self.kwargs["alphabet"]
         context["share_sub_heading"] = 'People from every Indian district'
-        context['site'] = RequestSite(self.request)
+        context['site'] = Site.find_for_request(self.request)
         context["slug"] = self.kwargs.get("slug")
         if context["slug"]:
             try:
