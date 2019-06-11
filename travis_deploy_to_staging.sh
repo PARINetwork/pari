@@ -11,5 +11,5 @@ chmod 400 pari_qa
 cp pari_qa ~/.ssh/id_rsa
 git clone https://github.com/PARINetwork/pari-ansible.git
 cd pari-ansible
-ansible-playbook -l staging -u ubuntu -i hosts.yml -t deploy site.yml
+ansible-playbook --vault-password-file vault_pass -l staging -u ubuntu -i hosts.yml -t deploy site.yml
 exit $?
