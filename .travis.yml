@@ -31,7 +31,7 @@ after_script:
 - rm vault_pass
 deploy:
   provider: script
-  script: ANSIBLE_VAULT_PASSWORD_FILE=vault_pass sh travis_deploy_to_staging.sh
+  script: ANSIBLE_VAULT_PASSWORD_FILE=$TRAVIS_BUILD_DIR/vault_pass sh travis_deploy_to_staging.sh
   skip_cleanup: true
   on:
     branch: release-candidate
