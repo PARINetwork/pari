@@ -165,21 +165,24 @@
         <div class="container collapse in" id="banner-info">
             <div class="row-1">
                 <span class="tag">
-                        {% if article.categories.count %}
-                            {% for category in article.categories.all %}
-                                <span class="tag-space">{{ category }}
-                                {% if not forloop.last %},</span>
-                                {% elif article|show_separator%} <span class="tag-space-both">•</span>
-                                {%  endif  %}
-                            {% endfor %}
-                        {% endif %}
-                    </span>
-                    {% if article.first_published_at %}
-                    <a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month %}">
-                        <span itemprop="datePublished" class="date link-dark">{{ article.first_published_at|date }}</span>
-                    </a>
+                    {% if article.categories.count %}
+                        {% for category in article.categories.all %}
+                            <span class="tag-space">
+                                <a style="color: inherit" href="{{ category.get_absolute_url }}">
+                                    {{ category }}
+                                </a>
+                            {% if not forloop.last %},</span>
+                            {% elif article|show_separator%} <span class="tag-space-both">•</span>
+                            {%  endif  %}
+                        {% endfor %}
                     {% endif %}
-                </div>
+                </span>
+                {% if article.first_published_at %}
+                <a href="{% url "archive-detail" year=article.first_published_at.year month=article.first_published_at.month %}">
+                    <span itemprop="datePublished" class="date link-dark">{{ article.first_published_at|date }}</span>
+                </a>
+                {% endif %}
+            </div>
              <h1><span itemprop="headline" id="article-gallery-title">{{ article.title }}</span></h1>
              <p>{{ article.strap }}</p>
              <ul class="clearfix">
