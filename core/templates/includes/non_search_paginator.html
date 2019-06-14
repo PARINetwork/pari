@@ -1,0 +1,29 @@
+{% if results.paginator.num_pages > 1 %}
+<nav aria-label="Page navigation" class="text-center">
+  <ul class="pagination">
+    {% if results.has_previous %}
+    <li class="page-nav" data-page="1">
+        <a href="{{ absolute_path_minus_query_string }}"><i class="fa fa-angle-double-left"></i></a>
+    </li>
+    <li class="page-nav" data-page="{{ results.previous_page_number }}">
+        <a href="{% if results.previous_page_number != 1 %}?page={{ results.previous_page_number }}{% else %}{{ absolute_path_minus_query_string }}{% endif %}">
+           <i class="fa fa-angle-left"></i>
+        </a>
+    </li>
+    {% endif %}
+
+    {% for page in results.paginator.page_range %}
+    <li class="{% if page == results.number %}active{% endif %}" data-page="{{ page }}">
+        <a href="{% if page != 1 %}?page={{ page }}{% else %}{{ absolute_path_minus_query_string }}{% endif %}">
+          {{ page }}
+        </a>
+    </li>
+    {% endfor %}
+
+    {% if results.has_next %}
+    <li class="page-nav" data-page="{{ results.next_page_number }}"><a href="?page={{ results.next_page_number }}"><i class="fa fa-angle-right"></i></a></li>
+    <li class="page-nav" data-page="{{ results.paginator.num_pages }}"><a href="?page={{ results.paginator.num_pages }}"><i class="fa fa-angle-double-right"></i></a></li>
+    {% endif %}
+  </ul>
+</nav>
+{%  endif %}

@@ -304,6 +304,7 @@ TEMPLATES = [
             'context_processors': global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
                 'django.core.context_processors.request',
                 'core.context_processors.settings',
+                'core.context_processors.path',
             ),
         },
     },
