@@ -7,6 +7,7 @@ from django.views.generic.list import ListView
 
 from article.models import Article
 from category.models import Category
+from core.mixins import Page1Redirector
 from core.models import GalleryHomePage
 from core.utils import filter_by_language, get_translations_for_articles, get_unique_photographers
 
@@ -30,7 +31,7 @@ class CategoriesList(ListView):
         return context
 
 
-class GalleryDetail(DetailView):
+class GalleryDetail(Page1Redirector, DetailView):
     context_object_name = "category"
     model = Category
     paginate_by = 12
@@ -66,7 +67,7 @@ class GalleryDetail(DetailView):
         return context
 
 
-class StoryDetail(DetailView):
+class StoryDetail(Page1Redirector, DetailView):
     context_object_name = "category"
     model = Category
     paginate_by = 12

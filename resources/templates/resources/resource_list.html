@@ -22,14 +22,14 @@
 {% endblock %}
 
 {% block extra_head %}
-    {% if page_obj.paginator %}
-        {%  if page_obj.has_previous %}
-            <link rel="prev" href="{{ request.path }}?page={{ page_obj.previous_page_number }}"/>
-        {%  endif %}
-        {%  if page_obj.has_next %}
-            <link rel="next" href="{{ request.path }}?page={{ page_obj.next_page_number }}"/>
-        {%  endif %}
+  {% if page_obj.paginator %}
+    {%  if page_obj.has_previous %}
+    <link rel="prev" href="{{ absolute_path_minus_query_string }}{% if page_obj.previous_page_number != 1 %}?page={{ page_obj.previous_page_number }}{% endif %}"/>
     {%  endif %}
+    {%  if page_obj.has_next %}
+    <link rel="next" href="{{ absolute_path_minus_query_string }}?page={{ page_obj.next_page_number }}"/>
+    {%  endif %}
+  {%  endif %}
 {% endblock %}
 
 {% block breadcrumb_menu %}
@@ -64,7 +64,7 @@
             </div>
         </div>
         <div class="row">
-          {% include "includes/paginator.html" with results=page_obj %}
+          {% include "includes/non_search_paginator.html" with results=page_obj %}
         </div>
     </div>
 {% endblock %}

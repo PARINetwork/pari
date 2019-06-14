@@ -1,5 +1,6 @@
 import calendar
 from bs4 import BeautifulSoup
+from django.views.generic import ListView
 
 from django.views.generic.detail import DetailView
 from django.conf import settings
@@ -16,7 +17,7 @@ from core.utils import get_translations_for_page, filter_by_language
 from album.models import Album
 from face.models import Face
 from resources.models import Resource
-from core.mixins import ListViewWithCustomPagination
+from core.mixins import Page1Redirector
 
 
 class ArticleDetail(DetailView):
@@ -82,7 +83,7 @@ class ArticleDetail(DetailView):
         return response
 
 
-class ArchiveDetail(ListViewWithCustomPagination):
+class ArchiveDetail(Page1Redirector, ListView):
     context_object_name = "articles"
     model = Article
     template_name = 'article/archive_article_list.html'
@@ -107,7 +108,7 @@ class ArchiveDetail(ListViewWithCustomPagination):
         return context
 
 
-class AuthorArticleList(ListViewWithCustomPagination):
+class AuthorArticleList(Page1Redirector, ListView):
     context_object_name = "articles"
     paginate_by = 12
     template_name = "article/author_article_list.html"
@@ -134,7 +135,7 @@ class AuthorArticleList(ListViewWithCustomPagination):
         return context
 
 
-class ArticleList(ListViewWithCustomPagination):
+class ArticleList(Page1Redirector, ListView):
     context_object_name = "articles"
     model = Article
     paginate_by = 12
@@ -170,7 +171,7 @@ class ArticleList(ListViewWithCustomPagination):
         return context
 
 
-class GalleryArticleList(ListViewWithCustomPagination):
+class GalleryArticleList(Page1Redirector, ListView):
     context_object_name = "articles"
     model = Article
     paginate_by = 12
