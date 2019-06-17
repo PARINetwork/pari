@@ -1,3 +1,4 @@
+{% if results.paginator.num_pages > 1 %}
 <nav aria-label="Page navigation" class="text-center">
   <ul class="pagination">
     {% if results.has_previous %}
@@ -13,5 +14,6 @@
     <li class="page-nav" data-page="{{ results.next_page_number }}"><a href="?page={{ results.next_page_number }}{{ query_params_string }}"><i class="fa fa-angle-right"></i></a></li>
     <li class="page-nav" data-page="{{ results.paginator.num_pages }}"><a href="?page={{ results.paginator.num_pages }}{{ query_params_string }}"><i class="fa fa-angle-double-right"></i></a></li>
     {% endif %}
-  </    ul>
+  </ul>
 </nav>
+{%  endif %}

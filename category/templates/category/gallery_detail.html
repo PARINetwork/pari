@@ -22,7 +22,16 @@
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/article.less">
 {% endblock %}
 
-
+{% block extra_head %}
+  {% if articles.paginator %}
+    {%  if articles.has_previous %}
+    <link rel="prev" href="{{ absolute_path_minus_query_string }}{% if articles.previous_page_number != 1 %}?page={{ articles.previous_page_number }}{% endif %}"/>
+    {%  endif %}
+    {%  if articles.has_next %}
+    <link rel="next" href="{{ absolute_path_minus_query_string }}?page={{ articles.next_page_number }}"/>
+    {%  endif %}
+  {%  endif %}
+{% endblock %}
 
 {% block breadcrumb_menu %}
     <li class="active">{{ category.name }}</li>

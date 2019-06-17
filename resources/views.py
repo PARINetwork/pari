@@ -1,11 +1,12 @@
 from django.http import Http404
 from django.views.generic import DetailView, ListView
-from django.contrib.sites.requests import RequestSite
+from wagtail.wagtailcore.models import Site
 
 from .models import Resource
+from core.mixins import Page1Redirector
 
 
-class ResourceList(ListView):
+class ResourceList(Page1Redirector, ListView):
     paginate_by = 48
     context_object_name = "resources"
     model = Resource
@@ -16,6 +17,7 @@ class ResourceList(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ResourceList, self).get_context_data(**kwargs)
+        context['site'] = Site.find_for_request(self.request)
         context['tab'] = 'resources'
         context['current_page'] = 'resource-list'
         return context
@@ -24,6 +26,7 @@ class ResourceList(ListView):
 class TaggedResourceList(ResourceList):
     def get_context_data(self, **kwargs):
         context = super(TaggedResourceList, self).get_context_data(**kwargs)
+        context['site'] = Site.find_for_request(self.request)
         context['tag'] = self.kwargs['tag']
         return context
 
@@ -47,7 +50,7 @@ class ResourceDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ResourceDetail, self).get_context_data(**kwargs)
-        context['site'] = RequestSite(self.request)
+        context['site'] = Site.find_for_request(self.request)
         context['heading'] = 'no'
         for data in context['resource'].content:
             if data.block_type == 'factoids':
@@ -63,6 +66,6 @@ class ReportDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ReportDetail, self).get_context_data(**kwargs)
-        context['site'] = RequestSite(self.request)
+        context['site'] = Site.find_for_request(self.request)
         context['current_page'] = 'report-detail'
         return context

@@ -23,3 +23,10 @@ def settings(request):
         "SITE_TITLE": django_settings.SITE_TITLE,
         "site": site,
     }
+
+
+def path(request):
+    return {
+        "absolute_path_minus_query_string": request.build_absolute_uri(request.path),
+        "absolute_full_path": request.build_absolute_uri(request.get_full_path())
+    }

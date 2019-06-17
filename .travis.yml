@@ -11,6 +11,7 @@ before_install:
 - mkdir geckodriver
 - tar -xzf geckodriver-v0.11.1-linux64.tar.gz -C geckodriver
 - export PATH=$PATH:$PWD/geckodriver
+- openssl aes-256-cbc -k "$vault_file_pass" -in .vault_pass.enc -out vault_pass -d
 install:
 - npm install -g less
 - pip install ansible==2.2.1
@@ -26,9 +27,11 @@ before_script:
 - cp -r core/static/img/stories-1.jpg media/uploads/stories-1.jpg
 script:
 - source scripts/test.sh
+after_script:
+- rm vault_pass
 deploy:
   provider: script
-  script: sh travis_deploy_to_staging.sh
+  script: ANSIBLE_VAULT_PASSWORD_FILE=$TRAVIS_BUILD_DIR/vault_pass sh travis_deploy_to_staging.sh
   skip_cleanup: true
   on:
     branch: release-candidate
@@ -43,3 +46,6 @@ addons:
   - 206.189.18.112
 notifications:
   slack: countermedia:TsEo2IDocyJtRqLR1Mzi0zuT
+env:
+  global:
+    secure: AWUp0f9cgVuR7aH7a3YWRn2/XPbc+MPb/RbVP7zMoiErRw+hzz8vPxqyHVuSm3YF+i6jNfIRKD0g0kaw9hUh5aJu05xEg6qcsze1PThmfy8ECyss4Aaab8VPuEa3ApQyw3k2pHOlJ0xpdAGLHjYSpqkUVYSWiHDI2MJiNO9CVVunggTORqo7qjunKUFuOmUpE6/0MOxunNnU0LYcQzmSs5/DsAmxS1DDt+APDm/FQjlPNKZhXaR1FxmeCcULBYi0icnm3EoRqfrtec7NrWyNhjkJei2qOpx/VKEJmm48K9zwuuv0J2LqhNbh43XlBwhKTayZZ83EAGEF+EMrPKExNreW7F49dhilkgRjLI3CoSF8ENIZsed5lw+kdfVe0bdxOeJgsDmhC398ZfSyzBDowFVF5ZyetRELC2Ok+IjpgshYMDt0CjnWy7QyiWg5gs9LPmC16TONqdgdOUrhZYdBJownTyBboCahBhSmqxRmFClenaFaZUMCp6spNGnfFE7oE6wlOZNp1h7uc5NTlP55SkjZPRoGgcfjchU2t5sIbPMMbi+1tHI6QTL5YcH+kCvxQQxjdYMFFOYKbZi5ooqgvUhV2OF/FB/DpUEUdHB+mAjKub6MIJ5OrAfrRYXCIOZNkyxzivqt4JEnA+9Bf7XdGbvJHJjpn52/pC/A4yypIvg=

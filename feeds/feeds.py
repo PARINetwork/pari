@@ -92,7 +92,6 @@ class AllFeed(BaseFeed):
 
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
-        x_days_ago = "2016-09-01"
         kwargs = {
             "first_published_at__gte": x_days_ago,
         }
