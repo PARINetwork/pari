@@ -1,10 +1,13 @@
 from django.conf.urls import patterns, url
+from django.views.generic.base import RedirectView
 
+
+CONTRIBUTE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScfpZfiT28pInGrwKxiIkVrztNMzATkOHmgEXfJwcgkT8nLkg/viewform'
 
 urlpatterns = patterns('core.views',
     url(r'^$', 'home_page', name='home-page'),
 
-    url(r'^(?P<slug>contribute)/?$', 'contribute', name='contribute'),
+    url(r'^(?P<slug>contribute)/?$', RedirectView.as_view(url=CONTRIBUTE_FORM_URL, permanent=True), name='contribute'),
     url(r'^contribute/(?P<slug>guidelines)/$', 'static_page', name='static_page'),
 
     url(r'^(?P<slug>about)/$', 'static_page', name='static_page'),
@@ -31,7 +34,9 @@ urlpatterns = patterns('core.views',
     url(r'^sitemap-(?P<year>\d+)\.xml', 'sitemap_year', name='sitemap_year'),
 )
 
+'''
 urlpatterns += patterns('',
     # To handle unicode in the slugs.
     url(r'^(.*?)$', 'wagtail.wagtailcore.views.serve', name='wagtail_serve'),
 )
+'''

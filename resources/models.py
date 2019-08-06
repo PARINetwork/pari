@@ -1,13 +1,10 @@
 from __future__ import unicode_literals
 
-import json
-import urllib2
-
 from django.conf import settings
-from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
+from django.utils.translation import ugettext_lazy as _
 from modelcluster.fields import ParentalManyToManyField, ParentalKey
 
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, \
@@ -22,6 +19,52 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
 from core.utils import SearchBoost
+
+
+class Room(models.Model):
+    name = models.CharField(unique=True, max_length=255)
+    slug = models.SlugField(unique=True, max_length=255,
+                            help_text=_('Auto-populated field. Edit manually only if you must'))
+    description = models.TextField(blank=True)
+
+    class Meta:
+        ordering = ('id',)
+
+    def __str__(self):
+        return self.name
+
+
+class Rack(models.Model):
+    name = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255,
+                            help_text=_('Auto-populated field. Edit manually only if you must'))
+    room = models.ForeignKey('Room', related_name='racks')
+
+    class Meta:
+        unique_together = (('name', 'room'), ('slug', 'room'))
+        ordering = ('id',)
+
+    def __str__(self):
+        return self.room.name + ' > ' + self.name
+
+
+class Subject(models.Model):
+    name = models.CharField(unique=True, max_length=255)
+    slug = models.SlugField(unique=True, max_length=255,
+                            help_text=_('Auto-populated field. Edit manually only if you must'))
+
+    class Meta:
+        ordering = ('id',)
+
+    def __str__(self):
+        return self.name
+
+
+class ResourceType(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
 
 
 class ResourceTag(TaggedItemBase):
@@ -56,8 +99,24 @@ class Resource(Page):
         ("factoids", blocks.RichTextBlock(blank=True)),
     ])
 
+    rooms = ParentalManyToManyField('resources.Room',
+                                    related_name='resources')
+    racks = ParentalManyToManyField('resources.Rack',
+                                    related_name='resources')
+
+    subjects = ParentalManyToManyField('resources.Subject',
+                                       related_name='resources',
+                                       blank=True)
+
+    type = models.ForeignKey('resources.ResourceType',
+                             related_name='resources',
+                             null=True,
+                             blank=True,
+                             on_delete=models.SET_NULL)
+
     categories = ParentalManyToManyField("category.Category",
-                          related_name="resources_by_category", blank=True)
+                                         related_name="resources_by_category",
+                                         blank=True)
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
 
     tags = ClusterTaggableManager(through=ResourceTag, blank=True)
@@ -99,12 +158,21 @@ class Resource(Page):
         ImageChooserPanel('thumbnail'),
         FieldPanel('language'),
         StreamFieldPanel('content'),
+        FieldPanel('racks'),
+        FieldPanel('subjects'),
+        FieldPanel('type'),
         FieldPanel('categories'),
         FieldPanel('date'),
     ]
 
     def clean(self):
         super(Resource, self).clean()
+
+    def save(self, *args, **kwargs):
+        rooms = set([x.room for x in self.racks.all()])
+        for room in rooms:
+            self.rooms.add(room)
+        super(Resource, self).save()
 
     @property
     def featured_image(self):

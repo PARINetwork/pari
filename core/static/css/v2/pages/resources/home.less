@@ -1,5 +1,117 @@
 @import "../../colors/colors";
 
+.banner-section {
+  background: url('../../../../img/library-bg.jpg') no-repeat;
+  background-size: cover;
+  background-position: 0 15%;
+  height: 240px;
+  width: 100%;
+  text-align: center;
+  display: table;
+
+  .container {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .title {
+    opacity: 0.96;
+    text-shadow: 0 3px 5px rgba(0, 0, 0, 0.9);
+    font-family: 'Amiri', serif;
+    font-size: 75px;
+    font-weight: bold;
+    line-height: 1;
+    letter-spacing: -1.1px;
+    color: #ffffff;
+  }
+
+  .description-container {
+    background: rgba(1, 1, 1, 0.5);
+    padding: 1em 0;
+  }
+
+  .description {
+    font-size: 1.2em;
+    color: #fafafa;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+}
+
+#library-nav-bar {
+  li.dropdown {
+    border-right: 1px solid #DDDDDD;
+  }
+
+  li > a {
+    font-size: medium;
+  }
+
+  .yamm-content {
+    padding: 10px 20px;
+  }
+
+  #accordion {
+    .panel {
+      border: 0;
+      border-bottom: 1px dashed #f0f0f0;
+      width: 340px;
+    }
+
+    .panel-heading {
+      background-color: inherit;
+    }
+
+    .room-collapse {
+      float: right;
+      margin-left: 8px;
+    }
+
+    .room-description {
+      font-size: 0.9em;
+      line-height: 1.1em;
+      margin: 0 0 8px 0;
+      color: #888;
+    }
+  }
+
+  #rural-index-link {
+    color: #dd2222;
+  }
+
+  .search-form {
+    .search-input-group {
+      position: relative;
+    }
+
+    #search-input {
+      width: 220px;
+      height: 2.4em;
+      text-indent: 24px;
+    }
+
+    .search-icon {
+      position: absolute;
+      top: 0.4em;
+      left: 10px;
+      font-size: 1.4em;
+      cursor: pointer;
+      color: #c7c7c7;
+    }
+
+    .search-icon:hover {
+      color: #474747;
+    }
+  }
+}
+
+.placeholder-red::placeholder {
+  color: #ff0000;
+}
+
+#tag-heading {
+  margin-left: 1em;
+}
+
 .gallery-tile-row {
 
   .grid-list {
