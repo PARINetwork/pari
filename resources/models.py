@@ -27,11 +27,11 @@ class Room(models.Model):
                             help_text=_('Auto-populated field. Edit manually only if you must'))
     description = models.TextField(blank=True)
 
-    def __str__(self):
-        return self.name
-
     class Meta:
         ordering = ('id',)
+
+    def __str__(self):
+        return self.name
 
 
 class Rack(models.Model):
@@ -40,18 +40,21 @@ class Rack(models.Model):
                             help_text=_('Auto-populated field. Edit manually only if you must'))
     room = models.ForeignKey('Room', related_name='racks')
 
-    def __str__(self):
-        return self.room.name + ' > ' + self.name
-
     class Meta:
         unique_together = (('name', 'room'), ('slug', 'room'))
         ordering = ('id',)
+
+    def __str__(self):
+        return self.room.name + ' > ' + self.name
 
 
 class Subject(models.Model):
     name = models.CharField(unique=True, max_length=255)
     slug = models.SlugField(unique=True, max_length=255,
                             help_text=_('Auto-populated field. Edit manually only if you must'))
+
+    class Meta:
+        ordering = ('id',)
 
     def __str__(self):
         return self.name

@@ -34,7 +34,9 @@ urlpatterns = patterns('core.views',
     url(r'^sitemap-(?P<year>\d+)\.xml', 'sitemap_year', name='sitemap_year'),
 )
 
+'''
 urlpatterns += patterns('',
     # To handle unicode in the slugs.
     url(r'^(.*?)$', 'wagtail.wagtailcore.views.serve', name='wagtail_serve'),
 )
+'''
