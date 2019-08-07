@@ -1,9 +1,21 @@
 from django.http import Http404
+from django.shortcuts import render
 from django.views.generic import DetailView, ListView
 from wagtail.wagtailcore.models import Site
 
+from search.views import site_search
 from .models import Resource, Room, Subject
 from core.mixins import Page1Redirector
+
+
+def build_resource_list_context(request_obj):
+    return {
+        'site': Site.find_for_request(request_obj),
+        'tab': 'resources',
+        'rooms': Room.objects.all().iterator(),
+        'subjects': Subject.objects.all().iterator(),
+        'current_page': 'resource-list'
+    }
 
 
 class ResourceList(Page1Redirector, ListView):
@@ -17,12 +29,14 @@ class ResourceList(Page1Redirector, ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ResourceList, self).get_context_data(**kwargs)
-        context['site'] = Site.find_for_request(self.request)
-        context['tab'] = 'resources'
-        context['rooms'] = Room.objects.all().iterator()
-        context['subjects'] = Subject.objects.all().iterator()
-        context['current_page'] = 'resource-list'
+        context.update(build_resource_list_context(self.request))
         return context
+
+
+def search_resources(request):
+    search_context = site_search(request, only_return_context=True)
+    search_context.update(build_resource_list_context(request))
+    return render(request, 'resources/resource_list.html', search_context)
 
 
 class TaggedResourceList(ResourceList):
@@ -72,6 +86,7 @@ class ResourceDetail(DetailView):
         context = super(ResourceDetail, self).get_context_data(**kwargs)
         context['site'] = Site.find_for_request(self.request)
         context['heading'] = 'no'
+        context['tab'] = 'resources'
         for data in context['resource'].content:
             if data.block_type == 'factoids':
                 context['heading'] = 'yes'
