@@ -30,7 +30,8 @@ def site_search(
         show_unpublished=False,
         search_title_only=False,
         extra_filters={},
-        path=None):
+        path=None,
+        only_return_context=False):
     # Get default templates
     if template is None:
         if hasattr(settings, 'WAGTAILSEARCH_RESULTS_TEMPLATE'):
@@ -177,7 +178,7 @@ def site_search(
 
         authors = set(str(author) for author in Author.objects.all())
 
-        return render(request, template, dict(
+        context_obj = dict(
             query_string=query_string,
             languages=settings.LANGUAGES,
             search_results=search_results,
@@ -186,7 +187,12 @@ def site_search(
             locations=locations,
             authors=authors,
             query_params_string=query_params_string
-        ))
+        )
+
+        if only_return_context:
+            return context_obj
+
+        return render(request, template, context_obj)
 
 
 # TODO: Remove the below two functions when we migrate to wagtail 1.2

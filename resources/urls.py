@@ -2,7 +2,7 @@ from django.conf.urls import patterns, url
 from django.views.generic import RedirectView
 
 from .views import ResourceDetail, ResourceList, TaggedResourceList, \
-    RoomResourceList, RackResourceList, ResourceListBySubject
+    RoomResourceList, RackResourceList, ResourceListBySubject, search_resources
 
 urlpatterns = patterns('',
                        url(r'^library/$',
@@ -10,9 +10,7 @@ urlpatterns = patterns('',
                        url(r'^library/tags/(?P<tag>[^/]+)/$',
                            TaggedResourceList.as_view(), name='tagged-resource-list'),
 
-                       url(r'^library/search$',
-                           'search.views.site_search', {'template': 'resources/search_results.html'},
-                           name='resource-search'),
+                       url(r'^library/search$', search_resources, name='resource-search'),
 
                        url(r'^library/resource/(?P<slug>[^/]+)/$',
                            ResourceDetail.as_view(), name='resource-detail'),
