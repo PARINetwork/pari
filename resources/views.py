@@ -36,7 +36,7 @@ class ResourceList(Page1Redirector, ListView):
 def search_resources(request):
     search_context = site_search(request, only_return_context=True)
     search_context.update(build_resource_list_context(request))
-    return render(request, 'resources/resource_list.html', search_context)
+    return render(request, 'resources/search_results.html', search_context)
 
 
 class TaggedResourceList(ResourceList):
