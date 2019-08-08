@@ -55,12 +55,12 @@
                 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse-1">
                     <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand">Browse by room or subject:</a>
+                <a class="navbar-brand">Browse:</a>
             </div>
             <div class="navbar-collapse collapse" id="navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
-                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">Room <b class="caret"></b></a>
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">Rooms <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <div class="yamm-content">
@@ -107,6 +107,7 @@
                             </li>
                         </ul>
                     </li>
+                    {% comment %}
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             Subject <span class="caret"></span>
@@ -120,6 +121,7 @@
                     <li>
                         <a id="rural-index-link" href="#"><strike>* PARI Rural Index *</strike></a>
                     </li>
+                    {% endcomment %}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <form id="search-form" action="{% url "resource-search" %}" role="search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction" class="search-form navbar-form navbar-left">
