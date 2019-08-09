@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import DetailView, ListView
 from wagtail.wagtailcore.models import Site
 
@@ -53,20 +53,29 @@ class TaggedResourceList(ResourceList):
 
 class RoomResourceList(ResourceList):
     def get_queryset(self):
-        if not Room.objects.filter(slug=self.kwargs['slug']).exists():
-            raise Http404
         qs = super(RoomResourceList, self).get_queryset()
-        return qs.filter(rooms__slug=self.kwargs['slug'])
+        return qs.filter(rooms__slug=self.kwargs['room_slug'])
+
+    def get_context_data(self):
+        room = get_object_or_404(Room, slug=self.kwargs['room_slug'])
+        context = super(RoomResourceList, self).get_context_data()
+        context.update({'room': room})
+        return context
 
 
 class RackResourceList(ResourceList):
     def get_queryset(self):
-        if not Rack.objects.filter(slug=self.kwargs['rack_slug'],
-                                   room__slug=self.kwargs['room_slug']).exists():
-            raise Http404
         qs = super(RackResourceList, self).get_queryset()
         return qs.filter(racks__slug=self.kwargs['rack_slug'],
-                         rooms__slug=self.kwargs['room_slug'])
+                         racks__room__slug=self.kwargs['room_slug'])
+
+    def get_context_data(self):
+        rack = get_object_or_404(Rack,
+                                 room__slug=self.kwargs['room_slug'],
+                                 slug=self.kwargs['rack_slug'])
+        context = super(RackResourceList, self).get_context_data()
+        context.update({'rack': rack})
+        return context
 
 
 class ResourceListBySubject(ResourceList):

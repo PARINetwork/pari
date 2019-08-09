@@ -16,7 +16,7 @@
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/article.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/resources/home.less">
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/lib/yamm.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/vendor/yamm.less">
 {% endblock %}
 
 {% block extra_head %}
@@ -28,10 +28,6 @@
     <link rel="next" href="{{ absolute_path_minus_query_string }}?page={{ page_obj.next_page_number }}"/>
     {%  endif %}
   {%  endif %}
-{% endblock %}
-
-{% block breadcrumb_menu %}
-    <li class="active">{% trans "Library" %}</li>
 {% endblock %}
 
 {% block main %}
@@ -72,7 +68,7 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h4 class="panel-title">
-                                                        <a href="{% url "room-resource-list" slug=room.slug %}">
+                                                        <a href="{% url "room-resource-list" room_slug=room.slug %}">
                                                             {{ room.name }}
                                                         </a>
                                                         {% if room.racks.exists or room.description %}
@@ -140,12 +136,31 @@
             </div>
         </div>
     </nav>
-    <div class="container">
-        {% if tag %}
+    <div class="container context-bar">
         <div class="row">
-            <h4 id="tag-heading">Resources tagged <b>#{{ tag }}</b></h4>
+            {% block context_bar %}
+            {% if room or rack %}
+            <ol id="breadcrumb-nav" class="breadcrumb">
+                <li><a href="{% url "resource-list" %}">Library</a></li>
+                {%  if rack %}
+                    <li>Room:
+                        <a href="{% url "room-resource-list" room_slug=view.kwargs.room_slug %}">
+                            {{ rack.room.name }}
+                        </a>
+                    </li>
+                    <li class="active">Rack: {{ rack.name }}</li>
+                {% else %}
+                    <li class="active">Room: {{ room.name }}</li>
+                {% endif %}
+            </ol>
+            {% endif %}
+            {% if tag %}
+            <h4 id="tag-heading">Resources tagged "<b>#{{ tag }}</b>"</h4>
+            {% endif %}
+            {% endblock %}
         </div>
-        {% endif %}
+    </div>
+    <div class="container">
         <div class="filter-list-container">
             <div class="gallery-tile-row">
                 <div class="row">
@@ -155,7 +170,7 @@
                             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 grid-list">
                                 <div class="grid-container">
                                     <div class="image-container">{% image resource.thumbnail original %}</div>
-                                    <h5 class="caption">{{ resource.title }}</h5>
+                                    <h5 class="caption">{{ resource.title|truncatewords:16 }}</h5>
                                 </div>
                             </div>
                         </a>

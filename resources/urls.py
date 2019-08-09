@@ -15,7 +15,7 @@ urlpatterns = patterns('',
                        url(r'^library/resource/(?P<slug>[^/]+)/$',
                            ResourceDetail.as_view(), name='resource-detail'),
 
-                       url(r'^library/rooms/(?P<slug>[^/]+)/$',
+                       url(r'^library/rooms/(?P<room_slug>[^/]+)/$',
                            RoomResourceList.as_view(), name='room-resource-list'),
                        url(r'^library/rooms/(?P<room_slug>[^/]+)/(?P<rack_slug>[^/]+)/$',
                            RackResourceList.as_view(), name='rack-resource-list'),

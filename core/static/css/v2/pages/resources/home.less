@@ -38,6 +38,8 @@
 }
 
 #library-nav-bar {
+  background-color: #F4F4F4;
+
   li.dropdown {
     border-right: 1px solid #DDDDDD;
   }
@@ -85,7 +87,7 @@
 
     #search-input {
       width: 220px;
-      height: 2.4em;
+      height: 2.8em;
       text-indent: 24px;
     }
 
@@ -108,21 +110,39 @@
   color: #ff0000;
 }
 
-#tag-heading {
+.context-bar {
+  margin-top: 0 !important;
+  margin-bottom: -20px;
+}
+
+#breadcrumb-nav {
+  background-color: transparent;
+}
+
+#tag-heading, #search-heading {
   margin-left: 1em;
+  margin-bottom: 2em;
+  font-weight: normal;
+  border-bottom: 1px solid #CCC;
+  padding-bottom: 8px;
 }
 
 .gallery-tile-row {
+  margin-top: -20px;
 
   .grid-list {
-    margin: 40px 0;
+    margin-bottom: 60px;
     height: 350px;
+
+    @media(max-width: 800px) {
+      margin-bottom: 220px;
+    }
   }
 
   .grid-container {
     border: 1px solid @light-grey;
     position: absolute;
-    bottom: 0;
+    top: 0;
   }
 
   .caption {
