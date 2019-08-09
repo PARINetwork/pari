@@ -37,7 +37,9 @@
 {% block main %}
     <div class="banner-section">
         <div class="container">
-            <h1 class="title">{% trans "Library" %}</h1>
+            <a href="{% url "resource-list" %}">
+                <h1 class="title">{% trans "Library" %}</h1>
+            </a>
             <div class="description-container row">
                 <div class="col-md-3"></div>
                 <div class="description col-md-7 col-xs-12">
@@ -73,14 +75,16 @@
                                                         <a href="{% url "room-resource-list" slug=room.slug %}">
                                                             {{ room.name }}
                                                         </a>
-                                                        <a class="room-collapse"
-                                                           data-toggle="collapse"
-                                                           data-parent="#accordion"
-                                                           aria-expanded="false"
-                                                           aria-controls="#room-{{ room.slug }}"
-                                                           href="#room-{{ room.slug }}">
-                                                            <span class="glyphicon glyphicon-plus arrow-collapse"></span>
-                                                        </a>
+                                                        {% if room.racks.exists or room.description %}
+                                                            <a class="room-collapse"
+                                                               data-toggle="collapse"
+                                                               data-parent="#accordion"
+                                                               aria-expanded="false"
+                                                               aria-controls="#room-{{ room.slug }}"
+                                                               href="#room-{{ room.slug }}">
+                                                                <span class="glyphicon glyphicon-plus arrow-collapse"></span>
+                                                            </a>
+                                                        {%  endif %}
                                                     </h4>
                                                 </div>
                                                 <div class="panel-collapse collapse" id="room-{{ room.slug }}">

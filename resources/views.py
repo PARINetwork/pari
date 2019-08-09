@@ -4,7 +4,7 @@ from django.views.generic import DetailView, ListView
 from wagtail.wagtailcore.models import Site
 
 from search.views import site_search
-from .models import Resource, Room, Subject
+from .models import Resource, Room, Subject, Rack
 from core.mixins import Page1Redirector
 
 
@@ -53,14 +53,20 @@ class TaggedResourceList(ResourceList):
 
 class RoomResourceList(ResourceList):
     def get_queryset(self):
+        if not Room.objects.filter(slug=self.kwargs['slug']).exists():
+            raise Http404
         qs = super(RoomResourceList, self).get_queryset()
         return qs.filter(rooms__slug=self.kwargs['slug'])
 
 
 class RackResourceList(ResourceList):
     def get_queryset(self):
+        if not Rack.objects.filter(slug=self.kwargs['rack_slug'],
+                                   room__slug=self.kwargs['room_slug']).exists():
+            raise Http404
         qs = super(RackResourceList, self).get_queryset()
-        return qs.filter(racks__slug=self.kwargs['rack_slug'])
+        return qs.filter(racks__slug=self.kwargs['rack_slug'],
+                         rooms__slug=self.kwargs['room_slug'])
 
 
 class ResourceListBySubject(ResourceList):
