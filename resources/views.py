@@ -1,10 +1,10 @@
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import DetailView, ListView
 from wagtail.wagtailcore.models import Site
 
 from search.views import site_search
-from .models import Resource, Room, Subject
+from .models import Resource, Room, Subject, Rack
 from core.mixins import Page1Redirector
 
 
@@ -36,7 +36,7 @@ class ResourceList(Page1Redirector, ListView):
 def search_resources(request):
     search_context = site_search(request, only_return_context=True)
     search_context.update(build_resource_list_context(request))
-    return render(request, 'resources/resource_list.html', search_context)
+    return render(request, 'resources/search_results.html', search_context)
 
 
 class TaggedResourceList(ResourceList):
@@ -54,13 +54,28 @@ class TaggedResourceList(ResourceList):
 class RoomResourceList(ResourceList):
     def get_queryset(self):
         qs = super(RoomResourceList, self).get_queryset()
-        return qs.filter(rooms__slug=self.kwargs['slug'])
+        return qs.filter(rooms__slug=self.kwargs['room_slug'])
+
+    def get_context_data(self):
+        room = get_object_or_404(Room, slug=self.kwargs['room_slug'])
+        context = super(RoomResourceList, self).get_context_data()
+        context.update({'room': room})
+        return context
 
 
 class RackResourceList(ResourceList):
     def get_queryset(self):
         qs = super(RackResourceList, self).get_queryset()
-        return qs.filter(racks__slug=self.kwargs['rack_slug'])
+        return qs.filter(racks__slug=self.kwargs['rack_slug'],
+                         racks__room__slug=self.kwargs['room_slug'])
+
+    def get_context_data(self):
+        rack = get_object_or_404(Rack,
+                                 room__slug=self.kwargs['room_slug'],
+                                 slug=self.kwargs['rack_slug'])
+        context = super(RackResourceList, self).get_context_data()
+        context.update({'rack': rack})
+        return context
 
 
 class ResourceListBySubject(ResourceList):
