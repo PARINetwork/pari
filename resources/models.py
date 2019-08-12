@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from modelcluster.fields import ParentalManyToManyField, ParentalKey
 
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, \
-    StreamFieldPanel
+    StreamFieldPanel, MultiFieldPanel, FieldRowPanel
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailcore.models import Page
@@ -92,6 +92,10 @@ class Resource(Page):
     )
 
     date = models.DateField(blank=True, null=True)
+    show_day = models.BooleanField(default=True)
+    show_month = models.BooleanField(default=True)
+    show_year = models.BooleanField(default=True)
+
     content = StreamField([
         ("authors", blocks.RichTextBlock(blank=True)),
         ("copyright", blocks.RichTextBlock(blank=True)),
@@ -162,7 +166,16 @@ class Resource(Page):
         FieldPanel('subjects'),
         FieldPanel('type'),
         FieldPanel('categories'),
-        FieldPanel('date'),
+        MultiFieldPanel(
+            [
+                FieldPanel('date'),
+                FieldRowPanel(
+                    [
+                        FieldPanel('show_day',classname="col4"),
+                        FieldPanel('show_month',classname="col4"),
+                        FieldPanel('show_year',classname="col4")
+                    ])
+            ], 'Date'),
     ]
 
     def clean(self):
