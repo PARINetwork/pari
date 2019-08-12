@@ -81,7 +81,17 @@
       </div>
       <div>
         <h4>{% trans "PUBLICATION DATE" %}</h4>
-        <p class='resource-detail'>{{ resource.date | date:"d M, Y"}}</p>
+        <p class='resource-detail'>
+            {% if resource.show_day %}
+                {{ resource.date | date:"d M, Y"}}
+            {% elif resource.show_month %}
+                {{ resource.date | date:"M, Y"}}
+            {% elif resource.show_year %}
+                {{ resource.date | date:"Y"}}
+            {% else %}
+                {{ resource.date | date:"d M, Y"}}
+            {% endif %}
+        </p>
       </div>
       <div class="tags">
         <h4>{% trans "TAGS" %}</h4>
