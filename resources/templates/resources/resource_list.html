@@ -148,13 +148,17 @@
                             <a href="{% url "room-resource-list" room_slug=view.kwargs.room_slug %}">
                                 {{ rack.room.name }}
                             </a>
-                            <span id="show-room-description" class="fa fa-info-circle" title="About this room"></span>
+                            {% if rack.room.description %}
+                                <span id="show-room-description" class="fa fa-info-circle" title="About this room"></span>
+                            {%  endif %}
                         </li>
                         <li class="active">Rack: {{ rack.name }}</li>
                     {% else %}
                         <li class="active">
                             Room: {{ room.name }}
-                            <span id="show-room-description" class="fa fa-info-circle" title="About this room"></span>
+                            {% if room.description %}
+                                <span id="show-room-description" class="fa fa-info-circle" title="About this room"></span>
+                            {%  endif %}
                         </li>
                     {% endif %}
                 </ol>
