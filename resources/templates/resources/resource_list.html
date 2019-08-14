@@ -39,10 +39,10 @@
             <div class="description-container row">
                 <div class="col-md-3"></div>
                 <div class="description col-md-7 col-xs-12">
-                    This library is PARI's effort to bring all reports and information on rural India
-                    to a single location for students, researchers and the general public. It comprises
-                    official and independent reports on rural India, out-of-print books, rare documents
-                    and reviewed research articles.
+                    The PARI Library brings reports and information on rural India to a
+                    single location for students, researchers and other readers. It includes
+                    official as well as independent reports, out-of-print books, rare
+                    documents and reviewed research articles.
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
                 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse-1">
                     <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand">Browse:</a>
+                <a class="navbar-brand">Browse</a>
             </div>
             <div class="navbar-collapse collapse" id="navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -85,9 +85,6 @@
                                                 </div>
                                                 <div class="panel-collapse collapse" id="room-{{ room.slug }}">
                                                     <div class="panel-body">
-                                                        {% if room.description %}
-                                                        <p class="room-description">{{ room.description }}</p>
-                                                        {% endif %}
                                                         <ul class="rack-list">
                                                             {%  for rack in room.racks.all %}
                                                             <li>
@@ -101,7 +98,11 @@
                                                 </div>
                                             </div>
                                             {%  endfor %}
-                                        </div>
+                                            <div id="all-rooms" class="col-md-3 col-sm-6 col-xs-12">
+                                                {% if view.kwargs.room_slug %}
+                                                    <a href="{% url "resource-list" %}">All Resources &raquo;</a>
+                                                {% endif %}
+                                            </div>
                                     </div>
                                 </div>
                             </li>
@@ -140,22 +141,33 @@
         <div class="row">
             {% block context_bar %}
             {% if room or rack %}
-            <ol id="breadcrumb-nav" class="breadcrumb">
-                <li><a href="{% url "resource-list" %}">Library</a></li>
-                {%  if rack %}
-                    <li>Room:
-                        <a href="{% url "room-resource-list" room_slug=view.kwargs.room_slug %}">
-                            {{ rack.room.name }}
-                        </a>
-                    </li>
-                    <li class="active">Rack: {{ rack.name }}</li>
-                {% else %}
-                    <li class="active">Room: {{ room.name }}</li>
+                <ol id="breadcrumb-nav" class="breadcrumb">
+                    <li><a href="{% url "resource-list" %}">Library</a></li>
+                    {%  if rack %}
+                        <li>Room:
+                            <a href="{% url "room-resource-list" room_slug=view.kwargs.room_slug %}">
+                                {{ rack.room.name }}
+                            </a>
+                            <span id="show-room-description" class="fa fa-info-circle" title="About this room"></span>
+                        </li>
+                        <li class="active">Rack: {{ rack.name }}</li>
+                    {% else %}
+                        <li class="active">
+                            Room: {{ room.name }}
+                            <span id="show-room-description" class="fa fa-info-circle" title="About this room"></span>
+                        </li>
+                    {% endif %}
+                </ol>
+                {% if rack %}
+                    {% if rack.room.description %}
+                        <p id="room-description">{{ rack.room.description }}</p>
+                    {% endif %}
+                {% elif room.description %}
+                    <p id="room-description">{{ room.description }}</p>
                 {% endif %}
-            </ol>
             {% endif %}
             {% if tag %}
-            <h4 class="other-heading">Resources tagged "<b>#{{ tag }}</b>"</h4>
+                <h4 class="other-heading">Resources tagged "<b>#{{ tag }}</b>"</h4>
             {% endif %}
             {% endblock %}
         </div>
@@ -228,6 +240,10 @@
                   $(selector).toggleClass('glyphicon-minus');
               }
           });
+          
+          $('#show-room-description').click(function () {
+              $('#room-description').toggle();
+          })
       });
     </script>
 {% endblock %}

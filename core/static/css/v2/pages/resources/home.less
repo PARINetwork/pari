@@ -41,7 +41,13 @@
   background-color: #F4F4F4;
 
   li.dropdown {
+    /*
     border-right: 1px solid #DDDDDD;
+    */
+  }
+
+  li.dropdown:first-child {
+    margin-left: -1.2em;
   }
 
   li > a {
@@ -52,10 +58,16 @@
     padding: 10px 20px;
   }
 
+  .navbar-brand {
+    @media (max-width: 767px) {
+      display: inline;
+    }
+    display: none;
+  }
+
   #accordion {
     .panel {
       border: 0;
-      border-bottom: 1px dashed #f0f0f0;
     }
 
     .panel-heading {
@@ -66,20 +78,22 @@
       float: right;
       margin-left: 8px;
     }
-
-    .room-description {
-      font-size: 0.9em;
-      line-height: 1.1em;
-      margin: 0 0 8px 0;
-      color: #888;
-    }
   }
 
-  #rural-index-link {
-    color: #dd2222;
+  .rack-list > li {
+    border-bottom: 1px dotted #e0e0e0;
+    padding: 0.5em;
+  }
+
+  .rack-list > li:last-child {
+    border-bottom: none;
   }
 
   .search-form {
+    @media (max-width: 767px) {
+      margin-left: 0.2em;
+    }
+
     .search-input-group {
       position: relative;
     }
@@ -103,6 +117,11 @@
       color: #474747;
     }
   }
+
+  #all-rooms {
+    padding: 1em;
+    margin-left: 1em;
+  }
 }
 
 .placeholder-red::placeholder {
@@ -116,6 +135,18 @@
 
 #breadcrumb-nav {
   background-color: transparent;
+  font-size: 1.2em;
+}
+
+#show-room-description {
+  cursor: pointer;
+}
+
+#room-description {
+  margin: -1em 0 2em 1em;
+  line-height: 1.2em;
+  color: #BAA;
+  display: none;
 }
 
 .other-heading {

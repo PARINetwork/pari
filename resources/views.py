@@ -12,8 +12,8 @@ def build_resource_list_context(request_obj):
     return {
         'site': Site.find_for_request(request_obj),
         'tab': 'resources',
-        'rooms': Room.objects.all().iterator(),
-        'subjects': Subject.objects.all().iterator(),
+        'rooms': Room.objects.order_by('name').iterator(),
+        # 'subjects': Subject.objects.all().iterator(),
         'current_page': 'resource-list'
     }
 
