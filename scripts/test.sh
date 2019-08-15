@@ -15,7 +15,7 @@ TIMEOUT_TIME=$(($CURRENT_TIME+60))
 while [ "$(date +%s)" -lt "$TIMEOUT_TIME" ];
 do
   sleep 2
-  response=`curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/pages/donate`
+  response=`curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/pages/donate/`
 
   echo "Waiting for service to start...."
   if [ $response -eq 200 ]

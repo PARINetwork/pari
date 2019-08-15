@@ -149,7 +149,7 @@ class ArticleList(Page1Redirector, ListView):
             )
             qs = live_articles_by_author.order_by("-first_published_at")
         else:
-            qs = super(ArticleList, self).get_queryset()
+            qs = super(ArticleList, self).get_queryset().filter(live=True)
         if self.request.GET.get("lang"):
             qs = qs.filter(language=self.request.GET["lang"])
         return qs
