@@ -5,20 +5,18 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "resource_feeds" %}">
 <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "resource_feeds" %}">
 {% endblock %}
-{% block meta_title %}{% trans "Resources" %}{% endblock %}
-{% block title %}{% trans "Resources" %}{% endblock %}
+{% block meta_title %}{% trans "Library" %}{% endblock %}
+{% block title %}{% trans "Library" %}{% endblock %}
 {% block meta_description %}{% blocktrans %}A collection of official and independent reports on rural India, from economic trends to policy briefings to census data.{% endblocktrans %}{% endblock %}
 
 {% block opengraph_block %}
-    {% include "core/includes/media_sharing_meta.html" with title="Resources" description="All official and independent reports on rural India" url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/share_all_resources.jpg" date_of_item=object_list.first.first_published_at%}
-{% endblock %}
-
-{% block extra_js %}
+    {% include "core/includes/media_sharing_meta.html" with title="Library" description="All official and independent reports on rural India" url=request.get_full_path type="url" image_url=STATIC_URL|add:"img/share_all_resources.jpg" date_of_item=object_list.first.first_published_at%}
 {% endblock %}
 
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/article.less">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/resources/home.less">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/vendor/yamm.less">
 {% endblock %}
 
 {% block extra_head %}
@@ -32,39 +30,224 @@
   {%  endif %}
 {% endblock %}
 
-{% block breadcrumb_menu %}
-    <li class="active">{% trans "Resources" %}</li>
-{% endblock %}
-
 {% block main %}
-    <div class="container">
-        {% trans "Resources" as title %}
-        {% trans "ALL OFFICIAL AND INDEPENDENT REPORTS ON RURAL INDIA" as sub_heading %}
-        {% include "includes/grid_title.html" with title=title sub_heading=sub_heading %}
-
-        {% if tag %}
-        <div class="row">
-            <h4>Resources tagged <b>#{{ tag }}</b></h4>
+    <div class="banner-section">
+        <div class="container">
+            <a href="{% url "resource-list" %}">
+                <h1 class="title">{% trans "Library" %}</h1>
+            </a>
+            <div class="description-container row">
+                <div class="col-md-2"></div>
+                <div class="description col-md-8 col-xs-12">
+                    The PARI Library brings reports and information on rural India to a
+                    single location for students, researchers and other readers. It includes
+                    official as well as independent reports, out-of-print books, rare
+                    documents and reviewed research articles.
+                </div>
+            </div>
         </div>
-        {% endif %}
+    </div>
+    <nav id="library-nav-bar" class="navbar navbar-default yamm">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse-1">
+                    <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">Browse</a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">Rooms <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="yamm-content">
+                                    <div class="row">
+                                        <div class="panel-group" id="accordion">
+                                            {% for room in rooms %}
+                                            <div class="panel panel-default col-md-3 col-sm-6 col-xs-12">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a href="{% url "room-resource-list" room_slug=room.slug %}">
+                                                            {{ room.name }}
+                                                        </a>
+                                                        {% if room.racks.exists or room.description %}
+                                                            <a class="room-collapse"
+                                                               data-toggle="collapse"
+                                                               data-parent="#accordion"
+                                                               aria-expanded="false"
+                                                               aria-controls="#room-{{ room.slug }}"
+                                                               href="#room-{{ room.slug }}">
+                                                                <span class="glyphicon glyphicon-plus arrow-collapse"></span>
+                                                            </a>
+                                                        {%  endif %}
+                                                    </h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="room-{{ room.slug }}">
+                                                    <div class="panel-body">
+                                                        <ul class="rack-list">
+                                                            {%  for rack in room.racks.all %}
+                                                            <li>
+                                                                <a href="{% url "rack-resource-list" room_slug=room.slug rack_slug=rack.slug %}">
+                                                                    {{ rack.name }}
+                                                                </a>
+                                                            </li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {%  endfor %}
+                                            <div id="all-rooms" class="col-md-3 col-sm-6 col-xs-12">
+                                                {% if view.kwargs.room_slug %}
+                                                    <a href="{% url "resource-list" %}">All Resources &raquo;</a>
+                                                {% endif %}
+                                            </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    {% comment %}
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Subject <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% for subject in subjects %}
+                            <li><a href="{% url "resource-list-by-subject" slug=subject.slug %}">{{ subject.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li>
+                        <a id="rural-index-link" href="#"><strike>* PARI Rural Index *</strike></a>
+                    </li>
+                    {% endcomment %}
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <form id="search-form" action="{% url "resource-search" %}" role="search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction" class="search-form navbar-form navbar-left">
+                        <div class="search-input-group">
+                            <meta itemprop="target" content="http{% if request.is_secure %}s{% endif %}://{{ site.hostname }}{% url "site_search" %}?q={q}" />
+                            <span class="search-icon fa fa-search"></span>
+                            <input id="search-input" type="text" class="query" name="q" value="{{ query_string }}" placeholder="Search library" itemprop="query-input">
+                            <input type="hidden" name="type" value="resource" itemprop="query-default-content-type">
+                        </div>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container context-bar">
+        <div class="row">
+            {% block context_bar %}
+            {% if room or rack %}
+                <ol id="breadcrumb-nav" class="breadcrumb">
+                    <li><a href="{% url "resource-list" %}">Library</a></li>
+                    {%  if rack %}
+                        <li>Room:
+                            <a href="{% url "room-resource-list" room_slug=view.kwargs.room_slug %}">
+                                {{ rack.room.name }}
+                            </a>
+                            {% if rack.room.description %}
+                                <span id="show-room-description" class="fa fa-info-circle" title="About this room"></span>
+                            {%  endif %}
+                        </li>
+                        <li class="active">Rack: {{ rack.name }}</li>
+                    {% else %}
+                        <li class="active">
+                            Room: {{ room.name }}
+                            {% if room.description %}
+                                <span id="show-room-description" class="fa fa-info-circle" title="About this room"></span>
+                            {%  endif %}
+                        </li>
+                    {% endif %}
+                </ol>
+                {% if rack %}
+                    {% if rack.room.description %}
+                        <p id="room-description">{{ rack.room.description }}</p>
+                    {% endif %}
+                {% elif room.description %}
+                    <p id="room-description">{{ room.description }}</p>
+                {% endif %}
+            {% endif %}
+            {% if tag %}
+                <h4 class="other-heading">Resources tagged "<b>#{{ tag }}</b>"</h4>
+            {% endif %}
+            {% endblock %}
+        </div>
+    </div>
+    <div class="container">
         <div class="filter-list-container">
             <div class="gallery-tile-row">
                 <div class="row">
-                    {% for resource in object_list %}
-                    <a href="{{ resource.get_absolute_url }}">
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 grid-list">
-                            <div class="grid-container">
-                                <div class="image-container">{% image resource.thumbnail original %}</div>
-                                <h5 class="caption">{{ resource.title }}</h5>
+                    {% block resource_list %}
+                        {% for resource in object_list %}
+                        <a href="{{ resource.get_absolute_url }}">
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 grid-list">
+                                <div class="grid-container">
+                                    <div class="image-container">{% image resource.thumbnail original %}</div>
+                                    <h5 class="caption">{{ resource.title|truncatewords:16 }}</h5>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                    {% endfor %}
+                        </a>
+                        {% endfor %}
+                    {% endblock %}
                 </div>
             </div>
         </div>
         <div class="row">
-          {% include "includes/non_search_paginator.html" with results=page_obj %}
+          {% block pagination %}
+              {% include "includes/non_search_paginator.html" with results=page_obj %}
+          {%  endblock %}
         </div>
     </div>
+{% endblock %}
+{% block extra_js %}
+    <script>
+      var searchInput = $('#search-input');
+
+      function checkNotEmptyAndSubmitSearch() {
+          if (searchInput.val() === '') {
+              searchInput.attr('placeholder', 'Enter a word to search');
+              searchInput.addClass('placeholder-red');
+
+              // reset placeholder after a delay
+              setTimeout(function () {
+                  searchInput.attr('placeholder', 'Search library');
+                  searchInput.removeClass('placeholder-red');
+              }, 5000);
+          } else {
+              $('#search-form').submit();
+          }
+          return false;
+      }
+
+      $(function() {
+          $(document).on('click', '.yamm .dropdown-menu', function (e) {
+              e.stopPropagation();
+          });
+
+          $('.search-icon').click(function () {
+              checkNotEmptyAndSubmitSearch();
+          });
+
+          $('#search-input').keypress(function (e) {
+              if (e.which === 13) {
+                  checkNotEmptyAndSubmitSearch();
+                  return false;
+              }
+          });
+
+          $('.collapse').on('show.bs.collapse hide.bs.collapse', function() {
+              if ($(this).attr('id').lastIndexOf('room', 0) === 0) {
+                  var selector = "a[href='#" + $(this).attr('id') + "'] span";
+                  $(selector).toggleClass('glyphicon-minus');
+              }
+          });
+          
+          $('#show-room-description').click(function () {
+              $('#room-description').toggle();
+          })
+      });
+    </script>
 {% endblock %}

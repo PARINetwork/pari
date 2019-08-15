@@ -1,3 +1,4 @@
+"""
 from django.contrib import admin
 
 from .models import RazorpayPlans
@@ -11,3 +12,4 @@ class RazorpayPlansAdmin(admin.ModelAdmin):
 
 
 admin.site.register(RazorpayPlans, RazorpayPlansAdmin)
+"""

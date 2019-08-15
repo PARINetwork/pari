@@ -1,0 +1,20 @@
+{% extends 'resources/resource_list.html' %}
+{% load i18n wagtailimages_tags %}
+{% block context_bar %}
+    <h5 class="other-heading">Showing search results for "<u><b>{{ query_string }}</b></u>"</h5>
+{%  endblock %}
+{% block resource_list %}
+    {% for resource in search_results %}
+    <a href="{{ resource.specific.get_absolute_url }}">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 grid-list">
+            <div class="grid-container">
+                <div class="image-container">{% image resource.specific.thumbnail original %}</div>
+                <h5 class="caption">{{ resource.specific.title }}</h5>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+{% endblock %}
+{% block pagination %}
+    {% include "includes/paginator.html" with results=search_results query_params_string=query_params_string %}
+{% endblock %}
