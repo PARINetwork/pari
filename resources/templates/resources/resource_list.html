@@ -140,7 +140,6 @@
     <div class="container context-bar">
         <div class="row">
             {% block context_bar %}
-            {% if room or rack %}
                 <ol id="breadcrumb-nav" class="breadcrumb">
                     <li><a href="{% url "resource-list" %}">Library</a></li>
                     {%  if rack %}
@@ -153,13 +152,16 @@
                             {%  endif %}
                         </li>
                         <li class="active">Rack: {{ rack.name }}</li>
-                    {% else %}
+                    {% elif room %}
                         <li class="active">
                             Room: {{ room.name }}
                             {% if room.description %}
                                 <span id="show-room-description" class="fa fa-info-circle" title="About this room"></span>
                             {%  endif %}
                         </li>
+
+                    {% else %}
+                        <li>Room: All Resources</li>
                     {% endif %}
                 </ol>
                 {% if rack %}
@@ -169,7 +171,6 @@
                 {% elif room.description %}
                     <p id="room-description">{{ room.description }}</p>
                 {% endif %}
-            {% endif %}
             {% if tag %}
                 <h4 class="other-heading">Resources tagged "<b>#{{ tag }}</b>"</h4>
             {% endif %}
