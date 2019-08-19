@@ -182,10 +182,10 @@ class Resource(Page):
         super(Resource, self).clean()
 
     def save(self, *args, **kwargs):
+        super(Resource, self).save()
         rooms = set([x.room for x in self.racks.all()])
         for room in rooms:
             self.rooms.add(room)
-        super(Resource, self).save()
 
     @property
     def featured_image(self):
