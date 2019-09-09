@@ -128,7 +128,7 @@ class AuthorArticleList(Page1Redirector, ListView):
         except Author.DoesNotExist:
             raise Http404
         context["authors"] = [author]
-        context["title"] = "All stories by {0}".format(author.name)
+        context["title"] = "All stories by %s" %(author.name)
         context["articles"] = context["page_obj"]
         context['LANGUAGES'] = settings.LANGUAGES
         context['current_page'] = 'author-detail'
@@ -214,5 +214,5 @@ class TaggedArticleList(ArticleList):
 
     def get_context_data(self, **kwargs):
         context = super(TaggedArticleList, self).get_context_data(**kwargs)
-        context['title'] = "All articles tagged \"{}\"".format(self.kwargs['tag'])
+        context['title'] = "All articles tagged \"%s\"" %(self.kwargs['tag'])
         return context
