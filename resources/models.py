@@ -45,7 +45,7 @@ class Rack(models.Model):
 
     class Meta:
         unique_together = (('name', 'room'), ('slug', 'room'))
-        ordering = ('room__name', 'name')
+        ordering = ('room', 'name')
 
     def __str__(self):
         return self.room.name + ' > ' + self.name
@@ -124,16 +124,16 @@ class Resource(Page):
         ("factoids", blocks.RichTextBlock(blank=True)),
     ])
 
-    rooms = models.ManyToManyField('resources.Room',
-                                   blank=True,
-                                   related_name='resources')
-    racks = models.ManyToManyField('resources.Rack',
-                                   blank=True,
-                                   related_name='resources')
+    rooms = ParentalManyToManyField('resources.Room',
+                                    blank=True,
+                                    related_name='resources')
+    racks = ParentalManyToManyField('resources.Rack',
+                                    blank=True,
+                                    related_name='resources')
 
-    subjects = models.ManyToManyField('resources.Subject',
-                                      related_name='resources',
-                                      blank=True)
+    subjects = ParentalManyToManyField('resources.Subject',
+                                       related_name='resources',
+                                       blank=True)
 
     type = models.ForeignKey('resources.ResourceType',
                              related_name='resources',
