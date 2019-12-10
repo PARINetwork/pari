@@ -37,7 +37,7 @@ class AmountFieldTests(SimpleTestCase):
 
     def test_form_as_ul(self):
         form = self.AmountTestForm()
-        self.assertHTMLEqual(form.as_ul(), u'<li><label for="id_amt_0">Amt:</label> <ul id="id_amt_0"><li><label for="id_amt_0_0"><input id="id_amt_0_0" name="amt_0" type="radio" value="1" /> aa</label></li>\n<li><label for="id_amt_0_1"><input id="id_amt_0_1" name="amt_0" type="radio" value="2" /> bb</label></li>\n<li><label for="id_amt_0_2"><input id="id_amt_0_2" name="amt_0" type="radio" value="Other" /> <input class="other-amount" id="id_amt_1" name="amt_1" placeholder="Other Amount" type="text" /></label></li></ul></li>')
+        self.assertHTMLEqual(form.as_ul(), u'<li><label for="id_amt_0">Amt:</label> <ul id="id_amt_0"><li><label for="id_amt_0_0"><input id="id_amt_0_0" name="amt_0" type="radio" value="1" /> aa</label></li>\n<li><label for="id_amt_0_1"><input id="id_amt_0_1" name="amt_0" type="radio" value="2" /> bb</label></li>\n<li><label for="id_amt_0_2"><input id="id_amt_0_2" name="amt_0" type="radio" value="Other" /> <input class="other-amount" id="id_amt_1" name="amt_1" onblur="this.placeholder=&#39;Other Amount&#39;" onfocus="this.placeholder=&#39;&#39;" placeholder="Other Amount" type="text" /></label></li></ul></li>')
 
     def test_form_cleaned_data(self):
         form = self.AmountTestForm({'amt_0': 'Other', 'amt_1': 100})
