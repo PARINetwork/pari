@@ -17,7 +17,12 @@ class AmountWidget(forms.MultiWidget):
             raise ValueError(VALUE_ERROR_MSG)
         widgets = [
             forms.RadioSelect(choices=choices),
-            forms.TextInput(attrs={'placeholder': 'Other Amount', 'class': 'other-amount'})
+            forms.TextInput(attrs={
+                'placeholder': 'Other Amount',
+                'class': 'other-amount',
+                'onfocus': "this.placeholder=''",
+                'onblur': "this.placeholder='Other Amount'"
+            })
         ]
         super(AmountWidget, self).__init__(widgets)
 
