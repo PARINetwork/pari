@@ -1,3 +1,4 @@
+from article.models import ArticleAuthors
 from functional_tests.base import Test
 from functional_tests.data_setup import DataSetup
 from functional_tests.factory import AuthorFactory
@@ -14,7 +15,9 @@ class TestHomePage(Test):
     def setUpClass(cls):
         super(TestHomePage, cls).setUpClass()
         author1 = AuthorFactory.create()
+        article_author1 = ArticleAuthors(author=author1, sort_order=0)
         author2 = AuthorFactory.create(name="Karthik", slug="srk")
+        article_author2 = ArticleAuthors(author=author2, sort_order=0)
         category1 = CategoryFactory.create(name="Resource Conflicts", slug="resource-conflicts", order=1, description="Jal, jungle, zameen")
         category2 = CategoryFactory.create(name="Adivasis", slug="adivasis", order=2, description="The first dwellers")
         category3 = CategoryFactory.create(name="Dalits", slug="dalits", order=3, description="Struggles of the oppressed")
@@ -23,8 +26,8 @@ class TestHomePage(Test):
         location2 = LocationFactory.create(name="Madurai", slug="madurai")
         image = ImageFactory.create(photographers=(author1,), locations=(location1,))
         setup = DataSetup()
-        article1 = setup.create_article("article1", author1, category1, location1, image)
-        article2 = setup.create_article("article2", author2, category2, location2, image)
+        article1 = setup.create_article("article1", article_author1, category1, location1, image)
+        article2 = setup.create_article("article2", article_author2, category2, location2, image)
         video_article = setup.create_video_article("video article", author2, location1, image)
         talking_album = setup.create_talking_album(image)
         photo_album = setup.create_photo_album(image)
