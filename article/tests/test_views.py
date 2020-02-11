@@ -3,6 +3,7 @@ from django.test import Client
 from django.test import RequestFactory
 from django.test import TestCase
 
+from article.models import ArticleAuthors
 from article.views import AuthorArticleList, ArchiveDetail
 from functional_tests.factory import ArticleFactory
 from functional_tests.factory import AuthorFactory
@@ -20,7 +21,8 @@ class ArticleDetailTest(TestCase):
     def setUp(self):
         self.client = Client()
         self.author = AuthorFactory(name='test', slug="test")
-        self.article = ArticleFactory(title="test article", authors=(self.author,), language='en')
+        self.article_author = ArticleAuthors(author=self.author, sort_order=0)
+        self.article = ArticleFactory(title="test article", authors=(self.article_author,), language='en')
         self.article = ArticleFactory(title="test modular article", show_modular_content=True)
 
     def login_admin(self):
@@ -45,13 +47,20 @@ class AuthorArticleListTests(TestCase):
         self.client = Client()
         self.category = CategoryFactory()
         self.test_author1 = AuthorFactory(name='xyz', slug="xyz")
+        self.test_article_author1 = ArticleAuthors(author=self.test_author1, sort_order=0)
+        self.test_article_author1b = ArticleAuthors(author=self.test_author1, sort_order=0)
         self.test_author2 = AuthorFactory(name='abc', slug="abc")
-        self.english_article = ArticleFactory(title="english_article", authors=(self.test_author1,), language='en',
+        self.test_article_author2 = ArticleAuthors(author=self.test_author2, sort_order=1)
+        self.test_article_author2b = ArticleAuthors(author=self.test_author2, sort_order=1)
+        self.english_article = ArticleFactory(title="english_article",
+                                              authors=(self.test_article_author1,),
+                                              language='en',
                                               first_published_at='2011-10-24 12:43')
-        self.hindi_article = ArticleFactory(title="hindi_article", authors=(self.test_author1, self.test_author2),
+        self.hindi_article = ArticleFactory(title="hindi_article",
+                                            authors=(self.test_article_author1b, self.test_article_author2),
                                             language='hi',
                                             first_published_at='2011-10-25 12:43')
-        self.dummy_article = ArticleFactory(title="dummy_article", authors=(self.test_author2,),
+        self.dummy_article = ArticleFactory(title="dummy_article", authors=(self.test_article_author2b,),
                                             language='en',
                                             first_published_at='2011-10-23 12:43')
 
@@ -83,7 +92,8 @@ class AuthorArticleListTests(TestCase):
     def test_articles_are_only_12_in_a_page_for_the_author_xyz(self):
         # Creating 14 articles
         for name in range(1, 15):
-            ArticleFactory(title="article" + str(name), authors=(self.test_author1,))
+            ArticleFactory(title="article" + str(name),
+                           authors=(ArticleAuthors(author=self.test_author1, sort_order=name - 1),))
         response_for_page_one = self.client.get('/authors/xyz/?lang=all')
         response_for_page_two = self.client.get('/authors/xyz/?page=2&lang=all')
         self.assertEqual(len(response_for_page_one.context_data['articles']), 12)

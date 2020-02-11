@@ -48,6 +48,7 @@ class ArticleDetail(DetailView):
                                           .order_by('-first_published_at')[:4]
         context['MAP_KEY'] = settings.GOOGLE_MAP_KEY
         context['current_page'] = 'article-detail'
+        context['authors'] = [x.author for x in self.object.authors.all()]
         return context
 
     def render_to_response(self, context, **kwargs):
@@ -115,7 +116,7 @@ class AuthorArticleList(Page1Redirector, ListView):
 
     def get_queryset(self):
         live_articles_by_author = Article.objects.live().filter(
-            authors__slug=self.kwargs["slug"]
+            authors__author__slug=self.kwargs["slug"]
         )
         qs = live_articles_by_author.order_by("-first_published_at")
         qs, = filter_by_language(self.request, qs)
@@ -145,7 +146,7 @@ class ArticleList(Page1Redirector, ListView):
         url_name = self.request.resolver_match.url_name
         if url_name == "author-detail":
             live_articles_by_author = Article.objects.live().filter(
-                authors__slug=self.kwargs["slug"]
+                authors__author__slug=self.kwargs["slug"]
             )
             qs = live_articles_by_author.order_by("-first_published_at")
         else:

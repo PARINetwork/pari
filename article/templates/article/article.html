@@ -187,7 +187,7 @@
              <p>{{ article.strap }}</p>
              <ul class="clearfix">
                  <li>
-                     {% include "../../core/templates/includes/author-links.html" with authors=article.authors.all author_link_class="" author_name_class="" %}
+                     {% include "../../core/templates/includes/author-links.html" with authors=authors author_link_class="" author_name_class="" %}
                      <span class="hidden" itemprop="homeLocation" itemtype="http://schema.org/Place">
                         <span itemprop="address">{{ author.twitter_username }}</span>
                     </span>
@@ -297,7 +297,7 @@
         </div>
     </div>
 </div>
-{% include "article/includes/author_info.html" with authors=article.authors.all show_other_stories=True show_translated_bio=True%}
+{% include "article/includes/author_info.html" with authors=authors show_other_stories=True show_translated_bio=True%}
     <div class="container related-stories">
         {% if article.related_articles %}
             <h4>{% trans "RELATED STORIES" %}</h4>
