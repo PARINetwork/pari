@@ -28,7 +28,7 @@ class TestHomePage(Test):
         setup = DataSetup()
         article1 = setup.create_article("article1", article_author1, category1, location1, image)
         article2 = setup.create_article("article2", article_author2, category2, location2, image)
-        video_article = setup.create_video_article("video article", author2, location1, image)
+        video_article = setup.create_video_article("video article", article_author2, location1, image)
         talking_album = setup.create_talking_album(image)
         photo_album = setup.create_photo_album(image)
         HomePageFactory.create(carousel_0=article1, carousel_1=article2, in_focus_page1=article1, in_focus_page2=article2, video=video_article, talking_album=talking_album, photo_album=photo_album)
