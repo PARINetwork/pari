@@ -6,7 +6,7 @@ from wagtail.wagtailsearch.backends.elasticsearch import Elasticsearch
 from django.db import DataError, IntegrityError
 from django.core.exceptions import ValidationError
 
-from article.models import Article
+from article.models import Article, ArticleAuthors
 from functional_tests.factory import ArticleFactory, AuthorFactory
 
 
@@ -14,7 +14,8 @@ class ArticleAdminFormTest(TestCase):
     def setUp(self):
         self.client = Client()
         self.test_author = AuthorFactory(name='xyz', slug="xyz")
-        self.article = ArticleFactory(title="english_article", authors=(self.test_author,), language='en')
+        self.test_article_author = ArticleAuthors(author=self.test_author, sort_order=0)
+        self.article = ArticleFactory(title="english_article", authors=(self.test_article_author,), language='en')
 
     def login_admin(self):
         User.objects.create_superuser('pari', 'pari@test.com', "pari")

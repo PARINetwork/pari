@@ -1,6 +1,32 @@
-from django.forms import SelectMultiple
+from django.forms import SelectMultiple, Select
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
+
+
+class JqueryChosenSelect(Select):
+    def render(self, name, value, attrs=None, choices=()):
+        out = super(JqueryChosenSelect, self).render(name, value, attrs, choices)
+
+        trigger_jquery_chosen = '''
+        <script type="text/javascript">
+            $("select[name={name}]").on("change", function() {{
+                $(this).trigger("chosen:updated");
+            }});
+            $("select[name={name}]").chosen();
+            $("select[name={name}]").parentsUntil('li.object').css('overflow', 'visible');
+            $("select[name={name}]").parentsUntil('li.object').parent().css('overflow', 'visible');
+        </script>'''.format(name=name)
+
+        return mark_safe(out + trigger_jquery_chosen)
+
+    class Media:
+        css = {
+            'all': ('css/chosen.min.css',)
+        }
+
+        js = (
+            'js/chosen.jquery.min.js',
+        )
 
 
 class JqueryChosenSelectMultiple(SelectMultiple):

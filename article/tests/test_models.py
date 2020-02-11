@@ -3,13 +3,15 @@ from django.test import RequestFactory
 from mock import MagicMock
 from wagtail.wagtailsearch.backends.elasticsearch import Elasticsearch
 
+from article.models import ArticleAuthors
 from functional_tests.factory import ArticleFactory, AuthorFactory
 
 
 class ArticleTests(TestCase):
     def setUp(self):
         self.test_author = AuthorFactory(name='xyz', slug="xyz")
-        self.article = ArticleFactory(title="english_article", authors=(self.test_author,), language='en')
+        self.test_article_author = ArticleAuthors(author=self.test_author, sort_order=0)
+        self.article = ArticleFactory(title="english_article", authors=(self.test_article_author,), language='en')
 
     def test_article_to_string_should_be_equal_to_the_title(self):
         self.assertEqual(self.article.title, str(self.article))
@@ -32,9 +34,10 @@ class ArticleTests(TestCase):
 
     def test_multiple_authors_can_be_added_to_a_article(self):
         author= AuthorFactory(name='Test')
-        article = ArticleFactory(title="Multiple Author Article", authors=(self.test_author,author,))
+        article_author = ArticleAuthors(author=author, sort_order=1)
+        article = ArticleFactory(title="Multiple Author Article", authors=(self.test_article_author,article_author,))
         self.assertEqual(len(article.authors.all()),2)
-        self.assertEqual(article.authors.all()[1].name,'Test')
+        self.assertEqual(article.authors.all()[1].author.name,'Test')
 
 
     # @override_settings(
