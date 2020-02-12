@@ -1,6 +1,6 @@
 import json
 
-from article.models import Article
+from article.models import Article, ArticleAuthors
 from functional_tests.base import Test
 from functional_tests.data_setup import DataSetup
 from functional_tests.factory import AuthorFactory, CategoryFactory, LocationFactory, ImageFactory
@@ -154,12 +154,13 @@ class TestArticlePage(Test):
     def setUpClass(cls):
         super(TestArticlePage, cls).setUpClass()
         author = AuthorFactory.create(name="Nimesh", slug="puli")
+        article_author = ArticleAuthors(author=author, sort_order=0)
         category = CategoryFactory.create(name="Adivasis", slug="adivasis", order=2, description="The first dwellers")
         location = LocationFactory.create(name="Madurai", slug="madurai")
         image = ImageFactory.create(photographers=(author,), locations=(location,))
         setup = DataSetup()
-        dummy_article = setup.create_article("Dummy", author, category, location, image)
-        modular_article = setup.create_article("Article Page", author, category, location, image,
+        dummy_article = setup.create_article("Dummy", article_author, category, location, image)
+        modular_article = setup.create_article("Article Page", article_author, category, location, image,
                                                show_modular_content=True, modular_content=json.dumps(get_modular_content(dummy_article.id,image.id,location.id)))
 
     def test_article_page_title(self):

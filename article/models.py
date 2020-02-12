@@ -8,7 +8,7 @@ from django.utils.functional import cached_property
 from elasticsearch import ConnectionError
 from modelcluster.fields import ParentalManyToManyField, ParentalKey
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, \
-    MultiFieldPanel, FieldRowPanel, StreamFieldPanel
+    MultiFieldPanel, FieldRowPanel, StreamFieldPanel, InlinePanel
 from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailcore.models import Page, Site
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
@@ -26,7 +26,7 @@ from core.edit_handlers import M2MFieldPanel
 from core.utils import get_translations_for_page, SearchBoost
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
-
+from core.widgets import JqueryChosenSelect
 
 Page.wg_url = Page.url
 
@@ -46,12 +46,29 @@ class ArticleTag(TaggedItemBase):
     content_object = ParentalKey('article.Article', related_name='tagged_items')
 
 
+class ArticleAuthors(models.Model):
+    article = ParentalKey('article.Article', related_name='authors')
+    author = models.ForeignKey('author.Author', related_name='articles_by_author')
+    sort_order = models.IntegerField(default=0)
+    sort_order_field = 'sort_order'
+    panels = [
+        FieldPanel('author', widget=JqueryChosenSelect),
+    ]
+
+    class Meta:
+        db_table = 'article_article_authors'
+        unique_together = ('article', 'author')
+        ordering = ('sort_order',)
+
+    def __str__(self):
+        return self.author.name
+
+
 @python_2_unicode_compatible
 class Article(Page):
-    authors = ParentalManyToManyField("author.Author", related_name="articles_by_author")
     translators = ParentalManyToManyField("author.Author",
-                           related_name="translations_by_author",
-                           blank=True)
+                                          related_name="translations_by_author",
+                                          blank=True)
     strap = models.TextField(blank=True)
     content = RichTextField(blank=True, verbose_name="Content - Deprecated. Use 'MODULAR CONTENT' instead.")
     modular_content = StreamField([
@@ -89,7 +106,7 @@ class Article(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('strap'),
-        M2MFieldPanel('authors'),
+        InlinePanel('authors', label='Authors', min_num=1),
         M2MFieldPanel('translators'),
         FieldPanel('language'),
         MultiFieldPanel(
@@ -97,11 +114,11 @@ class Article(Page):
                 FieldPanel('original_published_date'),
                 FieldRowPanel(
                     [
-                        FieldPanel('show_day',classname="col4"),
-                        FieldPanel('show_month',classname="col4"),
-                        FieldPanel('show_year',classname="col4")
+                        FieldPanel('show_day', classname="col4"),
+                        FieldPanel('show_month', classname="col4"),
+                        FieldPanel('show_year', classname="col4")
                     ])
-            ],'Date'),
+            ], 'Date'),
         FieldPanel('content'),
         MultiFieldPanel(
             [
@@ -139,7 +156,7 @@ class Article(Page):
         return self.title
 
     def get_authors(self):
-        return [author.name for author in self.authors.all()]
+        return [article_author.author.name for article_author in self.authors.all()]
 
     def get_translators(self):
         return [translator.name for translator in self.translators.all()]
@@ -163,6 +180,7 @@ class Article(Page):
             site = Site.objects.filter(is_default_site=True)[0]
         return {
             'article': self,
+            'authors': [x.author for x in self.authors.all()],
             'request': request,
             'site': site
         }
@@ -208,8 +226,8 @@ class Article(Page):
         authors_of_article = ""
 
         if self.authors:
-            for author in self.authors.all():
-                authors_of_article += author.name
+            for article_author in self.authors.all():
+                authors_of_article += article_author.author.name
 
         query = {
             "track_scores": "true",
@@ -241,19 +259,19 @@ class Article(Page):
                         {
                             "multi_match": {
                                 "fields": "get_minimal_locations_filter",
-                                "query":minimal_locations
+                                "query": minimal_locations
                             }
                         },
                         {
-                            "multi_match":{
-                                "fields":"get_state_from_locations_filter",
-                                "query":state_locations
+                            "multi_match": {
+                                "fields": "get_state_from_locations_filter",
+                                "query": state_locations
                             }
 
                         },
                         {
-                            "match":{
-                                "title":self.title
+                            "match": {
+                                "title": self.title
                             }
                         }
                     ],
@@ -262,11 +280,10 @@ class Article(Page):
             },
             "sort": [
                 {"_score": {"order": "desc"}},
-                {"get_authors":{"order": "desc"}},
+                {"get_authors": {"order": "desc"}},
                 {"first_published_at_filter": "desc"}
             ]
         }
-
 
         try:
             mlt = es_backend.es.search(
