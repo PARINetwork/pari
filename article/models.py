@@ -57,7 +57,7 @@ class ArticleAuthors(models.Model):
 
     class Meta:
         db_table = 'article_article_authors'
-        unique_together = ('article', 'author')
+        unique_together = ('article', 'author', 'sort_order')
         ordering = ('sort_order',)
 
     def __str__(self):
