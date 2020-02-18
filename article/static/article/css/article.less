@@ -248,9 +248,11 @@
     padding-left: 15%;
   }
   :lang(ur):not(i):not(a):not(img):not(.rich-text-image-holder):not(iframe){
-   padding-left: 0%;
-   padding-right: 15%;
-   text-align: right;
+    /*
+     padding-left: 0%;
+     padding-right: 15%;
+     text-align: right;
+     */
   }
 
   .rich-text-image-holder{
@@ -290,6 +292,10 @@
   .justify {
         text-align: justify;
   }
+}
+
+.caption .paragraph-holder i:lang(ur){
+  text-align: center;
 }
 
 .responsive-object {
