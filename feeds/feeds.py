@@ -185,7 +185,11 @@ class FaceFeed(BaseFeed):
         return Face.objects.live().order_by('-first_published_at').filter(**kwargs)
 
     def item_description(self, item):
-        return item.description
+        try:
+            return item.description
+        except AttributeError:
+            return ''
+
 
 
 class ResourceFeed(BaseFeed):
