@@ -276,6 +276,11 @@
     </div>
 </li>
 <li class="dropdown donate">
+    <a class="dropdown-toggle" itemprop="url" href="https://pari.education" target="_blank">
+    <span itemprop="name"  {% if "donate" in tab %} class="active-tab" {%endif%}>{% trans "PARI Education" %} </span>    
+    </a>
+</li>
+<li class="dropdown donate">
     <a class="dropdown-toggle" itemprop="url" href="{% url "static_page" slug="donate" %}">
     <span itemprop="name"  {% if "donate" in tab %} class="active-tab" {%endif%}>{% trans "Donate to PARI" %} </span>
     </a>
