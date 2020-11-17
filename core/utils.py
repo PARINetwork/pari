@@ -1,3 +1,4 @@
+from __future__ import print_function
 import datetime
 from collections import OrderedDict
 
@@ -83,7 +84,7 @@ def get_slide_detail(album):
                                                slide.image.photographers.all())
         if index == 0:
             slide_dict['slide_photographer'] = photographers_of_album
-            print index
+            print(index)
         photographers.extend(set(slide.image.photographers.all()))
         if album.first_published_at:
             published_date = datetime.datetime.strptime(str(album.first_published_at)[:10], "%Y-%m-%d")

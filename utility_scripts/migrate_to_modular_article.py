@@ -1,3 +1,4 @@
+from __future__ import print_function
 import json
 import os
 import sys
@@ -262,6 +263,6 @@ class Module(object):
 if __name__ == '__main__':
     live_articles = Article.objects.live().filter(has_unpublished_changes=False).all()
     for article in live_articles:
-        print article.page_ptr_id, article,
+        print(article.page_ptr_id, article, end=' ')
         article_ = ArticleMigrator(article).formulate_modular_content().save_revision()
-        print  article_.unhandled_elements
+        print(article_.unhandled_elements)

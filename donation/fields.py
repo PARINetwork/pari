@@ -2,7 +2,7 @@
 # Credit https://djangosnippets.org/snippets/863/
 
 from django import forms
-from django.utils.encoding import force_unicode
+from django.utils.encoding import force_text
 
 
 VALUE_ERROR_MSG = "expecting item[0] of last choice to be 'Other'"
@@ -51,12 +51,12 @@ class AmountField(forms.MultiValueField):
     def compress(self, value):
         if self._was_required and not value or value[0] in (None, ''):
             raise forms.ValidationError(self.error_messages['required'])
-        if force_unicode(value[0]) == force_unicode(self.fields[0].choices[-1][0]) and not value[1]:
+        if force_text(value[0]) == force_text(self.fields[0].choices[-1][0]) and not value[1]:
             raise forms.ValidationError(self.error_messages['required'])
 
         if not value:
             return None
 
         return value[1] \
-            if force_unicode(value[0]) == force_unicode(self.fields[0].choices[-1][0]) \
+            if force_text(value[0]) == force_text(self.fields[0].choices[-1][0]) \
             else int(value[0])

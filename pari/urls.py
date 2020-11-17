@@ -1,6 +1,6 @@
 import os
 
-from django.conf.urls import include, url, patterns
+from django.conf.urls import include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.conf import settings
@@ -10,15 +10,17 @@ from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtailimages import urls as wagtailimages_urls
-
+from wagtail.wagtailcore.views import serve
+from search.views import admin_search
+from author.views import add_translator, add_photographer
 from core.views import PreviewOnEditPage, PreviewOnCreatePage
 
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
 
-    url(r'^admin/pages/search/$', 'search.views.admin_search'),
-    url(r'^admin/translators/add/$', 'author.views.add_translator'),
-    url(r'^admin/photographers/add/$', 'author.views.add_photographer'),
+    url(r'^admin/pages/search/$', admin_search),
+    url(r'^admin/translators/add/$', add_translator),
+    url(r'^admin/photographers/add/$', add_photographer),
     url(r'^admin/pages/add/(\w+)/(\w+)/(\d+)/preview/$', PreviewOnCreatePage.as_view()),
     url(r'^admin/pages/(\d+)/edit/preview/$', PreviewOnEditPage.as_view()),
     url(r'^admin/', include(wagtailadmin_urls)),
@@ -44,10 +46,9 @@ urlpatterns = [
     url(r'', include(wagtail_urls)),
 ]
 
-urlpatterns += patterns('',
-    # To handle unicode in the slugs.
-    url(r'^(.*)/$', 'wagtail.wagtailcore.views.serve', name='wagtail_serve'),
-)
+urlpatterns += [
+    url(r'^(.*)/$', serve, name='wagtail_serve'),
+]
 
 if settings.ENABLE_SITE_LOCALIZATION:
     urlpatterns = i18n_patterns(*urlpatterns)

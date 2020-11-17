@@ -1,3 +1,4 @@
+from __future__ import print_function
 import csv
 from datetime import datetime
 
@@ -46,10 +47,10 @@ with open('updated_faces_data.csv') as csvfile:
         if face.has_unpublished_changes and face.first_published_at is None:
             face.revisions.all().delete()
 
-        print
-        print "location_name: " + location_name
-        print "subdistrict_name: " + subdistrict_name
-        print "subdistrict_type: " + (subdistrict_type and subdistrict_type.name)
+        print()
+        print("location_name: " + location_name)
+        print("subdistrict_name: " + subdistrict_name)
+        print("subdistrict_type: " + (subdistrict_type and subdistrict_type.name))
 
         new_location, created = Location.objects.get_or_create(
             name=location_name,
@@ -62,11 +63,11 @@ with open('updated_faces_data.csv') as csvfile:
             panchayat=panchayat or None
         )
 
-        print "Face id: %s" % face.id
-        print "Face image id: %s" % face.image_id
-        print "New location %s, %s" % (new_location.name, created)
-        print "Current location ID: %s" % face.location_id
-        print "Newlocation ID: %s" % new_location.id
+        print("Face id: %s" % face.id)
+        print("Face image id: %s" % face.image_id)
+        print("New location %s, %s" % (new_location.name, created))
+        print("Current location ID: %s" % face.location_id)
+        print("Newlocation ID: %s" % new_location.id)
 
         face.location_id = new_location.id
 
@@ -114,17 +115,17 @@ with open('updated_faces_data.csv') as csvfile:
             face_image.photographers.add(new_photographer)
 
         updated_face = Face.objects.get(image_id=face_image_id)
-        print "updated ID: %s" % updated_face.location_id
+        print("updated ID: %s" % updated_face.location_id)
 
-        print "Current Face image locations: %s" % ",".join([each.name for each in face_image.locations.all()])
+        print("Current Face image locations: %s" % ",".join([each.name for each in face_image.locations.all()]))
         face_image.locations.clear()
 
         face_image_locations_after_clear = AffixImage.objects.get(pk=face_image_id).locations
-        print "After clear face image locations: %s" % ",".join(
-            [each.name for each in face_image_locations_after_clear.all()])
+        print("After clear face image locations: %s" % ",".join(
+            [each.name for each in face_image_locations_after_clear.all()]))
 
         face_image_locations_after_clear.add(new_location)
 
         face_image_locations_after_update = AffixImage.objects.get(pk=face_image_id).locations
-        print "After update face image locations: %s" % ",".join(
-            [each.name for each in face_image_locations_after_update.all()])
+        print("After update face image locations: %s" % ",".join(
+            [each.name for each in face_image_locations_after_update.all()]))

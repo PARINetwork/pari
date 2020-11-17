@@ -1,3 +1,4 @@
+from __future__ import print_function
 from bs4 import BeautifulSoup
 from django.test import Client, override_settings
 from django.test import RequestFactory
@@ -89,7 +90,7 @@ class AffixImageTests(TestCase):
 
     def test_should_return_all_photographers_of_image(self):
         photographers = self.image.get_all_photographers()
-        print photographers
+        print(photographers)
         self.assertEqual('V. Sasikumar donald',photographers)
 
     def test_should_return_all_locations(self):
@@ -102,7 +103,7 @@ class AffixImageTests(TestCase):
 
     def test_default_alt_text(self):
         default_alt_text = self.image.default_alt_text
-        print default_alt_text
+        print(default_alt_text)
         self.assertEqual('PARI Stories from all over in all languages',default_alt_text)
 
     def test_categories_index(self):

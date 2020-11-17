@@ -1,10 +1,10 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from django.views.generic import RedirectView
 
 from .views import ResourceDetail, ResourceList, TaggedResourceList, \
     RoomResourceList, RackResourceList, ResourceListBySubject, search_resources
 
-urlpatterns = patterns('',
+urlpatterns = [
                        url(r'^library/$',
                            ResourceList.as_view(), name='resource-list'),
                        url(r'^library/tags/(?P<tag>[^/]+)/$',
@@ -28,4 +28,4 @@ urlpatterns = patterns('',
                        url(r'^resources/?(?P<rest>.*)',
                            RedirectView.as_view(url='/library/%(rest)s', permanent=True),
                            name='deprecated-resource-list'),
-)
+]

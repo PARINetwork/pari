@@ -1,3 +1,4 @@
+from __future__ import print_function
 import gc
 import json
 
@@ -14,8 +15,8 @@ def update_m2m_fields(revision):
                 pks.append(entity['pk'])
             content_dict[m2m_field] = pks
             revision.content_json = json.dumps(content_dict)
-            print "Updating a page-revision of page with ID: %-4s type: %-15s" % (
-                revision.page.id, revision.page.content_type)
+            print("Updating a page-revision of page with ID: %-4s type: %-15s" % (
+                revision.page.id, revision.page.content_type))
             revision.save()
 
 

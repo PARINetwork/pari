@@ -35,7 +35,7 @@ WAGTAIL_AUTO_UPDATE_PREVIEW = True
 
 # Application definition
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'overextends',
     'modeltranslation',
     'django.contrib.admin',
@@ -75,7 +75,7 @@ INSTALLED_APPS = (
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
     'wagtail.contrib.modeladmin',
-)
+]
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.cache.UpdateCacheMiddleware',
@@ -301,11 +301,18 @@ TEMPLATES = [
                 'django.template.loaders.filesystem.Loader',
                 'django.template.loaders.app_directories.Loader',
             ],
-            'context_processors': global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
-                'django.core.context_processors.request',
+            'context_processors':  [
+                'django.template.context_processors.request',
                 'core.context_processors.settings',
                 'core.context_processors.path',
-            ),
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.static',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages'
+            ],
+            'builtins': ['overextends.templatetags.overextends_tags']
         },
     },
 ]
