@@ -2379,7 +2379,7 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: core/templates/includes1/grid_title.html:8
+#: core/templates/includes/grid_title.html:8
 #: core/templates/includes/page_content_header/gallery_back_button.html:5
 msgid "GALLERY"
 msgstr ""
