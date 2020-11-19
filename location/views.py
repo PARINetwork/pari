@@ -1,12 +1,12 @@
 import itertools
 
 from django.conf import settings
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.utils.text import slugify
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.db.models import Q
-from wagtail.wagtailadmin.modal_workflow import render_modal_workflow
+from wagtail.admin.modal_workflow import render_modal_workflow
 from itertools import chain
 
 from album.models import Album
@@ -83,7 +83,7 @@ class LocationDetail(DetailView):
         articles_qs = Article.objects.live().filter(locations=location)
         images_qs = AffixImage.objects.filter(locations=location)
         albums_slides = AlbumSlide.objects.filter(image__in=images_qs)
-        albums_qs = Album.objects.live().filter(slides=albums_slides).distinct()
+        albums_qs = Album.objects.live().filter(slides__in=albums_slides).distinct()
         live_faces = Face.objects.live()
         faces_qs = live_faces.filter(Q(location=location) | Q(image__in=images_qs))
         articles_qs, albums_qs = filter_by_language(self.request, articles_qs, albums_qs)

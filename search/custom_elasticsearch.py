@@ -1,6 +1,6 @@
 from django.db.models.query import QuerySet
-from wagtail.wagtailsearch.backends.elasticsearch import ElasticsearchSearchBackend, ElasticsearchSearchQuery
-from wagtail.wagtailsearch.index import class_is_indexed
+from wagtail.search.backends.elasticsearch import ElasticsearchSearchBackend, ElasticsearchSearchQuery
+from wagtail.search.index import class_is_indexed
 
 
 class CustomElasticsearchSearchQuery(ElasticsearchSearchQuery):

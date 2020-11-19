@@ -3,9 +3,9 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.wagtailimages.models
-import wagtail.wagtailcore.fields
-import wagtail.wagtailcore.blocks
+import wagtail.images.models
+import wagtail.core.fields
+import wagtail.core.blocks
 
 
 class Migration(migrations.Migration):
@@ -33,7 +33,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='homepage',
             name='featured_content',
-            field=wagtail.wagtailcore.fields.StreamField([('featured_section', wagtail.wagtailcore.blocks.StructBlock([(b'title', wagtail.wagtailcore.blocks.CharBlock()), (b'link_title', wagtail.wagtailcore.blocks.CharBlock()), (b'featured_page', wagtail.wagtailcore.blocks.PageChooserBlock())]))], null=True, blank=True),
+            field=wagtail.core.fields.StreamField([('featured_section', wagtail.core.blocks.StructBlock([(b'title', wagtail.core.blocks.CharBlock()), (b'link_title', wagtail.core.blocks.CharBlock()), (b'featured_page', wagtail.core.blocks.PageChooserBlock())]))], null=True, blank=True),
         ),
         migrations.AddField(
             model_name='homepage',

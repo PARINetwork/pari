@@ -18,9 +18,9 @@ from django.core.cache import caches
 from django.contrib.sites.models import Site
 from django.template import loader, Context
 
-from wagtail.wagtailembeds.models import Embed
-from wagtail.wagtailsearch.signal_handlers import post_delete_signal_handler
-from wagtail.wagtailimages.formats import get_image_format
+from wagtail.embeds.models import Embed
+from wagtail.search.signal_handlers import post_delete_signal_handler
+from wagtail.images.formats import get_image_format
 
 from .models import AffixImage, Page, Contact
 

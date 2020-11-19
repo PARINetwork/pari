@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from wagtail.wagtailcore import hooks
+from wagtail.core import hooks
 
 from .views import add_audio
 

@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import wagtail.wagtailcore.fields
+import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='article',
             name='content',
-            field=wagtail.wagtailcore.fields.RichTextField(verbose_name="Content - Deprecated. Use 'MODULAR CONTENT' instead.", blank=True),
+            field=wagtail.core.fields.RichTextField(verbose_name="Content - Deprecated. Use 'MODULAR CONTENT' instead.", blank=True),
         ),
     ]

@@ -6,17 +6,17 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 
-from wagtail.wagtailadmin import urls as wagtailadmin_urls
-from wagtail.wagtaildocs import urls as wagtaildocs_urls
-from wagtail.wagtailcore import urls as wagtail_urls
-from wagtail.wagtailimages import urls as wagtailimages_urls
-from wagtail.wagtailcore.views import serve
+from wagtail.admin import urls as wagtailadmin_urls
+from wagtail.documents import urls as wagtaildocs_urls
+from wagtail.core import urls as wagtail_urls
+from wagtail.images import urls as wagtailimages_urls
+from wagtail.core.views import serve
 from search.views import admin_search
 from author.views import add_translator, add_photographer
 from core.views import PreviewOnEditPage, PreviewOnCreatePage
 
 urlpatterns = [
-    url(r'^django-admin/', include(admin.site.urls)),
+    url(r'^django-admin/', admin.site.urls),
 
     url(r'^admin/pages/search/$', admin_search),
     url(r'^admin/translators/add/$', add_translator),

@@ -2,22 +2,23 @@
 from __future__ import unicode_literals
 
 from django.conf import settings
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db import models
 from django import forms
+import django.db.models.deletion
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from modelcluster.fields import ParentalManyToManyField, ParentalKey
 
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, \
+from wagtail.admin.edit_handlers import FieldPanel, \
     StreamFieldPanel, MultiFieldPanel, FieldRowPanel
-from wagtail.wagtailadmin.forms import WagtailAdminPageForm
-from wagtail.wagtailcore import blocks
-from wagtail.wagtailcore.fields import StreamField
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailsearch import index
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
+from wagtail.admin.forms import WagtailAdminPageForm
+from wagtail.core import blocks
+from wagtail.core.fields import StreamField
+from wagtail.core.models import Page
+from wagtail.search import index
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.documents.edit_handlers import DocumentChooserPanel
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
@@ -41,7 +42,7 @@ class Rack(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255,
                             help_text=_('Auto-populated field. Edit manually only if you must'))
-    room = models.ForeignKey('Room', related_name='racks')
+    room = models.ForeignKey('Room', related_name='racks', on_delete=django.db.models.deletion.PROTECT)
 
     class Meta:
         unique_together = (('name', 'room'), ('slug', 'room'))

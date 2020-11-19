@@ -8,7 +8,7 @@ import urllib
 
 from django.conf import settings
 from django.core.mail import send_mail
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http import HttpResponseRedirect, HttpResponse, \
     HttpResponseBadRequest, JsonResponse
 from django.shortcuts import render, redirect
@@ -16,7 +16,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
-from wagtail.wagtailcore.models import Site
+from wagtail.core.models import Site
 
 from razorpay.errors import (BadRequestError, GatewayError, ServerError)
 

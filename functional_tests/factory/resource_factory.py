@@ -1,7 +1,7 @@
 import factory
 from django.contrib.contenttypes.models import ContentType
 from django.utils.text import slugify
-from wagtail.wagtailcore.rich_text import RichText
+from wagtail.core.rich_text import RichText
 
 from resources.models import Resource
 

@@ -2,9 +2,9 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import wagtail.wagtailimages.models
-import wagtail.wagtailcore.fields
-import wagtail.wagtailcore.blocks
+import wagtail.images.models
+import wagtail.core.fields
+import wagtail.core.blocks
 
 
 class Migration(migrations.Migration):
@@ -41,7 +41,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='guidelinespage',
             name='content',
-            field=wagtail.wagtailcore.fields.StreamField([('heading_title', wagtail.wagtailcore.blocks.CharBlock()), ('heading_content', wagtail.wagtailcore.blocks.RichTextBlock()), ('sub_section_with_heading', wagtail.wagtailcore.blocks.StructBlock([(b'heading', wagtail.wagtailcore.blocks.CharBlock()), (b'content', wagtail.wagtailcore.blocks.RichTextBlock())])), ('sub_section_without_heading', wagtail.wagtailcore.blocks.RichTextBlock())], blank=True),
+            field=wagtail.core.fields.StreamField([('heading_title', wagtail.core.blocks.CharBlock()), ('heading_content', wagtail.core.blocks.RichTextBlock()), ('sub_section_with_heading', wagtail.core.blocks.StructBlock([(b'heading', wagtail.core.blocks.CharBlock()), (b'content', wagtail.core.blocks.RichTextBlock())])), ('sub_section_without_heading', wagtail.core.blocks.RichTextBlock())], blank=True),
         ),
         migrations.AddField(
             model_name='guidelinespage',

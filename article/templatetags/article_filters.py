@@ -1,5 +1,5 @@
 from django import template
-from wagtail.wagtailcore.rich_text import expand_db_html as expand_db_html_
+from wagtail.core.rich_text import expand_db_html as expand_db_html_
 
 register = template.Library()
 

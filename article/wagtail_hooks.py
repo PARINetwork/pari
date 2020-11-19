@@ -1,7 +1,8 @@
 from django.conf import settings
 from django.utils.html import format_html
-from wagtail.wagtailcore import hooks
-from wagtail.wagtailcore.whitelist import attribute_rule
+from wagtail.admin.rich_text.converters.editor_html import WhitelistRule
+from wagtail.core import hooks
+from wagtail.core.whitelist import attribute_rule
 
 
 def blacklist_tag():
@@ -16,37 +17,38 @@ def unwrap_tag():
     return fn
 
 
-@hooks.register('construct_whitelister_element_rules')
-def whitelist_blockquote():
-    return {
-        'style': blacklist_tag(),
-        'font': unwrap_tag(),
-        'span': unwrap_tag(),
-        'blockquote': attribute_rule({'class': True}),
-        'p': attribute_rule({'class': True}),
-        'h2': attribute_rule({'class': True}),
-        'h3': attribute_rule({'class': True}),
-        'h4': attribute_rule({'class': True}),
-        'h5': attribute_rule({'class': True}),
-        'iframe': attribute_rule({
+@hooks.register('register_rich_text_features')
+def whitelist_blockquote(features):
+    features.register_converter_rule('editorhtml', 'blockquote', [
+        WhitelistRule('style', handler=blacklist_tag()),
+        WhitelistRule('style', handler=unwrap_tag()),
+        WhitelistRule('style', handler=unwrap_tag()),
+        WhitelistRule('blockquote', attribute_rule({'class': True})),
+        WhitelistRule('p', attribute_rule({'class': True})),
+        WhitelistRule('h2', attribute_rule({'class': True})),
+        WhitelistRule('h3', attribute_rule({'class': True})),
+        WhitelistRule('h4', attribute_rule({'class': True})),
+        WhitelistRule('h5', attribute_rule({'class': True})),
+        WhitelistRule('iframe', attribute_rule({
             'style': True, 'src': True,
             'width': True, 'height': True
-        }),
-        'img': attribute_rule({
+        })),
+        WhitelistRule('img', attribute_rule({
             'srcset': True, 'class': True,
             'alt': True, 'sizes': True,
             'width': True, 'height': True,
             'src': True
-        }),
-        'audio': attribute_rule({
+        })),
+        WhitelistRule('audio', attribute_rule({
             'class': True, 'src': True,
             'controls': True,
-        }),
-        'source': attribute_rule({
-            'class': True,'src': True,
+        })),
+        WhitelistRule('source', attribute_rule({
+            'class': True, 'src': True,
             'type': True,
-        }),
-    }
+        })),
+    ])
+    features.default_features.append('blockquote')
 
 @hooks.register('insert_editor_js')
 def editor_js():

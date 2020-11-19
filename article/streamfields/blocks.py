@@ -3,11 +3,11 @@ from functools import partial
 from django import forms
 from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
-from wagtail.wagtailcore import blocks
-from wagtail.wagtailcore.blocks import PageChooserBlock, RichTextBlock, FieldBlock, RawHTMLBlock, IntegerBlock
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailembeds.blocks import EmbedBlock
-from wagtail.wagtailimages.blocks import ImageChooserBlock
+from wagtail.core import blocks
+from wagtail.core.blocks import PageChooserBlock, RichTextBlock, FieldBlock, RawHTMLBlock, IntegerBlock
+from wagtail.core.models import Page
+from wagtail.embeds.blocks import EmbedBlock
+from wagtail.images.blocks import ImageChooserBlock
 
 from album.models import Album
 from core.widgets import JqueryChosenSelectMultipleWithAddObject
@@ -84,18 +84,18 @@ class PageTypeChooserBlock(PageChooserBlock):
         if len(self.for_models) == 1:
             return self.for_models[0]
         else:
-            from wagtail.wagtailcore.models import Page
+            from wagtail.core.models import Page
             return Page
 
     @cached_property
     def widget(self):
         from django.utils.translation import ugettext_lazy as _
-        from wagtail.wagtailadmin.widgets import AdminPageChooser
+        from wagtail.admin.widgets import AdminPageChooser
 
         # Support importing from dotted string in-order to prevent circular-import for certain models(Say Article)
         self.for_models = [import_string(model) if isinstance(model, str) else model for model in self.for_models]
         if any(not issubclass(each, Page) for each in self.for_models):
-            raise TypeError("All models passed should be a sub-class of wagtail.wagtailcore.models.Page")
+            raise TypeError("All models passed should be a sub-class of wagtail.core.models.Page")
 
         model_names = ' / '.join(each.__name__.lower() for each in self.for_models)
         admin_page_chooser = AdminPageChooser(target_models=self.for_models)

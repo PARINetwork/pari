@@ -36,7 +36,6 @@ WAGTAIL_AUTO_UPDATE_PREVIEW = True
 # Application definition
 
 INSTALLED_APPS = [
-    'overextends',
     'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -63,21 +62,21 @@ INSTALLED_APPS = [
     'search',
     'news',
     'donation',
-    'wagtail.wagtailcore',
-    'wagtail.wagtailadmin',
-    'wagtail.wagtaildocs',
-    'wagtail.wagtailsnippets',
-    'wagtail.wagtailusers',
-    'wagtail.wagtailsites',
-    'wagtail.wagtailimages',
-    'wagtail.wagtailembeds',
-    'wagtail.wagtailsearch',
-    'wagtail.wagtailredirects',
-    'wagtail.wagtailforms',
+    'wagtail.core',
+    'wagtail.admin',
+    'wagtail.documents',
+    'wagtail.snippets',
+    'wagtail.users',
+    'wagtail.sites',
+    'wagtail.images',
+    'wagtail.embeds',
+    'wagtail.search',
+    'wagtail.contrib.redirects',
+    'wagtail.contrib.forms',
     'wagtail.contrib.modeladmin',
 ]
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = [
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -87,10 +86,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    'wagtail.wagtailcore.middleware.SiteMiddleware',
-    'wagtail.wagtailredirects.middleware.RedirectMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
-)
+    'wagtail.core.middleware.SiteMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware'
+]
 
 ROOT_URLCONF = 'pari.urls'
 WSGI_APPLICATION = 'pari.wsgi.application'
@@ -154,7 +153,7 @@ WAGTAIL_SITE_NAME = "PARI"
 #
 WAGTAILSEARCH_BACKENDS = {
     'default': {
-        'BACKEND': 'search.custom_elasticsearch.CustomElasticsearchSearchBackend',
+        'BACKEND': 'wagtail.search.backends.elasticsearch2',
         'INDEX': 'pari',
         'ATOMIC_REBUILD': True,
         'TIMEOUT': 30,
@@ -162,7 +161,7 @@ WAGTAILSEARCH_BACKENDS = {
 }
 WAGTAILADMIN_RICH_TEXT_EDITORS = {
     'default': {
-        'WIDGET': 'wagtail.wagtailadmin.rich_text.HalloRichTextArea'
+        'WIDGET': 'wagtail.admin.rich_text.HalloRichTextArea'
     },
 }
 
@@ -311,8 +310,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages'
-            ],
-            'builtins': ['overextends.templatetags.overextends_tags']
+            ]
         },
     },
 ]

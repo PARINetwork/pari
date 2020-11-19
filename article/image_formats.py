@@ -1,8 +1,8 @@
 from django.utils.html import escape
 
-from wagtail.wagtailimages.formats import register_image_format, \
+from wagtail.images.formats import register_image_format, \
     unregister_image_format, Format
-from wagtail.wagtailimages.models import SourceImageIOError
+from wagtail.images.models import SourceImageIOError
 
 
 class FullWidthImgFormat(Format):

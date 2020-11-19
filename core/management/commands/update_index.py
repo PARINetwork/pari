@@ -1,5 +1,5 @@
 from django.db import transaction
-from wagtail.wagtailsearch.management.commands.update_index import Command
+from wagtail.search.management.commands.update_index import Command
 
 
 class Command(Command):

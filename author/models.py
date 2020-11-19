@@ -1,12 +1,13 @@
 from __future__ import unicode_literals
 
 from django.db import models
+import django.db.models.deletion
 from django.conf import settings
 from django.utils.text import slugify
 from django.utils.encoding import python_2_unicode_compatible
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 
 
 @python_2_unicode_compatible
@@ -18,7 +19,7 @@ class Author(models.Model):
     facebook_username = models.CharField(max_length=50, null=True, blank=True)
     website = models.URLField(null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
-    image = models.ForeignKey('core.AffixImage', null=True, blank=True)
+    image = models.ForeignKey('core.AffixImage', null=True, blank=True, on_delete=django.db.models.deletion.PROTECT)
 
 
     def __init__(self, *args, **kwargs):

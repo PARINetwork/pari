@@ -1,7 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import DetailView, ListView
-from wagtail.wagtailcore.models import Site
+from wagtail.core.models import Site
 
 from search.views import site_search
 from .models import Resource, Room, Subject, Rack

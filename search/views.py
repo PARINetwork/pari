@@ -8,11 +8,11 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils import timezone
 from django.views.decorators.vary import vary_on_headers
-from wagtail.wagtailadmin.forms import SearchForm
-from wagtail.wagtailcore import models
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailsearch.backends import get_search_backend
-from wagtail.wagtailsearch.models import Query
+from wagtail.admin.forms import SearchForm
+from wagtail.core import models
+from wagtail.core.models import Page
+from wagtail.search.backends import get_search_backend
+from wagtail.search.models import Query
 
 from author.models import Author
 from location.models import Location

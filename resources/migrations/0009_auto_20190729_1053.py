@@ -55,7 +55,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='rack',
             name='room',
-            field=models.ForeignKey(related_name='racks', to='resources.Room'),
+            field=models.ForeignKey(related_name='racks', to='resources.Room', on_delete=django.db.models.deletion.PROTECT),
         ),
         migrations.AddField(
             model_name='resource',

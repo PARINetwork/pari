@@ -1,7 +1,7 @@
 import factory
 from core.models import GuidelinesPage
 from functional_tests.factory import ContentTypeFactory
-from wagtail.wagtailcore.rich_text import RichText
+from wagtail.core.rich_text import RichText
 
 
 class GuidelinesPageFactory(factory.django.DjangoModelFactory):

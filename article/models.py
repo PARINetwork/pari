@@ -1,20 +1,21 @@
 from __future__ import unicode_literals
 
 from django.conf import settings
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db import models
+import django.db.models.deletion
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.functional import cached_property
 from elasticsearch import ConnectionError
 from modelcluster.fields import ParentalManyToManyField, ParentalKey
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, \
+from wagtail.admin.edit_handlers import FieldPanel, \
     MultiFieldPanel, FieldRowPanel, StreamFieldPanel, InlinePanel
-from wagtail.wagtailcore.fields import RichTextField, StreamField
-from wagtail.wagtailcore.models import Page, Site
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsearch import index
-from wagtail.wagtailsearch.backends import get_search_backend
-from wagtail.wagtailsearch.backends.elasticsearch import ElasticsearchMapping
+from wagtail.core.fields import RichTextField, StreamField
+from wagtail.core.models import Page, Site
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.search import index
+from wagtail.search.backends import get_search_backend
+from wagtail.search.backends.elasticsearch2 import Elasticsearch2Mapping
 
 from article.streamfields.blocks import FullWidthImageBlock, ParagraphBlock, \
     ParagraphWithBlockQuoteBlock, NColumnParagraphBlock, FullWidthBlockQuote, \
@@ -48,7 +49,7 @@ class ArticleTag(TaggedItemBase):
 
 class ArticleAuthors(models.Model):
     article = ParentalKey('article.Article', related_name='authors')
-    author = models.ForeignKey('author.Author', related_name='articles_by_author')
+    author = models.ForeignKey('author.Author', related_name='articles_by_author', on_delete=django.db.models.deletion.PROTECT)
     sort_order = models.IntegerField(default=0)
     sort_order_field = 'sort_order'
     panels = [
@@ -213,7 +214,7 @@ class Article(Page):
 
         max_results = getattr(settings, "MAX_RELATED_RESULTS", 4)
         es_backend = get_search_backend()
-        mapping = ElasticsearchMapping(self.__class__)
+        mapping = Elasticsearch2Mapping(self.__class__)
 
         minimal_locations = ""
         if (self.get_minimal_locations()):

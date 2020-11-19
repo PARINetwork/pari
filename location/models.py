@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.contrib.gis.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.text import slugify
+import django.db.models.deletion
 
 
 @python_2_unicode_compatible
@@ -18,11 +19,11 @@ class Location(models.Model):
     panchayat = models.CharField(max_length=100, null=True, blank=True)
 
     sub_district_type = models.ForeignKey("SubDistrictType",
-                                          related_name="location", null=True, blank=True)
+                                          related_name="location", null=True, blank=True, on_delete=django.db.models.deletion.PROTECT)
 
     sub_district_name = models.CharField(max_length=100, null=True, blank=True)
 
-    objects = models.GeoManager()
+    objects = models.Manager()
 
     def __str__(self):
         location = filter(lambda x: x,

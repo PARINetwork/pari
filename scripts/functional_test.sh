@@ -14,7 +14,7 @@ SCRIPT
 mkdir -p "media/uploads/"
 cp "core/static/img/stories-1.jpg" "media/uploads/stories-1.jpg"
 
-cd /vagrant && . pari_env/bin/activate
+#cd /vagrant && . pari_env/bin/activate
 python manage.py migrate --settings=pari.settings.test --noinput
 
 echo "Starting Server..........."
@@ -25,7 +25,7 @@ end=$((SECONDS+60))
 while [ "$SECONDS" -lt "$end" ];
 do
   sleep 2
-  response=`curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/pages/donate`
+  response=`curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/pages/donate/`
   echo "Waiting for service to start...."
   if [ "$response" == "$expected_response" ]
   then

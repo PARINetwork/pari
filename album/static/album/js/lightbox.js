@@ -12,7 +12,7 @@ var Album = {
             $(".volume-control").removeClass("hidden");
             $(".seek-bar-control").removeClass("hidden");
         }
-        var album_json = $("div#json-identifier").text().substring(30);
+        var album_json = $("div#json-identifier").text();
         album_json = jQuery.parseJSON(album_json);
         this.generateCarousel(album_json);
     },

@@ -2,7 +2,7 @@ from __future__ import print_function
 import gc
 import json
 
-from wagtail.wagtailcore.models import PageRevision
+from wagtail.core.models import PageRevision
 
 
 def update_m2m_fields(revision):
