@@ -1,7 +1,6 @@
 from django.test import TestCase, override_settings
 from django.test import RequestFactory
 from mock import MagicMock
-from wagtail.search.backends.elasticsearch2 import Elasticsearch
 
 from article.models import ArticleAuthors
 from functional_tests.factory import ArticleFactory, AuthorFactory

@@ -9,7 +9,8 @@ djangorestframework==3.7.4
 
 # Recommended components (require additional setup):
 psycopg2==2.7
-elasticsearch==1.9.0
+elasticsearch==2.4.1
+six==1.15.0
 
 # Recommended components to improve performance in production:
 django-redis==4.3.0

@@ -4,7 +4,7 @@ from django.conf import settings
 from django.urls import reverse
 from django.db import models
 import django.db.models.deletion
-from django.utils.encoding import python_2_unicode_compatible
+from six import python_2_unicode_compatible
 from django.utils.functional import cached_property
 from elasticsearch import ConnectionError
 from modelcluster.fields import ParentalManyToManyField, ParentalKey
@@ -214,6 +214,7 @@ class Article(Page):
 
         max_results = getattr(settings, "MAX_RELATED_RESULTS", 4)
         es_backend = get_search_backend()
+        print("es_backend =>>", es_backend)
         mapping = Elasticsearch2Mapping(self.__class__)
 
         minimal_locations = ""
@@ -287,6 +288,9 @@ class Article(Page):
         }
 
         try:
+            print("query =>>", query)
+            print("es_backend.index_name =>>", es_backend.index_name)
+            print("mapping.get_document_type() =>>", mapping.get_document_type())
             mlt = es_backend.es.search(
                 index=es_backend.index_name,
                 doc_type=mapping.get_document_type(),

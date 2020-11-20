@@ -6,7 +6,7 @@ from django.urls import reverse
 import django.db.models.deletion
 from django.db import models
 from django.db.models import Q
-from django.utils.encoding import python_2_unicode_compatible
+from six import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from wagtail.admin.edit_handlers import MultiFieldPanel, \
     StreamFieldPanel, PageChooserPanel, FieldPanel

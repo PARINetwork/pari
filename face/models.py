@@ -4,7 +4,7 @@ from django.db import models
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.conf import settings
-from django.utils.encoding import python_2_unicode_compatible
+from six import python_2_unicode_compatible
 
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
@@ -80,13 +80,14 @@ class Face(Page):
         index.FilterField('original_image'),
         index.SearchField('additional_info', partial_match=True, boost=SearchBoost.CONTENT),
         index.FilterField('location'),
-        index.RelatedFields('location', [
-            index.SearchField('name'),
-            index.SearchField('block'),
-            index.SearchField('district'),
-            index.SearchField('state'),
-            index.SearchField('panchayat'),
-        ]),
+        #TODO: this gives error when building the index. need to fix this
+        # index.RelatedFields('location', [
+        #     index.SearchField('name'),
+        #     index.SearchField('block'),
+        #     index.SearchField('district'),
+        #     index.SearchField('state'),
+        #     index.SearchField('panchayat'),
+        # ]),
         index.SearchField('occupation'),
         index.SearchField('occupation_of_parent'),
         index.SearchField('quote'),

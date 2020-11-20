@@ -1,9 +1,9 @@
 from django.db.models.query import QuerySet
-from wagtail.search.backends.elasticsearch import ElasticsearchSearchBackend, ElasticsearchSearchQuery
+from wagtail.search.backends.elasticsearch2 import Elasticsearch2SearchBackend, Elasticsearch2SearchQueryCompiler
 from wagtail.search.index import class_is_indexed
 
 
-class CustomElasticsearchSearchQuery(ElasticsearchSearchQuery):
+class CustomElasticsearchSearchQuery(Elasticsearch2SearchQueryCompiler):
     def __init__(self, queryset, query_string, fields=None, operator=None, order_by_relevance=True,
                  extra_raw_filters=None):
         super(CustomElasticsearchSearchQuery, self).__init__(queryset, query_string, fields, operator, order_by_relevance)
@@ -30,7 +30,7 @@ class CustomElasticsearchSearchQuery(ElasticsearchSearchQuery):
         return filters
 
 
-class CustomElasticsearchSearchBackend(ElasticsearchSearchBackend):
+class CustomElasticsearchSearchBackend(Elasticsearch2SearchBackend):
     query_class = CustomElasticsearchSearchQuery
 
     def __init__(self, params):

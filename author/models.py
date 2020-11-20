@@ -4,7 +4,7 @@ from django.db import models
 import django.db.models.deletion
 from django.conf import settings
 from django.utils.text import slugify
-from django.utils.encoding import python_2_unicode_compatible
+from six import python_2_unicode_compatible
 from django.urls import reverse
 
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel

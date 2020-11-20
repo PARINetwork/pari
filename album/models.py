@@ -4,7 +4,7 @@ from django.conf import settings
 from django.contrib.gis.db import models
 from django.urls import reverse
 import django.db.models.deletion
-from django.utils.encoding import python_2_unicode_compatible
+from six import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from modelcluster.fields import ParentalKey
 from modelcluster.contrib.taggit import ClusterTaggableManager
@@ -80,8 +80,8 @@ class Album(Page):
         return " ".join(locations_index)
 
     def get_minimal_locations(self):
-        minimal_locations = map(lambda slide: slide.image.get_locations_with_dist_and_state(),
-                                self.slides.filter(image__isnull=False))
+        minimal_locations = list(map(lambda slide: slide.image.get_locations_with_dist_and_state(),
+                                self.slides.filter(image__isnull=False)))
         return minimal_locations
 
     def get_photographers_index(self):
