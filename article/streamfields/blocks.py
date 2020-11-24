@@ -14,6 +14,7 @@ from core.widgets import JqueryChosenSelectMultipleWithAddObject
 from face.models import Face
 from location.models import Location
 from resources.models import Resource
+import operator
 
 ALIGNMENT_CHOICES = [('left', 'Left column'), ('right', 'Right column')]
 

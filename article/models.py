@@ -32,7 +32,7 @@ from core.widgets import JqueryChosenSelect
 Page.wg_url = Page.url
 
 
-@cached_property
+@property
 def url_property(self):
     instance = self.specific
     if getattr(instance, 'get_absolute_url', None):
@@ -214,7 +214,6 @@ class Article(Page):
 
         max_results = getattr(settings, "MAX_RELATED_RESULTS", 4)
         es_backend = get_search_backend()
-        print("es_backend =>>", es_backend)
         mapping = Elasticsearch2Mapping(self.__class__)
 
         minimal_locations = ""
@@ -288,9 +287,6 @@ class Article(Page):
         }
 
         try:
-            print("query =>>", query)
-            print("es_backend.index_name =>>", es_backend.index_name)
-            print("mapping.get_document_type() =>>", mapping.get_document_type())
             mlt = es_backend.es.search(
                 index=es_backend.index_name,
                 doc_type=mapping.get_document_type(),

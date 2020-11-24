@@ -181,7 +181,7 @@ def instamojo_webhook(request):
             subject = _("Donation received")
             message = u""
             for (kk, vv) in data.items():
-                message += unicode(kk) + u" : " + unicode(vv) + u"\r\n"
+                message += kk + u" : " + vv + u"\r\n"
             send_mail(
                 subject, message,
                 settings.DEFAULT_FROM_EMAIL,

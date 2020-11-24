@@ -1,14 +1,13 @@
 # Minimal requirements
-wagtail==2.0
-django-taggit==0.24.0
-Django==2.0
+wagtail==2.7
+django-taggit==1.0
+Django==2.2
 django-modeltranslation==0.14
 
-# TODO: Remove this line after upgrading wagtail to v1.13
 djangorestframework==3.7.4
 
 # Recommended components (require additional setup):
-psycopg2==2.7
+psycopg2==2.8.5
 elasticsearch==2.4.1
 six==1.15.0
 
@@ -16,7 +15,7 @@ six==1.15.0
 django-redis==4.3.0
 
 # For M2M Field support.
-django-modelcluster<5.0,>=4.0
+django-modelcluster<6.0,>=5.0
 
 # Need to upgrade to next version after https://github.com/django-compressor/django-compressor/issues/698 is fixed
 django-compressor==1.6

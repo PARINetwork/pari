@@ -22,7 +22,7 @@ def editor_js():
 def editor_css():
     return format_html(
         """
-        <link rel="stylesheet" href="{0}font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{0}article/css/font-awesome.min.css">
         <link rel="stylesheet" href="{0}article/css/hallo-icons.css">
         <style>
         blockquote {{

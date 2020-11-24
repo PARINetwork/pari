@@ -6,10 +6,14 @@ from wagtail.images.models import SourceImageIOError
 
 
 class FullWidthImgFormat(Format):
-    def image_to_editor_html(self, image, alt_text, extra_attributes=''):
+    def image_to_editor_html(self, image, alt_text, extra_attributes=None):
+        if extra_attributes is None:
+            extra_attributes = {}
         return self.image_to_html(image, alt_text, extra_attributes)
 
-    def image_to_html(self, image, alt_text, extra_attributes=''):
+    def image_to_html(self, image, alt_text, extra_attributes=None):
+        if extra_attributes is None:
+            extra_attributes = {}
         try:
             rendition = image.get_rendition(self.filter_spec)
         except SourceImageIOError:

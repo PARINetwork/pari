@@ -78,7 +78,7 @@ class ArticleDetail(DetailView):
                 img.attrs.pop("srcset", "")
             gray_gif = "data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
             img.attrs["src"] = gray_gif
-        content = unicode(bs)
+        content = bs
         response.content = content
         cache.set(context['object'].get_absolute_url(), response)
         return response
