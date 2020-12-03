@@ -14,7 +14,7 @@ SCRIPT
 mkdir -p "media/uploads/"
 cp "core/static/img/stories-1.jpg" "media/uploads/stories-1.jpg"
 
-#cd /vagrant && . pari_env/bin/activate
+cd /vagrant && . pari_env/bin/activate
 python manage.py migrate --settings=pari.settings.test --noinput
 
 echo "Starting Server..........."

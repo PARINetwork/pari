@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('twitter_username', models.CharField(max_length=50, null=True, blank=True)),
                 ('facebook_username', models.CharField(max_length=50, null=True, blank=True)),
                 ('website', models.URLField(null=True, blank=True)),
-                ('image', models.ForeignKey(blank=True, to='core.AffixImage', null=True, on_delete=django.db.models.deletion.PROTECT)),
+                ('image', models.ForeignKey(blank=True, to='core.AffixImage', null=True, on_delete=django.db.models.deletion.CASCADE)),
             ],
             options={
                 'ordering': ['name'],

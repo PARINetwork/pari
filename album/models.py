@@ -119,7 +119,7 @@ class Album(Page):
 @python_2_unicode_compatible
 class AlbumSlide(Orderable):
     page = ParentalKey("album.Album", related_name="slides")
-    image = models.ForeignKey("core.AffixImage", related_name="album_for_image", null=True, blank=True, on_delete=django.db.models.deletion.PROTECT)
+    image = models.ForeignKey("core.AffixImage", related_name="album_for_image", null=True, blank=True, on_delete=django.db.models.deletion.CASCADE)
     audio = models.CharField(blank=True, max_length=50)
     description = RichTextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)

@@ -19,12 +19,12 @@ def add_author(request):
     else:
         form = AuthorAdminForm()
     return render_modal_workflow(
-        request, "core/add_object.html", "core/add_object.js", {
+        request, "core/add_object.html", None, {
             "add_object_url": reverse("author_add"),
             "name": "Author",
             "form": form,
             "instance": instance
-        }
+        }, None
     )
 
 

@@ -108,7 +108,7 @@ def add_location(request):
     else:
         form = LocationAdminForm()
     return render_modal_workflow(
-        request, "location/add_location.html", "location/add_location.js", {
+        request, "location/add_location.html", None, {
             "add_object_url": reverse("locations_add"),
             "name": "Location",
             "form": form,
@@ -116,4 +116,4 @@ def add_location(request):
             "default_lat": settings.MAP_CENTER[0],
             "default_lon": settings.MAP_CENTER[1],
             "default_zoom": 6
-        })
+        }, None)

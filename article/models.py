@@ -49,7 +49,7 @@ class ArticleTag(TaggedItemBase):
 
 class ArticleAuthors(models.Model):
     article = ParentalKey('article.Article', related_name='authors')
-    author = models.ForeignKey('author.Author', related_name='articles_by_author', on_delete=django.db.models.deletion.PROTECT)
+    author = models.ForeignKey('author.Author', related_name='articles_by_author', on_delete=django.db.models.deletion.CASCADE)
     sort_order = models.IntegerField(default=0)
     sort_order_field = 'sort_order'
     panels = [

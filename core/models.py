@@ -464,7 +464,7 @@ class AffixImage(AbstractImage):
 
 @python_2_unicode_compatible
 class AffixImageRendition(AbstractRendition):
-    image = models.ForeignKey(AffixImage, related_name='renditions', on_delete=django.db.models.deletion.PROTECT)
+    image = models.ForeignKey(AffixImage, related_name='renditions', on_delete=django.db.models.deletion.CASCADE)
 
     class Meta:
         unique_together = (

@@ -21,6 +21,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='affiximagerendition',
             name='filter',
-            field=models.ForeignKey(related_name='+', blank=True, to='wagtailimages.Filter', null=True, on_delete=django.db.models.deletion.PROTECT),
+            field=models.IntegerField(blank=True, null=True),
         ),
     ]

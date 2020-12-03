@@ -40,7 +40,7 @@ class Migration(migrations.Migration):
                 ('description', wagtail.core.fields.RichTextField(blank=True)),
                 ('created_on', models.DateTimeField(auto_now_add=True)),
                 ('modified_on', models.DateTimeField(auto_now=True)),
-                ('image', models.ForeignKey(related_name='album_for_image', blank=True, to='core.AffixImage', null=True, on_delete=django.db.models.deletion.PROTECT)),
+                ('image', models.ForeignKey(related_name='album_for_image', blank=True, to='core.AffixImage', null=True, on_delete=django.db.models.deletion.CASCADE)),
                 ('page', modelcluster.fields.ParentalKey(related_name='slides', to='album.Album')),
             ],
             options={

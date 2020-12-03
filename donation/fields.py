@@ -3,7 +3,7 @@
 
 from django import forms
 from django.utils.encoding import force_text
-
+from django.utils.safestring import mark_safe
 
 VALUE_ERROR_MSG = "expecting item[0] of last choice to be 'Other'"
 
@@ -31,10 +31,25 @@ class AmountWidget(forms.MultiWidget):
             return [None, None]
         return value
 
-    def format_output(self, rendered_widgets):
-        insert_idx = rendered_widgets[0].rindex('</label></li></ul>')
-        return rendered_widgets[0][:insert_idx] + rendered_widgets[1] + rendered_widgets[0][insert_idx:]
-
+    def render(self, name, value, attrs=None, renderer=None):
+        if self.is_localized:
+            for widget in self.widgets:
+                widget.is_localized = self.is_localized
+        if not isinstance(value, list):
+            value = self.decompress(value)
+        output = []
+        final_attrs = self.build_attrs(attrs)
+        id_ = final_attrs.get('id')
+        for i, widget in enumerate(self.widgets):
+            try:
+                widget_value = value[i]
+            except IndexError:
+                widget_value = None
+            if id_:
+                final_attrs = dict(final_attrs, id='%s_%s' % (id_, i))
+            output.append(widget.render(name + '_%s' % i, widget_value, final_attrs))
+        insert_idx = output[0].rindex('</label>\n\n</li>\n</ul>')
+        return mark_safe(output[0][:insert_idx] + output[1] + output[0][insert_idx:])
 
 class AmountField(forms.MultiValueField):
     def __init__(self, *args, **kwargs):

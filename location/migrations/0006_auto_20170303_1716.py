@@ -39,6 +39,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='location',
             name='sub_district_type',
-            field=models.ForeignKey(related_name='location', blank=True, to='location.SubDistrictType', null=True, on_delete=django.db.models.deletion.PROTECT),
+            field=models.ForeignKey(related_name='location', blank=True, to='location.SubDistrictType', null=True, on_delete=django.db.models.deletion.CASCADE),
         ),
     ]

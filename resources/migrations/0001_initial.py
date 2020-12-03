@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Resource',
             fields=[
-                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page', on_delete=django.db.models.deletion.PROTECT)),
+                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page', on_delete=django.db.models.deletion.CASCADE)),
                 ('date', models.DateField(null=True, blank=True)),
                 ('content', wagtail.core.fields.StreamField([('authors', wagtail.core.blocks.RichTextBlock(blank=True)), ('copyright', wagtail.core.blocks.RichTextBlock(blank=True)), ('focus', wagtail.core.blocks.RichTextBlock(blank=True)), ('factoids', wagtail.core.blocks.RichTextBlock(blank=True))])),
                 ('embed_url', models.URLField()),

@@ -36,7 +36,7 @@ def handle_instamojo_payment(form_data):
         "data_phone": form_data["phone"],
         "data_Field_90444": form_data["pan"],
     }
-    pg_url += "?{0}".format(urllib.urlencode(params))
+    pg_url += "?{0}".format(urllib.parse.urlencode(params))
     return HttpResponseRedirect(pg_url)
 
 

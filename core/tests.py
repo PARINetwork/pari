@@ -30,7 +30,7 @@ class LocalizationTests(TestCase):
         subtitle = html_response.findAll("div", { "class" : "subtitle" })[0].renderContents().strip()
         subtitle_text_french = 'Nous pouvons le faire sans gouvernements - et le ferons. Nous ne pouvons pas le faire sans vous.'
         self.assertEqual(response['Content-Language'],'fr')
-        assert subtitle == subtitle_text_french
+        assert subtitle.decode("utf-8") == subtitle_text_french
 
 
 class FilterByLanguageTests(TestCase):
@@ -73,7 +73,7 @@ class FilterByLanguageTests(TestCase):
         articles_query_to_filter.filter.return_value = articles_result_after_filter
         albums_query_to_filter.filter.return_value = albums_result_after_filter
         filtered_result = filter_by_language(request, articles_query_to_filter, albums_query_to_filter)
-        
+
         articles_query_to_filter.filter.assert_called_with(language="en")
         albums_query_to_filter.filter.assert_called_with(language="en")
         assert filtered_result == (articles_result_after_filter, albums_result_after_filter)

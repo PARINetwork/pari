@@ -42,7 +42,7 @@ class Rack(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255,
                             help_text=_('Auto-populated field. Edit manually only if you must'))
-    room = models.ForeignKey('Room', related_name='racks', on_delete=django.db.models.deletion.PROTECT)
+    room = models.ForeignKey('Room', related_name='racks', on_delete=django.db.models.deletion.CASCADE)
 
     class Meta:
         unique_together = (('name', 'room'), ('slug', 'room'))

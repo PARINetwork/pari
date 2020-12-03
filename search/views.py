@@ -171,7 +171,7 @@ def site_search(
         )
         if author_filters:
             for author in author_filters:
-              query_params_string+='&author='+urllib.quote_plus(author)
+              query_params_string+='&author='+urllib.parse.quote_plus(author)
 
 
         locations = set(location.district + ', ' + location.state for location in Location.objects.all())

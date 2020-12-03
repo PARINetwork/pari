@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
                 migrations.AddField(
                     model_name='articleauthors',
                     name='author',
-                    field=models.ForeignKey(related_name='articles_by_author', to='author.Author', on_delete=django.db.models.deletion.PROTECT),
+                    field=models.ForeignKey(related_name='articles_by_author', to='author.Author', on_delete=django.db.models.deletion.CASCADE),
                 ),
                 migrations.AlterUniqueTogether(
                     name='articleauthors',
