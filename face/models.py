@@ -80,14 +80,12 @@ class Face(Page):
         index.FilterField('original_image'),
         index.SearchField('additional_info', partial_match=True, boost=SearchBoost.CONTENT),
         index.FilterField('location'),
-        #TODO: this gives error when building the index. need to fix this
-        # index.RelatedFields('location', [
-        #     index.SearchField('name'),
-        #     index.SearchField('block'),
-        #     index.SearchField('district'),
-        #     index.SearchField('state'),
-        #     index.SearchField('panchayat'),
-        # ]),
+        index.RelatedFields('location', [
+            index.SearchField('name'),
+            index.SearchField('district'),
+            index.SearchField('state'),
+            index.SearchField('panchayat'),
+        ]),
         index.SearchField('occupation'),
         index.SearchField('occupation_of_parent'),
         index.SearchField('quote'),

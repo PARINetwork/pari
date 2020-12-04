@@ -20,7 +20,7 @@ class Command(Command):
 
     # Atomic so the count of models doesnt change as it is iterated
     @transaction.atomic
-    def queryset_chunks(self, qs):
+    def queryset_chunks(self, qs, chunk_size):
         """
         Yield a queryset in chunks of at most ``chunk_size``. The chunk yielded
         will be a list, not a queryset. Iterating over the chunks is done in a

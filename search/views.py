@@ -58,6 +58,14 @@ def site_search(
     author_filters = request.GET.getlist('author')
 
     raw_filters = []
+    index_prefixes = ['album_album', 'article_article', 'resources_resource', 'face_face', 'core_staticpage']
+
+    def build_raw_filters_for_index(index_name, filters):
+        return list(map(lambda prefix: {
+            "terms": {
+                prefix + '__' + index_name: filters
+            }
+        }, index_prefixes))
 
     # Search
     if query_string != '':
@@ -72,39 +80,24 @@ def site_search(
             pages = pages.filter(**extra_filters)
 
         if type_filters:
-            raw_filters.append({
-                "terms": {
-                    "get_search_type_filter": type_filters
-                }
-            })
+            raw_type_filters = build_raw_filters_for_index('get_search_type_filter', type_filters)
+            raw_filters.append({"bool": {"should": raw_type_filters}})
 
         if category_filters:
-            raw_filters.append({
-                "terms": {
-                    "get_categories_filter": category_filters
-                }
-            })
+            raw_category_filters = build_raw_filters_for_index('get_categories_filter', category_filters)
+            raw_filters.append({"bool": {"should": raw_category_filters}})
 
         if language_filters:
-            raw_filters.append({
-                "terms": {
-                    "language_filter": language_filters
-                }
-            })
+            raw_language_filters = build_raw_filters_for_index('language_filter', language_filters)
+            raw_filters.append({"bool": {"should": raw_language_filters}})
 
         if location_filters:
-            raw_filters.append({
-                "terms": {
-                    "get_minimal_locations_filter": location_filters
-                }
-            })
+            raw_location_filters = build_raw_filters_for_index('get_minimal_locations_filter', location_filters)
+            raw_filters.append({"bool": {"should": raw_location_filters}})
 
         if author_filters:
-            raw_filters.append({
-                "terms": {
-                    "get_authors_or_photographers_filter": author_filters
-                }
-            })
+            raw_author_filters = build_raw_filters_for_index('get_authors_or_photographers_filter', author_filters)
+            raw_filters.append({"bool": {"should": raw_author_filters}})
 
         if start_date:
             pages = pages.filter(first_published_at__range=(start_date, end_date or timezone.now()))
@@ -166,13 +159,12 @@ def site_search(
             ['&language=%s' % _ for _ in language_filters] +
             ['&start-date=%s' % start_date if start_date else ''] +
             ['&end-date=%s' % end_date if end_date else ''] +
-            ['&location=%s' % _ for _ in location_filters]+
+            ['&location=%s' % _ for _ in location_filters] +
             ['&sort-by=%s' % sort_by if sort_by else '']
         )
         if author_filters:
             for author in author_filters:
-              query_params_string+='&author='+urllib.parse.quote_plus(author)
-
+                query_params_string += '&author=' + urllib.parse.quote_plus(author)
 
         locations = set(location.district + ', ' + location.state for location in Location.objects.all())
 

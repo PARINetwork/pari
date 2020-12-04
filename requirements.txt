@@ -8,7 +8,7 @@ djangorestframework==3.7.4
 
 # Recommended components (require additional setup):
 psycopg2==2.8.5
-elasticsearch==2.4.1
+elasticsearch==6.8.1
 six==1.15.0
 
 # Recommended components to improve performance in production:

@@ -37,6 +37,9 @@ class Room(models.Model):
     def __str__(self):
         return self.name
 
+    def __lt__(self, other):
+        return self.__str__() < other.__str__()
+
 
 class Rack(models.Model):
     name = models.CharField(max_length=255)
