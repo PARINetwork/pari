@@ -2,6 +2,46 @@
 @import "../../layout/mixins";
 @import "../../layout/responsive";
 
+
+.announcement3 {
+  background-color: #aa0000;
+  // padding: 15px 0;
+
+  .row {
+    display: flex;
+    align-items: center;
+  }
+
+  .profile-photo {
+    text-align: center;
+    display: none;
+    img {
+      max-width: 70px;
+      padding: 10px;
+      background: #aa0000;
+      border-radius: 4px;
+    }
+  }
+
+  .content {
+    font-size: 16px;
+    line-height: 46px;
+    padding: 7px 0px 7px 15px;
+    color:black;
+    font-weight: 300;
+  }
+
+  .content .link-w-arrow {
+    color: #ffffff;
+    font-weight: 600;
+    &:hover {
+      text-decoration: none;
+      color: black;
+    }
+  }
+}
+
+
 .announcement2 {
   background-color: #003366;
   // padding: 15px 0;
