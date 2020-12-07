@@ -1,13 +1,13 @@
 import requests
 
 from django.views.generic import DetailView, ListView
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.conf import settings
 from django.core.cache import cache
 from django.http import JsonResponse, Http404
 from django.utils.translation import ugettext_lazy as _
 
-from wagtail.wagtailadmin.modal_workflow import render_modal_workflow
+from wagtail.admin.modal_workflow import render_modal_workflow
 
 from album.models import Album, AlbumSlide
 
@@ -85,7 +85,7 @@ class AlbumDetail(DetailView):
         else:
             context['album_type'] = 'photo_album'
         if json_response:
-            context['json_response'] = json_response
+            context['json_response'] = json_response.content.decode("utf-8")
         return context
 
     def get_template_names(self):

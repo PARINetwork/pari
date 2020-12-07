@@ -35,8 +35,7 @@ WAGTAIL_AUTO_UPDATE_PREVIEW = True
 
 # Application definition
 
-INSTALLED_APPS = (
-    'overextends',
+INSTALLED_APPS = [
     'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -63,21 +62,21 @@ INSTALLED_APPS = (
     'search',
     'news',
     'donation',
-    'wagtail.wagtailcore',
-    'wagtail.wagtailadmin',
-    'wagtail.wagtaildocs',
-    'wagtail.wagtailsnippets',
-    'wagtail.wagtailusers',
-    'wagtail.wagtailsites',
-    'wagtail.wagtailimages',
-    'wagtail.wagtailembeds',
-    'wagtail.wagtailsearch',
-    'wagtail.wagtailredirects',
-    'wagtail.wagtailforms',
+    'wagtail.core',
+    'wagtail.admin',
+    'wagtail.documents',
+    'wagtail.snippets',
+    'wagtail.users',
+    'wagtail.sites',
+    'wagtail.images',
+    'wagtail.embeds',
+    'wagtail.search',
+    'wagtail.contrib.redirects',
+    'wagtail.contrib.forms',
     'wagtail.contrib.modeladmin',
-)
+]
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = [
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -87,10 +86,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    'wagtail.wagtailcore.middleware.SiteMiddleware',
-    'wagtail.wagtailredirects.middleware.RedirectMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
-)
+    'wagtail.core.middleware.SiteMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware'
+]
 
 ROOT_URLCONF = 'pari.urls'
 WSGI_APPLICATION = 'pari.wsgi.application'
@@ -162,7 +161,7 @@ WAGTAILSEARCH_BACKENDS = {
 }
 WAGTAILADMIN_RICH_TEXT_EDITORS = {
     'default': {
-        'WIDGET': 'wagtail.wagtailadmin.rich_text.HalloRichTextArea'
+        'WIDGET': 'wagtail.admin.rich_text.HalloRichTextArea'
     },
 }
 
@@ -301,11 +300,17 @@ TEMPLATES = [
                 'django.template.loaders.filesystem.Loader',
                 'django.template.loaders.app_directories.Loader',
             ],
-            'context_processors': global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
-                'django.core.context_processors.request',
+            'context_processors':  [
+                'django.template.context_processors.request',
                 'core.context_processors.settings',
                 'core.context_processors.path',
-            ),
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.static',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages'
+            ]
         },
     },
 ]

@@ -4,8 +4,8 @@ from django.utils.safestring import mark_safe
 
 
 class JqueryChosenSelect(Select):
-    def render(self, name, value, attrs=None, choices=()):
-        out = super(JqueryChosenSelect, self).render(name, value, attrs, choices)
+    def render(self, name, value, attrs=None, choices=(), renderer=None):
+        out = super(JqueryChosenSelect, self).render(name, value, attrs, renderer)
 
         trigger_jquery_chosen = '''
         <script type="text/javascript">
@@ -30,8 +30,8 @@ class JqueryChosenSelect(Select):
 
 
 class JqueryChosenSelectMultiple(SelectMultiple):
-    def render(self, name, value, attrs=None, choices=()):
-        out = super(JqueryChosenSelectMultiple, self).render(name, value, attrs, choices)
+    def render(self, name, value, attrs=None, choices=(), renderer=None):
+        out = super(JqueryChosenSelectMultiple, self).render(name, value, attrs, renderer)
 
         trigger_jquery_chosen = '''
         <script type="text/javascript">

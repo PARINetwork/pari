@@ -1,7 +1,7 @@
 import factory
 from django.contrib.contenttypes.models import ContentType
 from django.utils.text import slugify
-from wagtail.wagtailcore.models import Page
+from wagtail.core.models import Page
 
 
 class ContentTypeFactory(factory.django.DjangoModelFactory):

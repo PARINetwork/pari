@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import wagtail.wagtailcore.fields
+import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
@@ -21,6 +21,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='face',
             name='description',
-            field=wagtail.wagtailcore.fields.RichTextField(blank=True, default='<p><strong>Occupation:</strong> </p>\n<p><strong>Village:</strong> </p>\n<p><strong>Block:</strong> </p>\n<p><strong>District:</strong> </p>\n<p><strong>State:</strong> </p>\n<p><strong>Region:</strong> </p>\n<p><strong>Date:</strong> &lt;Month:String&gt; &lt;Date:Number&gt;, &lt;Year:Number&gt;</p>\n<p><strong>Photographer:</strong> </p>\n<p><strong>Camera:</strong> </p>\n'),
+            field=wagtail.core.fields.RichTextField(blank=True, default='<p><strong>Occupation:</strong> </p>\n<p><strong>Village:</strong> </p>\n<p><strong>Block:</strong> </p>\n<p><strong>District:</strong> </p>\n<p><strong>State:</strong> </p>\n<p><strong>Region:</strong> </p>\n<p><strong>Date:</strong> &lt;Month:String&gt; &lt;Date:Number&gt;, &lt;Year:Number&gt;</p>\n<p><strong>Photographer:</strong> </p>\n<p><strong>Camera:</strong> </p>\n'),
         ),
     ]

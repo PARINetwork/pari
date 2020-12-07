@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-import wagtail.wagtailimages.models
+import wagtail.images.models
 
 
 class Migration(migrations.Migration):

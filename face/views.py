@@ -1,6 +1,6 @@
 from django.db.models import Q
 from django.views.generic import ListView
-from wagtail.wagtailcore.models import Site
+from wagtail.core.models import Site
 
 from .models import Face
 

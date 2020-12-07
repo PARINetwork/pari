@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 import csv, re, urllib, logging
+import urllib.parse
 
 from django.db import migrations
 from django.utils.text import slugify
@@ -26,7 +27,7 @@ def assign_resources_to_rooms_and_racks(apps, schema_editor):
                                         row[3].strip()
 
             if url:
-                decoded_url = urllib.unquote(url).decode('utf-8')
+                decoded_url = urllib.parse.unquote(url)
             else:
                 logger.error('Blank URL field. Skipping line >> %s <<' % ','.join(row))
                 continue

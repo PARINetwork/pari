@@ -2,7 +2,6 @@ from django.contrib.auth.models import User
 from django.test import TestCase, override_settings, Client
 from django.test import RequestFactory
 from mock import MagicMock
-from wagtail.wagtailsearch.backends.elasticsearch import Elasticsearch
 from django.db import DataError, IntegrityError
 from django.core.exceptions import ValidationError
 

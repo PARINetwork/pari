@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.utils.text import slugify
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http import HttpResponseRedirect
 
-from wagtail.wagtailadmin.modal_workflow import render_modal_workflow
+from wagtail.admin.modal_workflow import render_modal_workflow
 
 from .forms import AuthorAdminForm
 
@@ -19,12 +19,12 @@ def add_author(request):
     else:
         form = AuthorAdminForm()
     return render_modal_workflow(
-        request, "core/add_object.html", "core/add_object.js", {
+        request, "core/add_object.html", None, {
             "add_object_url": reverse("author_add"),
             "name": "Author",
             "form": form,
             "instance": instance
-        }
+        }, None
     )
 
 

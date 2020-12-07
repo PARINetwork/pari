@@ -1,20 +1,21 @@
 from __future__ import unicode_literals
 
 from django.conf import settings
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
+import django.db.models.deletion
+from six import python_2_unicode_compatible
 from django.utils.functional import cached_property
 from elasticsearch import ConnectionError
 from modelcluster.fields import ParentalManyToManyField, ParentalKey
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, \
+from wagtail.admin.edit_handlers import FieldPanel, \
     MultiFieldPanel, FieldRowPanel, StreamFieldPanel, InlinePanel
-from wagtail.wagtailcore.fields import RichTextField, StreamField
-from wagtail.wagtailcore.models import Page, Site
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsearch import index
-from wagtail.wagtailsearch.backends import get_search_backend
-from wagtail.wagtailsearch.backends.elasticsearch import ElasticsearchMapping
+from wagtail.core.fields import RichTextField, StreamField
+from wagtail.core.models import Page, Site
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.search import index
+from wagtail.search.backends import get_search_backend
+from wagtail.search.backends.elasticsearch6 import Elasticsearch6Mapping
 
 from article.streamfields.blocks import FullWidthImageBlock, ParagraphBlock, \
     ParagraphWithBlockQuoteBlock, NColumnParagraphBlock, FullWidthBlockQuote, \
@@ -31,7 +32,7 @@ from core.widgets import JqueryChosenSelect
 Page.wg_url = Page.url
 
 
-@cached_property
+@property
 def url_property(self):
     instance = self.specific
     if getattr(instance, 'get_absolute_url', None):
@@ -48,7 +49,7 @@ class ArticleTag(TaggedItemBase):
 
 class ArticleAuthors(models.Model):
     article = ParentalKey('article.Article', related_name='authors')
-    author = models.ForeignKey('author.Author', related_name='articles_by_author')
+    author = models.ForeignKey('author.Author', related_name='articles_by_author', on_delete=django.db.models.deletion.PROTECT)
     sort_order = models.IntegerField(default=0)
     sort_order_field = 'sort_order'
     panels = [
@@ -213,7 +214,7 @@ class Article(Page):
 
         max_results = getattr(settings, "MAX_RELATED_RESULTS", 4)
         es_backend = get_search_backend()
-        mapping = ElasticsearchMapping(self.__class__)
+        mapping = Elasticsearch6Mapping(self.__class__)
 
         minimal_locations = ""
         if (self.get_minimal_locations()):
@@ -234,7 +235,13 @@ class Article(Page):
             "query": {
                 "bool": {
                     "must": [
-                        {"match": {"language": self.language}},
+                        {
+                            "multi_match": {
+                                "fields": ["*language_filter"],
+                                "query":  self.language
+                            }
+
+                        },
                         {"term": {"live_filter": "true"}}
                     ],
                     "must_not": [
@@ -244,28 +251,36 @@ class Article(Page):
                     "should": [
                         {
                             "multi_match": {
-                                "fields": "get_authors_or_photographers_filter",
-                                "query": ["" + authors_of_article + ""]
+                                "fields": ["*get_authors_or_photographers_filter"],
+                                "query": authors_of_article,
+                                "type": "cross_fields",
+                                "operator": "and"
                             }
 
                         },
                         {
                             "multi_match": {
-                                "fields": "get_authors",
-                                "query": ["" + authors_of_article + ""]
+                                "fields": ["*get_authors"],
+                                "query": authors_of_article,
+                                "type": "cross_fields",
+                                "operator": "and"
                             }
 
                         },
                         {
                             "multi_match": {
-                                "fields": "get_minimal_locations_filter",
-                                "query": minimal_locations
+                                "fields": ["*get_minimal_locations_filter"],
+                                "query": ' '.join(minimal_locations),
+                                "type": "cross_fields",
+                                "operator": "and"
                             }
                         },
                         {
                             "multi_match": {
-                                "fields": "get_state_from_locations_filter",
-                                "query": state_locations
+                                "fields": ["*get_state_from_locations_filter"],
+                                "query": ' '.join(state_locations),
+                                "type": "cross_fields",
+                                "operator": "and"
                             }
 
                         },
@@ -280,14 +295,15 @@ class Article(Page):
             },
             "sort": [
                 {"_score": {"order": "desc"}},
-                {"get_authors": {"order": "desc"}},
+                {"article_article__get_authors_or_photographers_filter": {"order": "desc"}},
+                {"album_album__get_authors_or_photographers_filter": {"order": "desc"}},
+                {"face_face__get_authors_or_photographers_filter": {"order": "desc"}},
                 {"first_published_at_filter": "desc"}
             ]
         }
 
         try:
             mlt = es_backend.es.search(
-                index=es_backend.index_name,
                 doc_type=mapping.get_document_type(),
                 body=query
             )
@@ -300,7 +316,7 @@ class Article(Page):
         results = dict((str(pk), None) for pk in pks)
 
         # Find objects in database and add them to dict
-        queryset = self._default_manager.filter(pk__in=pks)
+        queryset = self._meta.default_manager.filter(pk__in=pks)
         for obj in queryset:
             results[str(obj.pk)] = obj
 

@@ -6,8 +6,8 @@ from django.http import Http404
 from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _, activate, get_language
 from django.views.decorators.cache import cache_page
-from wagtail.wagtailadmin.views.pages import PreviewOnEdit, PreviewOnCreate
-from wagtail.wagtailcore.models import Page, Site
+from wagtail.admin.views.pages import PreviewOnEdit, PreviewOnCreate
+from wagtail.core.models import Page, Site
 
 from category.models import Category
 from core.utils import get_translations_for_page, construct_guidelines
@@ -158,8 +158,7 @@ class ModelTranslatedPagePreviewMixin(object):
         curr_lang = get_language()
         response = super(ModelTranslatedPagePreviewMixin, self).get(request, *args, **kwargs)
 
-        post_data_dict, timestamp = self.request.session[self.session_key]
-        language = post_data_dict.get('language')
+        language = self.request.session.get('language', curr_lang)
         if language:
             activate(language[0])
         else:

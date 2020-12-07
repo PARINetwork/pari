@@ -1,6 +1,6 @@
 from django import forms
 
-from wagtail.wagtailimages.widgets import AdminImageChooser
+from wagtail.images.widgets import AdminImageChooser
 
 from .models import Author
 

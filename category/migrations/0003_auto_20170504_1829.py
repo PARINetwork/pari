@@ -35,7 +35,7 @@ def update_categories(apps, schema_editor):
         "photozone": { "name": "PhotoZone", "description": "Collections of photographs" }
     }
 
-    for slug, value in category_update_dict.iteritems():
+    for slug, value in category_update_dict.items():
         name = value["name"]
         description = value["description"]
         try:

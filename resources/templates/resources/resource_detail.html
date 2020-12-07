@@ -60,7 +60,7 @@
             <h4 class="title-factoid">{% trans "FACTOIDS" %}</h4>
           {% endif %}
           {% for block in resource.content %}
-          {% if block.block_type == "factoids" and block.value > 0 %}
+          {% if block.block_type == "factoids" %}
             <li>
               {{ block.value }}
             </li>

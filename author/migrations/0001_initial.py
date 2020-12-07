@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-
+import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('twitter_username', models.CharField(max_length=50, null=True, blank=True)),
                 ('facebook_username', models.CharField(max_length=50, null=True, blank=True)),
                 ('website', models.URLField(null=True, blank=True)),
-                ('image', models.ForeignKey(blank=True, to='core.AffixImage', null=True)),
+                ('image', models.ForeignKey(blank=True, to='core.AffixImage', null=True, on_delete=django.db.models.deletion.CASCADE)),
             ],
             options={
                 'ordering': ['name'],

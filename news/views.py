@@ -1,7 +1,7 @@
 from django.views.generic import TemplateView
 from django.contrib.contenttypes.models import ContentType
 
-from wagtail.wagtailcore.models import Page
+from wagtail.core.models import Page
 
 
 class PariNewsView(TemplateView):

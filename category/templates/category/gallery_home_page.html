@@ -63,7 +63,7 @@
                         <div class="info title-info">
                             <h3>{{ page.photo_title }}</h3>
                             <p>
-                                {% include "../../core/templates/includes/author-links.html" with authors=page.photo_of_the_week.photographers.all author_link_class="photographer" author_name_class="font-l"  %}
+                                {% include "includes/author-links.html" with authors=page.photo_of_the_week.photographers.all author_link_class="photographer" author_name_class="font-l"  %}
                             </p>
                             {% if page.photo_link %}
                                 <div>
@@ -97,6 +97,6 @@
             {% trans "View all Photo Albums" as view_all_photo_albums %}
             {% include "includes/gallery_home_section.html" with section_title=many_lenses icon="fa-picture-o" section_context=photo_album link_text=view_photo_album all_links_text=view_all_photo_albums all_links_url="other-album-list" %}
                     </div>
-        {% include "../../core/templates/includes/home_page_face_tile.html" %}
+        {% include "includes/home_page_face_tile.html" %}
     </div>
 {% endblock %}

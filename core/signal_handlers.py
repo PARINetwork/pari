@@ -18,9 +18,9 @@ from django.core.cache import caches
 from django.contrib.sites.models import Site
 from django.template import loader, Context
 
-from wagtail.wagtailembeds.models import Embed
-from wagtail.wagtailsearch.signal_handlers import post_delete_signal_handler
-from wagtail.wagtailimages.formats import get_image_format
+from wagtail.embeds.models import Embed
+from wagtail.search.signal_handlers import post_delete_signal_handler
+from wagtail.images.formats import get_image_format
 
 from .models import AffixImage, Page, Contact
 
@@ -87,11 +87,11 @@ class YTIframeParser(HTMLParser):
         url_attrs["cc_load_policy"] = "1"
         url_attrs["autohide"] = "1"
         src_url = urlparse.urlunsplit((parts.scheme, parts.netloc,
-                                       parts.path, urllib.urlencode(url_attrs),
+                                       parts.path, urllib.parse.urlencode(url_attrs),
                                        parts.fragment))
         tag_attr_dict["src"] = src_url
         attr_str = ""
-        for (key, val) in tag_attr_dict.iteritems():
+        for (key, val) in tag_attr_dict.items():
             attr_str += " {0}".format(key)
             if val:
                 attr_str += "=\"{0}\"".format(val)

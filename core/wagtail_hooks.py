@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.utils.html import format_html
-from wagtail.wagtailcore import hooks
+from wagtail.core import hooks
 
 
 @hooks.register('insert_editor_js')
@@ -22,7 +22,7 @@ def editor_js():
 def editor_css():
     return format_html(
         """
-        <link rel="stylesheet" href="{0}font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{0}article/css/font-awesome.min.css">
         <link rel="stylesheet" href="{0}article/css/hallo-icons.css">
         <style>
         blockquote {{

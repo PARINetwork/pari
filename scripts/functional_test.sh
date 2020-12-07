@@ -25,7 +25,7 @@ end=$((SECONDS+60))
 while [ "$SECONDS" -lt "$end" ];
 do
   sleep 2
-  response=`curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/pages/donate`
+  response=`curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/pages/donate/`
   echo "Waiting for service to start...."
   if [ "$response" == "$expected_response" ]
   then

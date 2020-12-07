@@ -1,7 +1,7 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from news.views import PariNewsView
 
-urlpatterns = patterns('news.views',
+urlpatterns = [
                 url(r'^$', PariNewsView.as_view(), name='pari-news')
-)
+]
