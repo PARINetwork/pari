@@ -17,8 +17,7 @@ django-redis==4.3.0
 # For M2M Field support.
 django-modelcluster<6.0,>=5.0
 
-# Need to upgrade to next version after https://github.com/django-compressor/django-compressor/issues/698 is fixed
-django-compressor==1.6
+django-compressor==2.4
 
 requests
 
