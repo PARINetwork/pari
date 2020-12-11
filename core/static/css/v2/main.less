@@ -38,6 +38,44 @@
   }
 }
 
+:lang(ml), :lang(or), :lang(as), :lang(lus), :lang(ta), :lang(ur){
+  #header {
+    position: relative;
+    height: 135px;
+    z-index: 3;
+
+    .fixed-header-wrapper {
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      right: 0px;
+      height: 82px;
+    }
+
+    ul.header-social-icons {
+      position: absolute;
+      left: 125px;
+      top: 14px;
+      z-index: 9999;
+      display: none;
+      li {
+        list-style-type: none;
+        display: inline-block;
+        vertical-align: middle;
+        padding: 0px 5px;
+
+        .fa {
+          font-size: 18px;
+        }
+
+        &.link-light {
+          display: none;
+        }
+      }
+    }
+  }
+   }
+
 #main_content > .container {
   margin-top: 40px;
   &.story-grid {

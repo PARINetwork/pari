@@ -4,7 +4,7 @@ from collections import OrderedDict
 
 from django.urls import reverse
 from django.http import JsonResponse
-from django.utils.translation import activate, deactivate_all
+from django.utils.translation import get_language
 from wagtail.core import blocks
 from wagtail.core.models import Page
 from wagtail.core.rich_text import RichText
@@ -14,11 +14,7 @@ from pari import settings
 
 def get_translations_for_page(page):
     translations = []
-    deactivate_all()
-    if settings.ENABLE_SITE_LOCALIZATION:
-        activate(settings.LANGUAGE_CODE)
-    else:
-        activate(page.language)
+    settings.LANGUAGE_CODE = get_language()
 
     try:
         trans_holder = page.get_children().get(title="Translations")

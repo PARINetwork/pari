@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-24 15:16+0530\n"
+"POT-Creation-Date: 2020-12-11 12:31+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,9 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: album/models.py:35
+msgid "Slides"
+msgstr ""
+
 #: album/templates/album/add_audio.html:10
-#: core/templates/core/add_object.html:5
-#: core/templates/core/add_object.html:19
+#: core/templates/core/add_object.html:5 core/templates/core/add_object.html:19
 #, python-format
 msgid "Add %(name)s "
 msgstr ""
@@ -62,14 +65,13 @@ msgstr ""
 msgid "Album"
 msgstr ""
 
-#: album/templates/album/album_detail.html:183
-#: article/templates/article/article.html:229
+#: album/templates/album/album_detail.html:190
+#: article/templates/article/article.html:230
 #: article/templates/article/includes/author_info.html:43
-#: resources/templates/resources/resource_detail.html:50
 msgid "Share"
 msgstr ""
 
-#: album/templates/album/album_detail.html:200
+#: album/templates/album/album_detail.html:207
 msgid "Other stories by"
 msgstr ""
 
@@ -78,100 +80,102 @@ msgstr ""
 #: album/templates/album/album_list.html:38
 #: core/templates/pages/menus/dropdown.html:86
 #: location/templates/map/map_list.html:55
+#: search/templates/includes/search_filters.html:33
 msgid "Albums"
 msgstr ""
 
-#: album/views.py:38
+#: album/views.py:33
 msgid "gallery"
 msgstr ""
 
-#: album/views.py:47 core/templates/pages/menus/footer.html:41
+#: album/views.py:42 core/templates/pages/menus/footer.html:41
 msgid "Talking Albums"
 msgstr ""
 
-#: album/views.py:47
+#: album/views.py:42
 msgid "Pictures and their spoken story"
 msgstr ""
 
-#: album/views.py:49
+#: album/views.py:44
 msgid "Photo Albums"
 msgstr ""
 
-#: album/views.py:49 category/templates/category/gallery_home_page.html:95
+#: album/views.py:44 category/templates/category/gallery_home_page.html:95
 msgid "Through many different lenses"
-msgstr ""
-
-#: article/streamfields/blocks.py:102
-#, python-format
-msgid "Choose a %s"
 msgstr ""
 
 #: article/streamfields/blocks.py:103
 #, python-format
-msgid "Choose another %s"
+msgid "Choose a %s"
 msgstr ""
 
 #: article/streamfields/blocks.py:104
 #, python-format
+msgid "Choose another %s"
+msgstr ""
+
+#: article/streamfields/blocks.py:105
+#, python-format
 msgid "Edit this %s"
 msgstr ""
 
-#: article/templates/article/archive_article_list.html:45
-#: article/templates/article/author_article_list.html:45
+#: article/templates/article/archive_article_list.html:55
+#: article/templates/article/author_article_list.html:56
 #: article/templates/article/includes/gallery_article_list.html:6
-#: category/templates/includes/category_cover_image.html:22
-#: category/templates/includes/category_cover_image.html:48
+#: category/templates/includes/category_cover_image.html:30
+#: category/templates/includes/category_cover_image.html:56
 msgid "Languages"
 msgstr ""
 
-#: article/templates/article/article.html:196
+#: article/templates/article/article.html:197
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:52
 msgid "Language"
 msgstr ""
 
-#: article/templates/article/article.html:226
+#: article/templates/article/article.html:227
 msgid "Read the story in pictures"
 msgstr ""
 
-#: article/templates/article/article.html:238
+#: article/templates/article/article.html:239
 msgid "Print this story"
 msgstr ""
 
-#: article/templates/article/article.html:251
+#: article/templates/article/article.html:252
 msgid "See more from this region"
 msgstr ""
 
-#: article/templates/article/article.html:297
+#: article/templates/article/article.html:303
 msgid "RELATED STORIES"
 msgstr ""
 
-#: article/templates/article/includes/article_list.html:31
-#: core/templates/core/home_page.html:274
-#: core/templates/core/home_page.html:319
+#: article/templates/article/includes/article_list.html:32
+#: core/templates/core/home_page.html:301
+#: core/templates/core/home_page.html:348
 msgid "languages"
 msgstr ""
 
-#: article/templates/article/includes/article_list.html:54
+#: article/templates/article/includes/article_list.html:55
 #: article/templates/article/includes/gallery_article_list.html:35
 msgid "No articles available for "
 msgstr ""
 
-#: article/templates/article/includes/article_list.html:57
-#: category/templates/includes/category_cover_image.html:56
-#: category/templates/includes/category_cover_image.html:61
+#: article/templates/article/includes/article_list.html:58
+#: category/templates/includes/category_cover_image.html:64
+#: category/templates/includes/category_cover_image.html:69
 #, python-format
 msgid "%(tlang)s"
 msgstr ""
 
-#: article/templates/article/includes/article_list.html:58
+#: article/templates/article/includes/article_list.html:59
 msgid " in this category."
 msgstr ""
 
-#: article/templates/article/includes/article_list.html:61
+#: article/templates/article/includes/article_list.html:62
 #: article/templates/article/includes/gallery_article_list.html:41
 msgid "Please help us"
 msgstr ""
 
-#: article/templates/article/includes/article_list.html:63
+#: article/templates/article/includes/article_list.html:64
 #: article/templates/article/includes/gallery_article_list.html:43
 msgid "translate."
 msgstr ""
@@ -193,12 +197,16 @@ msgstr ""
 msgid "You can contact the translator here:"
 msgstr ""
 
-#: category/templates/category/category_detail.html:4
+#: author/wagtail_hooks.py:21 search/templates/includes/search_filters.html:96
+msgid "Authors"
+msgstr ""
+
+#: category/templates/category/category_detail.html:5
 #: category/templates/category/gallery_detail.html:4
 msgid "Page"
 msgstr ""
 
-#: category/templates/category/category_detail.html:6
+#: category/templates/category/category_detail.html:7
 msgid "one of many story categories at PARI"
 msgstr ""
 
@@ -262,7 +270,7 @@ msgid "View this Talking Album"
 msgstr ""
 
 #: category/templates/category/gallery_home_page.html:89
-#: core/templates/core/home_page.html:484
+#: core/templates/core/home_page.html:515
 msgid "View all Talking Albums"
 msgstr ""
 
@@ -275,7 +283,7 @@ msgid "View this video"
 msgstr ""
 
 #: category/templates/category/gallery_home_page.html:93
-#: core/templates/core/home_page.html:510
+#: core/templates/core/home_page.html:541
 #: core/templates/pages/menus/dropdown.html:112
 msgid "View all videos"
 msgstr ""
@@ -285,7 +293,7 @@ msgid "View this Photo Album"
 msgstr ""
 
 #: category/templates/category/gallery_home_page.html:97
-#: core/templates/core/home_page.html:537
+#: core/templates/core/home_page.html:568
 msgid "View all Photo Albums"
 msgstr ""
 
@@ -293,61 +301,47 @@ msgstr ""
 msgid "All Categories"
 msgstr ""
 
-#: category/templates/includes/category_cover_image.html:51
+#: category/templates/includes/category_cover_image.html:59
 #: core/templates/includes/language_select.html:4
 msgid "All"
 msgstr ""
 
-#: core/forms.py:15
-msgid "NAME"
+#: core/apps.py:28
+msgid ""
+"Enter a valid 'slug' consisting of letters, numbers, underscores or hyphens."
 msgstr ""
 
-#: core/forms.py:20
-msgid "EMAIL"
+#: core/models.py:110 core/models.py:116
+msgid "Please add a page"
 msgstr ""
 
-#: core/forms.py:24
-msgid "PHONE NUMBER"
+#: core/models.py:220
+msgid "HomePage"
 msgstr ""
 
-#: core/forms.py:28
-msgid "ADDRESS"
+#: core/models.py:308
+msgid "GuidelinesPage"
 msgstr ""
 
-#: core/forms.py:33
-msgid "PAN NUMBER"
+#: core/models.py:321
+msgid "Please add photographers to the image"
 msgstr ""
 
-#: core/forms.py:36
-msgid "PAN is required as per government regulations."
+#: core/models.py:380
+msgid "GalleryHomePage"
 msgstr ""
 
-#: core/forms.py:40
-msgid "I declare that I am an Indian citizen"
-msgstr ""
-
-#: core/forms.py:42
-msgid "At this moment, we can accept donations from Indians only"
-msgstr ""
-
-#: core/forms.py:48
-msgid "Sorry, we can accept donations from Indians only."
-msgstr ""
-
-#: core/templates/base.html:81 core/templates/core/about.html:166
+#: core/templates/base.html:82 core/templates/core/about.html:166
 #: core/templates/pages/menus/dropdown.html:11
+#: search/templates/includes/search_filters.html:39
 msgid "CATEGORIES"
 msgstr ""
 
-#: core/templates/base.html:113 core/templates/base.html.py:117
+#: core/templates/base.html:115
 msgid "People's Archive of Rural India"
 msgstr ""
 
-#: core/templates/base.html:114 core/templates/base.html.py:118
-msgid "THE EVERYDAY LIVES OF EVERYDAY PEOPLE"
-msgstr ""
-
-#: core/templates/core/about.html:4 core/templates/core/home_page.html:366
+#: core/templates/core/about.html:4 core/templates/core/home_page.html:397
 #: core/templates/pages/menus/dropdown.html:195
 #: core/templates/pages/menus/footer.html:55
 msgid "The story of PARI"
@@ -573,7 +567,7 @@ msgid ""
 "the next few years."
 msgstr ""
 
-#: core/templates/core/about.html:189 core/templates/core/about.html.py:207
+#: core/templates/core/about.html:189 core/templates/core/about.html:207
 #: core/templates/core/about.html:224 core/templates/pages/menus/footer.html:7
 msgid "Explore"
 msgstr ""
@@ -646,7 +640,7 @@ msgid ""
 msgstr ""
 
 #: core/templates/core/about.html:260
-#: core/templates/core/acknowledgements.html:271
+#: core/templates/core/acknowledgements.html:270
 msgid "Founder Editor, PARI"
 msgstr ""
 
@@ -681,7 +675,7 @@ msgid ""
 "Section 80G of the Income Tax Act, 1961."
 msgstr ""
 
-#: core/templates/core/about.html:287 core/templates/core/donate.html:112
+#: core/templates/core/about.html:287 core/templates/core/donate.html:109
 msgid "Send donation"
 msgstr ""
 
@@ -697,8 +691,8 @@ msgid ""
 "everyday lives of everyday people."
 msgstr ""
 
-#: core/templates/core/about.html:298 core/templates/core/about.html.py:308
-#: core/templates/core/home_page.html:448
+#: core/templates/core/about.html:298 core/templates/core/about.html:308
+#: core/templates/core/home_page.html:479
 msgid "Learn more"
 msgstr ""
 
@@ -714,23 +708,23 @@ msgid ""
 "students and teachers themselves."
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:3
+#: core/templates/core/acknowledgements.html:4
 #: core/templates/pages/menus/dropdown.html:228
 #: core/templates/pages/menus/footer.html:70
 msgid "Acknowledgements"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:4
+#: core/templates/core/acknowledgements.html:5
 msgid ""
 "We are greatly indebted to the volunteers, journalists, filmmakers and other "
 "contributors who continue to gift us so much time and labour."
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:18
+#: core/templates/core/acknowledgements.html:19
 msgid "Acknowledgments"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:20
+#: core/templates/core/acknowledgements.html:21
 #, python-format
 msgid ""
 "It was the Founder Chairman of <a href=\"https://www.thoughtworks.com/\" "
@@ -743,13 +737,13 @@ msgid ""
 "effort on <a href=%(women)s>Visible Work, Invisible Women</a>."
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:27
+#: core/templates/core/acknowledgements.html:28
 msgid ""
 "At every stage, subsequently, Roy’s ideas and energy pushed forward the "
 "making of PARI. No acknowledgement of his contribution can be strong enough."
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:30
+#: core/templates/core/acknowledgements.html:31
 msgid ""
 "When PARI was still a fledgling notion, Prof. Ananya Mukherjee-Reed, now "
 "Dean of Faculty, Liberal Arts & Professional Studies of York University, "
@@ -758,7 +752,7 @@ msgid ""
 "influence."
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:34
+#: core/templates/core/acknowledgements.html:35
 msgid ""
 "Volunteer techies from ThoughtWorks India made the PARI platform possible. "
 "Without them, none of this would have materialised. Many helped in "
@@ -767,7 +761,7 @@ msgid ""
 "was and is central to our overall effort."
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:39
+#: core/templates/core/acknowledgements.html:40
 msgid ""
 "As PARI enters Phase 2 of its existence, we have Aditya Dipankar making an "
 "astonishing difference to the website’s design and appearance. We also have "
@@ -775,418 +769,419 @@ msgid ""
 "launch, on all matters tech and some beyond."
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:43
+#: core/templates/core/acknowledgements.html:44
 msgid "Scores of others helped in big and many ways"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:53
+#: core/templates/core/acknowledgements.html:54
 msgid "Software Development Team: Launch Phase"
 msgstr ""
 
 #. Translators: If your target language uses a non-Roman script, please do your best to transliterate the names that follow.
-#: core/templates/core/acknowledgements.html:56
-msgid "Anilkumar Kodi "
-msgstr ""
-
 #: core/templates/core/acknowledgements.html:57
-msgid "Aruna Shanmugakumar"
+msgid "Anilkumar Kodi"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:58
-msgid "Arvind Ram A."
+msgid "Aruna Shanmugakumar"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:59
-msgid "Balachander Swaminathan"
+msgid "Arvind Ram A."
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:60
-msgid "Devarajan N."
+msgid "Balachander Swaminathan"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:61
-msgid "Dinesh Kumar"
+msgid "Devarajan N."
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:62
-msgid "Gaurav Manoharrav Ingalkar"
+msgid "Dinesh Kumar"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:63
-msgid "Gopinath Jayabalan"
+msgid "Gaurav Manoharrav Ingalkar"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:64
-msgid "Gowri Jayalakshmi R."
+msgid "Gopinath Jayabalan"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:65
-msgid "Jayakumar Chinnappan (Tech Lead, final lap)"
+msgid "Gowri Jayalakshmi R."
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:66
-msgid "Jeyakar J. Vaiz"
+msgid "Jayakumar Chinnappan (Tech Lead, final lap)"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:67
-msgid "Manoj S. Mahalingam (Tech Lead)"
+msgid "Jeyakar J. Vaiz"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:68
-msgid "Mohit Shankarrao Pote "
+msgid "Manoj S. Mahalingam (Tech Lead)"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:69
-msgid "Mubashar Nadeem Sibgathullah "
+msgid "Mohit Shankarrao Pote"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:70
-msgid "Pradipta Kundu"
+msgid "Mubashar Nadeem Sibgathullah"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:71
-msgid "Raj Kumar"
+msgid "Pradipta Kundu"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:72
-msgid "Ram Ramalingam"
+msgid "Raj Kumar"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:73
-msgid "Ramalingam Singaravel"
+msgid "Ram Ramalingam"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:74
-#: core/templates/core/acknowledgements.html:109
-#: core/templates/core/acknowledgements.html:238
-msgid "Satish Viswanathan"
+msgid "Ramalingam Singaravel"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:75
-msgid "Senthil V. S. "
+#: core/templates/core/acknowledgements.html:110
+#: core/templates/core/acknowledgements.html:236
+msgid "Satish Viswanathan"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:76
-msgid "Suganthi Krishnavathi T. "
+msgid "Senthil V. S."
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:77
-msgid "Thejaswi Puthraya "
+msgid "Suganthi Krishnavathi T."
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:78
-msgid "Vivek Singh "
+#: core/templates/core/acknowledgements.html:245
+msgid "Thejaswi Puthraya"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:84
-msgid "Logistics Team"
+#: core/templates/core/acknowledgements.html:79
+msgid "Vivek Singh"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:85
-msgid "Baskar G."
+msgid "Logistics Team"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:86
-msgid "Karthik T. "
+msgid "Baskar G."
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:87
-msgid "Poornima R. S."
+msgid "Karthik T."
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:88
+msgid "Poornima R. S."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:89
 msgid "Ratnakar Nath"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:90
+#: core/templates/core/acknowledgements.html:91
 msgid "Swecha Technology Team"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:91
+#: core/templates/core/acknowledgements.html:92
 msgid "Bhuvan Krishna"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:92
+#: core/templates/core/acknowledgements.html:93
 msgid "Kiran Chandra"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:93
+#: core/templates/core/acknowledgements.html:94
 #: core/templates/core/acknowledgements.html:228
 msgid "Praveen Chandrahas"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:96
+#: core/templates/core/acknowledgements.html:97
 msgid "Digital Archivist"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:97
+#: core/templates/core/acknowledgements.html:98
 msgid "Venkataraaman S."
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:100
+#: core/templates/core/acknowledgements.html:101
 msgid "Software Development Team: Design Phase"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:101
+#: core/templates/core/acknowledgements.html:102
 msgid "Deepan Rajkumar R."
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:102
+#: core/templates/core/acknowledgements.html:103
 msgid "Deepthi R. (Tech Lead)"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:103
+#: core/templates/core/acknowledgements.html:104
 msgid "Gayathri M. (Team Lead)"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:104
+#: core/templates/core/acknowledgements.html:105
 msgid "Jayakumar Chinnappan (Tech Lead)"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:105
+#: core/templates/core/acknowledgements.html:106
 msgid "Lokesh Sharma"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:106
-msgid "Nimesh Pulikkaparambil"
+#: core/templates/core/acknowledgements.html:107
+msgid "Nimesh Pulikaparambil"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:107
+#: core/templates/core/acknowledgements.html:108
 #: core/templates/core/acknowledgements.html:226
 msgid "Olivia Waring"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:108
+#: core/templates/core/acknowledgements.html:109
 msgid "Sankar Parameswaran"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:110
+#: core/templates/core/acknowledgements.html:111
 msgid "Venkatesa Madhan"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:111
+#: core/templates/core/acknowledgements.html:112
 msgid "Vidhyalakshimi S."
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:112
+#: core/templates/core/acknowledgements.html:113
 msgid "Vinoth Kumar R."
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:116
+#: core/templates/core/acknowledgements.html:117
 msgid "Inception Team"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:117
+#: core/templates/core/acknowledgements.html:118
 msgid "David Siang Fong Oh"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:118
+#: core/templates/core/acknowledgements.html:119
 msgid "Kartik Kannan"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:119
+#: core/templates/core/acknowledgements.html:120
 msgid "Koundinya Goparaju"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:120
+#: core/templates/core/acknowledgements.html:121
 msgid "Nikhileshwar Gamedhar"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:121
+#: core/templates/core/acknowledgements.html:122
 msgid "Ruchi Mahajan"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:122
+#: core/templates/core/acknowledgements.html:123
 msgid "Shashank Raghavendra"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:124
+#: core/templates/core/acknowledgements.html:125
 msgid "Design Team"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:125
+#: core/templates/core/acknowledgements.html:126
 msgid "Aditya Dipankar (Team Lead)"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:126
+#: core/templates/core/acknowledgements.html:127
 msgid "Gaurav Sharma"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:127
+#: core/templates/core/acknowledgements.html:128
 msgid "Samir Bellare"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:128
+#: core/templates/core/acknowledgements.html:129
 msgid "Shiraz Iqbal"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:129
+#: core/templates/core/acknowledgements.html:130
 msgid "Suvani Suri"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:132
+#: core/templates/core/acknowledgements.html:133
 msgid "Legal Advisers"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:133
+#: core/templates/core/acknowledgements.html:134
 msgid "Rina Kamath"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:134
+#: core/templates/core/acknowledgements.html:135
 #: core/templates/core/acknowledgements.html:231
 msgid "Rishab Bailey"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:141
+#: core/templates/core/acknowledgements.html:142
 msgid "Translators"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:146
+#: core/templates/core/acknowledgements.html:147
 msgid "Crazy Frog Media Team"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:147
+#: core/templates/core/acknowledgements.html:148
 msgid "Mohan G.N. (Lead)"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:148
-msgid "Prasad Naik"
-msgstr ""
-
 #: core/templates/core/acknowledgements.html:149
-msgid "Rajaram Tallur"
-msgstr ""
-
-#: core/templates/core/acknowledgements.html:150
-msgid "Sandhyarani N."
-msgstr ""
-
-#: core/templates/core/acknowledgements.html:151
-msgid "Santosh Tamprapani"
-msgstr ""
-
-#: core/templates/core/acknowledgements.html:152
-msgid "Shama Nandibetta"
-msgstr ""
-
-#: core/templates/core/acknowledgements.html:153
 msgid "Naren H R"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:155
-msgid "Other Translators"
+#: core/templates/core/acknowledgements.html:150
+msgid "Prasad Naik"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:151
+msgid "Rajaram Tallur"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:152
+msgid "Sandhyarani N."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:153
+msgid "Santosh Tamprapani"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:154
+msgid "Shama Nandibetta"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:156
-msgid "Chandan Dey"
+msgid "Other Translators"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:157
-msgid "Chinta T. K."
+msgid "Chandan Dey"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:158
-msgid "Kavitha Muralidharan"
+msgid "Chhaya Deo"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:159
-msgid "Siddharthan Sundaram"
+msgid "Chinta T. K."
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:164
+#: core/templates/core/acknowledgements.html:160
 msgid "Debasmita Bhowmik"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:165
+#: core/templates/core/acknowledgements.html:161
 msgid "Hemant Shah"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:166
+#: core/templates/core/acknowledgements.html:162
 msgid "Jyotsna V."
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:167
-msgid "Medha Kale"
-msgstr ""
-
-#: core/templates/core/acknowledgements.html:168
-msgid "Naren H.R."
-msgstr ""
-
-#: core/templates/core/acknowledgements.html:169
-msgid "Nibha Rani Roy"
-msgstr ""
-
-#: core/templates/core/acknowledgements.html:170
-msgid "Pallavi Kulkarni"
-msgstr ""
-
-#: core/templates/core/acknowledgements.html:171
-msgid "Pallavi Malshe"
-msgstr ""
-
-#: core/templates/core/acknowledgements.html:172
-msgid "Pushpa Kandaswamy"
-msgstr ""
-
-#: core/templates/core/acknowledgements.html:173
-msgid "Qamar Tabrez"
-msgstr ""
-
-#: core/templates/core/acknowledgements.html:174
-msgid "Smita Khator"
-msgstr ""
-
-#: core/templates/core/acknowledgements.html:175
 msgid "Kaushal Kaloo"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:179
+#: core/templates/core/acknowledgements.html:168
+msgid "Kavitha Muralidharan"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:169
+msgid "Medha Kale"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:170
+msgid "Naren H.R."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:171
+msgid "Nibha Rani Roy"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:172
+msgid "Pallavi Kulkarni"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:173
+msgid "Pallavi Malshe"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:174
+msgid "Pushpa Kandaswamy"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:175
+msgid "Qamar Tabrez"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:176
+msgid "Rashmi Rekha Das"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:177
 msgid "Ratna Bharali Talukdar"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:180
+#: core/templates/core/acknowledgements.html:178
 msgid "Saravanan P.K."
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:181
+#: core/templates/core/acknowledgements.html:179
 msgid "Shaji K.A."
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:182
+#: core/templates/core/acknowledgements.html:180
 msgid "Shirish Khare"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:183
+#: core/templates/core/acknowledgements.html:181
 msgid "Siddharth Chakrabarti"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:184
-msgid "Subramanian Sundararaman"
+msgid "Siddharthan Sundaram"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:185
-msgid "Uma Maheshwari"
+msgid "Smita Khator"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:186
-msgid "Usha Turaga-Revelli"
+msgid "Subramanian Sundararaman"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:187
-msgid "Vilasini"
+msgid "Uma Maheshwari"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:188
-msgid "Vishnu Varatharajan"
+msgid "Usha Turaga-Revelli"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:189
-msgid "Chhaya Deo"
+msgid "Vilasini"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:190
-msgid "Rashmi Rekha Das"
+msgid "Vishnu Varatharajan"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:198
@@ -1274,6 +1269,7 @@ msgid "Mausumi Bhattacharyya"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:224
+#: core/templates/core/founders.html:27 core/templates/core/founders.html:55
 msgid "Namita Waikar"
 msgstr ""
 
@@ -1294,73 +1290,71 @@ msgid "Revathi R."
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:232
-msgid "Subuhi Jiwani"
-msgstr ""
-
-#: core/templates/core/acknowledgements.html:233
-msgid "Vishaka George"
-msgstr ""
-
-#: core/templates/core/acknowledgements.html:236
 msgid "Sainath P."
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:237
+#: core/templates/core/acknowledgements.html:233
 msgid "Samyukta Shastri"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:239
+#: core/templates/core/acknowledgements.html:237
 msgid "Shalini Singh"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:240
+#: core/templates/core/acknowledgements.html:238
+#: core/templates/core/founders.html:30 core/templates/core/founders.html:60
 msgid "Sharmila Joshi"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:241
+#: core/templates/core/acknowledgements.html:239
 msgid "Shreya Katyayini"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:242
+#: core/templates/core/acknowledgements.html:240
+#: core/templates/core/founders.html:33 core/templates/core/founders.html:65
 msgid "Siddharth Adelkar"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:243
+#: core/templates/core/acknowledgements.html:241
 msgid "Sinchita Maji"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:244
+#: core/templates/core/acknowledgements.html:242
 msgid "Sweta Daga"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:245
+#: core/templates/core/acknowledgements.html:243
+msgid "Subuhi Jiwani"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:244
 msgid "Sukhada Tatke"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:246
-msgid "Thejaswi Puthraya"
-msgstr ""
-
-#: core/templates/core/acknowledgements.html:247
 msgid "Urvashi Sarkar"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:248
+#: core/templates/core/acknowledgements.html:247
 msgid "Vidyut Kale"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:248
+msgid "Vishaka George"
 msgstr ""
 
 #: core/templates/core/acknowledgements.html:249
 msgid "Zahra Latif"
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:258
+#: core/templates/core/acknowledgements.html:257
 msgid ""
 "A very special thanks to P.R. Gandhi, Kartik Shah, Deepak Soni and Eesha "
 "Thakkar of P.R. Gandhi & Co, Mumbai, and Prakash Shah of Delhi, for their "
 "invaluable assistance."
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:261
+#: core/templates/core/acknowledgements.html:260
 msgid ""
 "We also wish to acknowledge the huge encouragement and support we have got, "
 "and continue to get, from individuals like  Abhijit Dutta, Anil Choudhury, "
@@ -1368,7 +1362,7 @@ msgid ""
 "Prashad."
 msgstr ""
 
-#: core/templates/core/acknowledgements.html:265
+#: core/templates/core/acknowledgements.html:264
 msgid ""
 "We are greatly indebted to the volunteers, journalists, filmmakers and other "
 "contributors who continue to gift us so much time and labour. They are too "
@@ -1377,8 +1371,14 @@ msgid ""
 "of where they are working."
 msgstr ""
 
-#: core/templates/core/contact_us.html:5
-#: core/templates/core/contact_us.html:21
+#: core/templates/core/acknowledgements.html:269
+#: core/templates/core/donate.html:150 core/templates/core/founders.html:19
+#: core/templates/core/founders.html:44
+#: core/templates/pages/menus/dropdown.html:267
+msgid "P. Sainath"
+msgstr ""
+
+#: core/templates/core/contact_us.html:5 core/templates/core/contact_us.html:21
 msgid "Contact PARI"
 msgstr ""
 
@@ -1390,28 +1390,41 @@ msgstr ""
 msgid "TO CONTRIBUTE CONTENT"
 msgstr ""
 
-#: core/templates/core/contact_us.html:25
+#: core/templates/core/contact_us.html:24
+#, python-format
+msgid ""
+"Please visit the <a href=\"https://script.google.com/macros/s/"
+"AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec\" target="
+"\"_blank\"> content upload form</a> and the <a href=\"%(guidelines_url)s"
+"\">guidelines</a> for details."
+msgstr ""
+
+#: core/templates/core/contact_us.html:30
 msgid "TO DONATE TO PARI"
 msgstr ""
 
-#: core/templates/core/contact_us.html:26
+#: core/templates/core/contact_us.html:31
 #, python-format
 msgid "Do see our <a href=\"%(donate_url)s\">donate</a> page for details."
 msgstr ""
 
-#: core/templates/core/contact_us.html:28
+#: core/templates/core/contact_us.html:33
 msgid "WANT TO VOLUNTEER FOR PARI?"
 msgstr ""
 
-#: core/templates/core/contact_us.html:29
+#: core/templates/core/contact_us.html:34
 msgid "Help us understand your skills and interests by filling up this"
 msgstr ""
 
-#: core/templates/core/contact_us.html:32
+#: core/templates/core/contact_us.html:37
 msgid "OTHER QUESTIONS?"
 msgstr ""
 
-#: core/templates/core/contact_us.html:48
+#: core/templates/core/contact_us.html:38
+msgid "Write to us using this form:"
+msgstr ""
+
+#: core/templates/core/contact_us.html:53
 msgid "Send"
 msgstr ""
 
@@ -1481,48 +1494,48 @@ msgid ""
 "\"%(guidelines)s#section-1-7\"><u>guidelines</u></a> for FACES."
 msgstr ""
 
-#: core/templates/core/contribute.html:4
+#: core/templates/core/contribute.html:5
 #, python-format
 msgid " Contribute to %(site_name)s "
 msgstr ""
 
-#: core/templates/core/contribute.html:6
+#: core/templates/core/contribute.html:7
 msgid ""
 "Join us in building a unique national knowledge repository on rural India. "
 "We need writers, editors, photographers, filmmakers, translators, "
 "researchers, and more."
 msgstr ""
 
-#: core/templates/core/contribute.html:21
+#: core/templates/core/contribute.html:22
 msgid "India’s biggest archive of itself needs everyone to participate"
 msgstr ""
 
-#: core/templates/core/contribute.html:22
+#: core/templates/core/contribute.html:23
 msgid "COVER YOUR COUNTRY – HERE’S HOW"
 msgstr ""
 
-#: core/templates/core/contribute.html:23
+#: core/templates/core/contribute.html:24
 msgid ""
 "Join us in building a unique national knowledge repository on rural India."
 msgstr ""
 
-#: core/templates/core/contribute.html:24
+#: core/templates/core/contribute.html:25
 msgid "You can start by telling us something about yourself."
 msgstr ""
 
-#: core/templates/core/contribute.html:26
+#: core/templates/core/contribute.html:27
 msgid "Fill the profile form"
 msgstr ""
 
-#: core/templates/core/contribute.html:30
+#: core/templates/core/contribute.html:31
 msgid "CONTRIBUTE CONTENT"
 msgstr ""
 
-#: core/templates/core/contribute.html:35
+#: core/templates/core/contribute.html:36
 msgid "Write / Edit / Photograph"
 msgstr ""
 
-#: core/templates/core/contribute.html:38
+#: core/templates/core/contribute.html:39
 msgid ""
 "You could write content for existing films or edit content that has been "
 "written but needs the careful eye of an editor. You can also write "
@@ -1532,15 +1545,15 @@ msgid ""
 "written content into different languages."
 msgstr ""
 
-#: core/templates/core/contribute.html:48
+#: core/templates/core/contribute.html:49
 msgid ""
 "Help us understand your skills and interests by filling in this <a href="
-"\"https://docs.google.com/forms/d/1IbwsyjTovsTnlSb2yC-"
-"KkkBlR_rPWOnGepi7XBD4b_k/viewform?usp=send_form\" target=\"_blank\">Profile "
-"Form</a>."
+"\"https://docs.google.com/forms/d/"
+"e/1FAIpQLScfpZfiT28pInGrwKxiIkVrztNMzATkOHmgEXfJwcgkT8nLkg/viewform\" target="
+"\"_blank\">Profile Form</a>."
 msgstr ""
 
-#: core/templates/core/contribute.html:54
+#: core/templates/core/contribute.html:55
 msgid ""
 "Upload your articles, photos, document with content ideas through the <a "
 "href=\"https://script.google.com/macros/s/"
@@ -1548,7 +1561,7 @@ msgid ""
 "\"_blank\">Content Upload Form</a>."
 msgstr ""
 
-#: core/templates/core/contribute.html:60
+#: core/templates/core/contribute.html:61
 msgid ""
 "To contribute to the Faces category, upload the photos and details through "
 "the <a href=\"https://script.google.com/macros/s/"
@@ -1556,11 +1569,11 @@ msgid ""
 "\"_blank\">Faces Form</a>."
 msgstr ""
 
-#: core/templates/core/contribute.html:69
+#: core/templates/core/contribute.html:70
 msgid "Make a film"
 msgstr ""
 
-#: core/templates/core/contribute.html:72
+#: core/templates/core/contribute.html:73
 msgid ""
 "You can produce content for the archive by making films like the ones you "
 "already see on this website, so long as these are within PARI’s mandate and "
@@ -1574,11 +1587,11 @@ msgid ""
 "target=\"_blank\">Content Upload Form</a>."
 msgstr ""
 
-#: core/templates/core/contribute.html:89
+#: core/templates/core/contribute.html:90
 msgid "Research"
 msgstr ""
 
-#: core/templates/core/contribute.html:92
+#: core/templates/core/contribute.html:93
 #, python-format
 msgid ""
 "Find online content already on the archive and send us links to it. Or "
@@ -1593,37 +1606,39 @@ msgid ""
 "om2cdjH0d_BRt0L1b5aA/exec\" target=\"_blank\">Content Upload Form</a>."
 msgstr ""
 
-#: core/templates/core/contribute.html:110
+#: core/templates/core/contribute.html:111
 msgid "Translate"
 msgstr ""
 
-#: core/templates/core/contribute.html:112
+#: core/templates/core/contribute.html:113
 msgid ""
 "Help us by translating content into Indian languages. Please help us "
 "understand your skills and interests by filling in this <a href=\"https://"
-"docs.google.com/forms/d/1IbwsyjTovsTnlSb2yC-KkkBlR_rPWOnGepi7XBD4b_k/"
-"viewform?usp=send_form\" target=\"_blank\">Profile Form</a>."
+"docs.google.com/forms/d/"
+"e/1FAIpQLScfpZfiT28pInGrwKxiIkVrztNMzATkOHmgEXfJwcgkT8nLkg/viewform\" target="
+"\"_blank\">Profile Form</a>."
 msgstr ""
 
-#: core/templates/core/contribute.html:121
+#: core/templates/core/contribute.html:122
+#: search/templates/includes/search_filters.html:31
 msgid "FACES"
 msgstr ""
 
-#: core/templates/core/contribute.html:123
+#: core/templates/core/contribute.html:124
 msgid ""
 "Do you have FACES to contribute to the only and largest database recording "
 "India’s facial diversity?"
 msgstr ""
 
-#: core/templates/core/contribute.html:125
+#: core/templates/core/contribute.html:126
 msgid "Contribute to Faces"
 msgstr ""
 
-#: core/templates/core/contribute.html:133
+#: core/templates/core/contribute.html:134
 msgid "READY TO UPLOAD?"
 msgstr ""
 
-#: core/templates/core/contribute.html:135
+#: core/templates/core/contribute.html:136
 #, python-format
 msgid ""
 "Is your content ready to upload? Do go through the <a href="
@@ -1631,26 +1646,26 @@ msgid ""
 "required."
 msgstr ""
 
-#: core/templates/core/contribute.html:139
+#: core/templates/core/contribute.html:140
 msgid "Upload content"
 msgstr ""
 
-#: core/templates/core/contribute.html:144
+#: core/templates/core/contribute.html:145
 msgid "DONATE – SUPPORT A PARI PROJECT"
 msgstr ""
 
-#: core/templates/core/contribute.html:145
+#: core/templates/core/contribute.html:146
 msgid ""
 "You can back ongoing PARI projects by funding them. Or pitch one yourself on "
 "an aspect of rural India from your home state or district that you believe "
 "demands attention."
 msgstr ""
 
-#: core/templates/core/contribute.html:147 core/templates/core/donate.html:4
-#: core/templates/core/donate.html.py:131
-#: core/templates/core/home_page.html:551
-#: core/templates/pages/menus/dropdown.html:280
+#: core/templates/core/contribute.html:148 core/templates/core/donate.html:4
+#: core/templates/core/donate.html:129 core/templates/core/home_page.html:582
+#: core/templates/pages/menus/dropdown.html:285
 #: core/templates/pages/menus/footer.html:85
+#: donation/templates/donation/donate_form.html:17
 msgid "Donate to PARI"
 msgstr ""
 
@@ -1751,7 +1766,7 @@ msgid ""
 "particularly of 833 million rural citizens. Of their labour, crafts, "
 "stories, songs, poems, art and more. The network of Fellows we build will "
 "also reflect the social composition of the country. Half of the nearly 100 "
-"Fellows will be women.  And Dalit journalists, Adivasi journalists and those "
+"Fellows will be women. And Dalit journalists, Adivasi journalists and those "
 "from the minorities, will also be represented in a fair manner. Many stories "
 "will be told directly by everyday people themselves. Among other legacies, "
 "this will give generations of students, all our children, living textbooks "
@@ -1801,222 +1816,48 @@ msgstr ""
 #: core/templates/core/donate.html:105
 msgid ""
 "You can send in donations using a range of payment methods. All donations "
-"made to the CounterMedia Trust are <u>eligible for exemption</u> under "
-"Section 80G of the Income Tax Act, 1961."
+"made to the CounterMedia Trust are <a href=\"/media/uploads/"
+"Donate/80g_certificate.jpg\" target=\"_blank\">eligible for exemption</a> "
+"under Section 80G of the Income Tax Act, 1961."
 msgstr ""
 
-#: core/templates/core/donate.html:110
-#, python-format
-msgid ""
-"Please see the <a href=%(donate_form)s >donations page</a> for more details."
-msgstr ""
-
-#: core/templates/core/donate.html:115
+#: core/templates/core/donate.html:112
 msgid "Donate equipment"
 msgstr ""
 
-#: core/templates/core/donate.html:117
+#: core/templates/core/donate.html:115
 msgid ""
 "If you would like to send over equipment (new or used) that PARI Fellows and "
-"rural contributors could use, please get in touch. That could include still "
-"and video cameras, audio digital recorders, laptops, hard disks and other "
-"equipment."
+"rural contributors could use, please get in <a href=\"mailto:"
+"contact@ruralindiaonline.org\">touch</a>. That could include still and video "
+"cameras, audio digital recorders, laptops, hard disks and other equipment."
 msgstr ""
 
-#: core/templates/core/donate.html:124
+#: core/templates/core/donate.html:122
 msgid "Share the message in your network"
 msgstr ""
 
-#: core/templates/core/donate.html:126
+#: core/templates/core/donate.html:124
 msgid ""
 "Ask your friends to connect and contribute to this endeavour. Help us cover "
 "your country. Join us in building a unique national knowledge repository on "
-"rural India"
+"rural India."
 msgstr ""
 
-#: core/templates/core/donate.html:145
-msgid "FAQs"
-msgstr ""
-
-#: core/templates/core/donate.html:147
-msgid "I sent PARI a donation. How do I get a receipt?"
-msgstr ""
-
-#: core/templates/core/donate.html:150
-msgid "I live in the U.S. Can I send PARI a donation?"
-msgstr ""
-
-#: core/templates/core/donate.html:153
-msgid "Is there any other way in which I can contribute?"
-msgstr ""
-
-#: core/templates/core/donate.html:160
+#: core/templates/core/donate.html:141
 msgid ""
 "A lot more, actually, but PARI’s core group and volunteers bear significant "
-"costs, personally. We appeal  to you to contribute generously and make this "
+"costs, personally. We appeal to you to contribute generously and make this "
 "unique journalistic effort a success. We can do this without governments and "
 "corporations – and will. We can’t do it without you."
 msgstr ""
 
-#: core/templates/core/donate.html:167
+#: core/templates/core/donate.html:148
 msgid "Thanking you"
 msgstr ""
 
-#: core/templates/core/donate.html:168
+#: core/templates/core/donate.html:149
 msgid "Sincerely"
-msgstr ""
-
-#: core/templates/core/donate_form.html:4
-#: core/templates/core/donate_success.html:4
-#, python-format
-msgid "Donate to %(site_name)s"
-msgstr ""
-
-#: core/templates/core/donate_form.html:15
-msgid "Donate to the People's Archive of Rural India"
-msgstr ""
-
-#: core/templates/core/donate_form.html:16
-msgid ""
-"At present, we can only accept donations in Indian rupees by Indian "
-"citizens. All donations made to the <strong>CounterMedia Trust</strong> are "
-"eligible for exemption under Section 80G of the Income Tax Act, 1961. Here "
-"is a copy of our <a href=\"/media/uploads/Donate/80g_certificate.jpg\" "
-"target=\"_blank\">exemption certificate.</a>"
-msgstr ""
-
-#: core/templates/core/donate_form.html:21
-msgid "PERSONAL INFO"
-msgstr ""
-
-#: core/templates/core/donate_form.html:32
-msgid ""
-"You will be redirected to Instamojo where you can complete the donation "
-"either through a credit/debit card or net banking."
-msgstr ""
-
-#: core/templates/core/donate_form.html:34
-msgid "Payments powered by"
-msgstr ""
-
-#: core/templates/core/donate_form.html:41
-msgid "PAYMENT BY CHEQUE OR DEMAND DRAFT"
-msgstr ""
-
-#: core/templates/core/donate_form.html:42
-msgid ""
-"Pay by cheque/DD in favour of the <strong>“CounterMedia Trust”</strong> and "
-"send it to us by courier/post along with your contact details – name, "
-"address, telephone number, e-mail ID and PAN number."
-msgstr ""
-
-#: core/templates/core/donate_form.html:43
-msgid ""
-"Send by courier / post to:<br/><strong> CounterMedia Trust</strong><br/> c/o P. Sainath, 27/43 Sagar Sangam, Bandra "
-"Reclamation, Mumbai 400050, Maharashtra, India."
-msgstr ""
-
-#: core/templates/core/donate_form.html:46
-msgid "PAYMENT BY BANK/ WIRE TRANSFER"
-msgstr ""
-
-#: core/templates/core/donate_form.html:47
-msgid "Payable to: <strong>CounterMedia Trust</strong>"
-msgstr ""
-
-#: core/templates/core/donate_form.html:48
-msgid ""
-"Bank and branch: HDFC Bank, Aundh<br/> Address: 93, Anand Park, Rajyog "
-"Creations, Off ITI Road, Aundh, Pune 411007, Maharashtra.<br/> Account "
-"Number: 50100091804541<br/> MICR Code: 411240005<br/> IFSC Code: HDFC0000052"
-msgstr ""
-
-#: core/templates/core/donate_form.html:54
-msgid ""
-"And send an email to donate@ruralindiaonline.org mentioning the transaction "
-"reference number, amount and date of transfer, along with your contact "
-"details."
-msgstr ""
-
-#: core/templates/core/donate_form.html:55
-#: core/templates/core/donate_form.html:92
-msgid "Please fill the form below after you have sent in your donation."
-msgstr ""
-
-#: core/templates/core/donate_form.html:58
-msgid "IMPS"
-msgstr ""
-
-#: core/templates/core/donate_form.html:59
-msgid ""
-"Payment by mobile phone using Immediate Payment Service (IMPS).<br/>  Please go through the following methods of mobile payment enabled by the "
-"National Payments Corporation of India (NPCI)."
-msgstr ""
-
-#: core/templates/core/donate_form.html:63
-msgid ""
-"The following has been reproduced from <a href=\"http://www.npci.org.in/"
-"documents/FAQs-NUUP.pdf\" target=\"_blank\">http://www.npci.org.in/documents/"
-"FAQs-NUUP.pdf</a>"
-msgstr ""
-
-#: core/templates/core/donate_form.html:64
-msgid "Fund transfer using IFSC and account number:"
-msgstr ""
-
-#: core/templates/core/donate_form.html:68
-msgid "Dial *99# from your mobile handset."
-msgstr ""
-
-#: core/templates/core/donate_form.html:71
-msgid ""
-"The NUUP welcome screen will appear asking you to enter your bank’s 4-digit "
-"IFS code."
-msgstr ""
-
-#: core/templates/core/donate_form.html:74
-msgid ""
-"After entering a valid IFS code, the NUUP menu will appear with different "
-"options of available services enabled for your bank."
-msgstr ""
-
-#: core/templates/core/donate_form.html:77
-msgid "Enter 4 for Fund Transfer using IFSC and account number and submit."
-msgstr ""
-
-#: core/templates/core/donate_form.html:80
-msgid ""
-"On subsequent screens enter the MPIN and the last 4 digits of the account "
-"number (optional)."
-msgstr ""
-
-#: core/templates/core/donate_form.html:82
-msgid "Beneficiary account number"
-msgstr ""
-
-#: core/templates/core/donate_form.html:83
-msgid "IFS code"
-msgstr ""
-
-#: core/templates/core/donate_form.html:84
-msgid "Amount"
-msgstr ""
-
-#: core/templates/core/donate_form.html:85
-msgid "Remarks (optional) will appear."
-msgstr ""
-
-#: core/templates/core/donate_form.html:89
-msgid "A confirmation screen will appear."
-msgstr ""
-
-#: core/templates/core/donate_form.html:102
-msgid "THE FORM"
-msgstr ""
-
-#: core/templates/core/donate_success.html:10
-#, python-format
-msgid " Thank you for donating to %(site_name)s. "
 msgstr ""
 
 #: core/templates/core/founders.html:3
@@ -2067,6 +1908,10 @@ msgid ""
 "\"http://www.psainath.org/\" target=\"_blank\">www.psainath.org.</a>"
 msgstr ""
 
+#: core/templates/core/founders.html:24 core/templates/core/founders.html:50
+msgid "Binaifer Bharucha"
+msgstr ""
+
 #: core/templates/core/founders.html:25
 msgid ""
 "Binaifer Bharucha is PARI’s Photo Editor and a freelance photographer based "
@@ -2104,11 +1949,11 @@ msgstr ""
 
 #: core/templates/core/founders.html:31
 msgid ""
-"Sharmila Joshi is the Editorial Chief at PARI. Her work includes overseeing, "
-"editing and presenting PARI’s complex content from innumerable parts of the "
-"country. She also manages a pool of voluntary editors and trains editorial "
-"interns. She has a significant role in shaping our site’s editorial and "
-"ethical protocols."
+"Sharmila Joshi is the Executive Editor at PARI. Her work includes "
+"overseeing, editing and presenting PARI’s complex content from innumerable "
+"parts of the country. She also manages a pool of voluntary editors and "
+"trains editorial interns. She has a significant role in shaping our site’s "
+"editorial and ethical protocols."
 msgstr ""
 
 #: core/templates/core/founders.html:32
@@ -2140,6 +1985,10 @@ msgid ""
 "University of Southern California."
 msgstr ""
 
+#: core/templates/core/founders.html:38
+msgid "People"
+msgstr ""
+
 #: core/templates/core/founders.html:43
 msgid "FOUNDER EDITOR"
 msgstr ""
@@ -2153,7 +2002,7 @@ msgid "MANAGING EDITOR"
 msgstr ""
 
 #: core/templates/core/founders.html:59
-msgid "EDITORIAL CHIEF"
+msgid "EXECUTIVE EDITOR"
 msgstr ""
 
 #: core/templates/core/founders.html:64
@@ -2181,64 +2030,64 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: core/templates/core/home_page.html:182
+#: core/templates/core/home_page.html:203
 msgid "Read/ Watch/ Listen"
 msgstr ""
 
-#: core/templates/core/home_page.html:232
+#: core/templates/core/home_page.html:256
 msgid "IN FOCUS"
 msgstr ""
 
-#: core/templates/core/home_page.html:339
+#: core/templates/core/home_page.html:370
 msgid "All that you can discover on PARI"
 msgstr ""
 
-#: core/templates/core/home_page.html:360
+#: core/templates/core/home_page.html:391
 msgid "PARI is an insane project"
 msgstr ""
 
-#: core/templates/core/home_page.html:364
+#: core/templates/core/home_page.html:395
 msgid "Rural India — a living journal, a breathing archive"
 msgstr ""
 
-#: core/templates/core/home_page.html:371
+#: core/templates/core/home_page.html:402
 msgid "Here's how you can contribute"
 msgstr ""
 
-#: core/templates/core/home_page.html:415
+#: core/templates/core/home_page.html:446
 msgid "and a wonderful one"
 msgstr ""
 
-#: core/templates/core/home_page.html:440
+#: core/templates/core/home_page.html:471
 msgid "Stories from all over in all languages"
 msgstr ""
 
-#: core/templates/core/home_page.html:442
+#: core/templates/core/home_page.html:473
 msgid "Browse all Categories"
 msgstr ""
 
-#: core/templates/core/home_page.html:446
+#: core/templates/core/home_page.html:477
 msgid "Translate for PARI"
 msgstr ""
 
-#: core/templates/core/home_page.html:447
+#: core/templates/core/home_page.html:478
 msgid "Translate PARI content into languages you know"
 msgstr ""
 
-#: core/templates/core/home_page.html:461
+#: core/templates/core/home_page.html:492
 msgid "And many more stories in audio and video"
 msgstr ""
 
-#: core/templates/core/home_page.html:550
+#: core/templates/core/home_page.html:581
 msgid "Like what PARI is doing?"
 msgstr ""
 
-#: core/templates/core/home_page.html:554
+#: core/templates/core/home_page.html:585
 msgid "Contribute to PARI"
 msgstr ""
 
 #: core/templates/core/pari_teachers_students.html:3
-#: core/templates/core/pari_teachers_students.html:26
+#: core/templates/core/pari_teachers_students.html:36
 #: core/templates/pages/menus/dropdown.html:251
 msgid "PARI for students, teachers and researchers"
 msgstr ""
@@ -2249,15 +2098,15 @@ msgid ""
 "future generations of students and teachers. Find out how."
 msgstr ""
 
-#: core/templates/core/pari_teachers_students.html:33
+#: core/templates/core/pari_teachers_students.html:43
 msgid "REDEFINING LEARNING"
 msgstr ""
 
-#: core/templates/core/pari_teachers_students.html:36
+#: core/templates/core/pari_teachers_students.html:46
 msgid "Creating the textbooks of the future"
 msgstr ""
 
-#: core/templates/core/pari_teachers_students.html:37
+#: core/templates/core/pari_teachers_students.html:47
 msgid ""
 "At PARI, we’re writing the textbooks of the future. That’s happening with "
 "the numerous stories, photos, videos and audio material going up every "
@@ -2265,7 +2114,7 @@ msgid ""
 "produced by students and teachers themselves."
 msgstr ""
 
-#: core/templates/core/pari_teachers_students.html:44
+#: core/templates/core/pari_teachers_students.html:54
 msgid ""
 "PARI aims to help create informative and lively stories on rural India for "
 "students, teachers, schools, colleges and universities. And for learners "
@@ -2277,11 +2126,11 @@ msgid ""
 "lower costs for many students, as PARI is a free-access-to-public site."
 msgstr ""
 
-#: core/templates/core/pari_teachers_students.html:62
+#: core/templates/core/pari_teachers_students.html:72
 msgid "Helping students to develop course content"
 msgstr ""
 
-#: core/templates/core/pari_teachers_students.html:63
+#: core/templates/core/pari_teachers_students.html:73
 msgid ""
 "We have already added a vital element to this process: on PARI, students "
 "participate in the creation of their own textbooks. If a teacher or an "
@@ -2292,7 +2141,7 @@ msgid ""
 "through field trips."
 msgstr ""
 
-#: core/templates/core/pari_teachers_students.html:74
+#: core/templates/core/pari_teachers_students.html:84
 msgid ""
 "So videos, audio recordings, photos and text articles of and by students "
 "could not only be fetching them marks or grades in their courses, but also "
@@ -2306,21 +2155,22 @@ msgid ""
 "of text articles, research papers, video, audio and still photographs."
 msgstr ""
 
-#: core/templates/core/pari_teachers_students.html:93
+#: core/templates/core/pari_teachers_students.html:103
 msgid "Unleashing a powerful source of learning"
 msgstr ""
 
-#: core/templates/core/pari_teachers_students.html:95
+#: core/templates/core/pari_teachers_students.html:105
+#, python-format
 msgid ""
-"PARI has specific <a href=\"{{ guidelines }}#section-6-1\"> guidelines </a> for videos "
-"generated for and by us, which ensure recognition of primary authorship of "
-"the narrators. Meanwhile, just the interaction of students with the people "
-"whose lives they're trying to study, and their joint effort with communities "
-"to produce authentic material from the field, is also a powerful source of "
-"learning. It’s already happening on PARI."
+"PARI has specific <a href=\"%(guidelines)s#section-6-1\"> guidelines </a> "
+"for videos generated for and by us, which ensure recognition of primary "
+"authorship of the narrators. Meanwhile, just the interaction of students "
+"with the people whose lives they're trying to study, and their joint effort "
+"with communities to produce authentic material from the field, is also a "
+"powerful source of learning. It’s already happening on PARI."
 msgstr ""
 
-#: core/templates/core/pari_teachers_students.html:106
+#: core/templates/core/pari_teachers_students.html:116
 msgid ""
 "There's another thing: each year, countless students produce valuable output "
 "on India. In the form of research papers, articles, videos, documentaries, "
@@ -2333,11 +2183,11 @@ msgid ""
 "be an incentive for students to raise the level and quality of their work."
 msgstr ""
 
-#: core/templates/core/pari_teachers_students.html:124
+#: core/templates/core/pari_teachers_students.html:134
 msgid "A one-stop library for researchers"
 msgstr ""
 
-#: core/templates/core/pari_teachers_students.html:126
+#: core/templates/core/pari_teachers_students.html:136
 #, python-format
 msgid ""
 "Besides this, there are students in universities, colleges and high schools "
@@ -2346,7 +2196,7 @@ msgid ""
 "%(forest)s> newspapers </a> for us."
 msgstr ""
 
-#: core/templates/core/pari_teachers_students.html:134
+#: core/templates/core/pari_teachers_students.html:144
 #, python-format
 msgid ""
 "And in our <a href=%(resource_list)s> Resources </a> section, we aim to put "
@@ -2358,24 +2208,24 @@ msgid ""
 "important documents and studies from different sources."
 msgstr ""
 
-#: core/templates/core/pari_teachers_students.html:146
+#: core/templates/core/pari_teachers_students.html:156
 msgid ""
 "PARI is a one-stop library for students, teachers and all other learners."
 msgstr ""
 
-#: core/templates/core/static_page.html:16
+#: core/templates/core/static_page.html:17
 msgid "Choose language"
 msgstr ""
 
-#: core/templates/email/contact_us.html:3
+#: core/templates/email/contact_us.html:4
 msgid "Name"
 msgstr ""
 
-#: core/templates/email/contact_us.html:7
+#: core/templates/email/contact_us.html:8
 msgid "Email"
 msgstr ""
 
-#: core/templates/email/contact_us.html:11
+#: core/templates/email/contact_us.html:12
 msgid "Message"
 msgstr ""
 
@@ -2405,33 +2255,39 @@ msgstr ""
 msgid "to this database"
 msgstr ""
 
-#: core/templates/includes/language_select.html:9
-#: core/templates/includes/language_select.html:14
+#: core/templates/includes/language_select.html:10
+#: core/templates/includes/language_select.html:15
 #, python-format
 msgid " %(tlang)s "
 msgstr ""
 
 #: core/templates/pages/menus/dropdown.html:15
+#: search/templates/includes/search_filters.html:41
 msgid "Things We Do"
 msgstr ""
 
 #: core/templates/pages/menus/dropdown.html:20
+#: search/templates/includes/search_filters.html:42
 msgid "Things We Make"
 msgstr ""
 
 #: core/templates/pages/menus/dropdown.html:25
+#: search/templates/includes/search_filters.html:43
 msgid "Farming and its Crisis"
 msgstr ""
 
 #: core/templates/pages/menus/dropdown.html:34
+#: search/templates/includes/search_filters.html:50
 msgid "Foot-Soldiers of Freedom"
 msgstr ""
 
 #: core/templates/pages/menus/dropdown.html:39
+#: search/templates/includes/search_filters.html:64
 msgid "The Rural in the Urban"
 msgstr ""
 
 #: core/templates/pages/menus/dropdown.html:44
+#: search/templates/includes/search_filters.html:52
 msgid "Musafir"
 msgstr ""
 
@@ -2464,6 +2320,7 @@ msgid "VIDEOS"
 msgstr ""
 
 #: core/templates/pages/menus/dropdown.html:106
+#: search/templates/includes/search_filters.html:44
 msgid "Little Takes"
 msgstr ""
 
@@ -2476,6 +2333,7 @@ msgid "Music"
 msgstr ""
 
 #: core/templates/pages/menus/dropdown.html:127
+#: search/templates/includes/search_filters.html:59
 msgid "Tongues"
 msgstr ""
 
@@ -2502,9 +2360,9 @@ msgstr ""
 #: core/templates/pages/menus/dropdown.html:179
 #: resources/templates/resources/resource_list.html:8
 #: resources/templates/resources/resource_list.html:9
-#: resources/templates/resources/resource_list.html:26
-#: resources/templates/resources/resource_list.html:31
-msgid "Resources"
+#: resources/templates/resources/resource_list.html:37
+#: search/templates/includes/search_filters.html:32
+msgid "Library"
 msgstr ""
 
 #: core/templates/pages/menus/dropdown.html:184
@@ -2513,6 +2371,11 @@ msgstr ""
 
 #: core/templates/pages/menus/dropdown.html:191
 msgid "ABOUT PARI"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:199
+#: core/templates/pages/menus/footer.html:60
+msgid "Blog"
 msgstr ""
 
 #: core/templates/pages/menus/dropdown.html:203
@@ -2546,6 +2409,10 @@ msgstr ""
 msgid "Founder Editor"
 msgstr ""
 
+#: core/templates/pages/menus/dropdown.html:280
+msgid "PARI Education"
+msgstr ""
+
 #: core/templates/pages/menus/footer.html:16
 msgid "Stories on a map"
 msgstr ""
@@ -2555,15 +2422,17 @@ msgid "Photos"
 msgstr ""
 
 #: core/templates/pages/menus/footer.html:31
+#: search/templates/includes/search_filters.html:29
 msgid "Videos"
 msgstr ""
 
 #: core/templates/pages/menus/footer.html:36
+#: search/templates/includes/search_filters.html:30
 msgid "Audios"
 msgstr ""
 
 #: core/templates/pages/menus/footer.html:45 face/templates/face/face.html:10
-#: face/templates/face/face.html.py:11 face/templates/face/face.html:47
+#: face/templates/face/face.html:11 face/templates/face/face.html:47
 #: face/templates/face/face_list.html:10 face/templates/face/face_list.html:11
 #: face/templates/face/face_list.html:31
 #: location/templates/map/map_list.html:51
@@ -2572,10 +2441,6 @@ msgstr ""
 
 #: core/templates/pages/menus/footer.html:51
 msgid "About"
-msgstr ""
-
-#: core/templates/pages/menus/footer.html:60
-msgid "Blog"
 msgstr ""
 
 #: core/templates/pages/menus/footer.html:81
@@ -2598,15 +2463,256 @@ msgstr ""
 msgid "Copyright"
 msgstr ""
 
-#: core/templates/pages/menus/footer.html:112
+#: core/templates/pages/menus/footer.html:117
 msgid "Connect"
 msgstr ""
 
-#: core/views.py:153
+#: core/views.py:145
 msgid "Your query has successfully been sent"
 msgstr ""
 
-#: core/views.py:221
+#: donation/forms.py:10
+msgid "NAME"
+msgstr ""
+
+#: donation/forms.py:15
+msgid "EMAIL"
+msgstr ""
+
+#: donation/forms.py:19
+msgid "PHONE NUMBER"
+msgstr ""
+
+#: donation/forms.py:23
+msgid "PAN NUMBER"
+msgstr ""
+
+#: donation/forms.py:26
+msgid "PAN is required as per government regulations."
+msgstr ""
+
+#: donation/forms.py:30
+msgid "AMOUNT"
+msgstr ""
+
+#: donation/forms.py:35
+msgid "TYPE"
+msgstr ""
+
+#: donation/forms.py:41
+msgid "DURATION"
+msgstr ""
+
+#: donation/forms.py:45
+msgid "I declare that I am an Indian citizen"
+msgstr ""
+
+#: donation/forms.py:52
+msgid "Sorry, we can accept donations from Indians only."
+msgstr ""
+
+#: donation/forms.py:59
+msgid "Term should be at least 2 years for Yearly donation"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:5
+#: donation/templates/donation/donate_success.html:5
+#: donation/templates/donation/razorpay_checkout.html:5
+#, python-format
+msgid "Donate to %(site_name)s"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:34
+msgid ""
+"At present, we can only accept donations in Indian rupees by Indian "
+"citizens. All donations made to the CounterMedia Trust are eligible for "
+"exemption under Section 80G of the Income Tax Act, 1961. Here is a copy of "
+"our <a href=\"/media/uploads/Donate/80g_certificate.jpg\" target=\"_blank"
+"\">exemption certificate.</a>"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:46
+#, python-format
+msgid ""
+"In 2014-15, only about <span class=\"highlight\">0.24%% of front page news</"
+"span> came out of rural India."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:52
+#, fuzzy
+#| msgid ""
+#| "We can do this without governments – and will. We can’t do it without you."
+msgid ""
+"We want to change that.<br/><br/> We can do this without governments – and "
+"will. <u>We can’t do it without you.</u>"
+msgstr ""
+"Nous pouvons le faire sans gouvernements - et le ferons. Nous ne pouvons pas "
+"le faire sans vous."
+
+#: donation/templates/donation/donate_form.html:62
+msgid "Other ways to donate"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:63
+msgid "PAYMENT BY CHEQUE OR DEMAND DRAFT"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:64
+msgid ""
+"Pay by cheque/DD in favour of the <strong>“CounterMedia Trust”</strong> and "
+"send it to us by courier/post along with your contact details – name, "
+"address, telephone number, e-mail ID and PAN number."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:69
+msgid ""
+"Send by courier / post to:<br/> <strong>CounterMedia Trust</strong> <br/> c/"
+"o P. Sainath, 27/43 Sagar Sangam, Bandra Reclamation, Mumbai 400050, "
+"Maharashtra, India."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:77
+msgid "PAYMENT BY BANK/ WIRE TRANSFER"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:78
+msgid "Payable to: <strong>CounterMedia Trust</strong>"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:79
+msgid ""
+"Bank and branch: HDFC Bank, Aundh<br/> Address: 93, Anand Park, Rajyog "
+"Creations, Off ITI Road, Aundh, Pune 411007, Maharashtra.<br/> Account "
+"Number: 50100091804541<br/> MICR Code: 411240005<br/> IFSC Code: HDFC0000052"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:85
+msgid ""
+"And send an email to donate@ruralindiaonline.org mentioning the transaction "
+"reference number, amount and date of transfer, along with your contact "
+"details."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:86
+#: donation/templates/donation/donate_form.html:123
+msgid "Please fill the form below after you have sent in your donation."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:89
+msgid "IMPS"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:90
+msgid ""
+"Payment by mobile phone using Immediate Payment Service (IMPS).<br/> Please "
+"go through the following methods of mobile payment enabled by the National "
+"Payments Corporation of India (NPCI)."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:93
+msgid ""
+"One easy way to do this is through the National Unified USSD Platform (NUUP)"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:94
+msgid ""
+"The following has been reproduced from <a href=\"http://www.npci.org.in/"
+"documents/FAQs-NUUP.pdf\" target=\"_blank\">http://www.npci.org.in/documents/"
+"FAQs-NUUP.pdf</a>"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:95
+msgid "Fund transfer using IFSC and account number:"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:99
+msgid "Dial *99# from your mobile handset."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:102
+msgid ""
+"The NUUP welcome screen will appear asking you to enter your bank’s 4-digit "
+"IFS code."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:105
+msgid ""
+"After entering a valid IFS code, the NUUP menu will appear with different "
+"options of available services enabled for your bank."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:108
+msgid "Enter 4 for Fund Transfer using IFSC and account number and submit."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:111
+msgid ""
+"On subsequent screens enter the MPIN and the last 4 digits of the account "
+"number (optional)."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:113
+msgid "Beneficiary account number"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:114
+msgid "IFS code"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:115
+msgid "Amount"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:116
+msgid "Remarks (optional) will appear."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:120
+msgid "A confirmation screen will appear."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:133
+msgid "THE FORM"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:139
+msgid "FAQs"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:141
+msgid "I sent PARI a donation. How do I get a receipt?"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:142
+msgid ""
+"Please make sure you include your email address in the donation form when "
+"you make a contribution to PARI.  A receipt will be sent to you in 4 to 8 "
+"weeks by email. You may download the 80G certificate <a href=\"/media/"
+"uploads/Donate/80g_certificate.jpg\" target=\"_blank\">here</a>."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:149
+msgid "I live abroad. Can I send PARI a donation?"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:153
+msgid "Is there any other way in which I can contribute?"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:154
+msgid ""
+"Apart from donating money and equipment, you can provide PARI copies of "
+"photo collections (new and old), pertaining to rural India. We are also "
+"always on the look out for people who can write/photograph for us. Learn "
+"more about how you can contribute <a href=\"/contribute\">here</a>."
+msgstr ""
+
+#: donation/templates/donation/donate_success.html:11
+#, python-format
+msgid " Thank you for donating to %(site_name)s. "
+msgstr ""
+
+#: donation/views.py:181
 msgid "Donation received"
 msgstr ""
 
@@ -2622,7 +2728,7 @@ msgstr ""
 msgid "Faces of <b>district names</b> starting with"
 msgstr ""
 
-#: face/templates/face/face.html:144 face/templates/face/face_list.html:112
+#: face/templates/face/face.html:150 face/templates/face/face_list.html:112
 #, python-format
 msgid ""
 "Sorry! There are no faces on this page. Please consider <a href="
@@ -2641,6 +2747,7 @@ msgstr ""
 
 #: face/templates/face/face_list.html:72
 #: location/templates/map/map_list.html:62
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:47
 msgid "District"
 msgstr ""
 
@@ -2698,6 +2805,51 @@ msgstr ""
 
 #: face/templates/face/includes/face_details.html:78
 msgid "ADDITIONAL INFORMATION"
+msgstr ""
+
+#: feeds/feeds.py:85
+msgid "PARI consolidated feed"
+msgstr ""
+
+#: feeds/feeds.py:90
+#, python-brace-format
+msgid "Updates on the PARI site over the past {0} days"
+msgstr ""
+
+#: feeds/feeds.py:123
+msgid "PARI article feed"
+msgstr ""
+
+#: feeds/feeds.py:128
+#, python-brace-format
+msgid "Article updates on the PARI site over the past {0} days"
+msgstr ""
+
+#: feeds/feeds.py:145
+msgid "PARI album feed"
+msgstr ""
+
+#: feeds/feeds.py:150
+#, python-brace-format
+msgid "Album updates on the PARI site over the past {0} days"
+msgstr ""
+
+#: feeds/feeds.py:170
+msgid "PARI face feed"
+msgstr ""
+
+#: feeds/feeds.py:175
+#, python-brace-format
+msgid "Face updates on the PARI site over the past {0} days"
+msgstr ""
+
+#: feeds/feeds.py:196
+msgid "PARI resource feed"
+msgstr ""
+
+#: feeds/feeds.py:201
+#, python-brace-format
+msgid "Resource updates on the PARI site over the past {0} days"
 msgstr ""
 
 #: feeds/templates/feeds/feeds_list.html:4
@@ -2771,11 +2923,16 @@ msgid "Show"
 msgstr ""
 
 #: location/templates/map/map_list.html:47
+#: search/templates/includes/search_filters.html:28
 msgid "Articles"
 msgstr ""
 
 #: location/templates/map/map_list.html:61
 msgid "State"
+msgstr ""
+
+#: location/wagtail_hooks.py:37
+msgid "Locations"
 msgstr ""
 
 #: news/templates/news/pari_news.html:4 news/templates/news/pari_news.html:15
@@ -2926,63 +3083,69 @@ msgstr ""
 msgid "West Bengal"
 msgstr ""
 
-#: pari/settings/base.py:266
+#: pari/settings/base.py:267
 msgid "English"
 msgstr ""
 
-#: pari/settings/base.py:267
+#: pari/settings/base.py:268
 msgid "Assamese"
 msgstr ""
 
-#: pari/settings/base.py:268
+#: pari/settings/base.py:269
 msgid "Bengali"
 msgstr ""
 
-#: pari/settings/base.py:269
+#: pari/settings/base.py:270
 msgid "Gujarati"
 msgstr ""
 
-#: pari/settings/base.py:270
+#: pari/settings/base.py:271
 msgid "Hindi"
 msgstr ""
 
-#: pari/settings/base.py:271
+#: pari/settings/base.py:272
 msgid "Kannada"
 msgstr ""
 
-#: pari/settings/base.py:272
+#: pari/settings/base.py:273
 msgid "Malayalam"
 msgstr ""
 
-#: pari/settings/base.py:273
+#: pari/settings/base.py:274
 msgid "Marathi"
 msgstr ""
 
-#: pari/settings/base.py:274
+#: pari/settings/base.py:275
 msgid "Mizo"
 msgstr ""
 
-#: pari/settings/base.py:275
+#: pari/settings/base.py:276
 msgid "Odia"
 msgstr ""
 
-#: pari/settings/base.py:276
+#: pari/settings/base.py:277
 msgid "Punjabi"
 msgstr ""
 
-#: pari/settings/base.py:277
+#: pari/settings/base.py:278
 msgid "Telugu"
 msgstr ""
 
-#: pari/settings/base.py:278
+#: pari/settings/base.py:279
 msgid "Tamil"
 msgstr ""
 
-#: pari/settings/base.py:279
+#: pari/settings/base.py:280
 msgid "Urdu"
 msgstr ""
 
+#: resources/models.py:31 resources/models.py:47 resources/models.py:61
+msgid "Auto-populated field. Edit manually only if you must"
+msgstr ""
+
 #: resources/templates/resources/report_detail.html:25
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:33
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:36
 msgid "Title"
 msgstr ""
 
@@ -2990,20 +3153,32 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: resources/templates/resources/resource_detail.html:71
-msgid "FACTOIDS"
-msgstr ""
-
-#: resources/templates/resources/resource_detail.html:86
+#: resources/templates/resources/resource_detail.html:53
 msgid "FOCUS"
 msgstr ""
 
-#: resources/templates/resources/resource_detail.html:91
+#: resources/templates/resources/resource_detail.html:60
+msgid "FACTOIDS"
+msgstr ""
+
+#: resources/templates/resources/resource_detail.html:75
 msgid "AUTHOR"
 msgstr ""
 
-#: resources/templates/resources/resource_detail.html:96
+#: resources/templates/resources/resource_detail.html:79
 msgid "COPYRIGHT"
+msgstr ""
+
+#: resources/templates/resources/resource_detail.html:83
+msgid "PUBLICATION DATE"
+msgstr ""
+
+#: resources/templates/resources/resource_detail.html:97
+msgid "TAGS"
+msgstr ""
+
+#: resources/templates/resources/resource_detail.html:103
+msgid "SHARE"
 msgstr ""
 
 #: resources/templates/resources/resource_list.html:10
@@ -3012,8 +3187,129 @@ msgid ""
 "economic trends to policy briefings to census data."
 msgstr ""
 
-#: resources/templates/resources/resource_list.html:32
-msgid "ALL OFFICIAL AND INDEPENDENT REPORTS ON RURAL INDIA"
+#: resources/templates/resources/resource_list.html:42
+msgid ""
+"The PARI Library brings reports and information on rural India to a single "
+"location for students, researchers and other readers. It includes official "
+"as well as independent reports, out-of-print books, rare documents and "
+"reviewed research articles."
+msgstr ""
+
+#: resources/templates/resources/search_results.html:4
+msgid "Showing search results for "
+msgstr ""
+
+#: search/templates/includes/search_filters.html:16
+msgid "BACK"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:20
+msgid "Filters"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:26
+msgid "TYPE OF CONTENT"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:26
+#: search/templates/includes/search_filters.html:39
+#: search/templates/includes/search_filters.html:69
+#: search/templates/includes/search_filters.html:78
+#: search/templates/includes/search_filters.html:87
+#: search/templates/includes/search_filters.html:96
+msgid "Clear"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:34
+msgid "PARI Pages"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:45
+msgid "Women"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:46
+msgid "Adivasis"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:47
+msgid "Dalits"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:48
+msgid "We Are"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:49
+msgid "Resource Conflicts"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:51
+msgid "Small World"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:53
+msgid "Getting There"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:54
+msgid "The Wild"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:55
+msgid "Rural Sports"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:56
+msgid "Healthcare"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:57
+msgid "Mosaic"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:58
+msgid "Environment"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:60
+msgid "Visible Work, Invisible Women"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:61
+msgid "One-Offs"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:62
+msgid "Things We Wear"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:63
+msgid "PARI for Schools"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:69
+msgid "LANGUAGES"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:78
+msgid "DATE RANGE"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:80
+msgid "From"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:81
+msgid "To"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:82
+msgid "Go"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:87
+msgid "Districts"
 msgstr ""
 
 #: search/templates/search/search_results.html:246
@@ -3024,8 +3320,98 @@ msgstr ""
 msgid "Enter to search"
 msgstr ""
 
+#: search/templates/search/search_results.html:268
+msgid "Sort by :"
+msgstr ""
+
+#: search/templates/search/search_results.html:270
+msgid "Relevance"
+msgstr ""
+
+#: search/templates/search/search_results.html:271
+msgid "Latest"
+msgstr ""
+
 #: search/templates/search/search_results.html:283
 msgid ""
 "No results found for your query with current filters. Try another query with "
 "different filters."
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/listing/_list.html:52
+msgid "Drag"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:23
+msgid "Disable ordering of child pages"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:23
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:25
+msgid "Order"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:25
+msgid "Enable ordering of child pages"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:40
+msgid "Parent"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:45
+msgid "Author"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:57
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:60
+msgid "Updated"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:66
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:69
+msgid "Type"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:75
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:78
+msgid "Status"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/search_results.html:5
+#, python-format
+msgid ""
+"\n"
+"                There is one matching page\n"
+"            "
+msgid_plural ""
+"\n"
+"                There are %(counter)s matching pages\n"
+"            "
+msgstr[0] ""
+msgstr[1] ""
+
+#: search/templates/wagtailadmin/pages/search_results.html:13
+msgid "Other searches"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/search_results.html:15
+msgid "Images"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/search_results.html:16
+msgid "Documents"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/search_results.html:17
+msgid "Users"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/search_results.html:27
+#, python-format
+msgid "Sorry, no pages match <em>\"%(query_string)s\"</em>"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/search_results.html:29
+msgid "Enter a search term above"
 msgstr ""

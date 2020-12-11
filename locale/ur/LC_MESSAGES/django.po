@@ -1,0 +1,3410 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-12-11 12:31+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: album/models.py:35
+msgid "Slides"
+msgstr ""
+
+#: album/templates/album/add_audio.html:10
+#: core/templates/core/add_object.html:5 core/templates/core/add_object.html:19
+#, python-format
+msgid "Add %(name)s "
+msgstr ""
+
+#: album/templates/album/add_audio.html:14
+#: album/templates/album/add_audio.html:27
+#: album/templates/album/add_audio.html:39
+msgid "Upload"
+msgstr ""
+
+#: album/templates/album/add_audio.html:15
+#: album/templates/album/add_audio.html:36
+msgid "Record"
+msgstr ""
+
+#: album/templates/album/add_audio.html:26
+msgid "Audio File"
+msgstr ""
+
+#: album/templates/album/add_audio.html:35
+msgid "Title of the recording"
+msgstr ""
+
+#: album/templates/album/add_audio.html:37
+msgid "Play"
+msgstr ""
+
+#: album/templates/album/add_audio.html:38
+msgid "Download"
+msgstr ""
+
+#: album/templates/album/album_detail.html:3
+#: album/templates/album/albumslide_list.html:4
+#, python-format
+msgid " %(title)s "
+msgstr ""
+
+#: album/templates/album/album_detail.html:12
+msgid "Album"
+msgstr ""
+
+#: album/templates/album/album_detail.html:190
+#: article/templates/article/article.html:230
+#: article/templates/article/includes/author_info.html:43
+msgid "Share"
+msgstr ""
+
+#: album/templates/album/album_detail.html:207
+msgid "Other stories by"
+msgstr ""
+
+#: album/templates/album/album_list.html:9
+#: album/templates/album/album_list.html:10
+#: album/templates/album/album_list.html:38
+#: core/templates/pages/menus/dropdown.html:86
+#: location/templates/map/map_list.html:55
+#: search/templates/includes/search_filters.html:33
+msgid "Albums"
+msgstr ""
+
+#: album/views.py:33
+msgid "gallery"
+msgstr ""
+
+#: album/views.py:42 core/templates/pages/menus/footer.html:41
+msgid "Talking Albums"
+msgstr ""
+
+#: album/views.py:42
+msgid "Pictures and their spoken story"
+msgstr ""
+
+#: album/views.py:44
+msgid "Photo Albums"
+msgstr ""
+
+#: album/views.py:44 category/templates/category/gallery_home_page.html:95
+msgid "Through many different lenses"
+msgstr ""
+
+#: article/streamfields/blocks.py:103
+#, python-format
+msgid "Choose a %s"
+msgstr ""
+
+#: article/streamfields/blocks.py:104
+#, python-format
+msgid "Choose another %s"
+msgstr ""
+
+#: article/streamfields/blocks.py:105
+#, python-format
+msgid "Edit this %s"
+msgstr ""
+
+#: article/templates/article/archive_article_list.html:55
+#: article/templates/article/author_article_list.html:56
+#: article/templates/article/includes/gallery_article_list.html:6
+#: category/templates/includes/category_cover_image.html:30
+#: category/templates/includes/category_cover_image.html:56
+msgid "Languages"
+msgstr ""
+
+#: article/templates/article/article.html:197
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:52
+msgid "Language"
+msgstr ""
+
+#: article/templates/article/article.html:227
+msgid "Read the story in pictures"
+msgstr ""
+
+#: article/templates/article/article.html:239
+msgid "Print this story"
+msgstr ""
+
+#: article/templates/article/article.html:252
+msgid "See more from this region"
+msgstr ""
+
+#: article/templates/article/article.html:303
+msgid "RELATED STORIES"
+msgstr ""
+
+#: article/templates/article/includes/article_list.html:32
+#: core/templates/core/home_page.html:301
+#: core/templates/core/home_page.html:348
+msgid "languages"
+msgstr ""
+
+#: article/templates/article/includes/article_list.html:55
+#: article/templates/article/includes/gallery_article_list.html:35
+msgid "No articles available for "
+msgstr ""
+
+#: article/templates/article/includes/article_list.html:58
+#: category/templates/includes/category_cover_image.html:64
+#: category/templates/includes/category_cover_image.html:69
+#, python-format
+msgid "%(tlang)s"
+msgstr ""
+
+#: article/templates/article/includes/article_list.html:59
+msgid " in this category."
+msgstr ""
+
+#: article/templates/article/includes/article_list.html:62
+#: article/templates/article/includes/gallery_article_list.html:41
+msgid "Please help us"
+msgstr ""
+
+#: article/templates/article/includes/article_list.html:64
+#: article/templates/article/includes/gallery_article_list.html:43
+msgid "translate."
+msgstr ""
+
+#: article/templates/article/includes/author_info.html:65
+msgid " Other stories by "
+msgstr ""
+
+#: article/templates/article/includes/gallery_article_list.html:38
+#, python-format
+msgid " %(tlang)s ."
+msgstr ""
+
+#: article/templates/article/includes/translator_info.html:12
+msgid "Translated by:"
+msgstr ""
+
+#: article/templates/article/includes/translator_info.html:15
+msgid "You can contact the translator here:"
+msgstr ""
+
+#: author/wagtail_hooks.py:21 search/templates/includes/search_filters.html:96
+msgid "Authors"
+msgstr ""
+
+#: category/templates/category/category_detail.html:5
+#: category/templates/category/gallery_detail.html:4
+msgid "Page"
+msgstr ""
+
+#: category/templates/category/category_detail.html:7
+msgid "one of many story categories at PARI"
+msgstr ""
+
+#: category/templates/category/category_list.html:4
+#: category/templates/category/category_list.html:5
+#: category/templates/category/category_list.html:17
+#: core/templates/pages/menus/footer.html:11
+msgid "Categories"
+msgstr ""
+
+#: category/templates/category/category_list.html:6
+msgid ""
+"Find hundreds of PARI stories on diverse topics such as rural occupations, "
+"crafts and sports, marginalised groups, resource conflicts, and many more."
+msgstr ""
+
+#: category/templates/category/category_list.html:25
+#: core/templates/pages/menus/dropdown.html:5
+msgid "Stories"
+msgstr ""
+
+#: category/templates/category/category_list.html:26
+msgid "Find hundreds of them in diverse categories"
+msgstr ""
+
+#: category/templates/category/gallery_home_page.html:3
+#: category/templates/category/gallery_home_page.html:27
+#: core/templates/pages/menus/dropdown.html:75
+#: core/templates/pages/menus/footer.html:22
+msgid "Gallery"
+msgstr ""
+
+#: category/templates/category/gallery_home_page.html:4
+msgid ""
+"Explore PARI's evergrowing collection of multi-media content from rural "
+"India, including photos, videos, and audio clips"
+msgstr ""
+
+#: category/templates/category/gallery_home_page.html:28
+msgid "AN EVERGROWING ARCHIVE OF RURAL INDIA"
+msgstr ""
+
+#: category/templates/category/gallery_home_page.html:57
+msgid "Photo Of The Week"
+msgstr ""
+
+#: category/templates/category/gallery_home_page.html:70
+msgid "Read the full story"
+msgstr ""
+
+#: category/templates/category/gallery_home_page.html:79
+msgid "View Fullscreen"
+msgstr ""
+
+#: category/templates/category/gallery_home_page.html:87
+msgid "Pictures and their spoken stories"
+msgstr ""
+
+#: category/templates/category/gallery_home_page.html:88
+msgid "View this Talking Album"
+msgstr ""
+
+#: category/templates/category/gallery_home_page.html:89
+#: core/templates/core/home_page.html:515
+msgid "View all Talking Albums"
+msgstr ""
+
+#: category/templates/category/gallery_home_page.html:91
+msgid "Stories told in moving pictures"
+msgstr ""
+
+#: category/templates/category/gallery_home_page.html:92
+msgid "View this video"
+msgstr ""
+
+#: category/templates/category/gallery_home_page.html:93
+#: core/templates/core/home_page.html:541
+#: core/templates/pages/menus/dropdown.html:112
+msgid "View all videos"
+msgstr ""
+
+#: category/templates/category/gallery_home_page.html:96
+msgid "View this Photo Album"
+msgstr ""
+
+#: category/templates/category/gallery_home_page.html:97
+#: core/templates/core/home_page.html:568
+msgid "View all Photo Albums"
+msgstr ""
+
+#: category/templates/includes/category_cover_image.html:14
+msgid "All Categories"
+msgstr ""
+
+#: category/templates/includes/category_cover_image.html:59
+#: core/templates/includes/language_select.html:4
+msgid "All"
+msgstr ""
+
+#: core/apps.py:28
+msgid ""
+"Enter a valid 'slug' consisting of letters, numbers, underscores or hyphens."
+msgstr ""
+
+#: core/models.py:110 core/models.py:116
+msgid "Please add a page"
+msgstr ""
+
+#: core/models.py:220
+msgid "HomePage"
+msgstr ""
+
+#: core/models.py:308
+msgid "GuidelinesPage"
+msgstr ""
+
+#: core/models.py:321
+msgid "Please add photographers to the image"
+msgstr ""
+
+#: core/models.py:380
+msgid "GalleryHomePage"
+msgstr ""
+
+#: core/templates/base.html:82 core/templates/core/about.html:166
+#: core/templates/pages/menus/dropdown.html:11
+#: search/templates/includes/search_filters.html:39
+msgid "CATEGORIES"
+msgstr ""
+
+#: core/templates/base.html:115
+msgid "People's Archive of Rural India"
+msgstr "دیہی ہندوستان کا پیپلز آرکائو"
+
+#: core/templates/core/about.html:4 core/templates/core/home_page.html:397
+#: core/templates/pages/menus/dropdown.html:195
+#: core/templates/pages/menus/footer.html:55
+msgid "The story of PARI"
+msgstr ""
+
+#: core/templates/core/about.html:5
+msgid ""
+"Rural India — a living journal, a breathing archive. Learn how PARI came to "
+"exist and what role it hopes to serve in the Indian media landscape."
+msgstr ""
+
+#: core/templates/core/about.html:28
+msgid "Rural India: a living journal, a breathing archive"
+msgstr ""
+
+#: core/templates/core/about.html:29
+msgid "The everyday lives of everyday people"
+msgstr ""
+
+#: core/templates/core/about.html:38
+msgid ""
+"Can a project’s success be judged on the basis of its never being completed? "
+"Yes, if it’s a living archive of the world’s most complex countryside. Rural "
+"India is in many ways the most diverse part of the planet. Its 833 million "
+"people include distinct societies speaking well over 700 languages, some of "
+"them thousands of years old. The People’s Linguistic Survey of India tells "
+"us the country as a whole speaks some 780 languages and uses 86 different "
+"scripts. But in terms of provision for schooling up to Class 7, just 4 per "
+"cent of those 780 are covered. Most Indian languages are mainly spoken by "
+"people in rural India."
+msgstr ""
+
+#: core/templates/core/about.html:47
+msgid ""
+"The Eighth Schedule of the Constitution of India lists 22 languages whose "
+"development the country’s government is obliged to promote. Yet, there are "
+"states whose official languages fall outside those 22, like Khasi and Garo "
+"of Meghalaya. Each of six Indian languages is spoken by 50 million people or "
+"more. Three are spoken by 80 million or more. One, by close to 500 million. "
+"At the other end of the spectrum are unique tribal languages spoken by as "
+"few as 4,000 people, some by even less. The eastern state of Odisha alone is "
+"home to around 44 tribal languages. The Linguistic Survey reckons that close "
+"to 220 languages have died in the past 50 years. Saimar in Tripura is down "
+"its last seven speakers."
+msgstr ""
+
+#: core/templates/core/about.html:57
+msgid ""
+"The same diversity characterises rural India’s occupations, arts and crafts, "
+"culture, literature, legend, transportation, and other fields. As the Indian "
+"countryside rushes through an extremely painful transformation, many of "
+"these features disappear, leaving us poorer. There are, for instance, "
+"probably more schools and styles of weaving in India than in any other "
+"single nation. Many of these traditional weaving communities face real "
+"collapse, which will rob the world of some of its greatest gifts. Some "
+"unique occupations – professional storytellers, epic poem singers – are also "
+"in danger of extinction."
+msgstr ""
+
+#: core/templates/core/about.html:68
+#, python-format
+msgid ""
+"Then there are professions known only to a few nations. Like <a href="
+"%(toddy_url)s>toddy-tappers who climb 50 palm trees daily</a>, each one "
+"thrice, in season. From the sap they make palm jaggery or a fermented liquor "
+"called toddy. In peak season, a toddy tapper climbs a height greater than "
+"New York’s Empire State Building – every single day. But so many occupations "
+"are in collapse. <a href=%(potters_url)s>Potters</a>, metal workers and "
+"millions of other highly skilled craftspeople are rapidly losing their "
+"livelihoods."
+msgstr ""
+
+#: core/templates/core/about.html:76
+msgid ""
+"Much of what makes the countryside unique could be gone in 20-30 years. "
+"Without any systematic record, visual or oral, to educate us – let alone "
+"motivate us – to save this incredible diversity. We are losing worlds and "
+"voices within rural India of which future generations will know little or "
+"nothing. Even as the present one steadily sheds its own links with those "
+"worlds."
+msgstr ""
+
+#: core/templates/core/about.html:82
+msgid ""
+"There is surely much in rural India that should die. Much that is "
+"tyrannical, oppressive, regressive and brutal – and which must go. "
+"Untouchability, feudalism, bonded labour, extreme caste and gender "
+"oppression and exploitation, land grab and more. The tragedy though is that "
+"the nature of the transformation underway more often tends to bolster the "
+"regressive and the barbaric, while undermining the best and the diverse. "
+"That, too, will be documented here."
+msgstr ""
+
+#: core/templates/core/about.html:90
+msgid "THIS IS WHERE PARI COMES IN"
+msgstr ""
+
+#: core/templates/core/about.html:96
+#, python-format
+msgid ""
+"PARI is both a living journal and an archive. It will generate and host "
+"reporting on the countryside that is current and contemporary, while also "
+"creating a database of already published <a href=%(category_list)s>stories</"
+"a>, <a href=%(resource_list)s>reports</a>, <a href="
+"%(gallery_detail_video)s>videos</a> and <a href="
+"%(gallery_detail_audio)s>audios</a> from as many sources as we can. All of "
+"PARI’s own content comes under the <a href=%(copyright)s>Creative Commons </"
+"a> and the site is free to access. And anyone can contribute to PARI. Write "
+"for us, shoot for us, record for us – your material is welcome so long as it "
+"meets the standards of this site and falls within our mandate: the everyday "
+"lives of everyday people."
+msgstr ""
+
+#: core/templates/core/about.html:106
+msgid ""
+"The use of many libraries and museums in India has fallen, more so in the "
+"last 20 years. This was compensated by the fact that what you can find in "
+"our museums, you could also find on our streets: the same miniature painting "
+"schools, the same traditions of sculpture. Now those too are fading. Library "
+"and museum visits amongst the young are more rare than routine. However, "
+"there is one place future generations the world over, including Indians, "
+"will visit more and more: the Net. Internet access, particularly broadband, "
+"is low in India, but it is expanding. It is the right place to build – as a "
+"public resource – a living, breathing journal and an archive aimed at "
+"recording people’s lives. The People’s Archive of Rural India. Many worlds, "
+"one website. More voices and distinct languages, we hope, than have ever met "
+"on one site."
+msgstr ""
+
+#: core/templates/core/about.html:118
+msgid ""
+"It means an undertaking unprecedented in scale and scope, utilising myriad "
+"forms of media in audio, visual and text platforms. One where the stories, "
+"the work, the activity, the histories are narrated, as far as possible, as "
+"far as we can manage, by rural Indians themselves. By tea-pickers amidst the "
+"fields. By fishermen out at sea. By women paddy transplanters singing at "
+"work, or by traditional storytellers. By Khalasi men using centuries-old "
+"methods to launch heavy ships to sea without forklifts and cranes. In short, "
+"by everyday people talking about themselves, their labour and their lives – "
+"talking to us about a world we mostly fail to see."
+msgstr ""
+
+#: core/templates/core/about.html:128
+msgid "WHAT’S ON PARI"
+msgstr ""
+
+#: core/templates/core/about.html:130
+msgid ""
+"PARI hosts and combines video, photo, audio and text archives. There is "
+"content we already have and stories we are generating. Both take time and "
+"effort to organise and load. The videos generated specifically for PARI "
+"record the lives and livelihoods of poor and everyday Indians. For example, "
+"a woman agricultural labourer takes you through her life, her work, her "
+"labour techniques, family, kitchen, whatever she considers important. "
+"Typically, the first credit in such a film goes to her; the second to her "
+"village/community. The director comes third. PARI respects her ownership of "
+"her story. And it is in our mandate to search for ways in which the very "
+"people we cover, rural Indians, will also have access to, and a say in, the "
+"making of this site. We're also trying to create subtitling in multiple "
+"Indian languages for each documentary we generate."
+msgstr ""
+
+#: core/templates/core/about.html:142
+msgid ""
+"The site's <a href=\"https://soundcloud.com/ruralindia\">AudioZone</a> will, "
+"over time, hold thousands of clips – conversations, songs, poetry – in every "
+"Indian language that we can record. We started with the Grindmill Songs "
+"Project – folk songs by women in Maharashtra’s villages. More than 100,000 "
+"songs will eventually be hosted on PARI as an archive of a phenomenal poetic-"
+"musical legacy."
+msgstr ""
+
+#: core/templates/core/about.html:148
+msgid ""
+"We also focus on education and learning. Teaching and research materials, "
+"including textbooks, will increasingly move online in the next few years – "
+"that process is already on in some parts of the world.  PARI aims to help "
+"create informative and lively resources for students, teachers, schools, "
+"colleges and universities. Done right, it could mean ‘textbooks’ or teaching "
+"material that can be added to, amended, updated or widened. As broadband "
+"access grows, it should also mean lower costs for many students, as PARI is "
+"a free-access-to-public site."
+msgstr ""
+
+#: core/templates/core/about.html:157
+#, python-format
+msgid ""
+"PARI is also building a <a href=%(resource_list)s>Resources</a> section, "
+"where we aim to put up (in full text and not just via links), all official "
+"(and unofficial but credible) reports related to rural India. For instance, "
+"every report of the National Commission for Enterprises in the Unorganised "
+"Sector, reports of the Planning Commission (now NITI Aayog) and ministries, "
+"the United Nations and much more. Researchers will not have to surf multiple "
+"sites to access important documents and studies from different sources."
+msgstr ""
+
+#: core/templates/core/about.html:168
+msgid ""
+"The number of categories you see in the archive are not fixed or final. We "
+"will also, for example, include livestock and wildlife – and many others, "
+"brick by brick. Here’s a look at just three of very many categories on PARI:"
+msgstr ""
+
+#: core/templates/core/about.html:177
+msgid "Things we do"
+msgstr ""
+
+#: core/templates/core/about.html:179
+msgid ""
+"This leads you into the complex world of rural Indian labour. To landless "
+"workers in the fields, to farmers and woodcutters, to brick-makers and "
+"blacksmiths. From men who push 200 kilograms of coal on bicycles across 40 "
+"kilometres to earn a few rupees, to women who scavenge coal at great risk "
+"from giant waste dumps. And migrant labourers who travel thousands of "
+"kilometres each year in search of work, never staying anywhere for six "
+"months, not even in their own village homes."
+msgstr ""
+
+#: core/templates/core/about.html:186
+msgid ""
+"Apart from covering their stories we are also photographing and filming the "
+"tools and implements that people use, many of them sure to disappear over "
+"the next few years."
+msgstr ""
+
+#: core/templates/core/about.html:189 core/templates/core/about.html:207
+#: core/templates/core/about.html:224 core/templates/pages/menus/footer.html:7
+msgid "Explore"
+msgstr ""
+
+#: core/templates/core/about.html:198
+msgid "Things we make"
+msgstr ""
+
+#: core/templates/core/about.html:200
+msgid ""
+"Here, PARI covers arts and crafts, artists and craftspersons. The country’s "
+"countless schools and skills and traditions, and their products. In this "
+"category, you will find India’s ‘everyday museums’ – miniature painting "
+"schools, rural traditions of sculpture, exquisite weaving techniques – many "
+"of which are slowly fading away and might soon vanish completely."
+msgstr ""
+
+#: core/templates/core/about.html:215
+msgid "Foot-soldiers of freedom"
+msgstr ""
+
+#: core/templates/core/about.html:217
+msgid ""
+"The last living freedom fighters of rural India, most now in their 90s. "
+"People who spent many years in prison fighting for the country’s freedom "
+"from colonial rule and to establish an independent, democratic Indian "
+"nation. In the next decade there will be none left to tell the tale."
+msgstr ""
+
+#: core/templates/core/about.html:228
+msgid ""
+"While we constantly try to build and expand a gene pool of contributors, we "
+"do exercise editorial selection and quality control. The use of experienced "
+"contributors with a credible record is important to this work, of course. "
+"Most of these will be journalists, writers and authors. But not all. Anyone "
+"who is interested can participate, write for us, or shoot even on cell "
+"phones with decent video quality – if the material falls within the mandate "
+"of the archive. You need not be a professional journalist."
+msgstr ""
+
+#: core/templates/core/about.html:236
+msgid ""
+"Remember, the narratives that make up the overwhelming share of PARI come "
+"from rural Indians themselves, not from the professional media persons who "
+"help record their story. Some of those rural Indians will shoot their own "
+"stories. And the stories will be renewed and reported — as long as there is "
+"a countryside."
+msgstr ""
+
+#: core/templates/core/about.html:243
+msgid ""
+"Public access to PARI is free. The site is run by the CounterMedia Trust. An "
+"informal network supports and funds the trust and its primary activities "
+"through volunteer work, donations and direct personal contributions. This "
+"voluntary network of reporters, professional filmmakers, film editors, "
+"photographers, documentary filmmakers and journalists (television, online "
+"and print), represents PARI's biggest asset. Besides, academics, teachers, "
+"researchers, techies and professionals from many other fields have also "
+"donated their expertise to design the site and establish PARI."
+msgstr ""
+
+#: core/templates/core/about.html:252
+msgid ""
+"PARI needs money to create content beyond what volunteers do for us, and we "
+"aim at crowd funding to generate the resources. Though our call for "
+"donations is titled ‘Cover your country’, rural India can never be fully "
+"'covered' and the content on this site consists of fragments of many giant "
+"realities. We can expand our coverage of those many worlds only with the "
+"widest possible public participation."
+msgstr ""
+
+#: core/templates/core/about.html:260
+#: core/templates/core/acknowledgements.html:270
+msgid "Founder Editor, PARI"
+msgstr ""
+
+#: core/templates/core/about.html:267
+msgid "This is an insane project – and a wonderful one"
+msgstr ""
+
+#: core/templates/core/about.html:270
+msgid "Neville Roy Singham, Chairman, ThoughtWorks Inc."
+msgstr ""
+
+#: core/templates/core/about.html:273
+msgid "There's a pleasure sure to being mad, that only madmen know"
+msgstr ""
+
+#: core/templates/core/about.html:276
+msgid "John Dryden in ‘The Spanish Friar’ (1681)"
+msgstr ""
+
+#: core/templates/core/about.html:280
+msgid "CONSIDER DONATING TO PARI"
+msgstr ""
+
+#: core/templates/core/about.html:281 core/templates/core/donate.html:103
+msgid "Donate money"
+msgstr ""
+
+#: core/templates/core/about.html:283
+msgid ""
+"You can send in donations using a range of payment methods. All donations "
+"made to the <b>CounterMedia Trust</b> are eligible for exemption under "
+"Section 80G of the Income Tax Act, 1961."
+msgstr ""
+
+#: core/templates/core/about.html:287 core/templates/core/donate.html:109
+msgid "Send donation"
+msgstr ""
+
+#: core/templates/core/about.html:290
+msgid "CONTRIBUTE TO PARI"
+msgstr ""
+
+#: core/templates/core/about.html:292
+msgid ""
+"Anyone can contribute to PARI. Write for us, shoot for us, record, "
+"translate, research, edit a video for us – your material is welcome so long "
+"as it meets the standards of this site and falls within our mandate: the "
+"everyday lives of everyday people."
+msgstr ""
+
+#: core/templates/core/about.html:298 core/templates/core/about.html:308
+#: core/templates/core/home_page.html:479
+msgid "Learn more"
+msgstr ""
+
+#: core/templates/core/about.html:301
+msgid "PARI AND EDUCATION"
+msgstr ""
+
+#: core/templates/core/about.html:303
+msgid ""
+"At PARI, we’re writing the textbooks of the future. That’s happening with "
+"the numerous stories, photos, videos and audio material going up every "
+"week on our site. Over time, quite a bit of that will be produced by "
+"students and teachers themselves."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:4
+#: core/templates/pages/menus/dropdown.html:228
+#: core/templates/pages/menus/footer.html:70
+msgid "Acknowledgements"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:5
+msgid ""
+"We are greatly indebted to the volunteers, journalists, filmmakers and other "
+"contributors who continue to gift us so much time and labour."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:19
+msgid "Acknowledgments"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:21
+#, python-format
+msgid ""
+"It was the Founder Chairman of <a href=\"https://www.thoughtworks.com/\" "
+"target=\"_blank\">ThoughtWorks</a>, Neville Roy Singham, who made me believe "
+"that the People’s Archive of Rural India in its present form was possible. "
+"Roy thought the project was nuts, but loved its audacity. Drawing from a "
+"(physical) photo exhibition of mine in 2011, he laid out the possibilities "
+"of a fully curated photo exhibition – and more – online. We were able to use "
+"the original text panels online too, and you can see the outcome of that "
+"effort on <a href=%(women)s>Visible Work, Invisible Women</a>."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:28
+msgid ""
+"At every stage, subsequently, Roy’s ideas and energy pushed forward the "
+"making of PARI. No acknowledgement of his contribution can be strong enough."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:31
+msgid ""
+"When PARI was still a fledgling notion, Prof. Ananya Mukherjee-Reed, now "
+"Dean of Faculty, Liberal Arts & Professional Studies of York University, "
+"Toronto, made a critical contribution to its ideas, concepts and clarity. "
+"The strong education-related component of PARI owes a great deal to her "
+"influence."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:35
+msgid ""
+"Volunteer techies from ThoughtWorks India made the PARI platform possible. "
+"Without them, none of this would have materialised. Many helped in "
+"immeasurable ways, but Manoj Mahalingam (then with TW) and Satish "
+"Viswanathan played key roles in getting us off the ground. Siddharth Adelkar "
+"was and is central to our overall effort."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:40
+msgid ""
+"As PARI enters Phase 2 of its existence, we have Aditya Dipankar making an "
+"astonishing difference to the website’s design and appearance. We also have "
+"the inimitable Thejaswi Puthraya who is there for us, from before the "
+"launch, on all matters tech and some beyond."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:44
+msgid "Scores of others helped in big and many ways"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:54
+msgid "Software Development Team: Launch Phase"
+msgstr ""
+
+#. Translators: If your target language uses a non-Roman script, please do your best to transliterate the names that follow.
+#: core/templates/core/acknowledgements.html:57
+msgid "Anilkumar Kodi"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:58
+msgid "Aruna Shanmugakumar"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:59
+msgid "Arvind Ram A."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:60
+msgid "Balachander Swaminathan"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:61
+msgid "Devarajan N."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:62
+msgid "Dinesh Kumar"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:63
+msgid "Gaurav Manoharrav Ingalkar"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:64
+msgid "Gopinath Jayabalan"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:65
+msgid "Gowri Jayalakshmi R."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:66
+msgid "Jayakumar Chinnappan (Tech Lead, final lap)"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:67
+msgid "Jeyakar J. Vaiz"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:68
+msgid "Manoj S. Mahalingam (Tech Lead)"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:69
+msgid "Mohit Shankarrao Pote"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:70
+msgid "Mubashar Nadeem Sibgathullah"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:71
+msgid "Pradipta Kundu"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:72
+msgid "Raj Kumar"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:73
+msgid "Ram Ramalingam"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:74
+msgid "Ramalingam Singaravel"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:75
+#: core/templates/core/acknowledgements.html:110
+#: core/templates/core/acknowledgements.html:236
+msgid "Satish Viswanathan"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:76
+msgid "Senthil V. S."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:77
+msgid "Suganthi Krishnavathi T."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:78
+#: core/templates/core/acknowledgements.html:245
+msgid "Thejaswi Puthraya"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:79
+msgid "Vivek Singh"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:85
+msgid "Logistics Team"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:86
+msgid "Baskar G."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:87
+msgid "Karthik T."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:88
+msgid "Poornima R. S."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:89
+msgid "Ratnakar Nath"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:91
+msgid "Swecha Technology Team"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:92
+msgid "Bhuvan Krishna"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:93
+msgid "Kiran Chandra"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:94
+#: core/templates/core/acknowledgements.html:228
+msgid "Praveen Chandrahas"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:97
+msgid "Digital Archivist"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:98
+msgid "Venkataraaman S."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:101
+msgid "Software Development Team: Design Phase"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:102
+msgid "Deepan Rajkumar R."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:103
+msgid "Deepthi R. (Tech Lead)"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:104
+msgid "Gayathri M. (Team Lead)"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:105
+msgid "Jayakumar Chinnappan (Tech Lead)"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:106
+msgid "Lokesh Sharma"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:107
+msgid "Nimesh Pulikaparambil"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:108
+#: core/templates/core/acknowledgements.html:226
+msgid "Olivia Waring"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:109
+msgid "Sankar Parameswaran"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:111
+msgid "Venkatesa Madhan"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:112
+msgid "Vidhyalakshimi S."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:113
+msgid "Vinoth Kumar R."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:117
+msgid "Inception Team"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:118
+msgid "David Siang Fong Oh"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:119
+msgid "Kartik Kannan"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:120
+msgid "Koundinya Goparaju"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:121
+msgid "Nikhileshwar Gamedhar"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:122
+msgid "Ruchi Mahajan"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:123
+msgid "Shashank Raghavendra"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:125
+msgid "Design Team"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:126
+msgid "Aditya Dipankar (Team Lead)"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:127
+msgid "Gaurav Sharma"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:128
+msgid "Samir Bellare"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:129
+msgid "Shiraz Iqbal"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:130
+msgid "Suvani Suri"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:133
+msgid "Legal Advisers"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:134
+msgid "Rina Kamath"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:135
+#: core/templates/core/acknowledgements.html:231
+msgid "Rishab Bailey"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:142
+msgid "Translators"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:147
+msgid "Crazy Frog Media Team"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:148
+msgid "Mohan G.N. (Lead)"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:149
+msgid "Naren H R"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:150
+msgid "Prasad Naik"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:151
+msgid "Rajaram Tallur"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:152
+msgid "Sandhyarani N."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:153
+msgid "Santosh Tamprapani"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:154
+msgid "Shama Nandibetta"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:156
+msgid "Other Translators"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:157
+msgid "Chandan Dey"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:158
+msgid "Chhaya Deo"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:159
+msgid "Chinta T. K."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:160
+msgid "Debasmita Bhowmik"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:161
+msgid "Hemant Shah"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:162
+msgid "Jyotsna V."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:167
+msgid "Kaushal Kaloo"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:168
+msgid "Kavitha Muralidharan"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:169
+msgid "Medha Kale"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:170
+msgid "Naren H.R."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:171
+msgid "Nibha Rani Roy"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:172
+msgid "Pallavi Kulkarni"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:173
+msgid "Pallavi Malshe"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:174
+msgid "Pushpa Kandaswamy"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:175
+msgid "Qamar Tabrez"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:176
+msgid "Rashmi Rekha Das"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:177
+msgid "Ratna Bharali Talukdar"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:178
+msgid "Saravanan P.K."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:179
+msgid "Shaji K.A."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:180
+msgid "Shirish Khare"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:181
+msgid "Siddharth Chakrabarti"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:184
+msgid "Siddharthan Sundaram"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:185
+msgid "Smita Khator"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:186
+msgid "Subramanian Sundararaman"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:187
+msgid "Uma Maheshwari"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:188
+msgid "Usha Turaga-Revelli"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:189
+msgid "Vilasini"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:190
+msgid "Vishnu Varatharajan"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:198
+msgid "Core Group, Support, Admin"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:202
+msgid "Aditi Chandrasekhar"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:203
+msgid "Amita Joseph"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:204
+msgid "Amiya Pani"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:205
+msgid "Aparna Karthikeyan"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:206
+msgid "Bharat Patil"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:207
+msgid "Bini Bharucha"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:208
+msgid "Biraj Patnaik"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:209
+msgid "Chitrangada Choudhury"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:210
+msgid "Deepa Bhatia"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:211
+msgid "Divya Jain"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:212
+msgid "Gauri Adelkar"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:213
+msgid "Hutokshi Doctor"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:214
+msgid "Jaideep Hardikar"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:215
+msgid "Jayati Vora"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:216
+msgid "Jyoti Shinoli"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:219
+msgid "Kavita Carneiro"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:220
+msgid "Lubaina Kitabi"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:221
+msgid "Madhusree Mukerjee"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:222
+msgid "Mathew Cherian"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:223
+msgid "Mausumi Bhattacharyya"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:224
+#: core/templates/core/founders.html:27 core/templates/core/founders.html:55
+msgid "Namita Waikar"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:225
+msgid "Naveen Roy Benadict"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:227
+msgid "Onkar Mandlekar"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:229
+msgid "Purusottam Thakur"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:230
+msgid "Revathi R."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:232
+msgid "Sainath P."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:233
+msgid "Samyukta Shastri"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:237
+msgid "Shalini Singh"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:238
+#: core/templates/core/founders.html:30 core/templates/core/founders.html:60
+msgid "Sharmila Joshi"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:239
+msgid "Shreya Katyayini"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:240
+#: core/templates/core/founders.html:33 core/templates/core/founders.html:65
+msgid "Siddharth Adelkar"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:241
+msgid "Sinchita Maji"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:242
+msgid "Sweta Daga"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:243
+msgid "Subuhi Jiwani"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:244
+msgid "Sukhada Tatke"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:246
+msgid "Urvashi Sarkar"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:247
+msgid "Vidyut Kale"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:248
+msgid "Vishaka George"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:249
+msgid "Zahra Latif"
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:257
+msgid ""
+"A very special thanks to P.R. Gandhi, Kartik Shah, Deepak Soni and Eesha "
+"Thakkar of P.R. Gandhi & Co, Mumbai, and Prakash Shah of Delhi, for their "
+"invaluable assistance."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:260
+msgid ""
+"We also wish to acknowledge the huge encouragement and support we have got, "
+"and continue to get, from individuals like  Abhijit Dutta, Anil Choudhury, "
+"Mariam Ram, Romi Mahajan, Sudarshan Loyalka, Sudhanva Deshpande and Vijay "
+"Prashad."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:264
+msgid ""
+"We are greatly indebted to the volunteers, journalists, filmmakers and other "
+"contributors who continue to gift us so much time and labour. They are too "
+"many in number to list here. There may be a few names we’ve missed out for "
+"which we seek pardon. There are also some whom we cannot name because, alas, "
+"of where they are working."
+msgstr ""
+
+#: core/templates/core/acknowledgements.html:269
+#: core/templates/core/donate.html:150 core/templates/core/founders.html:19
+#: core/templates/core/founders.html:44
+#: core/templates/pages/menus/dropdown.html:267
+msgid "P. Sainath"
+msgstr ""
+
+#: core/templates/core/contact_us.html:5 core/templates/core/contact_us.html:21
+msgid "Contact PARI"
+msgstr ""
+
+#: core/templates/core/contact_us.html:8
+msgid "PARI Contact Us"
+msgstr ""
+
+#: core/templates/core/contact_us.html:22
+msgid "TO CONTRIBUTE CONTENT"
+msgstr ""
+
+#: core/templates/core/contact_us.html:24
+#, python-format
+msgid ""
+"Please visit the <a href=\"https://script.google.com/macros/s/"
+"AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec\" target="
+"\"_blank\"> content upload form</a> and the <a href=\"%(guidelines_url)s"
+"\">guidelines</a> for details."
+msgstr ""
+
+#: core/templates/core/contact_us.html:30
+msgid "TO DONATE TO PARI"
+msgstr ""
+
+#: core/templates/core/contact_us.html:31
+#, python-format
+msgid "Do see our <a href=\"%(donate_url)s\">donate</a> page for details."
+msgstr ""
+
+#: core/templates/core/contact_us.html:33
+msgid "WANT TO VOLUNTEER FOR PARI?"
+msgstr ""
+
+#: core/templates/core/contact_us.html:34
+msgid "Help us understand your skills and interests by filling up this"
+msgstr ""
+
+#: core/templates/core/contact_us.html:37
+msgid "OTHER QUESTIONS?"
+msgstr ""
+
+#: core/templates/core/contact_us.html:38
+msgid "Write to us using this form:"
+msgstr ""
+
+#: core/templates/core/contact_us.html:53
+msgid "Send"
+msgstr ""
+
+#: core/templates/core/contribute-to-faces.html:4
+#: core/templates/core/contribute-to-faces.html:19
+msgid "Let’s FACE it"
+msgstr ""
+
+#: core/templates/core/contribute-to-faces.html:5
+msgid ""
+"Contribute to the growing FACES repository and help PARI capture the sheer "
+"diversity of the people of India."
+msgstr ""
+
+#: core/templates/core/contribute-to-faces.html:20
+msgid ""
+"Contribute to FACES. Help PARI capture the sheer diversity of the people of "
+"our country. Join us in our endeavour to create a facial map of the most "
+"diverse societies on earth – those across rural India."
+msgstr ""
+
+#: core/templates/core/contribute-to-faces.html:25
+#: core/templates/core/contribute-to-faces.html:48
+msgid "Upload a FACE photo"
+msgstr ""
+
+#: core/templates/core/contribute-to-faces.html:35
+msgid ""
+"<a href=\"/categories/faces/k/tami/\"> <span><u>Tami</u></span></a> in "
+"Kalahandi, Odisha, has a very Indian face. So does <a href=\"/categories/"
+"faces/k/kottavarayan-rajendran/\"><span><u>Rajendran</u></span> </a> of "
+"Kanchipuram in Tamil Nadu. So too, <a href=\"/categories/faces/s/ohame/"
+"\"><span><u>Ohame</u></span></a> of the Andamans and Michi Yaring of "
+"Arunachal Pradesh. And not one of them resembles the other in the slightest."
+msgstr ""
+
+#: core/templates/core/contribute-to-faces.html:36
+msgid ""
+"PARI aims to record Indian faces from every single block and district in the "
+"country. That’s right — thousands and thousands of FACES, capturing the "
+"astonishing diversity of how Indians look. From every single district (and "
+"each block of every district) we aim to put up portraits of at least one "
+"adult male, one adult female and one child or adolescent. This is a gigantic "
+"exercise that will take years to complete and demands the widest "
+"participation. Anyone can take part in it provided the photograph is good "
+"enough."
+msgstr ""
+
+#: core/templates/core/contribute-to-faces.html:40
+msgid "HOW YOU CAN CONTRIBUTE"
+msgstr ""
+
+#: core/templates/core/contribute-to-faces.html:41
+msgid "Upload photos"
+msgstr ""
+
+#: core/templates/core/contribute-to-faces.html:42
+msgid ""
+"It is very important that the photograph you send to PARI is accompanied by "
+"the details of the person in the picture."
+msgstr ""
+
+#: core/templates/core/contribute-to-faces.html:44
+#, python-format
+msgid ""
+"For more on these details, please read the <a itemprop=\"url\" href="
+"\"%(guidelines)s#section-1-7\"><u>guidelines</u></a> for FACES."
+msgstr ""
+
+#: core/templates/core/contribute.html:5
+#, python-format
+msgid " Contribute to %(site_name)s "
+msgstr ""
+
+#: core/templates/core/contribute.html:7
+msgid ""
+"Join us in building a unique national knowledge repository on rural India. "
+"We need writers, editors, photographers, filmmakers, translators, "
+"researchers, and more."
+msgstr ""
+
+#: core/templates/core/contribute.html:22
+msgid "India’s biggest archive of itself needs everyone to participate"
+msgstr ""
+
+#: core/templates/core/contribute.html:23
+msgid "COVER YOUR COUNTRY – HERE’S HOW"
+msgstr ""
+
+#: core/templates/core/contribute.html:24
+msgid ""
+"Join us in building a unique national knowledge repository on rural India."
+msgstr ""
+
+#: core/templates/core/contribute.html:25
+msgid "You can start by telling us something about yourself."
+msgstr ""
+
+#: core/templates/core/contribute.html:27
+msgid "Fill the profile form"
+msgstr ""
+
+#: core/templates/core/contribute.html:31
+msgid "CONTRIBUTE CONTENT"
+msgstr ""
+
+#: core/templates/core/contribute.html:36
+msgid "Write / Edit / Photograph"
+msgstr ""
+
+#: core/templates/core/contribute.html:39
+msgid ""
+"You could write content for existing films or edit content that has been "
+"written but needs the careful eye of an editor. You can also write "
+"independent content for our print section. You could translate the subtitles "
+"of films on PARI into other languages. Having those in as many Indian "
+"languages as possible is a major objective. You can also translate other "
+"written content into different languages."
+msgstr ""
+
+#: core/templates/core/contribute.html:49
+msgid ""
+"Help us understand your skills and interests by filling in this <a href="
+"\"https://docs.google.com/forms/d/"
+"e/1FAIpQLScfpZfiT28pInGrwKxiIkVrztNMzATkOHmgEXfJwcgkT8nLkg/viewform\" target="
+"\"_blank\">Profile Form</a>."
+msgstr ""
+
+#: core/templates/core/contribute.html:55
+msgid ""
+"Upload your articles, photos, document with content ideas through the <a "
+"href=\"https://script.google.com/macros/s/"
+"AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec\" target="
+"\"_blank\">Content Upload Form</a>."
+msgstr ""
+
+#: core/templates/core/contribute.html:61
+msgid ""
+"To contribute to the Faces category, upload the photos and details through "
+"the <a href=\"https://script.google.com/macros/s/"
+"AKfycbzMQwyY8P1t7CT0_ylmPfSDz7WiSTVHWtL-Yf0UhtoYOIWQfMf5/exec\" target="
+"\"_blank\">Faces Form</a>."
+msgstr ""
+
+#: core/templates/core/contribute.html:70
+msgid "Make a film"
+msgstr ""
+
+#: core/templates/core/contribute.html:73
+msgid ""
+"You can produce content for the archive by making films like the ones you "
+"already see on this website, so long as these are within PARI’s mandate and "
+"objectives. Get in touch with us to know what would be suitable for the "
+"archive. The basic principle: it’s got to be on the everyday lives of "
+"everyday people in rural India. Share your ideas about what topics/ areas "
+"you wish to make a film on. We can take it further from there. Know that you "
+"can record content for PARI on your cell phone camera. Please share your "
+"audio/video clip links through this <a href=\"https://script.google.com/"
+"macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec\" "
+"target=\"_blank\">Content Upload Form</a>."
+msgstr ""
+
+#: core/templates/core/contribute.html:90
+msgid "Research"
+msgstr ""
+
+#: core/templates/core/contribute.html:93
+#, python-format
+msgid ""
+"Find online content already on the archive and send us links to it. Or "
+"research a vital topic – for instance, the lives of agricultural labourers "
+"in rural India – and collaborate with us on building a fund of information, "
+"photographs and data on that subject. Besides, you can send us any studies "
+"or reports in electronic form which you know of and that are relevant to "
+"rural India. Have a look at PARI's <a href=%(resource_list)s>'Resources'</a> "
+"section to know what’s already there and get a better idea of what we’re "
+"looking for. Do share any relevant reports you find through this <a href="
+"\"https://script.google.com/macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-"
+"om2cdjH0d_BRt0L1b5aA/exec\" target=\"_blank\">Content Upload Form</a>."
+msgstr ""
+
+#: core/templates/core/contribute.html:111
+msgid "Translate"
+msgstr ""
+
+#: core/templates/core/contribute.html:113
+msgid ""
+"Help us by translating content into Indian languages. Please help us "
+"understand your skills and interests by filling in this <a href=\"https://"
+"docs.google.com/forms/d/"
+"e/1FAIpQLScfpZfiT28pInGrwKxiIkVrztNMzATkOHmgEXfJwcgkT8nLkg/viewform\" target="
+"\"_blank\">Profile Form</a>."
+msgstr ""
+
+#: core/templates/core/contribute.html:122
+#: search/templates/includes/search_filters.html:31
+msgid "FACES"
+msgstr ""
+
+#: core/templates/core/contribute.html:124
+msgid ""
+"Do you have FACES to contribute to the only and largest database recording "
+"India’s facial diversity?"
+msgstr ""
+
+#: core/templates/core/contribute.html:126
+msgid "Contribute to Faces"
+msgstr ""
+
+#: core/templates/core/contribute.html:134
+msgid "READY TO UPLOAD?"
+msgstr ""
+
+#: core/templates/core/contribute.html:136
+#, python-format
+msgid ""
+"Is your content ready to upload? Do go through the <a href="
+"%(guidelines)s>PARI content guidelines</a> to ensure you know what’s "
+"required."
+msgstr ""
+
+#: core/templates/core/contribute.html:140
+msgid "Upload content"
+msgstr ""
+
+#: core/templates/core/contribute.html:145
+msgid "DONATE – SUPPORT A PARI PROJECT"
+msgstr ""
+
+#: core/templates/core/contribute.html:146
+msgid ""
+"You can back ongoing PARI projects by funding them. Or pitch one yourself on "
+"an aspect of rural India from your home state or district that you believe "
+"demands attention."
+msgstr ""
+
+#: core/templates/core/contribute.html:148 core/templates/core/donate.html:4
+#: core/templates/core/donate.html:129 core/templates/core/home_page.html:582
+#: core/templates/pages/menus/dropdown.html:285
+#: core/templates/pages/menus/footer.html:85
+#: donation/templates/donation/donate_form.html:17
+msgid "Donate to PARI"
+msgstr ""
+
+#: core/templates/core/donate.html:5
+msgid ""
+"We can do this without governments – and will. We can’t do it without you. A "
+"tax-exempt financial contribution will help PARI pull off this most "
+"ambitious of Indian journalistic endeavours."
+msgstr ""
+
+#: core/templates/core/donate.html:20
+#, python-format
+msgid ""
+"In 2014-15, only about <span class=\"highlight\">0.24%%</span> of front page "
+"news came out of rural India.<br/>We want to change that."
+msgstr ""
+
+#: core/templates/core/donate.html:23
+msgid ""
+"We can do this without governments – and will. We can’t do it without you."
+msgstr ""
+
+#: core/templates/core/donate.html:28
+msgid ""
+"India’s younger, media-saturated generations grow up knowing little about "
+"their country, but a lot about the elites of a few metros and towns. For a "
+"narrowly-owned, commercially-driven media, the dumbing down of a nation is "
+"part of standard operating procedure. Data of the Centre for Media Studies "
+"(CMS, Delhi) show us that reports from New Delhi account for 66 per cent of "
+"news on the front pages of major dailies. The CMS also found that in "
+"2014-15, only about 0.24 per cent of front page news came out of rural "
+"India. The TV channels are not much better."
+msgstr ""
+
+#: core/templates/core/donate.html:34
+msgid ""
+"PARI needs your help to pull off this most ambitious of Indian journalistic "
+"endeavours."
+msgstr ""
+
+#: core/templates/core/donate.html:38
+msgid "THE PLAN"
+msgstr ""
+
+#: core/templates/core/donate.html:42
+msgid ""
+"The People’s Archive of Rural India aims to position a PARI Fellow in every "
+"single one of the country’s 95 regions, most of which are untouched by the "
+"‘national’ (read corporate) media."
+msgstr ""
+
+#: core/templates/core/donate.html:45
+msgid "The Fellows could be"
+msgstr ""
+
+#: core/templates/core/donate.html:48
+msgid "Reporters"
+msgstr ""
+
+#: core/templates/core/donate.html:49
+msgid "Writers"
+msgstr ""
+
+#: core/templates/core/donate.html:50
+msgid "Filmmakers"
+msgstr ""
+
+#: core/templates/core/donate.html:51
+msgid "Photographers"
+msgstr ""
+
+#: core/templates/core/donate.html:53
+msgid "and everyday residents of the regions themselves."
+msgstr ""
+
+#: core/templates/core/donate.html:54
+msgid ""
+"By ‘regions’ we mean natural or historically evolved areas. For instance, in "
+"the state of Uttar Pradesh we have Rohilkhand, Bundelkhand, Braj, Awadh, "
+"Sonebhadra, and Bhojpur (which extends into Bihar as well).\""
+msgstr ""
+
+#: core/templates/core/donate.html:60
+msgid ""
+"Each PARI Fellow works on a specific region for a year, spending at least "
+"three months full-time in fieldwork amongst the region’s people and "
+"communities."
+msgstr ""
+
+#: core/templates/core/donate.html:64
+msgid ""
+"Across 60 months or so, PARI will generate text reports, audio stories, "
+"videos, documentary films, photographs, music and ‘talking albums’ on the "
+"everyday lives of everyday people – from every part of the country. A "
+"database that will be truly representative of the Indian people, "
+"particularly of 833 million rural citizens. Of their labour, crafts, "
+"stories, songs, poems, art and more. The network of Fellows we build will "
+"also reflect the social composition of the country. Half of the nearly 100 "
+"Fellows will be women. And Dalit journalists, Adivasi journalists and those "
+"from the minorities, will also be represented in a fair manner. Many stories "
+"will be told directly by everyday people themselves. Among other legacies, "
+"this will give generations of students, all our children, living textbooks "
+"on the world around them. And give the nation itself a repository the like "
+"of which it has never seen."
+msgstr ""
+
+#: core/templates/core/donate.html:76
+msgid ""
+"PARI is a multi-lingual site. On this site you’ll find several articles "
+"which have a ‘Choose language’ button at the top. Some appear in multiple "
+"languages, a few in as many as 10. We intend to scale up both, the number of "
+"articles as well as languages. PARI’s audio project too aims to record "
+"speakers in every one of India’s 780 living languages."
+msgstr ""
+
+#: core/templates/core/donate.html:86
+msgid "SPONSOR A FELLOW"
+msgstr ""
+
+#: core/templates/core/donate.html:88
+msgid "Cost of each fellowship:"
+msgstr ""
+
+#: core/templates/core/donate.html:89
+msgid "Rs. 2 lakhs"
+msgstr ""
+
+#: core/templates/core/donate.html:90
+msgid ""
+"+ associated costs related to the recording, documentation, collation, "
+"editing (text and video), training and more."
+msgstr ""
+
+#: core/templates/core/donate.html:94
+msgid "Approximate total cost of PARI fellowships (per year):"
+msgstr ""
+
+#: core/templates/core/donate.html:95
+msgid "Rs. 80 lakhs"
+msgstr ""
+
+#: core/templates/core/donate.html:101
+msgid "HOW YOU CAN HELP"
+msgstr ""
+
+#: core/templates/core/donate.html:105
+msgid ""
+"You can send in donations using a range of payment methods. All donations "
+"made to the CounterMedia Trust are <a href=\"/media/uploads/"
+"Donate/80g_certificate.jpg\" target=\"_blank\">eligible for exemption</a> "
+"under Section 80G of the Income Tax Act, 1961."
+msgstr ""
+
+#: core/templates/core/donate.html:112
+msgid "Donate equipment"
+msgstr ""
+
+#: core/templates/core/donate.html:115
+msgid ""
+"If you would like to send over equipment (new or used) that PARI Fellows and "
+"rural contributors could use, please get in <a href=\"mailto:"
+"contact@ruralindiaonline.org\">touch</a>. That could include still and video "
+"cameras, audio digital recorders, laptops, hard disks and other equipment."
+msgstr ""
+
+#: core/templates/core/donate.html:122
+msgid "Share the message in your network"
+msgstr ""
+
+#: core/templates/core/donate.html:124
+msgid ""
+"Ask your friends to connect and contribute to this endeavour. Help us cover "
+"your country. Join us in building a unique national knowledge repository on "
+"rural India."
+msgstr ""
+
+#: core/templates/core/donate.html:141
+msgid ""
+"A lot more, actually, but PARI’s core group and volunteers bear significant "
+"costs, personally. We appeal to you to contribute generously and make this "
+"unique journalistic effort a success. We can do this without governments and "
+"corporations – and will. We can’t do it without you."
+msgstr ""
+
+#: core/templates/core/donate.html:148
+msgid "Thanking you"
+msgstr ""
+
+#: core/templates/core/donate.html:149
+msgid "Sincerely"
+msgstr ""
+
+#: core/templates/core/founders.html:3
+msgid ""
+"P. Sainath is the Founder Editor of the People’s Archive of Rural India. The "
+"archive is an outcome of his three decades-plus in journalism – including a "
+"quarter century of reporting from rural India."
+msgstr ""
+
+#: core/templates/core/founders.html:4
+msgid "Founder Editor P Sainath"
+msgstr ""
+
+#: core/templates/core/founders.html:17
+msgid "Founder's page"
+msgstr ""
+
+#: core/templates/core/founders.html:20
+msgid ""
+"P. Sainath is the Founder Editor of the People’s Archive of Rural India. The "
+"archive is an outcome of his three decades-plus in journalism – including a "
+"quarter century of reporting from rural India. PARI aims to address the "
+"complete failure of the corporate media to cover two-thirds of the country’s "
+"population. Our aim is to report and record what is easily the most complex "
+"part of the planet."
+msgstr ""
+
+#: core/templates/core/founders.html:21
+msgid ""
+"Sainath, former Rural Affairs Editor of The Hindu, writer and journalism "
+"teacher, is the 2007 winner of the Ramon Magsaysay Award, Asia’s most "
+"prestigious prize. He has also won the World Media Summit Global Award for "
+"Excellence 2014, in Public Welfare reporting. He was the first reporter in "
+"the world to win Amnesty International’s Global Award for Human Rights "
+"Journalism in its inaugural year in 2000. Sainath has taught at journalism "
+"schools in India and abroad, mentoring students as well as training media "
+"professionals."
+msgstr ""
+
+#: core/templates/core/founders.html:22
+msgid ""
+"His book <i>Everybody Loves a Good Drought </i>(Penguin India, 1996), now in "
+"its 43rd print, was declared a Penguin Classic in January 2013.  The book is "
+"being used in over a hundred universities in India and abroad. His photo "
+"archive of black and white images from rural India is being digitised. One "
+"part of that titled &#39;Visible Work, Invisible Women&#39; is now on PARI "
+"as a fully curated online exhibition. For more on Sainath see <a href="
+"\"http://www.psainath.org/\" target=\"_blank\">www.psainath.org.</a>"
+msgstr ""
+
+#: core/templates/core/founders.html:24 core/templates/core/founders.html:50
+msgid "Binaifer Bharucha"
+msgstr ""
+
+#: core/templates/core/founders.html:25
+msgid ""
+"Binaifer Bharucha is PARI’s Photo Editor and a freelance photographer based "
+"in Mumbai. Her commercial portfolio focuses on still life work (products, "
+"food, interiors and jewellery). Since 2010 she has been a part of ArtOxygen, "
+"an organisation that promotes people’s art in public spaces in Mumbai. She "
+"photographs and shoots videos of the interactions and encounters between the "
+"public, the artwork and the artist."
+msgstr ""
+
+#: core/templates/core/founders.html:26
+msgid ""
+"Binaifer has a postgraduate diploma in Social Communications Media from the "
+"Sophia Polytechnic, Mumbai. She loves, in no particular order, to shoot "
+"things that don’t move, going to the mountains, animals, books, films and "
+"food."
+msgstr ""
+
+#: core/templates/core/founders.html:28
+msgid ""
+"Namita Waikar is Managing Editor, PARI, and a CounterMedia trustee. She "
+"oversees the finance and administrative functions of the trust that runs "
+"PARI. Her work includes administering the PARI fellowships programme, "
+"managing communications with volunteers, overseeing all Indian language "
+"translations and reviews, and anchoring the landmark Grindmill Songs Project."
+msgstr ""
+
+#: core/templates/core/founders.html:29
+msgid ""
+"Namita is also a writer and translator (Marathi to English), and some of her "
+"stories, photos and videos are published on PARI.  In her day job, she is a "
+"partner in a chemistry databases firm in Pune, which is the culmination of "
+"her work of over 20 years as a biochemist and a software project manager."
+msgstr ""
+
+#: core/templates/core/founders.html:31
+msgid ""
+"Sharmila Joshi is the Executive Editor at PARI. Her work includes "
+"overseeing, editing and presenting PARI’s complex content from innumerable "
+"parts of the country. She also manages a pool of voluntary editors and "
+"trains editorial interns. She has a significant role in shaping our site’s "
+"editorial and ethical protocols."
+msgstr ""
+
+#: core/templates/core/founders.html:32
+msgid ""
+"As a journalist, Sharmila’s work has featured in several national and "
+"international publications. As a researcher, she has published in "
+"anthologies on gender and violence, on women in politics, and gender and "
+"labour. She has an MA in Historical Sociology from the State University of "
+"New York, and the work she started towards a PhD there remains a pipedream."
+msgstr ""
+
+#: core/templates/core/founders.html:34
+msgid ""
+"As Tech Editor, PARI, Siddharth Adelkar notices nifty tools and best "
+"practices in the tech world, and brings them home to PARI. "
+"Siddharth believes that journalists expect more than “just a website” from "
+"technologists. They need an engaged tech team that is sensitive to the "
+"geopolitical, economic and societal crisis that journalism is going through. "
+"Online journalism can be a redeeming force, but that requires building an "
+"enduring partnership between techies and journalists. One that strives to "
+"rebuild the Internet as a democratic and public space."
+msgstr ""
+
+#: core/templates/core/founders.html:35
+msgid ""
+"Siddharth works at ThoughtWorks, where he focuses on software for "
+"independent media. He is also the Secretary of the Free Software Movement of "
+"Maharashtra. He has a master’s degree in Computer Science from the "
+"University of Southern California."
+msgstr ""
+
+#: core/templates/core/founders.html:38
+msgid "People"
+msgstr ""
+
+#: core/templates/core/founders.html:43
+msgid "FOUNDER EDITOR"
+msgstr ""
+
+#: core/templates/core/founders.html:49
+msgid "PHOTO EDITOR"
+msgstr ""
+
+#: core/templates/core/founders.html:54
+msgid "MANAGING EDITOR"
+msgstr ""
+
+#: core/templates/core/founders.html:59
+msgid "EXECUTIVE EDITOR"
+msgstr ""
+
+#: core/templates/core/founders.html:64
+msgid "TECH EDITOR"
+msgstr ""
+
+#: core/templates/core/guidelines.html:4
+msgid ""
+"Want to contribute to PARI? Find out what types of content we are looking "
+"for."
+msgstr ""
+
+#: core/templates/core/guidelines.html:26
+msgid "Index of contents"
+msgstr ""
+
+#: core/templates/core/home_page.html:6
+msgid ""
+"A journalism website reporting the stories of 833 million rural Indians. An "
+"archive of the living past, a journal of the present, a textbook of the "
+"future."
+msgstr ""
+
+#: core/templates/core/home_page.html:9
+msgid "Home"
+msgstr ""
+
+#: core/templates/core/home_page.html:203
+msgid "Read/ Watch/ Listen"
+msgstr ""
+
+#: core/templates/core/home_page.html:256
+msgid "IN FOCUS"
+msgstr ""
+
+#: core/templates/core/home_page.html:370
+msgid "All that you can discover on PARI"
+msgstr ""
+
+#: core/templates/core/home_page.html:391
+msgid "PARI is an insane project"
+msgstr ""
+
+#: core/templates/core/home_page.html:395
+msgid "Rural India — a living journal, a breathing archive"
+msgstr ""
+
+#: core/templates/core/home_page.html:402
+msgid "Here's how you can contribute"
+msgstr ""
+
+#: core/templates/core/home_page.html:446
+msgid "and a wonderful one"
+msgstr ""
+
+#: core/templates/core/home_page.html:471
+msgid "Stories from all over in all languages"
+msgstr ""
+
+#: core/templates/core/home_page.html:473
+msgid "Browse all Categories"
+msgstr ""
+
+#: core/templates/core/home_page.html:477
+msgid "Translate for PARI"
+msgstr ""
+
+#: core/templates/core/home_page.html:478
+msgid "Translate PARI content into languages you know"
+msgstr ""
+
+#: core/templates/core/home_page.html:492
+msgid "And many more stories in audio and video"
+msgstr ""
+
+#: core/templates/core/home_page.html:581
+msgid "Like what PARI is doing?"
+msgstr ""
+
+#: core/templates/core/home_page.html:585
+msgid "Contribute to PARI"
+msgstr ""
+
+#: core/templates/core/pari_teachers_students.html:3
+#: core/templates/core/pari_teachers_students.html:36
+#: core/templates/pages/menus/dropdown.html:251
+msgid "PARI for students, teachers and researchers"
+msgstr ""
+
+#: core/templates/core/pari_teachers_students.html:4
+msgid ""
+"PARI will serve as a living, breathing textbook of Indian rural affairs for "
+"future generations of students and teachers. Find out how."
+msgstr ""
+
+#: core/templates/core/pari_teachers_students.html:43
+msgid "REDEFINING LEARNING"
+msgstr ""
+
+#: core/templates/core/pari_teachers_students.html:46
+msgid "Creating the textbooks of the future"
+msgstr ""
+
+#: core/templates/core/pari_teachers_students.html:47
+msgid ""
+"At PARI, we’re writing the textbooks of the future. That’s happening with "
+"the numerous stories, photos, videos and audio material going up every "
+"week on our site. It’s important that, over time, quite a bit of that is "
+"produced by students and teachers themselves."
+msgstr ""
+
+#: core/templates/core/pari_teachers_students.html:54
+msgid ""
+"PARI aims to help create informative and lively stories on rural India for "
+"students, teachers, schools, colleges and universities. And for learners "
+"outside such formal institutions as well. We believe teaching and learning "
+"materials, including textbooks, will increasingly move online in the next "
+"few years. That's a process already on in some parts of the world. Done "
+"right, it could mean 'textbooks' or teaching material that can be added to, "
+"amended, updated or widened. As broadband access grows, it should also mean "
+"lower costs for many students, as PARI is a free-access-to-public site."
+msgstr ""
+
+#: core/templates/core/pari_teachers_students.html:72
+msgid "Helping students to develop course content"
+msgstr ""
+
+#: core/templates/core/pari_teachers_students.html:73
+msgid ""
+"We have already added a vital element to this process: on PARI, students "
+"participate in the creation of their own textbooks. If a teacher or an "
+"institution wants to set up learning resources for a course or part of a "
+"course, we will work with them to create the course content. Let’s say "
+"that's on rural labour or migrants or agriculture or artisans – we will try "
+"and involve the students in creating living knowledge on their topics "
+"through field trips."
+msgstr ""
+
+#: core/templates/core/pari_teachers_students.html:84
+msgid ""
+"So videos, audio recordings, photos and text articles of and by students "
+"could not only be fetching them marks or grades in their courses, but also "
+"become part of a flexible and open textbook. Also, a video on, say, "
+"agricultural labourers where the workers themselves are the narrators, where "
+"they'd be addressing audiences themselves, sharing and explaining their "
+"lives, work and world – that will make for far more compelling learning "
+"resources. These should certainly hold the attention of students, teachers, "
+"researchers and general viewers alike, far better than printed textbooks "
+"dated by some years. Especially since PARI’s approach will combine the power "
+"of text articles, research papers, video, audio and still photographs."
+msgstr ""
+
+#: core/templates/core/pari_teachers_students.html:103
+msgid "Unleashing a powerful source of learning"
+msgstr ""
+
+#: core/templates/core/pari_teachers_students.html:105
+#, python-format
+msgid ""
+"PARI has specific <a href=\"%(guidelines)s#section-6-1\"> guidelines </a> "
+"for videos generated for and by us, which ensure recognition of primary "
+"authorship of the narrators. Meanwhile, just the interaction of students "
+"with the people whose lives they're trying to study, and their joint effort "
+"with communities to produce authentic material from the field, is also a "
+"powerful source of learning. It’s already happening on PARI."
+msgstr ""
+
+#: core/templates/core/pari_teachers_students.html:116
+msgid ""
+"There's another thing: each year, countless students produce valuable output "
+"on India. In the form of research papers, articles, videos, documentaries, "
+"magazines, photographs and more. Excellent though some of this material is, "
+"it mostly disappears into departmental libraries, exam paper cupboards or "
+"the uncharted cemeteries of cyberspace. But for institutions that link up "
+"with us, PARI offers a platform that will preserve, even showcase, the best "
+"of that output and make it accessible and easy to view from anywhere in the "
+"world. In turn, knowing that their work can be viewed across the globe would "
+"be an incentive for students to raise the level and quality of their work."
+msgstr ""
+
+#: core/templates/core/pari_teachers_students.html:134
+msgid "A one-stop library for researchers"
+msgstr ""
+
+#: core/templates/core/pari_teachers_students.html:136
+#, python-format
+msgid ""
+"Besides this, there are students in universities, colleges and high schools "
+"working on text articles, audio and video, independently of their course "
+"work, for PARI. Some very young students have even produced <a href="
+"%(forest)s> newspapers </a> for us."
+msgstr ""
+
+#: core/templates/core/pari_teachers_students.html:144
+#, python-format
+msgid ""
+"And in our <a href=%(resource_list)s> Resources </a> section, we aim to put "
+"up (in full text and not just via links), all official (and unofficial but "
+"credible) reports related to rural India. For instance, every report of the "
+"National Commission for Enterprises in the Unorganised Sector, reports of "
+"the Planning Commission (now NITI Aayog) and ministries, the United Nations "
+"and much more. Researchers will not have to surf multiple sites to access "
+"important documents and studies from different sources."
+msgstr ""
+
+#: core/templates/core/pari_teachers_students.html:156
+msgid ""
+"PARI is a one-stop library for students, teachers and all other learners."
+msgstr ""
+
+#: core/templates/core/static_page.html:17
+msgid "Choose language"
+msgstr ""
+
+#: core/templates/email/contact_us.html:4
+msgid "Name"
+msgstr ""
+
+#: core/templates/email/contact_us.html:8
+msgid "Email"
+msgstr ""
+
+#: core/templates/email/contact_us.html:12
+msgid "Message"
+msgstr ""
+
+#: core/templates/includes/grid_title.html:8
+#: core/templates/includes/page_content_header/gallery_back_button.html:5
+msgid "GALLERY"
+msgstr ""
+
+#: core/templates/includes/home_page_face_tile.html:9
+msgid "FACES from across India"
+msgstr ""
+
+#: core/templates/includes/home_page_face_tile.html:14
+msgid "PARI records the facial diversity of the people of India"
+msgstr ""
+
+#: core/templates/includes/home_page_face_tile.html:18
+msgid "View all FACES"
+msgstr ""
+
+#: core/templates/includes/home_page_face_tile.html:22
+#: core/templates/pages/menus/dropdown.html:213
+msgid "Contribute"
+msgstr ""
+
+#: core/templates/includes/home_page_face_tile.html:23
+msgid "to this database"
+msgstr ""
+
+#: core/templates/includes/language_select.html:10
+#: core/templates/includes/language_select.html:15
+#, python-format
+msgid " %(tlang)s "
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:15
+#: search/templates/includes/search_filters.html:41
+msgid "Things We Do"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:20
+#: search/templates/includes/search_filters.html:42
+msgid "Things We Make"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:25
+#: search/templates/includes/search_filters.html:43
+msgid "Farming and its Crisis"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:34
+#: search/templates/includes/search_filters.html:50
+msgid "Foot-Soldiers of Freedom"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:39
+#: search/templates/includes/search_filters.html:64
+msgid "The Rural in the Urban"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:44
+#: search/templates/includes/search_filters.html:52
+msgid "Musafir"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:49
+msgid "View all Categories"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:62
+msgid "Stories from near you"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:65
+msgid "The archive on a map"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:82
+msgid "PHOTOS"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:91
+msgid "Exhibitions"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:96
+msgid "PARI Pics"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:102
+msgid "VIDEOS"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:106
+#: search/templates/includes/search_filters.html:44
+msgid "Little Takes"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:118
+msgid "AUDIO"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:122
+msgid "Music"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:127
+#: search/templates/includes/search_filters.html:59
+msgid "Tongues"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:133
+msgid "View Gallery highlights"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:151
+msgid "Explore India’s facial diversity"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:153
+msgid "View FACES"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:166
+msgid "Listen to photos speak"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:168
+msgid "View Talking Albums"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:179
+#: resources/templates/resources/resource_list.html:8
+#: resources/templates/resources/resource_list.html:9
+#: resources/templates/resources/resource_list.html:37
+#: search/templates/includes/search_filters.html:32
+msgid "Library"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:184
+msgid "About PARI"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:191
+msgid "ABOUT PARI"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:199
+#: core/templates/pages/menus/footer.html:60
+msgid "Blog"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:203
+#: core/templates/pages/menus/footer.html:65
+msgid "Contact us"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:209
+msgid "GET INVOLVED"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:218
+msgid "Donate"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:224
+msgid "NOTES"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:233
+#: core/templates/pages/menus/footer.html:75
+msgid "Guidelines"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:253
+#: core/templates/pages/menus/dropdown.html:269
+msgid "Know more"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:267
+msgid "Founder Editor"
+msgstr ""
+
+#: core/templates/pages/menus/dropdown.html:280
+msgid "PARI Education"
+msgstr ""
+
+#: core/templates/pages/menus/footer.html:16
+msgid "Stories on a map"
+msgstr ""
+
+#: core/templates/pages/menus/footer.html:26
+msgid "Photos"
+msgstr ""
+
+#: core/templates/pages/menus/footer.html:31
+#: search/templates/includes/search_filters.html:29
+msgid "Videos"
+msgstr ""
+
+#: core/templates/pages/menus/footer.html:36
+#: search/templates/includes/search_filters.html:30
+msgid "Audios"
+msgstr ""
+
+#: core/templates/pages/menus/footer.html:45 face/templates/face/face.html:10
+#: face/templates/face/face.html:11 face/templates/face/face.html:47
+#: face/templates/face/face_list.html:10 face/templates/face/face_list.html:11
+#: face/templates/face/face_list.html:31
+#: location/templates/map/map_list.html:51
+msgid "Faces"
+msgstr ""
+
+#: core/templates/pages/menus/footer.html:51
+msgid "About"
+msgstr ""
+
+#: core/templates/pages/menus/footer.html:81
+msgid "Get Involved"
+msgstr ""
+
+#: core/templates/pages/menus/footer.html:90
+msgid "Volunteer for PARI"
+msgstr ""
+
+#: core/templates/pages/menus/footer.html:96
+msgid "More"
+msgstr ""
+
+#: core/templates/pages/menus/footer.html:100
+msgid "Terms & Conditions"
+msgstr ""
+
+#: core/templates/pages/menus/footer.html:106
+msgid "Copyright"
+msgstr ""
+
+#: core/templates/pages/menus/footer.html:117
+msgid "Connect"
+msgstr ""
+
+#: core/views.py:145
+msgid "Your query has successfully been sent"
+msgstr ""
+
+#: donation/forms.py:10
+msgid "NAME"
+msgstr ""
+
+#: donation/forms.py:15
+msgid "EMAIL"
+msgstr ""
+
+#: donation/forms.py:19
+msgid "PHONE NUMBER"
+msgstr ""
+
+#: donation/forms.py:23
+msgid "PAN NUMBER"
+msgstr ""
+
+#: donation/forms.py:26
+msgid "PAN is required as per government regulations."
+msgstr ""
+
+#: donation/forms.py:30
+msgid "AMOUNT"
+msgstr ""
+
+#: donation/forms.py:35
+msgid "TYPE"
+msgstr ""
+
+#: donation/forms.py:41
+msgid "DURATION"
+msgstr ""
+
+#: donation/forms.py:45
+msgid "I declare that I am an Indian citizen"
+msgstr ""
+
+#: donation/forms.py:52
+msgid "Sorry, we can accept donations from Indians only."
+msgstr ""
+
+#: donation/forms.py:59
+msgid "Term should be at least 2 years for Yearly donation"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:5
+#: donation/templates/donation/donate_success.html:5
+#: donation/templates/donation/razorpay_checkout.html:5
+#, python-format
+msgid "Donate to %(site_name)s"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:34
+msgid ""
+"At present, we can only accept donations in Indian rupees by Indian "
+"citizens. All donations made to the CounterMedia Trust are eligible for "
+"exemption under Section 80G of the Income Tax Act, 1961. Here is a copy of "
+"our <a href=\"/media/uploads/Donate/80g_certificate.jpg\" target=\"_blank"
+"\">exemption certificate.</a>"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:46
+#, python-format
+msgid ""
+"In 2014-15, only about <span class=\"highlight\">0.24%% of front page news</"
+"span> came out of rural India."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:52
+msgid ""
+"We want to change that.<br/><br/> We can do this without governments – and "
+"will. <u>We can’t do it without you.</u>"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:62
+msgid "Other ways to donate"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:63
+msgid "PAYMENT BY CHEQUE OR DEMAND DRAFT"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:64
+msgid ""
+"Pay by cheque/DD in favour of the <strong>“CounterMedia Trust”</strong> and "
+"send it to us by courier/post along with your contact details – name, "
+"address, telephone number, e-mail ID and PAN number."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:69
+msgid ""
+"Send by courier / post to:<br/> <strong>CounterMedia Trust</strong> <br/> c/"
+"o P. Sainath, 27/43 Sagar Sangam, Bandra Reclamation, Mumbai 400050, "
+"Maharashtra, India."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:77
+msgid "PAYMENT BY BANK/ WIRE TRANSFER"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:78
+msgid "Payable to: <strong>CounterMedia Trust</strong>"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:79
+msgid ""
+"Bank and branch: HDFC Bank, Aundh<br/> Address: 93, Anand Park, Rajyog "
+"Creations, Off ITI Road, Aundh, Pune 411007, Maharashtra.<br/> Account "
+"Number: 50100091804541<br/> MICR Code: 411240005<br/> IFSC Code: HDFC0000052"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:85
+msgid ""
+"And send an email to donate@ruralindiaonline.org mentioning the transaction "
+"reference number, amount and date of transfer, along with your contact "
+"details."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:86
+#: donation/templates/donation/donate_form.html:123
+msgid "Please fill the form below after you have sent in your donation."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:89
+msgid "IMPS"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:90
+msgid ""
+"Payment by mobile phone using Immediate Payment Service (IMPS).<br/> Please "
+"go through the following methods of mobile payment enabled by the National "
+"Payments Corporation of India (NPCI)."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:93
+msgid ""
+"One easy way to do this is through the National Unified USSD Platform (NUUP)"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:94
+msgid ""
+"The following has been reproduced from <a href=\"http://www.npci.org.in/"
+"documents/FAQs-NUUP.pdf\" target=\"_blank\">http://www.npci.org.in/documents/"
+"FAQs-NUUP.pdf</a>"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:95
+msgid "Fund transfer using IFSC and account number:"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:99
+msgid "Dial *99# from your mobile handset."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:102
+msgid ""
+"The NUUP welcome screen will appear asking you to enter your bank’s 4-digit "
+"IFS code."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:105
+msgid ""
+"After entering a valid IFS code, the NUUP menu will appear with different "
+"options of available services enabled for your bank."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:108
+msgid "Enter 4 for Fund Transfer using IFSC and account number and submit."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:111
+msgid ""
+"On subsequent screens enter the MPIN and the last 4 digits of the account "
+"number (optional)."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:113
+msgid "Beneficiary account number"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:114
+msgid "IFS code"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:115
+msgid "Amount"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:116
+msgid "Remarks (optional) will appear."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:120
+msgid "A confirmation screen will appear."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:133
+msgid "THE FORM"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:139
+msgid "FAQs"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:141
+msgid "I sent PARI a donation. How do I get a receipt?"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:142
+msgid ""
+"Please make sure you include your email address in the donation form when "
+"you make a contribution to PARI.  A receipt will be sent to you in 4 to 8 "
+"weeks by email. You may download the 80G certificate <a href=\"/media/"
+"uploads/Donate/80g_certificate.jpg\" target=\"_blank\">here</a>."
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:149
+msgid "I live abroad. Can I send PARI a donation?"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:153
+msgid "Is there any other way in which I can contribute?"
+msgstr ""
+
+#: donation/templates/donation/donate_form.html:154
+msgid ""
+"Apart from donating money and equipment, you can provide PARI copies of "
+"photo collections (new and old), pertaining to rural India. We are also "
+"always on the look out for people who can write/photograph for us. Learn "
+"more about how you can contribute <a href=\"/contribute\">here</a>."
+msgstr ""
+
+#: donation/templates/donation/donate_success.html:11
+#, python-format
+msgid " Thank you for donating to %(site_name)s. "
+msgstr ""
+
+#: donation/views.py:181
+msgid "Donation received"
+msgstr ""
+
+#: face/templates/face/face.html:59
+msgid "FACES DIRECTORY"
+msgstr ""
+
+#: face/templates/face/face.html:70 face/templates/face/face_list.html:49
+msgid "Upload a FACE"
+msgstr ""
+
+#: face/templates/face/face.html:88
+msgid "Faces of <b>district names</b> starting with"
+msgstr ""
+
+#: face/templates/face/face.html:150 face/templates/face/face_list.html:112
+#, python-format
+msgid ""
+"Sorry! There are no faces on this page. Please consider <a href="
+"%(contribute)s>contributing</a> one."
+msgstr ""
+
+#: face/templates/face/face_list.html:12
+msgid ""
+"PARI aims to collect a photo of one man, one woman, and one child from every "
+"district in India. Check out our progress so far."
+msgstr ""
+
+#: face/templates/face/face_list.html:68
+msgid "Alphabetical"
+msgstr ""
+
+#: face/templates/face/face_list.html:72
+#: location/templates/map/map_list.html:62
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:47
+msgid "District"
+msgstr ""
+
+#: face/templates/face/includes/face_details.html:8
+msgid "AGE"
+msgstr ""
+
+#: face/templates/face/includes/face_details.html:13
+msgid "OCCUPATION"
+msgstr ""
+
+#: face/templates/face/includes/face_details.html:18
+msgid "PARENTS' OCCUPATION"
+msgstr ""
+
+#: face/templates/face/includes/face_details.html:23
+msgid "ADIVASI"
+msgstr ""
+
+#: face/templates/face/includes/face_details.html:28
+msgid "VILLAGE"
+msgstr ""
+
+#: face/templates/face/includes/face_details.html:33
+msgid "PANCHAYAT"
+msgstr ""
+
+#: face/templates/face/includes/face_details.html:43
+msgid "DISTRICT"
+msgstr ""
+
+#: face/templates/face/includes/face_details.html:48
+msgid "STATE"
+msgstr ""
+
+#: face/templates/face/includes/face_details.html:53
+msgid "PHOTOGRAPHER"
+msgstr ""
+
+#: face/templates/face/includes/face_details.html:58
+msgid "CAMERA"
+msgstr ""
+
+#: face/templates/face/includes/face_details.html:63
+msgid "DATE PHOTO WAS TAKEN"
+msgstr ""
+
+#: face/templates/face/includes/face_details.html:68
+msgid "PHOTO TAKEN IN"
+msgstr ""
+
+#: face/templates/face/includes/face_details.html:73
+msgid "QUOTE"
+msgstr ""
+
+#: face/templates/face/includes/face_details.html:78
+msgid "ADDITIONAL INFORMATION"
+msgstr ""
+
+#: feeds/feeds.py:85
+msgid "PARI consolidated feed"
+msgstr ""
+
+#: feeds/feeds.py:90
+#, python-brace-format
+msgid "Updates on the PARI site over the past {0} days"
+msgstr ""
+
+#: feeds/feeds.py:123
+msgid "PARI article feed"
+msgstr ""
+
+#: feeds/feeds.py:128
+#, python-brace-format
+msgid "Article updates on the PARI site over the past {0} days"
+msgstr ""
+
+#: feeds/feeds.py:145
+msgid "PARI album feed"
+msgstr ""
+
+#: feeds/feeds.py:150
+#, python-brace-format
+msgid "Album updates on the PARI site over the past {0} days"
+msgstr ""
+
+#: feeds/feeds.py:170
+msgid "PARI face feed"
+msgstr ""
+
+#: feeds/feeds.py:175
+#, python-brace-format
+msgid "Face updates on the PARI site over the past {0} days"
+msgstr ""
+
+#: feeds/feeds.py:196
+msgid "PARI resource feed"
+msgstr ""
+
+#: feeds/feeds.py:201
+#, python-brace-format
+msgid "Resource updates on the PARI site over the past {0} days"
+msgstr ""
+
+#: feeds/templates/feeds/feeds_list.html:4
+msgid "Stay updated with RSS/Atom feeds"
+msgstr ""
+
+#: feeds/templates/feeds/feeds_list.html:10
+msgid "Stay updated with latest content through Feeds"
+msgstr ""
+
+#: feeds/templates/feeds/feeds_list.html:13
+msgid "Consolidated Feed"
+msgstr ""
+
+#: feeds/templates/feeds/feeds_list.html:13
+#: feeds/templates/feeds/feeds_list.html:16
+#: feeds/templates/feeds/feeds_list.html:19
+#: feeds/templates/feeds/feeds_list.html:22
+#: feeds/templates/feeds/feeds_list.html:25
+msgid "Atom"
+msgstr ""
+
+#: feeds/templates/feeds/feeds_list.html:13
+#: feeds/templates/feeds/feeds_list.html:16
+#: feeds/templates/feeds/feeds_list.html:19
+#: feeds/templates/feeds/feeds_list.html:22
+#: feeds/templates/feeds/feeds_list.html:25
+msgid "RSS"
+msgstr ""
+
+#: feeds/templates/feeds/feeds_list.html:16
+msgid "Article Feed"
+msgstr ""
+
+#: feeds/templates/feeds/feeds_list.html:19
+msgid "Album Feed"
+msgstr ""
+
+#: feeds/templates/feeds/feeds_list.html:22
+msgid "Face Feed"
+msgstr ""
+
+#: feeds/templates/feeds/feeds_list.html:25
+msgid "Resource Feed"
+msgstr ""
+
+#: location/forms.py:30
+msgid "Sub district type has to be chosen first"
+msgstr ""
+
+#: location/templates/location/location_detail.html:4
+#, python-format
+msgid "Pages from %(location.address)s"
+msgstr ""
+
+#: location/templates/location/location_detail.html:20
+#, python-format
+msgid "Pages from %(location.name)s, %(location.district)s, %(location.state)s"
+msgstr ""
+
+#: location/templates/map/map_list.html:4
+msgid "Map"
+msgstr ""
+
+#: location/templates/map/map_list.html:5
+msgid "Find PARI stories by geographic location."
+msgstr ""
+
+#: location/templates/map/map_list.html:43
+msgid "Show"
+msgstr ""
+
+#: location/templates/map/map_list.html:47
+#: search/templates/includes/search_filters.html:28
+msgid "Articles"
+msgstr ""
+
+#: location/templates/map/map_list.html:61
+msgid "State"
+msgstr ""
+
+#: location/wagtail_hooks.py:37
+msgid "Locations"
+msgstr ""
+
+#: news/templates/news/pari_news.html:4 news/templates/news/pari_news.html:15
+msgid "New on PARI"
+msgstr ""
+
+#: pari/settings/base.py:215
+msgid "Andaman and Nicobar Islands"
+msgstr ""
+
+#: pari/settings/base.py:216
+msgid "Andhra Pradesh"
+msgstr ""
+
+#: pari/settings/base.py:217
+msgid "Arunachal Pradesh"
+msgstr ""
+
+#: pari/settings/base.py:218
+msgid "Assam"
+msgstr ""
+
+#: pari/settings/base.py:219
+msgid "Bihar"
+msgstr ""
+
+#: pari/settings/base.py:220
+msgid "Chandigarh"
+msgstr ""
+
+#: pari/settings/base.py:221
+msgid "Chhattisgarh"
+msgstr ""
+
+#: pari/settings/base.py:222
+msgid "Dadra and Nagar Haveli"
+msgstr ""
+
+#: pari/settings/base.py:223
+msgid "Daman and Diu"
+msgstr ""
+
+#: pari/settings/base.py:224
+msgid "National Capital Territory of Delhi"
+msgstr ""
+
+#: pari/settings/base.py:225
+msgid "Goa"
+msgstr ""
+
+#: pari/settings/base.py:226
+msgid "Gujarat"
+msgstr ""
+
+#: pari/settings/base.py:227
+msgid "Haryana"
+msgstr ""
+
+#: pari/settings/base.py:228
+msgid "Himachal Pradesh"
+msgstr ""
+
+#: pari/settings/base.py:229
+msgid "Jammu and Kashmir"
+msgstr ""
+
+#: pari/settings/base.py:230
+msgid "Jharkhand"
+msgstr ""
+
+#: pari/settings/base.py:231
+msgid "Karnataka"
+msgstr ""
+
+#: pari/settings/base.py:232
+msgid "Kerala"
+msgstr ""
+
+#: pari/settings/base.py:233
+msgid "Lakshadweep"
+msgstr ""
+
+#: pari/settings/base.py:234
+msgid "Madhya Pradesh"
+msgstr ""
+
+#: pari/settings/base.py:235
+msgid "Maharashtra"
+msgstr ""
+
+#: pari/settings/base.py:236
+msgid "Manipur"
+msgstr ""
+
+#: pari/settings/base.py:237
+msgid "Meghalaya"
+msgstr ""
+
+#: pari/settings/base.py:238
+msgid "Mizoram"
+msgstr ""
+
+#: pari/settings/base.py:239
+msgid "Nagaland"
+msgstr ""
+
+#: pari/settings/base.py:240
+msgid "Odisha"
+msgstr ""
+
+#: pari/settings/base.py:241
+msgid "Puducherry"
+msgstr ""
+
+#: pari/settings/base.py:242
+msgid "Punjab"
+msgstr ""
+
+#: pari/settings/base.py:243
+msgid "Rajasthan"
+msgstr ""
+
+#: pari/settings/base.py:244
+msgid "Sikkim"
+msgstr ""
+
+#: pari/settings/base.py:245
+msgid "Tamil Nadu"
+msgstr ""
+
+#: pari/settings/base.py:246
+msgid "Telangana"
+msgstr ""
+
+#: pari/settings/base.py:247
+msgid "Tripura"
+msgstr ""
+
+#: pari/settings/base.py:248
+msgid "Uttar Pradesh"
+msgstr ""
+
+#: pari/settings/base.py:249
+msgid "Uttarakhand"
+msgstr ""
+
+#: pari/settings/base.py:250
+msgid "West Bengal"
+msgstr ""
+
+#: pari/settings/base.py:267
+msgid "English"
+msgstr ""
+
+#: pari/settings/base.py:268
+msgid "Assamese"
+msgstr ""
+
+#: pari/settings/base.py:269
+msgid "Bengali"
+msgstr ""
+
+#: pari/settings/base.py:270
+msgid "Gujarati"
+msgstr ""
+
+#: pari/settings/base.py:271
+msgid "Hindi"
+msgstr ""
+
+#: pari/settings/base.py:272
+msgid "Kannada"
+msgstr ""
+
+#: pari/settings/base.py:273
+msgid "Malayalam"
+msgstr ""
+
+#: pari/settings/base.py:274
+msgid "Marathi"
+msgstr ""
+
+#: pari/settings/base.py:275
+msgid "Mizo"
+msgstr ""
+
+#: pari/settings/base.py:276
+msgid "Odia"
+msgstr ""
+
+#: pari/settings/base.py:277
+msgid "Punjabi"
+msgstr ""
+
+#: pari/settings/base.py:278
+msgid "Telugu"
+msgstr ""
+
+#: pari/settings/base.py:279
+msgid "Tamil"
+msgstr ""
+
+#: pari/settings/base.py:280
+msgid "Urdu"
+msgstr ""
+
+#: resources/models.py:31 resources/models.py:47 resources/models.py:61
+msgid "Auto-populated field. Edit manually only if you must"
+msgstr ""
+
+#: resources/templates/resources/report_detail.html:25
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:33
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:36
+msgid "Title"
+msgstr ""
+
+#: resources/templates/resources/report_detail.html:30
+msgid "Date"
+msgstr ""
+
+#: resources/templates/resources/resource_detail.html:53
+msgid "FOCUS"
+msgstr ""
+
+#: resources/templates/resources/resource_detail.html:60
+msgid "FACTOIDS"
+msgstr ""
+
+#: resources/templates/resources/resource_detail.html:75
+msgid "AUTHOR"
+msgstr ""
+
+#: resources/templates/resources/resource_detail.html:79
+msgid "COPYRIGHT"
+msgstr ""
+
+#: resources/templates/resources/resource_detail.html:83
+msgid "PUBLICATION DATE"
+msgstr ""
+
+#: resources/templates/resources/resource_detail.html:97
+msgid "TAGS"
+msgstr ""
+
+#: resources/templates/resources/resource_detail.html:103
+msgid "SHARE"
+msgstr ""
+
+#: resources/templates/resources/resource_list.html:10
+msgid ""
+"A collection of official and independent reports on rural India, from "
+"economic trends to policy briefings to census data."
+msgstr ""
+
+#: resources/templates/resources/resource_list.html:42
+msgid ""
+"The PARI Library brings reports and information on rural India to a single "
+"location for students, researchers and other readers. It includes official "
+"as well as independent reports, out-of-print books, rare documents and "
+"reviewed research articles."
+msgstr ""
+
+#: resources/templates/resources/search_results.html:4
+msgid "Showing search results for "
+msgstr ""
+
+#: search/templates/includes/search_filters.html:16
+msgid "BACK"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:20
+msgid "Filters"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:26
+msgid "TYPE OF CONTENT"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:26
+#: search/templates/includes/search_filters.html:39
+#: search/templates/includes/search_filters.html:69
+#: search/templates/includes/search_filters.html:78
+#: search/templates/includes/search_filters.html:87
+#: search/templates/includes/search_filters.html:96
+msgid "Clear"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:34
+msgid "PARI Pages"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:45
+msgid "Women"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:46
+msgid "Adivasis"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:47
+msgid "Dalits"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:48
+msgid "We Are"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:49
+msgid "Resource Conflicts"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:51
+msgid "Small World"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:53
+msgid "Getting There"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:54
+msgid "The Wild"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:55
+msgid "Rural Sports"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:56
+msgid "Healthcare"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:57
+msgid "Mosaic"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:58
+msgid "Environment"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:60
+msgid "Visible Work, Invisible Women"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:61
+msgid "One-Offs"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:62
+msgid "Things We Wear"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:63
+msgid "PARI for Schools"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:69
+msgid "LANGUAGES"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:78
+msgid "DATE RANGE"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:80
+msgid "From"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:81
+msgid "To"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:82
+msgid "Go"
+msgstr ""
+
+#: search/templates/includes/search_filters.html:87
+msgid "Districts"
+msgstr ""
+
+#: search/templates/search/search_results.html:246
+msgid "Search results for"
+msgstr ""
+
+#: search/templates/search/search_results.html:249
+msgid "Enter to search"
+msgstr ""
+
+#: search/templates/search/search_results.html:268
+msgid "Sort by :"
+msgstr ""
+
+#: search/templates/search/search_results.html:270
+msgid "Relevance"
+msgstr ""
+
+#: search/templates/search/search_results.html:271
+msgid "Latest"
+msgstr ""
+
+#: search/templates/search/search_results.html:283
+msgid ""
+"No results found for your query with current filters. Try another query with "
+"different filters."
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/listing/_list.html:52
+msgid "Drag"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:23
+msgid "Disable ordering of child pages"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:23
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:25
+msgid "Order"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:25
+msgid "Enable ordering of child pages"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:40
+msgid "Parent"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:45
+msgid "Author"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:57
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:60
+msgid "Updated"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:66
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:69
+msgid "Type"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:75
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:78
+msgid "Status"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/search_results.html:5
+#, python-format
+msgid ""
+"\n"
+"                There is one matching page\n"
+"            "
+msgid_plural ""
+"\n"
+"                There are %(counter)s matching pages\n"
+"            "
+msgstr[0] ""
+msgstr[1] ""
+
+#: search/templates/wagtailadmin/pages/search_results.html:13
+msgid "Other searches"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/search_results.html:15
+msgid "Images"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/search_results.html:16
+msgid "Documents"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/search_results.html:17
+msgid "Users"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/search_results.html:27
+#, python-format
+msgid "Sorry, no pages match <em>\"%(query_string)s\"</em>"
+msgstr ""
+
+#: search/templates/wagtailadmin/pages/search_results.html:29
+msgid "Enter a search term above"
+msgstr ""

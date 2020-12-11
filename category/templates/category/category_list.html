@@ -35,11 +35,19 @@
                         <img class="img-responsive grid-image" src="{{ category_image.url }}" alt="{{ category.image.alt_text}}">
                         <div class="grid-container">
                             <div class="category-name">
-                                <h3>{{ category.name }}</h3>
+                                <h3>
+                                    {% with category_name=category.name %}
+                                        {% trans category_name %}
+                                    {% endwith %}
+                                </h3>
                             </div>
                             <div class="title-grid font-m">
                                     <div class="border-link"></div>
-                                    <div>{{ category.description }}</div>
+                                    <div>
+                                        {% with category_description=category.description %}
+                                            {% trans category_description %}
+                                        {% endwith %}
+                                    </div>
                             </div>
                         </div>
                         </a>
