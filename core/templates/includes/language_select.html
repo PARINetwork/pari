@@ -2,6 +2,7 @@
 
 <select class="select-no-style {{ select_class }}" name="lang">
     <option value="all">{% trans "All" %}</option>
+    {% get_current_language as LANGUAGE_CODE %}
     {% for lang in LANGUAGES %}
         {% if request.GET.lang %}
             <option {% if request.GET.lang == lang.0 %}selected="selected"{% endif %}
@@ -9,7 +10,7 @@
                 {% blocktrans with tlang=lang.1 %} {{ tlang }} {% endblocktrans %}
             </option>
         {% else %}
-            <option {% if "en" == lang.0 %}selected="selected"{% endif %}
+            <option {% if LANGUAGE_CODE == lang.0 %}selected="selected"{% endif %}
                     value="{{ lang.0 }}">
                 {% blocktrans with tlang=lang.1 %} {{ tlang }} {% endblocktrans %}
             </option>

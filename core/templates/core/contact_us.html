@@ -20,7 +20,12 @@
 
     <h1>{% trans "Contact PARI" %}</h1>
     <h4 class="font-xl">{% trans "TO CONTRIBUTE CONTENT" %}</h4>
-    <p class="section-content">Please visit the <a href="https://script.google.com/macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec" target="_blank">content upload form</a> and the <a href="{{ guidelines_url }}">guidelines</a> for details.</p>
+    <p class="section-content">
+        {% blocktrans trimmed %}
+        Please visit the <a href="https://script.google.com/macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec" target="_blank">
+        content upload form</a> and the <a href="{{ guidelines_url }}">guidelines</a> for details.
+        {% endblocktrans %}
+    </p>
 
     <h4 class="font-xl">{% trans "TO DONATE TO PARI" %}</h4>
     <p class="section-content">{% blocktrans trimmed %}Do see our <a href="{{ donate_url }}">donate</a> page for details.{% endblocktrans %}</p>
@@ -30,7 +35,7 @@
 
     <form method="post" action="{% url "contact_us" %}">{% csrf_token %}
         <h4 class="font-xl">{% trans "OTHER QUESTIONS?" %}</h4>
-        <p>Write to us using this form:</p>
+        <p>{% trans "Write to us using this form:" %}</p>
         <div class="form">
             <div class="form-group">
                 <label>{{ contact_form.name.label | upper }}</label>

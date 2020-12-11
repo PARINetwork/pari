@@ -1,4 +1,4 @@
-{% extends "base.html" %}{% load i18n %}
+{% extends "base.html" %}
 {% load i18n wagtailimages_tags %}
 
 {% block meta_title %}{{ category.name }}{% if filter %} - {{ filter }}{% endif %} - {% trans "Page" %} {{ articles.number }}{% endblock %}

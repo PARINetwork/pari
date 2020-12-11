@@ -14,9 +14,17 @@
                         <span style="padding-left:3px;">{% trans "All Categories" %}</span>
                     </a>
                 </div>
-                <h1 class="category-title">{{ category.name }}</h1>
+                <h1 class="category-title">
+                    {% with category_name=category.name %}
+                        {% trans category_name %}
+                    {% endwith %}
+                </h1>
                 <div class="category-description clear-fix">
-                    <div class="left"><p>{{ category.description }}</p></div>
+                    <div class="left"><p>
+                        {% with category_description=category.description %}
+                            {% trans category_description %}
+                        {% endwith %}
+                    </p></div>
                     <div class="right">
                         <ul class="icons font-m">
                             <li>{% trans "Languages" %}:</li>

@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load wagtailadmin_tags static %}
 <div class="field {{ field|fieldtype }} {{ field|widgettype }} {{ field_classes }}">
   {% if show_label|default_if_none:True %}{{ field.label_tag }}{% endif %}
@@ -6,7 +7,7 @@
       {% block form_field %}
       {{ field|render_with_errors }}
       {% endblock %}
-      
+
       {# This span only used on rare occasions by certain types of input #}
       <span></span>
     </div>

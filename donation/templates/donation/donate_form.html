@@ -1,4 +1,5 @@
-{% extends "base.html" %}{% load i18n %}
+{% extends "base.html" %}
+{% load i18n %}
 
 {% block meta_title %}
 {% blocktrans with site_name=site.site_name %}Donate to {{ site_name }}{% endblocktrans %}
@@ -42,12 +43,16 @@
         <div class="donate-form-message hidden-xs hidden-sm col-md-offset-1 col-md-6">
             <br/>
             <h1>
+                {% blocktrans trimmed %}
                 In 2014-15, only about <span class="highlight">0.24% of front page news</span>
                 came out of rural India.
+                {% endblocktrans %}
             </h1>
             <h3>
+                {% blocktrans trimmed %}
                 We want to change that.<br/><br/>
                 We can do this without governments – and will. <u>We can’t do it without you.</u>
+                {% endblocktrans %}
             </h3>
         </div>
     </div>
@@ -56,8 +61,17 @@
             <div class="donate-form-section">
                 <h1 class="heading">{% trans "Other ways to donate" %}</h1>
                 <p class="donate-heading">{% trans "PAYMENT BY CHEQUE OR DEMAND DRAFT" %}</p>
-                <p>{% blocktrans trimmed %}Pay by cheque/DD in favour of the <strong>“CounterMedia Trust”</strong> and send it to us by courier/post along with your contact details – name, address, telephone number, e-mail ID and PAN number.{% endblocktrans %}</p>
-                <p>{% blocktrans trimmed %}Send by courier / post to:<br/><strong> CounterMedia Trust</strong><br/> c/o P. Sainath, 27/43 Sagar Sangam, Bandra Reclamation, Mumbai 400050, Maharashtra, India.{% endblocktrans %}</p>
+                <p>{% blocktrans trimmed %}Pay by cheque/DD in favour of the <strong>“CounterMedia Trust”</strong>
+                    and send it to us by courier/post along with your contact details – name, address, telephone number,
+                    e-mail ID and PAN number.
+                {% endblocktrans %}
+                </p>
+                <p>{% blocktrans trimmed %}Send by courier / post to:<br/>
+                    <strong>CounterMedia Trust</strong>
+                    <br/> c/o P. Sainath,
+                    27/43 Sagar Sangam, Bandra Reclamation, Mumbai 400050, Maharashtra, India.
+                    {% endblocktrans %}
+                </p>
             </div>
             <div class="donate-form-section">
                 <p class="donate-heading">{% trans "PAYMENT BY BANK/ WIRE TRANSFER" %}</p>
@@ -76,7 +90,7 @@
                 <p>{% blocktrans trimmed %}Payment by mobile phone using Immediate Payment Service (IMPS).<br/>
                     Please go through the following methods of mobile payment enabled by the National Payments Corporation of India (NPCI).{% endblocktrans %}
                 </p>
-                <p>One easy way to do this is through the National Unified USSD Platform (NUUP)</p>
+                <p>{% blocktrans trimmed %}One easy way to do this is through the National Unified USSD Platform (NUUP){% endblocktrans %}</p>
                 <p>{% blocktrans trimmed %}The following has been reproduced from <a href="http://www.npci.org.in/documents/FAQs-NUUP.pdf" target="_blank">http://www.npci.org.in/documents/FAQs-NUUP.pdf</a>{% endblocktrans %}</p>
                 <p>{% trans "Fund transfer using IFSC and account number:" %}</p>
                 <div class="special-bullets">
@@ -125,7 +139,11 @@
             <h1 class="heading">{% trans "FAQs" %}</h1>
             <div class="faq">
                 <p class="question">{% trans "I sent PARI a donation. How do I get a receipt?" %}</p>
-                <p class="answer">Please make sure you include your email address in the donation form when you make a contribution to PARI.  A receipt will be sent to you in 4 to 8 weeks by email. You may download the 80G certificate <a href="/media/uploads/Donate/80g_certificate.jpg" target="_blank">here</a>.</p>
+                <p class="answer">{% blocktrans trimmed %}Please make sure you include your email address in the donation
+                    form when you make a contribution to PARI.  A receipt will be sent to you in 4 to 8 weeks by email.
+                    You may download the 80G certificate <a href="/media/uploads/Donate/80g_certificate.jpg" target="_blank">here</a>.
+                    {% endblocktrans %}
+                </p>
             </div>
             <div class="faq">
                 <p class="question">{% trans "I live abroad. Can I send PARI a donation?" %}</p>
@@ -133,7 +151,12 @@
             </div>
             <div class="faq">
                 <p class="question">{% trans "Is there any other way in which I can contribute?" %}</p>
-                <p class="answer">Apart from donating money and equipment, you can provide PARI copies of photo collections (new and old), pertaining to rural India. We are also always on the look out for people who can write/photograph for us. Learn more about how you can contribute <a href="{% url "contribute" slug="contribute" %}">here</a>.</p>
+                <p class="answer">{% blocktrans trimmed %}Apart from donating money and equipment, you can provide PARI
+                    copies of photo collections (new and old), pertaining to rural India. We are also always on the look
+                    out for people who can write/photograph for us. Learn more about how you can contribute
+                    <a href="/contribute">here</a>.
+                    {% endblocktrans %}
+                </p>
             </div>
         </div>
     </div>

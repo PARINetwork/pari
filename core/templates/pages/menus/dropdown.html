@@ -196,7 +196,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="https://blog.ruralindiaonline.org/">Blog</a>
+                            <a href="https://blog.ruralindiaonline.org/">{% trans "Blog" %}</a>
                         </li>
                         <li>
                             <a href="{% url "contact_us" %}">
@@ -264,7 +264,7 @@
                         </li>
                         <li>
 
-                            <span>P. Sainath, {% trans "Founder Editor" %}</span>
+                            <span>{% trans "P. Sainath" %}, {% trans "Founder Editor" %}</span>
                             <a class="page-nav-link" itemprop="url" href="{% url "static_page" slug="about-the-editor" %}">
                             <span itemprop="name">{% trans "Know more" %} <i class="fa fa-angle-double-right"></i></span>
                             </a>
@@ -277,7 +277,7 @@
 </li>
 <li class="dropdown donate">
     <a class="dropdown-toggle" itemprop="url" href="https://pari.education" target="_blank">
-    <span itemprop="name"  {% if "donate" in tab %} class="active-tab" {%endif%}>{% trans "PARI Education" %} </span>    
+    <span itemprop="name"  {% if "donate" in tab %} class="active-tab" {%endif%}>{% trans "PARI Education" %} </span>
     </a>
 </li>
 <li class="dropdown donate">
@@ -289,4 +289,21 @@
     <a class="dropdown-toggle search-icon-container" itemprop="url" href="javascript:void(0)">
         <i class="fa fa-search"></i>
     </a>
+</li>
+<li class="dropdown">
+<div class="language-toggle">
+    <form style="margin-top: 0" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+        <input name="next" type="hidden" value="{{ redirect_to }}">
+        <select name="language" onchange="this.form.submit()">
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for language in languages %}
+                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                    {{ language.name_local }} ({{ language.code }})
+                </option>
+            {% endfor %}
+        </select>
+    </form>
+</div>
 </li>

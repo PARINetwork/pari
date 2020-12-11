@@ -114,6 +114,26 @@
         }
       }
     }
+    .navbar-nav {
+      .dropdown {
+        .language-toggle {
+          padding-top: 28px;
+          padding-bottom: 30px;
+          color: #000;
+          font-size: 1rem;
+          font-weight: 300;
+          letter-spacing: 0.2px;
+        }
+      }
+      select {
+          border: 2px;
+          border-radius: 2px;
+          height: 24px;
+          line-height: 24px;
+          background-color: #f4f4f4;
+      }
+    }
+
   }
   .navbar-header {
 
@@ -129,7 +149,7 @@
       display: inline-block;
       margin: 30px 0;
       font-family: Amiri;
-      font-size: 16px;
+      font-size: 15px;
       color: @dark-grey;;
       line-height: 20px;
       letter-spacing: 0.3px;
@@ -285,4 +305,14 @@
   .active-tab {
     color: @text-color-primary-nav-hover;
   }
+
+  .nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .form{
+      margin:0px; padding:0px; display:inline;
+    }
+
 }

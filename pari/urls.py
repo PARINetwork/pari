@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^admin/pages/add/(\w+)/(\w+)/(\d+)/preview/$', PreviewOnCreatePage.as_view()),
     url(r'^admin/pages/(\d+)/edit/preview/$', PreviewOnEditPage.as_view()),
     url(r'^admin/', include(wagtailadmin_urls)),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^parinews/', include('news.urls')),
     url(r'^feeds/', include('feeds.urls')),
