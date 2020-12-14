@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-11 12:31+0530\n"
+"POT-Creation-Date: 2020-12-14 10:39+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: album/models.py:35
 msgid "Slides"
@@ -26,54 +26,54 @@ msgstr ""
 #: core/templates/core/add_object.html:5 core/templates/core/add_object.html:19
 #, python-format
 msgid "Add %(name)s "
-msgstr ""
+msgstr "जोड़ें %(name)s"
 
 #: album/templates/album/add_audio.html:14
 #: album/templates/album/add_audio.html:27
 #: album/templates/album/add_audio.html:39
 msgid "Upload"
-msgstr ""
+msgstr "अपलोड करें"
 
 #: album/templates/album/add_audio.html:15
 #: album/templates/album/add_audio.html:36
 msgid "Record"
-msgstr ""
+msgstr "रिकॉर्ड करें"
 
 #: album/templates/album/add_audio.html:26
 msgid "Audio File"
-msgstr ""
+msgstr "ऑडियो फाइल"
 
 #: album/templates/album/add_audio.html:35
 msgid "Title of the recording"
-msgstr ""
+msgstr "रिकॉर्डिंग का शीर्षक"
 
 #: album/templates/album/add_audio.html:37
 msgid "Play"
-msgstr ""
+msgstr "प्ले करें"
 
 #: album/templates/album/add_audio.html:38
 msgid "Download"
-msgstr ""
+msgstr "डाउनलोड करें"
 
 #: album/templates/album/album_detail.html:3
 #: album/templates/album/albumslide_list.html:4
 #, python-format
 msgid " %(title)s "
-msgstr ""
+msgstr "%(title)s"
 
 #: album/templates/album/album_detail.html:12
 msgid "Album"
-msgstr ""
+msgstr "ऐल्बम"
 
 #: album/templates/album/album_detail.html:190
 #: article/templates/article/article.html:230
 #: article/templates/article/includes/author_info.html:43
 msgid "Share"
-msgstr ""
+msgstr "साझा करें"
 
 #: album/templates/album/album_detail.html:207
 msgid "Other stories by"
-msgstr ""
+msgstr "%(author.name)s की अन्य कहानियां"
 
 #: album/templates/album/album_list.html:9
 #: album/templates/album/album_list.html:10
@@ -82,42 +82,45 @@ msgstr ""
 #: location/templates/map/map_list.html:55
 #: search/templates/includes/search_filters.html:33
 msgid "Albums"
-msgstr ""
+msgstr "ऐल्बम्स"
 
 #: album/views.py:33
 msgid "gallery"
-msgstr ""
+msgstr "गैलरी"
 
 #: album/views.py:42 core/templates/pages/menus/footer.html:41
 msgid "Talking Albums"
-msgstr ""
+msgstr "बोलते ऐल्बम्स"
 
 #: album/views.py:42
 msgid "Pictures and their spoken story"
-msgstr ""
+msgstr "तस्वीरें और उनकी मौखिक स्टोरी"
 
 #: album/views.py:44
 msgid "Photo Albums"
-msgstr ""
+msgstr "फोटो ऐल्बम्स"
 
 #: album/views.py:44 category/templates/category/gallery_home_page.html:95
 msgid "Through many different lenses"
-msgstr ""
+msgstr "बहुत से विभिन्न चश्मों द्वारा"
 
 #: article/streamfields/blocks.py:103
-#, python-format
+#, fuzzy, python-format
+#| msgid "Choose language"
 msgid "Choose a %s"
-msgstr ""
+msgstr "भाषा चुनें"
 
 #: article/streamfields/blocks.py:104
-#, python-format
+#, fuzzy, python-format
+#| msgid "Choose language"
 msgid "Choose another %s"
-msgstr ""
+msgstr "भाषा चुनें"
 
 #: article/streamfields/blocks.py:105
-#, python-format
+#, fuzzy, python-format
+#| msgid "Print this story"
 msgid "Edit this %s"
-msgstr ""
+msgstr "इस स्टोरी को प्रिंट करें"
 
 #: article/templates/article/archive_article_list.html:55
 #: article/templates/article/author_article_list.html:56
@@ -125,77 +128,79 @@ msgstr ""
 #: category/templates/includes/category_cover_image.html:30
 #: category/templates/includes/category_cover_image.html:56
 msgid "Languages"
-msgstr ""
+msgstr "भाषाएं"
 
 #: article/templates/article/article.html:197
 #: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:52
 msgid "Language"
-msgstr ""
+msgstr "भाषा"
 
 #: article/templates/article/article.html:227
 msgid "Read the story in pictures"
-msgstr ""
+msgstr "स्टोरी को तस्वीरों में पढ़ें"
 
 #: article/templates/article/article.html:239
 msgid "Print this story"
-msgstr ""
+msgstr "इस स्टोरी को प्रिंट करें"
 
 #: article/templates/article/article.html:252
 msgid "See more from this region"
-msgstr ""
+msgstr "इस क्षेत्र से और देखें"
 
 #: article/templates/article/article.html:303
 msgid "RELATED STORIES"
-msgstr ""
+msgstr "संबंधित कहानियां"
 
 #: article/templates/article/includes/article_list.html:32
 #: core/templates/core/home_page.html:301
 #: core/templates/core/home_page.html:348
 msgid "languages"
-msgstr ""
+msgstr "भाषाएं"
 
 #: article/templates/article/includes/article_list.html:55
 #: article/templates/article/includes/gallery_article_list.html:35
 msgid "No articles available for "
-msgstr ""
+msgstr "के लिए कोई लेख नहीं है"
 
 #: article/templates/article/includes/article_list.html:58
 #: category/templates/includes/category_cover_image.html:64
 #: category/templates/includes/category_cover_image.html:69
 #, python-format
 msgid "%(tlang)s"
-msgstr ""
+msgstr "%(tlang)s"
 
 #: article/templates/article/includes/article_list.html:59
 msgid " in this category."
-msgstr ""
+msgstr "इस श्रेणी में"
 
 #: article/templates/article/includes/article_list.html:62
 #: article/templates/article/includes/gallery_article_list.html:41
 msgid "Please help us"
-msgstr ""
+msgstr "कृप्या हमारी सहायता करें"
 
 #: article/templates/article/includes/article_list.html:64
 #: article/templates/article/includes/gallery_article_list.html:43
 msgid "translate."
-msgstr ""
+msgstr "अनुवाद करें"
 
 #: article/templates/article/includes/author_info.html:65
+#, fuzzy
+#| msgid "Other stories by %(author.name)s"
 msgid " Other stories by "
-msgstr ""
+msgstr "%(author.name)s की अन्य कहानियां"
 
 #: article/templates/article/includes/gallery_article_list.html:38
 #, python-format
 msgid " %(tlang)s ."
-msgstr ""
+msgstr "%(tlang)s"
 
 #: article/templates/article/includes/translator_info.html:12
 msgid "Translated by:"
-msgstr ""
+msgstr "अनुवादकः"
 
 #: article/templates/article/includes/translator_info.html:15
 msgid "You can contact the translator here:"
-msgstr ""
+msgstr "आप अनुवादक से यहां संपर्क कर सकते हैं:"
 
 #: author/wagtail_hooks.py:21 search/templates/includes/search_filters.html:96
 msgid "Authors"
@@ -204,107 +209,111 @@ msgstr ""
 #: category/templates/category/category_detail.html:5
 #: category/templates/category/gallery_detail.html:4
 msgid "Page"
-msgstr ""
+msgstr "पृष्ठ"
 
 #: category/templates/category/category_detail.html:7
 msgid "one of many story categories at PARI"
-msgstr ""
+msgstr "पारी पर कई स्टोरी श्रेणियों में से एक"
 
 #: category/templates/category/category_list.html:4
 #: category/templates/category/category_list.html:5
 #: category/templates/category/category_list.html:17
 #: core/templates/pages/menus/footer.html:11
 msgid "Categories"
-msgstr ""
+msgstr "श्रेणी"
 
 #: category/templates/category/category_list.html:6
 msgid ""
 "Find hundreds of PARI stories on diverse topics such as rural occupations, "
 "crafts and sports, marginalised groups, resource conflicts, and many more."
 msgstr ""
+"ग्रामीण व्यवसायों जैसे हस्तकौशल तथा खेल, वंचित समूह, संसाधन को लेकर झगड़े, आदिविभिन्न "
+"शीर्षकों के अंतर्गत पारी की सैकड़ों स्टोरीज़ ढूंढें।"
 
 #: category/templates/category/category_list.html:25
 #: core/templates/pages/menus/dropdown.html:5
 msgid "Stories"
-msgstr ""
+msgstr "कहानियां"
 
 #: category/templates/category/category_list.html:26
 msgid "Find hundreds of them in diverse categories"
-msgstr ""
+msgstr "इनमें से सैकड़ों को विभिन्न श्रेणियों में तलाश करें"
 
 #: category/templates/category/gallery_home_page.html:3
 #: category/templates/category/gallery_home_page.html:27
 #: core/templates/pages/menus/dropdown.html:75
 #: core/templates/pages/menus/footer.html:22
 msgid "Gallery"
-msgstr ""
+msgstr "गैलरी"
 
 #: category/templates/category/gallery_home_page.html:4
 msgid ""
 "Explore PARI's evergrowing collection of multi-media content from rural "
 "India, including photos, videos, and audio clips"
 msgstr ""
+"ग्रामीण भारत पर तस्वीरें, विडियो तथा ऑडियो क्लिप्स के मल्टी-मीडिया तत्वपारी के लगातार "
+"बढ़ते संग्रह में तलाश करें"
 
 #: category/templates/category/gallery_home_page.html:28
 msgid "AN EVERGROWING ARCHIVE OF RURAL INDIA"
-msgstr ""
+msgstr "रुरल इंडिया का सदैव बढ़ता अभिलेख"
 
 #: category/templates/category/gallery_home_page.html:57
 msgid "Photo Of The Week"
-msgstr ""
+msgstr "इस सप्ताह का फोटो"
 
 #: category/templates/category/gallery_home_page.html:70
 msgid "Read the full story"
-msgstr ""
+msgstr "पूरी स्टोरी पढ़ें"
 
 #: category/templates/category/gallery_home_page.html:79
 msgid "View Fullscreen"
-msgstr ""
+msgstr "फुल-स्क्रीन देखें"
 
 #: category/templates/category/gallery_home_page.html:87
 msgid "Pictures and their spoken stories"
-msgstr ""
+msgstr "तस्वीरें और उनकी मौखिक कहानियां"
 
 #: category/templates/category/gallery_home_page.html:88
 msgid "View this Talking Album"
-msgstr ""
+msgstr "इस बोलते हुए ऐल्बम को देखें"
 
 #: category/templates/category/gallery_home_page.html:89
 #: core/templates/core/home_page.html:515
 msgid "View all Talking Albums"
-msgstr ""
+msgstr "सभी बोलते ऐल्बम्स को देखें"
 
 #: category/templates/category/gallery_home_page.html:91
 msgid "Stories told in moving pictures"
-msgstr ""
+msgstr "चलती हुई तस्वीरों में बताई गई कहानियां"
 
 #: category/templates/category/gallery_home_page.html:92
 msgid "View this video"
-msgstr ""
+msgstr "इस विडियो को देखें"
 
 #: category/templates/category/gallery_home_page.html:93
 #: core/templates/core/home_page.html:541
 #: core/templates/pages/menus/dropdown.html:112
 msgid "View all videos"
-msgstr ""
+msgstr "सभी विडियो को देखें"
 
 #: category/templates/category/gallery_home_page.html:96
 msgid "View this Photo Album"
-msgstr ""
+msgstr "इस फोटो ऐल्बम को देखें"
 
 #: category/templates/category/gallery_home_page.html:97
 #: core/templates/core/home_page.html:568
 msgid "View all Photo Albums"
-msgstr ""
+msgstr "सभी फोटो ऐल्बम्स को देखें"
 
 #: category/templates/includes/category_cover_image.html:14
 msgid "All Categories"
-msgstr "सब वर्ग"
+msgstr "सभी श्रेणी"
 
 #: category/templates/includes/category_cover_image.html:59
 #: core/templates/includes/language_select.html:4
 msgid "All"
-msgstr ""
+msgstr "सभी"
 
 #: core/apps.py:28
 msgid ""
@@ -316,50 +325,58 @@ msgid "Please add a page"
 msgstr ""
 
 #: core/models.py:220
+#, fuzzy
+#| msgid "Page"
 msgid "HomePage"
-msgstr ""
+msgstr "पृष्ठ"
 
 #: core/models.py:308
+#, fuzzy
+#| msgid "Guidelines"
 msgid "GuidelinesPage"
-msgstr ""
+msgstr "दिशा-निर्देश"
 
 #: core/models.py:321
 msgid "Please add photographers to the image"
 msgstr ""
 
 #: core/models.py:380
+#, fuzzy
+#| msgid "Gallery"
 msgid "GalleryHomePage"
-msgstr ""
+msgstr "गैलरी"
 
 #: core/templates/base.html:82 core/templates/core/about.html:166
 #: core/templates/pages/menus/dropdown.html:11
 #: search/templates/includes/search_filters.html:39
 msgid "CATEGORIES"
-msgstr ""
+msgstr "श्रेणी"
 
 #: core/templates/base.html:115
 msgid "People's Archive of Rural India"
-msgstr "पीपुल्स आर्काइव ऑफ रूरल इंडिया"
+msgstr "पीपुल्स ऑर्काइव ऑफ रुरल इंडिया"
 
 #: core/templates/core/about.html:4 core/templates/core/home_page.html:397
 #: core/templates/pages/menus/dropdown.html:195
 #: core/templates/pages/menus/footer.html:55
 msgid "The story of PARI"
-msgstr "PARI की कहानी"
+msgstr "पारी की कहानी"
 
 #: core/templates/core/about.html:5
 msgid ""
 "Rural India — a living journal, a breathing archive. Learn how PARI came to "
 "exist and what role it hopes to serve in the Indian media landscape."
 msgstr ""
+"रुरल इंडिया – एक जीवित पत्रिका, एक सांस लेता अभिलेख। जानें कि पारी कैसे अस्तित्वमें आया और "
+"यह भारतीय मीडिया के परिवेश पर क्या भूमिका निभाना चाहता है।"
 
 #: core/templates/core/about.html:28
 msgid "Rural India: a living journal, a breathing archive"
-msgstr "ग्रामीण भारत: एक जीवित पत्रिका, एक श्वास संग्रह"
+msgstr "रुरल इंडियाः एक जीवित पत्रिका, एक सांस लेता अभिलेख"
 
 #: core/templates/core/about.html:29
 msgid "The everyday lives of everyday people"
-msgstr ""
+msgstr "साधारण लोगों के साधारण जीवन"
 
 #: core/templates/core/about.html:38
 msgid ""
@@ -373,6 +390,13 @@ msgid ""
 "cent of those 780 are covered. Most Indian languages are mainly spoken by "
 "people in rural India."
 msgstr ""
+"क्या किसी परियोजना का निर्णय उसके कभी पूर्ण न होने के आधार पर किया जा सकता है? हां, "
+"यदियह दुनिया के सबसे जटिल क्षेत्र का जीवित अभिलेख है। रुरल इंडिया कई मायनों में इस ग्रह का "
+"सबसेविविध भाग है। इसके 833 मिलियन लोगों में वे विचित्र समाज सम्मिलित हैं जो 700 भाषाएं "
+"बोलते हैं,जिनमें से कुछ हज़ारों वर्ष पुरानी हैं। भारतीय लोक भाषा सर्वेक्षण हमें बताता है कि पूरा "
+"देश संयुक्त रूप से780 भाषाएं बोलता है और 86 अलग-अलग लिपियों का प्रयोग करता है। लेकिन 7वीं "
+"कक्षा तक स्कूलों कोचलाने के मामले में, इन 780 में से केवल 4 प्रतिशत को कवर किया गया है। "
+"अधिकतर भारतीयभाषाएं ग्रामीण भारतियों के द्वारा बोली जाती हैं।"
 
 #: core/templates/core/about.html:47
 msgid ""
@@ -387,6 +411,15 @@ msgid ""
 "to 220 languages have died in the past 50 years. Saimar in Tripura is down "
 "its last seven speakers."
 msgstr ""
+"भारतीय संविधान की आठवीं अनुसूची में 22 भाषाएं शामिल की गई हैं, जिनके विकास की "
+"जिम्मेदारीदेश की सरकार पर है। लेकिन ऐसे भी राज्य हैं, जहां की सरकारी भाषाएं इन 22 से "
+"अधिक हैं, जैसेमेघालय की खासी तथा गारो। छह भारतीय भाषाओं में से हरेक को बोलने वाले 50 "
+"मिलियन लोगया उससे अधिक हैं। तीन भाषाओं को 80 मिलियन या उससे अधिक लोग बोलते हैं। एक "
+"भाषा कोबोलने वाले तो लगभग 500 मिलियन लोग हैं। वहीं दूसरी ओर, विचित्र आदिवासी भाषाएं "
+"हैं, जिन्हेंकम से कम 4,000 लोग बोलते हैं, कुछ को बोलने वाले इससे भी कम हैं। केवल पूर्वी "
+"राज्याओडिशा में लगभग 44 आदिवासी भाषाएं हैं. भाषा सर्वेक्षण का कहना है कि पिछले 50 वर्षों "
+"मेंलगभग 220 भाषाएं समाप्त हो गईं। त्रिपुरा की साइमार भाषा को बोलने वाले अब केवल सात "
+"लोगबचे हैं।"
 
 #: core/templates/core/about.html:57
 msgid ""
@@ -400,6 +433,13 @@ msgid ""
 "unique occupations – professional storytellers, epic poem singers – are also "
 "in danger of extinction."
 msgstr ""
+"इसी प्रकार की विविधता ग्रामीण भारत के व्यवसायों, कला और शिल्प, संस्कृति, साहित्य, "
+"दन्तकथा, परिवहन तथा अन्य क्षेत्रों में पाई जाती है। भारत का ग्रामीण क्षेत्र चूंकि अति "
+"दुखदायी परिवर्तने केदौर से गुजर रहा है, इनमें से बहुत सी विशेषताएं समाप्त होती जा रही हैं, "
+"जिससे हम गरीब होतेजा रहे हैं। उदाहरण के तौर पर, भारत में बुनाई के जितने स्कूल तथा स्टाइल हैं "
+"वे किसी और एकमात्रदेश में नहीं मिलते। इनमें से बहुत से परंपरागत बुनकर समाज समाप्त होने के "
+"कगार पर हैं, जिससेदुनिया के बेहतरीन उपहार समाप्त हो जाएंगे। कुछ विचित्र व्यवसाय जैसे पेशेवर "
+"कथावाचक, महाकाव्यगायक भी समाप्त होने के कगार पर हैं।"
 
 #: core/templates/core/about.html:68
 #, python-format
@@ -413,6 +453,12 @@ msgid ""
 "millions of other highly skilled craftspeople are rapidly losing their "
 "livelihoods."
 msgstr ""
+"फिर ऐसे व्यवसाय भी हैं जिनके बारे में कुछ ही देशों को पता है। जैसे <a href="
+"%(toddy_url)s>पासी जो रोजाना ताड़ के 50 पेड़ों पर चढ़ते हैं </a>, हर मौसम में प्रतिदिन "
+"तीन बार। इसके रस से वे गुड़बनाते हैं या फिर देसी शराब, जिसे ताड़ी कहते हैं। पीक सीजन में, एक "
+"पासी प्रतिदिन न्युयार्क की अंपायर स्टेटबिल्डिंग से ज्यादा की ऊंचाई चढ़ता है। लेकिन बहुत से "
+"व्यवसाय अब समाप्ति के कगार पर हैं।<a href=%(potters_url)s> कुम्हार </a>, धातु का काम "
+"करने वाले और लाखों इसी प्रकार के कुशलहस्तशिल्प तेजी से अपनी आजीविका खो रहे हैं।"
 
 #: core/templates/core/about.html:76
 msgid ""
@@ -423,6 +469,12 @@ msgid ""
 "nothing. Even as the present one steadily sheds its own links with those "
 "worlds."
 msgstr ""
+"जो चीजें ग्रामीण क्षेत्रों को विचित्र बनाती हैं, उनमें से बहुत कुछ 20-30 वर्षों में समाप्त हो "
+"सकती हैं।इनका कोई नियमित तस्वीरी या मौखिक रिकार्ड नहीं है, जो हमें इस असाधारण "
+"विविधता को बचानेके लिए शिक्षित या कम से कम प्रोत्साहित कर सके। हम दुनियाओं का तथा "
+"ग्रामीण भारत के भीतरकी आवाजों को खो रहे हैं, जिसके बारे में आने वाली पीढ़ियां बहुत कम या "
+"कुछ भी नहीं जान पायेंगी।हालांकि, वर्तमान पीढ़ी भी उन दुनियाओं से बड़ी तेजी से अपना रिश्ता "
+"तोड़ रही है।"
 
 #: core/templates/core/about.html:82
 msgid ""
@@ -434,10 +486,16 @@ msgid ""
 "regressive and the barbaric, while undermining the best and the diverse. "
 "That, too, will be documented here."
 msgstr ""
+"ग्रामीण भारत में वाकई में ऐसा बहुत कुछ है, जिसे समाप्त होना चाहिए। वह जो दमनकारी है, "
+"अत्याचारीहै, प्रतिगामी और क्रूर है, उसे जरूर समाप्त होना चाहिए। छुवाछूत, सामंतवाद, बंधुवा "
+"मजदूरी, जाति तथालिंग के आधार पर उत्पीड़न और शोषण, भूमि पर कब्जा तथा और भी बहुत कुछ। "
+"लेकिन समस्यायह है कि इस समय जिस प्रकार का परिवर्तन हो रहा है वह अधिकतर प्रतिगामी "
+"तथा क्रूर है, जबकिइससे बेहतर तथा विविध की उपेक्षा हो रही है। इसको भी यहां आलेखित किया "
+"जायेगा।"
 
 #: core/templates/core/about.html:90
 msgid "THIS IS WHERE PARI COMES IN"
-msgstr ""
+msgstr "यहीं पर पारी सामने आता है"
 
 #: core/templates/core/about.html:96
 #, python-format
@@ -454,6 +512,15 @@ msgid ""
 "meets the standards of this site and falls within our mandate: the everyday "
 "lives of everyday people."
 msgstr ""
+"पारी जीवित पत्रिका भी है और अभिलेख भी। यह ग्रामीण क्षेत्रों की रिपोर्टिंग करेगा जो "
+"वर्तमानकी है, जबकि पहले से प्रकाशित का डेटाबेस भी तैयार कर रहा है <a href="
+"%(category_list)s> स्टोरीज </a>,<a href=%(resource_list)s> रिपोर्ट्स </a>, <a "
+"href=%(gallery_detail_video)s विडियो </a>, और<a href="
+"%(gallery_detail_audio)s> ऑडियो </a> जितने भी स्रोतों से हम कर सकते हैं, करेंगे।पारी "
+"की सभी विषय वस्तु <a href=%(copyright)s क्रियेटिव कॉमन्स </a> के अंतर्गत आती हैं और "
+"साइटतक पहुंच मुफ्त है। तथा कोई भी पारी में अपना सहयोग दे सकता है। हमारे लिए लिखें, हमारे "
+"लिए शूटकरें, हमारे लिए रिकॉर्ड करें। हम आपकी उन सभी विषय-वस्तु का स्वागत करेंगे जो इस "
+"साइट के आदर्शोंके मुताबिक हों और हमारे मैंडेटः साधारण लोगों के साधारण जीवन के अंदर आते हों।"
 
 #: core/templates/core/about.html:106
 msgid ""
@@ -470,6 +537,16 @@ msgid ""
 "one website. More voices and distinct languages, we hope, than have ever met "
 "on one site."
 msgstr ""
+"भारत में बहुत से पुस्तकालयों तथा संग्रहालयों के उपयोग में कमी आई है, खास कर पिछले 20 वर्षों में।"
+"यह इस कारण हुआ कि आपको जो कुछ संग्रहालय में देखने को मिल सकता था, वही आपको गलियों मेंभी "
+"मिल सकता हैः वही लघुचित्र पेंटिंग के स्कूल, मूर्तिकला की वही परंपरायें। अब वे भी समाप्त होती "
+"जारही हैं। युवा पहले की अपेक्षा अब पुस्तकालय तथा संग्रहालय कम जाते हैं। लेकिन, एक जगह ऐसी "
+"है जहांविश्व भर की अगली पीढ़ी, जिसमें भारतीय भी शामिल हैं, अधिक से अधिक जायेगीः और वह "
+"है नेट।इंटरनेट तक पहुंच, खास कर ब्रॉडबैंड, भारत में कम है, लेकिन फैल रही है। एक लोक साधन के "
+"रूप में, एकजीवित, सांस लेती पत्रिका तथा अभिलेखागार बनाने का यह सही स्थान है जिसका "
+"उद्देश्य लोगों के जीवन कोरीकॉर्ड करना है। पीपुल्स ऑर्काइव ऑफ रूरल इंडिया। भिन्न भिन्न शब्द, "
+"एक वेबसाइट। भिन्न भिन्न आवाजेंतथा भाषाएं, हम आशा करते हैं कि पहले कभी किसी एक वेबसाइट "
+"पर नहीं हुआ होगा।"
 
 #: core/templates/core/about.html:118
 msgid ""
@@ -483,10 +560,19 @@ msgid ""
 "by everyday people talking about themselves, their labour and their lives – "
 "talking to us about a world we mostly fail to see."
 msgstr ""
+"इसका मतलब है वृहद स्तर पर ऑडियो, विजुवल तथा टेक्स्ट मीडिया के अनगिनत रूप का "
+"प्रयोगकरना। जहां पर कहानियों, काम, क्रियाकलाप, इतिहास को जहां तक संभक है, जहां तक हम "
+"इसेसंभाल सकते हैं, ग्रामीण भारत के नागरिको द्वारा स्वयं बयान किया जायेगा। खेतों के बीच चाय "
+"कीपत्ती तोड़ने वालों के द्वारा। समुद्र में मछली पकड़ने वालों के द्वारा। खेतों में धान की बुवाई "
+"करते समयगाना गा रही महिलाओं के द्वारा, या पारंपरिक गवैयों के द्वारा। खलासी पुरुषों के "
+"द्वारा जो सदियों पुरानेतरीकों का इस्तेमाल करके समुद्र में भारी जहाजों को उतारते हैं, वह भी "
+"मशीन तथा क्रेन के बिना।संक्षेप में यह कि साधारण लोग स्वयं अपने बारे में बात करेंगे, अपनी "
+"परिश्रम तथा जीवन के बारे मेंबतायेंगे, हमें उस दुनिया के बारे में बतायेंगे जिसे हम अधिकतर देखने से "
+"वंचित रह जाते हैं।"
 
 #: core/templates/core/about.html:128
 msgid "WHAT’S ON PARI"
-msgstr ""
+msgstr "पारी पर क्या है"
 
 #: core/templates/core/about.html:130
 msgid ""
@@ -503,6 +589,18 @@ msgid ""
 "making of this site. We're also trying to create subtitling in multiple "
 "Indian languages for each documentary we generate."
 msgstr ""
+"पारी विडियो, फोटो, ऑडियो और लिखित अभिलेख को इकट्ठा तथा प्रकाशित करता है। हमारेपास "
+"कुछ विषय-वस्तु तो पहले से ही मौजूद हैं और कुछ कहानियों को हम लगातार तैयार कररहे हैं। उन्हें "
+"संगठित और लोड करने में समय तथा श्रम दोनों लगते हैं। पारी के लिए विशेष रूप सेतैयार किये गए "
+"विडियो में प्रतिदिन के भारतियों और गरीबों के जीवन तथा उनके आजीविका कोरिकॉर्ड किया "
+"जाता है। उदाहरण के तौर पर, एक महिला कृषि मजदूर आपको अपने जीवन, अपने कामअपनी मजदूरी "
+"की तकनीक, परिवार, रसोई तथा उन तमाम चीजों से रूबरू कराती है जिसे वहमहत्तवपूर्ण समझती "
+"है। जाहिर है, इस प्रकार के फिल्म में पहला क्रेडिट उसे ही जाता है; दूसरा क्रेडिटउसके गांव तथा "
+"समाज को जाता है। निर्देशक तीसरे नंबर पर आता है। पारी उसकी कहानी के उसकेस्वामित्व का "
+"आदर करता है। और यह हमारे मैंडेट मैं है कि हम ऐसे तरीके तलाश करें कि जिसके द्वाराहम जिन "
+"लोगों को कवर कर रहे हैं, अर्थात ग्रामीण भारतीय, वे भी यहां तक पहुंच सकें, और वह इससाइट के "
+"निर्माण के बारे में अपनी राय दे सकें। हम जितनी भी डॉक्युमेंट्री तैयार कर रहे हैं, हमाराप्रयास "
+"है कि उनकी सब-साइटलिंग भी विभिन्न भारतीया भाषाओं में की जाये।"
 
 #: core/templates/core/about.html:142
 msgid ""
@@ -513,6 +611,11 @@ msgid ""
 "songs will eventually be hosted on PARI as an archive of a phenomenal poetic-"
 "musical legacy."
 msgstr ""
+"साइट के <a href=\"https://soundcloud.com/ruralindia\"> ऑडियो जोन </a> पर आने "
+"वाले समयमें हजारों क्लिप्स होंगी – प्रत्येक भारतीय भाषा में बातचीत, गाने, शायरी – जिसे हम "
+"रिकॉर्ड कर सकते हैं।हमने चक्की के गानों की परियोजना से शुरूआत की थी, जो महाराष्ट्र के गांवों "
+"की महिलाओं द्वारा गाये गयेलोक गीत हैं। 100,000 से ज्यादा गाने पारी पर धीरे-धीरे जमा किए "
+"जायेंगे, अद्भुत काव्यात्मक-म्यूजिकलविरासत के तौर पर।"
 
 #: core/templates/core/about.html:148
 msgid ""
@@ -525,6 +628,14 @@ msgid ""
 "access grows, it should also mean lower costs for many students, as PARI is "
 "a free-access-to-public site."
 msgstr ""
+"हम शिक्षा और अध्ययन पर भी फोकस कर रहे हैं। पाठ्यपुस्तक सहित शिक्षण तथा अनुसंधान सामग्री,"
+"अगले कुछ वर्षों में तेजी से ऑनलाइन उपलब्ध होंगी, यह प्रक्रिया दुनिया के कुछ हिस्सों में पहले से "
+"ही जारी है।पारी छात्रों, अध्यापकों, स्कूलों, कालेजों तथा विश्वविद्यालयों के लिए सूचनात्मक "
+"तथा दिलचस्प संसाधन तैयारकरने में सहायता करना चाहता है। अगर सही ढंग से किया गया, तो "
+"इसका मतलब होगा ऐसी पाठ्यपुस्तकेंया शिक्षण सामग्री, जिनमें बढ़ोतरी की जा सकती है, काट-"
+"छांट हो सकती है, संपादन तथा विस्तारण होसकता है। ब्रॉडबैंड की पहुंच में चूंकि बढ़ोतरी हो रही "
+"है, इसलिए विभिन्न छात्रों का मूल्य भी कम होना चाहिए, क्योंकि पारी एक मुफ्त पब्लिक साइट "
+"है।"
 
 #: core/templates/core/about.html:157
 #, python-format
@@ -537,6 +648,13 @@ msgid ""
 "the United Nations and much more. Researchers will not have to surf multiple "
 "sites to access important documents and studies from different sources."
 msgstr ""
+"पारी एक <a href=%(resource_list)s> संसाधन </a> भाग भी तैयार कर रहा है, जहां पर "
+"हमारा इरादाग्रामीण भारत से संबंधित सभी आधिकारिक (तथा अनाधिकारक प्रंतु विश्वसनीय) "
+"रिपोर्टों को (केवल लिंक द्वारानहीं बल्कि पूर्ण मूलपाठ के रूप में) डालने का है। उदाहरण के रूप "
+"में, नेशनल कमीशन फॉर इंटरप्राइजेज इन दीअनऑर्गनाइज्ड सेक्टर की प्रत्येक रिपोर्ट, प्लानिंग "
+"कमीशन (अब नीति आयोग) तथा मंत्रालयों की रिपोर्टसंयुक्त राष्ट्र की रिपोर्ट और भी बहुत कुछ। "
+"अनुसंधानकर्ताओं को विभिन्न स्रोतों से महत्तवपूर्ण दस्तावेजों औरअध्ययन सामग्रियों तक पहुंचने के "
+"लिए अलग-अलग साइटों पर नहीं जाना पड़ेगा।"
 
 #: core/templates/core/about.html:168
 msgid ""
@@ -544,10 +662,13 @@ msgid ""
 "will also, for example, include livestock and wildlife – and many others, "
 "brick by brick. Here’s a look at just three of very many categories on PARI:"
 msgstr ""
+"आर्काइव में आप जितनी श्रेणी देख रहे हैं, वे अंतिम या फाइनल नहीं हैं। हम इसमें, उदाहरणस्वरूप,"
+"लाइव स्टॉक तथा वाइल्ड-लाइफ – तथा अन्य को भी, एक एक करके शामिल करेंगे। यहां पर पारी "
+"की इनविभिन्न श्रेणियों में से केवल तीन पर नजर दौड़ाएं-"
 
 #: core/templates/core/about.html:177
 msgid "Things we do"
-msgstr "നമ്മൾ ചെയ്യുന്ന കാര്യം"
+msgstr "हम जो काम करते हैं"
 
 #: core/templates/core/about.html:179
 msgid ""
@@ -559,6 +680,13 @@ msgid ""
 "kilometres each year in search of work, never staying anywhere for six "
 "months, not even in their own village homes."
 msgstr ""
+"यह आपको ग्रामीण भारत के श्रम से संबंधित विचित्र दुनिया में ले जायेगी। खेतों में काम करने "
+"वालेभूमिहीन मजदूरों की ओर, किसानों तथा लकड़ी काटने वालों की ओर, ईंट बनाने वालों तथा "
+"लोहारों कीओर। उन आदमियों से आपको मिलवाएगी जो कुछ पैसे कमाने के लिए 200 किग्रा कोयला "
+"साइकिल परलाद कर 40 किमी तक की दूरी तय करते हैं। उन महिलाओं से मिलवाएगी जो कूड़े के "
+"काफी बड़े ढेर सेकोयला इकट्ठा करती हैं अपनी जान को खतरे में डाल कर। और वे प्रवासी मजदूर जो "
+"काम की तलाश मेंहर साल हजारों किमी की यात्रा करते हैं, कहीं पर भी छह महीने से ज्यादा नहीं "
+"रुकते, स्वयं अपने गांव मेंअपने घरों में भी नहीं।"
 
 #: core/templates/core/about.html:186
 msgid ""
@@ -566,15 +694,18 @@ msgid ""
 "tools and implements that people use, many of them sure to disappear over "
 "the next few years."
 msgstr ""
+"उनकी कहानियों को कवर करने के अलावा हम उन उपकरणों तथा औजारों की भी फोटोग्राफी कररहे "
+"हैं तथा फिल्म बना रहे हैं जिनका वे प्रयोग करते हैं, जिनमें से कई निश्चित तौर से, अगले कुछवर्षों "
+"में गुम होने वाले हैं।"
 
 #: core/templates/core/about.html:189 core/templates/core/about.html:207
 #: core/templates/core/about.html:224 core/templates/pages/menus/footer.html:7
 msgid "Explore"
-msgstr ""
+msgstr "खोजें"
 
 #: core/templates/core/about.html:198
 msgid "Things we make"
-msgstr ""
+msgstr "हम जो चीजें बनाते हैं"
 
 #: core/templates/core/about.html:200
 msgid ""
@@ -584,10 +715,14 @@ msgid ""
 "schools, rural traditions of sculpture, exquisite weaving techniques – many "
 "of which are slowly fading away and might soon vanish completely."
 msgstr ""
+"यहां, पारी कला और शिल्प, चित्रकारों तथा हस्तशिल्पों को  कवर करता है। देश के अनगिनतस्कूल "
+"तथा कौशल और परंपरायें, तथा उनके उत्पाद। इस श्रेणी में, आपको भारत का प्रतिदिन कासंग्रहालय "
+"मिलेगा जैसे लघु पेंटिंग के स्कुल, मूर्तिकला की ग्रामीण परंपरायें, बुनाई के विचित्र तरीके, जिनमें से "
+"अधिकतर अब समाप्त हो रहे हैं और शीघ्र ही पूर्ण रूप से समाप्त हो सकते हैं।"
 
 #: core/templates/core/about.html:215
 msgid "Foot-soldiers of freedom"
-msgstr ""
+msgstr "आजादी के पैदल सिपाही"
 
 #: core/templates/core/about.html:217
 msgid ""
@@ -596,6 +731,10 @@ msgid ""
 "from colonial rule and to establish an independent, democratic Indian "
 "nation. In the next decade there will be none left to tell the tale."
 msgstr ""
+"ग्रामीण भारत के अंतिम बचे स्वतंत्रता सेनानी, जिनमें से अधिकतर की आयु अब 90 वर्ष की होचुकी "
+"है। वे लोग जिन्होंने उपनिवेशक सरकार से लड़ने तथा एक स्वतंत्र, प्रजातांत्रिक देश की स्थापनाके "
+"लिए तथा अपने देश को आजाद कराने के लिए लड़ते हुए कई साल जेलों में व्यतीत किये।अगले दशक में इस "
+"कहानी को बताने वाला कोई भी नहीं बचेगा।"
 
 #: core/templates/core/about.html:228
 msgid ""
@@ -607,6 +746,13 @@ msgid ""
 "phones with decent video quality – if the material falls within the mandate "
 "of the archive. You need not be a professional journalist."
 msgstr ""
+"हम जहां एक ओर सहयोगा करने वालों का एक संग्रह लगातार तैयार करने तथा उसे विस्तार देने "
+"काप्रयास कर रहे हैं, वहीं संपादकीय चयन और गुणवत्ता नियंत्रण का अभ्यास भी कर रहे हैं। जाहिर "
+"है, विश्वसनीय रिकॉर्ड वाले अनुभवी सहयोगियों का प्रयोग इस कार्य के लिए आवश्यक है। इनमें से "
+"अधिकतरपत्रकार, लेखक तथा रचनाकार होंगे। लेकिन सभी नहीं। कोई भी व्यक्ति जिसकी इस कार्य "
+"में रूचि हो भागले सकता है, हमारे लिए लिख सकता है, या अच्छी विडियो क्वालिटी के साथ अपने "
+"मोबाइल फोन से भीशूट कर सकता है, यदि विषय-वस्तु इस आर्काइव के मैंडेट के अनुसार हो। आपका "
+"पेशेवर पत्रकार होनाजरूरी नहीं है।"
 
 #: core/templates/core/about.html:236
 msgid ""
@@ -616,6 +762,10 @@ msgid ""
 "stories. And the stories will be renewed and reported — as long as there is "
 "a countryside."
 msgstr ""
+"याद रखें, पारी पर उपलब्ध अधिकतर कहानियां स्वयं ग्रामीण भारतियों द्वारा भेजी जाती हैं, उन "
+"पेशेवरव्यक्तियों द्वारा नहीं जो उनकी कहानी को रिकॉर्ड करने में मदद करते हैं। इनमें से कुछ "
+"ग्रामीण भारतीयस्वयं अपनी कहानियों को शूट करेंगे। और इन कहानियों को नया स्वरूप दिया "
+"जायेगा और रिपोर्ट कियाजायेगा, जब तक कि वे ग्रामीण क्षेत्रों से संबंधित हों।"
 
 #: core/templates/core/about.html:243
 msgid ""
@@ -628,6 +778,13 @@ msgid ""
 "researchers, techies and professionals from many other fields have also "
 "donated their expertise to design the site and establish PARI."
 msgstr ""
+"पारी पर जनता की पहुंच निःशुल्क है। इस साइट को काउंटर मीडिया ट्रस्ट द्वारा चलाया जा "
+"रहा है।एक अनौपचारिक नेटवर्क इस ट्रस्ट को सपोर्ट करता है तथा स्वैच्छिक काम, चंदे और "
+"प्रत्यक्ष व्यक्तिगतसहयोग के द्वारा इसकी मूल गतिविधियों की फंडिंग करता है। संवाददाताओं, "
+"पेशेवर फिल्म निर्माताओं, फिल्म संपादकों, फोटोग्राफर्स, डॉक्युमेंट्री फिल्म निर्माताओं और "
+"पत्रकारों (टेलीविजन, ऑनलाइन तथाप्रिंट) का यह स्वैच्छिक नेटवर्क पारी की सबसे बड़ी संपदा है। "
+"इसके अलावा, शिक्षक, अध्यापक, शोधक, टेकीज तथा विभिन्न क्षेत्रों के प्रोफेशनल्स ने भी इस "
+"साइट के डिजाइन तथा पारी के निर्माण में अपनेकौशल से हमारा सहयोग किया है।"
 
 #: core/templates/core/about.html:252
 msgid ""
@@ -638,35 +795,40 @@ msgid ""
 "realities. We can expand our coverage of those many worlds only with the "
 "widest possible public participation."
 msgstr ""
+"वालंटियर हमारे लिए जो कुछ कर रहे हैं इसक अतिरिक्त पारी को विषय-वस्तु तैयार करने के "
+"लिएपैसों की आवश्यक्ता है, और हम चाहते हैं कि क्राउड-फंडिंग के द्वारा साधन पैदा करें। हालांकि, "
+"चंदे केलिए हमारी अपील का शीर्षक है ‘अपने देश को कवर करें’, ग्रामीण भारत को कभी कवर नहीं "
+"कियाजा सकता और इस साइट पर उपलब्ध विषय-वस्तु में कई बड़े तथ्य शामिल हैं। हम बहुत "
+"सीदुनियाओं को तभी कवर कर सकते हैं जब उसमें बड़े पैमाने पर जनता की भागीदारी हो।"
 
 #: core/templates/core/about.html:260
 #: core/templates/core/acknowledgements.html:270
 msgid "Founder Editor, PARI"
-msgstr "संस्थापक संपादक, PARI"
+msgstr "संस्थापक संपादक, पारी"
 
 #: core/templates/core/about.html:267
 msgid "This is an insane project – and a wonderful one"
-msgstr ""
+msgstr "यह एक विक्षिप्त परियोजना है – तथा प्रशंसनीय भी"
 
 #: core/templates/core/about.html:270
 msgid "Neville Roy Singham, Chairman, ThoughtWorks Inc."
-msgstr ""
+msgstr "नेविले रॉय सिंघम, चेयरमैन, थॉटवर्क्स इनकार्पोरेटेड"
 
 #: core/templates/core/about.html:273
 msgid "There's a pleasure sure to being mad, that only madmen know"
-msgstr ""
+msgstr "पागल होने का भी अपना एक मजा है, जिसे सिर्फ पागल ही जानते हैं"
 
 #: core/templates/core/about.html:276
 msgid "John Dryden in ‘The Spanish Friar’ (1681)"
-msgstr ""
+msgstr "जॉन ड्राइडेन, दी स्पैनिश फ्रायर (1681), में"
 
 #: core/templates/core/about.html:280
 msgid "CONSIDER DONATING TO PARI"
-msgstr ""
+msgstr "पारी को चंदा देने के बारे में सोचें"
 
 #: core/templates/core/about.html:281 core/templates/core/donate.html:103
 msgid "Donate money"
-msgstr ""
+msgstr "पैसा दान करें"
 
 #: core/templates/core/about.html:283
 msgid ""
@@ -674,14 +836,16 @@ msgid ""
 "made to the <b>CounterMedia Trust</b> are eligible for exemption under "
 "Section 80G of the Income Tax Act, 1961."
 msgstr ""
+"आप अदायगी के विभिन्न तरीकों से अपना चंदा भेज सकते हैं। <b> काउंटर मीडिया ट्रस्ट </b> "
+"कोभेजे गये सभी अनुदान आयकर अधिनियम, 1961 के सेक्शन 80जी के अंतर्गत कर से छूट प्राप्त हैं।"
 
 #: core/templates/core/about.html:287 core/templates/core/donate.html:109
 msgid "Send donation"
-msgstr ""
+msgstr "चंदा भेजें"
 
 #: core/templates/core/about.html:290
 msgid "CONTRIBUTE TO PARI"
-msgstr ""
+msgstr "पारी का सहयोग करें"
 
 #: core/templates/core/about.html:292
 msgid ""
@@ -690,15 +854,19 @@ msgid ""
 "as it meets the standards of this site and falls within our mandate: the "
 "everyday lives of everyday people."
 msgstr ""
+"पारी को कोई भी सहयोग दे सकता है। हमारे लिए लिखें, हमारे लिए शूट करें, हमारे "
+"लिएरिकॉर्डय, अनुवाद, अनुसंधान, विडियो का संपादन करें। आपकी सामग्रियों का तब तक "
+"स्वागतहै, जब तक वे इस साइट के आदर्शों को पूरा करते हों तथा हमारे मैंडेट – साधारण लोगों "
+"केसाधारण जीनव – के अनुसार हों।"
 
 #: core/templates/core/about.html:298 core/templates/core/about.html:308
 #: core/templates/core/home_page.html:479
 msgid "Learn more"
-msgstr ""
+msgstr "और अधिक जानें"
 
 #: core/templates/core/about.html:301
 msgid "PARI AND EDUCATION"
-msgstr ""
+msgstr "पारी और शिक्षा"
 
 #: core/templates/core/about.html:303
 msgid ""
@@ -707,22 +875,27 @@ msgid ""
 "week on our site. Over time, quite a bit of that will be produced by "
 "students and teachers themselves."
 msgstr ""
+"पारी में हम भविष्य के लिए पाठ्यपुस्तक लिख रहे हैं। ये सब विभिन्न कहानियों, तस्वीरों, "
+"विजुवलतथा ऑडियो सामग्री के साथ हो रहा है जो हर सप्ताह हमारी साइट पर डाली जाती है। "
+"आने वाले दिनोंमें, इनमें से कई चीजें स्वयं छात्र तथा अध्यापक प्रस्तुत करेंगे।"
 
 #: core/templates/core/acknowledgements.html:4
 #: core/templates/pages/menus/dropdown.html:228
 #: core/templates/pages/menus/footer.html:70
 msgid "Acknowledgements"
-msgstr "स्वीकृतियाँ"
+msgstr "अभार-पूर्ति"
 
 #: core/templates/core/acknowledgements.html:5
 msgid ""
 "We are greatly indebted to the volunteers, journalists, filmmakers and other "
 "contributors who continue to gift us so much time and labour."
 msgstr ""
+"हम उन वालंटियरों, पत्रकारों, फिल्म निर्माताओं तथा अन्य सहयोगियों का आभार व्यक्त करते हैं "
+"जोहमारे लिए लगातार अपना समय निकाल रहे हैं और मेहनत कर रहे हैं।"
 
 #: core/templates/core/acknowledgements.html:19
 msgid "Acknowledgments"
-msgstr "स्वीकृतियाँ"
+msgstr "अभार-पूर्ति"
 
 #: core/templates/core/acknowledgements.html:21
 #, python-format
@@ -736,21 +909,22 @@ msgid ""
 "the original text panels online too, and you can see the outcome of that "
 "effort on <a href=%(women)s>Visible Work, Invisible Women</a>."
 msgstr ""
-"यह <a href=\"https://www.thoughtworks.com/\"target=\"_blank\">थॉटवर्क्स</a> के "
-"संस्थापक अध्यक्ष, नेविल रॉय सिंघम थे, जिन्होंने मुझे विश्वास दिलाया कि इसके वर्तमान स्वरूप में "
-"पीपुल्स आर्काइव ऑफ रूरल इंडिया संभव है। रॉय ने सोचा कि यह परियोजना पागल थी, लेकिन "
-"इसकी धृष्टता से प्यार था। 2011 में मेरी (शारीरिक) फोटो प्रदर्शनी से आकर्षित होकर, उन्होंने "
-"पूरी तरह से क्यूरेटेड फोटो प्रदर्शनी की संभावनाओं को पूरा किया - और अधिक - ऑनलाइन। हम "
-"मूल पाठ पैनलों का उपयोग ऑनलाइन भी करने में सक्षम थे, और आप <a href=%(women)s>विज़िबल "
-"वर्क, इनविजिबल वीमेन</a> पर उस प्रयास के परिणाम देख सकते हैं।"
+"यह <a href=\"https://www.thoughtworks.com/\"target=\"_blank\"> थॉटवर्क्स </a> "
+"के संस्थापकचेयरमैन, नेविले रॉय सिंघम थे, जिन्होंने मुझे इस बात पर भरोसा करने के लिए विवश "
+"किया कि पीपुल्सआर्काइव ऑफ रूरल इंडिया अपने वर्तमान स्वरूप में संभव है। रॉय ने सोचा कि यह "
+"परियोजना पागलपन है, लेकिन वह इसके साहस के कायल थे। 2011 में मेरे द्वारा खींची गई तस्वीरों "
+"की (भौतिक) प्रदर्शनी से परिणामनिकालते हुए, उन्होंने पूर्ण रूप से ऑनलाइन क्यूरेटेड फोटो नुमाइश "
+"और इससे आगे की संभावनाओं की नींवडाली। हम ओरिजनल टेक्स्ट पैनलों को भी ऑनलाइन इस्तेमाल करने "
+"में सफल रहे, और आप इस प्रयास केनतीजे को <a href=%(women)s> दृष्टिगोचर कार्य, अदृश्य "
+"महिलाएं </a> पर देख सकते हैं।"
 
 #: core/templates/core/acknowledgements.html:28
 msgid ""
 "At every stage, subsequently, Roy’s ideas and energy pushed forward the "
 "making of PARI. No acknowledgement of his contribution can be strong enough."
 msgstr ""
-"प्रत्येक चरण में, बाद में, रॉय के विचारों और ऊर्जा ने PARI के निर्माण को आगे बढ़ाया। उनके "
-"योगदान की कोई भी स्वीकार्यता मजबूत नहीं हो सकती है।"
+"इसके बाद, हर कदम पर, रॉय के विचार तथा ऊर्जा ने पारी के निर्माण में सहायता की। "
+"उनकेसहयोगा का जितना भी आभार व्यक्त किया जाये कम है।"
 
 #: core/templates/core/acknowledgements.html:31
 msgid ""
@@ -760,10 +934,10 @@ msgid ""
 "The strong education-related component of PARI owes a great deal to her "
 "influence."
 msgstr ""
-"जब PARI अभी भी एक नवोदित धारणा थी, प्रो। अनन्या मुखर्जी-रीड, जो अब फैकल्टी के डीन, "
-"यॉर्क यूनिवर्सिटी, टोरंटो के लिबरल आर्ट्स एंड प्रोफेशनल स्टडीज, ने अपने विचारों, अवधारणाओं "
-"और स्पष्टता में महत्वपूर्ण योगदान दिया। PARI का मजबूत शिक्षा-संबंधी घटक उसके प्रभाव का "
-"बहुत बड़ा श्रेय देता है।"
+"पारी जब एक अनुभवहीन विचार था, तब प्रोफेसर अनन्या मुखर्जी-रीड, जो अब यॉर्क युनिवर्सिटी,"
+"टोरंटो की डीन ऑफ फैकल्टी, लिबरल आर्ट्स और प्रोफेशनल स्टडीज हैं, ने इसके विचारों, "
+"संकल्पनाओंतथा स्पष्टता में महत्तवपूर्ण योगदान दिया। पारी पर मौजूद शिक्षा से संबंधित मजबूत अंश "
+"उन्हीं की देन है।"
 
 #: core/templates/core/acknowledgements.html:35
 msgid ""
@@ -773,10 +947,10 @@ msgid ""
 "Viswanathan played key roles in getting us off the ground. Siddharth Adelkar "
 "was and is central to our overall effort."
 msgstr ""
-"थॉटवर्क्स इंडिया के वालंटियर टेकीज़ ने PARI प्लेटफ़ॉर्म को संभव बनाया। उनके बिना, इसका कोई "
-"भी मतलब नहीं होता। कई लोगों ने अचूक तरीके से मदद की, लेकिन मनोज महालिंगम (तब TW के "
-"साथ) और सतीश विश्वनाथन ने हमें मैदान से हटाने में महत्वपूर्ण भूमिका निभाई। सिद्धार्थ एडेलकर "
-"हमारे समग्र प्रयास का केंद्र था।"
+"थॉटवर्क्स इंडिया के स्वैच्छिक टेकीज ने पारी प्लेटफॉर्म को संभव बनाया। उनके बगैर, इसका कोईभी "
+"काम पूरा नहीं हो पाता। कई लोगों ने अमूल्य तरीकों से सहायता की, लेकिन मनोज महालिंगम "
+"(जोतब टीडब्ल्यू के साथ थे) और सतीश विश्वनाथन ने हमें जमीन पर उतारने में बुनियादी भूमिका "
+"निभाई।सिद्धार्थ अडेल्कर हमारे संयुक्त प्रयासों का तब भी केंद्रीय भाग थे और अब भी हैं।"
 
 #: core/templates/core/acknowledgements.html:40
 msgid ""
@@ -785,183 +959,188 @@ msgid ""
 "the inimitable Thejaswi Puthraya who is there for us, from before the "
 "launch, on all matters tech and some beyond."
 msgstr ""
-"जैसे ही PARI अपने अस्तित्व के चरण 2 में प्रवेश करता है, हमारे पास आदित्य दीपांकर है जो "
-"वेबसाइट के डिजाइन और उपस्थिति के बारे में एक आश्चर्यजनक अंतर रखता है। हमारे पास एक "
-"महत्वपूर्ण थैमसवी पुथराया भी है, जो लॉन्च से पहले, सभी मामलों टेक और कुछ परे पर हमारे लिए "
-"है।"
+"ऐसे में जब कि पारी अपने स्तित्व के द्वितीय चरण में प्रवेश कर रहा है, इस समय हमारे साथआदित्य "
+"दिपांकर हैं जो वेबसाइट के डिजाइन और रूप-रंग में आश्चर्यजनक भिन्नता ला रहे हैं।हमारे साथ "
+"अद्वितीय तेजस्वी पुत्राय भी हैं जो हर वक्त हमारे पास हैं, लांच के पहले से ही, टेक्नॉलोजी से "
+"संबंधित सभी तत्वों से लेकर उसके आगे तक।"
 
 #: core/templates/core/acknowledgements.html:44
 msgid "Scores of others helped in big and many ways"
-msgstr "दूसरों के स्कोर ने बड़े और कई तरीकों से मदद की"
+msgstr "दूसरे विभिन्न लोगों ने भी बड़े और कई तरीके से मदद की"
 
 #: core/templates/core/acknowledgements.html:54
 msgid "Software Development Team: Launch Phase"
-msgstr "सॉफ्टवेयर डेवलपमेंट टीम: लॉन्च चरण"
+msgstr "सॉफ्टवेयर डेवलपमेंट टीमः प्रारंभिक चरण"
 
 #. Translators: If your target language uses a non-Roman script, please do your best to transliterate the names that follow.
 #: core/templates/core/acknowledgements.html:57
 msgid "Anilkumar Kodi"
-msgstr ""
+msgstr "अनिल कुमार कोडी"
 
 #: core/templates/core/acknowledgements.html:58
 msgid "Aruna Shanmugakumar"
-msgstr ""
+msgstr "अरुणा शनमुगाकुमार"
 
 #: core/templates/core/acknowledgements.html:59
 msgid "Arvind Ram A."
-msgstr ""
+msgstr "अरविंद राम ए"
 
 #: core/templates/core/acknowledgements.html:60
 msgid "Balachander Swaminathan"
-msgstr ""
+msgstr "बालचंद्र स्वामीनाथन"
 
 #: core/templates/core/acknowledgements.html:61
 msgid "Devarajan N."
-msgstr ""
+msgstr "देवराजन एन"
 
 #: core/templates/core/acknowledgements.html:62
 msgid "Dinesh Kumar"
-msgstr ""
+msgstr "दिनेश कुमार"
 
 #: core/templates/core/acknowledgements.html:63
 msgid "Gaurav Manoharrav Ingalkar"
-msgstr ""
+msgstr "गौरव मनोहर राव इंगालकर"
 
 #: core/templates/core/acknowledgements.html:64
 msgid "Gopinath Jayabalan"
-msgstr ""
+msgstr "गोपीनाथ जयबालन"
 
 #: core/templates/core/acknowledgements.html:65
 msgid "Gowri Jayalakshmi R."
-msgstr ""
+msgstr "गौरी जयलक्ष्मी आर"
 
 #: core/templates/core/acknowledgements.html:66
 msgid "Jayakumar Chinnappan (Tech Lead, final lap)"
-msgstr ""
+msgstr "जयकुमार चिनप्पन (टेक लीड, फाइनल लैप)"
 
 #: core/templates/core/acknowledgements.html:67
 msgid "Jeyakar J. Vaiz"
-msgstr ""
+msgstr "जेयाकर जे वैज"
 
 #: core/templates/core/acknowledgements.html:68
 msgid "Manoj S. Mahalingam (Tech Lead)"
-msgstr ""
+msgstr "मनोज एस महालिंगम (टेक लीड)"
 
 #: core/templates/core/acknowledgements.html:69
+#, fuzzy
 msgid "Mohit Shankarrao Pote"
-msgstr ""
+msgstr "मोहित शंकर राव पोटे"
 
 #: core/templates/core/acknowledgements.html:70
 msgid "Mubashar Nadeem Sibgathullah"
-msgstr ""
+msgstr "मुबश्शिर नदीम सिब्गतुल्लाह"
 
 #: core/templates/core/acknowledgements.html:71
 msgid "Pradipta Kundu"
-msgstr ""
+msgstr "प्रदीप्ता कुन्डू"
 
 #: core/templates/core/acknowledgements.html:72
 msgid "Raj Kumar"
-msgstr ""
+msgstr "राज कुमार"
 
 #: core/templates/core/acknowledgements.html:73
 msgid "Ram Ramalingam"
-msgstr ""
+msgstr "राम रामालिंगम"
 
 #: core/templates/core/acknowledgements.html:74
 msgid "Ramalingam Singaravel"
-msgstr ""
+msgstr "रामालिंगम सिंगरावेल"
 
 #: core/templates/core/acknowledgements.html:75
 #: core/templates/core/acknowledgements.html:110
 #: core/templates/core/acknowledgements.html:236
 msgid "Satish Viswanathan"
-msgstr ""
+msgstr "सतीश विश्वनाथन"
 
 #: core/templates/core/acknowledgements.html:76
 msgid "Senthil V. S."
-msgstr ""
+msgstr "सेंथिल वीएस"
 
 #: core/templates/core/acknowledgements.html:77
 msgid "Suganthi Krishnavathi T."
-msgstr ""
+msgstr "सुगांती कृष्णावती टी"
 
 #: core/templates/core/acknowledgements.html:78
 #: core/templates/core/acknowledgements.html:245
 msgid "Thejaswi Puthraya"
-msgstr ""
+msgstr "तेजस्वी पुत्राय"
 
 #: core/templates/core/acknowledgements.html:79
 msgid "Vivek Singh"
-msgstr ""
+msgstr "विवेक सिंह"
 
 #: core/templates/core/acknowledgements.html:85
 msgid "Logistics Team"
-msgstr ""
+msgstr "लॉजिस्टिक्स टीम"
 
 #: core/templates/core/acknowledgements.html:86
 msgid "Baskar G."
-msgstr ""
+msgstr "बास्कर जी"
 
 #: core/templates/core/acknowledgements.html:87
 msgid "Karthik T."
-msgstr ""
+msgstr "कार्तिक टी"
 
 #: core/templates/core/acknowledgements.html:88
 msgid "Poornima R. S."
-msgstr ""
+msgstr "पूर्णिमा आरएस"
 
 #: core/templates/core/acknowledgements.html:89
 msgid "Ratnakar Nath"
-msgstr ""
+msgstr "रत्नाकर नाथ"
 
 #: core/templates/core/acknowledgements.html:91
 msgid "Swecha Technology Team"
-msgstr ""
+msgstr "स्वेक्षा टेक्नॉलोजी टीम"
 
 #: core/templates/core/acknowledgements.html:92
 msgid "Bhuvan Krishna"
-msgstr ""
+msgstr "भुवन कृष्णा"
 
 #: core/templates/core/acknowledgements.html:93
 msgid "Kiran Chandra"
-msgstr ""
+msgstr "किरण चंद्र"
 
 #: core/templates/core/acknowledgements.html:94
 #: core/templates/core/acknowledgements.html:228
 msgid "Praveen Chandrahas"
-msgstr ""
+msgstr "प्रवीण चंद्रहास"
 
 #: core/templates/core/acknowledgements.html:97
 msgid "Digital Archivist"
-msgstr ""
+msgstr "डिजिटल आर्किविस्ट"
 
 #: core/templates/core/acknowledgements.html:98
 msgid "Venkataraaman S."
-msgstr ""
+msgstr "वेंकटरामण एस"
 
 #: core/templates/core/acknowledgements.html:101
 msgid "Software Development Team: Design Phase"
-msgstr ""
+msgstr "सॉफ्टवेयर डेवलपमेंट टीमः डिजाइन फेज"
 
 #: core/templates/core/acknowledgements.html:102
 msgid "Deepan Rajkumar R."
-msgstr ""
+msgstr "दीपन राजकुमार आर"
 
 #: core/templates/core/acknowledgements.html:103
 msgid "Deepthi R. (Tech Lead)"
-msgstr ""
+msgstr "दीप्ति आर (टेक लीड) "
 
 #: core/templates/core/acknowledgements.html:104
 msgid "Gayathri M. (Team Lead)"
-msgstr ""
+msgstr "गायत्री एम (टीम लीड)"
 
 #: core/templates/core/acknowledgements.html:105
+#, fuzzy
+#| msgid "Jayakumar Chinnappan (Tech Lead, final lap)"
 msgid "Jayakumar Chinnappan (Tech Lead)"
-msgstr ""
+msgstr "जयकुमार चिनप्पन (टेक लीड, फाइनल लैप)"
 
 #: core/templates/core/acknowledgements.html:106
+#, fuzzy
+#| msgid "Lokesh S."
 msgid "Lokesh Sharma"
-msgstr ""
+msgstr "लोकेश एस"
 
 #: core/templates/core/acknowledgements.html:107
 msgid "Nimesh Pulikaparambil"
@@ -970,7 +1149,7 @@ msgstr ""
 #: core/templates/core/acknowledgements.html:108
 #: core/templates/core/acknowledgements.html:226
 msgid "Olivia Waring"
-msgstr ""
+msgstr "ओलीविया वैरिंग"
 
 #: core/templates/core/acknowledgements.html:109
 msgid "Sankar Parameswaran"
@@ -978,124 +1157,126 @@ msgstr ""
 
 #: core/templates/core/acknowledgements.html:111
 msgid "Venkatesa Madhan"
-msgstr ""
+msgstr "वेंकटेश मदान"
 
 #: core/templates/core/acknowledgements.html:112
 msgid "Vidhyalakshimi S."
-msgstr ""
+msgstr "विद्यालक्ष्मी एस"
 
 #: core/templates/core/acknowledgements.html:113
 msgid "Vinoth Kumar R."
-msgstr ""
+msgstr "विनोद कुमार आर"
 
 #: core/templates/core/acknowledgements.html:117
 msgid "Inception Team"
-msgstr ""
+msgstr "प्रारंभिक टीम"
 
 #: core/templates/core/acknowledgements.html:118
 msgid "David Siang Fong Oh"
-msgstr ""
+msgstr "डेविड सियांग फांग ओह"
 
 #: core/templates/core/acknowledgements.html:119
 msgid "Kartik Kannan"
-msgstr ""
+msgstr "कार्तिक कन्नन"
 
 #: core/templates/core/acknowledgements.html:120
 msgid "Koundinya Goparaju"
-msgstr ""
+msgstr "कौनदिन्य गोपाराजू"
 
 #: core/templates/core/acknowledgements.html:121
 msgid "Nikhileshwar Gamedhar"
-msgstr ""
+msgstr "निखिलेश्वर गामेधर"
 
 #: core/templates/core/acknowledgements.html:122
 msgid "Ruchi Mahajan"
-msgstr ""
+msgstr "रूचि महाजन"
 
 #: core/templates/core/acknowledgements.html:123
 msgid "Shashank Raghavendra"
-msgstr ""
+msgstr "शशांक राघवेंद्र"
 
 #: core/templates/core/acknowledgements.html:125
 msgid "Design Team"
-msgstr ""
+msgstr "डिजाइन टीम"
 
 #: core/templates/core/acknowledgements.html:126
 msgid "Aditya Dipankar (Team Lead)"
-msgstr ""
+msgstr "आदित्य दिपांकर (टीम लीड)"
 
 #: core/templates/core/acknowledgements.html:127
 msgid "Gaurav Sharma"
-msgstr ""
+msgstr "गौरव शर्मा"
 
 #: core/templates/core/acknowledgements.html:128
 msgid "Samir Bellare"
-msgstr ""
+msgstr "समीर बेल्लारे"
 
 #: core/templates/core/acknowledgements.html:129
 msgid "Shiraz Iqbal"
-msgstr ""
+msgstr "शीराज़ इक़बाल"
 
 #: core/templates/core/acknowledgements.html:130
 msgid "Suvani Suri"
-msgstr ""
+msgstr "सुवानी सूरी"
 
 #: core/templates/core/acknowledgements.html:133
 msgid "Legal Advisers"
-msgstr ""
+msgstr "कानूनी सलाहकार"
 
 #: core/templates/core/acknowledgements.html:134
 msgid "Rina Kamath"
-msgstr ""
+msgstr "रीना कामत"
 
 #: core/templates/core/acknowledgements.html:135
 #: core/templates/core/acknowledgements.html:231
 msgid "Rishab Bailey"
-msgstr ""
+msgstr "रिशब बेली"
 
 #: core/templates/core/acknowledgements.html:142
 msgid "Translators"
-msgstr ""
+msgstr "अनुवादक"
 
 #: core/templates/core/acknowledgements.html:147
 msgid "Crazy Frog Media Team"
-msgstr ""
+msgstr "क्रेजी फ्रॉग मीडिया टीम"
 
 #: core/templates/core/acknowledgements.html:148
 msgid "Mohan G.N. (Lead)"
-msgstr ""
+msgstr "मोहन जीएन (लीड)"
 
 #: core/templates/core/acknowledgements.html:149
+#, fuzzy
+#| msgid "Naren H.R."
 msgid "Naren H R"
-msgstr ""
+msgstr "नरेन एचआर"
 
 #: core/templates/core/acknowledgements.html:150
 msgid "Prasad Naik"
-msgstr ""
+msgstr "प्रसाद नायक"
 
 #: core/templates/core/acknowledgements.html:151
 msgid "Rajaram Tallur"
-msgstr ""
+msgstr "राजाराम टल्लुर"
 
 #: core/templates/core/acknowledgements.html:152
 msgid "Sandhyarani N."
-msgstr ""
+msgstr "सांध्यारानी एन"
 
 #: core/templates/core/acknowledgements.html:153
 msgid "Santosh Tamprapani"
-msgstr ""
+msgstr "संतोष ताम्प्रपाणि"
 
 #: core/templates/core/acknowledgements.html:154
 msgid "Shama Nandibetta"
-msgstr ""
+msgstr "शमा नंदीबेट्टा"
 
 #: core/templates/core/acknowledgements.html:156
 msgid "Other Translators"
-msgstr ""
+msgstr "अन्य अनुवादक"
 
 #: core/templates/core/acknowledgements.html:157
 msgid "Chandan Dey"
-msgstr ""
+msgstr "चंदन डे"
 
 #: core/templates/core/acknowledgements.html:158
 msgid "Chhaya Deo"
@@ -1103,19 +1284,19 @@ msgstr ""
 
 #: core/templates/core/acknowledgements.html:159
 msgid "Chinta T. K."
-msgstr ""
+msgstr "चिंता टीके"
 
 #: core/templates/core/acknowledgements.html:160
 msgid "Debasmita Bhowmik"
-msgstr ""
+msgstr "देबस्मिता भौमिक"
 
 #: core/templates/core/acknowledgements.html:161
 msgid "Hemant Shah"
-msgstr ""
+msgstr "हेमंत शाह"
 
 #: core/templates/core/acknowledgements.html:162
 msgid "Jyotsna V."
-msgstr ""
+msgstr "ज्योत्सना वी"
 
 #: core/templates/core/acknowledgements.html:167
 msgid "Kaushal Kaloo"
@@ -1127,31 +1308,31 @@ msgstr ""
 
 #: core/templates/core/acknowledgements.html:169
 msgid "Medha Kale"
-msgstr ""
+msgstr "मेधा काले"
 
 #: core/templates/core/acknowledgements.html:170
 msgid "Naren H.R."
-msgstr ""
+msgstr "नरेन एचआर"
 
 #: core/templates/core/acknowledgements.html:171
 msgid "Nibha Rani Roy"
-msgstr ""
+msgstr "निभा रानी रॉय"
 
 #: core/templates/core/acknowledgements.html:172
 msgid "Pallavi Kulkarni"
-msgstr ""
+msgstr "पल्लवी कुलकर्णी"
 
 #: core/templates/core/acknowledgements.html:173
 msgid "Pallavi Malshe"
-msgstr ""
+msgstr "पल्लवी माल्शे"
 
 #: core/templates/core/acknowledgements.html:174
 msgid "Pushpa Kandaswamy"
-msgstr ""
+msgstr "पुश्प कंडास्वामी"
 
 #: core/templates/core/acknowledgements.html:175
 msgid "Qamar Tabrez"
-msgstr ""
+msgstr "क़मर तबरेज़"
 
 #: core/templates/core/acknowledgements.html:176
 msgid "Rashmi Rekha Das"
@@ -1159,27 +1340,29 @@ msgstr ""
 
 #: core/templates/core/acknowledgements.html:177
 msgid "Ratna Bharali Talukdar"
-msgstr ""
+msgstr "रत्ना भड़ाली तालुकदार"
 
 #: core/templates/core/acknowledgements.html:178
 msgid "Saravanan P.K."
-msgstr ""
+msgstr "श्रावनन पीके"
 
 #: core/templates/core/acknowledgements.html:179
 msgid "Shaji K.A."
-msgstr ""
+msgstr "शाजी केए"
 
 #: core/templates/core/acknowledgements.html:180
 msgid "Shirish Khare"
-msgstr ""
+msgstr "शिरीष खरे"
 
 #: core/templates/core/acknowledgements.html:181
 msgid "Siddharth Chakrabarti"
-msgstr ""
+msgstr "सिद्धार्थ चक्रबर्ती"
 
 #: core/templates/core/acknowledgements.html:184
+#, fuzzy
+#| msgid "Siddharth Adelkar"
 msgid "Siddharthan Sundaram"
-msgstr ""
+msgstr "सिद्धार्थ अडेल्कर"
 
 #: core/templates/core/acknowledgements.html:185
 msgid "Smita Khator"
@@ -1187,83 +1370,83 @@ msgstr ""
 
 #: core/templates/core/acknowledgements.html:186
 msgid "Subramanian Sundararaman"
-msgstr ""
+msgstr "सुब्रमणियन सुंदररमण"
 
 #: core/templates/core/acknowledgements.html:187
 msgid "Uma Maheshwari"
-msgstr ""
+msgstr "उमा महेश्वरी"
 
 #: core/templates/core/acknowledgements.html:188
 msgid "Usha Turaga-Revelli"
-msgstr ""
+msgstr "ऊषा तुराग-रेवेल्ली"
 
 #: core/templates/core/acknowledgements.html:189
 msgid "Vilasini"
-msgstr ""
+msgstr "विलासिनी"
 
 #: core/templates/core/acknowledgements.html:190
 msgid "Vishnu Varatharajan"
-msgstr ""
+msgstr "विष्णु वर्दराजन"
 
 #: core/templates/core/acknowledgements.html:198
 msgid "Core Group, Support, Admin"
-msgstr ""
+msgstr "कोर ग्रूप, सपोर्ट, ऐडमिन"
 
 #: core/templates/core/acknowledgements.html:202
 msgid "Aditi Chandrasekhar"
-msgstr ""
+msgstr "अदिती चंद्रशेखर"
 
 #: core/templates/core/acknowledgements.html:203
 msgid "Amita Joseph"
-msgstr ""
+msgstr "अमिता जोसेफ"
 
 #: core/templates/core/acknowledgements.html:204
 msgid "Amiya Pani"
-msgstr ""
+msgstr "अमिया पाणि"
 
 #: core/templates/core/acknowledgements.html:205
 msgid "Aparna Karthikeyan"
-msgstr ""
+msgstr "अपर्णा कार्तिकेयन"
 
 #: core/templates/core/acknowledgements.html:206
 msgid "Bharat Patil"
-msgstr ""
+msgstr "भरत पाटिल"
 
 #: core/templates/core/acknowledgements.html:207
 msgid "Bini Bharucha"
-msgstr ""
+msgstr "बीनि भरूच"
 
 #: core/templates/core/acknowledgements.html:208
 msgid "Biraj Patnaik"
-msgstr ""
+msgstr "बृज पटनायक"
 
 #: core/templates/core/acknowledgements.html:209
 msgid "Chitrangada Choudhury"
-msgstr ""
+msgstr "चित्रांगदा चौधरी"
 
 #: core/templates/core/acknowledgements.html:210
 msgid "Deepa Bhatia"
-msgstr ""
+msgstr "दीपा भाटिया"
 
 #: core/templates/core/acknowledgements.html:211
 msgid "Divya Jain"
-msgstr ""
+msgstr "दिव्या जैन"
 
 #: core/templates/core/acknowledgements.html:212
 msgid "Gauri Adelkar"
-msgstr ""
+msgstr "गौरी अडेल्कर"
 
 #: core/templates/core/acknowledgements.html:213
 msgid "Hutokshi Doctor"
-msgstr ""
+msgstr "हुतोक्षी डॉक्टर"
 
 #: core/templates/core/acknowledgements.html:214
 msgid "Jaideep Hardikar"
-msgstr ""
+msgstr "जयदीप हरडिकर"
 
 #: core/templates/core/acknowledgements.html:215
 msgid "Jayati Vora"
-msgstr ""
+msgstr "जयती वोरा"
 
 #: core/templates/core/acknowledgements.html:216
 msgid "Jyoti Shinoli"
@@ -1271,78 +1454,78 @@ msgstr ""
 
 #: core/templates/core/acknowledgements.html:219
 msgid "Kavita Carneiro"
-msgstr ""
+msgstr "कविता कार्नीरो"
 
 #: core/templates/core/acknowledgements.html:220
 msgid "Lubaina Kitabi"
-msgstr ""
+msgstr "लुबैना किताबी"
 
 #: core/templates/core/acknowledgements.html:221
 msgid "Madhusree Mukerjee"
-msgstr ""
+msgstr "मधुश्री मुखर्जी"
 
 #: core/templates/core/acknowledgements.html:222
 msgid "Mathew Cherian"
-msgstr ""
+msgstr "मैथ्यु चेरियन"
 
 #: core/templates/core/acknowledgements.html:223
 msgid "Mausumi Bhattacharyya"
-msgstr ""
+msgstr "मौसुमी भट्टाचार्य"
 
 #: core/templates/core/acknowledgements.html:224
 #: core/templates/core/founders.html:27 core/templates/core/founders.html:55
 msgid "Namita Waikar"
-msgstr ""
+msgstr "नमिता वायकर"
 
 #: core/templates/core/acknowledgements.html:225
 msgid "Naveen Roy Benadict"
-msgstr ""
+msgstr "नवीन रॉय बेनडिक्ट"
 
 #: core/templates/core/acknowledgements.html:227
 msgid "Onkar Mandlekar"
-msgstr ""
+msgstr "ओंकार मंडलेकर"
 
 #: core/templates/core/acknowledgements.html:229
 msgid "Purusottam Thakur"
-msgstr ""
+msgstr "पुरुषोत्तम ठाकुर"
 
 #: core/templates/core/acknowledgements.html:230
 msgid "Revathi R."
-msgstr ""
+msgstr "रेवती आर"
 
 #: core/templates/core/acknowledgements.html:232
 msgid "Sainath P."
-msgstr ""
+msgstr "साइनाथ पी"
 
 #: core/templates/core/acknowledgements.html:233
 msgid "Samyukta Shastri"
-msgstr ""
+msgstr "संयुक्ता शास्त्री"
 
 #: core/templates/core/acknowledgements.html:237
 msgid "Shalini Singh"
-msgstr ""
+msgstr "शालिनी सिंह"
 
 #: core/templates/core/acknowledgements.html:238
 #: core/templates/core/founders.html:30 core/templates/core/founders.html:60
 msgid "Sharmila Joshi"
-msgstr ""
+msgstr "शर्मिला जोशी"
 
 #: core/templates/core/acknowledgements.html:239
 msgid "Shreya Katyayini"
-msgstr ""
+msgstr "श्रेया कात्यायिनी"
 
 #: core/templates/core/acknowledgements.html:240
 #: core/templates/core/founders.html:33 core/templates/core/founders.html:65
 msgid "Siddharth Adelkar"
-msgstr ""
+msgstr "सिद्धार्थ अडेल्कर"
 
 #: core/templates/core/acknowledgements.html:241
 msgid "Sinchita Maji"
-msgstr ""
+msgstr "सिंचिता माजी"
 
 #: core/templates/core/acknowledgements.html:242
 msgid "Sweta Daga"
-msgstr ""
+msgstr "श्वेता डागा"
 
 #: core/templates/core/acknowledgements.html:243
 msgid "Subuhi Jiwani"
@@ -1350,15 +1533,15 @@ msgstr ""
 
 #: core/templates/core/acknowledgements.html:244
 msgid "Sukhada Tatke"
-msgstr ""
+msgstr "सुखदा टटके"
 
 #: core/templates/core/acknowledgements.html:246
 msgid "Urvashi Sarkar"
-msgstr ""
+msgstr "उर्वशी सरकार"
 
 #: core/templates/core/acknowledgements.html:247
 msgid "Vidyut Kale"
-msgstr ""
+msgstr "विद्युत काले"
 
 #: core/templates/core/acknowledgements.html:248
 msgid "Vishaka George"
@@ -1374,8 +1557,8 @@ msgid ""
 "Thakkar of P.R. Gandhi & Co, Mumbai, and Prakash Shah of Delhi, for their "
 "invaluable assistance."
 msgstr ""
-"पी। आर। गांधी और कार्तिक शाह, दीपक सोनी और पी। गांधी और सह, मुंबई के ईशा ठक्कर और "
-"दिल्ली के प्रकाश शाह को उनकी अमूल्य सहायता के लिए बहुत विशेष धन्यवाद।"
+"पीआर गांधी ऐंड को, मुम्बई के पीआर गांधी, कार्तिक शाह, दीपक सोनी और ईशा ठक्करतथा "
+"दिल्ली के प्रकाश शाह का उनके अमूल्य सहयोग के लिए विशेष धन्यवाद।"
 
 #: core/templates/core/acknowledgements.html:260
 msgid ""
@@ -1384,8 +1567,9 @@ msgid ""
 "Mariam Ram, Romi Mahajan, Sudarshan Loyalka, Sudhanva Deshpande and Vijay "
 "Prashad."
 msgstr ""
-"हम अभिजीत दत्ता, अनिल चौधरी, मरियम राम, रोमी महाजन, सुदर्शन लॉयलका, सुधांशु देशपांडे "
-"और विजय प्रसाद जैसे व्यक्तियों से मिले भारी प्रोत्साहन और समर्थन को स्वीकार करना चाहते हैं।"
+"हम उन लोगों का भी धन्यवाद करना चाहते हैं, जिनसे हमें अथाह प्रोत्साहन और समर्थन मिला, "
+"औरयह अब भी जारी है, जैसे अभिजीत दत्ता, अनिल चौधरी, मरियम राम, रोमी महाजन, सुदर्शन "
+"लोयलका, सुधानव देशपांडे और विजय प्रसाद।"
 
 #: core/templates/core/acknowledgements.html:264
 msgid ""
@@ -1395,59 +1579,71 @@ msgid ""
 "which we seek pardon. There are also some whom we cannot name because, alas, "
 "of where they are working."
 msgstr ""
-"हम स्वयंसेवकों, पत्रकारों, फिल्म निर्माताओं और अन्य योगदानकर्ताओं के बहुत ऋणी हैं जो हमें इतना "
-"समय और श्रम देना जारी रखते हैं। वे यहां सूचीबद्ध करने के लिए बहुत अधिक संख्या में हैं। ऐसे कुछ "
-"नाम हो सकते हैं जिन्हें हमने याद किया है जिसके लिए हम क्षमा चाहते हैं। कुछ ऐसे भी हैं जिन्हें हम "
-"नाम नहीं दे सकते, क्योंकि वे काम कर रहे हैं।"
+"हम वालंटियर्स, पत्रकारों, फिल्म निर्माताओं तथा अन्य सहयोगियों के भी आभारी हैं, जिनकी ओर "
+"सेहमें लगातार समय और श्रम मिल रहा है। इनकी संख्या इतनी अधिक है कि उनका यहां वर्णन "
+"करनासंभव नहीं है। ऐसे भी कुछ नाम हो सकते हैं, जिनका उल्लेख हम नहीं कर सके, जिसके लिए "
+"हमक्षमा चाहते हैं। ऐसे भी कुछ लोग हैं, जिनके नाम हम नहीं ले सकते कि वे कहां पर काम कर रहे हैं।"
 
 #: core/templates/core/acknowledgements.html:269
 #: core/templates/core/donate.html:150 core/templates/core/founders.html:19
 #: core/templates/core/founders.html:44
 #: core/templates/pages/menus/dropdown.html:267
+#, fuzzy
+#| msgid "Sainath P."
 msgid "P. Sainath"
-msgstr "पी। साईनाथ"
+msgstr "साइनाथ पी"
 
 #: core/templates/core/contact_us.html:5 core/templates/core/contact_us.html:21
 msgid "Contact PARI"
-msgstr ""
+msgstr "पारी से संपर्क करें"
 
 #: core/templates/core/contact_us.html:8
 msgid "PARI Contact Us"
-msgstr ""
+msgstr "पारी हमसे संपर्क करें"
 
 #: core/templates/core/contact_us.html:22
 msgid "TO CONTRIBUTE CONTENT"
-msgstr ""
+msgstr "विषय वस्तु का योगदान करने के लिए"
 
 #: core/templates/core/contact_us.html:24
-#, python-format
+#, fuzzy, python-format
+#| msgid ""
+#| "Upload your articles, photos, document with content ideas through the <a "
+#| "href=\"https://script.google.com/macros/s/"
+#| "AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec\" target="
+#| "\"_blank\">Content Upload Form</a>."
 msgid ""
 "Please visit the <a href=\"https://script.google.com/macros/s/"
 "AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec\" target="
 "\"_blank\"> content upload form</a> and the <a href=\"%(guidelines_url)s"
 "\">guidelines</a> for details."
 msgstr ""
+"<a href=https://script.google.com/macros/s/"
+"AKfycbyHC82VzoPpoUqjrcNj8YgOkBo904g-om2cdjHOd_BRtOL1b5aA/exec\" target="
+"\"_blank\">विषय-वस्तु अपलोड फॉर्म</a> द्वारा आपअपने लेख, तस्वीरें तथा दस्तावेज सुझावों के "
+"साथ अपलोड करें।"
 
 #: core/templates/core/contact_us.html:30
 msgid "TO DONATE TO PARI"
-msgstr ""
+msgstr "पारी को चंदा देने के लिए"
 
 #: core/templates/core/contact_us.html:31
 #, python-format
 msgid "Do see our <a href=\"%(donate_url)s\">donate</a> page for details."
 msgstr ""
+"विस्तार से जानने के लिए हमारे <a href=\"%(donate_url)s\"> चंदा </a> पृष्ठ को जरूर देखें।"
 
 #: core/templates/core/contact_us.html:33
 msgid "WANT TO VOLUNTEER FOR PARI?"
-msgstr ""
+msgstr "पारी के लिए स्वेच्छा से काम करना चाहते हैं?"
 
 #: core/templates/core/contact_us.html:34
 msgid "Help us understand your skills and interests by filling up this"
-msgstr ""
+msgstr "अपने कौशल तथा रूचि को समझने में हमारी सहायता करने के लिए इसे भरें"
 
 #: core/templates/core/contact_us.html:37
 msgid "OTHER QUESTIONS?"
-msgstr ""
+msgstr "अन्य प्रश्न?"
 
 #: core/templates/core/contact_us.html:38
 msgid "Write to us using this form:"
@@ -1455,18 +1651,20 @@ msgstr ""
 
 #: core/templates/core/contact_us.html:53
 msgid "Send"
-msgstr ""
+msgstr "भेजें"
 
 #: core/templates/core/contribute-to-faces.html:4
 #: core/templates/core/contribute-to-faces.html:19
 msgid "Let’s FACE it"
-msgstr ""
+msgstr "चलिये इसका सामना करते हैं"
 
 #: core/templates/core/contribute-to-faces.html:5
 msgid ""
 "Contribute to the growing FACES repository and help PARI capture the sheer "
 "diversity of the people of India."
 msgstr ""
+"चेहरों के बढ़ते हुए संग्रह में योगदान करें और भारत के लोगों की वास्तविक अनेकता केअभिग्रहण में "
+"हमारी सहायता करें।"
 
 #: core/templates/core/contribute-to-faces.html:20
 msgid ""
@@ -1474,11 +1672,14 @@ msgid ""
 "our country. Join us in our endeavour to create a facial map of the most "
 "diverse societies on earth – those across rural India."
 msgstr ""
+"चेरहे में योगदान दें। अपने देश के लोगों की वास्तविक अनेकता के अभिग्रहण में पारी कीसहायता करें। "
+"धरती पर मौजूद सबसे विविधतापूर्ण समाज, जो पूरे ग्रामीण भारत में फैलाहुआ है, का चेहरे से "
+"संबंधित नक्शा बनाने के हमारे प्रयास में हमारा हाथ बटायें।"
 
 #: core/templates/core/contribute-to-faces.html:25
 #: core/templates/core/contribute-to-faces.html:48
 msgid "Upload a FACE photo"
-msgstr ""
+msgstr "चेहरे की तस्वीर अपलोड करें"
 
 #: core/templates/core/contribute-to-faces.html:35
 msgid ""
@@ -1489,6 +1690,12 @@ msgid ""
 "\"><span><u>Ohame</u></span></a> of the Andamans and Michi Yaring of "
 "Arunachal Pradesh. And not one of them resembles the other in the slightest."
 msgstr ""
+"<a href=\"/categories/faces/k/tami/\"> <span><u>तामी</u></span></a> "
+"कालाहांडी, ओडीशा में,बहुत ही भारतीय चेहरा है। इसी प्रकार <a href=\"/categories/"
+"faces/k/kottavarayan-rajendran/\"><span><u>राजेंद्रन</u></span></a> का है जो "
+"तमिलनाडु के कांचीपुरम के हैं। इसी तरह <a href=\"/categories/faces/s/ohame/"
+"\"><span><u>ओहेम</u></span></a> का है जो अंडमान के हैंतथा अरुणाचल प्रदेश के मिची येरिंग "
+"का है। और इनमें से किसी का भी चेहरा दूसरे से बिल्कुल भीनहीं मिलता।"
 
 #: core/templates/core/contribute-to-faces.html:36
 msgid ""
@@ -1501,20 +1708,28 @@ msgid ""
 "participation. Anyone can take part in it provided the photograph is good "
 "enough."
 msgstr ""
+"पारी का इरादा देश के हर एक ब्लॉक और जिला के भारतीय चेहरों को रिकॉर्ड करने का है।जी "
+"हां, हजारों हजार चेहरे, आश्चर्यजनक विविधता को कवर करना कि भारत कैसा दिखता है। हर एक "
+"जिलासे (तथा हर जिला के हर एक ब्लॉक से) हम कम से कम एक बालिग पुरूष, एक बालिग महिला "
+"तथा एकबच्चा अथवा युवा की फोटो यहां डालना चाहते हैं। यह एक बहुत बड़ा अभ्यास है जिसे पूरा "
+"होने में कई वर्षलगेंगे तथा जिसमें बड़े स्तर पर आप लोगों की सहभागिता की जरूरत पड़ेगी। इसमें कोई "
+"भी भाग ले सकता है,बशर्तेकि तस्वीर काफी अच्छी हो।"
 
 #: core/templates/core/contribute-to-faces.html:40
 msgid "HOW YOU CAN CONTRIBUTE"
-msgstr ""
+msgstr "आप कैसे सहयोग दे सकते हैं"
 
 #: core/templates/core/contribute-to-faces.html:41
 msgid "Upload photos"
-msgstr ""
+msgstr "फोटो अपलोड करें"
 
 #: core/templates/core/contribute-to-faces.html:42
 msgid ""
 "It is very important that the photograph you send to PARI is accompanied by "
 "the details of the person in the picture."
 msgstr ""
+"यह जरूरी है कि आप पारी को जो तस्वीर भेज रहे हैं, उसके साथ फोटो में मौजूद व्यक्तिका विवरण "
+"भी मौजूद हो।"
 
 #: core/templates/core/contribute-to-faces.html:44
 #, python-format
@@ -1522,11 +1737,13 @@ msgid ""
 "For more on these details, please read the <a itemprop=\"url\" href="
 "\"%(guidelines)s#section-1-7\"><u>guidelines</u></a> for FACES."
 msgstr ""
+"इस विवरण के बारे में अधिक जानकारी के लिए, कृप्या चेहरे के <a itemprop=\"url\" href="
+"\"%(guidelines)s#section-1-7\"><u>दिशानिर्देष</u></a> को पढ़ें।"
 
 #: core/templates/core/contribute.html:5
 #, python-format
 msgid " Contribute to %(site_name)s "
-msgstr ""
+msgstr "%(site_name)s में सहयोग करें"
 
 #: core/templates/core/contribute.html:7
 msgid ""
@@ -1534,35 +1751,38 @@ msgid ""
 "We need writers, editors, photographers, filmmakers, translators, "
 "researchers, and more."
 msgstr ""
+"ग्रामीण भारत के एक ज्ञान सागर के निर्माण में हमारे साथ भागीदार बनें। हमें लेखकों, संपादकों,"
+"फोटोग्राफरों, फिल्म निर्माताओं, अनुवादकों, शोधकर्ताओं तथा इस प्रकार के विभिन्न लोगों "
+"कीआवश्यक्ता है।"
 
 #: core/templates/core/contribute.html:22
 msgid "India’s biggest archive of itself needs everyone to participate"
-msgstr ""
+msgstr "अपने आप में भारत के इस सबसे बड़े आर्काइव में हर एक को शामिल होने की जरूरत है।"
 
 #: core/templates/core/contribute.html:23
 msgid "COVER YOUR COUNTRY – HERE’S HOW"
-msgstr ""
+msgstr "अपने देश को कवर करें – जानें कि कैसे"
 
 #: core/templates/core/contribute.html:24
 msgid ""
 "Join us in building a unique national knowledge repository on rural India."
-msgstr ""
+msgstr "ग्रामीण भारत पर एक अनोखे ज्ञान सागर के निर्माण में हमारे साथ जुड़ें।"
 
 #: core/templates/core/contribute.html:25
 msgid "You can start by telling us something about yourself."
-msgstr ""
+msgstr "आपकी इसकी शुरूआत हमें स्वयं अपने बारे में कुछ बता के कर सकते हैं।"
 
 #: core/templates/core/contribute.html:27
 msgid "Fill the profile form"
-msgstr ""
+msgstr "प्रोफाइल फॉर्म भरें"
 
 #: core/templates/core/contribute.html:31
 msgid "CONTRIBUTE CONTENT"
-msgstr ""
+msgstr "विषय-वस्तु से सहयोग करें"
 
 #: core/templates/core/contribute.html:36
 msgid "Write / Edit / Photograph"
-msgstr ""
+msgstr "लिखें/संपादन करें/फोटो खींचें"
 
 #: core/templates/core/contribute.html:39
 msgid ""
@@ -1573,14 +1793,28 @@ msgid ""
 "languages as possible is a major objective. You can also translate other "
 "written content into different languages."
 msgstr ""
+"आप मौजूदा फिल्मों के लिए लेखन कर सकते हैं या उस विषय-वस्तु का संपादन कर सकते हैंजिसे लिखा "
+"जा चुका है, लेकिन इसके लिए एक संपादक की सावधान नजर चाहिए। आप हमारेप्रिंट सेक्शन के लिए "
+"आजाद कांटेंट भी लिख सकते हैं। आप पारी पर मौजूद फिल्मों के लिए सब-टाइटिल्स दूसरी भाषाओं में "
+"अनुवाद कर सकते हैं। इनके अनुवाद जितनी भी भारतीय भाषाओं मेंसंभव हो सकें, एक बड़ा उद्देश्य है। "
+"आप अन्य लेख को भी विभिन्न भाषाओं में अनुवाद कर सकते हैं।"
 
 #: core/templates/core/contribute.html:49
+#, fuzzy
+#| msgid ""
+#| "Help us understand your skills and interests by filling in this <a href="
+#| "\"https://docs.google.com/forms/d/1IbwsyjTovsTnlSb2yC-"
+#| "KkkBlR_rPWOnGepi7XBD4b_k/viewform?usp=send_form\" target=\"_blank"
+#| "\">Profile Form</a>."
 msgid ""
 "Help us understand your skills and interests by filling in this <a href="
 "\"https://docs.google.com/forms/d/"
 "e/1FAIpQLScfpZfiT28pInGrwKxiIkVrztNMzATkOHmgEXfJwcgkT8nLkg/viewform\" target="
 "\"_blank\">Profile Form</a>."
 msgstr ""
+"हमें अपने कौशल तथा रूचियों के बारे में बताने के लिए आप इस फॉर्म को भरें<a href=\"https://"
+"docs.google.com/forms/d/1IbwsyjTovsTnlSb2yC-KkkBlR_rPWOnGepi7XBD4b_k/"
+"viewform?usp=send_form\" target=\"_blank\">प्रोफाइल फॉर्म</a>।"
 
 #: core/templates/core/contribute.html:55
 msgid ""
@@ -1589,6 +1823,10 @@ msgid ""
 "AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec\" target="
 "\"_blank\">Content Upload Form</a>."
 msgstr ""
+"<a href=https://script.google.com/macros/s/"
+"AKfycbyHC82VzoPpoUqjrcNj8YgOkBo904g-om2cdjHOd_BRtOL1b5aA/exec\" target="
+"\"_blank\">विषय-वस्तु अपलोड फॉर्म</a> द्वारा आपअपने लेख, तस्वीरें तथा दस्तावेज सुझावों के "
+"साथ अपलोड करें।"
 
 #: core/templates/core/contribute.html:61
 msgid ""
@@ -1597,10 +1835,13 @@ msgid ""
 "AKfycbzMQwyY8P1t7CT0_ylmPfSDz7WiSTVHWtL-Yf0UhtoYOIWQfMf5/exec\" target="
 "\"_blank\">Faces Form</a>."
 msgstr ""
+"चेहरे श्रेणी में सहयोग करने के लिए तस्वीरें तथा विवरण <a href=\"https://script.google."
+"com/macros/s/AKfycbzMQwyY8P1t7CT0_ylmPfSDz7WiSTVHWtL-Yf0UhtoYOIWQfMf5/exec\" "
+"target=\"_blank\">चेहरे के लिए फॉर्म</a> में अपलोड करें।"
 
 #: core/templates/core/contribute.html:70
 msgid "Make a film"
-msgstr ""
+msgstr "फिल्म बनायें"
 
 #: core/templates/core/contribute.html:73
 msgid ""
@@ -1615,10 +1856,19 @@ msgid ""
 "macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec\" "
 "target=\"_blank\">Content Upload Form</a>."
 msgstr ""
+"आप जिस प्रकार की फिल्में इस वेबसाइट पर पहले से देख रहे हैं, वैसी फिल्में बना कर आर्काइव के "
+"लिएविषय-वस्तु तैयार कर सकते हैं, बशर्तेकि यह पारी के मैंडेट तथा उद्देश्य के अनुसार हों। यह "
+"जानने के लिएकि आर्काइव के लिए क्या उचित होगा, हमसे संपर्क करें। मूल सिद्धांतः ये ग्रामीण "
+"भारत के साधारण लोगोंके साधारण जीवन पर आधारित होना चाहिए। अपने विचार हमसे साझा करें "
+"कि आप किस विषय/मैदान परफिल्म बनाना चाहते हैं। हम फिर वहां से आगे बढ़ सकते हैं। आपको ज्ञात "
+"होना चाहिए कि आप अपनेसेल फोन कैमरा से पारी के लिए विषय-वस्तु को रिकॉर्ड कर सकते हैं। "
+"कृप्या अपनी ऑडियो/विडियो क्लिपके लिंक <a href=https://script.google.com/macros/s/"
+"AKfycbyHC82VzoPpoUqjrcNj8YgOkBo904g-om2cdjHOd_BRtOL1b5aA/exec\" target="
+"\"_blank\">विषय-वस्तु अपलोड फॉर्म</a> द्वारा साझा करें।"
 
 #: core/templates/core/contribute.html:90
 msgid "Research"
-msgstr ""
+msgstr "शोध"
 
 #: core/templates/core/contribute.html:93
 #, python-format
@@ -1634,12 +1884,27 @@ msgid ""
 "\"https://script.google.com/macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-"
 "om2cdjH0d_BRt0L1b5aA/exec\" target=\"_blank\">Content Upload Form</a>."
 msgstr ""
+"आर्काइव पर पहले से मौजूद ऑनलाइन विषय-वस्तु को खोजें तथा उनके लिंक हमें भेजें।अथवा किसी मुख्य "
+"शीर्षक के बारे में पता करें। जैसे ग्रामीण भारत के कृषि मजदूर, तथा इस विषयपर जानकारी, "
+"तस्वीरें और डेटा का एक फंड तैयार करने में हमारा साथ दें। इसके अलावा, यदि आपकिसी अध्ययन या "
+"रिपोर्ट के बारे में जानते हैं तथा जो ग्रामीण भारत के लिए महत्वपूर्ण है, तो उसेआप इलेक्ट्रानिक "
+"स्वरूप में हमें भेज सकते हैं। पारी पर पहले से क्या मौजूद है और हम क्या खोज रहे हैं,इसके बारे में "
+"अच्छी तरह जानने के लिए पारी के <a href=%(resource_list)s>’संसाधन’</a> सेक्शन को देखें।"
+"यदि आपको कोई भी मुख्य रिपोर्ट मिलती है तो आप उसे <a href=\"https://script.google."
+"com/macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec\" "
+"target=\"_blank\">विषय-वस्तु अपलोड फॉर्म</a> के द्वारा हमसे साझा करें।"
 
 #: core/templates/core/contribute.html:111
 msgid "Translate"
-msgstr ""
+msgstr "अनुवाद करें"
 
 #: core/templates/core/contribute.html:113
+#, fuzzy
+#| msgid ""
+#| "Help us by translating content into Indian languages. Please help us "
+#| "understand your skills and interests by filling in this <a href=\"https://"
+#| "docs.google.com/forms/d/1IbwsyjTovsTnlSb2yC-KkkBlR_rPWOnGepi7XBD4b_k/"
+#| "viewform?usp=send_form\" target=\"_blank\">Profile Form</a>."
 msgid ""
 "Help us by translating content into Indian languages. Please help us "
 "understand your skills and interests by filling in this <a href=\"https://"
@@ -1647,25 +1912,31 @@ msgid ""
 "e/1FAIpQLScfpZfiT28pInGrwKxiIkVrztNMzATkOHmgEXfJwcgkT8nLkg/viewform\" target="
 "\"_blank\">Profile Form</a>."
 msgstr ""
+"विषय-वस्तु को भारतीय भाषाओं में अनुवाद करने में हमारी सहायता करें। हमें अपने कौशल तथा "
+"रूचियोंके बारे में बताने के लिए आप इस फॉर्म को भरें <a href=\"https://docs.google.com/"
+"forms/d/1IbwsyjTovsTnlSb2yC-KkkBlR_rPWOnGepi7XBD4b_k/viewform?usp=send_form"
+"\" target=\"_blank\">प्रोफाइल फॉर्म</a>।"
 
 #: core/templates/core/contribute.html:122
 #: search/templates/includes/search_filters.html:31
 msgid "FACES"
-msgstr ""
+msgstr "चेहरे"
 
 #: core/templates/core/contribute.html:124
 msgid ""
 "Do you have FACES to contribute to the only and largest database recording "
 "India’s facial diversity?"
 msgstr ""
+"क्या आपके पास ऐसे चेहरे हैं जिन्हें आप एकमात्र तथा सबसे बड़ी डेटाबेस रिकॉर्डिंग भारतीयचेहरे की "
+"बहुरूपता के लिए भेज सकें?"
 
 #: core/templates/core/contribute.html:126
 msgid "Contribute to Faces"
-msgstr ""
+msgstr "चेहरे के लिए अपना सहयोग दें"
 
 #: core/templates/core/contribute.html:134
 msgid "READY TO UPLOAD?"
-msgstr ""
+msgstr "अपलोड के लिए तैयार?"
 
 #: core/templates/core/contribute.html:136
 #, python-format
@@ -1674,14 +1945,17 @@ msgid ""
 "%(guidelines)s>PARI content guidelines</a> to ensure you know what’s "
 "required."
 msgstr ""
+"क्या आपकी विषय-वस्तु अपलोड के लिए तैयार है? किन चीजों की जरूरत है इसके बारे में आपको "
+"सारीजानकारी है, इसे सुनिश्चित करने के लिए <a href=%(guidelines)s> पारी विषय-वस्तु "
+"दिशा निर्देश </a> काअध्ययन अवश्य कर लें।"
 
 #: core/templates/core/contribute.html:140
 msgid "Upload content"
-msgstr ""
+msgstr "विषय-वस्तु अपलोड करें"
 
 #: core/templates/core/contribute.html:145
 msgid "DONATE – SUPPORT A PARI PROJECT"
-msgstr ""
+msgstr "दान दें – पारी की एक परियोजना की सहायता करें"
 
 #: core/templates/core/contribute.html:146
 msgid ""
@@ -1689,6 +1963,9 @@ msgid ""
 "an aspect of rural India from your home state or district that you believe "
 "demands attention."
 msgstr ""
+"आप पारी की परियोजनाओं की सहायता उनकी फंडिंग करके कर सकते हैं। या फिर खुद से हीअपने मूल "
+"राज्य या जनपद से ग्रामीण भारत के किसी एक पहलू का चुनाव करें, जिसके बारे मेंआप समझते हैं कि "
+"इसे ध्यान देने की जरूरत है।"
 
 #: core/templates/core/contribute.html:148 core/templates/core/donate.html:4
 #: core/templates/core/donate.html:129 core/templates/core/home_page.html:582
@@ -1696,7 +1973,7 @@ msgstr ""
 #: core/templates/pages/menus/footer.html:85
 #: donation/templates/donation/donate_form.html:17
 msgid "Donate to PARI"
-msgstr ""
+msgstr "पारी को दान दें"
 
 #: core/templates/core/donate.html:5
 msgid ""
@@ -1704,18 +1981,26 @@ msgid ""
 "tax-exempt financial contribution will help PARI pull off this most "
 "ambitious of Indian journalistic endeavours."
 msgstr ""
+"हम इसे सरकारों के बिना भी कर सकते हैं, और करेंगे। हम इसे आपके सहयोग के बिना नहींकर सकते। "
+"कर से छूट प्राप्त एक आर्थिक सहयोग पारी को भारतीय पत्रकारिता के इस साहसिककदम को पूरा "
+"करने में सहायक बनेगा।"
 
 #: core/templates/core/donate.html:20
-#, python-format
+#, fuzzy, python-format
+#| msgid ""
+#| "In 2014-15, only about <span class=\"highlight\">0.24%%</span> of front "
+#| "page news came out of rural India.<br/>We want to change that.\""
 msgid ""
 "In 2014-15, only about <span class=\"highlight\">0.24%%</span> of front page "
 "news came out of rural India.<br/>We want to change that."
 msgstr ""
+"वर्ष 2014-15 में, ग्रामीण भारते से केवल <span class=\"highlight\">0.24%%</span> खबरें "
+"प्रथमपृष्ठ पर जगह पा सकीं। <br/> हम इसे बदलना चाहते हैं।\""
 
 #: core/templates/core/donate.html:23
 msgid ""
 "We can do this without governments – and will. We can’t do it without you."
-msgstr "हम यह बिना सरकारों के कर सकते हैं - और करेंगे। हम आपके बिना यह नहीं कर सकते"
+msgstr "हम इसे सरकारों के बिना कर सकते हैं, और करेंगे। हम इसे आपके बिना नहीं कर सकते।"
 
 #: core/templates/core/donate.html:28
 msgid ""
@@ -1728,16 +2013,24 @@ msgid ""
 "2014-15, only about 0.24 per cent of front page news came out of rural "
 "India. The TV channels are not much better."
 msgstr ""
+"भारत के युवा, मीडिया से तर-बतर पीढ़ी अपने देश के बारे में बहुत कम जानते हुए बङी हो रही है,"
+"लेकिन उन्हें कुछ मेट्रो तथा कस्बों के अमीरों के बारे में बहुत कुछ मालूम है। छोटे-मोटे, "
+"कारोबारीमीडिया के लिए देश को आसानी से समझाना स्टैंडर्ड ऑपरेटिंग प्रोसीजर का हिस्सा है। "
+"सेंटर फॉरमीडिया स्टडीज (सीएमएस, दिल्ली) का डेटा हमें बताता है कि नई दिल्ली की रिपोर्टें "
+"बड़े-बड़ेसमाचार पत्रों के प्रथम पृष्ठ पर छापी जाने वाली खबरों में से 66 प्रतिशत होती हैं। "
+"सीएमएस ने यहभी पाया कि वर्ष 2014-15 में प्रथम पृष्ठ की खबरों में से केवल 0.24 प्रतिशत ही "
+"ग्रामीण भारत कीखबरें थीं। टीवी चैनलों का भी यही हाल है।"
 
 #: core/templates/core/donate.html:34
 msgid ""
 "PARI needs your help to pull off this most ambitious of Indian journalistic "
 "endeavours."
 msgstr ""
+"पारी को भारतीय पत्रकारिता के इस साहसिक कदम को आगे बढ़ाने में आपके सहयोग कीजरूरत है।"
 
 #: core/templates/core/donate.html:38
 msgid "THE PLAN"
-msgstr ""
+msgstr "प्लान"
 
 #: core/templates/core/donate.html:42
 msgid ""
@@ -1745,30 +2038,32 @@ msgid ""
 "single one of the country’s 95 regions, most of which are untouched by the "
 "‘national’ (read corporate) media."
 msgstr ""
+"पीपुल्स आर्काइव ऑफ रूरल इंडिया देश के 95 प्रान्तों में से हर एक में पारी के एक फेलो कोखड़ा "
+"करना चाहता है, इनमें से अधिकतर प्रान्तों को ‘नेशनल’ (कारपोरेट पढ़ें) ने छुवा नहीं है।"
 
 #: core/templates/core/donate.html:45
 msgid "The Fellows could be"
-msgstr ""
+msgstr "यह फेलो निम्नलिखित हो सकते हैं"
 
 #: core/templates/core/donate.html:48
 msgid "Reporters"
-msgstr ""
+msgstr "संवाददाता"
 
 #: core/templates/core/donate.html:49
 msgid "Writers"
-msgstr ""
+msgstr "लेखक"
 
 #: core/templates/core/donate.html:50
 msgid "Filmmakers"
-msgstr ""
+msgstr "फिल्म निर्माता"
 
 #: core/templates/core/donate.html:51
 msgid "Photographers"
-msgstr ""
+msgstr "फोटोग्राफर"
 
 #: core/templates/core/donate.html:53
 msgid "and everyday residents of the regions themselves."
-msgstr ""
+msgstr "और स्वयं इन प्रान्तों के साधारण निवासी"
 
 #: core/templates/core/donate.html:54
 msgid ""
@@ -1776,6 +2071,8 @@ msgid ""
 "the state of Uttar Pradesh we have Rohilkhand, Bundelkhand, Braj, Awadh, "
 "Sonebhadra, and Bhojpur (which extends into Bihar as well).\""
 msgstr ""
+"‘प्रान्तों’ से हमारा मतलब प्राकृतिक या ऐतिहासिक रूप से उभरने वाले प्रान्त हैं। जैसे, उत्तर "
+"प्रदेशमें रोहेलखंड, बुंदेलखंड, ब्रज, अवध, सोनभद्र, और भोजपुर (जो बिहार तक फैला हुआ है)।\" "
 
 #: core/templates/core/donate.html:60
 msgid ""
@@ -1783,8 +2080,25 @@ msgid ""
 "three months full-time in fieldwork amongst the region’s people and "
 "communities."
 msgstr ""
+"हर एक पारी फेलो किसी विशेष प्रान्त में एक साल तक काम करता/करती है, प्रान्त के लोगोंतथा "
+"बिरादरियों के बीच फील्ड वर्क में कम से कम तीन महीने फुल-टाइम बिता कर।"
 
 #: core/templates/core/donate.html:64
+#, fuzzy
+#| msgid ""
+#| "Across 60 months or so, PARI will generate text reports, audio stories, "
+#| "videos, documentary films, photographs, music and ‘talking albums’ on the "
+#| "everyday lives of everyday people – from every part of the country. A "
+#| "database that will be truly representative of the Indian people, "
+#| "particularly of 833 million rural citizens. Of their labour, crafts, "
+#| "stories, songs, poems, art and more. The network of Fellows we build will "
+#| "also reflect the social composition of the country. Half of the nearly "
+#| "100 Fellows will be women.  And Dalit journalists, Adivasi journalists "
+#| "and those from the minorities, will also be represented in a fair manner. "
+#| "Many stories will be told directly by everyday people themselves. Among "
+#| "other legacies, this will give generations of students, all our children, "
+#| "living textbooks on the world around them. And give the nation itself a "
+#| "repository the like of which it has never seen."
 msgid ""
 "Across 60 months or so, PARI will generate text reports, audio stories, "
 "videos, documentary films, photographs, music and ‘talking albums’ on the "
@@ -1800,6 +2114,16 @@ msgid ""
 "on the world around them. And give the nation itself a repository the like "
 "of which it has never seen."
 msgstr ""
+"लगभग 60 महीनों के बाद, पारी देश के हर एक कोने से, साधारण लोगों के साधारण जीवन "
+"परलिखित रिपोर्टें, ऑडियो स्टोरीज, विडियोज, डॉक्युमेंट्री फिल्में, तस्वीरें, संगीत तथा ‘बोलते "
+"ऐल्बम’ तैयारकरेगा। एक ऐसा डेटाबेस जो सही मायनों में भारत के लोगों का प्रतिनिधित्व करेगा, "
+"विशेष रूप से833 मिलियन ग्रामीण भारतियों का। उनके श्रम के बारे में, हस्तशिल्प, स्टोरीज, "
+"गाने, शायरी, कलातथा और भी बहुत कुछ। हम फेलोज का जो नेटवर्क बना रहे हैं, वह देश की "
+"सामाजिक रचना कोभी प्रस्तुत करेंगे। लगभग 100 फेलोज में से आधी महिलाएं होंगी। और दलित "
+"पत्रकारों, आदिवासीपत्रकारों तथा जिनका संबंध अल्पसंख्यक समाज से है, इन सबका भी उचित "
+"प्रतिनिधित्व होगा।अन्य विरासतों के अलावा, ये छात्रों, हमारे सभी बच्चों को उनके आसपास की "
+"दुनिया के बारे मेंपाठ्यपुस्तक उपलब्ध कराएगा। और स्वयं देश को इसका एक ऐसा संग्रह प्रदान "
+"करेगा, जिसे उसनेपहले कभी नहीं देखा है।"
 
 #: core/templates/core/donate.html:76
 msgid ""
@@ -1809,67 +2133,97 @@ msgid ""
 "articles as well as languages. PARI’s audio project too aims to record "
 "speakers in every one of India’s 780 living languages."
 msgstr ""
+"पारी एक बहूभाषी साइट है। इस साइट पर आपको कई ऐसे लेख मिलेंगे, जिनके ऊपर लिखाहै ‘भाषा "
+"चुनें’। कई लेख विभिन्न भाषाओं में हैं, बल्कि कुछ तो 10 भाषाओं में भी हैं। हमाराप्रयास है कि हम "
+"लेखों की संख्या को बढ़ाने के साथ-साथ भाषाओं की संख्या भी बढ़ाएं। पारीके ऑडियो प्रोजेक्ट का "
+"भी उद्देश्य यही है कि भारत की 780 जीवित भाषाओं में से हर एकबोलने वाले को रिकॉर्ड किया "
+"जाये।"
 
 #: core/templates/core/donate.html:86
 msgid "SPONSOR A FELLOW"
-msgstr ""
+msgstr "एक फेलो को स्पान्सर करें"
 
 #: core/templates/core/donate.html:88
 msgid "Cost of each fellowship:"
-msgstr ""
+msgstr "हर एक फेलोशिप का मूल्य"
 
 #: core/templates/core/donate.html:89
 msgid "Rs. 2 lakhs"
-msgstr ""
+msgstr "2 लाख रूपये"
 
 #: core/templates/core/donate.html:90
 msgid ""
 "+ associated costs related to the recording, documentation, collation, "
 "editing (text and video), training and more."
 msgstr ""
+"इसके अलावा रिकॉर्डिंग, डॉक्युमेंटेशन, कोलेशन, संपादन (टेक्स्ट तथा ऑडियो), ट्रेनिंगआदि से "
+"संबंधित खर्चे।"
 
 #: core/templates/core/donate.html:94
 msgid "Approximate total cost of PARI fellowships (per year):"
-msgstr ""
+msgstr "पारी फेलोशिप का (वार्षिक) लगभग कुल मूल्यः"
 
 #: core/templates/core/donate.html:95
 msgid "Rs. 80 lakhs"
-msgstr ""
+msgstr "80 लाख रूपये"
 
 #: core/templates/core/donate.html:101
 msgid "HOW YOU CAN HELP"
-msgstr ""
+msgstr "आप कैसे सहायता कर सकते हैं"
 
 #: core/templates/core/donate.html:105
+#, fuzzy
+#| msgid ""
+#| "You can send in donations using a range of payment methods. All donations "
+#| "made to the CounterMedia Trust are <u>eligible for exemption</u> under "
+#| "Section 80G of the Income Tax Act, 1961."
 msgid ""
 "You can send in donations using a range of payment methods. All donations "
 "made to the CounterMedia Trust are <a href=\"/media/uploads/"
 "Donate/80g_certificate.jpg\" target=\"_blank\">eligible for exemption</a> "
 "under Section 80G of the Income Tax Act, 1961."
 msgstr ""
+"आप अदायगी के विभिन्न तरीकों का प्रयोग करके चंदा भेज सकते हैं। काउंटर मीडिया ट्रस्ट को "
+"दियेगये सभी चंदे आयकर अधिनियम, 1961 के सेक्शन 80जी के अंतर्गत <u> कर से छुट प्राप्त </u> हैं।"
 
 #: core/templates/core/donate.html:112
 msgid "Donate equipment"
-msgstr ""
+msgstr "उपकरण दान दें"
 
 #: core/templates/core/donate.html:115
+#, fuzzy
+#| msgid ""
+#| "If you would like to send over equipment (new or used) that PARI Fellows "
+#| "and rural contributors could use, please get in touch. That could include "
+#| "still and video cameras, audio digital recorders, laptops, hard disks and "
+#| "other equipment."
 msgid ""
 "If you would like to send over equipment (new or used) that PARI Fellows and "
 "rural contributors could use, please get in <a href=\"mailto:"
 "contact@ruralindiaonline.org\">touch</a>. That could include still and video "
 "cameras, audio digital recorders, laptops, hard disks and other equipment."
 msgstr ""
+"यदि आप उपकरण (नया अथवा पुराना) भेजना चाहते हैं जिसे पारी के फेलो तथा ग्रामीण "
+"सहयोगीइस्तेमाल कर सकें, तो कृप्या हमसे संपर्क करें। इसमें जो चीजें शामिल हो सकती हैं, वे हैं "
+"स्टिल औरविडियो कैमरे, ऑडियो डिजिटल रिकॉर्डर, लैपटॉप, हार्डडिस्क तथा अन्य उपकरण।"
 
 #: core/templates/core/donate.html:122
 msgid "Share the message in your network"
-msgstr ""
+msgstr "इस संदेश को अपने नेटवर्क में साझा करें"
 
 #: core/templates/core/donate.html:124
+#, fuzzy
+#| msgid ""
+#| "Ask your friends to connect and contribute to this endeavour. Help us "
+#| "cover your country. Join us in building a unique national knowledge "
+#| "repository on rural India"
 msgid ""
 "Ask your friends to connect and contribute to this endeavour. Help us cover "
 "your country. Join us in building a unique national knowledge repository on "
 "rural India."
 msgstr ""
+"अपने मित्रों से कहें कि वे इस मुहिम से जुड़ें और अपना सहयोग दें। अपने देश को कवर करने मेंहमारी "
+"सहायता करें। ग्रामीण भारत पर एक अनोखे राष्ट्रीय ज्ञान सागर के निर्माण में हमारे साथ जुड़ें।"
 
 #: core/templates/core/donate.html:141
 msgid ""
@@ -1878,14 +2232,18 @@ msgid ""
 "unique journalistic effort a success. We can do this without governments and "
 "corporations – and will. We can’t do it without you."
 msgstr ""
+"इस प्रकार के और भी कई प्रश्न हैं, लेकिन पारी का कोर ग्रूप तथा वालंटियर्स, व्यक्तिगत तौर "
+"परमुख्य खर्चे का सहन करते हैं। हम आपसे अपील करते हैं कि दिल खोल कर सहायता करें औरइस अनोखे "
+"पत्रकारिता संबंधी प्रयास को सफल बनायें। हम इसे सरकारों तथा कारपोरेशन के बिनाकर सकते हैं, "
+"और करेंगे। लेकिन हम इसे आपके बिना नहीं कर सकते।"
 
 #: core/templates/core/donate.html:148
 msgid "Thanking you"
-msgstr ""
+msgstr "आपका बहुत-बहुत धन्यवाद"
 
 #: core/templates/core/donate.html:149
 msgid "Sincerely"
-msgstr ""
+msgstr "भवदीय"
 
 #: core/templates/core/founders.html:3
 msgid ""
@@ -1893,14 +2251,17 @@ msgid ""
 "archive is an outcome of his three decades-plus in journalism – including a "
 "quarter century of reporting from rural India."
 msgstr ""
+"पी साइनाथ पीपुल्स आर्काइव ऑफ रूरल इंडिया के संस्थापक संपादक हैं। यह आर्काइव उनकीतीन दशकों "
+"से अधिक की पत्रकारिता का परिणाम है, जिसमें ग्रामीण भारत से रिपोर्टिंग के25 वर्ष भी "
+"शामिल हैं।"
 
 #: core/templates/core/founders.html:4
 msgid "Founder Editor P Sainath"
-msgstr ""
+msgstr "संस्थापक संपादक पी साइनाथ"
 
 #: core/templates/core/founders.html:17
 msgid "Founder's page"
-msgstr ""
+msgstr "संस्थापक का पृष्ठ"
 
 #: core/templates/core/founders.html:20
 msgid ""
@@ -1911,6 +2272,11 @@ msgid ""
 "population. Our aim is to report and record what is easily the most complex "
 "part of the planet."
 msgstr ""
+"पी साइनाथ पीपुल्स आर्काइव ऑफ रूरल इंडिया के संस्थापक संपादक हैं। यह आर्काइव उनकीतीन दशकों "
+"से अधिक की पत्रकारिता का परिणाम है, जिसमें ग्रामीण भारत से रिपोर्टिंग के25 वर्ष भी "
+"शामिल हैं। पारी का उद्देश्य कॉर्पोरेट मीडिया द्वारा देश की दो-तिहाई आबादी कोकवर करनें में "
+"पुर्ण विफलता को दूर करना है। हमारा मकसद इस ग्रह के सबसे जटिल भागको रिपोर्ट तथा "
+"रिकॉर्ड करना है।"
 
 #: core/templates/core/founders.html:21
 msgid ""
@@ -1923,6 +2289,13 @@ msgid ""
 "schools in India and abroad, mentoring students as well as training media "
 "professionals."
 msgstr ""
+"द हिंदू के पूर्व रूरल अफेयर्स एडिटर, लेखक तथा पत्रकारिता के अध्यापक, साइनाथ को 2007 "
+"मेंएशिया के सबसे प्रतिष्ठित पुरस्कार, रेमन मैग्सेसे ऐवार्ड से सम्मानित किया गया था। उन्हेंजन-"
+"कल्याण की रिपोर्टिंग के लिए वर्ल्ड मीडिया सम्मिट ग्लोबल ऐवार्ड फॉर एक्सिलेंस 2014भी मिल "
+"चुका है। वह विश्व के पहले ऐसे रिपोर्टर हैं, जिनको 2000 में शुरू होने वाला पहलाऐम्नेस्टी "
+"इंटरनेशनल्स ग्लोबल ऐवार्ड फॉर ह्युमन राइट्स जर्नलिज्म मिला। साइनाथ भारत तथादेश से बाहर के "
+"संस्थानों में पत्रकारिता पढ़ा चुके हैं, जहां उन्होंने छात्रों को उपदेश देने केसाथ-साथ मीडिया "
+"कर्मियों को भी ट्रेनिंग दी।"
 
 #: core/templates/core/founders.html:22
 msgid ""
@@ -1934,10 +2307,18 @@ msgid ""
 "as a fully curated online exhibition. For more on Sainath see <a href="
 "\"http://www.psainath.org/\" target=\"_blank\">www.psainath.org.</a>"
 msgstr ""
+"उनकी किताब <i> Everybody Loves a Good Drought </i> (Penguin India, 1996>, "
+"जिसका अब43वां संस्क्रण बाजार में है, को जनवरी 2013 में पेंग्विन क्लासिक घोषित किया गया। "
+"इस किताब को भारतऔर देश से बाहर की सौ से अधिक विश्वविद्यालयों में इस्तेमाल किया जा रहा "
+"है। ग्रामीण भारत से उनकीब्लैक-एंड-व्हाइट तस्वीरों के फोटो आर्काइव को डिजिटाइज किया जा "
+"रहा है। इसका एक भाग, जिसका शीर्षकहै &#39; जाहिर काम, अदृश्य महिलाएं &#39; पूरी तरह "
+"क्यूरेटेड ऑनलाइन नुमाइश के रूप में अब पारी पर उपलब्ध है। साइनाथ के बारे में और अधिक जानने के "
+"लिए इसे देखें - <a href=\"http://www.psainath.org/\" target=\"_blank\">www."
+"psainath.org</a>।"
 
 #: core/templates/core/founders.html:24 core/templates/core/founders.html:50
 msgid "Binaifer Bharucha"
-msgstr ""
+msgstr "बीनि भरूच"
 
 #: core/templates/core/founders.html:25
 msgid ""
@@ -1948,6 +2329,11 @@ msgid ""
 "photographs and shoots videos of the interactions and encounters between the "
 "public, the artwork and the artist."
 msgstr ""
+"बिनेफर भरूच पारी की फोटो एडिटर तथा मुंबई स्थिक एक फ्रीलांस फोटोग्राफर हैं। इनका "
+"कमरशियलपोर्टफोलियो स्टिल लाइफ वर्क (प्रोडक्ट्स, खाना, इंटीरियर्स तथा आभूषण) पर आधआरित "
+"है। वर्ष 2010से वह आर्ट ऑक्सीजन का एक हिस्सा रही हैं, यह संस्था मुंबई में सार्वजनिक स्थलों पर "
+"लोगों के आर्टका प्रसार कर रही है। वह जनता, आर्टवर्क तथा आर्टिस्ट के बीच बातचीत तथा "
+"टकराव की तस्वीरेंखींचती हैं और विडियो बनाती हैं।"
 
 #: core/templates/core/founders.html:26
 msgid ""
@@ -1956,6 +2342,9 @@ msgid ""
 "things that don’t move, going to the mountains, animals, books, films and "
 "food."
 msgstr ""
+"बिनेफर ने सोफिया पॉलीटेक्निक, मुंबई से सोशल कम्युनिकेशन्स मीडिया में पोस्ट-ग्रेजुएट "
+"डिप्लोमाकिया है। उन्हें बगैर किसी क्रम के उन चीजों को शूट करना पसंद है जो हरकत नहीं करतीं, "
+"साथ हीपहाड़ों पर जाना, जानवरों, किताबों की तस्वीरें खींचना, फिल्में बनाना और खाना पसंद है।"
 
 #: core/templates/core/founders.html:28
 msgid ""
@@ -1965,6 +2354,10 @@ msgid ""
 "managing communications with volunteers, overseeing all Indian language "
 "translations and reviews, and anchoring the landmark Grindmill Songs Project."
 msgstr ""
+"नमिता वायकर पारी की प्रबंध संपादक, और काउंटर मीडिया की ट्रस्टी हैं। वह पारी को "
+"चलानेवाले ट्रस्ट के कोश तथा प्रशासनिक कार्यों को देखती हैं। उनके काम में सम्मिलित है पारी "
+"फेलोशिप प्रोग्रामका प्रशासन, वालंटियरों के साथ संपर्क का प्रबंधन, भारतीय भाषाओं के सभी "
+"अनुवादों तथा समीक्षा को देखना, और चक्की के गाने की परियोजना की ऐंकरिंग करना।"
 
 #: core/templates/core/founders.html:29
 msgid ""
@@ -1973,6 +2366,10 @@ msgid ""
 "partner in a chemistry databases firm in Pune, which is the culmination of "
 "her work of over 20 years as a biochemist and a software project manager."
 msgstr ""
+"नमिता एक लेखक तथा अनुवादक (मराठी से अंग्रेजी) भी हैं, और उनकी कुछ स्टोरीज, तस्वीरें "
+"तथाविडियोज पारी पर प्रकाशित हो चुके हैं। अपने दिन के काम में, वह पुणे की एक डेटाबेस कंपनी "
+"मेंसहभागी हैं, जो कि बायोकेमिस्ट तथा एक सॉफ्टवेयर प्रोजेक्ट मैनेजर के रूप में उनके 20 वर्षों "
+"सेअधिक के कामों का शिखर है।"
 
 #: core/templates/core/founders.html:31
 msgid ""
@@ -1982,6 +2379,9 @@ msgid ""
 "trains editorial interns. She has a significant role in shaping our site’s "
 "editorial and ethical protocols."
 msgstr ""
+"शर्मिला जोशी पारी की संपादकीय प्रमुख हैं। उनके कार्यों में शामिल है देश के अनगिनतभागों से "
+"पारी को प्राप्त होने वाले जटिल कांटेंट को देखना, उनका संपादन तथा प्रस्तुतीकरण।हमारी साइट "
+"के संपाकीय तथा नैतिक शिष्टाचार के गठन में उनकी सबसे बड़ी भूमिका है।"
 
 #: core/templates/core/founders.html:32
 msgid ""
@@ -1991,6 +2391,11 @@ msgid ""
 "labour. She has an MA in Historical Sociology from the State University of "
 "New York, and the work she started towards a PhD there remains a pipedream."
 msgstr ""
+"एक पत्रकार के रूप में, शर्मिला का काम विभिन्न राष्ट्रीय तथा अंतरराष्ट्रीय प्रकाशनों में "
+"शामिलरहा है। एक शोधक के रूप में, उन्होंने लिंग तथा हिंसा, राजनीति में महिलाएं, और लिंग "
+"तथामजदूरी पर संकलन को प्रकाशित किया है। उन्होंने न्यूयार्क की स्टेट यूनिवर्सिटी से "
+"ऐतिहासिकसमाज-शास्त्र में एमए किया है, और उन्होंने पीएचडी के लिए जो काम वहां शुरू किया "
+"हैवह एक सपना है।"
 
 #: core/templates/core/founders.html:34
 msgid ""
@@ -2003,6 +2408,14 @@ msgid ""
 "enduring partnership between techies and journalists. One that strives to "
 "rebuild the Internet as a democratic and public space."
 msgstr ""
+"पारी के टेक एडिटर के रूप में, सिद्धार्थ अडेलकर टेक्नॉलोजी की दुनिया में मोजूद उपयोगी "
+"उकरणतथा बेहतरीन कार्यों का पता लगाते हैं, और उन्हें पारी के लिए इस्तेमाल करते हैं। सिद्धार्थ "
+"कामानना है कि पत्रकार बंधु टेक्नॉलोजिस्ट से \"केवल एक वेबसाइट\" से अधिक की उम्मीद करते हैं।"
+"उन्हें एक ऐसी मेहनती टेक टीम की आवश्यक्ता होती है, जो उन भूराजनीतिक, आर्थिक तथा "
+"सामाजिकसंकट के प्रति संवेदनशील हो, जिनसे पत्रकारिता गुजर रही है। ऑनलाइन पत्रकारिता "
+"मुक्ति दिलाने कीशक्ति बन सकती है, लेकिन यह तभी संभव है जब टेकीज तथा पत्रकारों के बीच एक "
+"स्थायी सहभागिताका निर्माण हो। जिसका प्रयास इंटरनेट को एक लोकतांत्रिक तथा लोक-स्थान "
+"बनाने का हो।"
 
 #: core/templates/core/founders.html:35
 msgid ""
@@ -2011,6 +2424,9 @@ msgid ""
 "Maharashtra. He has a master’s degree in Computer Science from the "
 "University of Southern California."
 msgstr ""
+"सिद्धार्थ थॉटवर्क्स के साथ जुड़े हुए हैं, जहां वह स्वतंत्र मीडिया के लिए सॉफ्टवेयर बनाने परध्यान "
+"केंद्रित किये हुए हैं। वह फ्री सॉफ्टवेयर मूवमेंट ऑफ महाराष्ट्र के सचिव भी हैं।उनके पास "
+"यूनिवर्सिटी ऑफ सदर्न कैलिफोर्निया से कंप्यूटर साइंस में मास्टर्स की डिग्री है।"
 
 #: core/templates/core/founders.html:38
 msgid "People"
@@ -2018,33 +2434,34 @@ msgstr ""
 
 #: core/templates/core/founders.html:43
 msgid "FOUNDER EDITOR"
-msgstr ""
+msgstr "संस्थापक संपादक"
 
 #: core/templates/core/founders.html:49
 msgid "PHOTO EDITOR"
-msgstr ""
+msgstr "फोटो एडिटर"
 
 #: core/templates/core/founders.html:54
 msgid "MANAGING EDITOR"
-msgstr ""
+msgstr "प्रबंध संपादक"
 
 #: core/templates/core/founders.html:59
 msgid "EXECUTIVE EDITOR"
-msgstr ""
+msgstr "टेक एडिटर"
 
 #: core/templates/core/founders.html:64
 msgid "TECH EDITOR"
-msgstr ""
+msgstr "टेक एडिटर"
 
 #: core/templates/core/guidelines.html:4
 msgid ""
 "Want to contribute to PARI? Find out what types of content we are looking "
 "for."
 msgstr ""
+"पारी के लिए सहयोग करना चाहते हैं? यह जानें कि हम किस प्रकार की विषय-वस्तुतलाश रहे हैं।"
 
 #: core/templates/core/guidelines.html:26
 msgid "Index of contents"
-msgstr ""
+msgstr "विषय-वस्तु की तालिका"
 
 #: core/templates/core/home_page.html:6
 msgid ""
@@ -2052,86 +2469,90 @@ msgid ""
 "archive of the living past, a journal of the present, a textbook of the "
 "future."
 msgstr ""
+"833 मिलियन ग्रामीण भारतियों की कहानियों की रिपोर्टिंग करने वाली संपादन वेबसाइट।जीवित "
+"भूतकाल का अभिलेख, वर्तमान की एक पत्रिका, भविष्य की एक पाठ्यपुस्तक।"
 
 #: core/templates/core/home_page.html:9
 msgid "Home"
-msgstr ""
+msgstr "होम"
 
 #: core/templates/core/home_page.html:203
 msgid "Read/ Watch/ Listen"
-msgstr ""
+msgstr "पढ़ें/देखें/सुनें"
 
 #: core/templates/core/home_page.html:256
 msgid "IN FOCUS"
-msgstr ""
+msgstr "केंद्र-बिंदु में"
 
 #: core/templates/core/home_page.html:370
 msgid "All that you can discover on PARI"
-msgstr ""
+msgstr "वह सभी जो आप पारी पर खोज सकते हैं"
 
 #: core/templates/core/home_page.html:391
 msgid "PARI is an insane project"
-msgstr "PARI एक पागल परियोजना है"
+msgstr "पारी एक उन्मादी परियोजना है"
 
 #: core/templates/core/home_page.html:395
 msgid "Rural India — a living journal, a breathing archive"
-msgstr "ग्रामीण भारत - एक जीवित पत्रिका, एक श्वास संग्रह"
+msgstr "रूरल इंडिया – एक जीवित पत्रिका, एक सांस लेता आर्काइव"
 
 #: core/templates/core/home_page.html:402
 msgid "Here's how you can contribute"
-msgstr ""
+msgstr "आप कैसे सहयोग कर सकते हैं, यहां देखें"
 
 #: core/templates/core/home_page.html:446
 msgid "and a wonderful one"
-msgstr ""
+msgstr "तथा एक बहुत ही अद्भुत"
 
 #: core/templates/core/home_page.html:471
 msgid "Stories from all over in all languages"
-msgstr ""
+msgstr "चारों ओर से सभी भाषाओं में स्टोरीज"
 
 #: core/templates/core/home_page.html:473
 msgid "Browse all Categories"
-msgstr ""
+msgstr "सभी श्रेणियों को ब्राउज करें"
 
 #: core/templates/core/home_page.html:477
 msgid "Translate for PARI"
-msgstr ""
+msgstr "पारी के लिए अनुवाद करें"
 
 #: core/templates/core/home_page.html:478
 msgid "Translate PARI content into languages you know"
-msgstr ""
+msgstr "आप जो भाषा जानते हैं, उसमें पारी की विषय-वस्तु को अनुवाद करें"
 
 #: core/templates/core/home_page.html:492
 msgid "And many more stories in audio and video"
-msgstr ""
+msgstr "और भी बहुत सारी कहानियां ऑडियो तथा विडियो के रूप में"
 
 #: core/templates/core/home_page.html:581
 msgid "Like what PARI is doing?"
-msgstr ""
+msgstr "पारी जो कुछ कर रहा है, क्या आप उसे पसंद करते हैं? "
 
 #: core/templates/core/home_page.html:585
 msgid "Contribute to PARI"
-msgstr ""
+msgstr "पारी को अपना सहयोग दें"
 
 #: core/templates/core/pari_teachers_students.html:3
 #: core/templates/core/pari_teachers_students.html:36
 #: core/templates/pages/menus/dropdown.html:251
 msgid "PARI for students, teachers and researchers"
-msgstr ""
+msgstr "छात्रों, अध्यापकों तथा शोधकों के लिए पारी"
 
 #: core/templates/core/pari_teachers_students.html:4
 msgid ""
 "PARI will serve as a living, breathing textbook of Indian rural affairs for "
 "future generations of students and teachers. Find out how."
 msgstr ""
+"पारी छात्रों तथा अध्यापकों की अगली पीढ़ियों के लिए भारतीय ग्रामीण विषयों पर एक जीवित,"
+"सांस लेती पाठ्यपुस्तक के रूप में काम करेगा।"
 
 #: core/templates/core/pari_teachers_students.html:43
 msgid "REDEFINING LEARNING"
-msgstr ""
+msgstr "अध्ययन को पुनः परिभाषित करना"
 
 #: core/templates/core/pari_teachers_students.html:46
 msgid "Creating the textbooks of the future"
-msgstr ""
+msgstr "भविष्य की पाठ्यपुस्तक तैयार करना"
 
 #: core/templates/core/pari_teachers_students.html:47
 msgid ""
@@ -2140,6 +2561,10 @@ msgid ""
 "week on our site. It’s important that, over time, quite a bit of that is "
 "produced by students and teachers themselves."
 msgstr ""
+"पारी में हम भविष्य की पाठ्यपुस्तक लिख रहे हैं। ये उन अनेक स्टोरीज, तस्वीरों, विडियो "
+"तथाऑडियो सामग्रियों से हो रहा है जो हमारी वेबसाइट पर हर सप्ताह डाली जाती हैं। यह "
+"जरूरी है किसमय के साथ-साथ इनमें से कुछ को स्वयं छात्रों तथा अध्यापकों के द्वारा प्रस्तुत किया "
+"जाये।"
 
 #: core/templates/core/pari_teachers_students.html:54
 msgid ""
@@ -2152,10 +2577,18 @@ msgid ""
 "amended, updated or widened. As broadband access grows, it should also mean "
 "lower costs for many students, as PARI is a free-access-to-public site."
 msgstr ""
+"पारी छात्रों, अध्यापकों, स्कूलों, कालेजों तथा विश्वविद्यालयों के लिए ग्रामीण भारत पर "
+"सूचनात्मकतथा मजेदार कहानियां लिखने में सहायता करना चाहता है। यह उन लोगों के लिए भी "
+"होगा, जोइस प्रकार के पारंपरिक शिक्षा संस्थानों से बाहर हैं। हमारा मानना है कि अगले कुछ "
+"वर्षों मेंपाठ्यपुस्तकों सहित, पठन पाठन की ढेर सारी सामग्री तेजी से ऑनलाइन उपलब्ध होगी।यह "
+"प्रक्रिया विश्व के कुछ भागों में पहले से ही जारी है। यदि सही ढंग से किया गया, तो इसकामतलब "
+"होगा \"पाठ्यपुस्तकें\" या शैक्षिक सामग्री, जिसमें घटाया बढ़ाया जा सकेगा, विस्तारकिया जा "
+"सकेगा। ब्रॉबैंड तक पहुंच में चूंकि वृद्धि हो रही है, इसलिए इसका मतलब बहुत सेछत्रों के खर्चों में "
+"कमी भी होगी, क्योंकि पारी जनता के इस्तेमाल के लिए एक मुफ्त साईट है।"
 
 #: core/templates/core/pari_teachers_students.html:72
 msgid "Helping students to develop course content"
-msgstr ""
+msgstr "पाठ्यपुस्तक तैयार करने में छात्रों की सहायता करना"
 
 #: core/templates/core/pari_teachers_students.html:73
 msgid ""
@@ -2167,6 +2600,12 @@ msgid ""
 "and involve the students in creating living knowledge on their topics "
 "through field trips."
 msgstr ""
+"हमने इस प्रक्रिया के एक मुख्य भाग को पहले ही जोड़ दिया हैः पारी पर, छात्र स्वयं "
+"अपनीपाठ्यपुस्तकों की तैयारी में भाग लेते हैं। यदि कोई अध्यापक या संस्था किसी पाठ्यक्रम "
+"यापाठ्यक्रम के एक भाग के लिए शैक्षिक संसाधन स्थापित करना चाहती है, तो हम उस पाठ्यक्रमकी "
+"तैयारी में उनके साथ मिलकर काम करेंगे। मान लीजिए कि यह ग्रामीण मजदूरी के बारे में है "
+"याप्रवासियों या कृषि या हस्तशिल्पों के लिए है, हम फील्ड ट्रिप्स के माध्यम से छात्रों को उनके "
+"विषयोंपर मजेदार जानकारी तैयार करने का प्रयास करेंगे तथा छात्रों को उसमें शामिल करेंगे।"
 
 #: core/templates/core/pari_teachers_students.html:84
 msgid ""
@@ -2181,13 +2620,20 @@ msgid ""
 "dated by some years. Especially since PARI’s approach will combine the power "
 "of text articles, research papers, video, audio and still photographs."
 msgstr ""
+"अतः छात्रों के तथा उनके द्वारा तैयार की गई विडियो, ऑडियो रिकार्डिंग, तस्वीरें तथा लेख न "
+"केवलउन्हें अपने पाठ्यक्रमों में नंबर तथा ग्रेड दिला सकेंगे, बल्कि एक लचकदार तथा खुली हुई "
+"पाठ्यपुस्तकका भाग भी बन सकेंगे। इसी प्रकार, मान लीजिए, कृषि मजदूरों पर आधारित एक "
+"विडियो, जिसमेंवे खुद ही अपनी कहानी बयान करते हैं, जहां पर वे श्रोताओं से स्वयं ही संबोधन कर "
+"रहे होंगे, इसप्रकार की अध्ययन सामग्री कुछ ज्यादा ही प्रभावी होगी। कुछ सालों से छापी जा "
+"रही पाठ्यपुस्तकोंकी तुलना में इन सामग्रियों पर छात्रों, अध्यापकों, शोधकों तथा आम दर्शकों का "
+"ध्यान अधिकआकर्शित होना चाहिए। खास कर इसलिए कि पारी की इस कोशिश के तहत लेख, शोध-"
+"पत्र, विडियो, ऑडियो तथा स्टिल फोटोग्राफर्स की ताकत एक साथ जमा की जायेगी।"
 
 #: core/templates/core/pari_teachers_students.html:103
 msgid "Unleashing a powerful source of learning"
-msgstr ""
+msgstr "शिक्षा के एक शक्तिशाली माध्यम को खड़ा करना"
 
 #: core/templates/core/pari_teachers_students.html:105
-#, python-format
 msgid ""
 "PARI has specific <a href=\"%(guidelines)s#section-6-1\"> guidelines </a> "
 "for videos generated for and by us, which ensure recognition of primary "
@@ -2196,6 +2642,12 @@ msgid ""
 "with communities to produce authentic material from the field, is also a "
 "powerful source of learning. It’s already happening on PARI."
 msgstr ""
+"पारी के पास हमारे लिए तथा हमारे द्वारा तैयार किये गए विडियो के लिए खास<a href="
+"\"{[guidelines]} दिशा-निर्देश </a> हैं, जो कहानी बयान करने वालों की मूल कृति "
+"कीशिनाख्त को सुनिश्चित करते हैं। इस बीच इन लोगों के साथ केवल छात्रों का मेल-मिलाप, जिनके "
+"जीवन केबारे में वे अध्ययन करने का प्रयास कर रहे हैं तथा फील्ड से प्रामाणिक सामग्री तैयार करने "
+"के लिए समुदायोंके साथ उनका सामूहिक प्रयास भी सीखने का एक शक्तिशाली साधन है। यह सब "
+"पारी पर पहले से हो रहा है।"
 
 #: core/templates/core/pari_teachers_students.html:116
 msgid ""
@@ -2209,10 +2661,18 @@ msgid ""
 "world. In turn, knowing that their work can be viewed across the globe would "
 "be an incentive for students to raise the level and quality of their work."
 msgstr ""
+"एक दूसरी चीज भी हैः हर साल अनगिनत छात्र भारत पर बहुमूल्य पाठ तैयार करते हैं। शोध पत्र, "
+"लेख,विडियो, डॉक्युमेंट्री, पत्रिका, तस्वीरों आदि के रूप में। इनमें से कुछ पाठ बहुत ही शानदार "
+"हैं, लेकिनइनमें से अधिकतर डिपार्टमेंटल लाइब्रेरियों, परीक्षा के प्रश्न-पत्रों की अल्मारियों या "
+"फिर साइबर-स्पेस केगुमनाम कब्रिस्तानों से गायब हैं। लेकिन जो संस्थाएं हमारे साथ जुड़ी हुई हैं, "
+"पारी उनके लिए एक ऐसापलेटफॉर्म उपलब्ध करता है जो इन सामग्रियों को सुरक्षित रखने, तथा "
+"उनकी प्रदर्शनी का अवसर देता है, और उसे दुनिया के किसी भी कोने से पहुंचने तथा आसानी से देखने "
+"लायक बनाता है। इसके जवाब मेंयह जानते हुए कि इनके काम को पूरी दुनिया में देखा जा सकता है, "
+"छात्रों के लिए यह अच्छा अवसरहै कि वे अपने कामों के स्तर तथा गुणवत्ता को बढ़ायें।"
 
 #: core/templates/core/pari_teachers_students.html:134
 msgid "A one-stop library for researchers"
-msgstr ""
+msgstr "शोधकों के लिए एक वन-स्टाप लाइब्रेरी"
 
 #: core/templates/core/pari_teachers_students.html:136
 #, python-format
@@ -2222,6 +2682,9 @@ msgid ""
 "work, for PARI. Some very young students have even produced <a href="
 "%(forest)s> newspapers </a> for us."
 msgstr ""
+"इसके अलावा, विश्वविद्यालयों, कालेजों तथा हाई स्कूलों में ऐसे छात्र भी हैं, जो लेख, ऑडियो "
+"औरविडियो पर, अपने पाठ्यक्रम से बिल्कुल अलग, पारी के लिए काम कर रहे हैं। कुछ अति युवा "
+"छात्रों ने हमारे लिए <a href=%(forest)s> समाचार पत्र </a> भी तैयार किये हैं।"
 
 #: core/templates/core/pari_teachers_students.html:144
 #, python-format
@@ -2234,155 +2697,161 @@ msgid ""
 "and much more. Researchers will not have to surf multiple sites to access "
 "important documents and studies from different sources."
 msgstr ""
+"और हमारे <a href=%(resource_list)s> संसाधन </a> सेक्शन में, हम ग्रामीण भारत से संबंधित "
+"सभी सरकारी (और गैर सरकारी लेकिन प्रमाणिक) रिपोर्ट डालना चाहते हैं (पूरा लेख और केवल "
+"उनके लिंक नहीं)। उदाहरण के तौर पर, नेशनल कमीशन फॉर इंटरप्राइजेज इन द अनरिकगनाइज्ड "
+"सेक्टर की हर एक रिपोर्ट, प्लानिंग कमीशन (अब नीति आयोग) और मंत्रालयों की रिपोर्ट्स, "
+"संयुक्त राष्ट्र तथा और भीबहुत कुछ। शोधकों को मुख्य दस्तावेजों तथा विभिन्न स्रोतों के अध्ययन तक "
+"पहुंचने के लिए विभिन्नसाइटों पर नहीं जाना पड़ेगा।"
 
 #: core/templates/core/pari_teachers_students.html:156
 msgid ""
 "PARI is a one-stop library for students, teachers and all other learners."
-msgstr ""
+msgstr "पारी छात्रों, अध्यापकों तथा सीखने वालों के लिए वन-स्टॉप लाइब्रेरी है।"
 
 #: core/templates/core/static_page.html:17
 msgid "Choose language"
-msgstr ""
+msgstr "भाषा चुनें"
 
 #: core/templates/email/contact_us.html:4
 msgid "Name"
-msgstr ""
+msgstr "नाम"
 
 #: core/templates/email/contact_us.html:8
 msgid "Email"
-msgstr ""
+msgstr "ई-मेल"
 
 #: core/templates/email/contact_us.html:12
 msgid "Message"
-msgstr ""
+msgstr "संदेष"
 
 #: core/templates/includes/grid_title.html:8
 #: core/templates/includes/page_content_header/gallery_back_button.html:5
 msgid "GALLERY"
-msgstr ""
+msgstr "गैलरी"
 
 #: core/templates/includes/home_page_face_tile.html:9
 msgid "FACES from across India"
-msgstr ""
+msgstr "पूरे भारत से चेहरे"
 
 #: core/templates/includes/home_page_face_tile.html:14
 msgid "PARI records the facial diversity of the people of India"
-msgstr ""
+msgstr "पारी भारतीय जनता के चेहरों की भिन्नता को रिकॉर्ड करता है"
 
 #: core/templates/includes/home_page_face_tile.html:18
 msgid "View all FACES"
-msgstr ""
+msgstr "सभी चेहरे देखें"
 
 #: core/templates/includes/home_page_face_tile.html:22
 #: core/templates/pages/menus/dropdown.html:213
 msgid "Contribute"
-msgstr ""
+msgstr "योगदान दें"
 
 #: core/templates/includes/home_page_face_tile.html:23
 msgid "to this database"
-msgstr ""
+msgstr "इस डेटाबेस को"
 
 #: core/templates/includes/language_select.html:10
 #: core/templates/includes/language_select.html:15
 #, python-format
 msgid " %(tlang)s "
-msgstr ""
+msgstr "%(tlang)s"
 
 #: core/templates/pages/menus/dropdown.html:15
 #: search/templates/includes/search_filters.html:41
 msgid "Things We Do"
-msgstr "जो हम करते हैं"
+msgstr "हम जो कार्य करते हैं"
 
 #: core/templates/pages/menus/dropdown.html:20
 #: search/templates/includes/search_filters.html:42
 msgid "Things We Make"
-msgstr "चीजें हम बनाते हैं"
+msgstr "हम जो चीजें बनाते हैं"
 
 #: core/templates/pages/menus/dropdown.html:25
 #: search/templates/includes/search_filters.html:43
 msgid "Farming and its Crisis"
-msgstr ""
+msgstr "खेती और इसका संकट"
 
 #: core/templates/pages/menus/dropdown.html:34
 #: search/templates/includes/search_filters.html:50
 msgid "Foot-Soldiers of Freedom"
-msgstr ""
+msgstr "स्वतंत्रता के पैदल सिपाही"
 
 #: core/templates/pages/menus/dropdown.html:39
 #: search/templates/includes/search_filters.html:64
 msgid "The Rural in the Urban"
-msgstr ""
+msgstr "शहर में देहात"
 
 #: core/templates/pages/menus/dropdown.html:44
 #: search/templates/includes/search_filters.html:52
 msgid "Musafir"
-msgstr ""
+msgstr "मुसाफिर"
 
 #: core/templates/pages/menus/dropdown.html:49
 msgid "View all Categories"
-msgstr ""
+msgstr "सभी श्रेणियां देखें"
 
 #: core/templates/pages/menus/dropdown.html:62
 msgid "Stories from near you"
-msgstr ""
+msgstr "आपके आसपास की कहानियां"
 
 #: core/templates/pages/menus/dropdown.html:65
 msgid "The archive on a map"
-msgstr ""
+msgstr "मानचित्र पर अभिलेख"
 
 #: core/templates/pages/menus/dropdown.html:82
 msgid "PHOTOS"
-msgstr ""
+msgstr "तस्वीरें"
 
 #: core/templates/pages/menus/dropdown.html:91
 msgid "Exhibitions"
-msgstr ""
+msgstr "प्रदर्शनी"
 
 #: core/templates/pages/menus/dropdown.html:96
 msgid "PARI Pics"
-msgstr ""
+msgstr "पारी तस्वीरें"
 
 #: core/templates/pages/menus/dropdown.html:102
 msgid "VIDEOS"
-msgstr ""
+msgstr "विडियो"
 
 #: core/templates/pages/menus/dropdown.html:106
 #: search/templates/includes/search_filters.html:44
 msgid "Little Takes"
-msgstr ""
+msgstr "छोटे बयान"
 
 #: core/templates/pages/menus/dropdown.html:118
 msgid "AUDIO"
-msgstr ""
+msgstr "ऑडियो"
 
 #: core/templates/pages/menus/dropdown.html:122
 msgid "Music"
-msgstr ""
+msgstr "संगीत"
 
 #: core/templates/pages/menus/dropdown.html:127
 #: search/templates/includes/search_filters.html:59
 msgid "Tongues"
-msgstr ""
+msgstr "जबान"
 
 #: core/templates/pages/menus/dropdown.html:133
 msgid "View Gallery highlights"
-msgstr ""
+msgstr "गैलरी के मुख्य अंश देखें"
 
 #: core/templates/pages/menus/dropdown.html:151
 msgid "Explore India’s facial diversity"
-msgstr ""
+msgstr "भारतीय चेहरों की भिन्नता देखें"
 
 #: core/templates/pages/menus/dropdown.html:153
 msgid "View FACES"
-msgstr ""
+msgstr "चेहरे देखें"
 
 #: core/templates/pages/menus/dropdown.html:166
 msgid "Listen to photos speak"
-msgstr ""
+msgstr "बोलती हुई तस्वीरों को सुनें"
 
 #: core/templates/pages/menus/dropdown.html:168
 msgid "View Talking Albums"
-msgstr ""
+msgstr "बोलते हुए ऐल्बम देखें"
 
 #: core/templates/pages/menus/dropdown.html:179
 #: resources/templates/resources/resource_list.html:8
@@ -2390,51 +2859,51 @@ msgstr ""
 #: resources/templates/resources/resource_list.html:37
 #: search/templates/includes/search_filters.html:32
 msgid "Library"
-msgstr "पुस्तकालय"
+msgstr ""
 
 #: core/templates/pages/menus/dropdown.html:184
 msgid "About PARI"
-msgstr ""
+msgstr "पारी के बारे में"
 
 #: core/templates/pages/menus/dropdown.html:191
 msgid "ABOUT PARI"
-msgstr ""
+msgstr "पारी के बारे में"
 
 #: core/templates/pages/menus/dropdown.html:199
 #: core/templates/pages/menus/footer.html:60
 msgid "Blog"
-msgstr "ब्लॉग"
+msgstr "ब्लाग"
 
 #: core/templates/pages/menus/dropdown.html:203
 #: core/templates/pages/menus/footer.html:65
 msgid "Contact us"
-msgstr ""
+msgstr "हमसे संपर्क करें"
 
 #: core/templates/pages/menus/dropdown.html:209
 msgid "GET INVOLVED"
-msgstr ""
+msgstr "सम्मिलित हों"
 
 #: core/templates/pages/menus/dropdown.html:218
 msgid "Donate"
-msgstr ""
+msgstr "चंदा दें"
 
 #: core/templates/pages/menus/dropdown.html:224
 msgid "NOTES"
-msgstr "टिप्पणियाँ"
+msgstr "टिप्पणी"
 
 #: core/templates/pages/menus/dropdown.html:233
 #: core/templates/pages/menus/footer.html:75
 msgid "Guidelines"
-msgstr ""
+msgstr "दिशा-निर्देश"
 
 #: core/templates/pages/menus/dropdown.html:253
 #: core/templates/pages/menus/dropdown.html:269
 msgid "Know more"
-msgstr ""
+msgstr "और जानें"
 
 #: core/templates/pages/menus/dropdown.html:267
 msgid "Founder Editor"
-msgstr ""
+msgstr "संस्थापक संपादक"
 
 #: core/templates/pages/menus/dropdown.html:280
 msgid "PARI Education"
@@ -2442,21 +2911,21 @@ msgstr ""
 
 #: core/templates/pages/menus/footer.html:16
 msgid "Stories on a map"
-msgstr ""
+msgstr "मानचित्र पर कहानियां"
 
 #: core/templates/pages/menus/footer.html:26
 msgid "Photos"
-msgstr ""
+msgstr "तस्वीरें"
 
 #: core/templates/pages/menus/footer.html:31
 #: search/templates/includes/search_filters.html:29
 msgid "Videos"
-msgstr ""
+msgstr "विडियो"
 
 #: core/templates/pages/menus/footer.html:36
 #: search/templates/includes/search_filters.html:30
 msgid "Audios"
-msgstr ""
+msgstr "ऑडियो"
 
 #: core/templates/pages/menus/footer.html:45 face/templates/face/face.html:10
 #: face/templates/face/face.html:11 face/templates/face/face.html:47
@@ -2468,15 +2937,15 @@ msgstr "चेहरे"
 
 #: core/templates/pages/menus/footer.html:51
 msgid "About"
-msgstr "PARI के बारे में"
+msgstr "बारे में"
 
 #: core/templates/pages/menus/footer.html:81
 msgid "Get Involved"
-msgstr "उलझना"
+msgstr "सम्मिलित हों"
 
 #: core/templates/pages/menus/footer.html:90
 msgid "Volunteer for PARI"
-msgstr "PARI के लिए स्वयंसेवक"
+msgstr "पारी के लिए वालंटियर"
 
 #: core/templates/pages/menus/footer.html:96
 msgid "More"
@@ -2484,7 +2953,7 @@ msgstr "अधिक"
 
 #: core/templates/pages/menus/footer.html:100
 msgid "Terms & Conditions"
-msgstr ""
+msgstr "नियम एवं शर्तें"
 
 #: core/templates/pages/menus/footer.html:106
 msgid "Copyright"
@@ -2492,31 +2961,31 @@ msgstr "कॉपीराइट"
 
 #: core/templates/pages/menus/footer.html:117
 msgid "Connect"
-msgstr "जुडिये"
+msgstr "जुडें"
 
 #: core/views.py:145
 msgid "Your query has successfully been sent"
-msgstr ""
+msgstr "आपके प्रश्न को सफलतापूर्वक भेजा जा चुका है"
 
 #: donation/forms.py:10
 msgid "NAME"
-msgstr ""
+msgstr "नाम"
 
 #: donation/forms.py:15
 msgid "EMAIL"
-msgstr ""
+msgstr "ई-मेल"
 
 #: donation/forms.py:19
 msgid "PHONE NUMBER"
-msgstr ""
+msgstr "फोन नंबर"
 
 #: donation/forms.py:23
 msgid "PAN NUMBER"
-msgstr ""
+msgstr "पैन नंबर"
 
 #: donation/forms.py:26
 msgid "PAN is required as per government regulations."
-msgstr ""
+msgstr "सरकारी नियमों के अनुसार पैन आवश्यक है"
 
 #: donation/forms.py:30
 msgid "AMOUNT"
@@ -2528,15 +2997,15 @@ msgstr ""
 
 #: donation/forms.py:41
 msgid "DURATION"
-msgstr ""
+msgstr "पेशा"
 
 #: donation/forms.py:45
 msgid "I declare that I am an Indian citizen"
-msgstr ""
+msgstr "मैं यह घोषणा करता/करती हूं कि मैं भारतीय नागरिक हूं"
 
 #: donation/forms.py:52
 msgid "Sorry, we can accept donations from Indians only."
-msgstr ""
+msgstr "क्षमा करें, हम केवल भारतियों से ही चंदा स्वीकार कर सकते हैं।"
 
 #: donation/forms.py:59
 msgid "Term should be at least 2 years for Yearly donation"
@@ -2547,7 +3016,7 @@ msgstr ""
 #: donation/templates/donation/razorpay_checkout.html:5
 #, python-format
 msgid "Donate to %(site_name)s"
-msgstr ""
+msgstr "%(site_name)sको चंदा भेजें"
 
 #: donation/templates/donation/donate_form.html:34
 msgid ""
@@ -2557,22 +3026,24 @@ msgid ""
 "our <a href=\"/media/uploads/Donate/80g_certificate.jpg\" target=\"_blank"
 "\">exemption certificate.</a>"
 msgstr ""
+"फिलहाल, हम केवल भारतीय नागरिकों से ही भारतीय रूपये में चंदा स्वीकार कर सकते हैं।<strong> "
+"काउंटर मीडिया ट्रस्ट </strong> को भेजे गये सभी चंदे आयकर अधिनियम, 1961 के सेक्शन 80जीके "
+"अंतर्गत कर से छूट प्राप्त हैं। इससे संबंधित हमारी कॉपी यह है <a href=\"/media/uploads/"
+"Donate/80g_certificate.jpg\"target=\"_blank\">छूट का सर्टिफिकेट </a>"
 
 #: donation/templates/donation/donate_form.html:46
-#, python-format
 msgid ""
 "In 2014-15, only about <span class=\"highlight\">0.24%% of front page news</"
 "span> came out of rural India."
 msgstr ""
+"वर्ष 2014-15 में, ग्रामीण भारते से केवल <span class=\"highlight\">0.24%%</span> खबरें "
+"प्रथमपृष्ठ पर जगह पा सकीं। <br/> हम इसे बदलना चाहते हैं।\""
 
 #: donation/templates/donation/donate_form.html:52
-#, fuzzy
-#| msgid ""
-#| "We can do this without governments – and will. We can’t do it without you."
 msgid ""
 "We want to change that.<br/><br/> We can do this without governments – and "
 "will. <u>We can’t do it without you.</u>"
-msgstr "हम यह बिना सरकारों के कर सकते हैं - और करेंगे। हम आपके बिना यह नहीं कर सकते"
+msgstr "हम इसे सरकारों के बिना कर सकते हैं, और करेंगे। हम इसे आपके बिना नहीं कर सकते।"
 
 #: donation/templates/donation/donate_form.html:62
 msgid "Other ways to donate"
@@ -2580,7 +3051,7 @@ msgstr ""
 
 #: donation/templates/donation/donate_form.html:63
 msgid "PAYMENT BY CHEQUE OR DEMAND DRAFT"
-msgstr ""
+msgstr "चेक या डिमांड ड्राफ्ट द्वारा भुगतान"
 
 #: donation/templates/donation/donate_form.html:64
 msgid ""
@@ -2588,6 +3059,9 @@ msgid ""
 "send it to us by courier/post along with your contact details – name, "
 "address, telephone number, e-mail ID and PAN number."
 msgstr ""
+"चेक/डीडी <strong> “CounterMedia Trust” </strong> के नाम से बनायें तथा उसे अपने "
+"संपर्कके विवरण जैसे नाम, पता, टेलीफोन नंबर, ई-मेल आईडी और पैन नंबर के साथ हमें कुरियर/डाक "
+"से भेज दें।"
 
 #: donation/templates/donation/donate_form.html:69
 msgid ""
@@ -2595,14 +3069,17 @@ msgid ""
 "o P. Sainath, 27/43 Sagar Sangam, Bandra Reclamation, Mumbai 400050, "
 "Maharashtra, India."
 msgstr ""
+"कुरियर/डाक से यहां भेजें - <br/><strong> CounterMedia Trust </strong><br/> c/o P. "
+"Sainath,27/43 Sagar Sangam, Bandra Reclamation, Mumbai-400050, Maharashtra, "
+"India. "
 
 #: donation/templates/donation/donate_form.html:77
 msgid "PAYMENT BY BANK/ WIRE TRANSFER"
-msgstr ""
+msgstr "बैंक/वायर ट्रांस्फर द्वारा भुगतान"
 
 #: donation/templates/donation/donate_form.html:78
 msgid "Payable to: <strong>CounterMedia Trust</strong>"
-msgstr ""
+msgstr "<strong> CounterMedia Trust </strong> को देय"
 
 #: donation/templates/donation/donate_form.html:79
 msgid ""
@@ -2610,6 +3087,9 @@ msgid ""
 "Creations, Off ITI Road, Aundh, Pune 411007, Maharashtra.<br/> Account "
 "Number: 50100091804541<br/> MICR Code: 411240005<br/> IFSC Code: HDFC0000052"
 msgstr ""
+"बैंक तथा शाखाः HDFC Bank, Aundh<br/> Address: 93, Anand Park, Rajyog "
+"Creations, OffITI Road, Aundh, Pune 411007, Maharashtra. <br/> Account "
+"Number: 50100091804541 <br/>MICR Code: 411240005 <br/> IFSC Code: HDFC0000052"
 
 #: donation/templates/donation/donate_form.html:85
 msgid ""
@@ -2617,15 +3097,17 @@ msgid ""
 "reference number, amount and date of transfer, along with your contact "
 "details."
 msgstr ""
+"तथा हमें एक ई-मेल donate@ruralindiaonline.org पर भेज दें, जिसमें आपसे संपर्क का विवरण "
+"तथाट्रांजैक्शन रिफ्रेंस नंबर, राशि और ट्रांस्फर की तारीख दर्ज हो।"
 
 #: donation/templates/donation/donate_form.html:86
 #: donation/templates/donation/donate_form.html:123
 msgid "Please fill the form below after you have sent in your donation."
-msgstr ""
+msgstr "अपने चंदे को भेजने के बाद कृप्या नीचे दिये गये फॉर्म को भरें।"
 
 #: donation/templates/donation/donate_form.html:89
 msgid "IMPS"
-msgstr ""
+msgstr "IMPS"
 
 #: donation/templates/donation/donate_form.html:90
 msgid ""
@@ -2633,6 +3115,9 @@ msgid ""
 "go through the following methods of mobile payment enabled by the National "
 "Payments Corporation of India (NPCI)."
 msgstr ""
+"तत्काल भुगतान सेवा (IMPS) का प्रयोग करते हुए मोबाइल फोन के द्वारा भुगतान। <br/> "
+"कृप्यामोबाइल द्वारा भुगतान के निम्नलिखित तरीके पर जायेंनेशनल पेमेंट्स कॉर्पोरेशन ऑफ इंडिया "
+"(NPCI)। "
 
 #: donation/templates/donation/donate_form.html:93
 msgid ""
@@ -2645,68 +3130,75 @@ msgid ""
 "documents/FAQs-NUUP.pdf\" target=\"_blank\">http://www.npci.org.in/documents/"
 "FAQs-NUUP.pdf</a>"
 msgstr ""
+"निम्नलिखित को <a href=\"http://www.npci.org.in/documents/FAQs-NUUP.pdf\" "
+"target=\"_blank\">http://www.npci.org.in/documents/FAQs-NUUP.pdf</a> से "
+"दोबारा तैयार किया गया है।"
 
 #: donation/templates/donation/donate_form.html:95
 msgid "Fund transfer using IFSC and account number:"
-msgstr ""
+msgstr "IFSC तथा खाता नंबर का इस्तेमाल करके फंड ट्रांस्फर"
 
 #: donation/templates/donation/donate_form.html:99
 msgid "Dial *99# from your mobile handset."
-msgstr ""
+msgstr "अपने मोबाइल हैंडसेट से *99# डायल करें।"
 
 #: donation/templates/donation/donate_form.html:102
 msgid ""
 "The NUUP welcome screen will appear asking you to enter your bank’s 4-digit "
 "IFS code."
 msgstr ""
+"एनयूयूपी का वेल्कम स्क्रीन सामने आयेगा जो आपसे आपके बैंक का 4-डिजिट IFS कोडडालने को कहेगा।"
 
 #: donation/templates/donation/donate_form.html:105
 msgid ""
 "After entering a valid IFS code, the NUUP menu will appear with different "
 "options of available services enabled for your bank."
 msgstr ""
+"सही IFS कोड डालने के बाद, NUUP मेन्यु सामने आयेगा जिसमें आपके बैंक द्वारा उपलब्धकराई जाने "
+"वाली विभिन्न सेवाओं का विकल्प मौजूद होगा।"
 
 #: donation/templates/donation/donate_form.html:108
 msgid "Enter 4 for Fund Transfer using IFSC and account number and submit."
 msgstr ""
+"IFSC का प्रयोग करते हुए फंड ट्रांस्फर के लिए 4 इंटर करें तथा खाता नंबर डाल कर जमा कर दें।"
 
 #: donation/templates/donation/donate_form.html:111
 msgid ""
 "On subsequent screens enter the MPIN and the last 4 digits of the account "
 "number (optional)."
-msgstr ""
+msgstr "बाद में आने वाले स्क्रीनों पर MPIN तथा खाता नंबर के 4 डिजिट (वैकल्पिक) डालें।"
 
 #: donation/templates/donation/donate_form.html:113
 msgid "Beneficiary account number"
-msgstr ""
+msgstr "जिसको राशि भेजी जा रही है उसका खाता नंबर"
 
 #: donation/templates/donation/donate_form.html:114
 msgid "IFS code"
-msgstr ""
+msgstr "IFS कोड"
 
 #: donation/templates/donation/donate_form.html:115
 msgid "Amount"
-msgstr ""
+msgstr "राशि"
 
 #: donation/templates/donation/donate_form.html:116
 msgid "Remarks (optional) will appear."
-msgstr ""
+msgstr "टिप्पणी (वैकल्पिक) दिखाई देगा।"
 
 #: donation/templates/donation/donate_form.html:120
 msgid "A confirmation screen will appear."
-msgstr ""
+msgstr "पुष्टि वाली स्क्रीन दिखाई देगी।"
 
 #: donation/templates/donation/donate_form.html:133
 msgid "THE FORM"
-msgstr ""
+msgstr "फॉर्म"
 
 #: donation/templates/donation/donate_form.html:139
 msgid "FAQs"
-msgstr ""
+msgstr "बहुधा पूछे गये प्रश्न"
 
 #: donation/templates/donation/donate_form.html:141
 msgid "I sent PARI a donation. How do I get a receipt?"
-msgstr ""
+msgstr "मैंने पारी को चंदा भेजा था। उसकी रसीद मुझे कैसे मिलेगी?"
 
 #: donation/templates/donation/donate_form.html:142
 msgid ""
@@ -2718,11 +3210,11 @@ msgstr ""
 
 #: donation/templates/donation/donate_form.html:149
 msgid "I live abroad. Can I send PARI a donation?"
-msgstr ""
+msgstr "मैं अमेरिका में रहता हूं। क्या मैं पारी को चंदा भेज सकता हूं?"
 
 #: donation/templates/donation/donate_form.html:153
 msgid "Is there any other way in which I can contribute?"
-msgstr ""
+msgstr "क्या मैं किसी और तरीके से अपना सहयोग दे सकता हूं?"
 
 #: donation/templates/donation/donate_form.html:154
 msgid ""
@@ -2735,23 +3227,23 @@ msgstr ""
 #: donation/templates/donation/donate_success.html:11
 #, python-format
 msgid " Thank you for donating to %(site_name)s. "
-msgstr ""
+msgstr "%(site_name)s को चंदा देने के लिए आपका धन्यवाद।"
 
 #: donation/views.py:181
 msgid "Donation received"
-msgstr ""
+msgstr "चंदा मिल गया"
 
 #: face/templates/face/face.html:59
 msgid "FACES DIRECTORY"
-msgstr ""
+msgstr "चेहरों की डायरेक्ट्री"
 
 #: face/templates/face/face.html:70 face/templates/face/face_list.html:49
 msgid "Upload a FACE"
-msgstr ""
+msgstr "चेहरा को अपलोड करें"
 
 #: face/templates/face/face.html:88
 msgid "Faces of <b>district names</b> starting with"
-msgstr ""
+msgstr "<b> जिला के नाम </b> के साथ शुरू होने वाले चेहरे"
 
 #: face/templates/face/face.html:150 face/templates/face/face_list.html:112
 #, python-format
@@ -2759,82 +3251,86 @@ msgid ""
 "Sorry! There are no faces on this page. Please consider <a href="
 "%(contribute)s>contributing</a> one."
 msgstr ""
+"क्षमा करें! इस पेज पर कोई चेहरा नहीं है। कृप्या <a href=%(contribute)s> सहयोग देने </"
+"a>पर विचार करें।"
 
 #: face/templates/face/face_list.html:12
 msgid ""
 "PARI aims to collect a photo of one man, one woman, and one child from every "
 "district in India. Check out our progress so far."
 msgstr ""
+"पारी का उद्देश्य भारत के हर एक जिला से एक पुरूष, एक महिला, और एक बच्चे की फोटो "
+"इकट्ठाकरना है। हमारी अब तक की प्रगति को देखें।"
 
 #: face/templates/face/face_list.html:68
 msgid "Alphabetical"
-msgstr ""
+msgstr "अंग्रजी अक्षरों के क्रम से"
 
 #: face/templates/face/face_list.html:72
 #: location/templates/map/map_list.html:62
 #: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:47
 msgid "District"
-msgstr ""
+msgstr "जिला"
 
 #: face/templates/face/includes/face_details.html:8
 msgid "AGE"
-msgstr ""
+msgstr "आयु"
 
 #: face/templates/face/includes/face_details.html:13
 msgid "OCCUPATION"
-msgstr ""
+msgstr "पेशा"
 
 #: face/templates/face/includes/face_details.html:18
 msgid "PARENTS' OCCUPATION"
-msgstr ""
+msgstr "माता-पिता का पेशा"
 
 #: face/templates/face/includes/face_details.html:23
 msgid "ADIVASI"
-msgstr ""
+msgstr "आदिवासी"
 
 #: face/templates/face/includes/face_details.html:28
 msgid "VILLAGE"
-msgstr ""
+msgstr "गांव"
 
 #: face/templates/face/includes/face_details.html:33
 msgid "PANCHAYAT"
-msgstr ""
+msgstr "पंचायत"
 
 #: face/templates/face/includes/face_details.html:43
 msgid "DISTRICT"
-msgstr ""
+msgstr "जिला"
 
 #: face/templates/face/includes/face_details.html:48
 msgid "STATE"
-msgstr ""
+msgstr "राज्य"
 
 #: face/templates/face/includes/face_details.html:53
 msgid "PHOTOGRAPHER"
-msgstr ""
+msgstr "फोटोग्राफर"
 
 #: face/templates/face/includes/face_details.html:58
 msgid "CAMERA"
-msgstr ""
+msgstr "कैमरा"
 
 #: face/templates/face/includes/face_details.html:63
 msgid "DATE PHOTO WAS TAKEN"
-msgstr ""
+msgstr "फोटो खींचने की तिथि"
 
 #: face/templates/face/includes/face_details.html:68
 msgid "PHOTO TAKEN IN"
-msgstr ""
+msgstr "में फोटो खींची गई"
 
 #: face/templates/face/includes/face_details.html:73
 msgid "QUOTE"
-msgstr ""
+msgstr "हवाला"
 
 #: face/templates/face/includes/face_details.html:78
 msgid "ADDITIONAL INFORMATION"
-msgstr ""
+msgstr "अतिरिक्त जानकारी"
 
 #: feeds/feeds.py:85
 msgid "PARI consolidated feed"
-msgstr ""
+msgstr "ठोस फीड"
 
 #: feeds/feeds.py:90
 #, python-brace-format
@@ -2843,7 +3339,7 @@ msgstr ""
 
 #: feeds/feeds.py:123
 msgid "PARI article feed"
-msgstr ""
+msgstr "लेख का फीड"
 
 #: feeds/feeds.py:128
 #, python-brace-format
@@ -2852,7 +3348,7 @@ msgstr ""
 
 #: feeds/feeds.py:145
 msgid "PARI album feed"
-msgstr ""
+msgstr "ऐल्बम फीड"
 
 #: feeds/feeds.py:150
 #, python-brace-format
@@ -2861,7 +3357,7 @@ msgstr ""
 
 #: feeds/feeds.py:170
 msgid "PARI face feed"
-msgstr ""
+msgstr "चेहरे का फीड"
 
 #: feeds/feeds.py:175
 #, python-brace-format
@@ -2870,7 +3366,7 @@ msgstr ""
 
 #: feeds/feeds.py:196
 msgid "PARI resource feed"
-msgstr ""
+msgstr "रिसोर्स फीड"
 
 #: feeds/feeds.py:201
 #, python-brace-format
@@ -2879,15 +3375,15 @@ msgstr ""
 
 #: feeds/templates/feeds/feeds_list.html:4
 msgid "Stay updated with RSS/Atom feeds"
-msgstr ""
+msgstr "आरएसएस/एटम फीड्स से अपडेट रहें"
 
 #: feeds/templates/feeds/feeds_list.html:10
 msgid "Stay updated with latest content through Feeds"
-msgstr ""
+msgstr "फीड्स के द्वारा नवीनतम विषय-वस्तु से अपडेट रहें"
 
 #: feeds/templates/feeds/feeds_list.html:13
 msgid "Consolidated Feed"
-msgstr ""
+msgstr "ठोस फीड"
 
 #: feeds/templates/feeds/feeds_list.html:13
 #: feeds/templates/feeds/feeds_list.html:16
@@ -2895,7 +3391,7 @@ msgstr ""
 #: feeds/templates/feeds/feeds_list.html:22
 #: feeds/templates/feeds/feeds_list.html:25
 msgid "Atom"
-msgstr ""
+msgstr "एटम"
 
 #: feeds/templates/feeds/feeds_list.html:13
 #: feeds/templates/feeds/feeds_list.html:16
@@ -2903,58 +3399,58 @@ msgstr ""
 #: feeds/templates/feeds/feeds_list.html:22
 #: feeds/templates/feeds/feeds_list.html:25
 msgid "RSS"
-msgstr ""
+msgstr "आरएसएस"
 
 #: feeds/templates/feeds/feeds_list.html:16
 msgid "Article Feed"
-msgstr ""
+msgstr "लेख का फीड"
 
 #: feeds/templates/feeds/feeds_list.html:19
 msgid "Album Feed"
-msgstr ""
+msgstr "ऐल्बम फीड"
 
 #: feeds/templates/feeds/feeds_list.html:22
 msgid "Face Feed"
-msgstr ""
+msgstr "चेहरे का फीड"
 
 #: feeds/templates/feeds/feeds_list.html:25
 msgid "Resource Feed"
-msgstr ""
+msgstr "रिसोर्स फीड"
 
 #: location/forms.py:30
 msgid "Sub district type has to be chosen first"
-msgstr ""
+msgstr "सब डिस्ट्रिक्ट टाइप को सबसे पहले चुना जाना है"
 
 #: location/templates/location/location_detail.html:4
 #, python-format
 msgid "Pages from %(location.address)s"
-msgstr ""
+msgstr "%(location.address)s से पृष्ठ"
 
 #: location/templates/location/location_detail.html:20
 #, python-format
 msgid "Pages from %(location.name)s, %(location.district)s, %(location.state)s"
-msgstr ""
+msgstr "%(location.name)s, %(location.district)s, %(location.state)s से पृष्ठ"
 
 #: location/templates/map/map_list.html:4
 msgid "Map"
-msgstr ""
+msgstr "मानचित्र"
 
 #: location/templates/map/map_list.html:5
 msgid "Find PARI stories by geographic location."
-msgstr ""
+msgstr "पारी की स्टोरीज भौगोलिक स्थिति द्वारा खोजें।"
 
 #: location/templates/map/map_list.html:43
 msgid "Show"
-msgstr ""
+msgstr "दिखाएं"
 
 #: location/templates/map/map_list.html:47
 #: search/templates/includes/search_filters.html:28
 msgid "Articles"
-msgstr ""
+msgstr "लेख"
 
 #: location/templates/map/map_list.html:61
 msgid "State"
-msgstr ""
+msgstr "राज्य"
 
 #: location/wagtail_hooks.py:37
 msgid "Locations"
@@ -2962,207 +3458,207 @@ msgstr ""
 
 #: news/templates/news/pari_news.html:4 news/templates/news/pari_news.html:15
 msgid "New on PARI"
-msgstr ""
+msgstr "पारी पर नवीन"
 
 #: pari/settings/base.py:215
 msgid "Andaman and Nicobar Islands"
-msgstr ""
+msgstr "अंडमान तथा निकोबार द्वीप"
 
 #: pari/settings/base.py:216
 msgid "Andhra Pradesh"
-msgstr ""
+msgstr "आंध्र प्रदेश"
 
 #: pari/settings/base.py:217
 msgid "Arunachal Pradesh"
-msgstr ""
+msgstr "अरुणाचल प्रदेश"
 
 #: pari/settings/base.py:218
 msgid "Assam"
-msgstr ""
+msgstr "असम"
 
 #: pari/settings/base.py:219
 msgid "Bihar"
-msgstr ""
+msgstr "बिहार"
 
 #: pari/settings/base.py:220
 msgid "Chandigarh"
-msgstr ""
+msgstr "चंडीगढ़"
 
 #: pari/settings/base.py:221
 msgid "Chhattisgarh"
-msgstr ""
+msgstr "छत्तीसगढ़"
 
 #: pari/settings/base.py:222
 msgid "Dadra and Nagar Haveli"
-msgstr ""
+msgstr "दादरा तथा नगर हवेली"
 
 #: pari/settings/base.py:223
 msgid "Daman and Diu"
-msgstr ""
+msgstr "दमन तथा दीव"
 
 #: pari/settings/base.py:224
 msgid "National Capital Territory of Delhi"
-msgstr ""
+msgstr "राष्ट्रीय राजधानी क्षेत्र दिल्ली"
 
 #: pari/settings/base.py:225
 msgid "Goa"
-msgstr ""
+msgstr "गोवा"
 
 #: pari/settings/base.py:226
 msgid "Gujarat"
-msgstr ""
+msgstr "गुजरात"
 
 #: pari/settings/base.py:227
 msgid "Haryana"
-msgstr ""
+msgstr "हरियाणा"
 
 #: pari/settings/base.py:228
 msgid "Himachal Pradesh"
-msgstr ""
+msgstr "हिमाचल प्रदेश"
 
 #: pari/settings/base.py:229
 msgid "Jammu and Kashmir"
-msgstr ""
+msgstr "जम्मू-कश्मीर"
 
 #: pari/settings/base.py:230
 msgid "Jharkhand"
-msgstr ""
+msgstr "झारखंड"
 
 #: pari/settings/base.py:231
 msgid "Karnataka"
-msgstr ""
+msgstr "कर्नाटक"
 
 #: pari/settings/base.py:232
 msgid "Kerala"
-msgstr ""
+msgstr "केरल"
 
 #: pari/settings/base.py:233
 msgid "Lakshadweep"
-msgstr ""
+msgstr "लक्षद्वीप"
 
 #: pari/settings/base.py:234
 msgid "Madhya Pradesh"
-msgstr ""
+msgstr "मध्य प्रदेश"
 
 #: pari/settings/base.py:235
 msgid "Maharashtra"
-msgstr ""
+msgstr "महाराष्ट्र"
 
 #: pari/settings/base.py:236
 msgid "Manipur"
-msgstr ""
+msgstr "मणिपुर"
 
 #: pari/settings/base.py:237
 msgid "Meghalaya"
-msgstr ""
+msgstr "मेघालय"
 
 #: pari/settings/base.py:238
 msgid "Mizoram"
-msgstr ""
+msgstr "मिजोरम"
 
 #: pari/settings/base.py:239
 msgid "Nagaland"
-msgstr ""
+msgstr "नागालैंड"
 
 #: pari/settings/base.py:240
 msgid "Odisha"
-msgstr ""
+msgstr "ओडिशा"
 
 #: pari/settings/base.py:241
 msgid "Puducherry"
-msgstr ""
+msgstr "पुडुचेरी"
 
 #: pari/settings/base.py:242
 msgid "Punjab"
-msgstr ""
+msgstr "पंजाब"
 
 #: pari/settings/base.py:243
 msgid "Rajasthan"
-msgstr ""
+msgstr "राजस्थान"
 
 #: pari/settings/base.py:244
 msgid "Sikkim"
-msgstr ""
+msgstr "सिक्किम"
 
 #: pari/settings/base.py:245
 msgid "Tamil Nadu"
-msgstr ""
+msgstr "तमिलनाडु"
 
 #: pari/settings/base.py:246
 msgid "Telangana"
-msgstr ""
+msgstr "तिलंगाना"
 
 #: pari/settings/base.py:247
 msgid "Tripura"
-msgstr ""
+msgstr "त्रिपुरा"
 
 #: pari/settings/base.py:248
 msgid "Uttar Pradesh"
-msgstr ""
+msgstr "उत्तर प्रदेश"
 
 #: pari/settings/base.py:249
 msgid "Uttarakhand"
-msgstr ""
+msgstr "उत्तराखंड"
 
 #: pari/settings/base.py:250
 msgid "West Bengal"
-msgstr ""
+msgstr "पश्चिमी बंगाल"
 
 #: pari/settings/base.py:267
 msgid "English"
-msgstr ""
+msgstr "अंग्रेजी"
 
 #: pari/settings/base.py:268
 msgid "Assamese"
-msgstr ""
+msgstr "असमिया"
 
 #: pari/settings/base.py:269
 msgid "Bengali"
-msgstr ""
+msgstr "बंगाली"
 
 #: pari/settings/base.py:270
 msgid "Gujarati"
-msgstr ""
+msgstr "गुजराती"
 
 #: pari/settings/base.py:271
 msgid "Hindi"
-msgstr ""
+msgstr "हिंदी"
 
 #: pari/settings/base.py:272
 msgid "Kannada"
-msgstr ""
+msgstr "कन्नड़"
 
 #: pari/settings/base.py:273
 msgid "Malayalam"
-msgstr ""
+msgstr "मल्यालम"
 
 #: pari/settings/base.py:274
 msgid "Marathi"
-msgstr ""
+msgstr "मराठी"
 
 #: pari/settings/base.py:275
 msgid "Mizo"
-msgstr ""
+msgstr "मिजो"
 
 #: pari/settings/base.py:276
 msgid "Odia"
-msgstr ""
+msgstr "उड़िया"
 
 #: pari/settings/base.py:277
 msgid "Punjabi"
-msgstr ""
+msgstr "पंजाबी"
 
 #: pari/settings/base.py:278
 msgid "Telugu"
-msgstr ""
+msgstr "तेलुगू"
 
 #: pari/settings/base.py:279
 msgid "Tamil"
-msgstr ""
+msgstr "तमिल"
 
 #: pari/settings/base.py:280
 msgid "Urdu"
-msgstr ""
+msgstr "उर्दू"
 
 #: resources/models.py:31 resources/models.py:47 resources/models.py:61
 msgid "Auto-populated field. Edit manually only if you must"
@@ -3172,27 +3668,27 @@ msgstr ""
 #: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:33
 #: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:36
 msgid "Title"
-msgstr ""
+msgstr "शीर्षक"
 
 #: resources/templates/resources/report_detail.html:30
 msgid "Date"
-msgstr ""
+msgstr "तिथि"
 
 #: resources/templates/resources/resource_detail.html:53
 msgid "FOCUS"
-msgstr ""
+msgstr "फोकस"
 
 #: resources/templates/resources/resource_detail.html:60
 msgid "FACTOIDS"
-msgstr ""
+msgstr "असत्यापित सूचना"
 
 #: resources/templates/resources/resource_detail.html:75
 msgid "AUTHOR"
-msgstr ""
+msgstr "लेखक"
 
 #: resources/templates/resources/resource_detail.html:79
 msgid "COPYRIGHT"
-msgstr ""
+msgstr "कॉपीराइट"
 
 #: resources/templates/resources/resource_detail.html:83
 msgid "PUBLICATION DATE"
@@ -3211,6 +3707,8 @@ msgid ""
 "A collection of official and independent reports on rural India, from "
 "economic trends to policy briefings to census data."
 msgstr ""
+"आर्थिक ट्रेंड से लेकर पॉलिसी ब्रीफिंग्स तथा जनगणना डेटा तक, ग्रामीण भारत परआधिकारिक तथा "
+"आजाद रिपोर्टों का एक संग्रह।"
 
 #: resources/templates/resources/resource_list.html:42
 msgid ""
@@ -3219,9 +3717,6 @@ msgid ""
 "as well as independent reports, out-of-print books, rare documents and "
 "reviewed research articles."
 msgstr ""
-"PARI पुस्तकालय ग्रामीण भारत पर रिपोर्ट और सूचना लाता है छात्रों, शोधकर्ताओं और अन्य "
-"पाठकों के लिए एकल स्थान। उसमे समाविष्ट हैं आधिकारिक के साथ-साथ स्वतंत्र रिपोर्ट, आउट-ऑफ-"
-"प्रिंट किताबें, दुर्लभ दस्तावेजों और अनुसंधान लेखों की समीक्षा की।"
 
 #: resources/templates/resources/search_results.html:4
 msgid "Showing search results for "
@@ -3233,11 +3728,11 @@ msgstr ""
 
 #: search/templates/includes/search_filters.html:20
 msgid "Filters"
-msgstr ""
+msgstr "लेखक"
 
 #: search/templates/includes/search_filters.html:26
 msgid "TYPE OF CONTENT"
-msgstr ""
+msgstr "विषय वस्तु का योगदान करने के लिए"
 
 #: search/templates/includes/search_filters.html:26
 #: search/templates/includes/search_filters.html:39
@@ -3250,7 +3745,7 @@ msgstr ""
 
 #: search/templates/includes/search_filters.html:34
 msgid "PARI Pages"
-msgstr ""
+msgstr "पारी तस्वीरें"
 
 #: search/templates/includes/search_filters.html:45
 msgid "Women"
@@ -3270,7 +3765,7 @@ msgstr ""
 
 #: search/templates/includes/search_filters.html:49
 msgid "Resource Conflicts"
-msgstr ""
+msgstr "संसाधन"
 
 #: search/templates/includes/search_filters.html:51
 msgid "Small World"
@@ -3309,10 +3804,8 @@ msgid "One-Offs"
 msgstr ""
 
 #: search/templates/includes/search_filters.html:62
-#, fuzzy
-#| msgid "Things We Make"
 msgid "Things We Wear"
-msgstr "चीजें हम बनाते हैं"
+msgstr "हम जो चीजें बनाते हैं"
 
 #: search/templates/includes/search_filters.html:63
 msgid "PARI for Schools"
@@ -3336,11 +3829,11 @@ msgstr ""
 
 #: search/templates/includes/search_filters.html:82
 msgid "Go"
-msgstr ""
+msgstr "गोवा"
 
 #: search/templates/includes/search_filters.html:87
 msgid "Districts"
-msgstr ""
+msgstr "जिला"
 
 #: search/templates/search/search_results.html:246
 msgid "Search results for"
@@ -3348,7 +3841,7 @@ msgstr ""
 
 #: search/templates/search/search_results.html:249
 msgid "Enter to search"
-msgstr ""
+msgstr "खोजने के लिए इंटर करें"
 
 #: search/templates/search/search_results.html:268
 msgid "Sort by :"
@@ -3360,7 +3853,7 @@ msgstr ""
 
 #: search/templates/search/search_results.html:271
 msgid "Latest"
-msgstr ""
+msgstr "पारी पर नवीनतम"
 
 #: search/templates/search/search_results.html:283
 msgid ""
@@ -3406,7 +3899,7 @@ msgstr ""
 #: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:75
 #: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:78
 msgid "Status"
-msgstr ""
+msgstr "राज्य"
 
 #: search/templates/wagtailadmin/pages/search_results.html:5
 #, python-format
@@ -3419,11 +3912,10 @@ msgid_plural ""
 "                There are %(counter)s matching pages\n"
 "            "
 msgstr[0] ""
-msgstr[1] ""
 
 #: search/templates/wagtailadmin/pages/search_results.html:13
 msgid "Other searches"
-msgstr ""
+msgstr "खोजने के लिए इंटर करें"
 
 #: search/templates/wagtailadmin/pages/search_results.html:15
 msgid "Images"
@@ -3444,10 +3936,4 @@ msgstr ""
 
 #: search/templates/wagtailadmin/pages/search_results.html:29
 msgid "Enter a search term above"
-msgstr ""
-
-#~ msgid "THE EVERYDAY LIVES OF EVERYDAY PEOPLE"
-#~ msgstr "हर आदमी हर दिन के जीवन को जीते हैं"
-
-#~ msgid "The world of rural labour"
-#~ msgstr "ग्रामीण श्रम की दुनिया"
+msgstr "खोजने के लिए इंटर करें"
