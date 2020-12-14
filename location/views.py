@@ -98,6 +98,16 @@ class LocationDetail(DetailView):
         return context
 
 
+def get_result(instance):
+    if instance:
+        return {
+            "id": instance.id,
+            "name": instance.name + ', ' + instance.district + ', ' + instance.state + '( ' + str(instance.point.x) + ', ' + str(instance.point.y) + ' )'
+        }
+    else:
+        return None
+
+
 def add_location(request):
     instance = None
     if request.method == "POST":
@@ -108,7 +118,10 @@ def add_location(request):
     else:
         form = LocationAdminForm()
     return render_modal_workflow(
-        request, "location/add_location.html", None, {
+        request,
+        "location/add_location.html",
+        None,
+        {
             "add_object_url": reverse("locations_add"),
             "name": "Location",
             "form": form,
@@ -116,4 +129,8 @@ def add_location(request):
             "default_lat": settings.MAP_CENTER[0],
             "default_lon": settings.MAP_CENTER[1],
             "default_zoom": 6
-        }, None)
+        },
+        json_data={
+            "step": "chooser",
+            "result": get_result(instance)
+        })

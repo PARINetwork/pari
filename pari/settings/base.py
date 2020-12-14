@@ -176,6 +176,8 @@ WAGTAILSEARCH_RESULTS_TEMPLATE = "search/search_results.html"
 # Flag to show modular content panel in article admin page
 MODULAR_ARTICLE = True
 
+FILE_UPLOAD_PERMISSIONS = 0o644
+
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 
 # Custom settings
