@@ -19,7 +19,7 @@
     <div class="row">
         <div class="donate-form-content col-md-5 col-xs-12">
           {% if errors %}<h5 class="errorlist">{{ errors }}</h5>{% endif %}
-          <form method="post" action="{% url 'donation.views.donate_form' %}">{% csrf_token %}
+          <form method="post" action="{% url 'donate_form' %}">{% csrf_token %}
             {% for field in form %}
             <div class="form-group {% if field.errors %}has-error{% endif %}">
               {% if not field.is_hidden %}<label class="control-label" id="label_{{ field.id_for_label }}">{{ field.label }} </label>{% endif %}

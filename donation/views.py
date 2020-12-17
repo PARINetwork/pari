@@ -8,7 +8,7 @@ import urllib
 
 from django.conf import settings
 from django.core.mail import send_mail
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http import HttpResponseRedirect, HttpResponse, \
     HttpResponseBadRequest, JsonResponse
 from django.shortcuts import render, redirect
@@ -16,7 +16,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
-from wagtail.wagtailcore.models import Site
+from wagtail.core.models import Site
 
 from razorpay.errors import (BadRequestError, GatewayError, ServerError)
 
@@ -36,7 +36,7 @@ def handle_instamojo_payment(form_data):
         "data_phone": form_data["phone"],
         "data_Field_90444": form_data["pan"],
     }
-    pg_url += "?{0}".format(urllib.urlencode(params))
+    pg_url += "?{0}".format(urllib.parse.urlencode(params))
     return HttpResponseRedirect(pg_url)
 
 
@@ -181,7 +181,7 @@ def instamojo_webhook(request):
             subject = _("Donation received")
             message = u""
             for (kk, vv) in data.items():
-                message += unicode(kk) + u" : " + unicode(vv) + u"\r\n"
+                message += kk + u" : " + vv + u"\r\n"
             send_mail(
                 subject, message,
                 settings.DEFAULT_FROM_EMAIL,

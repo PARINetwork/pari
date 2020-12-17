@@ -2,18 +2,19 @@ from __future__ import unicode_literals
 
 from django.conf import settings
 from django.contrib.gis.db import models
-from django.core.urlresolvers import reverse
-from django.utils.encoding import python_2_unicode_compatible
+from django.urls import reverse
+import django.db.models.deletion
+from six import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from modelcluster.fields import ParentalKey
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, \
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, \
     RichTextFieldPanel
-from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailcore.models import Page, Orderable
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsearch import index
+from wagtail.core.fields import RichTextField
+from wagtail.core.models import Page, Orderable
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.search import index
 
 from core.edit_handlers import AudioPanel
 from core.utils import SearchBoost, get_slide_detail
@@ -79,8 +80,8 @@ class Album(Page):
         return " ".join(locations_index)
 
     def get_minimal_locations(self):
-        minimal_locations = map(lambda slide: slide.image.get_locations_with_dist_and_state(),
-                                self.slides.filter(image__isnull=False))
+        minimal_locations = list(map(lambda slide: slide.image.get_locations_with_dist_and_state(),
+                                self.slides.filter(image__isnull=False)))
         return minimal_locations
 
     def get_photographers_index(self):
@@ -118,7 +119,7 @@ class Album(Page):
 @python_2_unicode_compatible
 class AlbumSlide(Orderable):
     page = ParentalKey("album.Album", related_name="slides")
-    image = models.ForeignKey("core.AffixImage", related_name="album_for_image", null=True, blank=True)
+    image = models.ForeignKey("core.AffixImage", related_name="album_for_image", null=True, blank=True, on_delete=django.db.models.deletion.CASCADE)
     audio = models.CharField(blank=True, max_length=50)
     description = RichTextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)

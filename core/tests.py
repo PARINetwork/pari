@@ -1,3 +1,4 @@
+from __future__ import print_function
 from bs4 import BeautifulSoup
 from django.test import Client, override_settings
 from django.test import RequestFactory
@@ -29,7 +30,7 @@ class LocalizationTests(TestCase):
         subtitle = html_response.findAll("div", { "class" : "subtitle" })[0].renderContents().strip()
         subtitle_text_french = 'Nous pouvons le faire sans gouvernements - et le ferons. Nous ne pouvons pas le faire sans vous.'
         self.assertEqual(response['Content-Language'],'fr')
-        assert subtitle == subtitle_text_french
+        assert subtitle.decode("utf-8") == subtitle_text_french
 
 
 class FilterByLanguageTests(TestCase):
@@ -72,7 +73,7 @@ class FilterByLanguageTests(TestCase):
         articles_query_to_filter.filter.return_value = articles_result_after_filter
         albums_query_to_filter.filter.return_value = albums_result_after_filter
         filtered_result = filter_by_language(request, articles_query_to_filter, albums_query_to_filter)
-        
+
         articles_query_to_filter.filter.assert_called_with(language="en")
         albums_query_to_filter.filter.assert_called_with(language="en")
         assert filtered_result == (articles_result_after_filter, albums_result_after_filter)
@@ -89,7 +90,7 @@ class AffixImageTests(TestCase):
 
     def test_should_return_all_photographers_of_image(self):
         photographers = self.image.get_all_photographers()
-        print photographers
+        print(photographers)
         self.assertEqual('V. Sasikumar donald',photographers)
 
     def test_should_return_all_locations(self):
@@ -102,7 +103,7 @@ class AffixImageTests(TestCase):
 
     def test_default_alt_text(self):
         default_alt_text = self.image.default_alt_text
-        print default_alt_text
+        print(default_alt_text)
         self.assertEqual('PARI Stories from all over in all languages',default_alt_text)
 
     def test_categories_index(self):

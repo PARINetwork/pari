@@ -1,7 +1,6 @@
 from django.test import TestCase, override_settings
 from django.test import RequestFactory
 from mock import MagicMock
-from wagtail.wagtailsearch.backends.elasticsearch import Elasticsearch
 
 from article.models import ArticleAuthors
 from functional_tests.factory import ArticleFactory, AuthorFactory
@@ -43,7 +42,7 @@ class ArticleTests(TestCase):
     # @override_settings(
     #     WAGTAILSEARCH_BACKENDS={
     #         'default': {
-    #             'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
+    #             'BACKEND': 'wagtail.search.backends.elasticsearch',
     #             'INDEX': 'pari',
     #             'ATOMIC_REBUILD': True,
     #             'AUTO_UPDATE': True,

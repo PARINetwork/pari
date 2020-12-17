@@ -1,10 +1,10 @@
 from django.contrib.auth.models import User
 from django.core.management.base import BaseCommand, CommandError
-from wagtail.wagtailcore.models import Site
+from wagtail.core.models import Site
 from functional_tests.factory import *
 from category.models import Category
 from django.template import loader, Context
-from wagtail.wagtailcore.models import Page
+from wagtail.core.models import Page
 
 import shutil
 import os
@@ -129,7 +129,7 @@ class Command(BaseCommand):
             "photozone": {"name": "PhotoZone", "description": "Collections of photographs"}
         }
 
-        for slug, value in category_update_dict.iteritems():
+        for slug, value in category_update_dict.items():
             name = value["name"]
             description = value["description"]
             CategoryFactory(name=name, slug=slug, description=description)

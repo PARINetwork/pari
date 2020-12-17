@@ -2,24 +2,25 @@ from __future__ import unicode_literals
 
 from django import forms
 from django.conf import settings
-from django.core.urlresolvers import reverse
+from django.urls import reverse
+import django.db.models.deletion
 from django.db import models
 from django.db.models import Q
-from django.utils.encoding import python_2_unicode_compatible
+from six import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
-from wagtail.wagtailadmin.edit_handlers import MultiFieldPanel, \
+from wagtail.admin.edit_handlers import MultiFieldPanel, \
     StreamFieldPanel, PageChooserPanel, FieldPanel
-from wagtail.wagtailadmin.forms import WagtailAdminPageForm
-from wagtail.wagtailcore import blocks
-from wagtail.wagtailcore.blocks import StructBlock, IntegerBlock
-from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailcore.fields import StreamField
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailimages.formats import get_image_format
-from wagtail.wagtailimages.models import AbstractImage, AbstractRendition
-from wagtail.wagtailsearch import index
+from wagtail.admin.forms import WagtailAdminPageForm
+from wagtail.core import blocks
+from wagtail.core.blocks import StructBlock, IntegerBlock
+from wagtail.core.fields import RichTextField
+from wagtail.core.fields import StreamField
+from wagtail.core.models import Page
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.images.formats import get_image_format
+from wagtail.images.models import AbstractImage, AbstractRendition
+from wagtail.search import index
 
 from album.models import Album
 from article.models import Article
@@ -463,16 +464,18 @@ class AffixImage(AbstractImage):
 
 @python_2_unicode_compatible
 class AffixImageRendition(AbstractRendition):
-    image = models.ForeignKey(AffixImage, related_name='renditions')
+    image = models.ForeignKey(AffixImage, related_name='renditions', on_delete=django.db.models.deletion.CASCADE)
 
     class Meta:
         unique_together = (
             ('image', 'filter_spec', 'focal_point_key'),
         )
 
-    def img_tag(self, extra_attributes=''):
+    def img_tag(self, extra_attributes=None):
+        if extra_attributes is None:
+            extra_attributes = {}
         fw_format = get_image_format("fullwidth")
-        extra_attrs = extra_attributes or ''
+        extra_attrs = extra_attributes
         if fw_format.filter_spec == self.filter_spec:
             return fw_format.image_to_html(
                 self.image, self.image.title, extra_attrs

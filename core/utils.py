@@ -1,12 +1,13 @@
+from __future__ import print_function
 import datetime
 from collections import OrderedDict
 
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http import JsonResponse
 from django.utils.translation import activate, deactivate_all
-from wagtail.wagtailcore import blocks
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailcore.rich_text import RichText
+from wagtail.core import blocks
+from wagtail.core.models import Page
+from wagtail.core.rich_text import RichText
 
 from pari import settings
 
@@ -67,7 +68,7 @@ def get_slide_detail(album):
     photographers = []
     slide_photo_graphers = []
     for slide in album.slides.all():
-        slide_photo_graphers.extend(map(lambda photographer_name: photographer_name.name.encode('UTF-8'),
+        slide_photo_graphers.extend(map(lambda photographer_name: photographer_name.name,
                                         slide.image.photographers.all()))
     photographers_of_album = list(set(slide_photo_graphers))
     for index, slide in enumerate(album.slides.all(), start=0):
@@ -79,11 +80,10 @@ def get_slide_detail(album):
         slide_dict['description'] = block.render(description_value)
         slide_dict['album_description'] = album.description
         slide_dict['url'] = album.get_absolute_url()
-        slide_dict['slide_photographer'] = map(lambda photographer_name: photographer_name.name.encode('UTF-8'),
-                                               slide.image.photographers.all())
+        slide_dict['slide_photographer'] = list(map(lambda photographer_name: photographer_name.name,
+                                               slide.image.photographers.all()))
         if index == 0:
             slide_dict['slide_photographer'] = photographers_of_album
-            print index
         photographers.extend(set(slide.image.photographers.all()))
         if album.first_published_at:
             published_date = datetime.datetime.strptime(str(album.first_published_at)[:10], "%Y-%m-%d")

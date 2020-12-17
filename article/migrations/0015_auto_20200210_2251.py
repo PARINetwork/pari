@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
+import django.db.models.deletion
 import modelcluster.fields
 
 
@@ -36,7 +37,7 @@ class Migration(migrations.Migration):
                 migrations.AddField(
                     model_name='articleauthors',
                     name='author',
-                    field=models.ForeignKey(related_name='articles_by_author', to='author.Author'),
+                    field=models.ForeignKey(related_name='articles_by_author', to='author.Author', on_delete=django.db.models.deletion.CASCADE),
                 ),
                 migrations.AlterUniqueTogether(
                     name='articleauthors',

@@ -71,11 +71,11 @@ class TestHomePage(Test):
         assert in_focus_section.location_of_second_article() == "Madurai"
         assert in_focus_section.date_of_second_article() == "Oct. 24, 2011"
 
-    def test_featured_section(self):
-        featured_section = self.home_page.featured_section()
-        assert featured_section.featured_label() == "FEATURED"
-        assert featured_section.title() == "No longer a toy story"
-        assert featured_section.link_text() == "A story"
+    # def test_featured_section(self):
+    #     featured_section = self.home_page.featured_section()
+    #     assert featured_section.featured_label() == "FEATURED"
+    #     assert featured_section.title() == "No longer a toy story"
+    #     assert featured_section.link_text() == "A story"
 
     def test_audio_and_video_section(self):
         audio_and_video_section = self.home_page.audio_and_video_section()

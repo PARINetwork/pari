@@ -1,37 +1,29 @@
-from wagtail.wagtailadmin.edit_handlers import BaseFieldPanel, FieldPanel
-
-
-class BaseM2MFieldPanel(BaseFieldPanel):
-    object_template = "core/edit_handlers/single_field_panel.html"
+from wagtail.admin.edit_handlers import FieldPanel
 
 
 class M2MFieldPanel(FieldPanel):
-    def bind_to_model(self, model):
-        base = {
-            'model': model,
-            'field_name': self.field_name,
-            'classname': self.classname,
-        }
+    def __init__(self, *args, **kwargs):
+        self.object_template = "core/edit_handlers/single_field_panel.html"
+        super().__init__(*args, **kwargs)
 
-        if self.widget:
-            base['widget'] = self.widget
-
-        return type(str('_M2MFieldPanel'), (BaseM2MFieldPanel,), base)
-
-
-class BaseAudioFieldPanel(BaseFieldPanel):
-    field_template = "core/edit_handlers/audio_panel.html"
+    def clone(self):
+        return self.__class__(
+            heading=self.heading,
+            classname=self.classname,
+            help_text=self.help_text,
+            field_name=self.field_name
+        )
 
 
 class AudioPanel(FieldPanel):
-    def bind_to_model(self, model):
-        base = {
-            'model': model,
-            'field_name': self.field_name,
-            'classname': self.classname,
-        }
+    def __init__(self, *args, **kwargs):
+        self.field_template = "core/edit_handlers/audio_panel.html"
+        super().__init__(*args, **kwargs)
 
-        if self.widget:
-            base['widget'] = self.widget
-
-        return type(str('_AudioPanel'), (BaseAudioFieldPanel,), base)
+    def clone(self):
+        return self.__class__(
+            heading=self.heading,
+            classname=self.classname,
+            help_text=self.help_text,
+            field_name=self.field_name
+        )

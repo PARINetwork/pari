@@ -1,7 +1,7 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from django.utils.translation import ugettext_lazy as _
 
-from wagtail.wagtailcore import hooks
+from wagtail.core import hooks
 from wagtail.contrib.modeladmin.options import (
     ModelAdmin, modeladmin_register)
 

@@ -2,10 +2,10 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import wagtail.wagtailimages.models
+import wagtail.images.models
 from django.conf import settings
 import django.db.models.deletion
-import wagtail.wagtailcore.models
+import wagtail.core.models
 import taggit.managers
 
 
@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='affiximage',
             name='collection',
-            field=models.ForeignKey(related_name='+', default=wagtail.wagtailcore.models.get_root_collection_id, verbose_name='collection', to='wagtailcore.Collection'),
+            field=models.ForeignKey(related_name='+', default=wagtail.core.models.get_root_collection_id, verbose_name='collection', to='wagtailcore.Collection', on_delete=django.db.models.deletion.CASCADE),
         ),
         migrations.AlterField(
             model_name='affiximage',

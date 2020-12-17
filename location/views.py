@@ -1,12 +1,12 @@
 import itertools
 
 from django.conf import settings
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.utils.text import slugify
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.db.models import Q
-from wagtail.wagtailadmin.modal_workflow import render_modal_workflow
+from wagtail.admin.modal_workflow import render_modal_workflow
 from itertools import chain
 
 from album.models import Album
@@ -83,7 +83,7 @@ class LocationDetail(DetailView):
         articles_qs = Article.objects.live().filter(locations=location)
         images_qs = AffixImage.objects.filter(locations=location)
         albums_slides = AlbumSlide.objects.filter(image__in=images_qs)
-        albums_qs = Album.objects.live().filter(slides=albums_slides).distinct()
+        albums_qs = Album.objects.live().filter(slides__in=albums_slides).distinct()
         live_faces = Face.objects.live()
         faces_qs = live_faces.filter(Q(location=location) | Q(image__in=images_qs))
         articles_qs, albums_qs = filter_by_language(self.request, articles_qs, albums_qs)
@@ -98,6 +98,16 @@ class LocationDetail(DetailView):
         return context
 
 
+def get_result(instance):
+    if instance:
+        return {
+            "id": instance.id,
+            "name": instance.name + ', ' + instance.district + ', ' + instance.state + '( ' + str(instance.point.x) + ', ' + str(instance.point.y) + ' )'
+        }
+    else:
+        return None
+
+
 def add_location(request):
     instance = None
     if request.method == "POST":
@@ -108,7 +118,10 @@ def add_location(request):
     else:
         form = LocationAdminForm()
     return render_modal_workflow(
-        request, "location/add_location.html", "location/add_location.js", {
+        request,
+        "location/add_location.html",
+        None,
+        {
             "add_object_url": reverse("locations_add"),
             "name": "Location",
             "form": form,
@@ -116,4 +129,8 @@ def add_location(request):
             "default_lat": settings.MAP_CENTER[0],
             "default_lon": settings.MAP_CENTER[1],
             "default_zoom": 6
+        },
+        json_data={
+            "step": "chooser",
+            "result": get_result(instance)
         })

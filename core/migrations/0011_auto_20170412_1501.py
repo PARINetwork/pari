@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.wagtailimages.models
+import wagtail.images.models
 
 
 class Migration(migrations.Migration):
@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='GalleryHomePage',
             fields=[
-                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page', on_delete=django.db.models.deletion.PROTECT)),
                 ('photo_title', models.TextField()),
                 ('photo_link', models.TextField(null=True, blank=True)),
                 ('photo_album', models.ForeignKey(related_name='photo', on_delete=django.db.models.deletion.PROTECT, to='album.Album')),

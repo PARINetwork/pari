@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
-from wagtail.wagtailcore.models import Site
+from wagtail.core.models import Site
 
 from article.models import Article
 from album.models import Album

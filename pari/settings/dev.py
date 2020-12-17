@@ -4,14 +4,13 @@ import logging
 DEBUG = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', u'development.ruralindiaonline.org']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', u'development.ruralindiaonline.org', 'ruralindiaonline.org']
 
 INSTALLED_APPS += (
     'nplusone.ext.django',
-    'django_nose',
 )
 
-MIDDLEWARE_CLASSES += (
+MIDDLEWARE += (
     'nplusone.ext.django.NPlusOneMiddleware',
 )
 

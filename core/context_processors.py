@@ -1,6 +1,6 @@
 from django.conf import settings as django_settings
 from django.utils.translation import ugettext_lazy as _
-from wagtail.wagtailcore.models import Site
+from wagtail.core.models import Site
 
 from .models import HomePage
 
