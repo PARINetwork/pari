@@ -3407,3 +3407,82 @@ msgstr ""
 #: search/templates/wagtailadmin/pages/search_results.html:29
 msgid "Enter a search term above"
 msgstr ""
+
+
+msgid "The world of rural labour"
+msgstr "ग्रामीण श्रम की दुनिया"
+
+msgid "Artisans, artists and craftspersons"
+msgstr ""
+
+msgid "The troubled world of agriculture"
+msgstr ""
+
+msgid "Small, impactful video clips"
+msgstr ""
+
+msgid "Migrant workers across India"
+msgstr ""
+
+msgid "More than half the sky"
+msgstr ""
+
+msgid "The first dwellers"
+msgstr ""
+
+msgid "Struggles of the oppressed"
+msgstr ""
+
+msgid "Communities and cultures"
+msgstr ""
+
+msgid "Jal, jungle, zameen"
+msgstr ""
+
+msgid "The last living freedom fighters"
+msgstr ""
+
+msgid "A focus on children"
+msgstr ""
+
+msgid "Travellers' tales, everyday lives"
+msgstr ""
+
+msgid "Zany rural transportation"
+msgstr ""
+
+msgid "The world of nature"
+msgstr ""
+
+msgid "Games people play"
+msgstr ""
+
+msgid "The state of rural health"
+msgstr ""
+
+msgid "Culture and folklore"
+msgstr ""
+
+msgid "People, livelihoods, habitats"
+msgstr ""
+
+msgid "The universe of our languages"
+msgstr ""
+
+msgid "Women and work: a photo exhibition"
+msgstr ""
+
+msgid "Videos, photos, articles"
+msgstr ""
+
+msgid "Clothing, headgear, jewellery..."
+msgstr ""
+
+msgid "Work done for PARI by students"
+msgstr ""
+
+msgid "You could listen all day"
+msgstr ""
+
+msgid "Collections of photographs"
+msgstr ""

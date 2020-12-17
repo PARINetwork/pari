@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-14 10:39+0530\n"
+"POT-Creation-Date: 2020-12-15 09:57+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -105,20 +105,14 @@ msgid "Through many different lenses"
 msgstr "बहुत से विभिन्न चश्मों द्वारा"
 
 #: article/streamfields/blocks.py:103
-#, fuzzy, python-format
-#| msgid "Choose language"
 msgid "Choose a %s"
 msgstr "भाषा चुनें"
 
 #: article/streamfields/blocks.py:104
-#, fuzzy, python-format
-#| msgid "Choose language"
 msgid "Choose another %s"
 msgstr "भाषा चुनें"
 
 #: article/streamfields/blocks.py:105
-#, fuzzy, python-format
-#| msgid "Print this story"
 msgid "Edit this %s"
 msgstr "इस स्टोरी को प्रिंट करें"
 
@@ -184,8 +178,6 @@ msgid "translate."
 msgstr "अनुवाद करें"
 
 #: article/templates/article/includes/author_info.html:65
-#, fuzzy
-#| msgid "Other stories by %(author.name)s"
 msgid " Other stories by "
 msgstr "%(author.name)s की अन्य कहानियां"
 
@@ -325,14 +317,10 @@ msgid "Please add a page"
 msgstr ""
 
 #: core/models.py:220
-#, fuzzy
-#| msgid "Page"
 msgid "HomePage"
 msgstr "पृष्ठ"
 
 #: core/models.py:308
-#, fuzzy
-#| msgid "Guidelines"
 msgid "GuidelinesPage"
 msgstr "दिशा-निर्देश"
 
@@ -341,8 +329,6 @@ msgid "Please add photographers to the image"
 msgstr ""
 
 #: core/models.py:380
-#, fuzzy
-#| msgid "Gallery"
 msgid "GalleryHomePage"
 msgstr "गैलरी"
 
@@ -1022,7 +1008,6 @@ msgid "Manoj S. Mahalingam (Tech Lead)"
 msgstr "मनोज एस महालिंगम (टेक लीड)"
 
 #: core/templates/core/acknowledgements.html:69
-#, fuzzy
 msgid "Mohit Shankarrao Pote"
 msgstr "मोहित शंकर राव पोटे"
 
@@ -1131,14 +1116,10 @@ msgid "Gayathri M. (Team Lead)"
 msgstr "गायत्री एम (टीम लीड)"
 
 #: core/templates/core/acknowledgements.html:105
-#, fuzzy
-#| msgid "Jayakumar Chinnappan (Tech Lead, final lap)"
 msgid "Jayakumar Chinnappan (Tech Lead)"
 msgstr "जयकुमार चिनप्पन (टेक लीड, फाइनल लैप)"
 
 #: core/templates/core/acknowledgements.html:106
-#, fuzzy
-#| msgid "Lokesh S."
 msgid "Lokesh Sharma"
 msgstr "लोकेश एस"
 
@@ -1245,8 +1226,6 @@ msgid "Mohan G.N. (Lead)"
 msgstr "मोहन जीएन (लीड)"
 
 #: core/templates/core/acknowledgements.html:149
-#, fuzzy
-#| msgid "Naren H.R."
 msgid "Naren H R"
 msgstr "नरेन एचआर"
 
@@ -1359,8 +1338,6 @@ msgid "Siddharth Chakrabarti"
 msgstr "सिद्धार्थ चक्रबर्ती"
 
 #: core/templates/core/acknowledgements.html:184
-#, fuzzy
-#| msgid "Siddharth Adelkar"
 msgid "Siddharthan Sundaram"
 msgstr "सिद्धार्थ अडेल्कर"
 
@@ -1588,8 +1565,6 @@ msgstr ""
 #: core/templates/core/donate.html:150 core/templates/core/founders.html:19
 #: core/templates/core/founders.html:44
 #: core/templates/pages/menus/dropdown.html:267
-#, fuzzy
-#| msgid "Sainath P."
 msgid "P. Sainath"
 msgstr "साइनाथ पी"
 
@@ -1606,12 +1581,6 @@ msgid "TO CONTRIBUTE CONTENT"
 msgstr "विषय वस्तु का योगदान करने के लिए"
 
 #: core/templates/core/contact_us.html:24
-#, fuzzy, python-format
-#| msgid ""
-#| "Upload your articles, photos, document with content ideas through the <a "
-#| "href=\"https://script.google.com/macros/s/"
-#| "AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec\" target="
-#| "\"_blank\">Content Upload Form</a>."
 msgid ""
 "Please visit the <a href=\"https://script.google.com/macros/s/"
 "AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec\" target="
@@ -1800,12 +1769,6 @@ msgstr ""
 "आप अन्य लेख को भी विभिन्न भाषाओं में अनुवाद कर सकते हैं।"
 
 #: core/templates/core/contribute.html:49
-#, fuzzy
-#| msgid ""
-#| "Help us understand your skills and interests by filling in this <a href="
-#| "\"https://docs.google.com/forms/d/1IbwsyjTovsTnlSb2yC-"
-#| "KkkBlR_rPWOnGepi7XBD4b_k/viewform?usp=send_form\" target=\"_blank"
-#| "\">Profile Form</a>."
 msgid ""
 "Help us understand your skills and interests by filling in this <a href="
 "\"https://docs.google.com/forms/d/"
@@ -1899,12 +1862,6 @@ msgid "Translate"
 msgstr "अनुवाद करें"
 
 #: core/templates/core/contribute.html:113
-#, fuzzy
-#| msgid ""
-#| "Help us by translating content into Indian languages. Please help us "
-#| "understand your skills and interests by filling in this <a href=\"https://"
-#| "docs.google.com/forms/d/1IbwsyjTovsTnlSb2yC-KkkBlR_rPWOnGepi7XBD4b_k/"
-#| "viewform?usp=send_form\" target=\"_blank\">Profile Form</a>."
 msgid ""
 "Help us by translating content into Indian languages. Please help us "
 "understand your skills and interests by filling in this <a href=\"https://"
@@ -1986,10 +1943,6 @@ msgstr ""
 "करने में सहायक बनेगा।"
 
 #: core/templates/core/donate.html:20
-#, fuzzy, python-format
-#| msgid ""
-#| "In 2014-15, only about <span class=\"highlight\">0.24%%</span> of front "
-#| "page news came out of rural India.<br/>We want to change that.\""
 msgid ""
 "In 2014-15, only about <span class=\"highlight\">0.24%%</span> of front page "
 "news came out of rural India.<br/>We want to change that."
@@ -2084,21 +2037,6 @@ msgstr ""
 "बिरादरियों के बीच फील्ड वर्क में कम से कम तीन महीने फुल-टाइम बिता कर।"
 
 #: core/templates/core/donate.html:64
-#, fuzzy
-#| msgid ""
-#| "Across 60 months or so, PARI will generate text reports, audio stories, "
-#| "videos, documentary films, photographs, music and ‘talking albums’ on the "
-#| "everyday lives of everyday people – from every part of the country. A "
-#| "database that will be truly representative of the Indian people, "
-#| "particularly of 833 million rural citizens. Of their labour, crafts, "
-#| "stories, songs, poems, art and more. The network of Fellows we build will "
-#| "also reflect the social composition of the country. Half of the nearly "
-#| "100 Fellows will be women.  And Dalit journalists, Adivasi journalists "
-#| "and those from the minorities, will also be represented in a fair manner. "
-#| "Many stories will be told directly by everyday people themselves. Among "
-#| "other legacies, this will give generations of students, all our children, "
-#| "living textbooks on the world around them. And give the nation itself a "
-#| "repository the like of which it has never seen."
 msgid ""
 "Across 60 months or so, PARI will generate text reports, audio stories, "
 "videos, documentary films, photographs, music and ‘talking albums’ on the "
@@ -2172,11 +2110,6 @@ msgid "HOW YOU CAN HELP"
 msgstr "आप कैसे सहायता कर सकते हैं"
 
 #: core/templates/core/donate.html:105
-#, fuzzy
-#| msgid ""
-#| "You can send in donations using a range of payment methods. All donations "
-#| "made to the CounterMedia Trust are <u>eligible for exemption</u> under "
-#| "Section 80G of the Income Tax Act, 1961."
 msgid ""
 "You can send in donations using a range of payment methods. All donations "
 "made to the CounterMedia Trust are <a href=\"/media/uploads/"
@@ -2191,12 +2124,6 @@ msgid "Donate equipment"
 msgstr "उपकरण दान दें"
 
 #: core/templates/core/donate.html:115
-#, fuzzy
-#| msgid ""
-#| "If you would like to send over equipment (new or used) that PARI Fellows "
-#| "and rural contributors could use, please get in touch. That could include "
-#| "still and video cameras, audio digital recorders, laptops, hard disks and "
-#| "other equipment."
 msgid ""
 "If you would like to send over equipment (new or used) that PARI Fellows and "
 "rural contributors could use, please get in <a href=\"mailto:"
@@ -2212,11 +2139,6 @@ msgid "Share the message in your network"
 msgstr "इस संदेश को अपने नेटवर्क में साझा करें"
 
 #: core/templates/core/donate.html:124
-#, fuzzy
-#| msgid ""
-#| "Ask your friends to connect and contribute to this endeavour. Help us "
-#| "cover your country. Join us in building a unique national knowledge "
-#| "repository on rural India"
 msgid ""
 "Ask your friends to connect and contribute to this endeavour. Help us cover "
 "your country. Join us in building a unique national knowledge repository on "
@@ -2859,7 +2781,7 @@ msgstr "बोलते हुए ऐल्बम देखें"
 #: resources/templates/resources/resource_list.html:37
 #: search/templates/includes/search_filters.html:32
 msgid "Library"
-msgstr ""
+msgstr "लाइब्रेरी"
 
 #: core/templates/pages/menus/dropdown.html:184
 msgid "About PARI"
@@ -2907,7 +2829,7 @@ msgstr "संस्थापक संपादक"
 
 #: core/templates/pages/menus/dropdown.html:280
 msgid "PARI Education"
-msgstr ""
+msgstr "पारी शिक्षा"
 
 #: core/templates/pages/menus/footer.html:16
 msgid "Stories on a map"
@@ -3460,203 +3382,203 @@ msgstr ""
 msgid "New on PARI"
 msgstr "पारी पर नवीन"
 
-#: pari/settings/base.py:215
+#: pari/settings/base.py:217
 msgid "Andaman and Nicobar Islands"
 msgstr "अंडमान तथा निकोबार द्वीप"
 
-#: pari/settings/base.py:216
+#: pari/settings/base.py:218
 msgid "Andhra Pradesh"
 msgstr "आंध्र प्रदेश"
 
-#: pari/settings/base.py:217
+#: pari/settings/base.py:219
 msgid "Arunachal Pradesh"
 msgstr "अरुणाचल प्रदेश"
 
-#: pari/settings/base.py:218
+#: pari/settings/base.py:220
 msgid "Assam"
 msgstr "असम"
 
-#: pari/settings/base.py:219
+#: pari/settings/base.py:221
 msgid "Bihar"
 msgstr "बिहार"
 
-#: pari/settings/base.py:220
+#: pari/settings/base.py:222
 msgid "Chandigarh"
 msgstr "चंडीगढ़"
 
-#: pari/settings/base.py:221
+#: pari/settings/base.py:223
 msgid "Chhattisgarh"
 msgstr "छत्तीसगढ़"
 
-#: pari/settings/base.py:222
+#: pari/settings/base.py:224
 msgid "Dadra and Nagar Haveli"
 msgstr "दादरा तथा नगर हवेली"
 
-#: pari/settings/base.py:223
+#: pari/settings/base.py:225
 msgid "Daman and Diu"
 msgstr "दमन तथा दीव"
 
-#: pari/settings/base.py:224
+#: pari/settings/base.py:226
 msgid "National Capital Territory of Delhi"
 msgstr "राष्ट्रीय राजधानी क्षेत्र दिल्ली"
 
-#: pari/settings/base.py:225
+#: pari/settings/base.py:227
 msgid "Goa"
 msgstr "गोवा"
 
-#: pari/settings/base.py:226
+#: pari/settings/base.py:228
 msgid "Gujarat"
 msgstr "गुजरात"
 
-#: pari/settings/base.py:227
+#: pari/settings/base.py:229
 msgid "Haryana"
 msgstr "हरियाणा"
 
-#: pari/settings/base.py:228
+#: pari/settings/base.py:230
 msgid "Himachal Pradesh"
 msgstr "हिमाचल प्रदेश"
 
-#: pari/settings/base.py:229
+#: pari/settings/base.py:231
 msgid "Jammu and Kashmir"
 msgstr "जम्मू-कश्मीर"
 
-#: pari/settings/base.py:230
+#: pari/settings/base.py:232
 msgid "Jharkhand"
 msgstr "झारखंड"
 
-#: pari/settings/base.py:231
+#: pari/settings/base.py:233
 msgid "Karnataka"
 msgstr "कर्नाटक"
 
-#: pari/settings/base.py:232
+#: pari/settings/base.py:234
 msgid "Kerala"
 msgstr "केरल"
 
-#: pari/settings/base.py:233
+#: pari/settings/base.py:235
 msgid "Lakshadweep"
 msgstr "लक्षद्वीप"
 
-#: pari/settings/base.py:234
+#: pari/settings/base.py:236
 msgid "Madhya Pradesh"
 msgstr "मध्य प्रदेश"
 
-#: pari/settings/base.py:235
+#: pari/settings/base.py:237
 msgid "Maharashtra"
 msgstr "महाराष्ट्र"
 
-#: pari/settings/base.py:236
+#: pari/settings/base.py:238
 msgid "Manipur"
 msgstr "मणिपुर"
 
-#: pari/settings/base.py:237
+#: pari/settings/base.py:239
 msgid "Meghalaya"
 msgstr "मेघालय"
 
-#: pari/settings/base.py:238
+#: pari/settings/base.py:240
 msgid "Mizoram"
 msgstr "मिजोरम"
 
-#: pari/settings/base.py:239
+#: pari/settings/base.py:241
 msgid "Nagaland"
 msgstr "नागालैंड"
 
-#: pari/settings/base.py:240
+#: pari/settings/base.py:242
 msgid "Odisha"
 msgstr "ओडिशा"
 
-#: pari/settings/base.py:241
+#: pari/settings/base.py:243
 msgid "Puducherry"
 msgstr "पुडुचेरी"
 
-#: pari/settings/base.py:242
+#: pari/settings/base.py:244
 msgid "Punjab"
 msgstr "पंजाब"
 
-#: pari/settings/base.py:243
+#: pari/settings/base.py:245
 msgid "Rajasthan"
 msgstr "राजस्थान"
 
-#: pari/settings/base.py:244
+#: pari/settings/base.py:246
 msgid "Sikkim"
 msgstr "सिक्किम"
 
-#: pari/settings/base.py:245
+#: pari/settings/base.py:247
 msgid "Tamil Nadu"
 msgstr "तमिलनाडु"
 
-#: pari/settings/base.py:246
+#: pari/settings/base.py:248
 msgid "Telangana"
 msgstr "तिलंगाना"
 
-#: pari/settings/base.py:247
+#: pari/settings/base.py:249
 msgid "Tripura"
 msgstr "त्रिपुरा"
 
-#: pari/settings/base.py:248
+#: pari/settings/base.py:250
 msgid "Uttar Pradesh"
 msgstr "उत्तर प्रदेश"
 
-#: pari/settings/base.py:249
+#: pari/settings/base.py:251
 msgid "Uttarakhand"
 msgstr "उत्तराखंड"
 
-#: pari/settings/base.py:250
+#: pari/settings/base.py:252
 msgid "West Bengal"
 msgstr "पश्चिमी बंगाल"
 
-#: pari/settings/base.py:267
+#: pari/settings/base.py:269
 msgid "English"
 msgstr "अंग्रेजी"
 
-#: pari/settings/base.py:268
+#: pari/settings/base.py:270
 msgid "Assamese"
 msgstr "असमिया"
 
-#: pari/settings/base.py:269
+#: pari/settings/base.py:271
 msgid "Bengali"
 msgstr "बंगाली"
 
-#: pari/settings/base.py:270
+#: pari/settings/base.py:272
 msgid "Gujarati"
 msgstr "गुजराती"
 
-#: pari/settings/base.py:271
+#: pari/settings/base.py:273
 msgid "Hindi"
 msgstr "हिंदी"
 
-#: pari/settings/base.py:272
+#: pari/settings/base.py:274
 msgid "Kannada"
 msgstr "कन्नड़"
 
-#: pari/settings/base.py:273
+#: pari/settings/base.py:275
 msgid "Malayalam"
 msgstr "मल्यालम"
 
-#: pari/settings/base.py:274
+#: pari/settings/base.py:276
 msgid "Marathi"
 msgstr "मराठी"
 
-#: pari/settings/base.py:275
+#: pari/settings/base.py:277
 msgid "Mizo"
 msgstr "मिजो"
 
-#: pari/settings/base.py:276
+#: pari/settings/base.py:278
 msgid "Odia"
 msgstr "उड़िया"
 
-#: pari/settings/base.py:277
+#: pari/settings/base.py:279
 msgid "Punjabi"
 msgstr "पंजाबी"
 
-#: pari/settings/base.py:278
+#: pari/settings/base.py:280
 msgid "Telugu"
 msgstr "तेलुगू"
 
-#: pari/settings/base.py:279
+#: pari/settings/base.py:281
 msgid "Tamil"
 msgstr "तमिल"
 
-#: pari/settings/base.py:280
+#: pari/settings/base.py:282
 msgid "Urdu"
 msgstr "उर्दू"
 
@@ -3937,3 +3859,82 @@ msgstr ""
 #: search/templates/wagtailadmin/pages/search_results.html:29
 msgid "Enter a search term above"
 msgstr "खोजने के लिए इंटर करें"
+
+msgid "The world of rural labour"
+msgstr "ग्रामीण श्रम की दुनिया"
+
+msgid "Artisans, artists and craftspersons"
+msgstr ""
+
+msgid "The troubled world of agriculture"
+msgstr ""
+
+msgid "Small, impactful video clips"
+msgstr ""
+
+msgid "Migrant workers across India"
+msgstr ""
+
+msgid "More than half the sky"
+msgstr ""
+
+msgid "The first dwellers"
+msgstr ""
+
+msgid "Struggles of the oppressed"
+msgstr ""
+
+msgid "Communities and cultures"
+msgstr ""
+
+msgid "Jal, jungle, zameen"
+msgstr ""
+
+msgid "The last living freedom fighters"
+msgstr ""
+
+msgid "A focus on children"
+msgstr ""
+
+msgid "Travellers' tales, everyday lives"
+msgstr ""
+
+msgid "Zany rural transportation"
+msgstr ""
+
+msgid "The world of nature"
+msgstr ""
+
+msgid "Games people play"
+msgstr ""
+
+msgid "The state of rural health"
+msgstr ""
+
+msgid "Culture and folklore"
+msgstr ""
+
+msgid "People, livelihoods, habitats"
+msgstr ""
+
+msgid "The universe of our languages"
+msgstr ""
+
+msgid "Women and work: a photo exhibition"
+msgstr ""
+
+msgid "Videos, photos, articles"
+msgstr ""
+
+msgid "Clothing, headgear, jewellery..."
+msgstr ""
+
+msgid "Work done for PARI by students"
+msgstr ""
+
+msgid "You could listen all day"
+msgstr ""
+
+msgid "Collections of photographs"
+msgstr ""
+
