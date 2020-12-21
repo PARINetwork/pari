@@ -377,11 +377,19 @@
                                  alt="{{ categories.0.name }}" class="img-responsive lazyload">
                             <div class="grid-container">
                                 <div class="category-name resource-title">
-                                  <h3 class="category-image-overlay-text">{{ categories.0.name }}</h3>
+                                    <h3 class="category-image-overlay-text">
+                                        {% with categories.0.name as name %}
+                                            {% trans name %}
+                                        {% endwith %}
+                                    </h3>
                                 </div>
                                 <div class="title-grid resource-description">
                                     <div class="border-link"></div>
-                                    <div>{{ categories.0.description }}</div>
+                                    <div>
+                                        {% with categories.0.description as description %}
+                                            {% trans description %}
+                                        {% endwith %}
+                                    </div>
                                 </div>
                             </div>
                         </a>
@@ -409,11 +417,19 @@
                                              alt="{{ categories.1.name }}" class="img-responsive lazyload">
                                         <div class="grid-container">
                                           <div class="category-name">
-                                            <h3>{{ categories.1.name }}</h3>
+                                            <h3>
+                                                {% with categories.1.name as name %}
+                                                    {% trans name %}
+                                                {% endwith %}
+                                            </h3>
                                           </div>
                                             <div class="title-grid">
                                                 <div class="border-link"></div>
-                                                <div>{{ categories.1.description }}</div>
+                                                <div>
+                                                    {% with categories.1.description as description %}
+                                                        {% trans description %}
+                                                    {% endwith %}
+                                                </div>
                                             </div>
                                         </div>
                                     </a>
@@ -432,11 +448,19 @@
                                          alt="{{ categories.2.name }}" class="img-responsive lazyload">
                                     <div class="grid-container">
                                       <div class="category-name">
-                                        <h3>{{ categories.2.name }}</h3>
+                                        <h3>
+                                            {% with categories.2.name as name %}
+                                                {% trans name %}
+                                            {% endwith %}
+                                        </h3>
                                       </div>
                                         <div class="title-grid">
                                             <div class="border-link"></div>
-                                            <div>{{ categories.2.description }}</div>
+                                            <div>
+                                                {% with categories.2.description as description %}
+                                                    {% trans description %}
+                                                {% endwith %}
+                                            </div>
                                         </div>
                                     </div>
                                 </a>
@@ -455,13 +479,21 @@
                                          alt="{{ categories.3.name }}" class="img-responsive lazyload">
                                     <div class="grid-container">
                                       <div class="category-name">
-                                        <h3>{{ categories.3.name }}</h3>
+                                        <h3>
+                                            {% with categories.3.name as name %}
+                                                {% trans name %}
+                                            {% endwith %}
+                                        </h3>
                                       </div>
 
 
                                         <div class="title-grid">
                                             <div class="border-link"></div>
-                                            <div>{{ categories.3.description }}</div>
+                                            <div>
+                                                {% with categories.3.description as description %}
+                                                    {% trans description %}
+                                                {% endwith %}
+                                            </div>
                                         </div>
                                     </div>
                                 </a>
