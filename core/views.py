@@ -13,14 +13,19 @@ from category.models import Category
 from core.utils import get_translations_for_page, construct_guidelines
 from .forms import ContactForm
 from .models import HomePage, GuidelinesPage
+from django.utils.translation import get_language
 
 
 def home_page(request, slug="home-page"):
     home_page = HomePage.objects.get(slug=slug)
     translations = get_translations_for_page(home_page)
-    video = home_page.video
-    talking_album = home_page.talking_album
-    photo_album = home_page.photo_album
+    translated_home_page = home_page
+    for translation in translations:
+        if translation.language == get_language():
+            translated_home_page = translation
+    video = translated_home_page.video
+    talking_album = translated_home_page.talking_album
+    photo_album = translated_home_page.photo_album
     category1 = Category.objects.get(slug="resource-conflicts")
     category2 = Category.objects.get(slug="adivasis")
     category3 = Category.objects.get(slug="dalits")
@@ -43,11 +48,11 @@ def home_page(request, slug="home-page"):
             'photographers': video.authors.all(),
             'section_model': video,
         },
-        "page": home_page,
+        "page": translated_home_page,
         "categories": [category1, category2, category3, category4],
         "translations": translations,
-        "translations_for_infocus_article1": get_translations_for_page(home_page.in_focus_page1.specific),
-        "translations_for_infocus_article2": get_translations_for_page(home_page.in_focus_page2.specific),
+        "translations_for_infocus_article1": get_translations_for_page(translated_home_page.in_focus_page1.specific),
+        "translations_for_infocus_article2": get_translations_for_page(translated_home_page.in_focus_page2.specific),
         "current_page": 'home-page',
     }
     return render(request, "core/home_page.html", home_context)

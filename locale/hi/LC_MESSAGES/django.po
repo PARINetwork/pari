@@ -3675,11 +3675,11 @@ msgstr ""
 
 #: search/templates/includes/search_filters.html:46
 msgid "Adivasis"
-msgstr ""
+msgstr "आदिवासि"
 
 #: search/templates/includes/search_filters.html:47
 msgid "Dalits"
-msgstr ""
+msgstr "दलित"
 
 #: search/templates/includes/search_filters.html:48
 msgid "We Are"
@@ -3703,7 +3703,7 @@ msgstr ""
 
 #: search/templates/includes/search_filters.html:55
 msgid "Rural Sports"
-msgstr ""
+msgstr "ग्रामीण खेल"
 
 #: search/templates/includes/search_filters.html:56
 msgid "Healthcare"
@@ -3879,16 +3879,16 @@ msgid "More than half the sky"
 msgstr ""
 
 msgid "The first dwellers"
-msgstr ""
+msgstr "पहले रहने वाले"
 
 msgid "Struggles of the oppressed"
-msgstr ""
+msgstr "दबंगों के हौसले पस्त"
 
 msgid "Communities and cultures"
 msgstr ""
 
 msgid "Jal, jungle, zameen"
-msgstr ""
+msgstr "जल, जंगल, ज़मीन"
 
 msgid "The last living freedom fighters"
 msgstr ""
@@ -3906,7 +3906,7 @@ msgid "The world of nature"
 msgstr ""
 
 msgid "Games people play"
-msgstr ""
+msgstr "चालबाजी"
 
 msgid "The state of rural health"
 msgstr ""

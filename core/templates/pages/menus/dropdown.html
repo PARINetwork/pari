@@ -293,7 +293,7 @@
 <li class="dropdown">
 <div class="language-toggle">
     <form style="margin-top: 0" action="{% url 'set_language' %}" method="post">{% csrf_token %}
-        <input name="next" type="hidden" value="{{ redirect_to }}">
+        <input name="next" type="hidden" value="{{ "/" }}">
         <select name="language" onchange="this.form.submit()">
             {% get_current_language as LANGUAGE_CODE %}
             {% get_available_languages as LANGUAGES %}
