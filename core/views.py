@@ -10,7 +10,7 @@ from wagtail.admin.views.pages import PreviewOnEdit, PreviewOnCreate
 from wagtail.core.models import Page, Site
 
 from category.models import Category
-from core.utils import get_translations_for_page, construct_guidelines
+from core.utils import get_translations_for_page, construct_guidelines, get_translated_or_default_page
 from .forms import ContactForm
 from .models import HomePage, GuidelinesPage
 from django.utils.translation import get_language
@@ -19,10 +19,7 @@ from django.utils.translation import get_language
 def home_page(request, slug="home-page"):
     home_page = HomePage.objects.get(slug=slug)
     translations = get_translations_for_page(home_page)
-    translated_home_page = home_page
-    for translation in translations:
-        if translation.language == get_language():
-            translated_home_page = translation
+    translated_home_page = get_translated_or_default_page(home_page, translations)
     video = translated_home_page.video
     talking_album = translated_home_page.talking_album
     photo_album = translated_home_page.photo_album
@@ -76,20 +73,29 @@ def static_page(request, slug=None):
     if 'donate' in slug:
         active_tab = 'donate'
     translations = get_translations_for_page(page.specific)
+    translated_page = page
+    translated_pages_slug = ['copyright', 'terms-and-conditions']
+    show_language_filter = True
+    if any(x in slug for x in translated_pages_slug):
+        show_language_filter = False
+        translated_page = get_translated_or_default_page(page, translations)
     return render(request, "core/static_page.html", {
-        "self": page.specific,
+        "self": translated_page.specific,
         "translations": translations,
         "tab": active_tab,
         "current_page": slug,
+        "show_language_filter": show_language_filter
     })
 
 
-def guidelines(request):
-    guideline = GuidelinesPage.objects.first()
-    page_content = construct_guidelines(guideline.content)
+def guidelines(request, slug="guidelines"):
+    guideline = GuidelinesPage.objects.get(slug=slug)
+    translations = get_translations_for_page(guideline)
+    translated_guideline_page = get_translated_or_default_page(guideline, translations)
+    page_content = construct_guidelines(translated_guideline_page.content)
     active_tab = 'about-pari'
     return render(request, "core/guidelines.html", {
-        "page": guideline,
+        "page": translated_guideline_page,
         "page_content": page_content,
         "tab": active_tab,
     })

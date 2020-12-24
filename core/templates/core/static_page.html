@@ -11,7 +11,7 @@
 
 {% block main %}
 <div class="pull-right">
-{% if translations and translations|length > 1 %}
+{% if translations and translations|length > 1 and show_language_filter %}
     <span class="dropdown translations">
 	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
 	    {% trans "Choose language" %}

@@ -501,9 +501,9 @@ msgstr ""
 "पारी जीवित पत्रिका भी है और अभिलेख भी। यह ग्रामीण क्षेत्रों की रिपोर्टिंग करेगा जो "
 "वर्तमानकी है, जबकि पहले से प्रकाशित का डेटाबेस भी तैयार कर रहा है <a href="
 "%(category_list)s> स्टोरीज </a>,<a href=%(resource_list)s> रिपोर्ट्स </a>, <a "
-"href=%(gallery_detail_video)s विडियो </a>, और<a href="
+"href=%(gallery_detail_video)s> विडियो </a>, और<a href="
 "%(gallery_detail_audio)s> ऑडियो </a> जितने भी स्रोतों से हम कर सकते हैं, करेंगे।पारी "
-"की सभी विषय वस्तु <a href=%(copyright)s क्रियेटिव कॉमन्स </a> के अंतर्गत आती हैं और "
+"की सभी विषय वस्तु <a href=%(copyright)s> क्रियेटिव कॉमन्स </a> के अंतर्गत आती हैं और "
 "साइटतक पहुंच मुफ्त है। तथा कोई भी पारी में अपना सहयोग दे सकता है। हमारे लिए लिखें, हमारे "
 "लिए शूटकरें, हमारे लिए रिकॉर्ड करें। हम आपकी उन सभी विषय-वस्तु का स्वागत करेंगे जो इस "
 "साइट के आदर्शोंके मुताबिक हों और हमारे मैंडेटः साधारण लोगों के साधारण जीवन के अंदर आते हों।"
@@ -3938,3 +3938,16 @@ msgstr ""
 msgid "Collections of photographs"
 msgstr ""
 
+msgid "You can send PARI a donation only from an Indian bank account, in Indian rupees. We are "
+"currently not registered with FCRA for accepting foreign funds."
+msgstr ""
+
+msgid "Visit PARI Education – join us in learning, researching, teaching and documenting the everyday lives of everyday people"
+msgstr "पारी शिक्षा पर जाएँ - रोज़मर्रा के लोगों के जीवन को सीखने, शोध, शिक्षण और दस्तावेजीकरण में शामिल हों"
+
+#Announcements translations comes here. keep deleting the announcements which are not shown
+msgid "PARI has won the Silver prize in WAN-IFRA’s South Asian Digital Media Awards, 2020. This is PARI’s 27th journalism prize <i class=\"fas fa-angle-right icon-handle\"></i>"
+msgstr "पारी ने WAN-IFRA के दक्षिण एशियाई डिजिटल मीडिया पुरस्कार, 2020 में रजत पुरस्कार जीता है। यह पारी का 27 वाँ पत्रकारिता पुरस्कार है <i class=\"fas fa-angle-right icon-handle\"></i>"
+
+msgid "PARI’s Jigyasa Mishra has won a Press Institute of India-International Committee of the Red Cross award, 2020. This is PARI’s 26th journalism prize <i class=\"fas fa-angle-right icon-handle\"></i>"
+msgstr "पारी के जिज्ञासु मिश्रा ने रेड क्रॉस पुरस्कार, 2020 की भारत-अंतर्राष्ट्रीय समिति के एक प्रेस संस्थान को जीता है। यह पारी का 26 वां पत्रकारिता पुरस्कार है <i class=\"fas fa-angle-right icon-handle\"></i>"

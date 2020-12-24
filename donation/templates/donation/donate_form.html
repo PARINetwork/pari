@@ -147,7 +147,12 @@
             </div>
             <div class="faq">
                 <p class="question">{% trans "I live abroad. Can I send PARI a donation?" %}</p>
-                <p class="answer">You can send PARI a donation only from an Indian bank account, in Indian rupees. We are currently not registered with FCRA for accepting foreign funds.</p>
+                <p class="answer">
+                    {% blocktrans trimmed %}
+                        You can send PARI a donation only from an Indian bank account, in Indian rupees. We are
+                        currently not registered with FCRA for accepting foreign funds.
+                    {% endblocktrans %}
+                </p>
             </div>
             <div class="faq">
                 <p class="question">{% trans "Is there any other way in which I can contribute?" %}</p>
