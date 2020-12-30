@@ -6,7 +6,7 @@ from wagtail.contrib.modeladmin.options import (
     ModelAdmin, modeladmin_register)
 
 from .views import add_author
-from .models import Author
+from .models import Author, Role
 
 
 @hooks.register('register_admin_urls')
@@ -22,4 +22,12 @@ class AuthorAdmin(ModelAdmin):
     menu_icon = "user"
     search_fields = ('name', 'email', )
 
+
+class RoleAdmin(ModelAdmin):
+    model = Role
+    menu_label = _("Roles")
+    menu_icon = "user"
+    search_fields = ('name',)
+
 modeladmin_register(AuthorAdmin)
+modeladmin_register(RoleAdmin)

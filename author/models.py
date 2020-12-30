@@ -59,3 +59,18 @@ class Author(models.Model):
     def get_absolute_url(self):
         name = "author-detail"
         return reverse(name, kwargs={"slug": self.slug})
+
+
+@python_2_unicode_compatible
+class Role(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __init__(self, *args, **kwargs):
+        self.__class__.panels = [
+            FieldPanel('name'),
+        ]
+        super(Role, self).__init__(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+

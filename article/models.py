@@ -29,7 +29,6 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 from core.widgets import JqueryChosenSelect
 from collections import defaultdict
-from django.db.models import Q
 
 Page.wg_url = Page.url
 
@@ -52,7 +51,7 @@ class ArticleTag(TaggedItemBase):
 class ArticleAuthors(models.Model):
     article = ParentalKey('article.Article', related_name='authors')
     author = models.ForeignKey('author.Author', related_name='articles_by_author', on_delete=django.db.models.deletion.PROTECT)
-    role = models.CharField(max_length=20, choices=settings.ROLE_CHOICES, null=True, blank=True)
+    role = models.ForeignKey('author.Role', related_name='author_credit', on_delete=django.db.models.deletion.PROTECT, null=True, blank=True)
     show_in_beginning = models.BooleanField(default=True)
     show_in_end = models.BooleanField(default=True)
     sort_order = models.IntegerField(default=0)
@@ -60,7 +59,7 @@ class ArticleAuthors(models.Model):
     panels = [
         MultiFieldPanel([
             FieldPanel('author', widget=JqueryChosenSelect),
-            FieldPanel('role'),
+            FieldPanel('role', widget=JqueryChosenSelect),
             FieldRowPanel([
                 FieldPanel('show_in_beginning'),
                 FieldPanel('show_in_end')
@@ -75,7 +74,7 @@ class ArticleAuthors(models.Model):
 
     def __str__(self):
         if self.role:
-            return self.role + ' :' + self.author.name
+            return self.role.name + ' :' + self.author.name
         else:
             return self.author.name
 
@@ -180,7 +179,7 @@ class Article(Page):
         for awr in authors_with_role:
             role = awr.role
             if role:
-                temp[role].append(awr.author)
+                temp[role.name].append(awr.author)
             else:
                 temp['None'].append(awr.author)
         return dict((key, tuple(val)) for key, val in temp.items())

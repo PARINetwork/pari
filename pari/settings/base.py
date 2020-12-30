@@ -369,10 +369,3 @@ RAZORPAY = {
     'SECRET_KEY': ''
 }
 RAZORPAY_CLIENT = None
-
-ROLE_CHOICES = (
-    (_('Photo'), _('Photo')),
-    (_('Text'), _('Text')),
-    (_('Illustration'), _('Illustration')),
-    (_('Video editor'), _('Video editor'))
-)
