@@ -178,7 +178,7 @@
                                                 &nbsp;{% endif %}</p>
                                         </div>
                                         <div class="name-primary">
-                                            {% include "includes/author-links.html" with authors=item.specific|get_photographers author_link_class="author-link" author_name_class="author-name" %}
+                                            {% include "includes/author-links.html" with authors_with_role=item.specific|get_photographers author_link_class="author-link" author_name_class="author-name" %}
                                         </div>
                                         <div class="date">
                                         {% with item.specific|get_locations as locations%}
@@ -275,7 +275,7 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     <a href="{{ item.url }}" class="infocus-title-primary"><div class="infocus-item-title">{{ item.title }}</div></a>
                                     <div class="name-primary">
-                                        {% include "includes/author-links.html" with authors=item.specific.authors.all  author_link_class="author-link" author_name_class="author-name" %}
+                                        {% include "includes/author-links.html" with authors_with_role=item.specific.beginning_authors_with_role  author_link_class="author-link" author_name_class="author-name" %}
                                     </div>
                                     <div class="date">
                                         {% with item.specific|get_locations as locations %}
@@ -322,7 +322,7 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     <a href="{{ item.url }}" class="infocus-title-primary"><div class="infocus-item-title">{{ item.title }}</div></a>
                                     <div class="name-primary">
-                                        {% include "includes/author-links.html" with authors=item.specific.authors.all  author_link_class="author-link" author_name_class="author-name" %}
+                                        {% include "includes/author-links.html" with authors_with_role=item.specific.beginning_authors_with_role  author_link_class="author-link" author_name_class="author-name" %}
                                     </div>
                                     <div class="date">
                                         {% with item.specific|get_locations as locations %}

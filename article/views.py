@@ -48,7 +48,8 @@ class ArticleDetail(DetailView):
                                           .order_by('-first_published_at')[:4]
         context['MAP_KEY'] = settings.GOOGLE_MAP_KEY
         context['current_page'] = 'article-detail'
-        context['authors'] = [x.author for x in self.object.authors.all()]
+        context['beginning_authors_with_role'] = self.object.beginning_authors_with_role()
+        context['end_authors_with_role'] = self.object.end_authors_with_role()
         return context
 
     def render_to_response(self, context, **kwargs):
