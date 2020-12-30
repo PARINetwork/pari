@@ -314,6 +314,16 @@ import django.conf.locale
 LANG_INFO = dict(django.conf.locale.LANG_INFO, **EXTRA_LANG_INFO)
 django.conf.locale.LANG_INFO = LANG_INFO
 
+# This list is the supported languages for which static translation is deployed
+SUPPORTED_LANGUAGES = (
+    ("en", _("English")),
+    ("hi", _("Hindi")),
+    ("bn", _("Bengali")),
+    ("mr", _("Marathi")),
+    ("or", _("Odia")),
+    ("ur", _("Urdu")),
+)
+
 SITE_ID = 1
 
 SITE_TITLE = ""
