@@ -17,7 +17,7 @@ from django.core import mail
 from django.core.cache import caches
 from django.contrib.sites.models import Site
 from django.template import loader, Context
-
+from django.template.loader import render_to_string
 from wagtail.embeds.models import Embed
 from wagtail.search.signal_handlers import post_delete_signal_handler
 from wagtail.images.formats import get_image_format
@@ -49,10 +49,10 @@ def create_translations_folder(sender, instance, **kwargs):
 @receiver(post_save, sender=Contact)
 def send_contact_mail(sender, instance, **kwargs):
     site = Site.objects.get_current()
-    ctx = Context({
+    ctx = {
         "instance": instance,
         "site": site
-    })
+    }
     get_tmpl = loader.get_template
     with mail.get_connection() as connection:
         subject = u"Message from {0}".format(instance.name)

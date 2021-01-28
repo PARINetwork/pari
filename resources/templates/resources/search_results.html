@@ -1,7 +1,7 @@
 {% extends 'resources/resource_list.html' %}
 {% load i18n wagtailimages_tags %}
 {% block context_bar %}
-    <h5 class="other-heading">Showing search results for "<u><b>{{ query_string }}</b></u>"</h5>
+    <h5 class="other-heading">{% trans "Showing search results for " %}<u><b>{{ query_string }}</b></u>"</h5>
 {%  endblock %}
 {% block resource_list %}
     {% for resource in search_results %}

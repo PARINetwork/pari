@@ -6,7 +6,7 @@
     </h3>
     <div class="margin-top-6px">
         {% if article.authors.count %}
-            {% include "includes/author-links.html" with authors=article.authors.all author_link_class="" author_name_class="link-dark-primary font-l"  %}
+            {% include "includes/author-links.html" with authors_with_role=article.beginning_authors_with_role author_link_class="" author_name_class="link-dark-primary font-l"  %}
         {% endif %}
     </div>
     <div class="margin-top-6px comma-grey">

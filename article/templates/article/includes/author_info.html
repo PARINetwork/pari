@@ -4,8 +4,14 @@
     <div class="container">
         {% for author in authors %}
             <div class="row author-block">
-                <div class="col-lg-3">
-                    <div class="author-name">{{ author.name }}</div>
+                <div class="col-lg-4">
+                    <div class="author-name">
+                        {% if role and role != 'None' %}
+                            <span> {{ role }} : {{ author.name }}</span>
+                        {% else %}
+                            {{ author.name }}
+                        {% endif %}
+                    </div>
                     {% if author.twitter_username %}
                         <div>
                             <i class="fab fa-twitter icon-handle"></i>
@@ -53,7 +59,7 @@
                         {% endwith %}
                     </div>
                 </div>
-                <div class="col-lg-9 margin-btm-30px">
+                <div class="col-lg-8 margin-btm-30px">
                     {% if author.bio %}
                         {% if show_translated_bio %}
                             <p class="author-bio"> {{ author.bio }} </p>

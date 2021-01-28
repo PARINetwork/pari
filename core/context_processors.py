@@ -22,6 +22,7 @@ def settings(request):
         "GOOGLE_ANALYTICS_ID": django_settings.SOCIAL.get("GOOGLE_ANALYTICS_ID", ""),
         "SITE_TITLE": django_settings.SITE_TITLE,
         "site": site,
+        "SUPPORTED_LANGUAGES": django_settings.SUPPORTED_LANGUAGES,
     }
 
 

@@ -77,7 +77,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'django.middleware.cache.UpdateCacheMiddleware',
+    # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -119,7 +119,7 @@ CACHES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-ENABLE_SITE_LOCALIZATION = False
+ENABLE_SITE_LOCALIZATION = True
 LANGUAGE_CODE = 'en'
 TIME_ZONE = 'Asia/Calcutta'
 USE_I18N = True
@@ -279,6 +279,48 @@ LANGUAGES = (
     ("pa", _("Punjabi")),
     ("te", _("Telugu")),
     ("ta", _("Tamil")),
+    ("ur", _("Urdu")),
+)
+
+EXTRA_LANG_INFO = {
+    'as': {
+        'bidi': False,
+        'code': 'as',
+        'name': 'Assamese',
+        'name_local': u'Assamese',
+    },
+    'gu': {
+        'bidi': False,
+        'code': 'gu',
+        'name': 'Gujarati',
+        'name_local': u'Gujarati',
+    },
+    'lus': {
+        'bidi': False,
+        'code': 'lus',
+        'name': 'Mizo',
+        'name_local': u'Mizo',
+    },
+    'or': {
+        'bidi': False,
+        'code': 'or',
+        'name': 'Odia',
+        'name_local': u'Odia',
+    },
+}
+
+# Add custom languages not provided by Django
+import django.conf.locale
+LANG_INFO = dict(django.conf.locale.LANG_INFO, **EXTRA_LANG_INFO)
+django.conf.locale.LANG_INFO = LANG_INFO
+
+# This list is the supported languages for which static translation is deployed
+SUPPORTED_LANGUAGES = (
+    ("en", _("English")),
+    ("hi", _("Hindi")),
+    ("bn", _("Bengali")),
+    ("mr", _("Marathi")),
+    ("or", _("Odia")),
     ("ur", _("Urdu")),
 )
 

@@ -1,0 +1,3336 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-12-11 12:31+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: album/models.py:35
+msgid "Slides"
+msgstr "سلائیڈز"
+
+#: album/templates/album/add_audio.html:10
+#: core/templates/core/add_object.html:5 core/templates/core/add_object.html:19
+#, python-format
+msgid "Add %(name)s "
+msgstr "شامل کریں %(name)s"
+
+#: album/templates/album/add_audio.html:14
+#: album/templates/album/add_audio.html:27
+#: album/templates/album/add_audio.html:39
+msgid "Upload"
+msgstr "اپ لوڈ کریں"
+
+#: album/templates/album/add_audio.html:15
+#: album/templates/album/add_audio.html:36
+msgid "Record"
+msgstr "ریکارڈ کریں"
+
+#: album/templates/album/add_audio.html:26
+msgid "Audio File"
+msgstr "آڈیو فائل"
+
+#: album/templates/album/add_audio.html:35
+msgid "Title of the recording"
+msgstr "ریکارڈنگ کا عنوان"
+
+#: album/templates/album/add_audio.html:37
+msgid "Play"
+msgstr "چلائیں"
+
+#: album/templates/album/add_audio.html:38
+msgid "Download"
+msgstr "ڈاؤن لوڈ کریں"
+
+#: album/templates/album/album_detail.html:3
+#: album/templates/album/albumslide_list.html:4
+#, python-format
+msgid " %(title)s "
+msgstr "%(title)s"
+
+#: album/templates/album/album_detail.html:12
+msgid "Album"
+msgstr "البم"
+
+#: album/templates/album/album_detail.html:190
+#: article/templates/article/article.html:230
+#: article/templates/article/includes/author_info.html:43
+msgid "Share"
+msgstr "شیئر کریں"
+
+#: album/templates/album/album_detail.html:207
+msgid "Other stories by"
+msgstr "کے ذریعہ دیگر اسٹوریز"
+
+#: album/templates/album/album_list.html:9
+#: album/templates/album/album_list.html:10
+#: album/templates/album/album_list.html:38
+#: core/templates/pages/menus/dropdown.html:86
+#: location/templates/map/map_list.html:55
+#: search/templates/includes/search_filters.html:33
+msgid "Albums"
+msgstr "البمز"
+
+#: album/views.py:33
+msgid "gallery"
+msgstr "گیلری"
+
+#: album/views.py:42 core/templates/pages/menus/footer.html:41
+msgid "Talking Albums"
+msgstr "بولتے البمز"
+
+#: album/views.py:42
+msgid "Pictures and their spoken story"
+msgstr "تصویریں اور ان کی صوتی کہانیاں"
+
+#: album/views.py:44
+msgid "Photo Albums"
+msgstr "فوٹو البمز"
+
+#: album/views.py:44 category/templates/category/gallery_home_page.html:95
+msgid "Through many different lenses"
+msgstr "بہت سے مختلف لینس کے ذریعے"
+
+#: article/streamfields/blocks.py:103
+#, python-format
+msgid "Choose a %s"
+msgstr "منتخب کریں %s"
+
+#: article/streamfields/blocks.py:104
+#, python-format
+msgid "Choose another %s"
+msgstr "دوسرا منتخب کریں %s"
+
+#: article/streamfields/blocks.py:105
+#, python-format
+msgid "Edit this %s"
+msgstr "اس کی تدوین کریں %s"
+
+#: article/templates/article/archive_article_list.html:55
+#: article/templates/article/author_article_list.html:56
+#: article/templates/article/includes/gallery_article_list.html:6
+#: category/templates/includes/category_cover_image.html:30
+#: category/templates/includes/category_cover_image.html:56
+msgid "Languages"
+msgstr "زبانیں"
+
+#: article/templates/article/article.html:197
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:52
+msgid "Language"
+msgstr "زبان"
+
+#: article/templates/article/article.html:227
+msgid "Read the story in pictures"
+msgstr "تصاویر میں اسٹوری پڑھیں"
+
+#: article/templates/article/article.html:239
+msgid "Print this story"
+msgstr "اس اسٹوری کو پرنٹ کریں"
+
+#: article/templates/article/article.html:252
+msgid "See more from this region"
+msgstr "اس خطے سے مزید دیکھیں"
+
+#: article/templates/article/article.html:303
+msgid "RELATED STORIES"
+msgstr "متعلقہ اسٹوریز"
+
+#: article/templates/article/includes/article_list.html:32
+#: core/templates/core/home_page.html:301
+#: core/templates/core/home_page.html:348
+msgid "languages"
+msgstr "زبانیں"
+
+#: article/templates/article/includes/article_list.html:55
+#: article/templates/article/includes/gallery_article_list.html:35
+msgid "No articles available for "
+msgstr "کے لیے کوئی مضامین دستیاب نہیں ہیں"
+
+#: article/templates/article/includes/article_list.html:58
+#: category/templates/includes/category_cover_image.html:64
+#: category/templates/includes/category_cover_image.html:69
+#, python-format
+msgid "%(tlang)s"
+msgstr "%(tlang)s"
+
+#: article/templates/article/includes/article_list.html:59
+msgid " in this category."
+msgstr "اس زمرے میں"
+
+#: article/templates/article/includes/article_list.html:62
+#: article/templates/article/includes/gallery_article_list.html:41
+msgid "Please help us"
+msgstr "براہ کرم ہماری مدد کریں"
+
+#: article/templates/article/includes/article_list.html:64
+#: article/templates/article/includes/gallery_article_list.html:43
+msgid "translate."
+msgstr "ترجمہ کریں۔"
+
+#: article/templates/article/includes/author_info.html:65
+msgid " Other stories by "
+msgstr "کے ذریعہ دیگر اسٹوریز"
+
+#: article/templates/article/includes/gallery_article_list.html:38
+#, python-format
+msgid " %(tlang)s ."
+msgstr "%(tlang)s"
+
+#: article/templates/article/includes/translator_info.html:12
+msgid "Translated by:"
+msgstr "مترجم:"
+
+#: article/templates/article/includes/translator_info.html:15
+msgid "You can contact the translator here:"
+msgstr "آپ مترجم سے یہاں رابطہ کر سکتے ہیں:"
+
+#: author/wagtail_hooks.py:21 search/templates/includes/search_filters.html:96
+msgid "Authors"
+msgstr "مصنفین"
+
+#: category/templates/category/category_detail.html:5
+#: category/templates/category/gallery_detail.html:4
+msgid "Page"
+msgstr "صفحہ"
+
+#: category/templates/category/category_detail.html:7
+msgid "one of many story categories at PARI"
+msgstr "پاری پر اسٹوری کے متعدد زمرے میں سے ایک"
+
+#: category/templates/category/category_list.html:4
+#: category/templates/category/category_list.html:5
+#: category/templates/category/category_list.html:17
+#: core/templates/pages/menus/footer.html:11
+msgid "Categories"
+msgstr "زمرے"
+
+#: category/templates/category/category_list.html:6
+msgid "Find hundreds of PARI stories on diverse topics such as rural occupations, crafts and sports, marginalised groups, resource conflicts, and many more."
+msgstr "دیہی مشغولیات، دستکاری اور کھیل، پسماندہ گروہوں، وسائل کو لے کر تنازعات وغیرہ جیسے متنوع عنوانات کے تحت پاری کی سینکڑوں اسٹوریز تلاش کریں۔"
+
+#: category/templates/category/category_list.html:25
+#: core/templates/pages/menus/dropdown.html:5
+msgid "Stories"
+msgstr "اسٹوریز"
+
+#: category/templates/category/category_list.html:26
+msgid "Find hundreds of them in diverse categories"
+msgstr "ان میں سے سینکڑوں کو الگ الگ زمرے میں تلاش کریں"
+
+#: category/templates/category/gallery_home_page.html:3
+#: category/templates/category/gallery_home_page.html:27
+#: core/templates/pages/menus/dropdown.html:75
+#: core/templates/pages/menus/footer.html:22
+msgid "Gallery"
+msgstr "گیلری"
+
+#: category/templates/category/gallery_home_page.html:4
+msgid "Explore PARI's evergrowing collection of multi-media content from rural India, including photos, videos, and audio clips"
+msgstr "دیہی ہندوستان سے تصاویر، ویڈیوز، اور آڈیو کلپس سمیت ملٹی میڈیا کے مواد پر مبنی پاری کے سدا بہار مجموعہ کو دریافت کریں"
+
+#: category/templates/category/gallery_home_page.html:28
+msgid "AN EVERGROWING ARCHIVE OF RURAL INDIA"
+msgstr "رورول انڈیا کا سدا بہار بڑھتا آرکائیو"
+
+#: category/templates/category/gallery_home_page.html:57
+msgid "Photo Of The Week"
+msgstr "ہفتے کی تصویر"
+
+#: category/templates/category/gallery_home_page.html:70
+msgid "Read the full story"
+msgstr "پوری اسٹوری پڑھیں"
+
+#: category/templates/category/gallery_home_page.html:79
+msgid "View Fullscreen"
+msgstr "فل اسکرین دیکھیں"
+
+#: category/templates/category/gallery_home_page.html:87
+msgid "Pictures and their spoken stories"
+msgstr "تصویریں اور ان کی صوتی کہانیاں"
+
+#: category/templates/category/gallery_home_page.html:88
+msgid "View this Talking Album"
+msgstr "اس بولتے ہوئے البم کو دیکھیں"
+
+#: category/templates/category/gallery_home_page.html:89
+#: core/templates/core/home_page.html:515
+msgid "View all Talking Albums"
+msgstr "سبھی بولتے البمز کو دیکھیں"
+
+#: category/templates/category/gallery_home_page.html:91
+msgid "Stories told in moving pictures"
+msgstr "چلتی ہوئی تصویروں میں بتائی گئی کہانیاں"
+
+#: category/templates/category/gallery_home_page.html:92
+msgid "View this video"
+msgstr "اس ویڈیو کو دیکھیں"
+
+#: category/templates/category/gallery_home_page.html:93
+#: core/templates/core/home_page.html:541
+#: core/templates/pages/menus/dropdown.html:112
+msgid "View all videos"
+msgstr "تمام ویڈیوز دیکھیں"
+
+#: category/templates/category/gallery_home_page.html:96
+msgid "View this Photo Album"
+msgstr "اس فوٹو البم کو دیکھیں"
+
+#: category/templates/category/gallery_home_page.html:97
+#: core/templates/core/home_page.html:568
+msgid "View all Photo Albums"
+msgstr "تمام فوٹو البمز دیکھیں"
+
+#: category/templates/includes/category_cover_image.html:14
+msgid "All Categories"
+msgstr "تمام زمرے"
+
+#: category/templates/includes/category_cover_image.html:59
+#: core/templates/includes/language_select.html:4
+msgid "All"
+msgstr "تمام"
+
+#: core/apps.py:28
+msgid "Enter a valid 'slug' consisting of letters, numbers, underscores or hyphens."
+msgstr "حروف، اعداد، انڈر  اسکور یا ہائفن پر مشتمل ایک درست 'سلگ' درج کریں۔"
+
+#: core/models.py:110 core/models.py:116
+msgid "Please add a page"
+msgstr "براہ کرم ایک صفحہ شامل کریں"
+
+#: core/models.py:220
+msgid "HomePage"
+msgstr "ہوم پیج"
+
+#: core/models.py:308
+msgid "GuidelinesPage"
+msgstr "رہنما ہدایات کا صفحہ"
+
+#: core/models.py:321
+msgid "Please add photographers to the image"
+msgstr "براہ کرم تصویر میں فوٹوگرافروں کو شامل کریں"
+
+#: core/models.py:380
+msgid "GalleryHomePage"
+msgstr "گیلری کا ہوم پیج"
+
+#: core/templates/base.html:82 core/templates/core/about.html:166
+#: core/templates/pages/menus/dropdown.html:11
+#: search/templates/includes/search_filters.html:39
+msgid "CATEGORIES"
+msgstr "زمرے"
+
+#: core/templates/base.html:115
+msgid "People's Archive of Rural India"
+msgstr "پیپلز آرکائیو آف رورل انڈیا"
+
+#: core/templates/core/about.html:4 core/templates/core/home_page.html:397
+#: core/templates/pages/menus/dropdown.html:195
+#: core/templates/pages/menus/footer.html:55
+msgid "The story of PARI"
+msgstr "پاری کی کہانی"
+
+#: core/templates/core/about.html:5
+msgid "Rural India — a living journal, a breathing archive. Learn how PARI came to exist and what role it hopes to serve in the Indian media landscape."
+msgstr "رورول انڈیا — ایک زندہ جریدہ، ایک سانس لیتا آرکائیو۔ جانیں کہ پاری کیسے وجود میں آیا اور یہ ہندوستانی میڈیا کے منظرنامہ پر کیا رول ادا کرنا چاہتا ہے۔"
+
+#: core/templates/core/about.html:28
+msgid "Rural India: a living journal, a breathing archive"
+msgstr "رورول انڈیا: ایک زندہ جریدہ، ایک سانس لیتا آرکائیو"
+
+#: core/templates/core/about.html:29
+msgid "The everyday lives of everyday people"
+msgstr "روزمرہ کے لوگوں کی روزمرہ کی زندگی"
+
+#: core/templates/core/about.html:38
+msgid "Can a project’s success be judged on the basis of its never being completed? Yes, if it’s a living archive of the world’s most complex countryside. Rural India is in many ways the most diverse part of the planet. Its 833 million people include distinct societies speaking well over 700 languages, some of them thousands of years old. The People’s Linguistic Survey of India tells us the country as a whole speaks some 780 languages and uses 86 different scripts. But in terms of provision for schooling up to Class 7, just 4 per cent of those 780 are covered. Most Indian languages are mainly spoken by people in rural India."
+msgstr "کیا کسی پروجیکٹ کی کامیابی کا فیصلہ اس کے کبھی مکمل نہ ہونے کی بنیاد پر کیا جا سکتا ہے؟ ہاں، اگر یہ دنیا کے سب سے پیچیدہ دیہی علاقوں کا زندہ آرکائیو ہے۔ رورل انڈیا کئی معنوں میں اس سیارہ کا سب سے متنوع حصہ ہے۔ اس کے ۸۳۳ ملین لوگوں میں وہ انوکھے معاشرے شامل ہیں جو ۷۰۰ زبانیں بولتے ہیں، جن میں سے کچھ ہزاروں سال پرانی ہیں۔ ہندوستان کے عوام کا لسانی سروے ہمیں بتاتا ہے کہ پورا ملک مجموعی طور سے ۷۸۰ زبانیں بولتا ہے اور ۸۶ الگ الگ رسم الخط کا استعمال کرتا ہے۔ لیکن ۷ویں کلاس تک اسکولوں کو چلانے کے معاملے میں، ان ۷۸۰ میں سے صرف ۴ فیصد کا احاطہ کیا گیا ہے۔ زیادہ تر ہندوستانی زبانیں عام طور سے دیہی ہندوستان کے باشندوں کے ذریعے بولی جاتی ہیں۔"
+
+#: core/templates/core/about.html:47
+msgid "The Eighth Schedule of the Constitution of India lists 22 languages whose development the country’s government is obliged to promote. Yet, there are states whose official languages fall outside those 22, like Khasi and Garo of Meghalaya. Each of six Indian languages is spoken by 50 million people or more. Three are spoken by 80 million or more. One, by close to 500 million. At the other end of the spectrum are unique tribal languages spoken by as few as 4,000 people, some by even less. The eastern state of Odisha alone is home to around 44 tribal languages. The Linguistic Survey reckons that close to 220 languages have died in the past 50 years. Saimar in Tripura is down its last seven speakers."
+msgstr "دستور ہند کے آٹھویں شیڈول میں ۲۲ زبانوں کی فہرست دی گئی ہے، جن کو فروغ دینے کی ذمہ داری ملک کی حکومت پر ہے۔ اس کے باوجود، ایسی بھی ریاستیں ہیں، جن کی سرکاری زبانیں ان ۲۲ سے باہر ہیں، جیسے میگھالیہ کی کھاسی اور گارو۔ چھ ہندوستانی زبانوں میں سے ہر ایک کو بولنے والے ۵۰ ملین لوگ یا اس سے زیادہ ہیں۔ تین زبانوں کو ۸۰ ملین یا اس سے زیادہ لوگ بولتے ہیں۔ ایک زبان کو بولنے والے تو، تقریباً ۵۰۰ ملین لوگ ہیں۔ وہیں دوسری طرف، انوکھی قبائلی زبانیں ہیں، جنہیں کم از کم ۴ ہزار لوگ بولتے ہیں، بعض کو بولنے والے اس سے بھی کم ہیں۔ صرف مشرقی ریاست اوڈیشہ میں تقریباً ۴۴ قبائلی زبانیں ہیں۔ لسانی سروے کا کہنا ہے کہ گزشتہ ۵۰ برسوں میں تقریباً ۲۲۰ زبانوں کی موت ہو چکی ہے۔ تریپورہ کی سائیمار زبان کو بولنے والے اب صرف سات لوگ بچے ہیں۔"
+
+#: core/templates/core/about.html:57
+msgid "The same diversity characterises rural India’s occupations, arts and crafts, culture, literature, legend, transportation, and other fields. As the Indian countryside rushes through an extremely painful transformation, many of these features disappear, leaving us poorer. There are, for instance, probably more schools and styles of weaving in India than in any other single nation. Many of these traditional weaving communities face real collapse, which will rob the world of some of its greatest gifts. Some unique occupations – professional storytellers, epic poem singers – are also in danger of extinction."
+msgstr "یہی تنوع دیہی ہندوستان کے پیشوں، فنون لطیفہ اور دستکاری، ثقافت، ادب، افسانوں، نقل و حمل اور دیگر شعبوں کی خصوصیات ہے۔ ہندوستان کے دیہی علاقے چونکہ نہایت تکلیف دہ تبدیلی کے دور سے گزر رہے ہیں، اس لیے ان میں سے بہت سی خصوصیات ختم ہوتی جا رہی ہیں، جس سے ہم غریب ہوتے جا رہے ہیں۔ مثال کے طور پر، ہندوستان میں بُنائی کے جتنے انداز اور طور طریقے ہیں وہ کسی اور واحد ملک میں نہیں ملتے۔ ان میں سے بہت سی روایتی بنکر برادریاں خاتمہ کے دہانے پر ہیں، جس سے دنیا کی بہترین نعمت ختم ہو جائے گی۔ چند انوکھے پیشے، جیسے پیشہ ور داستان گو، رزمیہ شاعری گانے والے بھی معدوم ہونے کے دہانے پر پہنچ چکے ہیں۔"
+
+#: core/templates/core/about.html:68
+msgid "Then there are professions known only to a few nations. Like <a href=%(toddy_url)s>toddy-tappers who climb 50 palm trees daily</a>, each one thrice, in season. From the sap they make palm jaggery or a fermented liquor called toddy. In peak season, a toddy tapper climbs a height greater than New York’s Empire State Building – every single day. But so many occupations are in collapse. <a href=%(potters_url)s>Potters</a>, metal workers and millions of other highly skilled craftspeople are rapidly losing their livelihoods."
+msgstr "پھر ایسے پیشے بھی ہیں جن کے بارے میں چند ہی ملکوں کو پتہ ہے۔ جیسے <a href=%(toddy_url)s>پاسی جو روزانہ تاڑ کے ۵۰ درختوں پر چڑھتے ہیں</a>، ہر کوئی، موسم میں تین بار۔ اس کے رس سے وہ گُڑ بناتے ہیں یا پھر دیسی شراب، جسے تاڑی کہتے ہیں۔ موسم کے عروج پر، ایک پاسی ہر روز نیویارک کی ایمپائر اسٹیٹ بلڈنگ سے زیادہ اونچائی چڑھتا ہے۔ لیکن بہت سے پیشے اب ختم ہونے کے دہانے پر ہیں۔ <a href=%(potters_url)s>برتن ساز </a>، دھات کا کام کرنے والے اور لاکھوں اسی قسم کے ماہر دستکار تیزی سے اپنی معیشت کھو رہے ہیں۔"
+
+#: core/templates/core/about.html:76
+msgid "Much of what makes the countryside unique could be gone in 20-30 years. Without any systematic record, visual or oral, to educate us – let alone motivate us – to save this incredible diversity. We are losing worlds and voices within rural India of which future generations will know little or nothing. Even as the present one steadily sheds its own links with those worlds."
+msgstr "جو چیزیں دیہی علاقوں کو منفرد بناتی ہیں، ان میں سے بہت کچھ ۳۰۔۲۰ سالوں میں ختم ہو سکتا ہے۔ ان کا کوئی سلسلہ وار بصری یا زبانی ریکارڈ نہیں ہے، جو ہمیں اس ناقابل یقین تنوع کو بچانے کے لیے بیدار یا کم از کم آمادہ کر سکے۔ ہم جہانوں کو اور دیہی ہندوستان کے اندر کی آوازوں کو کھو رہے ہیں، جس کے بارے میں آئندہ نسلیں بہت کم یا کچھ بھی نہیں جان پائیں گی۔ حالانکہ موجودہ نسل بھی اُن جہانوں سے بڑی تیزی سے اپنا رشتہ توڑ رہی ہے۔"
+
+#: core/templates/core/about.html:82
+msgid "There is surely much in rural India that should die. Much that is tyrannical, oppressive, regressive and brutal – and which must go. Untouchability, feudalism, bonded labour, extreme caste and gender oppression and exploitation, land grab and more. The tragedy though is that the nature of the transformation underway more often tends to bolster the regressive and the barbaric, while undermining the best and the diverse. That, too, will be documented here."
+msgstr "دیہی ہندوستان میں واقعی ایسا بہت کچھ ہے جس کا خاتمہ ہونا چاہیے۔ جو ظالمانہ ہے، جابرانہ، رجعت پسند اور سفاک ہے، اسے ضرور ختم ہونا چاہیے۔ چھوا چھوت، جاگیرداری، بندھوا مزدوری، ذات پات اور صنف کی بنیاد پر شدید ظلم و استحصال، زمینوں پر قبضہ وغیرہ بند ہونا چاہیے۔ لیکن المیہ یہ ہے کہ جس قسم کی تبدیلی اس وقت ہو رہی ہے وہ جابروں اور وحشیوں کو اکثر تقویت بخشتی ہے، جب کہ بہترین اور متنوع کو نقصان پہنچاتی ہے۔ اس کی بھی یہاں دستاویزی کی جائے گی۔"
+
+#: core/templates/core/about.html:90
+msgid "THIS IS WHERE PARI COMES IN"
+msgstr "یہی وہ جگہ ہے جہاں پاری آتا ہے"
+
+#: core/templates/core/about.html:96
+msgid "PARI is both a living journal and an archive. It will generate and host reporting on the countryside that is current and contemporary, while also creating a database of already published <a href=%(category_list)s>stories</a>, <a href=%(resource_list)s>reports</a>, <a href=%(gallery_detail_video)s>videos</a> and <a href=%(gallery_detail_audio)s>audios</a> from as many sources as we can. All of PARI’s own content comes under the <a href=%(copyright)s>Creative Commons </a> and the site is free to access. And anyone can contribute to PARI. Write for us, shoot for us, record for us – your material is welcome so long as it meets the standards of this site and falls within our mandate: the everyday lives of everyday people."
+msgstr "پاری ایک زندہ جریدہ اور آرکائیو دونوں ہے۔ یہ موجودہ اور عصر حاضر کے دیہی علاقوں پر رپورٹنگ اور اس کی میزبانی کرے گا، اور اس کے ساتھ ہی پہلے سے شائع شدہ <a href=%(category_list)s>اسٹوریز</a>، <a href=%(resource_list)s>رپورٹس</a>، <a href=%(gallery_detail_video)s>ویڈیوز</a> اور <a href=%(gallery_detail_audio)s>آڈیوز</a> کا ڈیٹا بیس ہم جتنے بھی ذرائع سے کر سکتے ہیں، تیار کرے گا۔ پاری کے خود اپنے سبھی مواد <a href=%(copyright)s>کرئیٹو کامنز</a> کے تحت آتے ہیں اور سائٹ تک رسائی مفت ہے۔ اور پاری کو کوئی بھی تعاون دے سکتا ہے۔ ہمارے لیے لکھیں، ہمارے لیے شوٹ کریں، ہمارے لیے ریکارڈ کریں – آپ کے مواد کا خیرمقدم ہے بشرطیکہ یہ اس سائٹ کے معیاروں پر پورا اترے اور خود ہمارے مینڈیٹ: روزمرہ کے لوگوں کی روزمرہ کی زندگی کے موافق ہو۔"
+
+#: core/templates/core/about.html:106
+msgid "The use of many libraries and museums in India has fallen, more so in the last 20 years. This was compensated by the fact that what you can find in our museums, you could also find on our streets: the same miniature painting schools, the same traditions of sculpture. Now those too are fading. Library and museum visits amongst the young are more rare than routine. However, there is one place future generations the world over, including Indians, will visit more and more: the Net. Internet access, particularly broadband, is low in India, but it is expanding. It is the right place to build – as a public resource – a living, breathing journal and an archive aimed at recording people’s lives. The People’s Archive of Rural India. Many worlds, one website. More voices and distinct languages, we hope, than have ever met on one site."
+msgstr "ہندوستان میں بہت سی لائبریریوں اور میوزیم کا استعمال کم ہوا ہے، خاص کر گزشتہ ۲۰ برسوں میں۔ یہ اس وجہ سے ہوا کہ آپ کو جو کچھ میوزیم میں دیکھنے کو مل سکتا تھا، وہی آپ کو گلیوں میں بھی مل سکتا ہے: وہی چھوٹی چھوٹی پینٹنگ کے اسکول، سنگ تراشی کی وہی روایتیں۔ اب وہ بھی معدوم ہوتے جا رہے ہیں۔ نوجوان پہلے کے مقابلے اب لائبریری اور میوزیم کا دورہ کم کرتے ہیں۔ لیکن، ایک جگہ ایسی ہے جہاں پوری دنیا کی آئندہ نسل، جس میں ہندوستانی بھی شامل ہیں، زیادہ سے زیادہ جائیں گے: اور وہ ہے نیٹ۔ انٹرنیٹ تک رسائی، خاص کر براڈ بینڈ، ہندوستان میں کم ہے، لیکن پھیل رہا ہے۔ عوامی وسیلہ کے طور پر ایک زندہ، سانس لیتا جریدہ اور آرکائیو بنانے کی یہ صحیح جگہ ہے، جس کا مقصد عوام کی زندگیوں کو ریکارڈ کرنا ہے۔ پیپلز آرکائیو آف رورل انڈیا۔ کئی دنیا، ایک ویب سائٹ۔ متعدد آوازیں اور زبانیں، ہم امید کرتے ہیں کہ یہ کام پہلے کبھی کسی ایک ویب سائٹ پر نہیں ہوا ہوگا۔"
+
+#: core/templates/core/about.html:118
+msgid "It means an undertaking unprecedented in scale and scope, utilising myriad forms of media in audio, visual and text platforms. One where the stories, the work, the activity, the histories are narrated, as far as possible, as far as we can manage, by rural Indians themselves. By tea-pickers amidst the fields. By fishermen out at sea. By women paddy transplanters singing at work, or by traditional storytellers. By Khalasi men using centuries-old methods to launch heavy ships to sea without forklifts and cranes. In short, by everyday people talking about themselves, their labour and their lives – talking to us about a world we mostly fail to see."
+msgstr "اس کا مطلب ہے نہایت وسیع و عریض پیمانے پر صوتی، بصری اور تحریری میڈیا کی بے شمار شکلوں کو استعمال کرنا۔ جہاں پر اسٹوریز، کام، سرگرمی، تواریخ کو، جہاں تک ممکن ہے، جہاں تک ہم اسے سنبھال سکتے ہیں، دیہی ہندوستان کے باشندے خود ہی بیان کریں گے۔ کھیتوں سے چائے کی پتی توڑنے والوں کے ذریعے۔ سمندر سے مچھلی پکڑنے والے کے ذریعے۔ کھیتوں میں دھان کی بوائی کرتے وقت گانا گا رہی عورتوں کے ذریعے، یا روایتی داستان گو کے ذریعے۔ کھلاسی مردوں کے ذریعے جو صدیوں پرانے طریقوں کا استعمال کرکے سمندر میں بھاری کشتیوں کو اتارتے ہیں، وہ بھی مشین اور کرین کے بغیر۔ مختصراً یہ کہ روزمرہ کے لوگ خود اپنے بارے میں بات کریں گے، اپنی مزدوری اور زندگیوں کے بارے میں بتائیں گے، ہمیں اس دنیا کے بارے میں بتائیں گے، جسے ہم اکثر دیکھنے سے محروم رہ جاتے ہیں۔"
+
+#: core/templates/core/about.html:128
+msgid "WHAT’S ON PARI"
+msgstr "پاری پر کیا ہے"
+
+#: core/templates/core/about.html:130
+msgid "PARI hosts and combines video, photo, audio and text archives. There is content we already have and stories we are generating. Both take time and effort to organise and load. The videos generated specifically for PARI record the lives and livelihoods of poor and everyday Indians. For example, a woman agricultural labourer takes you through her life, her work, her labour techniques, family, kitchen, whatever she considers important. Typically, the first credit in such a film goes to her; the second to her village/community. The director comes third. PARI respects her ownership of her story. And it is in our mandate to search for ways in which the very people we cover, rural Indians, will also have access to, and a say in, the making of this site. We're also trying to create subtitling in multiple Indian languages for each documentary we generate."
+msgstr "پاری ویڈو، فوٹو، آڈیو اور متن کے آرکائیو کو جمع اور شائع کرتا ہے۔ ہمارے پاس کچھ مواد تو پہلے سے ہی موجود ہیں اور بعض اسٹوریز ہم لگاتار تیار کر رہے ہیں۔ انھیں ترتیب دینے اور لوڈ کرنے میں وقت اور محنت دونوں لگتے ہیں۔ پاری کے لیے خصوصی طور سے تیار کیے گئے ویڈیوز میں روزمرہ کے ہندوستانیوں اور غریبوں کی زندگی اور ان کی معیشت کو ریکارڈ کیا جاتا ہے۔ مثال کے طور پر، ایک خاتون زرعی مزدور آپ کو اپنی زندگی، اپنے کام، اپنی مزدوری کی تکنیک، فیملی، باورچی خانہ اور ان تمام چیزوں سے روبرو کراتی ہے، جسے وہ اہم سمجھتی ہے۔ ظاہر ہے، اس قسم کے فلم میں پہلا کریڈٹ اسے ہی جاتا ہے؛ دوسرا کریڈٹ اس کے گاؤں اور برادری کو جاتا ہے۔ ہدایت کار تیسرے نمبر پر آتا ہے۔ پاری اس کی اسٹوری کی ملکیت کا احترام کرتا ہے۔ اور یہ ہمارے مینڈیٹ میں ہے کہ ہم ایسے طریقے تلاش کریں جس کے ذریعے، ہم جن لوگوں کا احاطہ کر رہے ہیں، یعنی دیہی ہندوستانی، ان کی بھی یہاں تک رسائی ہو، اور وہ اس سائٹ کی تعمیر کے بارے میں اپنی رائے دے سکیں۔ ہم جتنی بھی دستاویزی فلم تیار کر رہے ہیں، ہماری کوشش ہے کہ ان کا سب ٹائٹل بھی ہندوستان کی مختلف زبانوں میں تیار کیا جائے۔"
+
+#: core/templates/core/about.html:142
+msgid "The site's <a href=\"https://soundcloud.com/ruralindia\">AudioZone</a> will, over time, hold thousands of clips – conversations, songs, poetry – in every Indian language that we can record. We started with the Grindmill Songs Project – folk songs by women in Maharashtra’s villages. More than 100,000 songs will eventually be hosted on PARI as an archive of a phenomenal poetic-musical legacy."
+msgstr "سائٹ کے <a href=\"https://soundcloud.com/ruralindia\">آڈیو والے حصہ</a> میں آنے والے وقت میں، ہزاروں کلپس ہوں گے ہر ایک ہندوستانی زبان میں بات چیت، گانے، شاعری، جسے ہم ریکارڈ کر سکتے ہیں۔ ہم نے چکّی کے گانوں کے پروجیکٹ سے شروعات کی تھی، جو مہاراشٹر کے گاؤوں کی عورتوں کے ذریعے گائے گئے علاقائی گانے ہیں۔ ایک لاکھ سے زیادہ گانے، حیرت انگیز شاعری ۔ شاعرانہ وراثت کے طور پر،  پاری پر دھیرے دھیرے جمع کیے جائیں گے۔"
+
+#: core/templates/core/about.html:148
+msgid "We also focus on education and learning. Teaching and research materials, including textbooks, will increasingly move online in the next few years – that process is already on in some parts of the world.  PARI aims to help create informative and lively resources for students, teachers, schools, colleges and universities. Done right, it could mean ‘textbooks’ or teaching material that can be added to, amended, updated or widened. As broadband access grows, it should also mean lower costs for many students, as PARI is a free-access-to-public site."
+msgstr "ہم تعلیم و تدریس پر بھی توجہ مرکوز کر رہے ہیں۔ تدریسی اور تحقیقی مواد، بشمول نصابی کتابیں، اگلے چند سالوں میں تیزی سے آن لائن دستیاب ہوں گی، یہ عمل دنیا کے بعض حصوں میں پہلے سے جاری ہے۔ پاری طلبہ، اساتذہ، اسکولوں، کالجوں اور یونیورسٹیوں کے لیے معلوماتی اور تازہ وسائل تیار کرنے میں مدد کرنا چاہتا ہے۔ اگر صحیح طریقے سے کیا گیا، تو اس کا مطلب ہوگا ’نصابی کتابیں‘ یا تدریسی مواد جن میں اضافہ کیا جا سکتا ہے، ترمیم کی جا سکتی ہے، اپ ڈیٹ اور وسیع کیا جا سکتا ہے۔ براڈ بینڈ کی رسائی میں چونکہ اضافہ ہو رہا ہے، اس لیے بہت سے طلبہ کی لاگت بھی کم ہونی چاہیے، کیوں کہ پاری عوام کی رسائی کے لیے ایک مفت سائٹ ہے۔"
+
+#: core/templates/core/about.html:157
+msgid "PARI is also building a <a href=%(resource_list)s>Resources</a> section, where we aim to put up (in full text and not just via links), all official (and unofficial but credible) reports related to rural India. For instance, every report of the National Commission for Enterprises in the Unorganised Sector, reports of the Planning Commission (now NITI Aayog) and ministries, the United Nations and much more. Researchers will not have to surf multiple sites to access important documents and studies from different sources."
+msgstr "پاری ایک ایسا <a href=%(resource_list)s>وسائل</a> کا گوشہ بھی تیار کر رہا ہے، جہاں پر ہم دیہی ہندوستان سے متعلق تمام سرکاری (اور غیر سرکاری لیکن معتبر) رپورٹیں ڈالنا چاہتے ہیں (پورا متن اور صرف ان کے لنک نہیں)۔ مثال کے طور پر، غیر منظم شعبہ میں کاروبار کے لیے قومی کمیشن کی ہر ایک رپورٹ، پلاننگ کمیشن (اب نیتی آیوگ) اور وزارتوں کی رپورٹس، اقوامِ متحدہ وغیرہ کی رپورٹ۔ محققین کو مختلف ذرائع سے اہم دستاویزات اور مطالعات تک رسائی حاصل کرنے کے لیے متعدد سائٹوں پر نہیں جانا پڑے گا۔"
+
+#: core/templates/core/about.html:168
+msgid "The number of categories you see in the archive are not fixed or final. We will also, for example, include livestock and wildlife – and many others, brick by brick. Here’s a look at just three of very many categories on PARI:"
+msgstr "آرکائیو میں آپ جو زمرے دیکھ رہے ہیں وہ حتمی یا فائنل نہیں ہیں۔ ہم اس میں، مثال کے طور پر گھریلو اور جانگلی جانور – اور متعدد دیگر کو بھی، ایک ایک کرکے شامل کریں گے۔ یہاں پر پاری کے ان متعدد زمروں میں سے صرف تین پر نظر ڈالیں:"
+
+#: core/templates/core/about.html:177
+msgid "Things we do"
+msgstr "ہم جو کام کرتے ہیں"
+
+#: core/templates/core/about.html:179
+msgid "This leads you into the complex world of rural Indian labour. To landless workers in the fields, to farmers and woodcutters, to brick-makers and blacksmiths. From men who push 200 kilograms of coal on bicycles across 40 kilometres to earn a few rupees, to women who scavenge coal at great risk from giant waste dumps. And migrant labourers who travel thousands of kilometres each year in search of work, never staying anywhere for six months, not even in their own village homes."
+msgstr "یہ آپ کو دیہی ہندوستانی مزدوروں کی پیچیدہ دنیا میں لے جاتا ہے۔ کھیتوں میں کام کرنے والے بے زمین مزدوروں، کسانوں اور لکڑی کاٹنے والوں، اینٹ بنانے والوں اور لوہاروں کی طرف۔ ان لوگوں سے آپ کو روبرو کرائے گا، جو کچھ پیسے کمانے کے لیے ۲۰۰ کلوگرام کوئلہ سائیکل پر لاد کر ۴۰ کلومیٹر تک کا سفر کرتے ہیں، ان عورتوں سے ملوائے گا جو کچرے کے اونچے ڈھیر سے، اپنی جان کو خطرے میں ڈال کر کوئلہ اکٹھا کرتی ہیں۔ اور ان مہاجر مزدوروں سے بھی ملنے کا موقع فراہم کرے گا، جو کام کی تلاش میں ہر سال ہزاروں کلومیٹر کا سفر کرتے ہیں، کہیں بھی چھ مہینے سے زیادہ نہیں ٹھہرتے، خود گاؤں میں اپنے گھروں میں بھی نہیں۔"
+
+#: core/templates/core/about.html:186
+msgid "Apart from covering their stories we are also photographing and filming the tools and implements that people use, many of them sure to disappear over the next few years."
+msgstr "ان کی کہانیوں کا احاطہ کرنے کے علاوہ، ہم ان آلات اور اوزاروں کی بھی فوٹوگرافی کر رہے ہیں اور فلم بنا رہے ہیں جنہیں لوگ استعمال کرتے ہیں، ان میں سے کئی یقینی طور پر آئندہ چند برسوں میں غائب ہو جائیں گے۔"
+
+#: core/templates/core/about.html:189 core/templates/core/about.html:207
+#: core/templates/core/about.html:224 core/templates/pages/menus/footer.html:7
+msgid "Explore"
+msgstr "دریافت کریں"
+
+#: core/templates/core/about.html:198
+msgid "Things we make"
+msgstr "ہم جو چیزیں بناتے ہیں"
+
+#: core/templates/core/about.html:200
+msgid "Here, PARI covers arts and crafts, artists and craftspersons. The country’s countless schools and skills and traditions, and their products. In this category, you will find India’s ‘everyday museums’ – miniature painting schools, rural traditions of sculpture, exquisite weaving techniques – many of which are slowly fading away and might soon vanish completely."
+msgstr "یہاں، پاری فنون لطیفہ اور دستکاری، فنکاروں اور دستکاروں کا احاطہ کرتا ہے۔ ملک کے بے شمار اسکول اور مہارت اور روایات، اور ان کی مصنوعات۔ اس زمرے میں، آپ کو ہندوستان کا ’روزمرہ کا میوزیم‘ ملے گا – چھوٹی چھوٹی پینٹنگ کے اسکول، مجسمہ سازی کی دیہی روایات، بُنائی کے انوکھے طریقے، جن میں سے زیادہ تر اب ختم ہو رہے ہیں اور جلد ہی مکمل طور پر ختم ہو جائیں گے۔"
+
+#: core/templates/core/about.html:215
+msgid "Foot-soldiers of freedom"
+msgstr "آزادی کے پیدل سپاہی"
+
+#: core/templates/core/about.html:217
+msgid "The last living freedom fighters of rural India, most now in their 90s. People who spent many years in prison fighting for the country’s freedom from colonial rule and to establish an independent, democratic Indian nation. In the next decade there will be none left to tell the tale."
+msgstr "دیہی ہندوستان کے آخری زندہ مجاہدینِ آزادی، جن میں سے زیادہ تر کی عمر اب ۹۰ سال کی ہو چکی ہے۔ ان لوگوں نے نوآبادیاتی حکومت سے لڑنے اور ایک آزاد، جمہوری ہندوستان کے قیام کے لیے اور اپنے ملک کو آزاد کرانے کے لیے لڑتے ہوئے کئی سال جیلوں میں گزارے۔ اگلی دہائی میں اس کہانی کو بتانے والا کوئی نہیں بچے گا۔"
+
+#: core/templates/core/about.html:228
+msgid "While we constantly try to build and expand a gene pool of contributors, we do exercise editorial selection and quality control. The use of experienced contributors with a credible record is important to this work, of course. Most of these will be journalists, writers and authors. But not all. Anyone who is interested can participate, write for us, or shoot even on cell phones with decent video quality – if the material falls within the mandate of the archive. You need not be a professional journalist."
+msgstr "ہم جہاں ایک طرف تعاون کرنے والوں کی جماعت مسلسل تیار کرنے اور اسے وسعت دینے کی کوشش کر رہے ہیں، وہیں ادارتی انتخاب اور کوالٹی کنٹرول کا تجربہ بھی کر رہے ہیں۔ ظاہر ہے، مستند ریکارڈ والے تجربہ کار معاونین کا استعمال اس کام کے لیے ضروری ہے۔ ان میں سے زیادہ تر صحافی، قلم کار اور مصنف ہوں گے۔ لیکن سب نہیں۔ کوئی بھی آدمی جس کی اس کام میں دلچسپی ہے وہ شرکت کر سکتا ہے، ہمارے لیے لکھ سکتا ہے، یا ویڈیو کی اچھی کوالٹی کے ساتھ اپنے موبائل فون سے بھی فلم بنا سکتا ہے – بشرطیکہ مواد اس آرکائیو کے مینڈیٹ کے مطابق ہو۔ آپ کا پیشہ ور صحافی ہونا ضروری نہیں ہے۔"
+
+#: core/templates/core/about.html:236
+msgid "Remember, the narratives that make up the overwhelming share of PARI come from rural Indians themselves, not from the professional media persons who help record their story. Some of those rural Indians will shoot their own stories. And the stories will be renewed and reported — as long as there is a countryside."
+msgstr "یاد رکھیں، پاری پر دستیاب زیادہ تر کہانیاں خود دیہی ہندوستان کے باشندوں کی طرف سے آتی ہیں، میڈیا سے وابستہ ان پیشہ ور افراد سے نہیں جو ان کی کہانی کو ریکارڈ کرنے میں مدد کرتے ہیں۔ ان میں سے کچھ دیہی ہندوستانی خود اپنی کہانیوں کو فلمائیں گے۔ اور ان کہانیوں کی تجدید اور رپورٹنگ کی جائے گی — بشرطیکہ ان میں دیہی علاقوں کی ترجمانی کی گئی ہو۔"
+
+#: core/templates/core/about.html:243
+msgid "Public access to PARI is free. The site is run by the CounterMedia Trust. An informal network supports and funds the trust and its primary activities through volunteer work, donations and direct personal contributions. This voluntary network of reporters, professional filmmakers, film editors, photographers, documentary filmmakers and journalists (television, online and print), represents PARI's biggest asset. Besides, academics, teachers, researchers, techies and professionals from many other fields have also donated their expertise to design the site and establish PARI."
+msgstr "پاری پر عوام کی رسائی مفت ہے۔ اس سائٹ کو کاؤنٹر میڈیا ٹرسٹ کے ذریعے چلایا جا رہا ہے۔ ایک غیر رسمی نیٹ ورک اس ٹرسٹ کی مدد کرتا ہے اور رضاکارانہ کام، چندہ اور براہِ راست ذاتی تعاون کے ذریعے اس کی بنیادی سرگرمیوں کے لیے رقم فراہم کرتا ہے۔ نامہ نگاروں، پیشہ ور فلم سازوں، فلم کے ایڈیٹرز، فوٹوگرافروں، دستاویزی فلم سازوں اور صحافیوں (ٹیلی ویژن، آن لائن اور پرنٹ) کا یہ رضاکارانہ نیٹ ورک پاری کا سب سے بڑا اثاثہ ہے۔ اس کے علاوہ ماہرین تعلیم، اساتذہ، محققین، تکنیکی ماہرین اور بہت سے دیگر شعبوں کے پیشہ ور افراد  نے بھی اس سائٹ کو ڈیزائن کرنے اور پاری کے قیام میں ہمیں اپنی مہارت عطا کی ہے۔"
+
+#: core/templates/core/about.html:252
+msgid "PARI needs money to create content beyond what volunteers do for us, and we aim at crowd funding to generate the resources. Though our call for donations is titled ‘Cover your country’, rural India can never be fully 'covered' and the content on this site consists of fragments of many giant realities. We can expand our coverage of those many worlds only with the widest possible public participation."
+msgstr "رضاکار ہمارے لیے جو کچھ کر رہے ہیں اس کے علاوہ پاری کو مواد تیار کرنے کے لیے پیسوں کی ضرورت ہے، اور ہم چاہتے ہیں کہ کراؤڈ فنڈنگ یا ہجوم کی مالی اعانت کے ذریعے وسائل پیدا کریں۔ اگرچہ عطیات کے لیے ہماری اپیل کا عنوان ہے ’اپنے ملک کا احاطہ کریں‘، لیکن دیہی ہندوستان کا مکمل ’احاطہ‘ کبھی نہیں کیا جا سکتا اور اس سائٹ پر دستیاب مواد میں کئی بڑے حقائق کے ٹکڑے شامل ہیں۔ ہم بہت سے جہانوں کا احاطہ تبھی کر سکتے ہیں جب اس میں عوام کی زیادہ سے زیادہ شرکت ہو۔"
+
+#: core/templates/core/about.html:260
+#: core/templates/core/acknowledgements.html:270
+msgid "Founder Editor, PARI"
+msgstr "بانی ایڈیٹر، پاری"
+
+#: core/templates/core/about.html:267
+msgid "This is an insane project – and a wonderful one"
+msgstr "یہ ایک جنونی پروجیکٹ ہے – اور حیرت انگیز بھی"
+
+#: core/templates/core/about.html:270
+msgid "Neville Roy Singham, Chairman, ThoughtWorks Inc."
+msgstr "نیویلے رائے سنگھم، چیئرمین، تھاٹ ورکس انکارپوریشن"
+
+#: core/templates/core/about.html:273
+msgid "There's a pleasure sure to being mad, that only madmen know"
+msgstr "پاگل ہونے کا بھی اپنا ایک مزہ ہے، جسے صرف دیوانے جانتے ہیں"
+
+#: core/templates/core/about.html:276
+msgid "John Dryden in ‘The Spanish Friar’ (1681)"
+msgstr "جان ڈرائیڈن، ’اسپینش فرائر‘ (۱۶۸۱) میں"
+
+#: core/templates/core/about.html:280
+msgid "CONSIDER DONATING TO PARI"
+msgstr "پاری کو عطیہ دینے پر غور کریں"
+
+#: core/templates/core/about.html:281 core/templates/core/donate.html:103
+msgid "Donate money"
+msgstr "پیسے کا عطیہ کریں"
+
+#: core/templates/core/about.html:283
+msgid "You can send in donations using a range of payment methods. All donations made to the <b>CounterMedia Trust</b> are eligible for exemption under Section 80G of the Income Tax Act, 1961."
+msgstr "آپ ادائیگی کے مختلف طریقوں کا استعمال کرکے چندے بھیج سکتے ہیں۔ <b>کاؤنٹر میڈیا ٹرسٹ</b> کو دیے گئے تمام چندے انکم ٹیکس قانون، ۱۹۶۱ کے سیکشن ۸۰ جی کے تحت ٹیکس سے مستثنیٰ ہیں۔"
+
+#: core/templates/core/about.html:287 core/templates/core/donate.html:109
+msgid "Send donation"
+msgstr "عطیہ بھیجیں"
+
+#: core/templates/core/about.html:290
+msgid "CONTRIBUTE TO PARI"
+msgstr "پاری کا تعاون کریں"
+
+#: core/templates/core/about.html:292
+msgid "Anyone can contribute to PARI. Write for us, shoot for us, record, translate, research, edit a video for us – your material is welcome so long as it meets the standards of this site and falls within our mandate: the everyday lives of everyday people."
+msgstr "پاری کا تعاون کوئی بھی کر سکتا ہے۔ ہمارے لیے لکھیں، ہمارے لیے شوٹ کریں، ہمارے لیے ریکارڈ کریں، ترجمہ، تحقیق کریں، ویڈیو کو ایڈٹ کریں – آپ کے مواد کا خیر مقدم ہے بشرطیکہ یہ اس سائٹ کے معیاروں کو پورا کرتا ہو اور ہمارے مینڈیٹ: روزمرہ کے لوگوں کی روزمرہ کی زندگی کے موافق ہو۔"
+
+#: core/templates/core/about.html:298 core/templates/core/about.html:308
+#: core/templates/core/home_page.html:479
+msgid "Learn more"
+msgstr "مزید جانیں"
+
+#: core/templates/core/about.html:301
+msgid "PARI AND EDUCATION"
+msgstr "پاری اور تعلیم"
+
+#: core/templates/core/about.html:303
+msgid "At PARI, we’re writing the textbooks of the future. That’s happening with the numerous stories, photos, videos and audio material going up every week on our site. Over time, quite a bit of that will be produced by students and teachers themselves."
+msgstr "پاری میں ہم، مستقبل کی نصابی کتابیں لکھ رہے ہیں۔ یہ ہماری سائٹ پر ہر ہفتے بے شمار اسٹوریز، تصاویر، ویڈیوز اور آڈیو مواد کے ساتھ ہو رہا ہے۔ وقت گزرنے کے ساتھ، اس میں سے کچھ خود طلبہ اور اساتذہ کے ذریعہ تیار کیا جائے گا۔"
+
+#: core/templates/core/acknowledgements.html:4
+#: core/templates/pages/menus/dropdown.html:228
+#: core/templates/pages/menus/footer.html:70
+msgid "Acknowledgements"
+msgstr "اعترافات"
+
+#: core/templates/core/acknowledgements.html:5
+msgid "We are greatly indebted to the volunteers, journalists, filmmakers and other contributors who continue to gift us so much time and labour."
+msgstr "ہم رضاکاروں، صحافیوں، فلم سازوں اور دیگر معاونین کے بھی بے حد ممنون ہیں، جن کی طرف سے ہمیں لگاتار وقت اور مشقت حاصل ہو رہی ہے۔"
+
+#: core/templates/core/acknowledgements.html:19
+msgid "Acknowledgments"
+msgstr "اعترافات"
+
+#: core/templates/core/acknowledgements.html:21
+msgid "It was the Founder Chairman of <a href=\"https://www.thoughtworks.com/\" target=\"_blank\">ThoughtWorks</a>, Neville Roy Singham, who made me believe that the People’s Archive of Rural India in its present form was possible. Roy thought the project was nuts, but loved its audacity. Drawing from a (physical) photo exhibition of mine in 2011, he laid out the possibilities of a fully curated photo exhibition – and more – online. We were able to use the original text panels online too, and you can see the outcome of that effort on <a href=%(women)s>Visible Work, Invisible Women</a>."
+msgstr "یہ <a href=\"https://www.thoughtworks.com/\" target=\"_blank\">ThoughtWorks</a> کے بانی چیئرمین، نیویلے رائے سنگھم تھے، جنہوں نے مجھے اس بات پر یقین کرنے کے لیے مجبور کیا کہ پیپلز آرکائیو آف رورل انڈیا اپنی موجودہ شکل میں ممکن ہے۔ رائے نے سوچا کہ یہ پروجیکٹ پاگل پن ہے، لیکن وہ اس کی بے باکی کے قائل تھے۔ سال ۲۰۱۱ میں میرے ذریعے کھنیچی گئی تصاویر کی (فزیکل) نمائش سے نتیجہ اخذ کرتے ہوئے، انھوں نے پوری طرح آن لائن کیوریٹیڈ فوٹو کی نمائش اور اس سے آگے کے امکانات کی بنیاد رکھی۔ ہم اصلی متن کے پینلوں کو بھی آن لائن استعمال کرنے میں کامیاب رہے، اور آپ <a href=%(women)s>کام ہی کام، عورتیں گمنام</a> پر اس کوشش کا نتیجہ دیکھ سکتے ہیں۔"
+
+#: core/templates/core/acknowledgements.html:28
+msgid "At every stage, subsequently, Roy’s ideas and energy pushed forward the making of PARI. No acknowledgement of his contribution can be strong enough."
+msgstr "اس کے بعد ہر قدم پر، رائے کے نظریات اور توانائی نے پاری کی تعمیر میں مدد کی۔ ان کے تعاون کا جتنا بھی شکریہ ادا کیا جائے کم ہے۔"
+
+#: core/templates/core/acknowledgements.html:31
+msgid "When PARI was still a fledgling notion, Prof. Ananya Mukherjee-Reed, now Dean of Faculty, Liberal Arts & Professional Studies of York University, Toronto, made a critical contribution to its ideas, concepts and clarity. The strong education-related component of PARI owes a great deal to her influence."
+msgstr "پاری جب ایک نوخیز تصور تھا، تب پروفیسر اننیا مکھرجی۔ریڈ، جو اب یورک یونیورسٹی، ٹورنٹو کی ڈین آف فیکلٹی، لبرل آرٹس اور پروفیشنل اسٹڈیز ہیں، نے اس کے خیالات، تصورات اور وضاحت میں نہایت اہم تعاون دیا۔ پاری پر موجود تعلیم سے متعلق مضبوط گوشہ انہی کی دین ہے۔"
+
+#: core/templates/core/acknowledgements.html:35
+msgid "Volunteer techies from ThoughtWorks India made the PARI platform possible. Without them, none of this would have materialised. Many helped in immeasurable ways, but Manoj Mahalingam (then with TW) and Satish Viswanathan played key roles in getting us off the ground. Siddharth Adelkar was and is central to our overall effort."
+msgstr "تھاٹ ورکس انڈیا کے رضاکار تکنیکی ماہرین  نے پاری کے پلیٹ فارم کو ممکن بنایا۔ ان کے بغیر، اس میں سے کوئی بھی عملی شکل اختیار نہیں کر سکتا تھا۔ بہت سے لوگوں نے قیمتی طریقوں سے مدد کی، لیکن منوج مہالنگم (جو تب ٹی ڈبلیو کے ساتھ تھے) اور ستیش وشوناتھن نے ہمیں شروعات کرنے میں کلیدی رول ادا کیا۔ سدھارتھ اڈیلکر ہماری مجموعی کوشش کا تب بھی مرکزی حصہ تھے اور اب بھی ہیں۔"
+
+#: core/templates/core/acknowledgements.html:40
+msgid "As PARI enters Phase 2 of its existence, we have Aditya Dipankar making an astonishing difference to the website’s design and appearance. We also have the inimitable Thejaswi Puthraya who is there for us, from before the launch, on all matters tech and some beyond."
+msgstr "پاری جب اپنے وجود کے دوسرے مرحلہ میں داخل ہو رہا ہے، اس وقت ہمارے ساتھ آدتیہ دیپانکر ہیں، جو ویب سائٹ کے ڈیزائن اور ظاہری شکل میں حیرت انگیز تبدیلی کر رہے ہیں۔ ہمارے ساتھ تیجسوی پُتھرایا بھی ہیں جو آغاز سے بھی پہلے، ٹیکنالوجی اور دیگر تمام متعلقہ امور میں، ہر وقت موجود رہے۔"
+
+#: core/templates/core/acknowledgements.html:44
+msgid "Scores of others helped in big and many ways"
+msgstr "بہت سے دوسرے لوگوں نے بھی بڑی اور کئی طریقوں سے مدد کی"
+
+#: core/templates/core/acknowledgements.html:54
+msgid "Software Development Team: Launch Phase"
+msgstr "سافٹ ویئر تیار کرنے والی ٹیم: شروعاتی مرحلہ"
+
+#. Translators: If your target language uses a non-Roman script, please do your best to transliterate the names that follow.
+#: core/templates/core/acknowledgements.html:57
+msgid "Anilkumar Kodi"
+msgstr "انل کمار کوڈی"
+
+#: core/templates/core/acknowledgements.html:58
+msgid "Aruna Shanmugakumar"
+msgstr "ارونا شنموگا کمار"
+
+#: core/templates/core/acknowledgements.html:59
+msgid "Arvind Ram A."
+msgstr "اروند رام اے۔"
+
+#: core/templates/core/acknowledgements.html:60
+msgid "Balachander Swaminathan"
+msgstr "بال چندر سوامی ناتھن"
+
+#: core/templates/core/acknowledgements.html:61
+msgid "Devarajan N."
+msgstr "دیوراجن این۔"
+
+#: core/templates/core/acknowledgements.html:62
+msgid "Dinesh Kumar"
+msgstr "دنیش کمار"
+
+#: core/templates/core/acknowledgements.html:63
+msgid "Gaurav Manoharrav Ingalkar"
+msgstr "گورو منوہر راؤ اِنگالکر"
+
+#: core/templates/core/acknowledgements.html:64
+msgid "Gopinath Jayabalan"
+msgstr "گوپی ناتھ جیابالن"
+
+#: core/templates/core/acknowledgements.html:65
+msgid "Gowri Jayalakshmi R."
+msgstr "گوری جے لکشمی آر۔"
+
+#: core/templates/core/acknowledgements.html:66
+msgid "Jayakumar Chinnappan (Tech Lead, final lap)"
+msgstr "جے کمار چینپن (ٹیک لیڈ، حتمی مرحلہ)"
+
+#: core/templates/core/acknowledgements.html:67
+msgid "Jeyakar J. Vaiz"
+msgstr "جیاکر جے۔ وَیز"
+
+#: core/templates/core/acknowledgements.html:68
+msgid "Manoj S. Mahalingam (Tech Lead)"
+msgstr "منوج ایس۔ مہالنگم (ٹیک لیڈ)"
+
+#: core/templates/core/acknowledgements.html:69
+msgid "Mohit Shankarrao Pote"
+msgstr "موہت شنکر راؤ پوٹے"
+
+#: core/templates/core/acknowledgements.html:70
+msgid "Mubashar Nadeem Sibgathullah"
+msgstr "مبشر ندیم صبغت اللہ"
+
+#: core/templates/core/acknowledgements.html:71
+msgid "Pradipta Kundu"
+msgstr "پردیپتا کُنڈو"
+
+#: core/templates/core/acknowledgements.html:72
+msgid "Raj Kumar"
+msgstr "راج کمار"
+
+#: core/templates/core/acknowledgements.html:73
+msgid "Ram Ramalingam"
+msgstr "رام رامالنگم"
+
+#: core/templates/core/acknowledgements.html:74
+msgid "Ramalingam Singaravel"
+msgstr "رامالنگم سنگراویل"
+
+#: core/templates/core/acknowledgements.html:75
+#: core/templates/core/acknowledgements.html:110
+#: core/templates/core/acknowledgements.html:236
+msgid "Satish Viswanathan"
+msgstr "ستیش وشوناتھن"
+
+#: core/templates/core/acknowledgements.html:76
+msgid "Senthil V. S."
+msgstr "سینتھل وی۔ ایس۔"
+
+#: core/templates/core/acknowledgements.html:77
+msgid "Suganthi Krishnavathi T."
+msgstr "سوگانتی کرشناوتی ٹی۔"
+
+#: core/templates/core/acknowledgements.html:78
+#: core/templates/core/acknowledgements.html:245
+msgid "Thejaswi Puthraya"
+msgstr "تیجسوی پُتھرایا"
+
+#: core/templates/core/acknowledgements.html:79
+msgid "Vivek Singh"
+msgstr "وویک سنگھ"
+
+#: core/templates/core/acknowledgements.html:85
+msgid "Logistics Team"
+msgstr "لاجسٹکس ٹیم"
+
+#: core/templates/core/acknowledgements.html:86
+msgid "Baskar G."
+msgstr "باسکر جی۔"
+
+#: core/templates/core/acknowledgements.html:87
+msgid "Karthik T."
+msgstr "کارتک ٹی۔"
+
+#: core/templates/core/acknowledgements.html:88
+msgid "Poornima R. S."
+msgstr "پورنیما آر۔ ایس۔"
+
+#: core/templates/core/acknowledgements.html:89
+msgid "Ratnakar Nath"
+msgstr "رتناکر ناتھ"
+
+#: core/templates/core/acknowledgements.html:91
+msgid "Swecha Technology Team"
+msgstr "سویچھا ٹیکنالوجی ٹیم"
+
+#: core/templates/core/acknowledgements.html:92
+msgid "Bhuvan Krishna"
+msgstr "بھوون کرشنا"
+
+#: core/templates/core/acknowledgements.html:93
+msgid "Kiran Chandra"
+msgstr "کرن چندرا"
+
+#: core/templates/core/acknowledgements.html:94
+#: core/templates/core/acknowledgements.html:228
+msgid "Praveen Chandrahas"
+msgstr "پروین چندرہاس"
+
+#: core/templates/core/acknowledgements.html:97
+msgid "Digital Archivist"
+msgstr "ڈیجیٹل آرکائیوسٹ"
+
+#: core/templates/core/acknowledgements.html:98
+msgid "Venkataraaman S."
+msgstr "وینکٹ رامن ایس۔"
+
+#: core/templates/core/acknowledgements.html:101
+msgid "Software Development Team: Design Phase"
+msgstr "سافٹ ویئر تیار کرنے والی ٹیم: ڈیزائن کا مرحلہ"
+
+#: core/templates/core/acknowledgements.html:102
+msgid "Deepan Rajkumar R."
+msgstr "دیپن راج کمار آر."
+
+#: core/templates/core/acknowledgements.html:103
+msgid "Deepthi R. (Tech Lead)"
+msgstr "دیپتی آر۔ (ٹیک لیڈ)"
+
+#: core/templates/core/acknowledgements.html:104
+msgid "Gayathri M. (Team Lead)"
+msgstr "گایتری ایم۔ (ٹیم لیڈ)"
+
+#: core/templates/core/acknowledgements.html:105
+msgid "Jayakumar Chinnappan (Tech Lead)"
+msgstr "جے کمار چینپن (ٹیک لیڈ)"
+
+#: core/templates/core/acknowledgements.html:106
+msgid "Lokesh Sharma"
+msgstr "لوکیش شرما"
+
+#: core/templates/core/acknowledgements.html:107
+msgid "Nimesh Pulikaparambil"
+msgstr "نمیش پلیکاپرامبل"
+
+#: core/templates/core/acknowledgements.html:108
+#: core/templates/core/acknowledgements.html:226
+msgid "Olivia Waring"
+msgstr "اولیویا وارنگ"
+
+#: core/templates/core/acknowledgements.html:109
+msgid "Sankar Parameswaran"
+msgstr "شنکر پرمیشوَرَن"
+
+#: core/templates/core/acknowledgements.html:111
+msgid "Venkatesa Madhan"
+msgstr "وینکٹیش مدان"
+
+#: core/templates/core/acknowledgements.html:112
+msgid "Vidhyalakshimi S."
+msgstr "وِدیا لکشمی ایس۔"
+
+#: core/templates/core/acknowledgements.html:113
+msgid "Vinoth Kumar R."
+msgstr "ونود کمار آر۔"
+
+#: core/templates/core/acknowledgements.html:117
+msgid "Inception Team"
+msgstr "ابتدائی ٹیم"
+
+#: core/templates/core/acknowledgements.html:118
+msgid "David Siang Fong Oh"
+msgstr "ڈیوڈ سیانگ فونگ اوہ"
+
+#: core/templates/core/acknowledgements.html:119
+msgid "Kartik Kannan"
+msgstr "کارتک کنّن"
+
+#: core/templates/core/acknowledgements.html:120
+msgid "Koundinya Goparaju"
+msgstr "کونڈینیا گوپاراجو"
+
+#: core/templates/core/acknowledgements.html:121
+msgid "Nikhileshwar Gamedhar"
+msgstr "نکھیلیشور گامیدھر"
+
+#: core/templates/core/acknowledgements.html:122
+msgid "Ruchi Mahajan"
+msgstr "روچی مہاجن"
+
+#: core/templates/core/acknowledgements.html:123
+msgid "Shashank Raghavendra"
+msgstr "ششانک راگھویندر"
+
+#: core/templates/core/acknowledgements.html:125
+msgid "Design Team"
+msgstr "ڈیزائن ٹیم"
+
+#: core/templates/core/acknowledgements.html:126
+msgid "Aditya Dipankar (Team Lead)"
+msgstr "آدتیہ دیپانکر (ٹیم لیڈ)"
+
+#: core/templates/core/acknowledgements.html:127
+msgid "Gaurav Sharma"
+msgstr "گورَو شرما"
+
+#: core/templates/core/acknowledgements.html:128
+msgid "Samir Bellare"
+msgstr "سمیر بیلارے"
+
+#: core/templates/core/acknowledgements.html:129
+msgid "Shiraz Iqbal"
+msgstr "شیراز اقبال"
+
+#: core/templates/core/acknowledgements.html:130
+msgid "Suvani Suri"
+msgstr "سوانی سوری"
+
+#: core/templates/core/acknowledgements.html:133
+msgid "Legal Advisers"
+msgstr "قانونی مشیر"
+
+#: core/templates/core/acknowledgements.html:134
+msgid "Rina Kamath"
+msgstr "رینا کامتھ"
+
+#: core/templates/core/acknowledgements.html:135
+#: core/templates/core/acknowledgements.html:231
+msgid "Rishab Bailey"
+msgstr "رشب بیلی"
+
+#: core/templates/core/acknowledgements.html:142
+msgid "Translators"
+msgstr "مترجمین"
+
+#: core/templates/core/acknowledgements.html:147
+msgid "Crazy Frog Media Team"
+msgstr "کریزی فراگ میڈیا ٹیم"
+
+#: core/templates/core/acknowledgements.html:148
+msgid "Mohan G.N. (Lead)"
+msgstr "موہن جی۔ این۔ (لیڈ)"
+
+#: core/templates/core/acknowledgements.html:149
+msgid "Naren H R"
+msgstr "نرین ایچ آر"
+
+#: core/templates/core/acknowledgements.html:150
+msgid "Prasad Naik"
+msgstr "پرساد نائک"
+
+#: core/templates/core/acknowledgements.html:151
+msgid "Rajaram Tallur"
+msgstr "راجا رام تلّور"
+
+#: core/templates/core/acknowledgements.html:152
+msgid "Sandhyarani N."
+msgstr "سندھیا رانی این۔"
+
+#: core/templates/core/acknowledgements.html:153
+msgid "Santosh Tamprapani"
+msgstr "سنتوش تامپر پانی"
+
+#: core/templates/core/acknowledgements.html:154
+msgid "Shama Nandibetta"
+msgstr "شمع نندی بیٹا"
+
+#: core/templates/core/acknowledgements.html:156
+msgid "Other Translators"
+msgstr "دیگر مترجمین"
+
+#: core/templates/core/acknowledgements.html:157
+msgid "Chandan Dey"
+msgstr "چندن ڈے"
+
+#: core/templates/core/acknowledgements.html:158
+msgid "Chhaya Deo"
+msgstr "چھایا دیو"
+
+#: core/templates/core/acknowledgements.html:159
+msgid "Chinta T. K."
+msgstr "چِنتا ٹی۔ کے۔"
+
+#: core/templates/core/acknowledgements.html:160
+msgid "Debasmita Bhowmik"
+msgstr "دیبسمیتا بھومک"
+
+#: core/templates/core/acknowledgements.html:161
+msgid "Hemant Shah"
+msgstr "ہیمنت شاہ"
+
+#: core/templates/core/acknowledgements.html:162
+msgid "Jyotsna V."
+msgstr "جیوتسنا وی۔"
+
+#: core/templates/core/acknowledgements.html:167
+msgid "Kaushal Kaloo"
+msgstr "کوشل کالو"
+
+#: core/templates/core/acknowledgements.html:168
+msgid "Kavitha Muralidharan"
+msgstr "کویتا مرلی دھرن"
+
+#: core/templates/core/acknowledgements.html:169
+msgid "Medha Kale"
+msgstr "میدھا کالے"
+
+#: core/templates/core/acknowledgements.html:170
+msgid "Naren H.R."
+msgstr "نرین ایچ۔ آر۔"
+
+#: core/templates/core/acknowledgements.html:171
+msgid "Nibha Rani Roy"
+msgstr "نبھا رانی رائے"
+
+#: core/templates/core/acknowledgements.html:172
+msgid "Pallavi Kulkarni"
+msgstr "پلّوی کلکرنی"
+
+#: core/templates/core/acknowledgements.html:173
+msgid "Pallavi Malshe"
+msgstr "پلّوی ملشے"
+
+#: core/templates/core/acknowledgements.html:174
+msgid "Pushpa Kandaswamy"
+msgstr "پُشپا کنڈا سوامی"
+
+#: core/templates/core/acknowledgements.html:175
+msgid "Qamar Tabrez"
+msgstr "محمد قمر تبریز"
+
+#: core/templates/core/acknowledgements.html:176
+msgid "Rashmi Rekha Das"
+msgstr "رشمی ریکھا داس"
+
+#: core/templates/core/acknowledgements.html:177
+msgid "Ratna Bharali Talukdar"
+msgstr "رتنا بھرالی تالقدار"
+
+#: core/templates/core/acknowledgements.html:178
+msgid "Saravanan P.K."
+msgstr "شروَن پی۔ کے۔"
+
+#: core/templates/core/acknowledgements.html:179
+msgid "Shaji K.A."
+msgstr "شاجی کے۔ اے۔"
+
+#: core/templates/core/acknowledgements.html:180
+msgid "Shirish Khare"
+msgstr "شیریش کھرے"
+
+#: core/templates/core/acknowledgements.html:181
+msgid "Siddharth Chakrabarti"
+msgstr "سدھارتھ چکربرتی"
+
+#: core/templates/core/acknowledgements.html:184
+msgid "Siddharthan Sundaram"
+msgstr "سدھارتھن سندرم"
+
+#: core/templates/core/acknowledgements.html:185
+msgid "Smita Khator"
+msgstr "اسمیتا کھٹور"
+
+#: core/templates/core/acknowledgements.html:186
+msgid "Subramanian Sundararaman"
+msgstr "سبرامنیم سندرا رمن"
+
+#: core/templates/core/acknowledgements.html:187
+msgid "Uma Maheshwari"
+msgstr "اوما مہیشوری"
+
+#: core/templates/core/acknowledgements.html:188
+msgid "Usha Turaga-Revelli"
+msgstr "اوشا ترگا۔ریویلی"
+
+#: core/templates/core/acknowledgements.html:189
+msgid "Vilasini"
+msgstr "ولاسینی"
+
+#: core/templates/core/acknowledgements.html:190
+msgid "Vishnu Varatharajan"
+msgstr "وشنو ورد راجن"
+
+#: core/templates/core/acknowledgements.html:198
+msgid "Core Group, Support, Admin"
+msgstr "کور گروپ، سپورٹ، ایڈمن"
+
+#: core/templates/core/acknowledgements.html:202
+msgid "Aditi Chandrasekhar"
+msgstr "ادیتی چندر شیکھر"
+
+#: core/templates/core/acknowledgements.html:203
+msgid "Amita Joseph"
+msgstr "امیتا جوزف"
+
+#: core/templates/core/acknowledgements.html:204
+msgid "Amiya Pani"
+msgstr "امیا پانی"
+
+#: core/templates/core/acknowledgements.html:205
+msgid "Aparna Karthikeyan"
+msgstr "اپرنا کارتکیئن"
+
+#: core/templates/core/acknowledgements.html:206
+msgid "Bharat Patil"
+msgstr "بھرت پاٹل"
+
+#: core/templates/core/acknowledgements.html:207
+msgid "Bini Bharucha"
+msgstr "بنی بھروچا"
+
+#: core/templates/core/acknowledgements.html:208
+msgid "Biraj Patnaik"
+msgstr "بیرج پٹنائک"
+
+#: core/templates/core/acknowledgements.html:209
+msgid "Chitrangada Choudhury"
+msgstr "چترانگدا چودھری"
+
+#: core/templates/core/acknowledgements.html:210
+msgid "Deepa Bhatia"
+msgstr "دیپا بھاٹیا"
+
+#: core/templates/core/acknowledgements.html:211
+msgid "Divya Jain"
+msgstr "دیویہ جین"
+
+#: core/templates/core/acknowledgements.html:212
+msgid "Gauri Adelkar"
+msgstr "گوری اڈیلکر"
+
+#: core/templates/core/acknowledgements.html:213
+msgid "Hutokshi Doctor"
+msgstr "ہتوکشی ڈاکٹر"
+
+#: core/templates/core/acknowledgements.html:214
+msgid "Jaideep Hardikar"
+msgstr "جے دیپ ہرڈیکر"
+
+#: core/templates/core/acknowledgements.html:215
+msgid "Jayati Vora"
+msgstr "جیتی وورا"
+
+#: core/templates/core/acknowledgements.html:216
+msgid "Jyoti Shinoli"
+msgstr "جیوتی شنولی"
+
+#: core/templates/core/acknowledgements.html:219
+msgid "Kavita Carneiro"
+msgstr "کویتا کارنیرو"
+
+#: core/templates/core/acknowledgements.html:220
+msgid "Lubaina Kitabi"
+msgstr "لبینہ کتابی"
+
+#: core/templates/core/acknowledgements.html:221
+msgid "Madhusree Mukerjee"
+msgstr "مدھو شری مکھرجی"
+
+#: core/templates/core/acknowledgements.html:222
+msgid "Mathew Cherian"
+msgstr "میتھیو چیریئن"
+
+#: core/templates/core/acknowledgements.html:223
+msgid "Mausumi Bhattacharyya"
+msgstr "موسومی بھٹاچاریہ"
+
+#: core/templates/core/acknowledgements.html:224
+#: core/templates/core/founders.html:27 core/templates/core/founders.html:55
+msgid "Namita Waikar"
+msgstr "نمیتا وائکر"
+
+#: core/templates/core/acknowledgements.html:225
+msgid "Naveen Roy Benadict"
+msgstr "نوین رائے بینیڈکٹ"
+
+#: core/templates/core/acknowledgements.html:227
+msgid "Onkar Mandlekar"
+msgstr "اونکار منڈلیکر"
+
+#: core/templates/core/acknowledgements.html:229
+msgid "Purusottam Thakur"
+msgstr "پرشوتم ٹھاکر"
+
+#: core/templates/core/acknowledgements.html:230
+msgid "Revathi R."
+msgstr "ریوتی آر۔"
+
+#: core/templates/core/acknowledgements.html:232
+msgid "Sainath P."
+msgstr "سائی ناتھ پی"
+
+#: core/templates/core/acknowledgements.html:233
+msgid "Samyukta Shastri"
+msgstr "سمیکتا شاستری"
+
+#: core/templates/core/acknowledgements.html:237
+msgid "Shalini Singh"
+msgstr "شالنی سنگھ"
+
+#: core/templates/core/acknowledgements.html:238
+#: core/templates/core/founders.html:30 core/templates/core/founders.html:60
+msgid "Sharmila Joshi"
+msgstr "شرمیلا جوشی"
+
+#: core/templates/core/acknowledgements.html:239
+msgid "Shreya Katyayini"
+msgstr "شریہ کتیاینی"
+
+#: core/templates/core/acknowledgements.html:240
+#: core/templates/core/founders.html:33 core/templates/core/founders.html:65
+msgid "Siddharth Adelkar"
+msgstr "سدھارتھ اڈیلکر"
+
+#: core/templates/core/acknowledgements.html:241
+msgid "Sinchita Maji"
+msgstr "سنچیتا ماجی"
+
+#: core/templates/core/acknowledgements.html:242
+msgid "Sweta Daga"
+msgstr "شویتا ڈاگا"
+
+#: core/templates/core/acknowledgements.html:243
+msgid "Subuhi Jiwani"
+msgstr "سبوہی جیوانی"
+
+#: core/templates/core/acknowledgements.html:244
+msgid "Sukhada Tatke"
+msgstr "سکھدا ٹٹکے"
+
+#: core/templates/core/acknowledgements.html:246
+msgid "Urvashi Sarkar"
+msgstr "اُروَشی سرکار"
+
+#: core/templates/core/acknowledgements.html:247
+msgid "Vidyut Kale"
+msgstr "وِدیُت کالے"
+
+#: core/templates/core/acknowledgements.html:248
+msgid "Vishaka George"
+msgstr "وشاکا جارج"
+
+#: core/templates/core/acknowledgements.html:249
+msgid "Zahra Latif"
+msgstr "زہرہ لطیف"
+
+#: core/templates/core/acknowledgements.html:257
+msgid "A very special thanks to P.R. Gandhi, Kartik Shah, Deepak Soni and Eesha Thakkar of P.R. Gandhi & Co, Mumbai, and Prakash Shah of Delhi, for their invaluable assistance."
+msgstr "پی۔ آر۔ گاندھی اینڈ کمپنی، ممبئی کے پی۔ آر۔ گاندھی، کارتک شاہ، دیپک سونی اور ایشا ٹھکر، اور دہلی کے پرکاش شاہ کا ان کے بیش قیمتی تعاون کے لیے خاص طور سے شکریہ۔"
+
+#: core/templates/core/acknowledgements.html:260
+msgid "We also wish to acknowledge the huge encouragement and support we have got, and continue to get, from individuals like  Abhijit Dutta, Anil Choudhury, Mariam Ram, Romi Mahajan, Sudarshan Loyalka, Sudhanva Deshpande and Vijay Prashad."
+msgstr "ہم ان لوگوں کا بھی شکریہ ادا کرنا چاہتے ہیں، جن سے ہمیں بے پناہ حوصلہ افزائی اور حمایت حاصل ہوئی، اور یہ سلسلہ اب بھی جاری ہے، جیسے کہ ابھجیت دتہ، انل چودھری، مریم رام، رومی مہاجن، سدرشن لویَلکا، سدھنوا دیش پانڈے اور وجے پرشاد۔"
+
+#: core/templates/core/acknowledgements.html:264
+msgid "We are greatly indebted to the volunteers, journalists, filmmakers and other contributors who continue to gift us so much time and labour. They are too many in number to list here. There may be a few names we’ve missed out for which we seek pardon. There are also some whom we cannot name because, alas, of where they are working."
+msgstr "ہم رضاکاروں، صحافیوں، فلم سازوں اور دیگر معاونین کے بھی بے حد ممنون ہیں، جن کی طرف سے ہمیں لگاتار وقت اور مشقت حاصل ہو رہی ہے۔ ان کی تعداد اتنی زیادہ ہے کہ ان سبھی کا یہاں ذکر کرنا ممکن نہیں ہے۔ ایسے بھی کچھ نام ہو سکتے ہیں، جن کا ذکر ہم نہیں کر سکے، جس کے لیے ہم معافی چاہتے ہیں۔ کچھ لوگوں کے کام کرنے کی جگہ کے سبب ہم ان کے نام نہیں لے سکتے۔"
+
+#: core/templates/core/acknowledgements.html:269
+#: core/templates/core/donate.html:150 core/templates/core/founders.html:19
+#: core/templates/core/founders.html:44
+#: core/templates/pages/menus/dropdown.html:267
+msgid "P. Sainath"
+msgstr "پی۔ سائی ناتھ"
+
+#: core/templates/core/contact_us.html:5 core/templates/core/contact_us.html:21
+msgid "Contact PARI"
+msgstr "پاری سے رابطہ کریں"
+
+#: core/templates/core/contact_us.html:8
+msgid "PARI Contact Us"
+msgstr "پاری ہم سے رابطہ کریں"
+
+#: core/templates/core/contact_us.html:22
+msgid "TO CONTRIBUTE CONTENT"
+msgstr "مواد میں شراکت کے لیے"
+
+#: core/templates/core/contact_us.html:24
+msgid "Please visit the <a href=\"https://script.google.com/macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec\" target=\"_blank\"> content upload form</a> and the <a href=\"%(guidelines_url)s\">guidelines</a> for details."
+msgstr "براہ کرم تفصیلات کے لیے <a href=\"https://script.google.com/macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec\" target=\"_blank\">مواد کو اپ لوڈ کرنے کا فارم</a> اور <a href=\"%(guidelines_url)s\">رہنما ہدایات</a> ملاحظہ کریں۔"
+
+#: core/templates/core/contact_us.html:30
+msgid "TO DONATE TO PARI"
+msgstr "پاری کو عطیہ دینے کے لیے"
+
+#: core/templates/core/contact_us.html:31
+#, python-format
+msgid "Do see our <a href=\"%(donate_url)s\">donate</a> page for details."
+msgstr "تفصیلات کے لیے ہمارے  <a href=\"%(donate_url)s\">عطیہ کریں</a> والے صفحہ کو دیکھیں۔"
+
+#: core/templates/core/contact_us.html:33
+msgid "WANT TO VOLUNTEER FOR PARI?"
+msgstr "پاری کے لیے رضاکارانہ طور پر کام کرنا چاہتے ہیں؟"
+
+#: core/templates/core/contact_us.html:34
+msgid "Help us understand your skills and interests by filling up this"
+msgstr "اسے پُر کرکے آپ کی ہنرمندیوں اور دلچسپیوں کو سمجھنے میں ہماری مدد کریں"
+
+#: core/templates/core/contact_us.html:37
+msgid "OTHER QUESTIONS?"
+msgstr "دیگر سوالات؟"
+
+#: core/templates/core/contact_us.html:38
+msgid "Write to us using this form:"
+msgstr "اس فارم کو استعمال کرتے ہوئے ہمیں لکھیں:"
+
+#: core/templates/core/contact_us.html:53
+msgid "Send"
+msgstr "بھیجیں"
+
+#: core/templates/core/contribute-to-faces.html:4
+#: core/templates/core/contribute-to-faces.html:19
+msgid "Let’s FACE it"
+msgstr "چلئے اس کا سامنا کرتے ہیں"
+
+#: core/templates/core/contribute-to-faces.html:5
+msgid "Contribute to the growing FACES repository and help PARI capture the sheer diversity of the people of India."
+msgstr "چہرے کے بڑھتے ہوئے ذخیرہ میں تعاون کریں اور ہندوستان کے لوگوں کے شاندار تنوع کو محفوظ کرنے میں پاری کی مدد کریں۔"
+
+#: core/templates/core/contribute-to-faces.html:20
+msgid "Contribute to FACES. Help PARI capture the sheer diversity of the people of our country. Join us in our endeavour to create a facial map of the most diverse societies on earth – those across rural India."
+msgstr "چہرے میں تعاون کریں۔ اپنے ملک کے لوگوں کے مکمل تنوع کو محفوظ کرنے میں پاری کی مدد کریں۔ پورے دیہی ہندوستان میں پھیلے، کرۂ ارض کے اس سب سے متنوع معاشرے کے چہرے کا نقشہ بنانے کی ہماری کوشش میں شامل ہوں۔"
+
+#: core/templates/core/contribute-to-faces.html:25
+#: core/templates/core/contribute-to-faces.html:48
+msgid "Upload a FACE photo"
+msgstr "چہرے کی تصویر اپ لوڈ کریں"
+
+#: core/templates/core/contribute-to-faces.html:35
+msgid "<a href=\"/categories/faces/k/tami/\"> <span><u>Tami</u></span></a> in Kalahandi, Odisha, has a very Indian face. So does <a href=\"/categories/faces/k/kottavarayan-rajendran/\"><span><u>Rajendran</u></span> </a> of Kanchipuram in Tamil Nadu. So too, <a href=\"/categories/faces/s/ohame/\"><span><u>Ohame</u></span></a> of the Andamans and Michi Yaring of Arunachal Pradesh. And not one of them resembles the other in the slightest."
+msgstr "اوڈیشہ کے کالاہانڈی میں <a href=\"/categories/faces/k/tami/\"><span><u>تامی</a></span></u> کا چہرہ بالکل ہندوستانی ہے۔ ایسا ہی چہرہ تمل ناڈو کے کانچی پورم کے <a href=\"/categories/faces/k/kottavarayan-rajendran/\"><span><u>راجندرن</a></span></u> کا ہے۔ انڈمان کے <a href=\"/categories/faces/s/ohame/\"><span><u>اوہامے</a></span></u> اور اروناچل پردیش کے میچی ییرنگ کے معاملے میں بھی ایسا ہی ہے۔ اور ان میں سے ایک بھی دوسرے سے ذرہ برابر مماثلت نہیں رکھتا۔"
+
+#: core/templates/core/contribute-to-faces.html:36
+msgid "PARI aims to record Indian faces from every single block and district in the country. That’s right — thousands and thousands of FACES, capturing the astonishing diversity of how Indians look. From every single district (and each block of every district) we aim to put up portraits of at least one adult male, one adult female and one child or adolescent. This is a gigantic exercise that will take years to complete and demands the widest participation. Anyone can take part in it provided the photograph is good enough."
+msgstr "پاری کا مقصد ملک کی ہر ایک تحصیل اور ضلع سے ہندوستانی چہروں کو ریکارڈ کرنا ہے۔ جی ہاں — ہزاروں چہرے، حیرت انگیز تنوع کا احاطہ کرنا کہ ہندوستان کیسا نظر آتا ہے۔ ہر ایک ضلع سے (اور ہر ضلع کی ہر ایک تحصیل سے) ہمارا مقصد کم از کم ایک بالغ مرد، ایک بالغ عورت اور ایک بچہ یا نوجوان کی تصویر کو یہاں جمع کرنا ہے۔ یہ ایک بہت بڑی مشق ہے جسے مکمل ہونے میں کئی سال لگیں گے اور جس میں بڑے پیمانے پر آپ لوگوں کی شرکت کی ضرورت ہوگی۔ اس میں کوئی بھی حصہ لے سکتا ہے بشرطیکہ تصویر کافی اچھی ہو۔"
+
+#: core/templates/core/contribute-to-faces.html:40
+msgid "HOW YOU CAN CONTRIBUTE"
+msgstr "آپ کس طرح تعاون کرسکتے ہیں"
+
+#: core/templates/core/contribute-to-faces.html:41
+msgid "Upload photos"
+msgstr "تصاویر اپ لوڈ کریں"
+
+#: core/templates/core/contribute-to-faces.html:42
+msgid "It is very important that the photograph you send to PARI is accompanied by the details of the person in the picture."
+msgstr "یہ بہت اہم ہے کہ آپ پاری کو جو تصویر بھیج رہے ہیں، اس کے ساتھ تصویر میں موجود شخص کی تفصیلات بھی درج ہوں۔"
+
+#: core/templates/core/contribute-to-faces.html:44
+msgid "For more on these details, please read the <a itemprop=\"url\" href=\"%(guidelines)s#section-1-7\"><u>guidelines</u></a> for FACES."
+msgstr "ان تفصیلات سے متعلق مزید معلومات کے لیے، براہ کرم چہرے کے لیے <a itemprop=\"url\" href=\"%(guidelines)s#section-1-7\"><u>رہنما ہدایات</a></u> پڑھیں۔"
+
+#: core/templates/core/contribute.html:5
+#, python-format
+msgid " Contribute to %(site_name)s "
+msgstr "%(site_name)s میں تعاون کریں"
+
+#: core/templates/core/contribute.html:7
+msgid "Join us in building a unique national knowledge repository on rural India. We need writers, editors, photographers, filmmakers, translators, researchers, and more."
+msgstr "دیہی ہندوستان پر مبنی قومی علم کا ایک منفرد ذخیرہ تیار کرنے میں ہمارے ساتھ شامل ہوں۔ ہمیں قلم کاروں، مدیروں، فوٹوگرافروں، فلم سازوں، مترجمین، محققین وغیرہ کی ضرورت ہے۔"
+
+#: core/templates/core/contribute.html:22
+msgid "India’s biggest archive of itself needs everyone to participate"
+msgstr "ہندوستان کے اس سب سے بڑے آرکائیو میں ہر ایک کو شامل ہونے کی ضرورت ہے"
+
+#: core/templates/core/contribute.html:23
+msgid "COVER YOUR COUNTRY – HERE’S HOW"
+msgstr "اپنے ملک کا احاطہ کریں – جانیں کہ کیسے"
+
+#: core/templates/core/contribute.html:24
+msgid "Join us in building a unique national knowledge repository on rural India."
+msgstr "دیہی ہندوستان پر مبنی قومی علم کا ایک منفرد ذخیرہ تیار کرنے میں ہمارے ساتھ شامل ہوں۔"
+
+#: core/templates/core/contribute.html:25
+msgid "You can start by telling us something about yourself."
+msgstr "آپ اپنے بارے میں ہمیں کچھ بتاکر اس کی شروعات کر سکتے ہیں۔"
+
+#: core/templates/core/contribute.html:27
+msgid "Fill the profile form"
+msgstr "پروفائل فارم کو پُر کریں"
+
+#: core/templates/core/contribute.html:31
+msgid "CONTRIBUTE CONTENT"
+msgstr "مواد سے تعاون کریں"
+
+#: core/templates/core/contribute.html:36
+msgid "Write / Edit / Photograph"
+msgstr "لکھیں ؍ ترمیم کریں ؍ تصویر کھینچیں"
+
+#: core/templates/core/contribute.html:39
+msgid "You could write content for existing films or edit content that has been written but needs the careful eye of an editor. You can also write independent content for our print section. You could translate the subtitles of films on PARI into other languages. Having those in as many Indian languages as possible is a major objective. You can also translate other written content into different languages."
+msgstr "آپ موجودہ فلموں کے لیے مواد لکھ سکتے ہیں یا تحریر شدہ مواد میں ترمیم کر سکتے ہیں، لیکن اس کے لیے مدیر کی محتاط نظر کی ضرورت ہے۔ آپ ہمارے پرنٹ والے حصہ کے لیے آزاد مواد بھی لکھ سکتے ہیں۔ آپ پاری پر موجود فلموں کے سب ٹائٹلس دوسری زبانوں میں ترجمہ کر سکتے ہیں۔ زیادہ سے زیادہ ہندوستانی زبانوں میں ان کا ترجمہ کرنا ایک بڑا مقصد ہے۔ آپ دوسرے تحریری مواد کو بھی مختلف زبانوں میں ترجمہ کر سکتے ہیں۔"
+
+#: core/templates/core/contribute.html:49
+msgid "Help us understand your skills and interests by filling in this <a href=\"https://docs.google.com/forms/d/e/1FAIpQLScfpZfiT28pInGrwKxiIkVrztNMzATkOHmgEXfJwcgkT8nLkg/viewform\" target=\"_blank\">Profile Form</a>."
+msgstr "اس <a href=\"https://docs.google.com/forms/d/e/1FAIpQLScfpZfiT28pInGrwKxiIkVrztNMzATkOHmgEXfJwcgkT8nLkg/viewform\" target=\"_blank\">پروفائل کے فارم</a> کو پُر کرکے آپ کی مہارتوں اور دلچسپیوں کو سمجھنے میں ہماری مدد کریں۔"
+
+#: core/templates/core/contribute.html:55
+msgid "Upload your articles, photos, document with content ideas through the <a href=\"https://script.google.com/macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec\" target=\"_blank\">Content Upload Form</a>."
+msgstr "مواد کے خیالات کے ساتھ اپنے مضامین، تصاویر، دستاویز <a href=\"https://script.google.com/macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec\" target=\"_blank\">مواد کو اپ لوڈ کرنے کا فارم</a> کے ذریعہ اپ لوڈ کریں۔"
+
+#: core/templates/core/contribute.html:61
+msgid "To contribute to the Faces category, upload the photos and details through the <a href=\"https://script.google.com/macros/s/AKfycbzMQwyY8P1t7CT0_ylmPfSDz7WiSTVHWtL-Yf0UhtoYOIWQfMf5/exec\" target=\"_blank\">Faces Form</a>."
+msgstr "چہرے کے زمرے میں تعاون کرنے کے لیے، تصاویر اور تفصیلات کو <a href=\"https://script.google.com/macros/s/AKfycbzMQwyY8P1t7CT0_ylmPfSDz7WiSTVHWtL-Yf0UhtoYOIWQfMf5/exec\" target=\"_blank\">چہروں کے لیے فارم</a> میں اپ لوڈ کریں۔"
+
+#: core/templates/core/contribute.html:70
+msgid "Make a film"
+msgstr "فلم بنائیں"
+
+#: core/templates/core/contribute.html:73
+msgid "You can produce content for the archive by making films like the ones you already see on this website, so long as these are within PARI’s mandate and objectives. Get in touch with us to know what would be suitable for the archive. The basic principle: it’s got to be on the everyday lives of everyday people in rural India. Share your ideas about what topics/ areas you wish to make a film on. We can take it further from there. Know that you can record content for PARI on your cell phone camera. Please share your audio/video clip links through this <a href=\"https://script.google.com/macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec\" target=\"_blank\">Content Upload Form</a>."
+msgstr "آپ جس قسم کی فلمیں اس ویب سائٹ پر پہلے سے دیکھ رہے ہیں، ویسی فلمیں بنا کر آرکائیو کے لیے مواد تیار کر سکتے ہیں، بشرطیکہ یہ پاری کے مینڈیٹ اور مقاصد کے موافق ہوں۔ آرکائیو کے لیے کیا مناسب ہوگا، یہ جاننے کے لیے ہم سے رابطہ کریں۔ بنیادی اصول: یہ دیہی ہندوستان کے روزمرہ کے لوگوں کی روزمرہ کی زندگی پر مبنی ہونا چاہیے۔ اپنے خیالات ہم سے شیئر کریں کہ آپ کن موضوعات/علاقوں پر فلم بنانا چاہتے ہیں۔ پھر ہم اسے آگے لے جا سکتے ہیں۔ آپ اپنے سیل فون کے کیمرے سے پاری کے لیے مواد ریکارڈ کر سکتے ہیں۔ براہ کرم اپنی آڈیو/ویڈیو کلپ کے لنک اس <a href=\"https://script.google.com/macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec\" target=\"_blank\">مواد کو اپ لوڈ کرنے کا فارم</a> کے ذریعہ شیئر کریں۔"
+
+#: core/templates/core/contribute.html:90
+msgid "Research"
+msgstr "تحقیق کریں"
+
+#: core/templates/core/contribute.html:93
+msgid "Find online content already on the archive and send us links to it. Or research a vital topic – for instance, the lives of agricultural labourers in rural India – and collaborate with us on building a fund of information, photographs and data on that subject. Besides, you can send us any studies or reports in electronic form which you know of and that are relevant to rural India. Have a look at PARI's <a href=%(resource_list)s>'Resources'</a> section to know what’s already there and get a better idea of what we’re looking for. Do share any relevant reports you find through this <a href=\"https://script.google.com/macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec\" target=\"_blank\">Content Upload Form</a>."
+msgstr "آرکائیو پر پہلے سے موجود آن لائن مواد کو تلاش کریں اور اس کے لنک ہمیں بھیجیں۔ یا کسی اہم موضوع پر تحقیق کریں – مثال کے طور پر دیہی ہندوستان کے زرعی مزدوروں کی زندگی – اور اس موضوع پر معلومات، تصاویر اور اعداد و شمار کا ایک مجموعہ تیار کرنے میں ہمارا تعاون کریں۔ اس کے علاوہ، اگر آپ کسی ایسے مطالعہ یا رپورٹ کے بارے میں جانتے ہیں، جو دیہی ہندوستان کے لیے اہمیت کی حامل ہے، تو اسے آپ الیکٹرانک شکل میں ہمیں بھیج سکتے ہیں۔ پاری پر پہلے سے کیا موجود ہے اور ہم کس چیز کی تلاش کر رہے ہیں، اس کے بارے میں تفصیلی معلومات حاصل کرنے کے لیے پاری کے <a href=%(resource_list)s>’وسائل‘</a> والے حصہ کو دیکھیں۔ اگر آپ کو کوئی اہم رپورٹ ملتی ہے، تو اسے <a href=\"https://script.google.com/macros/s/AKfycbyHC82VzoPpoUqjrcNj8Yg0kBo904g-om2cdjH0d_BRt0L1b5aA/exec\" target=\"_blank\">مواد اپ لوڈ کرنے کا فارم</a> کے ذریعہ ہمارے ساتھ شیئر کریں۔"
+
+#: core/templates/core/contribute.html:111
+msgid "Translate"
+msgstr "ترجمہ کریں"
+
+#: core/templates/core/contribute.html:113
+msgid "Help us by translating content into Indian languages. Please help us understand your skills and interests by filling in this <a href=\"https://docs.google.com/forms/d/e/1FAIpQLScfpZfiT28pInGrwKxiIkVrztNMzATkOHmgEXfJwcgkT8nLkg/viewform\" target=\"_blank\">Profile Form</a>."
+msgstr "مواد کو ہندوستانی زبانوں میں ترجمہ کرنے میں ہماری مدد کریں۔ براہ کرم اس <a href=\"https://docs.google.com/forms/d/e/1FAIpQLScfpZfiT28pInGrwKxiIkVrztNMzATkOHmgEXfJwcgkT8nLkg/viewform\" target=\"_blank\">پروفائل فارم</a> کو پُر کرکے آپ کی مہارتوں اور دلچسپیوں کو سمجھنے میں ہماری مدد کریں۔"
+
+#: core/templates/core/contribute.html:122
+#: search/templates/includes/search_filters.html:31
+msgid "FACES"
+msgstr "چہرے"
+
+#: core/templates/core/contribute.html:124
+msgid "Do you have FACES to contribute to the only and largest database recording India’s facial diversity?"
+msgstr "کیا آپ کے پاس ہندوستان میں چہرے کے تنوع کو ریکارڈ کرنے والے واحد اور سب سے بڑے ڈیٹا بیس میں تعاون کرنے کے لیے چہرے ہیں؟"
+
+#: core/templates/core/contribute.html:126
+msgid "Contribute to Faces"
+msgstr "چہرے میں تعاون کریں"
+
+#: core/templates/core/contribute.html:134
+msgid "READY TO UPLOAD?"
+msgstr "اپ لوڈ کرنے کے لیے تیار ہیں؟"
+
+#: core/templates/core/contribute.html:136
+msgid "Is your content ready to upload? Do go through the <a href=%(guidelines)s>PARI content guidelines</a> to ensure you know what’s required."
+msgstr "کیا آپ کا مواد اپ لوڈ کرنے کے لیے تیار ہے؟ <a href=%(guidelines)s>پاری کے مواد کے لیے رہنما ہدایات</a> کا مطالعہ ضرور کریں تاکہ آپ کو یہ معلوم ہو سکے کہ کن چیزوں کی ضرورت ہے۔"
+
+#: core/templates/core/contribute.html:140
+msgid "Upload content"
+msgstr "مواد اپ لوڈ کریں"
+
+#: core/templates/core/contribute.html:145
+msgid "DONATE – SUPPORT A PARI PROJECT"
+msgstr "پاری کے پروجیکٹ کو عطیہ دیں – سپورٹ کریں"
+
+#: core/templates/core/contribute.html:146
+msgid "You can back ongoing PARI projects by funding them. Or pitch one yourself on an aspect of rural India from your home state or district that you believe demands attention."
+msgstr "آپ پاری کے پروجیکٹوں کی مدد مالی اعانت کی فراہمی کے ذریعہ کر سکتے ہیں۔ یا پھر خود سے ہی اپنی آبائی ریاست یا ضلع سے دیہی ہندوستان کے کسی ایک پہلو کا انتخاب کریں، جس کے بارے میں آپ کو لگتا ہے کہ اسے توجہ کی ضرورت ہے۔"
+
+#: core/templates/core/contribute.html:148 core/templates/core/donate.html:4
+#: core/templates/core/donate.html:129 core/templates/core/home_page.html:582
+#: core/templates/pages/menus/dropdown.html:285
+#: core/templates/pages/menus/footer.html:85
+#: donation/templates/donation/donate_form.html:17
+msgid "Donate to PARI"
+msgstr "پاری کو عطیہ کریں"
+
+#: core/templates/core/donate.html:5
+msgid "We can do this without governments – and will. We can’t do it without you. A tax-exempt financial contribution will help PARI pull off this most ambitious of Indian journalistic endeavours."
+msgstr "ہم اسے حکومتوں کے بغیر کر سکتے ہیں – اور کریں گے۔ ہم آپ کے بغیر یہ نہیں کر سکتے۔ ٹیکس سے مستثنیٰ مالی تعاون پاری کو ہندوستانی صحافت کے اس سب سے جرأت مندانہ قدم کو آگے بڑھانے میں مدد کرے گا۔"
+
+#: core/templates/core/donate.html:20
+msgid "In 2014-15, only about <span class=\"highlight\">0.24%%</span> of front page news came out of rural India.<br/>We want to change that."
+msgstr "سال ۱۵۔۲۰۱۴ میں، اخبارات کے پہلے صفحہ پر دیہی ہندوستان سے صرف <span class=\"highlight\">صفر اعشاریہ ۲۴ فیصد</span> خبروں کو ہی جگہ مل پائی۔ <br/>ہم اسے بدلنا چاہتے ہیں۔"
+
+#: core/templates/core/donate.html:23
+msgid "We can do this without governments – and will. We can’t do it without you."
+msgstr "ہم اسے حکومتوں کے بغیر کر سکتے ہیں – اور کریں گے۔ ہم آپ کے بغیر یہ نہیں کر سکتے۔"
+
+#: core/templates/core/donate.html:28
+msgid "India’s younger, media-saturated generations grow up knowing little about their country, but a lot about the elites of a few metros and towns. For a narrowly-owned, commercially-driven media, the dumbing down of a nation is part of standard operating procedure. Data of the Centre for Media Studies (CMS, Delhi) show us that reports from New Delhi account for 66 per cent of news on the front pages of major dailies. The CMS also found that in 2014-15, only about 0.24 per cent of front page news came out of rural India. The TV channels are not much better."
+msgstr "ہندوستان کی نوجوان، میڈیا سے سیراب نسلیں اپنے ملک کے بارے میں بہت کم جانتے ہوئے بڑی ہو رہی ہیں، لیکن انھیں چند میٹرو اور قصبوں کے اشرافیہ کے بارے میں بہت کچھ معلوم ہے۔ تنگ نظر، تجارتی لحاظ سے چلنے والے میڈیا کے لیے قوم کو گونگا بنانا معیاری طریقہ کار کا حصہ ہے۔ سینٹر فار میڈیا اسٹڈیز (سی ایم ایس، دہلی) کے اعداد و شمار ہمیں بتاتے ہیں کہ بڑے بڑے روزناموں کے صفحہ اول پر شائع کی جانے والی خبروں میں سے ۶۶ فیصد نئی دہلی کی ہوتی ہیں۔ سی ایم ایس نے یہ بھی پایا کہ سال ۱۵۔۲۰۱۴ میں صفحہ اول کی خبروں میں سے صرف صفر اعشاریہ ۲۴ فیصد ہی دیہی ہندوستان کی خبریں تھیں۔ ٹی وی چینلوں کا بھی یہی حال ہے۔"
+
+#: core/templates/core/donate.html:34
+msgid "PARI needs your help to pull off this most ambitious of Indian journalistic endeavours."
+msgstr "پاری کو ہندوستانی صحافت کے اس سب سے جرأت مندانہ قدم کو آگے بڑھانے میں آپ کی مدد کی ضرورت ہے۔"
+
+#: core/templates/core/donate.html:38
+msgid "THE PLAN"
+msgstr "منصوبہ"
+
+#: core/templates/core/donate.html:42
+msgid "The People’s Archive of Rural India aims to position a PARI Fellow in every single one of the country’s 95 regions, most of which are untouched by the ‘national’ (read corporate) media."
+msgstr "پیپلز آرکائیو آف رورل انڈیا ملک کے ۹۵ خطوں میں سے ہر ایک میں پاری کے ایک فیلو کو کھڑا کرنا چاہتا ہے، ان میں سے زیادہ تر خطوں کو ’قومی‘ (کارپوریٹ پڑھیں) میڈیا نے چھوا نہیں ہے۔"
+
+#: core/templates/core/donate.html:45
+msgid "The Fellows could be"
+msgstr "فیلوز ہوسکتے ہیں"
+
+#: core/templates/core/donate.html:48
+msgid "Reporters"
+msgstr "نامہ نگار"
+
+#: core/templates/core/donate.html:49
+msgid "Writers"
+msgstr "قلم کار"
+
+#: core/templates/core/donate.html:50
+msgid "Filmmakers"
+msgstr "فلم ساز"
+
+#: core/templates/core/donate.html:51
+msgid "Photographers"
+msgstr "فوٹوگرافر"
+
+#: core/templates/core/donate.html:53
+msgid "and everyday residents of the regions themselves."
+msgstr "اور خود ان خطوں کے روزمرہ کے باشندے۔"
+
+#: core/templates/core/donate.html:54
+msgid "By ‘regions’ we mean natural or historically evolved areas. For instance, in the state of Uttar Pradesh we have Rohilkhand, Bundelkhand, Braj, Awadh, Sonebhadra, and Bhojpur (which extends into Bihar as well).\""
+msgstr "’خطوں‘ سے ہماری مراد قدرتی یا تاریخی طور پر وجود میں آنے والے علاقے ہیں۔ مثال کے طور پر، ریاست اترپردیش میں ہمارے پاس روہیل کھنڈ، بندیل کھنڈ، برج، اودھ، سون بھدر، اور بھوجپور (جو بہار تک پھیلا ہوا ہے) ہیں۔"
+
+#: core/templates/core/donate.html:60
+msgid "Each PARI Fellow works on a specific region for a year, spending at least three months full-time in fieldwork amongst the region’s people and communities."
+msgstr "ہر ایک پاری فیلو کسی مخصوص خطہ میں ایک سال تک کام کرتا ہے، خطہ کے لوگوں اور برادریوں کےدرمیان فیلڈ ورک میں کم از کم تین مہینے مکمل وقت گزارتا ہے۔"
+
+#: core/templates/core/donate.html:64
+msgid "Across 60 months or so, PARI will generate text reports, audio stories, videos, documentary films, photographs, music and ‘talking albums’ on the everyday lives of everyday people – from every part of the country. A database that will be truly representative of the Indian people, particularly of 833 million rural citizens. Of their labour, crafts, stories, songs, poems, art and more. The network of Fellows we build will also reflect the social composition of the country. Half of the nearly 100 Fellows will be women. And Dalit journalists, Adivasi journalists and those from the minorities, will also be represented in a fair manner. Many stories will be told directly by everyday people themselves. Among other legacies, this will give generations of students, all our children, living textbooks on the world around them. And give the nation itself a repository the like of which it has never seen."
+msgstr "۶۰  مہینے یا اس سے زیادہ عرصے میں، پاری ملک کے ہر ایک حصے سے، روزمرہ کے عوام کی روزمرہ کی زندگی پر تحریری رپورٹیں، آڈیو اسٹوریز، ویڈیوز، دستاویزی فلمیں، تصاویر، موسیقی اور ’بولتے البمز‘ تیار کرے گا۔ ایک ایسا ڈیٹا بیس جو صحیح معنوں میں ہندوستانی عوام، خاص کر ۸۳۳ ملین دیہی شہریوں کا نمائندہ ہوگا۔ ان کی مشقت، دستکاری، کہانیاں، گانے، نظمیں، فنون وغیرہ۔ ہم فیلوز کا جو نیٹ ورک بنا رہے ہیں، وہ ملک کی سماجی بناوٹ کی بھی عکاسی کریں گے۔ تقریباً ۱۰۰ فیلوز میں سے آدھی خواتین ہوں گی۔ اور دلت صحافیوں، آدیواسی صحافیوں اور اقلیتوں سے تعلق رکھنے والے افراد کی بھی نمائندگی منصفانہ انداز میں کی جائے گی۔ بہت ساری کہانیاں براہ راست خود روزمرہ کے لوگ سنائیں گے۔ دیگر وراثتوں کے علاوہ، یہ طلبہ کی نسلوں، ہمارے تمام بچوں کو ان کے ارد گرد کی دنیا کے بارے میں زندہ نصابی کتابیں فراہم کرے گا۔ اور خود ملک کو اس کا ایک ایسا مجموعہ عطا کرے گا، جسے اس نے پہلے کبھی نہیں دیکھا ہے۔"
+
+#: core/templates/core/donate.html:76
+msgid "PARI is a multi-lingual site. On this site you’ll find several articles which have a ‘Choose language’ button at the top. Some appear in multiple languages, a few in as many as 10. We intend to scale up both, the number of articles as well as languages. PARI’s audio project too aims to record speakers in every one of India’s 780 living languages."
+msgstr "پاری ایک کثیر لسانی سائٹ ہے۔ اس سائٹ پر آپ کو کئی ایسے مضامین ملیں گے، جس میں اوپر کی طرف ’زبان کا انتخاب کریں‘ والا بٹن موجود ہے۔ کئی مضامین متعدد زبانوں میں ہیں، بعض تو ۱۰ زبانوں میں بھی ہیں۔وہماری کوشش ہے کہ ہم مضامین کی تعداد کو بڑھانے کے ساتھ ساتھ زبانوں کی تعداد بھی بڑھائیں۔وپاری کے آڈیو پروجیکٹ کا بھی مقصد یہی ہے کہ ہندوستان کی ۷۸۰ زندہ زبانوں میں سے ہر ایک زبان بولنے والے کو ریکارڈ کیا جائے۔"
+
+#: core/templates/core/donate.html:86
+msgid "SPONSOR A FELLOW"
+msgstr "ایک فیلو کو اسپانسر کریں"
+
+#: core/templates/core/donate.html:88
+msgid "Cost of each fellowship:"
+msgstr "ہر ایک فیلوشپ کی لاگت:"
+
+#: core/templates/core/donate.html:89
+msgid "Rs. 2 lakhs"
+msgstr "۲ لاکھ روپے"
+
+#: core/templates/core/donate.html:90
+msgid "+ associated costs related to the recording, documentation, collation, editing (text and video), training and more."
+msgstr "معہ ریکارڈنگ، ڈاکیومنٹیشن، کولیشن، ایڈیٹنگ (متن اور آڈیو)، ٹریننگ وغیرہ سے متعلق اخراجات۔"
+
+#: core/templates/core/donate.html:94
+msgid "Approximate total cost of PARI fellowships (per year):"
+msgstr "پاری فیلوشپ کی متوقع کل لاگت (سالانہ):"
+
+#: core/templates/core/donate.html:95
+msgid "Rs. 80 lakhs"
+msgstr "۸۰ لاکھ روپے"
+
+#: core/templates/core/donate.html:101
+msgid "HOW YOU CAN HELP"
+msgstr "آپ کس طرح مدد کر سکتے ہیں"
+
+#: core/templates/core/donate.html:105
+msgid "You can send in donations using a range of payment methods. All donations made to the CounterMedia Trust are <a href=\"/media/uploads/Donate/80g_certificate.jpg\" target=\"_blank\">eligible for exemption</a> under Section 80G of the Income Tax Act, 1961."
+msgstr "آپ ادائیگی کے مختلف طریقوں کا استعمال کرکے چندہ کی رقم بھیج سکتے ہیں۔ کاؤنٹر میڈیا ٹرسٹ کو دیے گئے تمام چندے انکم ٹیکس قانون، ۱۹۶۱ کے سیکشن ۸۰ جی کے تحت <a href=\"/media/uploads/Donate/80g_certificate.jpg\" target=\"_blank\">ٹیکس سے مبرا</a> ہیں۔"
+
+#: core/templates/core/donate.html:112
+msgid "Donate equipment"
+msgstr "آلات عطیہ کریں"
+
+#: core/templates/core/donate.html:115
+msgid "If you would like to send over equipment (new or used) that PARI Fellows and rural contributors could use, please get in <a href=\"mailto:contact@ruralindiaonline.org\">touch</a>. That could include still and video cameras, audio digital recorders, laptops, hard disks and other equipment."
+msgstr "اگر آپ آلات (نئے یا استعمال شدہ) بھیجنا چاہتے ہیں جسے پاری کے فیلو اور دیہی معاونین استعمال کر سکیں، تو براہ کرم ہم سے <a href=\"mailto:contact@ruralindiaonline.org\">رابطہ</a> کریں۔ اس میں جامد اور ویڈیو کیمرے، آڈیو ڈجیٹل ریکارڈر، لیپ ٹاپ، ہارڈ ڈِسک اور دیگر آلات شامل ہو سکتے ہیں۔"
+
+#: core/templates/core/donate.html:122
+msgid "Share the message in your network"
+msgstr "اپنے نیٹ ورک میں پیغام کا اشتراک کریں"
+
+#: core/templates/core/donate.html:124
+msgid "Ask your friends to connect and contribute to this endeavour. Help us cover your country. Join us in building a unique national knowledge repository on rural India."
+msgstr "اپنے دوستوں سے کہیں کہ وہ اس مہم سے جڑیں اور اپنا تعاون دیں۔ اپنے ملک کا احاطہ کرنے میں ہماری مدد کریں۔ دیہی ہندوستان پر مبنی قومی علم کا ایک منفرد ذخیرہ تیار کرنے میں ہمارے ساتھ شامل ہوں۔"
+
+#: core/templates/core/donate.html:141
+msgid "A lot more, actually, but PARI’s core group and volunteers bear significant costs, personally. We appeal to you to contribute generously and make this unique journalistic effort a success. We can do this without governments and corporations – and will. We can’t do it without you."
+msgstr "درحقیقت اور بھی کئی سوالات ہیں، لیکن پاری کا بنیادی گروپ اور رضاکار ذاتی طور پر بڑے اخراجات برداشت کرتے ہیں۔ ہم آپ سے اپیل کرتے ہیں کہ دل کھول کر تعاون دیں اور صحافت کی اس انوکھی کوشش کو کامیابی سے ہم کنار کریں۔ ہم اسے حکومتوں اور کارپوریشنوں کے بغیر کر سکتے ہیں، اور کریں گے۔ لیکن ہم اسے آپ کے بغیر نہیں کر سکتے۔"
+
+#: core/templates/core/donate.html:148
+msgid "Thanking you"
+msgstr "شکریہ آپ کا"
+
+#: core/templates/core/donate.html:149
+msgid "Sincerely"
+msgstr "مخلص"
+
+#: core/templates/core/founders.html:3
+msgid "P. Sainath is the Founder Editor of the People’s Archive of Rural India. The archive is an outcome of his three decades-plus in journalism – including a quarter century of reporting from rural India."
+msgstr "پی سائی ناتھ پیپلز آرکائیو آف رورل انڈیا کے بانی ایڈیٹر ہیں۔ یہ آرکائیو ان کی تین دہائی سے زیادہ کی صحافت کا نتیجہ ہے، جس میں دیہی ہندوستان سے رپورٹنگ کے ۲۵ سال شامل ہیں۔"
+
+#: core/templates/core/founders.html:4
+msgid "Founder Editor P Sainath"
+msgstr "بانی ایڈیٹر پی سائی ناتھ"
+
+#: core/templates/core/founders.html:17
+msgid "Founder's page"
+msgstr "بانی کا صفحہ"
+
+#: core/templates/core/founders.html:20
+msgid "P. Sainath is the Founder Editor of the People’s Archive of Rural India. The archive is an outcome of his three decades-plus in journalism – including a quarter century of reporting from rural India. PARI aims to address the complete failure of the corporate media to cover two-thirds of the country’s population. Our aim is to report and record what is easily the most complex part of the planet."
+msgstr "پی سائی ناتھ پیپلز آرکائیو آف رورل انڈیا کے بانی ایڈیٹر ہیں۔ یہ آرکائیو ان کی تین دہائی سے زیادہ کی صحافت کا نتیجہ ہے، جس میں دیہی ہندوستان سے رپورٹنگ کے ۲۵ سال بھی شامل ہیں۔ پاری کا مقصد کارپوریٹ میڈیا کے ذریعے ملک کی دو تہائی آبادی کا احاطہ کرنے میں مکمل ناکامی کو دور کرنا ہے۔ ہمارا مقصد اس سیارہ کے سب سے پیچیدہ حصہ کو رپورٹ اور ریکارڈ کرنا ہے۔"
+
+#: core/templates/core/founders.html:21
+msgid "Sainath, former Rural Affairs Editor of The Hindu, writer and journalism teacher, is the 2007 winner of the Ramon Magsaysay Award, Asia’s most prestigious prize. He has also won the World Media Summit Global Award for Excellence 2014, in Public Welfare reporting. He was the first reporter in the world to win Amnesty International’s Global Award for Human Rights Journalism in its inaugural year in 2000. Sainath has taught at journalism schools in India and abroad, mentoring students as well as training media professionals."
+msgstr "دی ہندو کے دیہی امور کے سابق ایڈیٹر، قلم کار اور صحافت کے استاد، سائی ناتھ کو سال ۲۰۰۷ میں ایشیا کے سب سے باوقار انعام، ریمن میگسیسے ایوارڈ سے سرفراز کیا گیا تھا۔ انھیں عوامی فلاح و بہبود کی رپورٹنگ کے لیے ورلڈ میڈیا سمٹ گلوبل ایوارڈ فار ایکسی لینس ۲۰۱۴ بھی مل چکا ہے۔ وہ دنیا کے ایسے پہلے رپورٹر تھے، جنہیں سال ۲۰۰۰ میں شروع ہونے والا ایمنسٹی انٹرنیشنل کا پہلا گلوبل ایوارڈ فار ہیومن رائٹس جرنلزم ملا۔ سائی ناتھ ہندوستان اور ملک سے باہر کے صحافت کے اسکولوں میں پڑھا چکے ہیں، جہاں انھوں نے طلبہ کی رہنمائی کرنے کے ساتھ ساتھ میڈیا کے پیشہ ور افراد کو بھی ٹریننگ دی۔"
+
+#: core/templates/core/founders.html:22
+msgid "His book <i>Everybody Loves a Good Drought </i>(Penguin India, 1996), now in its 43rd print, was declared a Penguin Classic in January 2013.  The book is being used in over a hundred universities in India and abroad. His photo archive of black and white images from rural India is being digitised. One part of that titled &#39;Visible Work, Invisible Women&#39; is now on PARI as a fully curated online exhibition. For more on Sainath see <a href=\"http://www.psainath.org/\" target=\"_blank\">www.psainath.org.</a>"
+msgstr "ان کی کتاب <i> Everybody Loves a Good Drought</i>(Penguin India, 1996)، جس کا اب ۴۳واں پرنٹ بازار میں ہے، کو جنوری ۲۰۱۳ میں پینگوئن کلاسک ہونے کا اعلان کیا گیا۔ اس کتاب کو ہندوستان اور ملک سے باہر کی سو سے زیادہ نیورسٹیوں میں استعمال کیا جا رہا ہے۔ دیہی ہندوستان سے ان کی سفید و سیاہ تصویروں کے فوٹو آرکائیو کو ڈجیٹائز کیا جا رہا ہے۔ اس کا ایک حصہ بعنوان &#39; کام ہی کام، عورتیں گمنام &#39; پوری طرح آن لائن نمائش کے طور پر اب پاری پر موجود ہے۔ سائی ناتھ کے بارے میں مزید معلومات کے لیے اسے دیکھیں <a href=\"http://www.psainath.org/\" target=\"_blank\">www.psainath.org</a>"
+
+#: core/templates/core/founders.html:24 core/templates/core/founders.html:50
+msgid "Binaifer Bharucha"
+msgstr "بنیفر بھروچا"
+
+#: core/templates/core/founders.html:25
+msgid "Binaifer Bharucha is PARI’s Photo Editor and a freelance photographer based in Mumbai. Her commercial portfolio focuses on still life work (products, food, interiors and jewellery). Since 2010 she has been a part of ArtOxygen, an organisation that promotes people’s art in public spaces in Mumbai. She photographs and shoots videos of the interactions and encounters between the public, the artwork and the artist."
+msgstr "بنیفر بھروچا پاری کی فوٹو ایڈیٹر اور ممبئی میں مقیم ایک آزاد فوٹوگرافر ہیں۔ ان کا تجارتی پورٹ فولیو ساکت زندگی کے کام (اشیاء، کھانا، انٹیریئرس اور زیورات) پر مرکوز ہے۔ سال ۲۰۱۰ سے وہ آرٹ آکسیجن کا حصہ رہی ہیں، یہ تنظیم ممبئی میں عوامی مقامات پر لوگوں کے فن کو فروغ دیتی ہے۔ وہ عوام، آرٹ ورک اور آرٹسٹ کے مابین ہونے والی بات چیت اور تصادم کی تصویریں کھینتچتی اور ویڈیٹو بناتی ہیں۔"
+
+#: core/templates/core/founders.html:26
+msgid "Binaifer has a postgraduate diploma in Social Communications Media from the Sophia Polytechnic, Mumbai. She loves, in no particular order, to shoot things that don’t move, going to the mountains, animals, books, films and food."
+msgstr "بنیفر نے سوفیا پولی ٹیکنک، ممبئی سے سوشل کمیونیکیشنز میڈیا میں پوسٹ گریجویٹ ڈپلوما کیا ہے۔ انھیں بلا ترتیب ان چیزوں کو شوٹ کرنا پسند ہے جو حرکت نہیں کرتیں، ساتھ ہی پہاڑوں پر جانا، جانور، کتابیں، فلم اور کھانا پسند ہے۔"
+
+#: core/templates/core/founders.html:28
+msgid "Namita Waikar is Managing Editor, PARI, and a CounterMedia trustee. She oversees the finance and administrative functions of the trust that runs PARI. Her work includes administering the PARI fellowships programme, managing communications with volunteers, overseeing all Indian language translations and reviews, and anchoring the landmark Grindmill Songs Project."
+msgstr "نمیتا وائکر پاری کی منیجنگ ایڈیٹر، اور کاؤنٹر میڈیا کی ٹرسٹی ہیں۔ وہ پاری کو چلانے والے ٹرسٹ کے مالی اور انتظامی امور کی نگرانی کرتی ہیں۔ ان کے کاموں میں شامل ہے پاری فیلوشپ پروگرام کی نگرانی، رضاکاروں کے ساتھ بات چیت کا انتظام کرنا، ہندوستانی زبانوں کے تمام ترجموں اور تجزیوں کو دیکھنا، اور چکّی کے گانوں کے پروجیکٹ کی اینکرنگ کرنا۔"
+
+#: core/templates/core/founders.html:29
+msgid "Namita is also a writer and translator (Marathi to English), and some of her stories, photos and videos are published on PARI.  In her day job, she is a partner in a chemistry databases firm in Pune, which is the culmination of her work of over 20 years as a biochemist and a software project manager."
+msgstr "نمیتا ایک قلم کار اور مترجم (مراٹھی سے انگریزی) بھی ہیں، اور ان کی کچھ اسٹوریز، تصاویر اور ویڈیوز پاری پر شائع ہو چکی ہیں۔ اپنے دن کے کام میں، وہ پونہ کی ایک کیمسٹری ڈیٹا بیسز فرم میں پارٹنر ہیں، جو بایو کیمسٹ اور سافٹ ویئر پروجیکٹ منیجر کے طور پر ان کے ۲۰ سال سے زیادہ کے کام کا نقطہ عروج ہے۔"
+
+#: core/templates/core/founders.html:31
+msgid "Sharmila Joshi is the Executive Editor at PARI. Her work includes overseeing, editing and presenting PARI’s complex content from innumerable parts of the country. She also manages a pool of voluntary editors and trains editorial interns. She has a significant role in shaping our site’s editorial and ethical protocols."
+msgstr "شرمیلا جوشی پاری کی ایگزیکٹو ایڈیٹر ہیں۔ ان کے کام میں ہندوستان کے بے شمار حصوں سے پاری کو موصول ہونے والے پیچیدہ مواد کو دیکھنا، ان کی تدوین کرنا اور پھر انھیں پیش کرنا  شامل ہے۔ وہ رضاکارانہ ایڈیٹرز کے گروپ کو بھی سنبھالتی ہیں اور ادارتی انٹرنز کی تربیت کرتی ہیں۔ ہماری سائٹ کے ادارتی اور اخلاقی حفظِ مراتب کو ترتیب دینے میں ان کا نمایاں کردار ہے۔"
+
+#: core/templates/core/founders.html:32
+msgid "As a journalist, Sharmila’s work has featured in several national and international publications. As a researcher, she has published in anthologies on gender and violence, on women in politics, and gender and labour. She has an MA in Historical Sociology from the State University of New York, and the work she started towards a PhD there remains a pipedream."
+msgstr "ایک صحافی کے طور پر، شرمیلا کے مضامین متعدد قومی اور بین الاقوامی اشاعتوں میں شامل کیے جاتے رہے ہیں۔ ایک محقق کے طور پر، انھوں نے صنف اور تشدد، سیاست میں خواتین، اور صنف اور مزدوری پر مضامین کو شائع کیا ہے۔ انھوں نے نیویارک کی اسٹیٹ یونیورسٹی سے تاریخی سماجیات میں ایم اے کیا ہے، اور انھوں نے پی ایچ ڈی کے لیے جو کام وہاں شروع کیا وہ ایک ادھورا خواب ہے۔"
+
+#: core/templates/core/founders.html:34
+msgid "As Tech Editor, PARI, Siddharth Adelkar notices nifty tools and best practices in the tech world, and brings them home to PARI. Siddharth believes that journalists expect more than “just a website” from technologists. They need an engaged tech team that is sensitive to the geopolitical, economic and societal crisis that journalism is going through. Online journalism can be a redeeming force, but that requires building an enduring partnership between techies and journalists. One that strives to rebuild the Internet as a democratic and public space."
+msgstr "پاری کے ٹیک ایڈیٹر کے طور پر، سدھارتھ اڈیلکر ٹیکنالوجی کی دنیا میں موجود دلکش ٹولز اور بہترین طریقوں کا پتا لگاتے ہیں، اور انھیں پاری کے لیے استعمال کرتے ہیں۔ سدھارتھ کا ماننا ہے کہ صحافی حضرات تکنیکی ماہرین سے صرف ایک ویب سائٹ سے زیادہ کی امید کرتے ہیں۔ انھیں ایک ایسی مصروف ٹیک ٹیم کی ضرورت ہوتی ہے، جو اُن جغرافیائی و سیاسی، معاشی و معاشرتی بحران  کے تئیں حساس ہو، جن سے صحافت گزر رہی ہے۔ آن لائن صحافت نجات دلانے کی طاقت بن سکتی ہے، لیکن یہ تبھی ممکن ہے جب تکنیکی ماہرین اور صحافیوں کے درمیان پائیدار شراکت قائم کرنا ہوگا، جس کی کوشش انٹرنیٹ کو ایک جمہوری اور عوامی مقام بنانے کی ہو۔"
+
+#: core/templates/core/founders.html:35
+msgid "Siddharth works at ThoughtWorks, where he focuses on software for independent media. He is also the Secretary of the Free Software Movement of Maharashtra. He has a master’s degree in Computer Science from the University of Southern California."
+msgstr "سدھارتھ تھاٹ ورکس میں کام کرتے ہیں، جہاں ان کی توجہ آزاد میڈیا کے لیے سافٹ ویئر بنانے پر مرکوز ہے۔ وہ فری سافٹ ویئر موومنٹ آف مہاراشٹر کے سکریٹری بھی ہیں۔ ان کے پاس جنوبی کیلیفورنیا یونیورسٹی سے کمپیوٹر سائنس میں ماسٹر کی ڈگری ہے۔"
+
+#: core/templates/core/founders.html:38
+msgid "People"
+msgstr "لوگ"
+
+#: core/templates/core/founders.html:43
+msgid "FOUNDER EDITOR"
+msgstr "بانی ایڈیٹر"
+
+#: core/templates/core/founders.html:49
+msgid "PHOTO EDITOR"
+msgstr "فوٹو ایڈیٹر"
+
+#: core/templates/core/founders.html:54
+msgid "MANAGING EDITOR"
+msgstr "مینیجنگ ایڈیٹر"
+
+#: core/templates/core/founders.html:59
+msgid "EXECUTIVE EDITOR"
+msgstr "ایگزیکٹو ایڈیٹر"
+
+#: core/templates/core/founders.html:64
+msgid "TECH EDITOR"
+msgstr "ٹیک ایڈیٹر"
+
+#: core/templates/core/guidelines.html:4
+msgid "Want to contribute to PARI? Find out what types of content we are looking for."
+msgstr "پاری کے لیے تعاون کرنا چاہتے ہیں؟ معلوم کریں کہ ہم کس قسم کے مواد کو تلاش کر رہے ہیں۔"
+
+#: core/templates/core/guidelines.html:26
+msgid "Index of contents"
+msgstr "فہرست مشمولات"
+
+#: core/templates/core/home_page.html:6
+msgid "A journalism website reporting the stories of 833 million rural Indians. An archive of the living past, a journal of the present, a textbook of the future."
+msgstr "۸۳۳ ملین دیہی ہندوستانیوں کی اسٹوریز کی رپورٹنگ کرنے والی ایک صحافتی ویب سائٹ۔ زندہ ماضی کا آرکائیو، حال کا جریدہ، مستقبل کی نصابی کتاب۔"
+
+#: core/templates/core/home_page.html:9
+msgid "Home"
+msgstr "ہوم"
+
+#: core/templates/core/home_page.html:203
+msgid "Read/ Watch/ Listen"
+msgstr "پڑھیں / دیکھیں / سنیں"
+
+#: core/templates/core/home_page.html:256
+msgid "IN FOCUS"
+msgstr "توجہ کا مرکز"
+
+#: core/templates/core/home_page.html:370
+msgid "All that you can discover on PARI"
+msgstr "وہ سب جو آپ پاری پر دریافت کرسکتے ہیں"
+
+#: core/templates/core/home_page.html:391
+msgid "PARI is an insane project"
+msgstr "پاری ایک جنونی پروجیکٹ ہے"
+
+#: core/templates/core/home_page.html:395
+msgid "Rural India — a living journal, a breathing archive"
+msgstr "رورول انڈیا: ایک زندہ جریدہ، ایک سانس لیتا آرکائیو"
+
+#: core/templates/core/home_page.html:402
+msgid "Here's how you can contribute"
+msgstr "آپ کس طرح تعاون کر سکتے ہیں یہاں دیکھیں"
+
+#: core/templates/core/home_page.html:446
+msgid "and a wonderful one"
+msgstr "اور ایک حیرت انگیز"
+
+#: core/templates/core/home_page.html:471
+msgid "Stories from all over in all languages"
+msgstr "ہر جگہ سے تمام زبانوں میں اسٹوریز"
+
+#: core/templates/core/home_page.html:473
+msgid "Browse all Categories"
+msgstr "تمام زمرے براؤز کریں"
+
+#: core/templates/core/home_page.html:477
+msgid "Translate for PARI"
+msgstr "پاری کے لیے ترجمہ کریں"
+
+#: core/templates/core/home_page.html:478
+msgid "Translate PARI content into languages you know"
+msgstr "آپ جو زبان جانتے ہیں اس میں پاری کے مواد کو ترجمہ کریں"
+
+#: core/templates/core/home_page.html:492
+msgid "And many more stories in audio and video"
+msgstr "اور بھی بہت سی اسٹوریز آڈیو اور ویڈیو کی شکل میں"
+
+#: core/templates/core/home_page.html:581
+msgid "Like what PARI is doing?"
+msgstr "پاری جو کر رہا ہے کیا آپ اسے پسند کرتے ہیں؟"
+
+#: core/templates/core/home_page.html:585
+msgid "Contribute to PARI"
+msgstr "پاری کا تعاون کریں"
+
+#: core/templates/core/pari_teachers_students.html:3
+#: core/templates/core/pari_teachers_students.html:36
+#: core/templates/pages/menus/dropdown.html:251
+msgid "PARI for students, teachers and researchers"
+msgstr "طلبہ، اساتذہ اور محققین کے لیے پاری"
+
+#: core/templates/core/pari_teachers_students.html:4
+msgid "PARI will serve as a living, breathing textbook of Indian rural affairs for future generations of students and teachers. Find out how."
+msgstr "پاری، طلبہ اور اساتذہ کی آنے والی نسلوں کے لیے ہندوستانی دیہی امور پر ایک زندہ، سانس لیتی نصابی کتاب کا کام کرے گا۔ معلوم کریں کہ کیسے۔"
+
+#: core/templates/core/pari_teachers_students.html:43
+msgid "REDEFINING LEARNING"
+msgstr "آموزش کی نئی تشریح کرنا"
+
+#: core/templates/core/pari_teachers_students.html:46
+msgid "Creating the textbooks of the future"
+msgstr "مستقبل کی نصابی کتابیں تیار کرنا"
+
+#: core/templates/core/pari_teachers_students.html:47
+msgid "At PARI, we’re writing the textbooks of the future. That’s happening with the numerous stories, photos, videos and audio material going up every week on our site. It’s important that, over time, quite a bit of that is produced by students and teachers themselves."
+msgstr "پاری میں ہم، مستقبل کی نصابی کتابیں لکھ رہے ہیں۔ یہ ہماری سائٹ پر ہر ہفتے بے شمار اسٹوریز، تصاویر، ویڈیوز اور آڈیو مواد کے ساتھ ہو رہا ہے۔ یہ ضروری ہے کہ وقت کے ساتھ، اس میں سے تھوڑا بہت حصہ طلبہ اور اساتذہ خود تیار کریں۔"
+
+#: core/templates/core/pari_teachers_students.html:54
+msgid "PARI aims to help create informative and lively stories on rural India for students, teachers, schools, colleges and universities. And for learners outside such formal institutions as well. We believe teaching and learning materials, including textbooks, will increasingly move online in the next few years. That's a process already on in some parts of the world. Done right, it could mean 'textbooks' or teaching material that can be added to, amended, updated or widened. As broadband access grows, it should also mean lower costs for many students, as PARI is a free-access-to-public site."
+msgstr "پاری کا مقصد طلبہ، اساتذہ، اسکولوں، کالجوں اور یونیورسٹیوں کے لیے دیہی ہندوستان پر معلوماتی اور روایتی اسٹوریز تیار کرنے میں مدد کرنا ہے۔ یہ ان لوگوں کے لیے بھی ہوگا جو اس قسم کے روایتی تعلیمی اداروں سے باہر ہیں۔ ہمارا ماننا ہے کہ اگلے چند سالوں میں نصابی کتابوں سمیت درس و تدریس کے زیادہ تر مواد تیزی سے آن لائن منتقل ہو جائیں گے۔ یہ سلسلہ دنیا کے کچھ حصوں میں پہلے سے ہی جاری ہے۔ اگر صحیح طریقے سے کیا گیا، تو اس کا مطلب ہوگا ’نصابی کتابیں‘ یا تدریسی مواد جن میں ترمیم و اضافہ کیا جا سکتا ہے۔ براڈبینڈ تک رسائی میں چونکہ اضافہ ہو رہا ہے، اس لیے اس کا مطلب بہت سے طلبہ کے اخراجات میں کمی بھی ہوگی، کیوں کہ پاری عوامی طور پر مفت رسائی حاصل کرنے والی سائٹ ہے۔"
+
+#: core/templates/core/pari_teachers_students.html:72
+msgid "Helping students to develop course content"
+msgstr "نصابی مواد تیار کرنے میں طلبہ کی مدد کرنا"
+
+#: core/templates/core/pari_teachers_students.html:73
+msgid "We have already added a vital element to this process: on PARI, students participate in the creation of their own textbooks. If a teacher or an institution wants to set up learning resources for a course or part of a course, we will work with them to create the course content. Let’s say that's on rural labour or migrants or agriculture or artisans – we will try and involve the students in creating living knowledge on their topics through field trips."
+msgstr "ہم نے پہلے ہی اس عمل میں ایک اہم عنصر شامل کر لیا ہے: پاری پر، طلبہ خود اپنی نصابی کتابوں کی تیاری میں شریک ہوتے ہیں۔ اگر کوئی استاد یا کوئی ادارہ کسی کورس یا کورس کے ایک حصہ کے لیے تدریسی وسائل مرتب کرنا چاہتا ہے، تو ہم اس کورس کے مواد کی تیاری میں ان کے ساتھ مل کر کام کریں گے۔ مان لیجئے کہ یہ دیہی مزدوری کے بارے میں ہے یا مہاجرین یا زراعت یا کاریگروں پر ہے، ہم فیلڈ ٹرپ کے ذریعے طلبہ کو ان کے موضوعات پر جاندار علم کی تخلیق کرنے کی کوشش کریں گے اور طلبہ کو اس میں شامل کریں گے۔"
+
+#: core/templates/core/pari_teachers_students.html:84
+msgid "So videos, audio recordings, photos and text articles of and by students could not only be fetching them marks or grades in their courses, but also become part of a flexible and open textbook. Also, a video on, say, agricultural labourers where the workers themselves are the narrators, where they'd be addressing audiences themselves, sharing and explaining their lives, work and world – that will make for far more compelling learning resources. These should certainly hold the attention of students, teachers, researchers and general viewers alike, far better than printed textbooks dated by some years. Especially since PARI’s approach will combine the power of text articles, research papers, video, audio and still photographs."
+msgstr "لہٰذا طلبہ کے اور ان کے ذریعے تیار کیے گئے ویڈیوز، آڈیو ریکارڈنگ، تصاویر اور تحریری مضامین نہ صرف انھیں اپنے کورسز میں نمبر اور گریڈ دلا سکیں گے، بلکہ ایک لچکدار اور کھلی ہوئی نصابی کتاب کا حصہ بھی بن سکیں گے۔ اسی طرح، مان لیجئے، زرعی مزدوروں پر مبنی ایک ویڈیو جس میں وہ خود ہی اپنی کہانی بیان کرتے ہیں، جہاں پر وہ سامعین سے خود ہی خطاب کر رہے ہوں گے، اس قسم کے تدریسی وسائل کچھ زیادہ ہی اثردار ہوں گے۔ چند سالوں سے چھاپی جا رہی نصابی کتابوں کے مقابلے ان مواد پر طلبہ، اساتذہ، محققیں اور عام ناظرین کی توجہ یقینی طور پر زیادہ جانی چاہیے۔ خاص کر اس لیے کہ پاری کی اس کوشش کے تحت تحریری مضامین، تحقیقی مقالے، ویڈیو، آڈیو اور جامد تصاویر کی طاقت ایک ساتھ جمع کی جائے گی۔"
+
+#: core/templates/core/pari_teachers_students.html:103
+msgid "Unleashing a powerful source of learning"
+msgstr "آموزش کے ایک طاقتور ذریعہ کو جاری کرنا"
+
+#: core/templates/core/pari_teachers_students.html:105
+msgid "PARI has specific <a href=\"%(guidelines)s#section-6-1\"> guidelines </a> for videos generated for and by us, which ensure recognition of primary authorship of the narrators. Meanwhile, just the interaction of students with the people whose lives they're trying to study, and their joint effort with communities to produce authentic material from the field, is also a powerful source of learning. It’s already happening on PARI."
+msgstr "پاری کے پاس ہمارے لیے اور ہمارے ذریعہ تیار کیے گئے ویڈیوز کے لیے خصوصی <a href=\"%(guidelines)s#section-6-1\">رہنما ہدایات</a> ہیں، جو کہانی بیان کرنے والوں کی بنیادی تصنیف کی شناحت کو یقینی بناتے ہیں۔ دریں اثنا، ان لوگوں کے ساتھ صرف طلبہ کا تعامل، جن کی زندگیوں کے بارے میں وہ مطالعہ کرنے کی کوشش کر رہے ہیں، اور فیلڈ سے مستند مواد تیار کرنے کے لیے برادریوں کے ساتھ ان کی مشترکہ کوشش بھی آموزش کا ایک طاقتور وسیلہ ہے۔ یہ سب پاری پر پہلے سے ہو رہا ہے۔"
+
+#: core/templates/core/pari_teachers_students.html:116
+msgid "There's another thing: each year, countless students produce valuable output on India. In the form of research papers, articles, videos, documentaries, magazines, photographs and more. Excellent though some of this material is, it mostly disappears into departmental libraries, exam paper cupboards or the uncharted cemeteries of cyberspace. But for institutions that link up with us, PARI offers a platform that will preserve, even showcase, the best of that output and make it accessible and easy to view from anywhere in the world. In turn, knowing that their work can be viewed across the globe would be an incentive for students to raise the level and quality of their work."
+msgstr "ایک اور چیز بھی ہے: ہر سال، بے شمار طلبہ ہندوستان پر قیمتی مواد تیار کرتے ہیں۔ تحقیقی مقالے، مضامین، ویڈیوز، دستاویزی فلمیں، رسالے، تصاویر وغیرہ کی شکل میں۔ اگرچہ ان میں سے کچھ مواد عمدہ ہوتا ہے، لیکن یہ زیادہ تر شعبے کی لائبریریوں، امتحانات کے سوالناموں کی الماریوں یا سائبر اسپیس کے گمنام قبرستانوں میں غائب ہو جاتے ہیں۔ لیکن ہمارے ساتھ منسلک ہونے والے اداروں کے لیے، پاری ایک ایسا پلیٹ فارم پیش کرتا ہے جو ان مواد کو محفوظ کرنے کے ساتھ ساتھ ان میں سے بہترین کی نمائش کرے گا، اور دنیا کے کسی بھی علاقے سے رسائی حاصل کرنے اور آسانی سے دیکھنے کے قابل بنائے گا۔ اس کے نتیجہ میں، یہ جانتے ہوئے کہ ان کے کام کو پوری دنیا میں دیکھا جا سکتا ہے، طلبہ کے لیے یہ بہتر موقع ہے کہ وہ اپنے کاموں کی سطح اور معیار کو اوپر اٹھائیں۔"
+
+#: core/templates/core/pari_teachers_students.html:134
+msgid "A one-stop library for researchers"
+msgstr "محققین کے لیے ایک وَن اسٹاپ لائبریری"
+
+#: core/templates/core/pari_teachers_students.html:136
+msgid "Besides this, there are students in universities, colleges and high schools working on text articles, audio and video, independently of their course work, for PARI. Some very young students have even produced <a href=%(forest)s> newspapers </a> for us."
+msgstr "اس کے علاوہ یونیورسٹیوں، کالجوں اور ہائی اسکولوں کے طلبہ ہیں، جو اپنے نصابی کام سے آزاد ہوکر پاری کے لیے تحریری مضامین، آڈیو اور ویڈیو پر کام کر رہے ہیں۔ کچھ بہت کی کم عمر کے طلبہ نے ہمارے لیے <a href=%(forest)s>اخبارات</a> بھی تیار کیے ہیں۔"
+
+#: core/templates/core/pari_teachers_students.html:144
+msgid "And in our <a href=%(resource_list)s> Resources </a> section, we aim to put up (in full text and not just via links), all official (and unofficial but credible) reports related to rural India. For instance, every report of the National Commission for Enterprises in the Unorganised Sector, reports of the Planning Commission (now NITI Aayog) and ministries, the United Nations and much more. Researchers will not have to surf multiple sites to access important documents and studies from different sources."
+msgstr "اور ہمارے <a href=%(resource_list)s>وسائل </a> سیکشن میں، ہم دیہی ہندوستان سے متعلق تمام سرکاری (اور غیر سرکاری لیکن معتبر) رپورٹیں ڈالنا چاہتے ہیں (پورا متن اور صرف ان کے لنک نہیں)۔ مثال کے طور پر غیر منظم شعبہ میں کاروبار کے لیے قومی کمیشن کی ہر ایک رپورٹ، پلاننگ کمیشن (اب نیتی آیوگ) اور وزارتوں کی رپورٹس، اقوامِ متحدہ وغیرہ کی رپورٹ۔ محققین کو مختلف ذرائع سے اہم دستاویزات اور مطالعات تک رسائی حاصل کرنے کے لیے متعدد سائٹوں پر نہیں جانا پڑے گا۔"
+
+#: core/templates/core/pari_teachers_students.html:156
+msgid "PARI is a one-stop library for students, teachers and all other learners."
+msgstr "پاری طلبہ، اساتذہ اور دیگر سبھی سیکھنے والوں کے لیے وَن اسٹاپ لائبریری ہے۔"
+
+#: core/templates/core/static_page.html:17
+msgid "Choose language"
+msgstr "زبان کا انتخاب کریں"
+
+#: core/templates/email/contact_us.html:4
+msgid "Name"
+msgstr "نام"
+
+#: core/templates/email/contact_us.html:8
+msgid "Email"
+msgstr "ای میل"
+
+#: core/templates/email/contact_us.html:12
+msgid "Message"
+msgstr "پیغام"
+
+#: core/templates/includes/grid_title.html:8
+#: core/templates/includes/page_content_header/gallery_back_button.html:5
+msgid "GALLERY"
+msgstr "گیلری"
+
+#: core/templates/includes/home_page_face_tile.html:9
+msgid "FACES from across India"
+msgstr "پورے ہندوستان سے چہرے"
+
+#: core/templates/includes/home_page_face_tile.html:14
+msgid "PARI records the facial diversity of the people of India"
+msgstr "پاری ہندوستان کے لوگوں کے چہرے کے تنوع کو ریکارڈ کرتا ہے"
+
+#: core/templates/includes/home_page_face_tile.html:18
+msgid "View all FACES"
+msgstr "تمام چہرے دیکھیں"
+
+#: core/templates/includes/home_page_face_tile.html:22
+#: core/templates/pages/menus/dropdown.html:213
+msgid "Contribute"
+msgstr "تعاون کریں"
+
+#: core/templates/includes/home_page_face_tile.html:23
+msgid "to this database"
+msgstr "اس ڈیٹا بیس پر"
+
+#: core/templates/includes/language_select.html:10
+#: core/templates/includes/language_select.html:15
+#, python-format
+msgid " %(tlang)s "
+msgstr "%(tlang)s"
+
+#: core/templates/pages/menus/dropdown.html:15
+#: search/templates/includes/search_filters.html:41
+msgid "Things We Do"
+msgstr "ہم جو کام کرتے ہیں"
+
+#: core/templates/pages/menus/dropdown.html:20
+#: search/templates/includes/search_filters.html:42
+msgid "Things We Make"
+msgstr "ہم جو چیزیں بناتے ہیں"
+
+#: core/templates/pages/menus/dropdown.html:25
+#: search/templates/includes/search_filters.html:43
+msgid "Farming and its Crisis"
+msgstr "کاشتکاری اور اس کا بحران"
+
+#: core/templates/pages/menus/dropdown.html:34
+#: search/templates/includes/search_filters.html:50
+msgid "Foot-Soldiers of Freedom"
+msgstr "آزادی کے پیدل سپاہی"
+
+#: core/templates/pages/menus/dropdown.html:39
+#: search/templates/includes/search_filters.html:64
+msgid "The Rural in the Urban"
+msgstr "شہر میں دیہات"
+
+#: core/templates/pages/menus/dropdown.html:44
+#: search/templates/includes/search_filters.html:52
+msgid "Musafir"
+msgstr "مسافر"
+
+#: core/templates/pages/menus/dropdown.html:49
+msgid "View all Categories"
+msgstr "تمام زمرے دیکھیں"
+
+#: core/templates/pages/menus/dropdown.html:62
+msgid "Stories from near you"
+msgstr "آپ کے ارد گرد کی کہانیاں"
+
+#: core/templates/pages/menus/dropdown.html:65
+msgid "The archive on a map"
+msgstr "نقشہ پر آرکائیو"
+
+#: core/templates/pages/menus/dropdown.html:82
+msgid "PHOTOS"
+msgstr "تصاویر"
+
+#: core/templates/pages/menus/dropdown.html:91
+msgid "Exhibitions"
+msgstr "نمائشیں"
+
+#: core/templates/pages/menus/dropdown.html:96
+msgid "PARI Pics"
+msgstr "پاری کی تصاویر"
+
+#: core/templates/pages/menus/dropdown.html:102
+msgid "VIDEOS"
+msgstr "ویڈیوز"
+
+#: core/templates/pages/menus/dropdown.html:106
+#: search/templates/includes/search_filters.html:44
+msgid "Little Takes"
+msgstr "چھوٹے تبصرے"
+
+#: core/templates/pages/menus/dropdown.html:118
+msgid "AUDIO"
+msgstr "آڈیو"
+
+#: core/templates/pages/menus/dropdown.html:122
+msgid "Music"
+msgstr "موسیقی"
+
+#: core/templates/pages/menus/dropdown.html:127
+#: search/templates/includes/search_filters.html:59
+msgid "Tongues"
+msgstr "زبانیں"
+
+#: core/templates/pages/menus/dropdown.html:133
+msgid "View Gallery highlights"
+msgstr "گیلری کی جھلکیاں دیکھیں"
+
+#: core/templates/pages/menus/dropdown.html:151
+msgid "Explore India’s facial diversity"
+msgstr "ہندوستان کے چہرے کا تنوع دریافت کریں"
+
+#: core/templates/pages/menus/dropdown.html:153
+msgid "View FACES"
+msgstr "چہرے دیکھیں"
+
+#: core/templates/pages/menus/dropdown.html:166
+msgid "Listen to photos speak"
+msgstr "بولتی ہوئی تصویروں کو سنیں"
+
+#: core/templates/pages/menus/dropdown.html:168
+msgid "View Talking Albums"
+msgstr "بولتے ہوئے البمز دیکھیں"
+
+#: core/templates/pages/menus/dropdown.html:179
+#: resources/templates/resources/resource_list.html:8
+#: resources/templates/resources/resource_list.html:9
+#: resources/templates/resources/resource_list.html:37
+#: search/templates/includes/search_filters.html:32
+msgid "Library"
+msgstr "لائبریری"
+
+#: core/templates/pages/menus/dropdown.html:184
+msgid "About PARI"
+msgstr "پاری کے بارے میں"
+
+#: core/templates/pages/menus/dropdown.html:191
+msgid "ABOUT PARI"
+msgstr "پاری کے بارے میں"
+
+#: core/templates/pages/menus/dropdown.html:199
+#: core/templates/pages/menus/footer.html:60
+msgid "Blog"
+msgstr "بلاگ"
+
+#: core/templates/pages/menus/dropdown.html:203
+#: core/templates/pages/menus/footer.html:65
+msgid "Contact us"
+msgstr "ہم سے رابطہ کریں"
+
+#: core/templates/pages/menus/dropdown.html:209
+msgid "GET INVOLVED"
+msgstr "ہمارے ساتھ شامل ہوں"
+
+#: core/templates/pages/menus/dropdown.html:218
+msgid "Donate"
+msgstr "عطیہ کریں"
+
+#: core/templates/pages/menus/dropdown.html:224
+msgid "NOTES"
+msgstr "نوٹ"
+
+#: core/templates/pages/menus/dropdown.html:233
+#: core/templates/pages/menus/footer.html:75
+msgid "Guidelines"
+msgstr "رہنما ہدایات"
+
+#: core/templates/pages/menus/dropdown.html:253
+#: core/templates/pages/menus/dropdown.html:269
+msgid "Know more"
+msgstr "مزید جانیں"
+
+#: core/templates/pages/menus/dropdown.html:267
+msgid "Founder Editor"
+msgstr "بانی ایڈیٹر"
+
+#: core/templates/pages/menus/dropdown.html:280
+msgid "PARI Education"
+msgstr "پاری ایجوکیشن"
+
+#: core/templates/pages/menus/footer.html:16
+msgid "Stories on a map"
+msgstr "نقشے پر کہانیاں"
+
+#: core/templates/pages/menus/footer.html:26
+msgid "Photos"
+msgstr "تصاویر"
+
+#: core/templates/pages/menus/footer.html:31
+#: search/templates/includes/search_filters.html:29
+msgid "Videos"
+msgstr "ویڈیوز"
+
+#: core/templates/pages/menus/footer.html:36
+#: search/templates/includes/search_filters.html:30
+msgid "Audios"
+msgstr "آڈیوز"
+
+#: core/templates/pages/menus/footer.html:45 face/templates/face/face.html:10
+#: face/templates/face/face.html:11 face/templates/face/face.html:47
+#: face/templates/face/face_list.html:10 face/templates/face/face_list.html:11
+#: face/templates/face/face_list.html:31
+#: location/templates/map/map_list.html:51
+msgid "Faces"
+msgstr "چہرے"
+
+#: core/templates/pages/menus/footer.html:51
+msgid "About"
+msgstr "کے بارے میں"
+
+#: core/templates/pages/menus/footer.html:81
+msgid "Get Involved"
+msgstr "شامل ہوں"
+
+#: core/templates/pages/menus/footer.html:90
+msgid "Volunteer for PARI"
+msgstr "پاری کے رضاکار بنیں"
+
+#: core/templates/pages/menus/footer.html:96
+msgid "More"
+msgstr "مزید"
+
+#: core/templates/pages/menus/footer.html:100
+msgid "Terms & Conditions"
+msgstr "شرائط و ضوابط"
+
+#: core/templates/pages/menus/footer.html:106
+msgid "Copyright"
+msgstr "کاپی رائٹ"
+
+#: core/templates/pages/menus/footer.html:117
+msgid "Connect"
+msgstr "جُڑیں"
+
+#: core/views.py:145
+msgid "Your query has successfully been sent"
+msgstr "آپ کا استفسار کامیابی کے ساتھ بھیج دیا گیا ہے"
+
+#: donation/forms.py:10
+msgid "NAME"
+msgstr "نام"
+
+#: donation/forms.py:15
+msgid "EMAIL"
+msgstr "ای میل"
+
+#: donation/forms.py:19
+msgid "PHONE NUMBER"
+msgstr "فون نمبر"
+
+#: donation/forms.py:23
+msgid "PAN NUMBER"
+msgstr "پَین نمبر"
+
+#: donation/forms.py:26
+msgid "PAN is required as per government regulations."
+msgstr "سرکاری ضابطوں کے مطابق پَین درکار ہے۔"
+
+#: donation/forms.py:30
+msgid "AMOUNT"
+msgstr "رقم"
+
+#: donation/forms.py:35
+msgid "TYPE"
+msgstr "قسم"
+
+#: donation/forms.py:41
+msgid "DURATION"
+msgstr "دورانیہ"
+
+#: donation/forms.py:45
+msgid "I declare that I am an Indian citizen"
+msgstr "میں اعلان کرتا ہوں کہ میں ایک ہندوستانی شہری ہوں"
+
+#: donation/forms.py:52
+msgid "Sorry, we can accept donations from Indians only."
+msgstr "معاف کریں، ہم صرف ہندوستانیوں سے عطیات قبول کر سکتے ہیں۔"
+
+#: donation/forms.py:59
+msgid "Term should be at least 2 years for Yearly donation"
+msgstr "سالانہ عطیہ کے لیے مدت کم از کم 2 سال ہونی چاہیے"
+
+#: donation/templates/donation/donate_form.html:5
+#: donation/templates/donation/donate_success.html:5
+#: donation/templates/donation/razorpay_checkout.html:5
+#, python-format
+msgid "Donate to %(site_name)s"
+msgstr "%(site_name)s کو چندہ بھیجیں"
+
+#: donation/templates/donation/donate_form.html:34
+msgid "At present, we can only accept donations in Indian rupees by Indian citizens. All donations made to the CounterMedia Trust are eligible for exemption under Section 80G of the Income Tax Act, 1961. Here is a copy of our <a href=\"/media/uploads/Donate/80g_certificate.jpg\" target=\"_blank\">exemption certificate.</a>"
+msgstr "فی الحال، ہم صرف ہندوستانی شہریوں سے ہی ہندوستانی روپے میں چندہ قبول کر سکتے ہیں۔  CounterMedia Trust کو بھیجے گئے تمام چندے انکم ٹیکس قانون، ۱۹۶۱ کے سیکشن ۸۰ جی کے تحت ٹیکس سے مستثنیٰ ہیں۔ یہ ہے ہمارے <a href=\"/media/uploads/Donate/80g_certificate.jpg\" target=\"_blank\">استثناء کا سرٹیفکیٹ۔</a>"
+
+#: donation/templates/donation/donate_form.html:46
+msgid "In 2014-15, only about <span class=\"highlight\">0.24%% of front page news</span> came out of rural India."
+msgstr "سال ۱۵۔۲۰۱۴ میں، اخبارات کے پہلے صفحہ پر دیہی ہندوستان سے صرف <span class=\"highlight\">صفر اعشاریہ ۲۴ فیصد</span> خبروں کو ہی جگہ مل پائی۔"
+
+#: donation/templates/donation/donate_form.html:52
+msgid "We want to change that.<br/><br/> We can do this without governments – and will. <u>We can’t do it without you.</u>"
+msgstr "ہم اسے تبدیل کرنا چاہتے ہیں۔<br/><br/> ہم یہ کام حکومتوں کے بغیر کرسکتے ہیں – اور کریں گے۔ <u>ہم آپ کے بغیر یہ نہیں کر سکتے۔</u>"
+
+#: donation/templates/donation/donate_form.html:62
+msgid "Other ways to donate"
+msgstr "عطیہ کرنے کے دوسرے طریقے"
+
+#: donation/templates/donation/donate_form.html:63
+msgid "PAYMENT BY CHEQUE OR DEMAND DRAFT"
+msgstr "چیک یا ڈیمانڈ ڈرافٹ کے ذریعہ ادائیگی"
+
+#: donation/templates/donation/donate_form.html:64
+msgid "Pay by cheque/DD in favour of the <strong>“CounterMedia Trust”</strong> and send it to us by courier/post along with your contact details – name, address, telephone number, e-mail ID and PAN number."
+msgstr "چیک / ڈی ڈی کے ذریعہ <strong>“CounterMedia Trust”</strong> کے حق میں ادائیگی کریں اور اپنے رابطے کی تفصیلات – نام، پتہ، ٹیلی فون نمبر، ای میل آئی ڈی اور پَین نمبر کے ساتھ ہمیں کوریئر / ڈاک کے ذریعہ بھیجیں۔"
+
+#: donation/templates/donation/donate_form.html:69
+msgid "Send by courier / post to:<br/> <strong>CounterMedia Trust</strong> <br/> c/o P. Sainath, 27/43 Sagar Sangam, Bandra Reclamation, Mumbai 400050, Maharashtra, India."
+msgstr "کوریئر / ڈاک سے اس پتہ پر بھیجیں: <br/><strong>CounterMedia Trust</strong><br/> c/o P. Sainath, 27/43 Sagar Sangam, Bandra Reclamation, Mumbai 400050, Maharashtra, India."
+
+#: donation/templates/donation/donate_form.html:77
+msgid "PAYMENT BY BANK/ WIRE TRANSFER"
+msgstr "بینک / وائر ٹرانسفر کے ذریعہ ادائیگی"
+
+#: donation/templates/donation/donate_form.html:78
+msgid "Payable to: <strong>CounterMedia Trust</strong>"
+msgstr "قابل ادائیگی: <strong>CounterMedia Trust</strong>"
+
+#: donation/templates/donation/donate_form.html:79
+msgid "Bank and branch: HDFC Bank, Aundh<br/> Address: 93, Anand Park, Rajyog Creations, Off ITI Road, Aundh, Pune 411007, Maharashtra.<br/> Account Number: 50100091804541<br/> MICR Code: 411240005<br/> IFSC Code: HDFC0000052"
+msgstr "بینک اور شاخ: HDFC Bank, Aundh <br/> پتہ: 93, Anand Park, Rajyog Creations, Off ITI Road, Aundh, Pune 411007, Maharashtra.<br/> اکاؤنٹ نمبر: 50100091804541<br/> MICR کوڈ: 411240005<br/> IFSC کوڈ: HDFC0000052"
+
+#: donation/templates/donation/donate_form.html:85
+msgid "And send an email to donate@ruralindiaonline.org mentioning the transaction reference number, amount and date of transfer, along with your contact details."
+msgstr "اور ہمیں ایک ای میل donate@ruralindiaonline.org پر بھیج دیں، جس میں آپ سے رابطہ کی تفصیلات کے ساتھ ساتھ ٹرانزیکشن ریفرنس نمبر، رقم اور رقم بھیجنے کی تاریخ درج ہو۔"
+
+#: donation/templates/donation/donate_form.html:86
+#: donation/templates/donation/donate_form.html:123
+msgid "Please fill the form below after you have sent in your donation."
+msgstr "اپنے چندے کی رقم بھیجنے کے بعد براہ کرم نیچے دیے گئے فارم کو بھریں۔"
+
+#: donation/templates/donation/donate_form.html:89
+msgid "IMPS"
+msgstr "آئی ایم پی ایس"
+
+#: donation/templates/donation/donate_form.html:90
+msgid "Payment by mobile phone using Immediate Payment Service (IMPS).<br/> Please go through the following methods of mobile payment enabled by the National Payments Corporation of India (NPCI)."
+msgstr "فوری ادائیگی سروِس (آئی ایم پی ایس) کا استعمال کرتے ہوئے موبائل فون کے ذریعے ادائیگی۔ <br/> براہ کرم نیشنل پیمنٹس کارپویشن آف انڈیا (این پی سی آئی) کے ذریعہ فعال کیے گئے موبائل ادائیگی کے درج ذیل طریقوں پر عمل کریں۔"
+
+#: donation/templates/donation/donate_form.html:93
+msgid "One easy way to do this is through the National Unified USSD Platform (NUUP)"
+msgstr "ایسا کرنے کا ایک آسان طریقہ یہ ہے کہ اسے نیشنل یونیفائیڈ یو ایس ایس ڈی پلیٹ فارم (این یو یو پی) کے ذریعہ کیا جائے۔"
+
+#: donation/templates/donation/donate_form.html:94
+msgid "The following has been reproduced from <a href=\"http://www.npci.org.in/documents/FAQs-NUUP.pdf\" target=\"_blank\">http://www.npci.org.in/documents/FAQs-NUUP.pdf</a>"
+msgstr "درج ذیل کو <a href=\"http://www.npci.org.in/documents/FAQs-NUUP.pdf\" target=\"_blank\">http://www.npci.org.in/documents/FAQs-NUUP.pdf</a> سے تیار کیا گیا ہے"
+
+#: donation/templates/donation/donate_form.html:95
+msgid "Fund transfer using IFSC and account number:"
+msgstr "آئی ایف ایس سی اور اکاؤنٹ نمبر کا استعمال کرکے رقم کی منتقلی:"
+
+#: donation/templates/donation/donate_form.html:99
+msgid "Dial *99# from your mobile handset."
+msgstr "اپنے موبائل ہینڈ سیٹ سے *99# ڈائل کریں۔"
+
+#: donation/templates/donation/donate_form.html:102
+msgid "The NUUP welcome screen will appear asking you to enter your bank’s 4-digit IFS code."
+msgstr "این یو یو پی کی ویلکم اسکرین سامنے آئے گی، جو آپ سے آپ کے بینک کا ۴ ہندسوں والا آئی ایف ایس کوڈ درج کرنے کو کہے گی۔"
+
+#: donation/templates/donation/donate_form.html:105
+msgid "After entering a valid IFS code, the NUUP menu will appear with different options of available services enabled for your bank."
+msgstr "صحیح آئی ایف ایس کوڈ درج کرنے کے بعد، این یو یو پی مینو سامنے آئے گا، جس میں آپ کے بینک کے ذریعے مہیا کرائی گئی مختلف خدمات کا آپشن موجود ہوگا۔"
+
+#: donation/templates/donation/donate_form.html:108
+msgid "Enter 4 for Fund Transfer using IFSC and account number and submit."
+msgstr "آئی ایف ایس سی اور اکاؤنٹ نمبر کا استعمال کرتے ہوئے رقم کی منتقلی کے لیے ۴ درج کریں اور جمع کروائیں۔"
+
+#: donation/templates/donation/donate_form.html:111
+msgid "On subsequent screens enter the MPIN and the last 4 digits of the account number (optional)."
+msgstr "بعد میں آنے والی اسکرینوں پر MPIN اور اکاؤنٹ نمبر کے ۴ ہندسے درج کریں (اختیاری)۔"
+
+#: donation/templates/donation/donate_form.html:113
+msgid "Beneficiary account number"
+msgstr "وصول کنندہ کا اکاؤنٹ نمبر"
+
+#: donation/templates/donation/donate_form.html:114
+msgid "IFS code"
+msgstr "آئی ایف ایس کوڈ"
+
+#: donation/templates/donation/donate_form.html:115
+msgid "Amount"
+msgstr "رقم"
+
+#: donation/templates/donation/donate_form.html:116
+msgid "Remarks (optional) will appear."
+msgstr "تبصرے (اختیاری) ظاہر ہوں گے۔"
+
+#: donation/templates/donation/donate_form.html:120
+msgid "A confirmation screen will appear."
+msgstr "تصدیق والی اسکرین نمودار ہوگی۔"
+
+#: donation/templates/donation/donate_form.html:133
+msgid "THE FORM"
+msgstr "فارم"
+
+#: donation/templates/donation/donate_form.html:139
+msgid "FAQs"
+msgstr "اکثر پوچھے جانے والے سوالات"
+
+#: donation/templates/donation/donate_form.html:141
+msgid "I sent PARI a donation. How do I get a receipt?"
+msgstr "میں نے پاری کو چندہ بھیجا تھا۔ اس کی رسید مجھے کیسے ملے گی؟"
+
+#: donation/templates/donation/donate_form.html:142
+msgid "Please make sure you include your email address in the donation form when you make a contribution to PARI.  A receipt will be sent to you in 4 to 8 weeks by email. You may download the 80G certificate <a href=\"/media/uploads/Donate/80g_certificate.jpg\" target=\"_blank\">here</a>."
+msgstr "براہ کرم پاری کو چندہ بھیجتے وقت عطیہ والے فارم میں اپنا ای میل ایڈریس شامل کرنے کو یقینی بنائیں۔ ای میل کے ذریعہ آپ کو رسید ۴ سے ۸ ہفتوں میں بھیجی جائے گی۔ آپ <a href=\"/media/uploads/Donate/80g_certificate.jpg\" target=\"_blank\">یہاں</a> سے ۸۰ جی سرٹیفکیٹ ڈاؤن لوڈ کر سکتے ہیں۔"
+
+#: donation/templates/donation/donate_form.html:149
+msgid "I live abroad. Can I send PARI a donation?"
+msgstr "میں بیرون ملک رہتا ہوں۔ کیا میں پاری کو چندہ بھیج سکتا ہوں؟"
+
+#: donation/templates/donation/donate_form.html:153
+msgid "Is there any other way in which I can contribute?"
+msgstr "کیا میں کسی اور طریقے سے اپنا تعاون دے سکتا ہوں؟"
+
+#: donation/templates/donation/donate_form.html:154
+msgid "Apart from donating money and equipment, you can provide PARI copies of photo collections (new and old), pertaining to rural India. We are also always on the look out for people who can write/photograph for us. Learn more about how you can contribute <a href=\"/contribute\">here</a>."
+msgstr "پیسے اور آلات عطیہ کرنے کے علاوہ، آپ پاری کو دیہی ہندوستان سے متعلق تصویر کے مجموعہ کی کاپیاں (نئی اور پرانی) فراہم کرسکتے ہیں۔ ہم ہمیشہ ان لوگوں کی تلاش میں رہتے ہیں، جو ہمارے لیے لکھ سکتے ہیں / تصویر کھینچ سکتے ہیں۔ مزید جانیں کہ آپ <a href=\"/contribute\">یہاں</a> کس طرح تعاون کر سکتے ہیں۔"
+
+#: donation/templates/donation/donate_success.html:11
+#, python-format
+msgid " Thank you for donating to %(site_name)s. "
+msgstr "%(site_name)s کو چندہ دینے کے لیے آپ کا شکریہ۔"
+
+#: donation/views.py:181
+msgid "Donation received"
+msgstr "چندہ موصول ہوا"
+
+#: face/templates/face/face.html:59
+msgid "FACES DIRECTORY"
+msgstr "چہرے کی ڈائریکٹری"
+
+#: face/templates/face/face.html:70 face/templates/face/face_list.html:49
+msgid "Upload a FACE"
+msgstr "چہرہ اپ لوڈ کریں"
+
+#: face/templates/face/face.html:88
+msgid "Faces of <b>district names</b> starting with"
+msgstr "<b> ضلع کے نام </b> کے ساتھ شروع ہونے والے چہرے"
+
+#: face/templates/face/face.html:150 face/templates/face/face_list.html:112
+msgid "Sorry! There are no faces on this page. Please consider <a href=%(contribute)s>contributing</a> one."
+msgstr "معاف کریں! اس صفحہ پر کوئی چہرے نہیں ہیں۔ براہ کرم <a href=%(contribute)s>تعاون دینے پر </a> پر غور کریں۔"
+
+#: face/templates/face/face_list.html:12
+msgid "PARI aims to collect a photo of one man, one woman, and one child from every district in India. Check out our progress so far."
+msgstr "پاری کا مقصد ہندوستان کے ہر ایک ضلع سے ایک مرد، ایک عورت، اور ایک بچہ کی تصویر جمع کرنا ہے۔ ہماری اب تک کی پیش رفت کو دیکھیں۔"
+
+#: face/templates/face/face_list.html:68
+msgid "Alphabetical"
+msgstr "حروف تہجی"
+
+#: face/templates/face/face_list.html:72
+#: location/templates/map/map_list.html:62
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:47
+msgid "District"
+msgstr "ضلع"
+
+#: face/templates/face/includes/face_details.html:8
+msgid "AGE"
+msgstr "عمر"
+
+#: face/templates/face/includes/face_details.html:13
+msgid "OCCUPATION"
+msgstr "پیشہ"
+
+#: face/templates/face/includes/face_details.html:18
+msgid "PARENTS' OCCUPATION"
+msgstr "والدین کا پیشہ"
+
+#: face/templates/face/includes/face_details.html:23
+msgid "ADIVASI"
+msgstr "آدیواسی"
+
+#: face/templates/face/includes/face_details.html:28
+msgid "VILLAGE"
+msgstr "گاؤں"
+
+#: face/templates/face/includes/face_details.html:33
+msgid "PANCHAYAT"
+msgstr "پنچایت"
+
+#: face/templates/face/includes/face_details.html:43
+msgid "DISTRICT"
+msgstr "ضلع"
+
+#: face/templates/face/includes/face_details.html:48
+msgid "STATE"
+msgstr "ریاست"
+
+#: face/templates/face/includes/face_details.html:53
+msgid "PHOTOGRAPHER"
+msgstr "فوٹو گرافر"
+
+#: face/templates/face/includes/face_details.html:58
+msgid "CAMERA"
+msgstr "کیمرا"
+
+#: face/templates/face/includes/face_details.html:63
+msgid "DATE PHOTO WAS TAKEN"
+msgstr "فوٹو کھینچنے کی تاریخ"
+
+#: face/templates/face/includes/face_details.html:68
+msgid "PHOTO TAKEN IN"
+msgstr "میں تصویر لی گئی"
+
+#: face/templates/face/includes/face_details.html:73
+msgid "QUOTE"
+msgstr "اقتباس"
+
+#: face/templates/face/includes/face_details.html:78
+msgid "ADDITIONAL INFORMATION"
+msgstr "اضافی معلومات"
+
+#: feeds/feeds.py:85
+msgid "PARI consolidated feed"
+msgstr "پاری کا مستحکم فیڈ"
+
+#: feeds/feeds.py:90
+#, python-brace-format
+msgid "Updates on the PARI site over the past {0} days"
+msgstr "گزشتہ {0} دنوں میں پاری کی سائٹ پر اپ ڈیٹس"
+
+#: feeds/feeds.py:123
+msgid "PARI article feed"
+msgstr "پاری کے مضمون کا فیڈ"
+
+#: feeds/feeds.py:128
+#, python-brace-format
+msgid "Article updates on the PARI site over the past {0} days"
+msgstr "گزشتہ {0} دنوں میں پاری کی سائٹ پر مضمون کے اپ ڈیٹس"
+
+#: feeds/feeds.py:145
+msgid "PARI album feed"
+msgstr "پاری کے البم کا فیڈ"
+
+#: feeds/feeds.py:150
+#, python-brace-format
+msgid "Album updates on the PARI site over the past {0} days"
+msgstr "گزشتہ {0} دنوں میں پاری کی سائٹ پر البم کے اپ ڈیٹس"
+
+#: feeds/feeds.py:170
+msgid "PARI face feed"
+msgstr "پاری کے چہرے کا فیڈ"
+
+#: feeds/feeds.py:175
+#, python-brace-format
+msgid "Face updates on the PARI site over the past {0} days"
+msgstr "گزشتہ {0} دنوں میں پاری کی سائٹ پر چہرے کے اپ ڈیٹس"
+
+#: feeds/feeds.py:196
+msgid "PARI resource feed"
+msgstr "پاری کے وسیلہ کا فیڈ"
+
+#: feeds/feeds.py:201
+#, python-brace-format
+msgid "Resource updates on the PARI site over the past {0} days"
+msgstr "گزشتہ {0} دنوں میں پاری کی سائٹ پر وسیلہ کے اپ ڈیٹس"
+
+#: feeds/templates/feeds/feeds_list.html:4
+msgid "Stay updated with RSS/Atom feeds"
+msgstr "آر ایس ایس / ایٹم فیڈز کے ساتھ اپ ڈیٹ رہیں"
+
+#: feeds/templates/feeds/feeds_list.html:10
+msgid "Stay updated with latest content through Feeds"
+msgstr "فیڈز کے ذریعہ تازہ ترین مواد کے ساتھ اپ ڈیٹ رہیں"
+
+#: feeds/templates/feeds/feeds_list.html:13
+msgid "Consolidated Feed"
+msgstr "مضبوط فیڈ"
+
+#: feeds/templates/feeds/feeds_list.html:13
+#: feeds/templates/feeds/feeds_list.html:16
+#: feeds/templates/feeds/feeds_list.html:19
+#: feeds/templates/feeds/feeds_list.html:22
+#: feeds/templates/feeds/feeds_list.html:25
+msgid "Atom"
+msgstr "ایٹم"
+
+#: feeds/templates/feeds/feeds_list.html:13
+#: feeds/templates/feeds/feeds_list.html:16
+#: feeds/templates/feeds/feeds_list.html:19
+#: feeds/templates/feeds/feeds_list.html:22
+#: feeds/templates/feeds/feeds_list.html:25
+msgid "RSS"
+msgstr "آر ایس ایس"
+
+#: feeds/templates/feeds/feeds_list.html:16
+msgid "Article Feed"
+msgstr "مضمون کا فیڈ"
+
+#: feeds/templates/feeds/feeds_list.html:19
+msgid "Album Feed"
+msgstr "البم کا فیڈ"
+
+#: feeds/templates/feeds/feeds_list.html:22
+msgid "Face Feed"
+msgstr "چہرے کا فیڈ"
+
+#: feeds/templates/feeds/feeds_list.html:25
+msgid "Resource Feed"
+msgstr "وسیلہ کا فیڈ"
+
+#: location/forms.py:30
+msgid "Sub district type has to be chosen first"
+msgstr "سب ڈسٹرکٹ ٹائپ کا انتخاب پہلے کرنا ہوگا"
+
+#: location/templates/location/location_detail.html:4
+#, python-format
+msgid "Pages from %(location.address)s"
+msgstr "%(location.address)s سے صفحات"
+
+#: location/templates/location/location_detail.html:20
+#, python-format
+msgid "Pages from %(location.name)s, %(location.district)s, %(location.state)s"
+msgstr "%(location.name)s، %(location.district)s، %(location.state)s سے صفحات"
+
+#: location/templates/map/map_list.html:4
+msgid "Map"
+msgstr "نقشہ"
+
+#: location/templates/map/map_list.html:5
+msgid "Find PARI stories by geographic location."
+msgstr "جغرافیائی محل وقوع کے ذریعہ پاری کی اسٹوریز تلاش کریں۔"
+
+#: location/templates/map/map_list.html:43
+msgid "Show"
+msgstr "دکھائیں"
+
+#: location/templates/map/map_list.html:47
+#: search/templates/includes/search_filters.html:28
+msgid "Articles"
+msgstr "مضامین"
+
+#: location/templates/map/map_list.html:61
+msgid "State"
+msgstr "ریاست"
+
+#: location/wagtail_hooks.py:37
+msgid "Locations"
+msgstr "محل وقوع"
+
+#: news/templates/news/pari_news.html:4 news/templates/news/pari_news.html:15
+msgid "New on PARI"
+msgstr "پاری پر نیا"
+
+#: pari/settings/base.py:217
+msgid "Andaman and Nicobar Islands"
+msgstr "انڈمان اور نکوبار جزائر"
+
+#: pari/settings/base.py:218
+msgid "Andhra Pradesh"
+msgstr "آندھرا پردیش"
+
+#: pari/settings/base.py:219
+msgid "Arunachal Pradesh"
+msgstr "اروناچل پردیش"
+
+#: pari/settings/base.py:220
+msgid "Assam"
+msgstr "آسام"
+
+#: pari/settings/base.py:221
+msgid "Bihar"
+msgstr "بہار"
+
+#: pari/settings/base.py:222
+msgid "Chandigarh"
+msgstr "چنڈی گڑھ"
+
+#: pari/settings/base.py:223
+msgid "Chhattisgarh"
+msgstr "چھتیس گڑھ"
+
+#: pari/settings/base.py:224
+msgid "Dadra and Nagar Haveli"
+msgstr "دادرا اور نگر حویلی"
+
+#: pari/settings/base.py:225
+msgid "Daman and Diu"
+msgstr "دمن اور دیو"
+
+#: pari/settings/base.py:226
+msgid "National Capital Territory of Delhi"
+msgstr "قومی راجدھانی خطہ، دہلی"
+
+#: pari/settings/base.py:227
+msgid "Goa"
+msgstr "گوا"
+
+#: pari/settings/base.py:228
+msgid "Gujarat"
+msgstr "گجرات"
+
+#: pari/settings/base.py:229
+msgid "Haryana"
+msgstr "ہریانہ"
+
+#: pari/settings/base.py:230
+msgid "Himachal Pradesh"
+msgstr "ہماچل پردیش"
+
+#: pari/settings/base.py:231
+msgid "Jammu and Kashmir"
+msgstr "جموں وکشمیر"
+
+#: pari/settings/base.py:232
+msgid "Jharkhand"
+msgstr "جھارکھنڈ"
+
+#: pari/settings/base.py:233
+msgid "Karnataka"
+msgstr "کرناٹک"
+
+#: pari/settings/base.py:234
+msgid "Kerala"
+msgstr "کیرالہ"
+
+#: pari/settings/base.py:235
+msgid "Lakshadweep"
+msgstr "لکشدویپ"
+
+#: pari/settings/base.py:236
+msgid "Madhya Pradesh"
+msgstr "مدھیہ پردیش"
+
+#: pari/settings/base.py:237
+msgid "Maharashtra"
+msgstr "مہاراشٹر"
+
+#: pari/settings/base.py:238
+msgid "Manipur"
+msgstr "منی پور"
+
+#: pari/settings/base.py:239
+msgid "Meghalaya"
+msgstr "میگھالیہ"
+
+#: pari/settings/base.py:240
+msgid "Mizoram"
+msgstr "میزورم"
+
+#: pari/settings/base.py:241
+msgid "Nagaland"
+msgstr "ناگالینڈ"
+
+#: pari/settings/base.py:242
+msgid "Odisha"
+msgstr "اوڈیشہ"
+
+#: pari/settings/base.py:243
+msgid "Puducherry"
+msgstr "پڈوچیری"
+
+#: pari/settings/base.py:244
+msgid "Punjab"
+msgstr "پنجاب"
+
+#: pari/settings/base.py:245
+msgid "Rajasthan"
+msgstr "راجستھان"
+
+#: pari/settings/base.py:246
+msgid "Sikkim"
+msgstr "سکم"
+
+#: pari/settings/base.py:247
+msgid "Tamil Nadu"
+msgstr "تمل ناڈو"
+
+#: pari/settings/base.py:248
+msgid "Telangana"
+msgstr "تلنگانہ"
+
+#: pari/settings/base.py:249
+msgid "Tripura"
+msgstr "تریپورہ"
+
+#: pari/settings/base.py:250
+msgid "Uttar Pradesh"
+msgstr "اتر پردیش"
+
+#: pari/settings/base.py:251
+msgid "Uttarakhand"
+msgstr "اتراکھنڈ"
+
+#: pari/settings/base.py:252
+msgid "West Bengal"
+msgstr "مغربی بنگال"
+
+#: pari/settings/base.py:269
+msgid "English"
+msgstr "انگریزی"
+
+#: pari/settings/base.py:270
+msgid "Assamese"
+msgstr "آسامی"
+
+#: pari/settings/base.py:271
+msgid "Bengali"
+msgstr "بنگالی"
+
+#: pari/settings/base.py:272
+msgid "Gujarati"
+msgstr "گجراتی"
+
+#: pari/settings/base.py:273
+msgid "Hindi"
+msgstr "ہندی"
+
+#: pari/settings/base.py:274
+msgid "Kannada"
+msgstr "کنڑ"
+
+#: pari/settings/base.py:275
+msgid "Malayalam"
+msgstr "ملیالم"
+
+#: pari/settings/base.py:276
+msgid "Marathi"
+msgstr "مراٹھی"
+
+#: pari/settings/base.py:277
+msgid "Mizo"
+msgstr "میزو"
+
+#: pari/settings/base.py:278
+msgid "Odia"
+msgstr "اڑیہ"
+
+#: pari/settings/base.py:279
+msgid "Punjabi"
+msgstr "پنجابی"
+
+#: pari/settings/base.py:280
+msgid "Telugu"
+msgstr "تیلگو"
+
+#: pari/settings/base.py:281
+msgid "Tamil"
+msgstr "تمل"
+
+#: pari/settings/base.py:282
+msgid "Urdu"
+msgstr "اردو"
+
+#: resources/models.py:31 resources/models.py:47 resources/models.py:61
+msgid "Auto-populated field. Edit manually only if you must"
+msgstr "خود آبادی والا فیلڈ۔ دستی طور پر صرف اسی صورت میں ترمیم کریں اگر یہ آپ کے لیے لازمی ہو"
+
+#: resources/templates/resources/report_detail.html:25
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:33
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:36
+msgid "Title"
+msgstr "عنوان"
+
+#: resources/templates/resources/report_detail.html:30
+msgid "Date"
+msgstr "تاریخ"
+
+#: resources/templates/resources/resource_detail.html:53
+msgid "FOCUS"
+msgstr "فوکس"
+
+#: resources/templates/resources/resource_detail.html:60
+msgid "FACTOIDS"
+msgstr "مزعومہ حقائق"
+
+#: resources/templates/resources/resource_detail.html:75
+msgid "AUTHOR"
+msgstr "مصنف"
+
+#: resources/templates/resources/resource_detail.html:79
+msgid "COPYRIGHT"
+msgstr "کاپی رائٹ"
+
+#: resources/templates/resources/resource_detail.html:83
+msgid "PUBLICATION DATE"
+msgstr "تاریخ اشاعت"
+
+#: resources/templates/resources/resource_detail.html:97
+msgid "TAGS"
+msgstr "ٹیگز"
+
+#: resources/templates/resources/resource_detail.html:103
+msgid "SHARE"
+msgstr "شیئر کریں"
+
+#: resources/templates/resources/resource_list.html:10
+msgid "A collection of official and independent reports on rural India, from economic trends to policy briefings to census data."
+msgstr "اقتصادی رجحانات سے لے کر پالیسی بریفنگس اور مردم شماری کے اعداد و شمار تک، دیہی ہندوستان پر سرکاری اور آزاد رپورٹوں کا ایک مجموعہ۔"
+
+#: resources/templates/resources/resource_list.html:42
+msgid "The PARI Library brings reports and information on rural India to a single location for students, researchers and other readers. It includes official as well as independent reports, out-of-print books, rare documents and reviewed research articles."
+msgstr "پاری لائبریری طلبہ، محققین اور دیگر قارئین کے لیے دیہی ہندوستان پر رپورٹیں اور معلومات کو ایک مقام پر لاتی ہے۔ اس میں سرکاری اور آزاد رپورٹیں، پرنٹ سے ختم ہو چکی کتابیں، نادر دستاویزات اور نظرثانی شدہ مضامین شامل ہیں۔"
+
+#: resources/templates/resources/search_results.html:4
+msgid "Showing search results for "
+msgstr "کے لیے تلاش کے نتائج دکھا رہا ہے"
+
+#: search/templates/includes/search_filters.html:16
+msgid "BACK"
+msgstr "پیچھے"
+
+#: search/templates/includes/search_filters.html:20
+msgid "Filters"
+msgstr "فلٹرز"
+
+#: search/templates/includes/search_filters.html:26
+msgid "TYPE OF CONTENT"
+msgstr "مواد کی قسم"
+
+#: search/templates/includes/search_filters.html:26
+#: search/templates/includes/search_filters.html:39
+#: search/templates/includes/search_filters.html:69
+#: search/templates/includes/search_filters.html:78
+#: search/templates/includes/search_filters.html:87
+#: search/templates/includes/search_filters.html:96
+msgid "Clear"
+msgstr "واضح"
+
+#: search/templates/includes/search_filters.html:34
+msgid "PARI Pages"
+msgstr "پاری کے صفحات"
+
+#: search/templates/includes/search_filters.html:45
+msgid "Women"
+msgstr "خواتین"
+
+#: search/templates/includes/search_filters.html:46
+msgid "Adivasis"
+msgstr "آدیواسی"
+
+#: search/templates/includes/search_filters.html:47
+msgid "Dalits"
+msgstr "دلت"
+
+#: search/templates/includes/search_filters.html:48
+msgid "We Are"
+msgstr "ہم ہیں"
+
+#: search/templates/includes/search_filters.html:49
+msgid "Resource Conflicts"
+msgstr "وسائل کے تنازعات"
+
+#: search/templates/includes/search_filters.html:51
+msgid "Small World"
+msgstr "چھوٹی دنیا"
+
+#: search/templates/includes/search_filters.html:53
+msgid "Getting There"
+msgstr "وہاں پہنچنا"
+
+#: search/templates/includes/search_filters.html:54
+msgid "The Wild"
+msgstr "جنگل"
+
+#: search/templates/includes/search_filters.html:55
+msgid "Rural Sports"
+msgstr "دیہی کھیل"
+
+#: search/templates/includes/search_filters.html:56
+msgid "Healthcare"
+msgstr "صحت کی دیکھ بھال"
+
+#: search/templates/includes/search_filters.html:57
+msgid "Mosaic"
+msgstr "موزیک"
+
+#: search/templates/includes/search_filters.html:58
+msgid "Environment"
+msgstr "ماحولیات"
+
+#: search/templates/includes/search_filters.html:60
+msgid "Visible Work, Invisible Women"
+msgstr "کام ہی کام، عورتیں گمنام"
+
+#: search/templates/includes/search_filters.html:61
+msgid "One-Offs"
+msgstr "وَن آف"
+
+#: search/templates/includes/search_filters.html:62
+msgid "Things We Wear"
+msgstr "چیزیں جو ہم پہنتے ہیں"
+
+#: search/templates/includes/search_filters.html:63
+msgid "PARI for Schools"
+msgstr "اسکولوں کے لیے پاری"
+
+#: search/templates/includes/search_filters.html:69
+msgid "LANGUAGES"
+msgstr "زبانیں"
+
+#: search/templates/includes/search_filters.html:78
+msgid "DATE RANGE"
+msgstr "تاریخ کی حد"
+
+#: search/templates/includes/search_filters.html:80
+msgid "From"
+msgstr "سے"
+
+#: search/templates/includes/search_filters.html:81
+msgid "To"
+msgstr "کو"
+
+#: search/templates/includes/search_filters.html:82
+msgid "Go"
+msgstr "جائیں"
+
+#: search/templates/includes/search_filters.html:87
+msgid "Districts"
+msgstr "اضلاع"
+
+#: search/templates/search/search_results.html:246
+msgid "Search results for"
+msgstr "کے لیے تلاش کے نتائج"
+
+#: search/templates/search/search_results.html:249
+msgid "Enter to search"
+msgstr "تلاش کرنے کے لیے درج کریں"
+
+#: search/templates/search/search_results.html:268
+msgid "Sort by :"
+msgstr "کے لحاظ سے چھانٹیں:"
+
+#: search/templates/search/search_results.html:270
+msgid "Relevance"
+msgstr "متعلقہ"
+
+#: search/templates/search/search_results.html:271
+msgid "Latest"
+msgstr "تازہ ترین"
+
+#: search/templates/search/search_results.html:283
+msgid "No results found for your query with current filters. Try another query with different filters."
+msgstr "موجودہ فلٹرز کے ساتھ آپ کے استفسار کے لیے کوئی نتائج نہیں ملے۔ مختلف فلٹرز کے ساتھ ایک اور استفسار کی کوشش کریں۔"
+
+#: search/templates/wagtailadmin/pages/listing/_list.html:52
+msgid "Drag"
+msgstr "گھسیٹیں"
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:23
+msgid "Disable ordering of child pages"
+msgstr "چائلڈ صفحات کی ترتیب کو غیر فعال کریں"
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:23
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:25
+msgid "Order"
+msgstr "ترتیب"
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:25
+msgid "Enable ordering of child pages"
+msgstr "چائلڈ صفحات کی ترتیب کو فعال کریں"
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:40
+msgid "Parent"
+msgstr "سرپرست"
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:45
+msgid "Author"
+msgstr "مصنف"
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:57
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:60
+msgid "Updated"
+msgstr "اپ ڈیٹ شدہ"
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:66
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:69
+msgid "Type"
+msgstr "قسم"
+
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:75
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:78
+msgid "Status"
+msgstr "حالت"
+
+#: search/templates/wagtailadmin/pages/search_results.html:5
+msgid "\n                There is one matching page\n            "
+msgid_plural "\n                There are %(counter)s matching pages\n            "
+msgstr[0] "\n                ایک مماثل صفحہ موجود ہے\n                "
+msgstr[1] "\n                کئی مماثل (counter)% صفحات موجود ہیں\n                "
+
+#: search/templates/wagtailadmin/pages/search_results.html:13
+msgid "Other searches"
+msgstr "دیگر تلاشیاں"
+
+#: search/templates/wagtailadmin/pages/search_results.html:15
+msgid "Images"
+msgstr "تصاویر"
+
+#: search/templates/wagtailadmin/pages/search_results.html:16
+msgid "Documents"
+msgstr "دستاویزات"
+
+#: search/templates/wagtailadmin/pages/search_results.html:17
+msgid "Users"
+msgstr "صارفین"
+
+#: search/templates/wagtailadmin/pages/search_results.html:27
+#, python-format
+msgid "Sorry, no pages match <em>\"%(query_string)s\"</em>"
+msgstr "معاف کریں، <em>%(query_string)s</em> کے مماثل کوئی صفحات نہیں"
+
+#: search/templates/wagtailadmin/pages/search_results.html:29
+msgid "Enter a search term above"
+msgstr "اوپر تلاش کرنے کے لیے لفظ درج کریں"
+
+msgid "The world of rural labour"
+msgstr "دیہی مزدوری کی دنیا"
+
+msgid "Artisans, artists and craftspersons"
+msgstr "کاریگر ، فنکار اور دستکار"
+
+msgid "The troubled world of agriculture"
+msgstr "زراعت کی پریشان حال دنیا"
+
+msgid "Small, impactful video clips"
+msgstr "چھوٹے، اثردار ویڈیو کلپس"
+
+msgid "Migrant workers across India"
+msgstr "ہندوستان بھر میں مہاجر کارکن"
+
+msgid "More than half the sky"
+msgstr "نصف آسمان سے زیادہ"
+
+msgid "The first dwellers"
+msgstr "اولین باشندے"
+
+msgid "Struggles of the oppressed"
+msgstr "مظلوموں کی جدوجہد"
+
+msgid "Communities and cultures"
+msgstr "معاشرے اور ثقافتیں"
+
+msgid "Jal, jungle, zameen"
+msgstr "جل، جنگل، زمین"
+
+msgid "The last living freedom fighters"
+msgstr "آخری با حیات مجاہدین آزادی"
+
+msgid "A focus on children"
+msgstr "بچوں پر توجہ"
+
+msgid "Travellers' tales, everyday lives"
+msgstr "مسافروں کی کہانیاں، روزمرہ کی زندگی"
+
+msgid "Zany rural transportation"
+msgstr "مضحکہ خیز دیہی نقل و حمل"
+
+msgid "The world of nature"
+msgstr "قدرت کی دنیا"
+
+msgid "Games people play"
+msgstr "لوگ جس کھیل کو کھیلتے ہیں"
+
+msgid "The state of rural health"
+msgstr "دیہی صحت کی حالت"
+
+msgid "Culture and folklore"
+msgstr "ثقافت اور لوک داستانیں"
+
+msgid "People, livelihoods, habitats"
+msgstr "لوگ، معاش، رہائش"
+
+msgid "The universe of our languages"
+msgstr "ہماری زبانوں کی کائنات"
+
+msgid "Women and work: a photo exhibition"
+msgstr "خواتین اور کام: ایک تصویری نمائش"
+
+msgid "Videos, photos, articles"
+msgstr "ویڈیوز، تصاویر، مضامین"
+
+msgid "Clothing, headgear, jewellery..."
+msgstr "لباس، پگڑی، زیورات..."
+
+msgid "Work done for PARI by students"
+msgstr "طلبہ کے ذریعے پاری کے لیے کیا گیا کام"
+
+msgid "You could listen all day"
+msgstr "آپ پورے دن سن سکتے ہیں"
+
+msgid "Collections of photographs"
+msgstr "تصاویر کا مجموعہ"
+
+msgid "You can send PARI a donation only from an Indian bank account, in Indian rupees. We are currently not registered with FCRA for accepting foreign funds."
+msgstr "پاری کو آپ چندے کی رقم صرف ہندوستانی بینک اکاؤنٹ سے، ہندوستانی روپے میں ہی بھیج سکتے ہیں۔ ہم فی الحال غیر ملکی فنڈز کو قبول کرنے کے لیے ایف سی آر اے کے ساتھ رجسٹرڈ نہیں ہیں۔"
+
+msgid "Visit PARI Education – join us in learning, researching, teaching and documenting the everyday lives of everyday people"
+msgstr "پاری ایجوکیشن ملاحظہ کریں – آموزش، تحقیق، تدریس اور روزمرہ کے لوگوں کی روزمرہ کی زندگی کی دستاویزی میں ہمارے ساتھ شامل ہوں"
+
+msgid "PARI has won the Silver prize in WAN-IFRA’s South Asian Digital Media Awards, 2020. This is PARI’s 27th journalism prize <i class=\"fas fa-angle-right icon-handle\"></i>"
+msgstr "پاری نے وان اِفرا کے جنوبی ایشیائی ڈجیٹل میڈیا ایوارڈز، ۲۰۲۰ میں سلور پرائز جیتا ہے۔ یہ پاری کا صحافت کا ۲۷واں انعام ہے <i class=\"fas fa-angle-right icon-handle\"></i>"
+
+msgid "PARI’s Jigyasa Mishra has won a Press Institute of India-International Committee of the Red Cross award, 2020. This is PARI’s 26th journalism prize <i class=\"fas fa-angle-right icon-handle\"></i>"
+msgstr "پاری کی جگیاسا مشرا نے پریس انسٹی ٹیوٹ آف انڈیا انٹرنیشنل کمیٹی آف دی ریڈ کراس ایوارڈ، ۲۰۲۰ جیتا ہے۔ یہ پاری کا صحافت کا ۲۶واں انعام ہے <i class=\"fas fa-angle-right icon-handle\"></i>"
+
+#: album/templates/album/album_detail.html:3
+#: album/templates/album/albumslide_list.html:4
+msgid "title"
+msgstr "عنوان"
+
+msgid "ADDRESS"
+msgstr "پتہ"
+
+msgid "At this moment, we can accept donations from Indians only"
+msgstr "اس وقت، ہم صرف ہندوستانیوں سے عطیات قبول کر سکتے ہیں"
+
+msgid "THE EVERYDAY LIVES OF EVERYDAY PEOPLE"
+msgstr "روزمرہ کے لوگوں کی روزمرہ کی زندگی"
+
+msgid "Jayakumar C. (Tech Lead)"
+msgstr "جے کمار سی۔ (ٹیک لیڈ)"
+
+msgid "Nimesh P."
+msgstr "نمیش پی۔"
+
+msgid "Sankar P."
+msgstr "شنکر پی۔"
+
+msgid "Please see the <a href=%(donate_form)s >donations page</a> for more details."
+msgstr "براہ کرم مزید تفصیلات کے لیے <a href=%(donate_form)s >عطیات کا صفحہ </a> دیکھیں۔"
+
+msgid "Donate to the People's Archive of Rural India"
+msgstr "پیپلز آرکائیو آف رورل انڈیا کو عطیہ کریں"
+
+msgid "PERSONAL INFO"
+msgstr "ذاتی معلومات"
+
+msgid "You will be redirected to Instamojo where you can complete the donation either through a credit/debit card or net banking."
+msgstr "آپ کو اِنسٹا موجو کی طرف لے جایا جائے گا، جہاں آپ یا تو کریڈٹ یا ڈیبٹ کارڈ یا پھر نیٹ بینکنگ کے ذریعے چندے کی رقم بھیج سکیں گے۔"
+
+msgid "Payments powered by"
+msgstr "کے ذریعے ادائیگی"
+
+msgid "EDITORIAL CHIEF"
+msgstr "ادارتی چیف"
+
+msgid "Search"
+msgstr "تلاش کریں"
+
+msgid "Results"
+msgstr "نتائج"
+
+msgid "%(search_results.paginator.count)s results for"
+msgstr "%(search_results.paginator.count)s کے لیے نتائج"
+
+msgid "Sorry, could not find any results for \"%(query)s\". Please try a different query."
+msgstr "معاف کریں، %(query)s کا کوئی نتیجہ نہیں مل سکا۔ براہ کرم مختلف استفسار کو آزمائیں۔"
+
+msgid "p.m."
+msgstr "بجے"
+
+msgid "a.m."
+msgstr "بجے"
+
+msgid "PM"
+msgstr "بجے"
+
+msgid "AM"
+msgstr "اے ایم"
+
+msgid "midnight"
+msgstr "آدھی رات"
+
+msgid "noon"
+msgstr "دوپہر"
+
+msgid "Monday"
+msgstr "پیر"
+
+msgid "Tuesday"
+msgstr "منگل"
+
+msgid "Wednesday"
+msgstr "بدھ"
+
+msgid "Thursday"
+msgstr "جمعرات"
+
+msgid "Friday"
+msgstr "جمعہ"
+
+msgid "Saturday"
+msgstr "سنیچر"
+
+msgid "Sunday"
+msgstr "اتوار"
+
+msgid "Mon"
+msgstr "پیر"
+
+msgid "Tue"
+msgstr "منگل"
+
+msgid "Wed"
+msgstr "بدھ"
+
+msgid "Thu"
+msgstr "جمعرات"
+
+msgid "Fri"
+msgstr "جمعہ"
+
+msgid "Sat"
+msgstr "سنیچر"
+
+msgid "Sun"
+msgstr "اتوار"
+
+msgid "January"
+msgstr "جنوری"
+
+msgid "February"
+msgstr "فروری"
+
+msgid "March"
+msgstr "مارچ"
+
+msgid "April"
+msgstr "اپریل"
+
+msgid "May"
+msgstr "مئی"
+
+msgid "June"
+msgstr "جون"
+
+msgid "July"
+msgstr "جولائی"
+
+msgid "August"
+msgstr "اگست"
+
+msgid "September"
+msgstr "ستمبر"
+
+msgid "October"
+msgstr "اکتوبر"
+
+msgid "November"
+msgstr "نومبر"
+
+msgid "December"
+msgstr "دسمبر"
+
+msgid "jan"
+msgstr "جنوری"
+
+msgid "feb"
+msgstr "فروری"
+
+msgid "mar"
+msgstr "مارچ"
+
+msgid "apr"
+msgstr "اپریل"
+
+msgid "may"
+msgstr "مئی"
+
+msgid "jun"
+msgstr "جون"
+
+msgid "jul"
+msgstr "جولائی"
+
+msgid "aug"
+msgstr "اگست"
+
+msgid "sep"
+msgstr "ستمبر"
+
+msgid "oct"
+msgstr "اکتوبر"
+
+msgid "nov"
+msgstr "نومبر"
+
+msgid "dec"
+msgstr "دسمبر"
+
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr "جنوری"
+
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr "فروری"
+
+msgctxt "abbrev. month"
+msgid "March"
+msgstr "مارچ"
+
+msgctxt "abbrev. month"
+msgid "April"
+msgstr "اپریل"
+
+msgctxt "abbrev. month"
+msgid "May"
+msgstr "مئی"
+
+msgctxt "abbrev. month"
+msgid "June"
+msgstr "جون"
+
+msgctxt "abbrev. month"
+msgid "July"
+msgstr "جولائی"
+
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr "اگست"
+
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr "ستمبر"
+
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr "اکتوبر"
+
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr "نومبر"
+
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr "دسمبر"
+
+msgctxt "alt. month"
+msgid "January"
+msgstr "جنوری"
+
+msgctxt "alt. month"
+msgid "February"
+msgstr "فروری"
+
+msgctxt "alt. month"
+msgid "March"
+msgstr "مارچ"
+
+msgctxt "alt. month"
+msgid "April"
+msgstr "اپریل"
+
+msgctxt "alt. month"
+msgid "May"
+msgstr "مئی"
+
+msgctxt "alt. month"
+msgid "June"
+msgstr "جون"
+
+msgctxt "alt. month"
+msgid "July"
+msgstr "جولائی"
+
+msgctxt "alt. month"
+msgid "August"
+msgstr "اگست"
+
+msgctxt "alt. month"
+msgid "September"
+msgstr "ستمبر"
+
+msgctxt "alt. month"
+msgid "October"
+msgstr "اکتوبر"
+
+msgctxt "alt. month"
+msgid "November"
+msgstr "نومبر"
+
+msgctxt "alt. month"
+msgid "December"
+msgstr "دسمبر"
+
+msgid "No %(verbose_name)s found matching the query"
+msgstr "استفسار سے ملتا جلتا کچھ بھی نہیں %(verbose_name)s ملا"
+
+msgid "ALL OFFICIAL AND INDEPENDENT REPORTS ON RURAL INDIA"
+msgstr "دیہی ہندوستان پر تمام سرکاری اور آزاد رپورٹیں"
+
+#: article/templates/article/includes/author_info.html:65
+msgid "Other stories by %(author.name)s"
+msgstr "%(author.name)s کی دیگر اسٹوریز"
+
+#. Translators: If your target language uses a non-Roman script, please do your best to transliterate the names that follow.
+#: core/templates/core/acknowledgements.html:56
+msgid "Anilkumar Kodi "
+msgstr "انل کمار کوڈی"
+
+#: core/templates/core/acknowledgements.html:68
+msgid "Mohit Shankarrao Pote "
+msgstr "موہت شنکر راؤ پوٹے"
+
+#: core/templates/core/acknowledgements.html:69
+msgid "Mubashar Nadeem Sibgathullah "
+msgstr "مبشر ندیم صبغت اللہ"
+
+#: core/templates/core/acknowledgements.html:75
+msgid "Senthil V. S. "
+msgstr "سینتھل وی۔ ایس۔"
+
+#: core/templates/core/acknowledgements.html:76
+msgid "Suganthi Krishnavathi T. "
+msgstr "سوگانتی کرشناوتی ٹی۔"
+
+#: core/templates/core/acknowledgements.html:77
+msgid "Thejaswi Puthraya "
+msgstr "تیجسوی پُتھرایا"
+
+#: core/templates/core/acknowledgements.html:78
+msgid "Vivek Singh "
+msgstr "وویک سنگھ"
+
+#: core/templates/core/acknowledgements.html:86
+msgid "Karthik T. "
+msgstr "کارتک ٹی۔"
+
+#: core/templates/core/acknowledgements.html:105
+msgid "Lokesh S."
+msgstr "لوکیش ایس۔"
+
+#: core/templates/core/contribute.html:48
+msgid "Help us understand your skills and interests by filling in this <a href=\"https://docs.google.com/forms/d/1IbwsyjTovsTnlSb2yC-KkkBlR_rPWOnGepi7XBD4b_k/viewform?usp=send_form\" target=\"_blank\">Profile Form</a>."
+msgstr "اس <a href=\"https://docs.google.com/forms/d/1IbwsyjTovsTnlSb2yC-KkkBlR_rPWOnGepi7XBD4b_k/viewform?usp=send_form\" target=\"_blank\">پروفائل فارم</a> کو بھر کر آپ کی مہارتوں اور دلچسپیوں کو سمجھنے میں ہماری مدد کریں۔"
+
+#: core/templates/core/contribute.html:112
+msgid "Help us by translating content into Indian languages. Please help us understand your skills and interests by filling in this <a href=\"https://docs.google.com/forms/d/1IbwsyjTovsTnlSb2yC-KkkBlR_rPWOnGepi7XBD4b_k/viewform?usp=send_form\" target=\"_blank\">Profile Form</a>."
+msgstr "مواد کو ہندوستانی زبانوں میں ترجمہ کرنے میں ہماری مدد کریں۔ براہ کرم اس <a href=\"https://docs.google.com/forms/d/1IbwsyjTovsTnlSb2yC-KkkBlR_rPWOnGepi7XBD4b_k/viewform?usp=send_form\" target=\"_blank\">پروفائل فارم</a> کو بھر کر آپ کی مہارتوں اور دلچسپیوں کو سمجھنے میں ہماری مدد کریں۔"
+
+#: core/templates/core/donate.html:20
+msgid "In 2014-15, only about <span class=\"highlight\">0.24%%</span> of front page news came out of rural India.<br/>We want to change that.\""
+msgstr "سال ۱۵۔۲۰۱۴ میں، اخبارات کے پہلے صفحہ پر دیہی ہندوستان سے صرف <span class=\"highlight\">صفر اعشاریہ ۲۴ فیصد</span> خبروں کو ہی جگہ مل پائی۔ <br/>ہم اسے بدلنا چاہتے ہیں۔"
+
+#: core/templates/core/donate.html:64
+msgid "Across 60 months or so, PARI will generate text reports, audio stories, videos, documentary films, photographs, music and ‘talking albums’ on the everyday lives of everyday people – from every part of the country. A database that will be truly representative of the Indian people, particularly of 833 million rural citizens. Of their labour, crafts, stories, songs, poems, art and more. The network of Fellows we build will also reflect the social composition of the country. Half of the nearly 100 Fellows will be women.  And Dalit journalists, Adivasi journalists and those from the minorities, will also be represented in a fair manner. Many stories will be told directly by everyday people themselves. Among other legacies, this will give generations of students, all our children, living textbooks on the world around them. And give the nation itself a repository the like of which it has never seen."
+msgstr "۶۰  مہینے یا اس سے زیادہ عرصے میں، پاری ملک کے ہر ایک حصے سے، روزمرہ کے عوام کی روزمرہ کی زندگی پر تحریری رپورٹیں، آڈیو اسٹوریز، ویڈیوز، دستاویزی فلمیں، تصاویر، موسیقی اور ’بولتے البمز‘ تیار کرے گا۔ ایک ایسا ڈیٹا بیس جو صحیح معنوں میں ہندوستانی عوام، خاص کر ۸۳۳ ملین دیہی شہریوں کا نمائندہ ہوگا۔ ان کی مشقت، دستکاری، کہانیاں، گانے، نظمیں، فنون وغیرہ۔ ہم فیلوز کا جو نیٹ ورک بنا رہے ہیں، وہ ملک کی سماجی بناوٹ کی بھی عکاسی کریں گے۔ تقریباً ۱۰۰ فیلوز میں سے آدھی خواتین ہوں گی۔ اور دلت صحافیوں، آدیواسی صحافیوں اور اقلیتوں سے تعلق رکھنے والے افراد کی بھی نمائندگی منصفانہ انداز میں کی جائے گی۔ بہت ساری کہانیاں براہ راست خود روزمرہ کے لوگ سنائیں گے۔ دیگر وراثتوں کے علاوہ، یہ طلبہ کی نسلوں، ہمارے تمام بچوں کو ان کے ارد گرد کی دنیا کے بارے میں زندہ نصابی کتابیں فراہم کرے گا۔ اور خود ملک کو اس کا ایک ایسا مجموعہ عطا کرے گا، جسے اس نے پہلے کبھی نہیں دیکھا ہے۔"
+
+#: core/templates/core/donate.html:105
+msgid "You can send in donations using a range of payment methods. All donations made to the CounterMedia Trust are <u>eligible for exemption</u> under Section 80G of the Income Tax Act, 1961."
+msgstr "آپ ادائیگی کے مختلف طریقوں کا استعمال کرکے چندے بھیج سکتے ہیں۔ کاؤنٹر میڈیا ٹرسٹ کو دیے گئے تمام چندے انکم ٹیکس قانون، ۱۹۶۱ کے سیکشن ۸۰ جی کے تحت <u> ٹیکس سے مستثنیٰ</u> ہیں۔"
+
+#: core/templates/core/donate.html:117
+msgid "If you would like to send over equipment (new or used) that PARI Fellows and rural contributors could use, please get in touch. That could include still and video cameras, audio digital recorders, laptops, hard disks and other equipment."
+msgstr "اگر آپ آلات (نئے یا استعمال شدہ) بھیجنا چاہتے ہیں جسے پاری کے فیلو اور دیہی معاونین استعمال کر سکیں، تو براہ کرم ہم سے رابطہ کریں۔ اس میں جامد اور ویڈیو کیمرے، آڈیو ڈجیٹل ریکارڈر، لیپ ٹاپ، ہارڈ ڈِسک اور دیگر آلات شامل ہو سکتے ہیں۔"
+
+#: core/templates/core/donate.html:126
+msgid "Ask your friends to connect and contribute to this endeavour. Help us cover your country. Join us in building a unique national knowledge repository on rural India"
+msgstr "اپنے دوستوں سے کہیں کہ وہ اس مہم سے جڑیں اور اپنا تعاون دیں۔ اپنے ملک کا احاطہ کرنے میں ہماری مدد کریں۔ دیہی ہندوستان پر مبنی قومی علم کا ایک منفرد ذخیرہ تیار کرنے میں ہمارے ساتھ شامل ہوں۔"
+
+#: core/templates/core/donate.html:150
+msgid "I live in the U.S. Can I send PARI a donation?"
+msgstr "میں امریکہ میں رہتا ہوں۔ کیا میں پاری کو چندہ بھیج سکتا ہوں؟"
+
+#: core/templates/core/donate.html:160
+msgid "A lot more, actually, but PARI’s core group and volunteers bear significant costs, personally. We appeal  to you to contribute generously and make this unique journalistic effort a success. We can do this without governments and corporations – and will. We can’t do it without you."
+msgstr "درحقیقت اور بھی کئی سوالات ہیں، لیکن پاری کا بنیادی گروپ اور رضاکار ذاتی طور پر بڑے اخراجات برداشت کرتے ہیں۔ ہم آپ سے اپیل کرتے ہیں کہ دل کھول کر تعاون دیں اور صحافت کی اس انوکھی کوشش کو کامیابی سے ہم کنار کریں۔ ہم اسے حکومتوں اور کارپوریشنوں کے بغیر کر سکتے ہیں، اور کریں گے۔ لیکن ہم آپ کے بغیر یہ نہیں کر سکتے۔"
+
+#: core/templates/core/donate_form.html:16
+msgid "At present, we can only accept donations in Indian rupees by Indian citizens. All donations made to the <strong>CounterMedia Trust</strong> are eligible for exemption under Section 80G of the Income Tax Act, 1961. Here is a copy of our <a href=\"/media/uploads/Donate/80g_certificate.jpg\" target=\"_blank\">exemption certificate.</a>"
+msgstr "فی الحال، ہم صرف ہندوستانی شہریوں سے ہی ہندوستانی روپے میں چندہ قبول کر سکتے ہیں۔ <strong>کاؤنٹر میڈیا ٹرسٹ</strong> کو بھیجے گئے تمام چندے انکم ٹیکس قانون، ۱۹۶۱ کے سیکشن ۸۰ جی کے تحت ٹیکس سے مستثنیٰ ہیں۔ یہ ہے ہمارے <a href=\"/media/uploads/Donate/80g_certificate.jpg\" target=\"_blank\">استثناء کا سرٹیفکیٹ۔</a>"
+
+#: core/templates/core/donate_form.html:43
+msgid "Send by courier / post to:<br/><strong> CounterMedia Trust</strong><br/> c/o P. Sainath, 27/43 Sagar Sangam, Bandra Reclamation, Mumbai 400050, Maharashtra, India."
+msgstr "کوریئر / ڈاک سے اس پتہ پر بھیجیں: <br/><strong>CounterMedia Trust</strong><br/> c/o P. Sainath, 27/43 Sagar Sangam, Bandra Reclamation, Mumbai 400050, Maharashtra, India."
+
+#: core/templates/core/donate_form.html:59
+msgid "Payment by mobile phone using Immediate Payment Service (IMPS).<br/>  Please go through the following methods of mobile payment enabled by the National Payments Corporation of India (NPCI)."
+msgstr "فوری ادائیگی سروِس (آئی ایم پی ایس) کا استعمال کرتے ہوئے موبائل فون کے ذریعے ادائیگی۔ <br/> براہ کرم نیشنل پیمنٹس کارپویشن آف انڈیا (این پی سی آئی) کے ذریعہ فعال کیے گئے موبائل ادائیگی کے درج ذیل طریقوں پر عمل کریں۔"
+
+#: core/templates/core/founders.html:31
+msgid "Sharmila Joshi is the Editorial Chief at PARI. Her work includes overseeing, editing and presenting PARI’s complex content from innumerable parts of the country. She also manages a pool of voluntary editors and trains editorial interns. She has a significant role in shaping our site’s editorial and ethical protocols."
+msgstr "شرمیلا جوشی پاری کی ادارتی چیف ہیں۔ ان کے کام میں ہندوستان کے بے شمار حصوں سے پاری کو موصول ہونے والے پیچیدہ مواد کو دیکھنا، ان کی تدوین کرنا اور پھر انھیں پیش کرنا  شامل ہے۔ وہ رضاکارانہ ایڈیٹرز کے گروپ کو بھی سنبھالتی ہیں اور ادارتی انٹرنز کی تربیت کرتی ہیں۔ ہماری سائٹ کے ادارتی اور اخلاقی حفظِ مراتب کو ترتیب دینے میں ان کا نمایاں کردار ہے۔"
+
+#: core/templates/core/home_page.html:86
+msgid "Latest on PARI"
+msgstr "پاری پر تازہ ترین"
+
+#: core/templates/core/pari_teachers_students.html:95
+msgid "PARI has specific <a href=\"{[ guidelines }}\"> guidelines </a> for videos generated for and by us, which ensure recognition of primary authorship of the narrators. Meanwhile, just the interaction of students with the people whose lives they're trying to study, and their joint effort with communities to produce authentic material from the field, is also a powerful source of learning. It’s already happening on PARI."
+msgstr "پاری کے پاس ہمارے لیے اور ہمارے ذریعہ تیار کیے گئے ویڈیوز کے لیے خصوصی <a href=\"{[ guidelines }}\">رہنما ہدایات</a> ہیں، جو کہانی بیان کرنے والوں کی بنیادی تصنیف کی شناحت کو یقینی بناتے ہیں۔ دریں اثنا، ان لوگوں کے ساتھ صرف طلبہ کا تعامل، جن کی زندگیوں کے بارے میں وہ مطالعہ کرنے کی کوشش کر رہے ہیں، اور فیلڈ سے مستند مواد تیار کرنے کے لیے برادریوں کے ساتھ ان کی مشترکہ کوشش بھی آموزش کا ایک طاقتور وسیلہ ہے۔ یہ سب پاری پر پہلے سے ہو رہا ہے۔"
+
+#: core/templates/pages/menus/dropdown.html:179
+#: resources/templates/resources/resource_list.html:8
+#: resources/templates/resources/resource_list.html:9
+#: resources/templates/resources/resource_list.html:26
+#: resources/templates/resources/resource_list.html:31
+msgid "Resources"
+msgstr "وسائل"
+
+msgid "Find hundreds of PARI stories on diverse topics such as rural occupations, crafts and sports, marginalised groups, resource conflicts, and many more. "
+msgstr "دیہی مشغولیات، دستکاری اور کھیل، پسماندہ گروہوں، وسائل کو لے کر تنازعات وغیرہ جیسے متنوع عنوانات کے تحت پاری کی سینکڑوں اسٹوریز تلاش کریں۔"

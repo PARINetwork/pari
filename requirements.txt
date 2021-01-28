@@ -12,7 +12,7 @@ elasticsearch==6.8.1
 six==1.15.0
 
 # Recommended components to improve performance in production:
-django-redis==4.3.0
+django-redis==4.12.1
 
 # For M2M Field support.
 django-modelcluster<6.0,>=5.0

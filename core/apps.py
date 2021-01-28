@@ -34,8 +34,23 @@ validators.validate_slug = validate_slug
 
 class FormSlugField(forms.SlugField):
     default_validators = [validate_slug]
+
+    def __init__(self, *, allow_unicode=False, **kwargs):
+        self.allow_unicode = False
+        self.default_validators = [validate_slug]
+        super(FormSlugField, self).__init__(**kwargs)
+
+
 forms.SlugField = FormSlugField
+
 
 class ModelSlugField(models.SlugField):
     default_validators = [validate_slug]
+
+    def __init__(self, *args, max_length=50, db_index=True, allow_unicode=False, **kwargs):
+        self.allow_unicode = False
+        self.default_validators = [validate_slug]
+        super(ModelSlugField, self).__init__(*args, max_length=max_length, db_index=db_index, **kwargs)
+
+
 models.SlugField = ModelSlugField

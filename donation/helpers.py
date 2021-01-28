@@ -56,7 +56,7 @@ class DonationOptions(object):
 
 
 def send_acknowledgement_mail(payment_context):
-    email_msg = render_to_string('donation/acknowledgement_mail.html', Context(payment_context))
+    email_msg = render_to_string('donation/acknowledgement_mail.html', payment_context)
     send_mail(
         'We have received your donation', None,
         settings.DEFAULT_FROM_EMAIL,
@@ -66,7 +66,7 @@ def send_acknowledgement_mail(payment_context):
 
 
 def send_verification_failure_mail(payment_context):
-    email_msg = render_to_string('donation/verification_failure_mail.html', Context(payment_context))
+    email_msg = render_to_string('donation/verification_failure_mail.html', payment_context)
     send_mail(
         'Donation verification failed!', None,
         settings.DEFAULT_FROM_EMAIL,

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n wagtailcore_tags wagtailimages_tags %}
-{% load i18n wagtailimages_tags %}
-{% load i18n core_filters %}
+{% load wagtailimages_tags %}
+{% load core_filters %}
 
 {% block meta_title %}{{ article.title }}{% endblock %}
 {% block meta_description %}{{ article.strap }}{% endblock %}
@@ -185,13 +185,15 @@
             </div>
              <h1><span itemprop="headline" id="article-gallery-title">{{ article.title }}</span></h1>
              <p>{{ article.strap }}</p>
-             <ul class="clearfix">
+             <ul >
+             {% for role, authors in beginning_authors_with_role.items %}
                  <li>
                      {% include "includes/author-links.html" with authors=authors author_link_class="" author_name_class="" %}
                      <span class="hidden" itemprop="homeLocation" itemtype="http://schema.org/Place">
                         <span itemprop="address">{{ author.twitter_username }}</span>
                     </span>
                  </li>
+             {% endfor %}
                  <li >
                         <span class="filter-value language-box">
                             <span class="banner-label">{% trans "Language" %}</span>
@@ -297,7 +299,7 @@
         </div>
     </div>
 </div>
-{% include "article/includes/author_info.html" with authors=authors show_other_stories=True show_translated_bio=True%}
+{% include "article/includes/author_role_info.html" with authors_with_role=end_authors_with_role%}
     <div class="container related-stories">
         {% if article.related_articles %}
             <h4>{% trans "RELATED STORIES" %}</h4>

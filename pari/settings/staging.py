@@ -4,7 +4,7 @@ from sentry_sdk.integrations.django import DjangoIntegration
 
 
 # Disable debug mode
-DEBUG = False
+DEBUG = True
 
 
 # Domain names that this Django site can serve

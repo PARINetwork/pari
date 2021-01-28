@@ -1,6 +1,7 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}" {% if LANGUAGE_BIDI %}dir="rtl" {% endif %}>
-{% load i18n compress wagtailcore_tags %}
+{% load compress wagtailcore_tags %}
 {% load static from staticfiles %}
 <head>
 
@@ -99,7 +100,7 @@
           <nav id="mainnav" class="navbar navbar-inverse" role="navigation">
               <div class="container">
                   <div class="row">
-                      <div class="col-lg-4 col-md-4 col-sm-1 nav-header-icon-title">
+                      <div class="col-lg-3 col-md-3 col-sm-1 nav-header-icon-title nopadding">
                           <div class="navbar-header">
                               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                                   <span class="icon-bar"></span>
@@ -116,8 +117,8 @@
                               </div>
                           </div>
                       </div>
-                      <div class="col-lg-8 col-md-8 col-sm-11">
-                          <div class="collapse navbar-collapse">
+                      <div class="col-lg-9 col-md-9 col-sm-11 nopadding">
+                          <div class="collapse navbar-collapse nopadding">
                               <ul class="nav navbar-nav navbar-right " itemscope itemtype="http://schema.org/SiteNavigationElement">
                                   {% include "pages/menus/dropdown.html" %}
                               </ul>

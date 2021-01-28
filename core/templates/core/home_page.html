@@ -53,23 +53,12 @@
 
 {% block main %}
     <div class="home-page">
-        <div class="announcement3">
+        <div class="announcement">
             <div class="container">
                 <div class="row">
                     <!--div class="col-sm-1 col-xs-3 profile-photo"><img src="{{ STATIC_URL }}img/logo.png"></div-->
                     <div class="col-sm-12 col-xs-12 content">
-                       <a class="link-w-arrow" href="/articles/wan-infra-award/">PARI has won the Silver prize in WAN-IFRA’s South Asian Digital Media Awards, 2020. This is PARI’s 27th journalism prize <i class="fas fa-angle-right icon-handle"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        &nbsp;
-        <div class="announcement2">
-            <div class="container">
-                <div class="row">
-                    <!--div class="col-sm-1 col-xs-3 profile-photo"><img src="{{ STATIC_URL }}img/logo.png"></div-->
-                    <div class="col-sm-12 col-xs-12 content">
-                       <a class="link-w-arrow" href="/articles/pari-wins-laadli-media-award-2020/">PARI’s Jigyasa Mishra has won a Press Institute of India-International Committee of the Red Cross award, 2020. This is PARI’s 26th journalism prize <i class="fas fa-angle-right icon-handle"></i></a>
+                        <a class="link-w-arrow" href="articles/protests-against-farm-laws-full-coverage/">{% blocktrans trimmed %}Read PARI's full coverage of the protests against the farm laws here{% endblocktrans %}</a>
                     </div>
                 </div>
             </div>
@@ -178,7 +167,7 @@
                                                 &nbsp;{% endif %}</p>
                                         </div>
                                         <div class="name-primary">
-                                            {% include "includes/author-links.html" with authors=item.specific|get_photographers author_link_class="author-link" author_name_class="author-name" %}
+                                            {% include "includes/author-links.html" with authors_with_role=item.specific|get_photographers author_link_class="author-link" author_name_class="author-name" %}
                                         </div>
                                         <div class="date">
                                         {% with item.specific|get_locations as locations%}
@@ -275,7 +264,7 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     <a href="{{ item.url }}" class="infocus-title-primary"><div class="infocus-item-title">{{ item.title }}</div></a>
                                     <div class="name-primary">
-                                        {% include "includes/author-links.html" with authors=item.specific.authors.all  author_link_class="author-link" author_name_class="author-name" %}
+                                        {% include "includes/author-links.html" with authors_with_role=item.specific.beginning_authors_with_role  author_link_class="author-link" author_name_class="author-name" %}
                                     </div>
                                     <div class="date">
                                         {% with item.specific|get_locations as locations %}
@@ -322,7 +311,7 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                     <a href="{{ item.url }}" class="infocus-title-primary"><div class="infocus-item-title">{{ item.title }}</div></a>
                                     <div class="name-primary">
-                                        {% include "includes/author-links.html" with authors=item.specific.authors.all  author_link_class="author-link" author_name_class="author-name" %}
+                                        {% include "includes/author-links.html" with authors_with_role=item.specific.beginning_authors_with_role  author_link_class="author-link" author_name_class="author-name" %}
                                     </div>
                                     <div class="date">
                                         {% with item.specific|get_locations as locations %}
@@ -377,11 +366,19 @@
                                  alt="{{ categories.0.name }}" class="img-responsive lazyload">
                             <div class="grid-container">
                                 <div class="category-name resource-title">
-                                  <h3 class="category-image-overlay-text">{{ categories.0.name }}</h3>
+                                    <h3 class="category-image-overlay-text">
+                                        {% with categories.0.name as name %}
+                                            {% trans name %}
+                                        {% endwith %}
+                                    </h3>
                                 </div>
                                 <div class="title-grid resource-description">
                                     <div class="border-link"></div>
-                                    <div>{{ categories.0.description }}</div>
+                                    <div>
+                                        {% with categories.0.description as description %}
+                                            {% trans description %}
+                                        {% endwith %}
+                                    </div>
                                 </div>
                             </div>
                         </a>
@@ -409,11 +406,19 @@
                                              alt="{{ categories.1.name }}" class="img-responsive lazyload">
                                         <div class="grid-container">
                                           <div class="category-name">
-                                            <h3>{{ categories.1.name }}</h3>
+                                            <h3>
+                                                {% with categories.1.name as name %}
+                                                    {% trans name %}
+                                                {% endwith %}
+                                            </h3>
                                           </div>
                                             <div class="title-grid">
                                                 <div class="border-link"></div>
-                                                <div>{{ categories.1.description }}</div>
+                                                <div>
+                                                    {% with categories.1.description as description %}
+                                                        {% trans description %}
+                                                    {% endwith %}
+                                                </div>
                                             </div>
                                         </div>
                                     </a>
@@ -432,11 +437,19 @@
                                          alt="{{ categories.2.name }}" class="img-responsive lazyload">
                                     <div class="grid-container">
                                       <div class="category-name">
-                                        <h3>{{ categories.2.name }}</h3>
+                                        <h3>
+                                            {% with categories.2.name as name %}
+                                                {% trans name %}
+                                            {% endwith %}
+                                        </h3>
                                       </div>
                                         <div class="title-grid">
                                             <div class="border-link"></div>
-                                            <div>{{ categories.2.description }}</div>
+                                            <div>
+                                                {% with categories.2.description as description %}
+                                                    {% trans description %}
+                                                {% endwith %}
+                                            </div>
                                         </div>
                                     </div>
                                 </a>
@@ -455,13 +468,21 @@
                                          alt="{{ categories.3.name }}" class="img-responsive lazyload">
                                     <div class="grid-container">
                                       <div class="category-name">
-                                        <h3>{{ categories.3.name }}</h3>
+                                        <h3>
+                                            {% with categories.3.name as name %}
+                                                {% trans name %}
+                                            {% endwith %}
+                                        </h3>
                                       </div>
 
 
                                         <div class="title-grid">
                                             <div class="border-link"></div>
-                                            <div>{{ categories.3.description }}</div>
+                                            <div>
+                                                {% with categories.3.description as description %}
+                                                    {% trans description %}
+                                                {% endwith %}
+                                            </div>
                                         </div>
                                     </div>
                                 </a>

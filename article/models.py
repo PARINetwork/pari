@@ -28,6 +28,7 @@ from core.utils import get_translations_for_page, SearchBoost
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 from core.widgets import JqueryChosenSelect
+from collections import defaultdict
 
 Page.wg_url = Page.url
 
@@ -50,19 +51,32 @@ class ArticleTag(TaggedItemBase):
 class ArticleAuthors(models.Model):
     article = ParentalKey('article.Article', related_name='authors')
     author = models.ForeignKey('author.Author', related_name='articles_by_author', on_delete=django.db.models.deletion.PROTECT)
+    role = models.ForeignKey('author.Role', related_name='author_credit', on_delete=django.db.models.deletion.PROTECT, null=True, blank=True)
+    show_in_beginning = models.BooleanField(default=True)
+    show_in_end = models.BooleanField(default=True)
     sort_order = models.IntegerField(default=0)
     sort_order_field = 'sort_order'
     panels = [
-        FieldPanel('author', widget=JqueryChosenSelect),
+        MultiFieldPanel([
+            FieldPanel('author', widget=JqueryChosenSelect),
+            FieldPanel('role', widget=JqueryChosenSelect),
+            FieldRowPanel([
+                FieldPanel('show_in_beginning'),
+                FieldPanel('show_in_end')
+            ])
+        ])
     ]
 
     class Meta:
         db_table = 'article_article_authors'
-        unique_together = ('article', 'author', 'sort_order')
+        unique_together = ('article', 'author', 'role', 'sort_order')
         ordering = ('sort_order',)
 
     def __str__(self):
-        return self.author.name
+        if self.role:
+            return self.role.name + ' :' + self.author.name
+        else:
+            return self.author.name
 
 
 @python_2_unicode_compatible
@@ -159,6 +173,23 @@ class Article(Page):
     def get_authors(self):
         return [article_author.author.name for article_author in self.authors.all()]
 
+    def get_author_role_map(self, **kwargs):
+        authors_with_role = kwargs['authors_with_role']
+        temp = defaultdict(list)
+        for awr in authors_with_role:
+            role = awr.role
+            if role:
+                temp[role.name].append(awr.author)
+            else:
+                temp['None'].append(awr.author)
+        return dict((key, tuple(val)) for key, val in temp.items())
+
+    def beginning_authors_with_role(self):
+        return self.get_author_role_map(authors_with_role=self.authors.filter(show_in_beginning=True).all())
+
+    def end_authors_with_role(self):
+        return self.get_author_role_map(authors_with_role=self.authors.filter(show_in_end=True).all())
+
     def get_translators(self):
         return [translator.name for translator in self.translators.all()]
 
@@ -181,7 +212,8 @@ class Article(Page):
             site = Site.objects.filter(is_default_site=True)[0]
         return {
             'article': self,
-            'authors': [x.author for x in self.authors.all()],
+            'beginning_authors_with_role': self.beginning_authors_with_role(),
+            'end_authors_with_role': self.end_authors_with_role(),
             'request': request,
             'site': site
         }

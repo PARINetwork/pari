@@ -1,0 +1,10 @@
+{% load i18n wagtailcore_tags %}
+<div class="author-info">
+    <div class="container">
+        {% for role, authors in authors_with_role.items %}
+            <div class="row author-block">
+                {% include "article/includes/author_info.html" with authors=authors role=role show_other_stories=True show_translated_bio=True %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
