@@ -121,7 +121,8 @@ def handle_razorpay_payment(form_data):
         'timestamp': time.time()
     }
     checkout_url = reverse('razorpay_checkout')
-    checkout_url += "?params={0}".format(base64.b64encode(json.dumps(params)))
+    encoded_str = json.dumps(params).encode("ascii")
+    checkout_url += "?params={0}".format(base64.b64encode(encoded_str).decode("ascii"))
     return redirect(checkout_url)
 
 
@@ -195,9 +196,7 @@ def razorpay_checkout(request):
     params = request.GET.get('params')
     if not params:
         return HttpResponseBadRequest()
-
-    checkout_params = json.loads(base64.b64decode(params))
-
+    checkout_params = json.loads(base64.b64decode(params.encode("ascii")).decode('ascii'))
     current_timestamp, max_timestamp_delay = time.time(), 5.0
     if current_timestamp - checkout_params['timestamp'] > max_timestamp_delay:
         return HttpResponse("Link expired")
@@ -210,7 +209,7 @@ def razorpay_checkout(request):
                 .format(checkout_params['subscription_id']))
 
     return render(request, 'donation/razorpay_checkout.html', {
-        'checkout_params': base64.b64decode(params),
+        'checkout_params': base64.b64decode(params.encode("ascii")).decode('ascii'),
         'subscription_id': checkout_params['subscription_id']
     })
 
