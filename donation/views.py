@@ -222,8 +222,8 @@ def razorpay_verify(request):
     logger.debug("RZP Received {0} for verification".format(received_data_str))
 
     expected_signature = hmac.new(
-        key=settings.RAZORPAY['SECRET_KEY'],
-        msg=data['razorpay_payment_id'] + '|' + payment_context['subscription_id'],
+        key=settings.RAZORPAY['SECRET_KEY'].encode(),
+        msg=(data['razorpay_payment_id'] + '|' + payment_context['subscription_id']).encode(),
         digestmod=hashlib.sha256
     ).hexdigest()
 
