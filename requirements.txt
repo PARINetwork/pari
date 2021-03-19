@@ -4,7 +4,7 @@ django-taggit==1.0
 Django==2.2
 django-modeltranslation==0.14
 
-djangorestframework==3.7.4
+djangorestframework==3.11.2
 
 # Recommended components (require additional setup):
 psycopg2==2.8.5
