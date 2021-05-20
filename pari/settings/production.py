@@ -79,5 +79,6 @@ LOGGING = {
 sentry_sdk.init(
     dsn="https://e87c857ac5c248e5b4868cfdd71a2cbf@sentry.io/1377604",
     environment='Prod',
-    integrations=[DjangoIntegration()]
+    integrations=[DjangoIntegration()],
+    traces_sample_rate=0.1,
 )

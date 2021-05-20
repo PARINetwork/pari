@@ -200,7 +200,7 @@
                           <div class="dropdown custom-dropdown" id="language_dd">
                               <button class="dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                   {% for lang in LANGUAGES %}
-                                  {% if lang.0 == LANGUAGE_CODE %}
+                                  {% if article.language == lang.0 %}
                                   <span class="selected">{{ lang.1 }}</span>
                                       {% endif %}
                               {% endfor %}
