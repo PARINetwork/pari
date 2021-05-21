@@ -25,6 +25,13 @@ class DonateForm(forms.Form):
         widget=forms.TextInput(attrs={"class": "form-control"}),
         help_text=_("PAN is required as per government regulations.")
     )
+    ##TODO: address is not wired right now to the payment gatway
+    address = forms.CharField(
+        label=_("ADDRESS"),
+        max_length=252,
+        widget=forms.TextInput(attrs={"class": "form-control"}),
+        help_text=_("Address is required as per government regulations.")
+    )
     amount = AmountField(
         choices=DonationOptions.Amount.CHOICES,
         label=_('AMOUNT')
