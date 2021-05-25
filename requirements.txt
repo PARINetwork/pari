@@ -22,7 +22,7 @@ django-compressor==2.4
 requests
 
 # Error reporting
-sentry-sdk==0.6.9
+sentry-sdk==0.19.5
 
 # Razorpay payment gateway
 razorpay==1.1.1
