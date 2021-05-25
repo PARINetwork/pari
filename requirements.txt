@@ -3,6 +3,7 @@ wagtail==2.7.4
 django-taggit==1.0
 Django==2.2
 django-modeltranslation==0.14
+wagtail-color-panel==1.2.0
 
 djangorestframework==3.7.4
 
