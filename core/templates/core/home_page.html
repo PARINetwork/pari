@@ -57,7 +57,7 @@
         <div class="announcement" style="background-color: {{ banner_content.value.banner_color }}">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-12 col-xs-12 content">
+                    <div class="col-sm-12 col-xs-12 content {% if forloop.first %}active{% endif %} content-{{ forloop.counter }}">
                         <a class="link-w-arrow" href="{{ banner_content.value.url }}" style="color: {{ banner_content.value.text_color }}">
                                 {{ banner_content.value.text }}
                         </a>
