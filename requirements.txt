@@ -1,5 +1,5 @@
 # Minimal requirements
-wagtail==2.7
+wagtail==2.7.4
 django-taggit==1.0
 Django==2.2
 django-modeltranslation==0.14

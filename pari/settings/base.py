@@ -74,6 +74,7 @@ INSTALLED_APPS = [
     'wagtail.contrib.redirects',
     'wagtail.contrib.forms',
     'wagtail.contrib.modeladmin',
+    'wagtail_color_panel'
 ]
 
 MIDDLEWARE = [

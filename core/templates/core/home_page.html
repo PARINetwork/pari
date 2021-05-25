@@ -53,16 +53,19 @@
 
 {% block main %}
     <div class="home-page">
-        <div class="announcement">
+        {% for banner_content in page.banner_content %}
+        <div class="announcement" style="background-color: {{ banner_content.value.banner_color }}">
             <div class="container">
                 <div class="row">
-                    <!--div class="col-sm-1 col-xs-3 profile-photo"><img src="{{ STATIC_URL }}img/logo.png"></div-->
                     <div class="col-sm-12 col-xs-12 content">
-                        <a class="link-w-arrow" href="articles/protests-against-farm-laws-full-coverage/">{% blocktrans trimmed %}Read PARI's full coverage of the protests against the farm laws here{% endblocktrans %}</a>
+                        <a class="link-w-arrow" href="{{ banner_content.value.url }}" style="color: {{ banner_content.value.text_color }}">
+                                {{ banner_content.value.text }}
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+        {% endfor %}
         <div id="myCarousel-1" class="carousel slide carousel-fade" data-ride="carousel">
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">

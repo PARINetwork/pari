@@ -27,6 +27,7 @@ from article.models import Article
 from category.models import Category
 from core.utils import get_translations_for_page, SearchBoost, get_unique_photographers,construct_guidelines
 
+from wagtail_color_panel.blocks import NativeColorBlock
 
 @python_2_unicode_compatible
 class StaticPage(Page):
@@ -117,11 +118,22 @@ class HomePageAdminForm(HomePageAdminMediaForm):
         return page2
 
 
+class BannerBlock(StructBlock):
+    text = blocks.TextBlock(required=True)
+    url = blocks.URLBlock(required=True)
+    text_color = NativeColorBlock(default="#000000")
+    banner_color = NativeColorBlock(default="#000000")
+
+
 @python_2_unicode_compatible
 class HomePage(Page):
-    featured_content = StreamField([
-        ("featured_section", FeaturedSectionBlock()),
+    banner_content = StreamField([
+        ("banner_block", BannerBlock()),
     ], blank=True, null=True)
+
+    featured_content = StreamField([
+            ("featured_section", FeaturedSectionBlock()),
+        ], blank=True, null=True)
 
     carousel_title = models.TextField(blank=False, null=False, default='Latest On PARI')
     # TODO: Carousel is temporary and being phased out
@@ -187,6 +199,7 @@ class HomePage(Page):
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
 
     content_panels = Page.content_panels + [
+        MultiFieldPanel([StreamFieldPanel('banner_content')], heading="Page Banner", classname="collapsible "),
         MultiFieldPanel([StreamFieldPanel('featured_content')], heading="Featured Content", classname="collapsible "),
         MultiFieldPanel([
             FieldPanel('carousel_title'),
