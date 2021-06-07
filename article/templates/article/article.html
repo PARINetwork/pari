@@ -156,7 +156,7 @@
 {% image article.featured_image width-1400 as featured_image %}
 <div class="full-row">
     <div class="banner-container">
-        <img src="{{ featured_image.url }}" alt="{{ article.featured_image.alt_text }}">
+        <img id="banner-container-image" src="{{ featured_image.url }}" alt="{{ article.featured_image.alt_text }}">
         <div class="banner-info">
         <div class="container">
         <button class="arrow-wrap" data-toggle="collapse" data-target="#banner-info">
@@ -184,7 +184,7 @@
                 {% endif %}
             </div>
              <h1><span itemprop="headline" id="article-gallery-title">{{ article.title }}</span></h1>
-             <p>{{ article.strap }}</p>
+             <p id="article-gallery-strap">{{ article.strap }}</p>
              <ul >
              {% for role, authors in beginning_authors_with_role.items %}
                  <li>
