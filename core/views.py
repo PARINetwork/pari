@@ -12,7 +12,7 @@ from wagtail.core.models import Page, Site
 from category.models import Category
 from core.utils import get_translations_for_page, construct_guidelines, get_translated_or_default_page
 from .forms import ContactForm
-from .models import HomePage, GuidelinesPage
+from .models import HomePage, GuidelinesPage, AboutTheEditorPage
 from django.utils.translation import get_language
 
 
@@ -64,6 +64,7 @@ def get_unique_photographers(talking_album):
 
 def static_page(request, slug=None):
     try:
+        print("static_page")
         page = Page.objects.get(slug=slug)
     except Page.DoesNotExist:
         raise Http404
@@ -129,9 +130,16 @@ def about(request):
     return render(request, "core/about.html", {"tab": "about-pari", "current_page": 'about'})
 
 
-def founders(request):
-    return render(request, "core/founders.html", {"tab": "about-pari", "current_page": 'founders'})
-
+def founders(request, slug="about-the-editor"):
+    about_the_editor = AboutTheEditorPage.objects.get(slug=slug)
+    translations = get_translations_for_page(about_the_editor)
+    translated_about_the_editor_page = get_translated_or_default_page(about_the_editor, translations)
+    active_tab = 'about-pari'
+    return render(request, "core/founders.html", {
+        "page": translated_about_the_editor_page,
+        "tab": active_tab,
+        "current_page": 'founders'
+    })
 
 def pari_teachers_students(request):
     active_tab = 'about-pari'
