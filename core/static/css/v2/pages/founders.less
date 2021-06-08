@@ -6,7 +6,7 @@
     font-size: 50px;
     font-family: Fira sans-serif;
     font-weight: bolder;
-    padding-bottom: 35px;
+    padding-bottom: 50px;
     color: lightgray;
     margin: 0;
   }
@@ -15,6 +15,11 @@
 .founders-bio {
   h3 {
     color: @primary-color;
+    margin: 0px;
+  }
+
+  .row {
+    margin-bottom: 50px
   }
 }
 
@@ -29,23 +34,14 @@ hr {
   border-top: 2px solid @light-grey;
 }
 
-.founders-details {
-  display: inline-block;
-  width: 290px;
-  padding: 10px 0;
-  padding-bottom: 25px;
-  .image-holder {
-    width: 270px;
-    height: 210px;
-    overflow: hidden;
-  }
-  img {
-    width: 100%;
-  }
-  h4 {
-    color: @primary-color;
-    padding-top: 10px;
-  }
+.image-holder {
+  width: 360px;
+  height: 330px;
+  overflow: hidden;
+}
+
+img {
+  width: 100%;
 }
 
 .photo-section-head {
@@ -57,14 +53,7 @@ hr {
 }
 
 @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
-  .founders-details {
-    display: inline-block;
-    width: 309px;
-    padding: 10px 0;
-    padding-bottom: 25px;
-  }
-
-  .founders-details .image-holder {
+  .image-holder {
     width: 309px;
     height: 192px;
     overflow: hidden;
@@ -73,20 +62,16 @@ hr {
 }
 
 @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
-  .founders-details {
-    display: inline-block;
-    width: 354px;
-    padding: 10px 0;
-    padding-bottom: 25px;
-  }
-
-  .founders-details .image-holder {
+  .image-holder {
     width: 354px;
     height: 229px;
     overflow: hidden;
     padding: 0 12px 0 0;
   }
 
+  .founder-name {
+    padding-top: 20px
+  }
 }
 
 @media (max-width: @screen-xs-max) {
@@ -96,8 +81,7 @@ hr {
     overflow: hidden;
   }
 
-  .founders-details {
-    display: block;
-    margin: auto;
+  .founder-name {
+    padding-top: 20px
   }
 }

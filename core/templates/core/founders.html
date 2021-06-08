@@ -18,25 +18,31 @@
         <div class="founders-title"><h1>{{ page.title }}</h1></div>
         <div class="founders-bio">
             {% for person in page.editor.all %}
-                <h3>{{ person.name }}</h3>
-                <p>{{ person.description|richtext }}</p>
-            {% endfor %}
-        </div>
-        <hr class="seperator">
-        <div class="photo-section-head">{% trans "People" %}</div>
-        <div class="image-grid">
-            {% for person in page.editor.all %}
-                <div class="founders-details">
-                    <div class="image-holder "><img src="{{ person.image.file.url }}"></div>
-                    <div class="detail-holder ">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="image-holder "><img src="{{ person.image.file.url }}"></div>
+                    </div>
+                    <div class="col-md-8">
+                        <h3 class="founder-name">{{ person.name }}</h3>
                         <h4>{{ person.title }}</h4>
-                        <span>{{ person.name }}</span>
+                        <p>{{ person.description|richtext }}</p>
                     </div>
                 </div>
             {% endfor %}
         </div>
-
-    </div>
+        {#        <hr class="seperator">#}
+        {#        <div class="photo-section-head">{% trans "People" %}</div>#}
+        {#        <div class="image-grid">#}
+        {#            {% for person in page.editor.all %}#}
+        {#                <div class="founders-details">#}
+        {#                    <div class="image-holder "><img src="{{ person.image.file.url }}"></div>#}
+        {#                    <div class="detail-holder ">#}
+        {#                        <h4>{{ person.title }}</h4>#}
+        {#                        <span>{{ person.name }}</span>#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#            {% endfor %}#}
+        {#        </div>#}
 
     </div>
 
