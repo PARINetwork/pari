@@ -520,6 +520,16 @@
       }
     }
 
+    .image-block.full-width-image-block {
+      margin: 0!important;
+      .image img {
+        page-break-before: always;
+        page-break-after: always;
+        page-break-inside: avoid;
+        max-height: 350px!important;
+      }
+    }
+
     div[class*="image"] {
       page-break-before: auto;
       page-break-after: auto;
