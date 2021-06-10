@@ -505,13 +505,25 @@
       padding-left: 2%;
       padding-right: 2%;
       white-space: normal;
+
       p {
         margin-bottom: 5px;
         word-wrap: break-word;
       }
     }
-    .image-block .image img {
-      max-height: 150px;
+
+    div[class*="column-image"] {
+      .image-block .image img {
+        width: 270px;
+        height: 270px;
+        display: block;
+      }
+    }
+
+    div[class*="image"] {
+      page-break-before: auto;
+      page-break-after: auto;
+      page-break-inside: avoid;
     }
   }
   .rich-text {
