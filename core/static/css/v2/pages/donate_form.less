@@ -52,16 +52,14 @@ p{
     border-radius: 0;
     #label_id_is_indian{
       color:@darker-grey;
-      padding: 0 0 0 26px;
+      padding: 0 0 0 20px;
       line-height: normal;
       .font-size(15);
     }
     #id_is_indian{
       position: absolute;
       left: 0;
-      width: 30px;
-      height: 30px;
-      margin-top: -6px;
+      margin-top: 1px;
       margin-left: 10px;
     }
   }
@@ -106,7 +104,7 @@ p{
     padding: 0;
   }
 
-  #id_amount_0, #id_frequency {
+  #id_amount_0, #id_frequency, #id_payment_method {
     li {
       float: left;
     }
@@ -259,5 +257,8 @@ p{
 .faqs {
   padding-bottom: 15px;
   padding-top: 3em;
-  border-left: @light-grey 1px dotted;
+}
+
+.btn-full-width {
+  width: 100%
 }

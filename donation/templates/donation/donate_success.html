@@ -2,13 +2,50 @@
 {% load i18n %}
 
 {% block meta_title %}
-{% blocktrans with site_name=site.site_name %}Donate to {{ site_name }}{% endblocktrans %}
+    {% blocktrans with site_name=site.site_name %}Donate to {{ site_name }}{% endblocktrans %}
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/donate_form.less"/>
 {% endblock %}
 
 {% block main %}
-<div class="content container" style="margin-bottom: 20px;">
-  <div class="col-lg-10 col-md-10 col-sm-12">
-    <h3>{% blocktrans with site_name=site.site_name %} Thank you for donating to {{ site_name }}. {% endblocktrans %}</h3>
-  </div>
-</div>
+    <div class="content container" style="margin-bottom: 20px;">
+        <div class="col-lg-10 col-md-10 col-sm-12">
+            <h3>{% blocktrans with site_name=site.site_name %} Thank you for donating to {{ site_name }}
+                . {% endblocktrans %}</h3>
+        </div>
+        {% if payment_method %}
+            <div class="col-md-5 col-xs-12">
+                <div class="donate-form-section">
+                    <p class="donate-heading">You have chosen to donate via {{ payment_method }}</p>
+                    {% if payment_method == 'Cheque / DD' %}
+                        <p>{% blocktrans trimmed %}Make it out to <strong>“CounterMedia Trust”</strong>
+                            and send it to us by courier/post along with your contact details – name, address, telephone
+                            number,
+                            e-mail ID and PAN number.
+                        {% endblocktrans %}
+                        </p>
+                        <p>{% blocktrans trimmed %}Send by courier / post to:<br/>
+                            <strong>CounterMedia Trust</strong>
+                            <br/> c/o P. Sainath,
+                            27/43 Sagar Sangam, Bandra Reclamation, Mumbai 400050, Maharashtra, India.
+                        {% endblocktrans %}
+                        </p>
+                    {% endif %}
+                    {% if payment_method == 'Bank Transfer' %}
+                        <p>{% blocktrans trimmed %}Payable to: <strong>CounterMedia Trust</strong>{% endblocktrans %}
+                        </p>
+                        <p>{% blocktrans trimmed %}Bank and branch: HDFC Bank, Aundh<br/>
+                            Address: 93, Anand Park, Rajyog Creations, Off ITI Road, Aundh, Pune 411007, Maharashtra.
+                            <br/>
+                            Account Number: 50100091804541<br/>
+                            MICR Code: 411240005<br/>
+                            IFSC Code: HDFC0000052{% endblocktrans %}
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}

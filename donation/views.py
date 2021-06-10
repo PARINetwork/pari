@@ -1,4 +1,5 @@
 import base64
+from django.utils import timezone
 import hashlib
 import hmac
 import json
@@ -22,7 +23,7 @@ from razorpay.errors import (BadRequestError, GatewayError, ServerError)
 
 from .helpers import DonationOptions, send_acknowledgement_mail, send_verification_failure_mail
 from .forms import DonateForm
-from .models import RazorpayPlans
+from .models import RazorpayPlans, DonorInfo
 
 logger = logging.getLogger(__file__)
 razorpay_client = settings.RAZORPAY_CLIENT
@@ -35,6 +36,7 @@ def handle_instamojo_payment(form_data):
         "data_email": form_data["email"],
         "data_phone": form_data["phone"],
         "data_Field_90444": form_data["pan"],
+        "data_Field_4543": form_data["address"],
     }
     pg_url += "?{0}".format(urllib.parse.urlencode(params))
     return HttpResponseRedirect(pg_url)
@@ -118,12 +120,31 @@ def handle_razorpay_payment(form_data):
         'customer_phone': form_data['phone'],
         'customer_email': form_data['email'],
         'customer_pan': form_data["pan"],
+        'customer_address': form_data["address"],
         'timestamp': time.time()
     }
     checkout_url = reverse('razorpay_checkout')
     encoded_str = json.dumps(params).encode("ascii")
     checkout_url += "?params={0}".format(base64.b64encode(encoded_str).decode("ascii"))
     return redirect(checkout_url)
+
+
+def handle_offline_payment(request, form_data, site):
+    donor_info = DonorInfo(
+        name=form_data['name'],
+        email=form_data['email'],
+        phone=form_data['phone'],
+        pan=form_data['pan'],
+        address=form_data['address'],
+        payment_method = form_data['payment_method'],
+        donation_date_time=timezone.now()
+    )
+    donor_info.save()
+    return HttpResponse(render(request, 'donation/donate_success.html', {
+        "payment_method": form_data['payment_method'],
+        "site": site,
+        "current_page": 'donate_success',
+    }))
 
 
 def donate_form(request):
@@ -136,10 +157,13 @@ def donate_form(request):
     if request.method == "POST":
         form = DonateForm(request.POST)
         if form.is_valid():
-            if form.cleaned_data['frequency'] == DonationOptions.Frequency.ONE_TIME:
-                return handle_instamojo_payment(form.cleaned_data)
+            if form.cleaned_data['payment_method'] == DonationOptions.Methods.onlinePayment:
+                if form.cleaned_data['frequency'] == DonationOptions.Frequency.ONE_TIME:
+                    return handle_instamojo_payment(form.cleaned_data)
+                else:
+                    return handle_razorpay_payment(form.cleaned_data)
             else:
-                return handle_razorpay_payment(form.cleaned_data)
+                return handle_offline_payment(request, form.cleaned_data, site)
 
     return render(request, 'donation/donate_form.html', {
         "form": form,

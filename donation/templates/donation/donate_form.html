@@ -19,26 +19,32 @@
     </div>
     <div class="row">
         <div class="donate-form-content col-md-5 col-xs-12">
-          {% if errors %}<h5 class="errorlist">{{ errors }}</h5>{% endif %}
-          <form method="post" action="{% url 'donate_form' %}">{% csrf_token %}
-            {% for field in form %}
-            <div class="form-group {% if field.errors %}has-error{% endif %}">
-              {% if not field.is_hidden %}<label class="control-label" id="label_{{ field.id_for_label }}">{{ field.label }} </label>{% endif %}
-              {{ field }} {{ field.errors }}
-              <p class="help-text">{{ field.help_text }}</p>
-            </div>
-            {% endfor %}
-            <br/>
-            <input type="submit" class="btn btn-default" value="Submit" />
-            <p class="notify-info">
-                {% blocktrans trimmed %}
-                    At present, we can only accept donations in Indian rupees by Indian citizens.
-                    All donations made to the CounterMedia Trust are eligible for exemption
-                    under Section 80G of the Income Tax Act, 1961. Here is a copy of our 
-                    <a href="/media/uploads/Donate/80g_certificate.jpg" target="_blank">exemption certificate.</a>
-                {% endblocktrans %}
-            </p>
-          </form>
+            {% if errors %}<h5 class="errorlist">{{ errors }}</h5>{% endif %}
+            <form id="donation_form" method="post" action="{% url 'donate_form' %}">{% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group {% if field.errors %}has-error{% endif %}">
+                        {% if not field.is_hidden %}<label class="control-label"
+                                                           id="label_{{ field.id_for_label }}">{{ field.label }} </label>{% endif %}
+                        {{ field }} {{ field.errors }}
+                        <p class="help-text">{{ field.help_text }}</p>
+                    </div>
+                {% endfor %}
+                <label class="control-label" id="offline_message">Hit submit to get the details.</label>
+                <label class="control-label" id="online_message">As per the latest RBI guidelines, recurring i.e Monthly
+                    and Annual payments can be only made by UPI or Netbanking options. Recurring payments using Credit
+                    and Debit Cards have been disabled for the time being. One-time payments can continue to be made
+                    using any payment mode.</label>
+                <p></p>
+                <input type="submit" class="btn btn-default btn-full-width" value="Submit"/>
+                <p class="notify-info">
+                    {% blocktrans trimmed %}
+                        At present, we can only accept donations in Indian rupees by Indian citizens.
+                        All donations made to the CounterMedia Trust are eligible for exemption
+                        under Section 80G of the Income Tax Act, 1961. Here is a copy of our 
+                        <a href="/media/uploads/Donate/80g_certificate.jpg" target="_blank">exemption certificate.</a>
+                    {% endblocktrans %}
+                </p>
+            </form>
         </div>
         <div class="donate-form-message hidden-xs hidden-sm col-md-offset-1 col-md-6">
             <br/>
@@ -57,12 +63,7 @@
         </div>
     </div>
     <div class="row hr">
-        <div class="col-md-5 col-xs-12">
-            <div class="donate-form-section">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfJnETn_g_ubn4uFk-RNpTg4_sKXnXBFelBlgHVv84ynwvevA/viewform?embedded=true" width="550" height="1095" scrolling="no" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-            </div>
-        </div>
-        <div class="faqs col-md-offset-1 col-md-5 col-xs-12">
+        <div class="faqs col-md-5 col-xs-12">
             <h1 class="heading">{% trans "FAQs" %}</h1>
             <div class="faq">
                 <p class="question">{% trans "I sent PARI a donation. How do I get a receipt?" %}</p>
@@ -98,11 +99,88 @@
 {{ form.media }}
 <script type="text/javascript">
     $(function () {
+        var ONLINE_PAYMENT = 'Online Payment';
+        var CHECK_DD = 'Cheque / DD';
+        var BANK_TRANSFER = 'Bank Transfer';
         var ONE_TIME = 'ONE-TIME';
         var MONTHLY = 'Monthly';
         var YEARLY = 'Yearly';
         var checkedFrequencySelector = $('input[name="frequency"]:checked');
         var termSelect = $('.term-select');
+        var amountSelect = $('#id_amount_0');
+        var frequencySelect = $('#id_frequency');
+
+        function enablePaymentMethod(paymentMethod) {
+            $('#id_payment_method').find('input').each(function () {
+                if ($(this).val() === paymentMethod) {
+                    $(this).parent().addClass('selected-radio')
+                }
+                $(this).parent().css({'pointer-events': '', 'cursor': '', 'background': ''})
+            });
+        }
+
+        function enableSubmit() {
+            $(':input[type="submit"]').prop('disabled', false).css({'background': '#F13502'});
+        }
+
+        function disableSubmit() {
+            $(':input[type="submit"]').prop('disabled', true).css({'background': '#737373'});
+        }
+
+        function toggleMessage(messageId, display) {
+            var selector = $(`#${messageId}`);
+            display ? selector.show() : selector.hide();
+        }
+
+        function hideOnlineOptions() {
+            amountSelect.parent().hide();
+            frequencySelect.parent().hide();
+            termSelect.parent().hide();
+            toggleMessage('online_message', false);
+        }
+
+        function hidePaymentOptions() {
+            $('#id_payment_method').find('label').each(function () {
+                $(this).removeClass('selected-radio').css({
+                    'pointer-events': 'none',
+                    'cursor': 'default',
+                    'background': '#a3a3a3'
+                })
+            });
+        }
+
+        function checkRequiredFields() {
+            var name = $('input[name="name"]').val();
+            var email = $('input[name="email"]').val();
+            var phone = $('input[name="phone"]').val();
+            var pan = $('input[name="pan"]').val();
+            var is_indian = $('input[name="is_indian"]').is(":checked");
+            var address = $('textarea[name="address"]').val();
+            var paymentMethod = $('input[name=payment_method]:checked', '#donation_form').val();
+            if (!(name.length && email.length && phone.length && pan.length && address.length && is_indian)) {
+                disableSubmit();
+                hidePaymentOptions();
+                hideOnlineOptions();
+                toggleMessage('offline_message', false);
+            } else if (paymentMethod === CHECK_DD || paymentMethod === BANK_TRANSFER) {
+                enablePaymentMethod(paymentMethod);
+                hideOnlineOptions();
+                toggleMessage('offline_message', true);
+                enableSubmit();
+            } else if (paymentMethod === ONLINE_PAYMENT) {
+                enablePaymentMethod(paymentMethod);
+                amountSelect.parent().show();
+                frequencySelect.parent().show();
+                ($('input[name="frequency"]:checked', '#donation_form').val() === ONE_TIME || !checkedFrequencySelector.length) ? termSelect.parent().hide() : termSelect.parent().show();
+                toggleMessage('offline_message', false);
+                toggleMessage('online_message', true);
+                enableSubmit();
+            } else {
+                enablePaymentMethod();
+            }
+        }
+
+        checkRequiredFields();
 
         function toggleSelected(selectedItem) {
             selectedItem.closest('ul').find('.selected-radio').removeClass('selected-radio');
@@ -119,6 +197,13 @@
             toggleSelected($(this));
 
             switch ($(this).val()) {
+                case ONLINE_PAYMENT:
+                    checkRequiredFields();
+                    break;
+                case CHECK_DD:
+                case BANK_TRANSFER:
+                    checkRequiredFields();
+                    break;
                 case ONE_TIME:
                     termSelect.parent().hide();
                     break;
@@ -131,7 +216,12 @@
                     termSelect.parent().show();
                     break;
             }
-        })
+        });
+
+        $('input[name="name"], input[name="email"], input[name="phone"], input[name="pan"], input[name="is_indian"], textarea[name="address"]')
+            .change(function () {
+                checkRequiredFields();
+            });
     })
 </script>
 {% endblock %}

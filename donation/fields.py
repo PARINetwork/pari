@@ -64,11 +64,6 @@ class AmountField(forms.MultiValueField):
         super(AmountField, self).__init__(widget=widget, fields=fields, *args, **kwargs)
 
     def compress(self, value):
-        if self._was_required and not value or value[0] in (None, ''):
-            raise forms.ValidationError(self.error_messages['required'])
-        if force_text(value[0]) == force_text(self.fields[0].choices[-1][0]) and not value[1]:
-            raise forms.ValidationError(self.error_messages['required'])
-
         if not value:
             return None
 

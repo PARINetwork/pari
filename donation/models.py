@@ -22,3 +22,19 @@ class RazorpayPlans(TimestampedModel):
 
     def __str__(self):
         return self.plan_name
+
+
+class DonorInfo(models.Model):
+    name = models.CharField(max_length=100, blank=False)
+    email = models.EmailField(max_length=254, null=False, blank=False)
+    phone = models.CharField(max_length=13, blank=False)
+    pan = models.CharField(max_length=10, blank=False)
+    address = models.TextField(max_length=252, blank=False)
+    payment_method = models.CharField(max_length=100, blank=False)
+    donation_date_time = models.DateTimeField(blank=False)
+
+    class Meta:
+        db_table = 'donation_donor_info'
+
+    def __str__(self):
+        return self.pan
