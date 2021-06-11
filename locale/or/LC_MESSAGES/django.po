@@ -2023,12 +2023,8 @@ msgid "At present, we can only accept donations in Indian rupees by Indian citiz
 msgstr "ସମ୍ପ୍ରତି ଆମେ କେବଳ ଭାରତୀୟମାନଙ୍କଠାରୁ ଭାରତୀୟ ଟଙ୍କାରେ ଦାନ ଗ୍ରହଣ କରୁଛୁ।  କାଉଣ୍ଟରମିଡିଆ ଟ୍ରଷ୍ଟ> କୁ ଦିଆଯାଇଥିବା ସମସ୍ତ ଅନୁଦାନ ଆୟକର ଆଇନ ୧୯୬୧ର ଧାରା ୮୦ ଜି ଅଧିନରେ କର ରିହାତି ପାଇଁ ଯୋଗ୍ୟ ହୋଇଥାଏ। ଏଠାରେ ଆମର<a href=\"/media/uploads/Donate/80g_certificate.jpg\" target=\"_blank\"> ରିହାତି ସାର୍ଟିଫିକେଟ୍</a>ର ଏକ ନକଲ ଦିଆଯାଇଛି।"
 
 #: donation/templates/donation/donate_form.html:46
-msgid "In 2014-15, only about <span class=\"highlight\">0.24%% of front page news</span> came out of rural India."
-msgstr "୨୦୧୪-୧୫, ମସିହାରେ କେବଳ ପ୍ରାୟ <span class=\"highlight\">୦.୨୪%% ଗ୍ରାମୀଣ ଭାରତର ଖବର</span> ଖବରକାଗଜର ପ୍ରଥମ ପୃଷ୍ଠାରେ ପ୍ରକାଶ ପାଉଥିଲା।"
-
-#: donation/templates/donation/donate_form.html:52
-msgid "We want to change that.<br/><br/> We can do this without governments – and will. <u>We can’t do it without you.</u>"
-msgstr "ଏହା ବଦଳାଇବାକୁ ଚାହୁଁ। <br/><br/>ଆମେ ଏହା ସରକାରଙ୍କ ବ୍ୟତୀତ କରିପାରିବୁ ଏବଂ କରିବୁ। <u>କିନ୍ତୁ ଆପଣଙ୍କ ବ୍ୟତୀତ କରିପାରିବୁ ନାହିଁ।</u>"
+msgid "In 2014-15, only about <span class=\"highlight\">0.24%% of front page news</span> came out of rural India. We want to change that. We can do this without governments – and will. We can’t do it without you."
+msgstr "୨୦୧୪-୧୫, ମସିହାରେ କେବଳ ପ୍ରାୟ <span class=\"highlight\">୦.୨୪%% ଗ୍ରାମୀଣ ଭାରତର ଖବର</span> ଖବରକାଗଜର ପ୍ରଥମ ପୃଷ୍ଠାରେ ପ୍ରକାଶ ପାଉଥିଲା। ଏହା ବଦଳାଇବାକୁ ଚାହୁଁ। ଆମେ ଏହା ସରକାରଙ୍କ ବ୍ୟତୀତ କରିପାରିବୁ ଏବଂ କରିବୁ। କିନ୍ତୁ ଆପଣଙ୍କ ବ୍ୟତୀତ କରିପାରିବୁ ନାହିଁ।"
 
 #: donation/templates/donation/donate_form.html:62
 msgid "Other ways to donate"
@@ -2134,7 +2130,7 @@ msgid "THE FORM"
 msgstr "ଏହି ଫର୍ମ"
 
 #: donation/templates/donation/donate_form.html:139
-msgid "FAQs"
+msgid "Frequently Asked Questions"
 msgstr "ବାରମ୍ବାର ପଚରାଯାଉଥିବା ପ୍ରଶ୍ନଗୁଡ଼ିକ"
 
 #: donation/templates/donation/donate_form.html:141

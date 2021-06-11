@@ -1676,13 +1676,6 @@ msgid ""
 "ambitious of Indian journalistic endeavours."
 msgstr ""
 
-#: core/templates/core/donate.html:20
-#, python-format
-msgid ""
-"In 2014-15, only about <span class=\"highlight\">0.24%%</span> of front page "
-"news came out of rural India.<br/>We want to change that."
-msgstr ""
-
 #: core/templates/core/donate.html:23
 msgid ""
 "We can do this without governments – and will. We can’t do it without you."
@@ -2535,7 +2528,7 @@ msgstr ""
 #, python-format
 msgid ""
 "In 2014-15, only about <span class=\"highlight\">0.24%% of front page news</"
-"span> came out of rural India."
+"span> came out of rural India. We want to change that. We can do this without governments – and will. We can’t do it without you."
 msgstr ""
 
 #: donation/templates/donation/donate_form.html:52
@@ -2676,7 +2669,7 @@ msgid "THE FORM"
 msgstr ""
 
 #: donation/templates/donation/donate_form.html:139
-msgid "FAQs"
+msgid "Frequently Asked Questions"
 msgstr ""
 
 #: donation/templates/donation/donate_form.html:141

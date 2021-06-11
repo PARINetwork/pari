@@ -46,50 +46,60 @@
                 </p>
             </form>
         </div>
-        <div class="donate-form-message hidden-xs hidden-sm col-md-offset-1 col-md-6">
-            <br/>
+        <div class="donate-form-message col-md-offset-1 col-md-6">
             <h1>
                 {% blocktrans trimmed %}
                 In 2014-15, only about <span class="highlight">0.24% of front page news</span>
-                came out of rural India.
+                came out of rural India. We want to change that. We can do this without governments – and will. We can’t do it without you.
                 {% endblocktrans %}
             </h1>
-            <h3>
-                {% blocktrans trimmed %}
-                We want to change that.<br/><br/>
-                We can do this without governments – and will. <u>We can’t do it without you.</u>
-                {% endblocktrans %}
-            </h3>
-        </div>
-    </div>
-    <div class="row hr">
-        <div class="faqs col-md-5 col-xs-12">
-            <h1 class="heading">{% trans "FAQs" %}</h1>
-            <div class="faq">
-                <p class="question">{% trans "I sent PARI a donation. How do I get a receipt?" %}</p>
-                <p class="answer">{% blocktrans trimmed %}Please make sure you include your email address in the donation
-                    form when you make a contribution to PARI.  A receipt will be sent to you in 4 to 8 weeks by email.
-                    You may download the 80G certificate <a href="/media/uploads/Donate/80g_certificate.jpg" target="_blank">here</a>.
-                    {% endblocktrans %}
-                </p>
-            </div>
-            <div class="faq">
-                <p class="question">{% trans "I live abroad. Can I send PARI a donation?" %}</p>
-                <p class="answer">
-                    {% blocktrans trimmed %}
-                        You can send PARI a donation only from an Indian bank account, in Indian rupees. We are
-                        currently not registered with FCRA for accepting foreign funds.
-                    {% endblocktrans %}
-                </p>
-            </div>
-            <div class="faq">
-                <p class="question">{% trans "Is there any other way in which I can contribute?" %}</p>
-                <p class="answer">{% blocktrans trimmed %}Apart from donating money and equipment, you can provide PARI
-                    copies of photo collections (new and old), pertaining to rural India. We are also always on the look
-                    out for people who can write/photograph for us. Learn more about how you can contribute
-                    <a href="/contribute">here</a>.
-                    {% endblocktrans %}
-                </p>
+            <p></p>
+            <div class="row hr">
+                <div class="faqs">
+                    <h2 class="heading">{% trans "Frequently Asked Questions" %}</h2>
+                    <section class="faq-accordion">
+                        <input type="checkbox" name="collapse" id="q1">
+                        <h2 class="question">
+                            <label for="q1">{% trans "I sent PARI a donation. How do I get a receipt?" %}</label>
+                        </h2>
+                        <div class="answer">
+                            <p>{% blocktrans trimmed %}Please make sure you include your email address in the donation
+                                form when you make a contribution to PARI.  A receipt will be sent to you in 4 to 8 weeks by email.
+                                You may download the 80G certificate <a href="/media/uploads/Donate/80g_certificate.jpg" target="_blank">here</a>.
+                            {% endblocktrans %}
+                            </p>
+                        </div>
+                    </section>
+                    <section class="faq-accordion">
+                        <input type="checkbox" name="collapse" id="q2">
+                        <h2 class="question">
+                            <label for="q2">{% trans "I live abroad. Can I send PARI a donation?" %}</label>
+                        </h2>
+                        <div class="answer">
+                            <p>
+                                {% blocktrans trimmed %}
+                                    You can send PARI a donation only from an Indian bank account, in Indian rupees. We are
+                                    currently not registered with FCRA for accepting foreign funds.
+                                {% endblocktrans %}
+                            </p>
+                        </div>
+                    </section>
+                    <section class="faq-accordion">
+                        <input type="checkbox" name="collapse" id="q6">
+                        <h2 class="question">
+                            <label for="q6">{% trans "Is there any other way in which I can contribute?" %}</label>
+                        </h2>
+                        <div class="answer">
+                            <p>{% blocktrans trimmed %}Apart from donating money and equipment, you can provide PARI
+                                copies of photo collections (new and old), pertaining to rural India. We are also always on the look
+                                out for people who can write/photograph for us. Learn more about how you can contribute
+                                <a href="/contribute">here</a>.
+                            {% endblocktrans %}
+                            </p>
+                        </div>
+                    </section>
+                    <p>If you have any queries with regards to donations you may write to <a href="mailto:donate@ruralindiaonline.org">donate@ruralindiaonline.org</a></p>
+                </div>
             </div>
         </div>
     </div>

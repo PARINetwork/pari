@@ -236,24 +236,6 @@ p{
   border-top: @grey 1px dotted;
 }
 
-.faq {
-  color: @grey;
-  line-height: 38px;
-  border-bottom: @lighter-grey solid 1px;
-  font-size: 16px;
-  padding: 14px 0;
-
-  &:last-of-type {
-    border: 0;
-  }
-
-  .answer {
-    font-size: 14px;
-    color: #333;
-    line-height: 24px;
-  }
-}
-
 .faqs {
   padding-bottom: 15px;
   padding-top: 3em;
@@ -261,4 +243,91 @@ p{
 
 .btn-full-width {
   width: 100%
+}
+
+.donate-form-message h1 {
+  font-size: 3.5em;
+}
+
+.faq-accordion > input[name="collapse"] {
+  display: none;
+}
+
+.faq-accordion label,
+.faq-accordion .answer {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.faq-accordion .answer {
+  background: #fff;
+  overflow: hidden;
+  height: 0;
+  transition: 0.5s;
+  box-shadow: none;
+  font-size: 14px;
+  color: #333;
+  line-height: 24px;
+}
+
+.faq-accordion > input[name="collapse"]:checked ~ .answer {
+  height: 380px;
+  transition: height 0.5s;
+}
+
+.faq-accordion label {
+  display: block;
+
+}
+
+.faq-accordion > input[name="collapse"]:checked ~ .answer {
+  height: 150px;
+}
+
+.faq-accordion {
+  margin-bottom: 1em;
+}
+
+.faq-accordion > input[name="collapse"]:checked ~ .answer {
+  border-top: 0;
+  transition: 0.3s;
+}
+
+.faq-accordion .question {
+  margin: 0;
+  font-size: 16px;
+
+}
+
+.faq-accordion label {
+  color: #676767;
+  cursor: pointer;
+  font-weight: normal;
+  padding: 10px;
+  user-select: none;
+  line-height: 25px;
+  font-size: 1.7rem;
+}
+
+.faq-accordion label:hover,
+.faq-accordion label:focus {
+  background: rgba(0, 13, 116, 0.04);
+}
+
+.faq-accordion .question label:before {
+  font-family: FontAwesome;
+  content: "\f107";
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 1em;
+  line-height: 1.556em;
+  vertical-align: middle;
+  transition: 0.4s;
+
+}
+
+.faq-accordion > input[name="collapse"]:checked ~ .question label:before {
+  transform: rotate(180deg);
+  transform-origin: center;
+  transition: 0.4s;
 }

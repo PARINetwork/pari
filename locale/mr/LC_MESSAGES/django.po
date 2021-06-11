@@ -2024,12 +2024,8 @@ msgid "At present, we can only accept donations in Indian rupees by Indian citiz
 msgstr "सध्या तरी आम्ही केवळ भारतीय नागरिकांकडून भारतीय चलनामध्येच देणगी स्वीकारू शकतो. CounterMedia Trust ला दिलेल्या सर्व देणग्या आयकर कायदा, १९६१, सेक्शन ८० जी अंतर्गत करमुक्त आहेत. आमचं ८० जी प्रमाणपत्र पहा <a href=\"/media/uploads/Donate/80g_certificate.jpg\" target=\"_blank\">८० जी प्रमाणपत्र.</a>"
 
 #: donation/templates/donation/donate_form.html:46
-msgid "In 2014-15, only about <span class=\"highlight\">0.24%% of front page news</span> came out of rural India."
-msgstr "२०१४-१५ मध्ये वर्तमानपत्रांच्या पहिल्या पानावर मध्ये ग्रामीण भारताबद्दल फक्त <span class=\"highlight\">०.२४%%</span> बातम्या आल्या."
-
-#: donation/templates/donation/donate_form.html:52
-msgid "We want to change that.<br/><br/> We can do this without governments – and will. <u>We can’t do it without you.</u>"
-msgstr "आम्हाला ते चित्र बदलायचं आहे. <br/><br/> हे सर्व आम्ही शासनाशिवाय करू शकतो आणि आम्ही ते करूच. <u>पण हे आम्ही तुमच्याशिवाय करू शकणार नाही.</u>"
+msgid "In 2014-15, only about <span class=\"highlight\">0.24%% of front page news</span> came out of rural India. We want to change that. We can do this without governments – and will. We can’t do it without you."
+msgstr "२०१४-१५ मध्ये वर्तमानपत्रांच्या पहिल्या पानावर मध्ये ग्रामीण भारताबद्दल फक्त <span class=\"highlight\">०.२४%%</span> बातम्या आल्या. आम्हाला ते चित्र बदलायचं आहे. हे सर्व आम्ही शासनाशिवाय करू शकतो आणि आम्ही ते करूच. पण हे आम्ही तुमच्याशिवाय करू शकणार नाही."
 
 #: donation/templates/donation/donate_form.html:62
 msgid "Other ways to donate"
@@ -2133,7 +2129,7 @@ msgid "THE FORM"
 msgstr "फॉर्म"
 
 #: donation/templates/donation/donate_form.html:139
-msgid "FAQs"
+msgid "Frequently Asked Questions"
 msgstr "नेहमी विचारले जाणारे प्रश्न"
 
 #: donation/templates/donation/donate_form.html:141
