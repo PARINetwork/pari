@@ -100,19 +100,6 @@ WSGI_APPLICATION = 'pari.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-# PostgreSQL (Recommended, but requires the psycopg2 library and Postgresql development headers)
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'pari',
-        'USER': 'pari',
-        'PASSWORD': 'pari',
-        'HOST': 'localhost',  # Set to empty string for localhost.
-        'PORT': '',  # Set to empty string for default.
-        'CONN_MAX_AGE': 600,  # number of seconds database connections should persist for
-    }
-}
-
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
