@@ -32,6 +32,7 @@ class DonorInfo(models.Model):
     address = models.TextField(max_length=252, blank=False)
     payment_method = models.CharField(max_length=100, blank=False)
     donation_date_time = models.DateTimeField(blank=False)
+    is_indian = models.BooleanField(default=False)
 
     class Meta:
         db_table = 'donation_donor_info'

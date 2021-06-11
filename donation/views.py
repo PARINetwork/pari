@@ -137,7 +137,8 @@ def handle_offline_payment(request, form_data, site):
         pan=form_data['pan'],
         address=form_data['address'],
         payment_method = form_data['payment_method'],
-        donation_date_time=timezone.now()
+        donation_date_time=timezone.now(),
+        is_indian=form_data['is_indian']
     )
     donor_info.save()
     return HttpResponse(render(request, 'donation/donate_success.html', {
