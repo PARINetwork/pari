@@ -21,9 +21,12 @@ from wagtail.core.models import Site
 
 from razorpay.errors import (BadRequestError, GatewayError, ServerError)
 
+from core.utils import get_translations_for_page, get_translated_or_default_page
 from .helpers import DonationOptions, send_acknowledgement_mail, send_verification_failure_mail
 from .forms import DonateForm
 from .models import RazorpayPlans, DonorInfo
+from wagtail.core.models import Page, Site
+from django.http import Http404
 
 logger = logging.getLogger(__file__)
 razorpay_client = settings.RAZORPAY_CLIENT
@@ -141,11 +144,10 @@ def handle_offline_payment(request, form_data, site):
         is_indian=form_data['is_indian']
     )
     donor_info.save()
-    return HttpResponse(render(request, 'donation/donate_success.html', {
-        "payment_method": form_data['payment_method'],
-        "site": site,
-        "current_page": 'donate_success',
-    }))
+    if form_data['payment_method'] == 'Bank Transfer':
+        return redirect(reverse("bank-transfer-details"))
+    elif form_data['payment_method'] == 'Cheque / DD':
+        return redirect(reverse("cheque-dd-details"))
 
 
 def donate_form(request):
@@ -274,3 +276,23 @@ def log_modal_close(request):
                         data['customer_email'],
                         data['subscription_id']))
     return HttpResponse()
+
+
+def get_details_page_by_slug(slug):
+    try:
+        page = Page.objects.get(slug=slug)
+    except Page.DoesNotExist:
+        raise Http404
+    translations = get_translations_for_page(page.specific)
+    translated_page = get_translated_or_default_page(page, translations)
+    return translated_page.specific
+
+
+def bank_transfer(request, slug="bank-transfer-details"):
+    page = get_details_page_by_slug(slug)
+    return render(request, "donation/offline_payment_details.html", {"page": page})
+
+
+def dd_cheque(request, slug="cheque-dd-details"):
+    page = get_details_page_by_slug(slug)
+    return render(request, "donation/offline_payment_details.html", {"page": page})
