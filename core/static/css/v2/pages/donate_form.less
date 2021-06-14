@@ -274,7 +274,7 @@ p{
 .faq-accordion .answer {
   background: #fff;
   overflow: hidden;
-  height: 0;
+  max-height: 0;
   transition: 0.5s;
   box-shadow: none;
   font-family: Fira Sans;
@@ -287,17 +287,13 @@ p{
 }
 
 .faq-accordion > input[name="collapse"]:checked ~ .answer {
-  height: 380px;
-  transition: height 0.5s;
+  max-height: 500px;
+  height: auto;
+  transition: max-height 0.5s;
 }
 
 .faq-accordion label {
   display: block;
-
-}
-
-.faq-accordion > input[name="collapse"]:checked ~ .answer {
-  height: 150px;
 }
 
 .faq-accordion {
