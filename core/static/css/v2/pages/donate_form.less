@@ -183,8 +183,8 @@ p{
 }
 
 .donate-form-message {
-  border-left: @light-grey 1px dotted;
-  padding-left: 3em;
+  margin-left: 3em;
+  padding-left: 1em;
   h1 {
     font-size: 5em;
     font-weight: lighter;
@@ -239,6 +239,7 @@ p{
 .faqs {
   padding-bottom: 15px;
   padding-top: 3em;
+  padding-left: 1em;
 }
 
 .btn-full-width {
@@ -296,14 +297,13 @@ p{
 .faq-accordion .question {
   margin: 0;
   font-size: 16px;
-
 }
 
 .faq-accordion label {
   color: #676767;
   cursor: pointer;
-  font-weight: normal;
-  padding: 10px;
+  font-weight: bold;
+  padding: 10px 10px 10px 0;
   user-select: none;
   line-height: 25px;
   font-size: 1.7rem;
@@ -316,14 +316,14 @@ p{
 
 .faq-accordion .question label:before {
   font-family: FontAwesome;
-  content: "\f107";
+  content: "\f0d7";
   display: inline-block;
   margin-right: 10px;
   font-size: 1em;
   line-height: 1.556em;
   vertical-align: middle;
   transition: 0.4s;
-
+  float: right;
 }
 
 .faq-accordion > input[name="collapse"]:checked ~ .question label:before {

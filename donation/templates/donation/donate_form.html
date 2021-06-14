@@ -13,12 +13,11 @@
 {% block main %}
 <div class="content container">
     <div class="row">
-        <div class="donate-form-title">
-            <h1>{% trans "Donate to PARI" %}</h1>
-        </div>
-    </div>
-    <div class="row">
         <div class="donate-form-content col-md-5 col-xs-12">
+            <div class="donate-form-title">
+                <h1 style="margin-left: 0">{% trans "Donate to PARI" %}</h1>
+                <br>
+            </div>
             {% if errors %}<h5 class="errorlist">{{ errors }}</h5>{% endif %}
             <form id="donation_form" method="post" action="{% url 'donate_form' %}">{% csrf_token %}
                 {% for field in form %}
@@ -46,18 +45,17 @@
                 </p>
             </form>
         </div>
-        <div class="donate-form-message col-md-offset-1 col-md-6">
+        <div class="donate-form-message col-md-6">
             <h1>
                 {% blocktrans trimmed %}
                 In 2014-15, only about <span class="highlight">0.24% of front page news</span>
                 came out of rural India. We want to change that. We can do this without governments – and will. We can’t do it without you.
                 {% endblocktrans %}
             </h1>
-            <p></p>
-            <div class="row hr">
+            <div class="row">
                 <div class="faqs">
                     <h2 class="heading">{% trans "Frequently Asked Questions" %}</h2>
-                    <section class="faq-accordion">
+                    <section class="faq-accordion hr">
                         <input type="checkbox" name="collapse" id="q1">
                         <h2 class="question">
                             <label for="q1">{% trans "I sent PARI a donation. How do I get a receipt?" %}</label>
@@ -70,7 +68,7 @@
                             </p>
                         </div>
                     </section>
-                    <section class="faq-accordion">
+                    <section class="faq-accordion hr">
                         <input type="checkbox" name="collapse" id="q2">
                         <h2 class="question">
                             <label for="q2">{% trans "I live abroad. Can I send PARI a donation?" %}</label>
@@ -84,7 +82,7 @@
                             </p>
                         </div>
                     </section>
-                    <section class="faq-accordion">
+                    <section class="faq-accordion hr">
                         <input type="checkbox" name="collapse" id="q6">
                         <h2 class="question">
                             <label for="q6">{% trans "Is there any other way in which I can contribute?" %}</label>
@@ -98,6 +96,7 @@
                             </p>
                         </div>
                     </section>
+                    <div class="hr"></div>
                     <p>If you have any queries with regards to donations you may write to <a href="mailto:donate@ruralindiaonline.org">donate@ruralindiaonline.org</a></p>
                 </div>
             </div>
