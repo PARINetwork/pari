@@ -2014,12 +2014,8 @@ msgid "At present, we can only accept donations in Indian rupees by Indian citiz
 msgstr "वर्तमान में, हम केवल भारतीय नागरिकों द्वारा भारतीय रुपये में दान स्वीकार कर सकते हैं। काउंटरमीडिया ट्रस्ट को किए गए सभी दान आयकर अधिनियम, 1961 की धारा 80जी के तहत छूट के लिए पात्र हैं। यह है हमारे <a href=\"/media/uploads/Donate/80g_certificate.jpg\" target=\"_blank\">छूट प्रमाण पत्र</a> की कॉपी।"
 
 #: donation/templates/donation/donate_form.html:46
-msgid "In 2014-15, only about <span class=\"highlight\">0.24%% of front page news</span> came out of rural India."
-msgstr "वर्ष 2014-15 में, ग्रामीण भारत की <span class=\"highlight\">लगभग 0.24%% ख़बरों को ही प्रथम पृष्ठ</span> पर जगह दी गई।"
-
-#: donation/templates/donation/donate_form.html:52
-msgid "We want to change that.<br/><br/> We can do this without governments – and will. <u>We can’t do it without you.</u>"
-msgstr "हम इसे बदलना चाहते हैं। <br/><br/>हम इसे सरकारों के बिना भी कर सकते हैं – और करेंगे। <u>हम आपके बिना यह नहीं कर सकते।</u>"
+msgid "In 2014-15, only about <span class=\"highlight\">0.24%% of front page news</span> came out of rural India. We want to change that. We can do this without governments – and will. We can’t do it without you."
+msgstr "वर्ष 2014-15 में, ग्रामीण भारत की <span class=\"highlight\">लगभग 0.24%% ख़बरों को ही प्रथम पृष्ठ</span> पर जगह दी गई। हम इसे बदलना चाहते हैं। हम इसे सरकारों के बिना भी कर सकते हैं – और करेंगे। हम आपके बिना यह नहीं कर सकते।"
 
 #: donation/templates/donation/donate_form.html:62
 msgid "Other ways to donate"
@@ -2123,7 +2119,7 @@ msgid "THE FORM"
 msgstr "फॉर्म"
 
 #: donation/templates/donation/donate_form.html:139
-msgid "FAQs"
+msgid "Frequently Asked Questions"
 msgstr "अक्सर पूछे जाने वाले प्रश्न"
 
 #: donation/templates/donation/donate_form.html:141

@@ -2025,12 +2025,8 @@ msgid "At present, we can only accept donations in Indian rupees by Indian citiz
 msgstr "فی الحال، ہم صرف ہندوستانی شہریوں سے ہی ہندوستانی روپے میں چندہ قبول کر سکتے ہیں۔  CounterMedia Trust کو بھیجے گئے تمام چندے انکم ٹیکس قانون، ۱۹۶۱ کے سیکشن ۸۰ جی کے تحت ٹیکس سے مستثنیٰ ہیں۔ یہ ہے ہمارے <a href=\"/media/uploads/Donate/80g_certificate.jpg\" target=\"_blank\">استثناء کا سرٹیفکیٹ۔</a>"
 
 #: donation/templates/donation/donate_form.html:46
-msgid "In 2014-15, only about <span class=\"highlight\">0.24%% of front page news</span> came out of rural India."
-msgstr "سال ۱۵۔۲۰۱۴ میں، اخبارات کے پہلے صفحہ پر دیہی ہندوستان سے صرف <span class=\"highlight\">صفر اعشاریہ ۲۴ فیصد</span> خبروں کو ہی جگہ مل پائی۔"
-
-#: donation/templates/donation/donate_form.html:52
-msgid "We want to change that.<br/><br/> We can do this without governments – and will. <u>We can’t do it without you.</u>"
-msgstr "ہم اسے تبدیل کرنا چاہتے ہیں۔<br/><br/> ہم یہ کام حکومتوں کے بغیر کرسکتے ہیں – اور کریں گے۔ <u>ہم آپ کے بغیر یہ نہیں کر سکتے۔</u>"
+msgid "In 2014-15, only about <span class=\"highlight\">0.24%% of front page news</span> came out of rural India. We want to change that. We can do this without governments – and will. We can’t do it without you."
+msgstr "سال ۱۵۔۲۰۱۴ میں، اخبارات کے پہلے صفحہ پر دیہی ہندوستان سے صرف <span class=\"highlight\">صفر اعشاریہ ۲۴ فیصد</span> خبروں کو ہی جگہ مل پائی۔ہم اسے تبدیل کرنا چاہتے ہیں۔ ہم یہ کام حکومتوں کے بغیر کرسکتے ہیں – اور کریں گے۔ <u>ہم آپ کے بغیر یہ نہیں کر سکتے۔"
 
 #: donation/templates/donation/donate_form.html:62
 msgid "Other ways to donate"
@@ -2134,7 +2130,7 @@ msgid "THE FORM"
 msgstr "فارم"
 
 #: donation/templates/donation/donate_form.html:139
-msgid "FAQs"
+msgid "Frequently Asked Questions"
 msgstr "اکثر پوچھے جانے والے سوالات"
 
 #: donation/templates/donation/donate_form.html:141

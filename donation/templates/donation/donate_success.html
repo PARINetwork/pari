@@ -2,13 +2,13 @@
 {% load i18n %}
 
 {% block meta_title %}
-{% blocktrans with site_name=site.site_name %}Donate to {{ site_name }}{% endblocktrans %}
+    {% blocktrans with site_name=site.site_name %}Donate to {{ site_name }}{% endblocktrans %}
 {% endblock %}
 
 {% block main %}
-<div class="content container" style="margin-bottom: 20px;">
-  <div class="col-lg-10 col-md-10 col-sm-12">
-    <h3>{% blocktrans with site_name=site.site_name %} Thank you for donating to {{ site_name }}. {% endblocktrans %}</h3>
-  </div>
-</div>
+    <div class="content container" style="margin-bottom: 20px;">
+        <div class="col-lg-10 col-md-10 col-sm-12">
+            <h3>{% blocktrans with site_name=site.site_name %} Thank you for donating to {{ site_name }}. {% endblocktrans %}</h3>
+        </div>
+    </div>
 {% endblock %}

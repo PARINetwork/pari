@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load wagtailcore_tags %}
+
+{% block meta_title %}
+    {{ page.title }}
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/donate_form.less"/>
+{% endblock %}
+
+{% block main %}
+    <div class="content container" style="margin-bottom: 20px;">
+        <div class="container">
+            {{ page.content|richtext }}
+        </div>
+    </div>
+{% endblock %}

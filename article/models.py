@@ -73,17 +73,11 @@ class ArticleAuthors(models.Model):
         ordering = ('sort_order',)
 
     def __str__(self):
-        if self.role:
-            return self.role.name + ' :' + self.author.name
-        else:
-            return self.author.name
+        return self.author.name
 
 
 @python_2_unicode_compatible
 class Article(Page):
-    translators = ParentalManyToManyField("author.Author",
-                                          related_name="translations_by_author",
-                                          blank=True)
     strap = models.TextField(blank=True)
     content = RichTextField(blank=True, verbose_name="Content - Deprecated. Use 'MODULAR CONTENT' instead.")
     modular_content = StreamField([
@@ -122,7 +116,6 @@ class Article(Page):
     content_panels = Page.content_panels + [
         FieldPanel('strap'),
         InlinePanel('authors', label='Authors', min_num=1),
-        M2MFieldPanel('translators'),
         FieldPanel('language'),
         MultiFieldPanel(
             [
@@ -152,7 +145,6 @@ class Article(Page):
     search_fields = Page.search_fields + [
         index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE),
         index.SearchField('get_authors', partial_match=True, boost=SearchBoost.AUTHOR),
-        index.SearchField('get_translators', partial_match=True, boost=SearchBoost.AUTHOR),
         index.SearchField('strap', partial_match=True, boost=SearchBoost.DESCRIPTION),
         index.SearchField('content', partial_match=True, boost=SearchBoost.CONTENT),
         index.SearchField('modular_content', partial_match=True, boost=SearchBoost.CONTENT),
@@ -189,9 +181,6 @@ class Article(Page):
 
     def end_authors_with_role(self):
         return self.get_author_role_map(authors_with_role=self.authors.filter(show_in_end=True).all())
-
-    def get_translators(self):
-        return [translator.name for translator in self.translators.all()]
 
     def get_authors_or_photographers(self):
         return self.get_authors()
@@ -259,8 +248,7 @@ class Article(Page):
         authors_of_article = ""
 
         if self.authors:
-            for article_author in self.authors.all():
-                authors_of_article += article_author.author.name
+            authors_of_article = self.get_authors()
 
         query = {
             "track_scores": "true",
@@ -284,18 +272,18 @@ class Article(Page):
                         {
                             "multi_match": {
                                 "fields": ["*get_authors_or_photographers_filter"],
-                                "query": authors_of_article,
+                                "query": ' '.join(authors_of_article),
                                 "type": "cross_fields",
-                                "operator": "and"
+                                "operator": "or"
                             }
 
                         },
                         {
                             "multi_match": {
                                 "fields": ["*get_authors"],
-                                "query": authors_of_article,
+                                "query": ' '.join(authors_of_article),
                                 "type": "cross_fields",
-                                "operator": "and"
+                                "operator": "or"
                             }
 
                         },
