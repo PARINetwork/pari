@@ -13,6 +13,8 @@ from os.path import abspath, dirname, join
 
 from django.utils.translation import ugettext_lazy as _
 
+from wagtail.embeds.oembed_providers import youtube
+
 # Absolute filesystem path to the Django project directory:
 PROJECT_ROOT = dirname(dirname(dirname(abspath(__file__))))
 
@@ -74,6 +76,7 @@ INSTALLED_APPS = [
     'wagtail.contrib.redirects',
     'wagtail.contrib.forms',
     'wagtail.contrib.modeladmin',
+    'wagtail_color_panel'
 ]
 
 MIDDLEWARE = [
@@ -96,19 +99,6 @@ WSGI_APPLICATION = 'pari.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
-# PostgreSQL (Recommended, but requires the psycopg2 library and Postgresql development headers)
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'pari',
-        'USER': 'pari',
-        'PASSWORD': 'pari',
-        'HOST': 'localhost',  # Set to empty string for localhost.
-        'PORT': '',  # Set to empty string for default.
-        'CONN_MAX_AGE': 600,  # number of seconds database connections should persist for
-    }
-}
 
 CACHES = {
     'default': {
@@ -379,3 +369,31 @@ RAZORPAY = {
     'SECRET_KEY': ''
 }
 RAZORPAY_CLIENT = None
+
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 2000
+
+WAGTAILEMBEDS_FINDERS = [
+    {
+        'class': 'wagtail.embeds.finders.oembed',
+        'providers': [
+            {
+                "endpoint": "https://www.youtube.com/oembed",
+                "urls": [
+                    r'^https?://(?:[-\w]+\.)?youtube\.com/watch.+$',
+                    r'^https?://(?:[-\w]+\.)?youtube\.com/v/.+$',
+                    r'^https?://youtu\.be/.+$',
+                    r'^https?://(?:[-\w]+\.)?youtube\.com/user/.+$',
+                    r'^https?://(?:[-\w]+\.)?youtube\.com/[^#?/]+#[^#?/]+/.+$',
+                    r'^https?://m\.youtube\.com/index.+$',
+                    r'^https?://(?:[-\w]+\.)?youtube\.com/profile.+$',
+                    r'^https?://(?:[-\w]+\.)?youtube\.com/view_play_list.+$',
+                    r'^https?://(?:[-\w]+\.)?youtube\.com/playlist.+$',
+                ],
+            }
+        ],
+        'options': {'scheme': 'https'}
+    },
+    {
+        'class': 'wagtail.embeds.finders.oembed',
+    }
+]

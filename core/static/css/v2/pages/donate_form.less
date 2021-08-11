@@ -52,16 +52,14 @@ p{
     border-radius: 0;
     #label_id_is_indian{
       color:@darker-grey;
-      padding: 0 0 0 26px;
+      padding: 0 0 0 20px;
       line-height: normal;
       .font-size(15);
     }
     #id_is_indian{
       position: absolute;
       left: 0;
-      width: 30px;
-      height: 30px;
-      margin-top: -6px;
+      margin-top: 1px;
       margin-left: 10px;
     }
   }
@@ -106,7 +104,7 @@ p{
     padding: 0;
   }
 
-  #id_amount_0, #id_frequency {
+  #id_amount_0, #id_frequency, #id_payment_method {
     li {
       float: left;
     }
@@ -185,8 +183,8 @@ p{
 }
 
 .donate-form-message {
-  border-left: @light-grey 1px dotted;
-  padding-left: 3em;
+  margin-left: 3em;
+  padding-left: 1em;
   h1 {
     font-size: 5em;
     font-weight: lighter;
@@ -230,7 +228,13 @@ p{
     }
   }
   .heading {
-    padding-top: 1em;
+    font-family: Fira Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 21px;
+    line-height: 25px;
+    letter-spacing: 0.064px;
+    color: #000000;
   }
 }
 
@@ -238,26 +242,106 @@ p{
   border-top: @grey 1px dotted;
 }
 
-.faq {
-  color: @grey;
-  line-height: 38px;
-  border-bottom: @lighter-grey solid 1px;
-  font-size: 16px;
-  padding: 14px 0;
-
-  &:last-of-type {
-    border: 0;
-  }
-
-  .answer {
-    font-size: 14px;
-    color: #333;
-    line-height: 24px;
-  }
-}
-
 .faqs {
   padding-bottom: 15px;
   padding-top: 3em;
-  border-left: @light-grey 1px dotted;
+  padding-left: 1em;
+}
+
+.btn-full-width {
+  width: 100%
+}
+
+.donate-form-message h1 {
+  font-family: Amiri;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 42px;
+  line-height: 46px;
+  color: #000000;
+}
+
+.faq-accordion > input[name="collapse"] {
+  display: none;
+}
+
+.faq-accordion label,
+.faq-accordion .answer {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.faq-accordion .answer {
+  background: #fff;
+  overflow: hidden;
+  max-height: 0;
+  transition: 0.5s;
+  box-shadow: none;
+  font-family: Fira Sans;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 23px;
+  letter-spacing: 0.064px;
+  color: #000000;
+}
+
+.faq-accordion > input[name="collapse"]:checked ~ .answer {
+  max-height: 500px;
+  height: auto;
+  transition: max-height 0.5s;
+}
+
+.faq-accordion label {
+  display: block;
+}
+
+.faq-accordion {
+  margin-bottom: 1em;
+}
+
+.faq-accordion > input[name="collapse"]:checked ~ .answer {
+  border-top: 0;
+  transition: 0.3s;
+}
+
+.faq-accordion .question {
+  margin: 0;
+  font-size: 16px;
+}
+
+.faq-accordion label {
+  cursor: pointer;
+  padding: 10px 10px 10px 0;
+  user-select: none;
+  font-family: Fira Sans;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  letter-spacing: 0.064px;
+  color: #000000;
+}
+
+.faq-accordion label:hover,
+.faq-accordion label:focus {
+  background: rgba(0, 13, 116, 0.04);
+}
+
+.faq-accordion .question label:before {
+  content: "\25BE";
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 1em;
+  color: rgba(0, 0, 0, 0.4);
+  line-height: 1.556em;
+  vertical-align: middle;
+  transition: 0.4s;
+  float: right;
+}
+
+.faq-accordion > input[name="collapse"]:checked ~ .question label:before {
+  transform: rotate(180deg);
+  transform-origin: center;
+  transition: 0.4s;
 }

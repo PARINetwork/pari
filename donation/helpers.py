@@ -54,6 +54,16 @@ class DonationOptions(object):
                 else:
                     return int(term[:2].rstrip())
 
+    class Methods(object):
+        onlinePayment = 'Online Payment'
+        chequeDD = 'Cheque / DD'
+        bankTransfer = 'Bank Transfer'
+        CHOICES = (
+            (onlinePayment, onlinePayment),
+            (chequeDD, chequeDD),
+            (bankTransfer, bankTransfer),
+        )
+
 
 def send_acknowledgement_mail(payment_context):
     email_msg = render_to_string('donation/acknowledgement_mail.html', payment_context)

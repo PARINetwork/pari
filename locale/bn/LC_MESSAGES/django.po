@@ -2031,12 +2031,8 @@ msgid "At present, we can only accept donations in Indian rupees by Indian citiz
 msgstr "এই মুহূর্তে, আমরা কেবলমাত্র ভারতীয় নাগরিকদের ভারতীয় টাকায় প্রদত্ত অনুদানই গ্রহণ করতে সক্ষম। কাউন্টারমিডিয়া ট্রাস্ট-এর ঠিকানায় পাঠানো সকল আর্থিক অনুদান ১৯৬১ সালের আয়কর আইনের ধারায় ৮০ জি -এর অধীনে ছাড় পাবে।  এখানে <a href=\"/media/uploads/Donate/80g_certificate.jpg\" target=\"_blank\">আয়কর ছাড়ের</a>  সার্টিফিকেটের কপিটি দেখুন।"
 
 #: donation/templates/donation/donate_form.html:46
-msgid "In 2014-15, only about <span class=\"highlight\">0.24%% of front page news</span> came out of rural India."
-msgstr "২০১৪-১৫ সালে <span class=\"highlight\"> প্রথম পৃষ্ঠায় প্রকাশিত মোট খবরের  মাত্র ০.২৪ শতাংশ</span> গ্রামীণ ভারতবর্ষ বিষয়ে ছিল।"
-
-#: donation/templates/donation/donate_form.html:52
-msgid "We want to change that.<br/><br/> We can do this without governments – and will. <u>We can’t do it without you.</u>"
-msgstr "<br/>এই চিত্রটি আমরা বদলাতে চাই।<br/> সরকারের সহায়তা ছাড়াই এই কাজ আমরা করতে পারি - এবং আমরা তা করবও, কিন্তু আমরা <u>আপনার সাহায্য ছাড়া মোটেই করতে পারব না।</u>"
+msgid "In 2014-15, only about <span class=\"highlight\">0.24%% of front page news</span> came out of rural India. We want to change that. We can do this without governments – and will. We can’t do it without you."
+msgstr "২০১৪-১৫ সালে <span class=\"highlight\"> প্রথম পৃষ্ঠায় প্রকাশিত মোট খবরের  মাত্র ০.২৪ শতাংশ</span> গ্রামীণ ভারতবর্ষ বিষয়ে ছিল। এই চিত্রটি আমরা বদলাতে চাই। সরকারের সহায়তা ছাড়াই এই কাজ আমরা করতে পারি - এবং আমরা তা করবও, কিন্তু আমরা আপনার সাহায্য ছাড়া মোটেই করতে পারব না।"
 
 #: donation/templates/donation/donate_form.html:62
 msgid "Other ways to donate"
@@ -2140,7 +2136,7 @@ msgid "THE FORM"
 msgstr "অনুদান ফর্ম"
 
 #: donation/templates/donation/donate_form.html:139
-msgid "FAQs"
+msgid "Frequently Asked Questions"
 msgstr "সাধারণ প্রশ্নাবলী"
 
 #: donation/templates/donation/donate_form.html:141
