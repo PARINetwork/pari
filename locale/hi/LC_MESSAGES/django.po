@@ -2009,8 +2009,8 @@ msgstr "स्थिति"
 
 msgid "\n                There is one matching page\n            "
 msgid_plural "\n                There are %(counter)s matching pages\n            "
-msgstr[0] "\n मिलता-जुलता एक पेज मिला है  \n"
-msgstr[1] "\n मिलते-जुलते पेज मिले हैं  \n"
+msgstr[0] "\n                मिलता-जुलता एक पेज मिला है\n            "
+msgstr[1] "\n                मिलते-जुलते पेज मिले हैं\n            "
 
 msgid "Other searches"
 msgstr "यह भी खोजा गया"
