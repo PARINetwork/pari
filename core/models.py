@@ -6,16 +6,17 @@ from django.urls import reverse
 import django.db.models.deletion
 from django.db import models
 from django.db.models import Q
+from modelcluster.fields import ParentalKey
 from six import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from wagtail.admin.edit_handlers import MultiFieldPanel, \
-    StreamFieldPanel, PageChooserPanel, FieldPanel
+    StreamFieldPanel, PageChooserPanel, FieldPanel, InlinePanel
 from wagtail.admin.forms import WagtailAdminPageForm
 from wagtail.core import blocks
 from wagtail.core.blocks import StructBlock, IntegerBlock
 from wagtail.core.fields import RichTextField
 from wagtail.core.fields import StreamField
-from wagtail.core.models import Page
+from wagtail.core.models import Page, Orderable
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.formats import get_image_format
@@ -25,8 +26,9 @@ from wagtail.search import index
 from album.models import Album
 from article.models import Article
 from category.models import Category
-from core.utils import get_translations_for_page, SearchBoost, get_unique_photographers,construct_guidelines
+from core.utils import get_translations_for_page, SearchBoost, get_unique_photographers, construct_guidelines
 
+from wagtail_color_panel.blocks import NativeColorBlock
 
 @python_2_unicode_compatible
 class StaticPage(Page):
@@ -117,11 +119,22 @@ class HomePageAdminForm(HomePageAdminMediaForm):
         return page2
 
 
+class BannerBlock(StructBlock):
+    text = blocks.TextBlock(required=True)
+    url = blocks.URLBlock(required=True)
+    text_color = NativeColorBlock(default="#000000")
+    banner_color = NativeColorBlock(default="#000000")
+
+
 @python_2_unicode_compatible
 class HomePage(Page):
-    featured_content = StreamField([
-        ("featured_section", FeaturedSectionBlock()),
+    banner_content = StreamField([
+        ("banner_block", BannerBlock()),
     ], blank=True, null=True)
+
+    featured_content = StreamField([
+            ("featured_section", FeaturedSectionBlock()),
+        ], blank=True, null=True)
 
     carousel_title = models.TextField(blank=False, null=False, default='Latest On PARI')
     # TODO: Carousel is temporary and being phased out
@@ -187,6 +200,7 @@ class HomePage(Page):
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
 
     content_panels = Page.content_panels + [
+        MultiFieldPanel([StreamFieldPanel('banner_content')], heading="Page Banner", classname="collapsible "),
         MultiFieldPanel([StreamFieldPanel('featured_content')], heading="Featured Content", classname="collapsible "),
         MultiFieldPanel([
             FieldPanel('carousel_title'),
@@ -280,7 +294,6 @@ class GuidelinesPage(Page):
     ], blank=True)
     language = models.CharField(max_length=7, choices=settings.LANGUAGES, default="English")
 
-
     content_panels = Page.content_panels + [
         FieldPanel('strap'),
         MultiFieldPanel([StreamFieldPanel('content')], heading="Content", classname="collapsible "),
@@ -288,19 +301,18 @@ class GuidelinesPage(Page):
     ]
 
     search_fields = Page.search_fields + [
-        index.FilterField('content',partial_match=True),
+        index.FilterField('content', partial_match=True),
         index.SearchField('content'),
         index.FilterField('language'),
         index.SearchField('language')
     ]
 
-
     def get_context(self, request, *args, **kwargs):
         guideline_dict = construct_guidelines(self.content)
         return {
-            'page':self,
-            'request':request,
-            'page_content':guideline_dict,
+            'page': self,
+            'request': request,
+            'page_content': guideline_dict,
             "tab": 'about-pari'
         }
 
@@ -495,3 +507,31 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class AboutTheEditorPage(Page):
+    template = 'core/about-the-editor.html'
+    language = models.CharField(max_length=7, choices=settings.LANGUAGES, default="English")
+
+    content_panels = Page.content_panels + [
+        FieldPanel('language'),
+        InlinePanel('editor', label="Editor")
+    ]
+
+
+class Editor(Orderable):
+    page = ParentalKey(AboutTheEditorPage, on_delete=models.CASCADE, related_name='editor')
+
+    name = models.CharField(max_length=250)
+    title = models.CharField(max_length=250)
+    description = RichTextField()
+    image = models.ForeignKey(
+        'core.AffixImage', on_delete=models.CASCADE, related_name='+'
+    )
+
+    panels = [
+        FieldPanel('name', classname="full"),
+        FieldPanel('title', classname="full"),
+        FieldPanel('description', classname="full"),
+        ImageChooserPanel('image')
+    ]

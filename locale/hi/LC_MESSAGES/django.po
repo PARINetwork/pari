@@ -2485,3 +2485,148 @@ msgstr "संसाधन"
 
 msgid "Find hundreds of PARI stories on diverse topics such as rural occupations, crafts and sports, marginalised groups, resource conflicts, and many more. "
 msgstr "ग्रामीण इलाक़ों के व्यवसायों, वंचित समूहों, संसाधनों, शिल्प कलाओं, खेल, और संसाधनों के लिए होने वाले संघर्ष के साथ-साथ, तमाम विषयों पर पारी की स्टोरी देखें."
+=======
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-12-15 09:57+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: album/models.py:35
+msgid "Slides"
+msgstr "स्लाइड"
+
+#: album/templates/album/add_audio.html:10
+#: core/templates/core/add_object.html:5 core/templates/core/add_object.html:19
+msgid "Add %(name)s "
+msgstr "जोड़ें %(name)s"
+
+#: album/templates/album/add_audio.html:14
+#: album/templates/album/add_audio.html:27
+#: album/templates/album/add_audio.html:39
+msgid "Upload"
+msgstr "अपलोड करें"
+
+#: album/templates/album/add_audio.html:15
+#: album/templates/album/add_audio.html:36
+msgid "Record"
+msgstr "रिकॉर्ड करें"
+
+#: album/templates/album/add_audio.html:26
+msgid "Audio File"
+msgstr "ऑडियो फाइल"
+
+#: album/templates/album/add_audio.html:35
+msgid "Title of the recording"
+msgstr "रिकॉर्डिंग का शीर्षक"
+
+#: album/templates/album/add_audio.html:37
+msgid "Play"
+msgstr "प्ले करें"
+
+#: album/templates/album/add_audio.html:38
+msgid "Download"
+msgstr "डाउनलोड करें"
+
+#: album/templates/album/album_detail.html:3
+#: album/templates/album/albumslide_list.html:4
+msgid " %(title)s "
+msgstr "%(title)s"
+
+#: album/templates/album/album_detail.html:12
+msgid "Album"
+msgstr "एल्बम"
+
+#: album/templates/album/album_detail.html:190
+#: article/templates/article/article.html:230
+#: article/templates/article/includes/author_info.html:43
+msgid "Share"
+msgstr "साझा करें"
+
+#: album/templates/album/album_detail.html:207
+msgid "Other stories by"
+msgstr "की अन्य स्टोरीज़"
+
+#: album/templates/album/album_list.html:9
+#: album/templates/album/album_list.html:10
+#: album/templates/album/album_list.html:38
+#: core/templates/pages/menus/dropdown.html:86
+#: location/templates/map/map_list.html:55
+#: search/templates/includes/search_filters.html:33
+msgid "Albums"
+msgstr "एलबम"
+
+#: album/views.py:33
+msgid "gallery"
+msgstr "गैलरी"
+
+#: album/views.py:42 core/templates/pages/menus/footer.html:41
+msgid "Talking Albums"
+msgstr "बोलते एल्बम"
+
+#: album/views.py:42
+msgid "Pictures and their spoken story"
+msgstr "तस्वीरें और उनकी मौखिक कहानी"
+
+#: album/views.py:44
+msgid "Photo Albums"
+msgstr "फोटो एल्बम"
+
+#: album/views.py:44 category/templates/category/gallery_home_page.html:95
+msgid "Through many different lenses"
+msgstr "कई अलग-अलग लेंस के माध्यम से"
+
+#: article/streamfields/blocks.py:103
+msgid "Choose a %s"
+msgstr "%s चुनें"
+
+#: article/streamfields/blocks.py:104
+msgid "Choose another %s"
+msgstr "अन्य %s चुनें"
+
+#: article/streamfields/blocks.py:105
+msgid "Edit this %s"
+msgstr "इसे संपादित करें %s"
+
+#: article/templates/article/archive_article_list.html:55
+#: article/templates/article/author_article_list.html:56
+#: article/templates/article/includes/gallery_article_list.html:6
+#: category/templates/includes/category_cover_image.html:30
+#: category/templates/includes/category_cover_image.html:56
+msgid "Languages"
+msgstr "भाषाएं"
+
+#: article/templates/article/article.html:197
+#: search/templates/wagtailadmin/pages/listing/_table_headers_explore.html:52
+msgid "Language"
+msgstr "भाषा"
+
+#: article/templates/article/article.html:227
+msgid "Read the story in pictures"
+msgstr "स्टोरी को तस्वीरों में पढ़ें"
+
+#: article/templates/article/article.html:239
+msgid "Print this story"
+msgstr "इस स्टोरी को प्रिंट करें"
+
+#: article/templates/article/article.html:252
+msgid "See more from this region"
+msgstr "इस क्षेत्र से और देखें"
+
+#: article/templates/article/article.html:303
+msgid "RELATED STORIES"
+msgstr "संबंधित स्टोरीज़"

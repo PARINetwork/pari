@@ -1,4 +1,5 @@
 import base64
+from django.utils import timezone
 import hashlib
 import hmac
 import json
@@ -20,9 +21,12 @@ from wagtail.core.models import Site
 
 from razorpay.errors import (BadRequestError, GatewayError, ServerError)
 
+from core.utils import get_translations_for_page, get_translated_or_default_page
 from .helpers import DonationOptions, send_acknowledgement_mail, send_verification_failure_mail
 from .forms import DonateForm
-from .models import RazorpayPlans
+from .models import RazorpayPlans, DonorInfo
+from wagtail.core.models import Page, Site
+from django.http import Http404
 
 logger = logging.getLogger(__file__)
 razorpay_client = settings.RAZORPAY_CLIENT
@@ -35,6 +39,7 @@ def handle_instamojo_payment(form_data):
         "data_email": form_data["email"],
         "data_phone": form_data["phone"],
         "data_Field_90444": form_data["pan"],
+        "data_Field_4543": form_data["address"],
     }
     pg_url += "?{0}".format(urllib.parse.urlencode(params))
     return HttpResponseRedirect(pg_url)
@@ -118,12 +123,31 @@ def handle_razorpay_payment(form_data):
         'customer_phone': form_data['phone'],
         'customer_email': form_data['email'],
         'customer_pan': form_data["pan"],
+        'customer_address': form_data["address"],
         'timestamp': time.time()
     }
     checkout_url = reverse('razorpay_checkout')
     encoded_str = json.dumps(params).encode("ascii")
     checkout_url += "?params={0}".format(base64.b64encode(encoded_str).decode("ascii"))
     return redirect(checkout_url)
+
+
+def handle_offline_payment(request, form_data, site):
+    donor_info = DonorInfo(
+        name=form_data['name'],
+        email=form_data['email'],
+        phone=form_data['phone'],
+        pan=form_data['pan'],
+        address=form_data['address'],
+        payment_method = form_data['payment_method'],
+        donation_date_time=timezone.now(),
+        is_indian=form_data['is_indian']
+    )
+    donor_info.save()
+    if form_data['payment_method'] == 'Bank Transfer':
+        return redirect(reverse("bank-transfer-details"))
+    elif form_data['payment_method'] == 'Cheque / DD':
+        return redirect(reverse("cheque-dd-details"))
 
 
 def donate_form(request):
@@ -136,10 +160,13 @@ def donate_form(request):
     if request.method == "POST":
         form = DonateForm(request.POST)
         if form.is_valid():
-            if form.cleaned_data['frequency'] == DonationOptions.Frequency.ONE_TIME:
-                return handle_instamojo_payment(form.cleaned_data)
+            if form.cleaned_data['payment_method'] == DonationOptions.Methods.onlinePayment:
+                if form.cleaned_data['frequency'] == DonationOptions.Frequency.ONE_TIME:
+                    return handle_instamojo_payment(form.cleaned_data)
+                else:
+                    return handle_razorpay_payment(form.cleaned_data)
             else:
-                return handle_razorpay_payment(form.cleaned_data)
+                return handle_offline_payment(request, form.cleaned_data, site)
 
     return render(request, 'donation/donate_form.html', {
         "form": form,
@@ -249,3 +276,23 @@ def log_modal_close(request):
                         data['customer_email'],
                         data['subscription_id']))
     return HttpResponse()
+
+
+def get_details_page_by_slug(slug):
+    try:
+        page = Page.objects.get(slug=slug)
+    except Page.DoesNotExist:
+        raise Http404
+    translations = get_translations_for_page(page.specific)
+    translated_page = get_translated_or_default_page(page, translations)
+    return translated_page.specific
+
+
+def bank_transfer(request, slug="bank-transfer-details"):
+    page = get_details_page_by_slug(slug)
+    return render(request, "donation/offline_payment_details.html", {"page": page})
+
+
+def dd_cheque(request, slug="cheque-dd-details"):
+    page = get_details_page_by_slug(slug)
+    return render(request, "donation/offline_payment_details.html", {"page": page})
