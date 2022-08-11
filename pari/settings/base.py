@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://ruralindiaonline.org'
+BASE_URL = 'https://ruralindiaonline.org'
 
 WAGTAIL_AUTO_UPDATE_PREVIEW = True
 
@@ -194,14 +194,14 @@ CONTACT_EMAIL_RECIPIENTS = [
 
 DONATE_EMAIL_RECIPIENTS = CONTACT_EMAIL_RECIPIENTS
 
+
 SOUNDCLOUD_SETTINGS = {
     "API_URL": "https://api.soundcloud.com",
-    "CLIENT_ID": "",
-    "CLIENT_SECRET": "",
-    "USERNAME": "",
-    "PASSWORD": ""
+    "CLIENT_ID": "d129911dd3c35ec537c30a06990bd902",
+    "CLIENT_SECRET": "74aa815b1fcdf29b02a2d177daea1181",
+    "USERNAME": "ruralindiaonline@gmail.com",
+    "PASSWORD": "@bh1j1t8utta"
 }
-
 
 STATE_CHOICES = (
     (_("Andaman and Nicobar Islands"), _("Andaman and Nicobar Islands")),
@@ -270,6 +270,8 @@ LANGUAGES = (
     ("te", _("Telugu")),
     ("ta", _("Tamil")),
     ("ur", _("Urdu")),
+    ("hne", _("Chhattisgarhi")),
+
 )
 
 EXTRA_LANG_INFO = {
@@ -278,6 +280,12 @@ EXTRA_LANG_INFO = {
         'code': 'as',
         'name': 'Assamese',
         'name_local': u'Assamese',
+    },
+    'hne': {
+        'bidi': False,
+        'code': 'hne',
+        'name': 'Chhattisgarhi',
+        'name_local': u'Chhattisgarhi',
     },
     'gu': {
         'bidi': False,
