@@ -126,7 +126,6 @@ def add_audio(request):
         })
 
 class FreedomFightersAlbumList(ListView):
-    context_object_name = "ff_album"
     model = Album
 
     def get_queryset(self):
@@ -165,3 +164,7 @@ class FreedomFightersAlbumList(ListView):
             "The gallery is, in effect, a work in progress. Some of the photos here will appear in PARI Founder-Editor P.Sainath's forthcoming book, The Last Heroes: Footsoldiers of Indian Freedom, to be published by Penguin India. Readers of the book will find a unique QR code at the end of each chapter, scanning which will bring them to the specific freedom fighter's album in this gallery.",
         ]
         return context
+    
+    def get_template_names(self):
+        names = ["album/freedom_fighters_album_list.html"]
+        return names
