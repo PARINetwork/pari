@@ -42,31 +42,28 @@
     <div class="container popup-gallery">
         {% include "includes/grid_title.html" %}
         <div class="filter-list-container">
-            <div class="ff-gallery-tile-row">
-                <div class="row">
+                <div class="ff-gallery" style="display: grid;
+                grid-template-columns: repeat( auto-fit, minmax(280px, 1fr) );
+                grid-column-gap: 0.5em;
+                grid-row-gap: 0.5em;
+                margin: 80px -40px;">
                     {% for album in albums %}
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 grid-list">
-                            <div class="grid-container" data-slug="{{ album.slug }}">
-                                <div class="ff-gallery-image-container">
+                            <div class="ff-list-item" style="position: relative;
+                            height: 250px;
+                            display: flex;
+                            flex-direction: column;" data-slug="{{ album.slug }}">
                                     <a href="{{ album.get_absolute_url }}">
                                         {% with album.slides.all|first as cover %}{% image cover.image fill-300x250 as cover_image %}
-                                            <img class="img-responsive" src="{{ cover_image.url }}" alt="{{ cover.image.alt_text }}">
+                                            <img class="ff-image" style="border-radius: 10px;" src="{{ cover_image.url }}" alt="{{ cover.image.alt_text }}">
                                         {% endwith %}
                                     </a>
-                                </div>
-                                <div class="ff-caption">
-                                    <h3>
+                                    <p class="ff-name">
                                         <a href="{{ album.get_absolute_url }}">{{ album.title }}</a>
-                                    </h3>
-                                    <div class="margin-top-20px">
-                                        <span class="link-dark font-xs">{{ album.description|striptags }}</span>
-                                    </div>
-                                </div>
+                                    </p>
+                                    <p class="link-dark font-xs ff-short-description">{{ album.description|striptags }}</p>
                             </div>
-                        </div>
                     {% endfor %}
                 </div>
-            </div>
         </div>
     </div>
 
