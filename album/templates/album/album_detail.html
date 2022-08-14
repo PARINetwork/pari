@@ -16,6 +16,8 @@
 
 {% block extra_uncompressed_js %}
     <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}album/js/isotope.pkgd.min.js"></script>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 {% endblock %}
 
 {% block extra_js %}
@@ -49,15 +51,10 @@
     <div style="display:none;" id="json-identifier">{{ json_response }}</div>
 
 {% if album.is_freedom_fighters_album is True %}
-
-<div class="container content-container" itemscope itemtype="http://schema.org/Article">
-    <div class="row">
-        <div class="col-lg-1 col-md-1 col-sm-1">
-          <div class="container article-container">
-              <div class="row">
-                <div class="ff-title-row" style="max-width: 1000px;
+  <div class="container article-container">
+                <div class="ff-title-row" style="max-width: 1400px;
                 padding: 20px;
-                margin: 80px auto;
+                margin: 80px 0px;
                 display: flex;
                 flex-wrap: wrap;
                 align-items: center;
@@ -75,7 +72,7 @@
                     filter: grayscale(1);
                     margin-right: 30px;
                     box-sizing: border-box;"></div>
-                    <div class="ff-album-detail-description" style="max-width: 700px; padding: 30px 10px;
+                    <div class="ff-album-detail-description" style="max-width: 760px; padding: 30px 10px;
                     box-sizing: border-box;">
                       <h1 style="margin-bottom: 10px;
                       box-sizing: border-box;">{{ album.title }}</h1>
@@ -83,224 +80,204 @@
                     </div>
                 </div>
                 {% endwith %}
+  </div>
 
-                  <div id="photoAlbum" class="article-content-wrapper">
-                    {% verbatim %}
-                      <script id="photoAlbumTemplate" type="text/x-jsrender">
-              
-                        <div class="photo-album-popup hide" style="height: 500px;">
-                          <div class="photo-album show-slide-info">
-                              <header class="header clear-fix">
-                                  <div class="left left-icons">
-                                      <i id="playPause" href="#" class="fa fa-pause"></i>
-                                      <i id="showThumbnail" href="#" class="fa fa-th-large"></i>
-              
-                                      <ul class="audio-player-controls">
-                                        <li class="play-pause fa fa-pause"></li>
-                                        <li class="volume-control control hidden">
-                                          <div class="volume-symbol fa fa-volume-up"></div>
-                                          <div class="seek-bar toggle-tooltip" style="visibility: hidden;">
-                                            <div class="seekbar-max-length">
-                                              <div class="seekbar-filled">
-                                                <div class="seeker"></div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </li>
-                                        <li class="seek-bar-control control hidden">
-                                          <div class="current-length">0.00</div>
-                                          <div class="total-length">0.00</div>
-                                          <div class="seek-bar">
-                                            <div class="seekbar-max-length">
-                                              <div class="seekbar-filled">
-                                                <div class="seeker"></div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </li>
-                                      </ul>
-              
-              
-                                  </div>
-                                  <div class="right right-icons">
-                                      <a href="#" class="fa fa-external-link open-in-new-tab" target="_blank"></a>
-                                      <i id="showSlideInfo" href="#" class="fa fa-angle-right selected"></i>
-                                      <a {% endverbatim %}{% if "/search" in request.META.HTTP_REFERER %}href="{{request.META.HTTP_REFERER}}"{% elif album_type == 'talking_album' %} href="{% url "talking-album-list" %}" {% else %} href="{% url "other-album-list" %}"{% endif %}{% verbatim %}><i class="fa fa-close back-to-albums" ></i></a>
-                                  </div>
-                                  <div class="carousel-index"></div>
-                              </header>
-              
-                              <section class="carousel-area clear-fix">
-                                <div id="carousel" class="carousel-container slide left">
-                                    <ul class="carousel-items carousel-inner" role="list-box">
-                                      <!-- slides will come here -->
-                                    </ul>
-                                    <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
-                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                        <span class="sr-only">{% trans "Previous" %}</span>
-                                    </a>
-                                    <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
-                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                        <span class="sr-only">{% trans "Next" %}</span>
-                                    </a>
-                                </div>
-                                <div class="right slide-info">
-                                    <div class="description info"></div>
-                                    <div class="title-meta-data">
-                                      <div class="album-title info"></div>
-                                      <div class="slide-photographer info"></div>
-                                      <div class="image-captured-date info"></div>
-                                      <div class="slide-location info"></div>
+  <div id="photoAlbum" class="article-content-wrapper">
+            {% verbatim %}
+              <script id="photoAlbumTemplate" type="text/x-jsrender">
+      
+                <div class="photo-album-popup hide" style="height: 700px;
+margin-bottom: 80px;">
+                  <div class="photo-album show-slide-info">
+                      <header class="header clear-fix">
+                          <div class="left left-icons">
+                              <i id="playPause" href="#" class="fa fa-pause"></i>
+                                            
+                              <ul class="audio-player-controls">
+                                <li class="play-pause fa fa-pause"></li>
+                                <li class="volume-control control hidden">
+                                  <div class="volume-symbol fa fa-volume-up"></div>
+                                  <div class="seek-bar toggle-tooltip" style="visibility: hidden;">
+                                    <div class="seekbar-max-length">
+                                      <div class="seekbar-filled">
+                                        <div class="seeker"></div>
+                                      </div>
                                     </div>
-                                    <div class="tags">
-                                      {% endverbatim %}
-                                      {% for tag in album.tags.all %}
-                                      <a href="{% url 'tagged-album-list' tag %}">#{{ tag }}</a>
-                                      {% endfor %}
-                                      {% verbatim %}
+                                  </div>
+                                </li>
+                                <li class="seek-bar-control control hidden">
+                                  <div class="current-length">0.00</div>
+                                  <div class="total-length">0.00</div>
+                                  <div class="seek-bar">
+                                    <div class="seekbar-max-length">
+                                      <div class="seekbar-filled">
+                                        <div class="seeker"></div>
+                                      </div>
                                     </div>
-                                </div>
-                                <div class="thumbnails">
-                                  <header>
-                                    <i class=" fa fa-close close-thumbnail"></i>
-                                  </header>
-                                  <section class="box">
-                                    <ul class="thumbnail-list clear-fix">
-                                    </ul>
-                                  </section>
-                                </div>
-                              </section>
+                                  </div>
+                                </li>
+                              </ul>
+      
+      
                           </div>
+                          <div class="right right-icons">
+                              <a href="#" class="fa fa-external-link open-in-new-tab" target="_blank"></a>
+                              <i id="showSlideInfo" href="#" class="fa fa-angle-right selected"></i>
+                              <a {% endverbatim %}{% if "/search" in request.META.HTTP_REFERER %}href="{{request.META.HTTP_REFERER}}"{% elif album_type == 'talking_album' %} href="{% url "talking-album-list" %}" {% else %} href="{% url "other-album-list" %}"{% endif %}{% verbatim %}><i class="fa fa-close back-to-albums" ></i></a>
+                          </div>
+                          <div class="carousel-index"></div>
+                      </header>
+      
+                      <section class="carousel-area clear-fix">
+                        <div id="carousel" class="carousel-container slide left">
+                            <ul class="carousel-items carousel-inner" role="list-box">
+                              <!-- slides will come here -->
+                            </ul>
+                            <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">{% trans "Previous" %}</span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">{% trans "Next" %}</span>
+                            </a>
                         </div>
-                      </script>
-                    {% endverbatim %}
-            
-                    {% verbatim %}
-                      <script id="carouselPage" type="text/x-jsrender">
-                        <li class="{{:carouselPageClass}}">
-                            <div class="wrapper">
-                                <img src="{{:src_resized}}" />
+                        <div class="right slide-info">
+                            <div class="description info"></div>
+                            <div class="title-meta-data">
+                              <div class="album-title info"></div>
+                              <div class="slide-photographer info"></div>
+                              <div class="image-captured-date info"></div>
+                              <div class="slide-location info"></div>
                             </div>
-                        </li>
-                      </script>
-                    {% endverbatim %}
-                    
-                    {% verbatim %}
-                      <script id="carouselAuthor" type="text/x-jsrender">
-                      <li class="item author-container">
-                          <div class="author-info">
-                            <div class="container">
-                                {{for authors}}
-                                    <div class="row author-block">
-                                        <div class="col-lg-3">
-                                            <div class="author-name">{{:name}}</div>
-                                            {{if twitter_username}}
-                                                <div>
-                                                    <i class="fab fa-twitter icon-handle"></i>
-                                                    <div class="handle">
-                                                        <a href="https://twitter.com/{{:twitter_username}}">{{:twitter_username}}</a>
-                                                    </div>
-                                                </div>
-                                            {{/if}}
-                                            {{if facebook_username}}
-                                                <div>
-                                                    <i class="fab fa-facebook icon-handle"></i>
-                                                    <div class="handle">
-                                                        <a href="https://www.facebook.com/{{:facebook_username}}">{{:facebook_username}}</a>
-                                                    </div>
-                                                </div>
-                                            {{/if}}
-                                            {{if email}}
-                                                <div>
-                                                    <i class="fab fa-envelope icon-handle"></i>
-                                                    <div class="handle">{{:email}}</div>
-                                                </div>
-                                            {{/if}}
-                                            {{if website}}
-                                                <div>
-                                                    <i class="glyphicon glyphicon-globe icon-handle"></i>
-                                                    <div class="handle"><a href="{{:website}}" target="_blank">{{:website}}</a></div>
-                                                </div>
-                                            {{/if}}
-                                            <div>
-                                                <ul>
-                                                    <li class="social-icon">
-                                                        <span class="banner-label">{% endverbatim %}{% trans "Share" %}{% verbatim %}</span>
-                                                        <a target="_blank"
-                                                          href="{{:twitterShare}}">
-                                                            <i class="fab fa-twitter"></i>
-                                                        </a>
-                                                        <a target="_blank"
-                                                          href="{{:fbShare}}">
-                                                            <i class="fab fa-facebook"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-9 margin-btm-30px">
-                                            {{if bio}}
-                                                <p class="author-bio">{{:bio}}</p>
-                                            {{/if}}
-                                            <a href="{{:url}}" class="btn primary">{% endverbatim %}{% trans "Other stories by" %}{% verbatim %} {{:name}}</a>
-                                        </div>
-                                    </div>
-                                {{/for}}
+                            <div class="tags">
+                              {% endverbatim %}
+                              {% for tag in album.tags.all %}
+                              <a href="{% url 'tagged-album-list' tag %}">#{{ tag }}</a>
+                              {% endfor %}
+                              {% verbatim %}
                             </div>
                         </div>
-                        </li>
-                      </script>
-                    {% endverbatim %}
-                    
-                    {% verbatim %}
-                        <script id="carouselStartingIntro" type="text/x-jsrender">
-                            <div class="floating-text">
-                                <h1 class="title">{{:album_title}}</h1>
-                                <div class="description"></div>
-                                <div class="photographer">
-                                  <span class="photographer-name">{{:photographerNames}}</span>
-                                  <span class="location">
-                                    <span class="fa fa-map-marker"></span>
-                                    <span class="location-name">{{:slide_location}}</span>
-                                  </span>
-                                </div>
-                                <div class="social-icons">
-                                      <a href="https://twitter.com/intent/tweet?url={{:url}}&amp;hashtags=RuralIndiaOnline&amp;via=PARINetwork" target="_blank" class="link-light">
-                                      <i class="fab fa-twitter"></i>
-                                </a>
-                                <a target="_blank" href="https://facebook.com/sharer.php?u={{:url}}&t={{:album_title}}">
-                                        <i class="fab fa-facebook"></i>
-                                </a>
-                          </div>
-                            </div>
-                        </script>
-                    {% endverbatim %}
+                        <div class="thumbnails">
+                          <header>
+                            <i class=" fa fa-close close-thumbnail"></i>
+                          </header>
+                          <section class="box">
+                            <ul class="thumbnail-list clear-fix">
+                            </ul>
+                          </section>
+                        </div>
+                      </section>
                   </div>
-                  
-                  <div class="n-column-image-with-paragraph clearfix">
-                    <div class="n-column-image clearfix">
-                        {% for slide in album.slides.all %}
-                          <div class="image-block">
-                              {% image slide.image height-400 as image %}
-                              <div class="image" style="height:{{ slide.height }}px">
-                                  <img class="lazyload" src="{{ slide.url }}" data-src="{{ image.url }}" style=" height:{{ image.height }}px;" alt="{{ slide.image.alt_text }}"/>
-                              </div>
-                          </div>
-                        {% endfor %}
+                </div>
+              </script>
+            {% endverbatim %}
+    
+            {% verbatim %}
+              <script id="carouselPage" type="text/x-jsrender">
+                <li class="{{:carouselPageClass}}">
+                    <div class="wrapper">
+                        <img src="{{:src_resized}}" />
                     </div>
-                  </div>
+                </li>
+              </script>
+            {% endverbatim %}
+            
+            {% verbatim %}
+              <script id="carouselAuthor" type="text/x-jsrender">
+              <li class="item author-container">
+                  <div class="author-info">
+                    <div class="container">
+                        {{for authors}}
+                            <div class="row author-block">
+                                <div class="col-lg-3">
+                                    <div class="author-name">{{:name}}</div>
+                                    {{if twitter_username}}
+                                        <div>
+                                            <i class="fab fa-twitter icon-handle"></i>
+                                            <div class="handle">
+                                                <a href="https://twitter.com/{{:twitter_username}}">{{:twitter_username}}</a>
+                                            </div>
+                                        </div>
+                                    {{/if}}
+                                    {{if facebook_username}}
+                                        <div>
+                                            <i class="fab fa-facebook icon-handle"></i>
+                                            <div class="handle">
+                                                <a href="https://www.facebook.com/{{:facebook_username}}">{{:facebook_username}}</a>
+                                            </div>
+                                        </div>
+                                    {{/if}}
+                                    {{if email}}
+                                        <div>
+                                            <i class="fab fa-envelope icon-handle"></i>
+                                            <div class="handle">{{:email}}</div>
+                                        </div>
+                                    {{/if}}
+                                    {{if website}}
+                                        <div>
+                                            <i class="glyphicon glyphicon-globe icon-handle"></i>
+                                            <div class="handle"><a href="{{:website}}" target="_blank">{{:website}}</a></div>
+                                        </div>
+                                    {{/if}}
+                                    <div>
+                                        <ul>
+                                            <li class="social-icon">
+                                                <span class="banner-label">{% endverbatim %}{% trans "Share" %}{% verbatim %}</span>
+                                                <a target="_blank"
+                                                  href="{{:twitterShare}}">
+                                                    <i class="fab fa-twitter"></i>
+                                                </a>
+                                                <a target="_blank"
+                                                  href="{{:fbShare}}">
+                                                    <i class="fab fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9 margin-btm-30px">
+                                    {{if bio}}
+                                        <p class="author-bio">{{:bio}}</p>
+                                    {{/if}}
+                                    <a href="{{:url}}" class="btn primary">{% endverbatim %}{% trans "Other stories by" %}{% verbatim %} {{:name}}</a>
+                                </div>
+                            </div>
+                        {{/for}}
+                    </div>
+                </div>
+                </li>
+              </script>
+            {% endverbatim %}
 
+{% verbatim %}
+<script id="carouselStartingIntro" type="text/x-jsrender">
+</script>
+{% endverbatim %}
+            
+  </div>
+  <div class="container article-container">
+    <div class="row">
+
+              <div class="n-column-image-with-paragraph clearfix">
+                <div class="n-column-image clearfix isotope-container" >
+                    {% for slide in album.slides.all %}
+                      <div class="image-block" >
+                          {% image slide.image height-400 as image %}
+                          <div class="image" style="height:{{ image.height }}px">
+                              <img class="lazyload" src="{{ image.url }}" data-src="{{ image.url }}" style=" height:{{ image.height }}px;" alt="{{ image.alt_text }}"/>
+                          </div>
+                      </div>
+                    {% endfor %}
+                </div>
               </div>
-          </div>
-        </div>
     </div>
-</div>
-
-
+  </div>
 
 {% else %}
 
     <!--  photo album starts here -->
+<div id="photoAlbum" class="article-content-wrapper">
 
 
 {% verbatim %}
@@ -494,7 +471,7 @@
     </script>
 {% endverbatim %}
 
-
+</div>
 {% endif %}
 
 {% if albums %}

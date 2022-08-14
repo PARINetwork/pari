@@ -1,6 +1,11 @@
 $(document).ready(function(){
-    $('.packery-container').isotope({
+    $('.isotope-container').isotope({
       layoutMode: 'packery',
-      itemSelector: '.gallery-item'
+      itemSelector: '.image-block',
+      packery: {
+        gutter: 10      
+      }
     });
 });
+
+

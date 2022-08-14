@@ -6,7 +6,7 @@ var Album = {
     _initControls: function () {
         var photoAlbum = $.templates("#photoAlbumTemplate");
         var photoAlbumHtml = photoAlbum.render({});
-        $(".main_content").append(photoAlbumHtml);
+        $("#main_content").append(photoAlbumHtml);
         var type = $("div#type-identifier").text();
         if (type == 'talking_album') {
             $(".volume-control").removeClass("hidden");
