@@ -16,14 +16,19 @@
 
 {% block extra_uncompressed_js %}
     <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}album/js/jquery.justifiedGallery.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}album/js/isotope.pkgd.min.js"></script>
-    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}album/js/packery-gallery.js"></script>
 {% endblock %}
 
 {% block extra_js %}
     <script type="text/javascript" src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}album/js/media-player.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}album/js/lightbox.js"></script>
+{% endblock %}
+
+{% block extra_uncompressed_css %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}album/css/justifiedGallery.min.css">
 {% endblock %}
 
 {% block extra_css %}
@@ -256,21 +261,18 @@ margin-bottom: 80px;">
 {% endverbatim %}
             
   </div>
+
+
   <div class="container article-container">
     <div class="row">
-
-              <div class="n-column-image-with-paragraph clearfix">
-                <div class="n-column-image clearfix isotope-container" >
-                    {% for slide in album.slides.all %}
-                      <div class="image-block" >
-                          {% image slide.image height-400 as image %}
-                          <div class="image" style="height:{{ image.height }}px">
-                              <img class="lazyload" src="{{ image.url }}" data-src="{{ image.url }}" style=" height:{{ image.height }}px;" alt="{{ image.alt_text }}"/>
-                          </div>
-                      </div>
-                    {% endfor %}
-                </div>
-              </div>
+       <div class="ff-album-items-gallery" >
+           {% for slide in album.slides.all %}
+            <a data-target="#carousel" data-slide-to="{{ forloop.counter0 }}">
+              {% image slide.image height-300 as image %}
+                <img class="lazyload" src="{{ image.url }}" data-src="{{ image.url }}" style="padding:5px; height:{{ image.height }}px;" alt="{{ image.alt_text }}"/>
+            </a>
+           {% endfor %}
+       </div>
     </div>
   </div>
 

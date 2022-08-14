@@ -1,11 +1,4 @@
-$(document).ready(function(){
-    $('.isotope-container').isotope({
-      layoutMode: 'packery',
-      itemSelector: '.image-block',
-      packery: {
-        gutter: 10      
-      }
-    });
+$("#mygallery").justifiedGallery({
+  lastRow : 'justify',
+  margins : 10
 });
-
-
