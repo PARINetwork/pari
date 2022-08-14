@@ -45,9 +45,118 @@
     <div style="display:none;" id="type-identifier">{{ album_type }}</div>
     <div style="display:none;" id="json-identifier">{{ json_response }}</div>
 
+
+  {{ album.is_freedom_fighters_album }}
+
+
+
+{% if album.is_freedom_fighters_album is True %}
+
+<div><h1>Yeah!</h1></div>
+
+
+
+<div class="n-column-image-with-paragraph clearfix">
+    <div class="n-column-image clearfix">
+
+        {% for slide in album.slides.all %}
+        {% image slide.image max-1024x1024 as album_image %}
+
+                <div class="image-block">
+                    {% if album_image.height > 560 %}
+                        {% image album_image.image height-1120 as image %}
+                    {% else %}
+                        {% image album_image.image height-560 as image %}
+                    {% endif %}
+                    <div class="image" style="height:{{ album_image.height }}px">
+                        {% image album_image.image max-1400x1120 as slide_image %}
+                        <img class="lazyload" src="{{ album_image.url }}" data-src="{{ slide_image.url }}" style=" height:{{ album_image.height }}px;" alt="{{ slide_image.image.alt_text }}"/>
+                    </div>
+                    <div class= "photo-credits">
+                        {% if album_image.image.photographers.all %}
+                         PHOTO •
+                        {% for photographer in album_image.image.photographers.all %}
+                           {{ photographer }}
+                            {% if not forloop.last %},&nbsp;
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    </div>
+                </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+
+<div class="freefom-fighters-gallery grid packery-container">
+    {% for slide in album.slides.all %}
+      <div class="gallery-item">
+          <a href="{{ MEDIA_URL }}{{ slide.image }}" title="{{ slide.description }}" data-audio="{% firstof slide.audio "" %}" data-photographer="{% for photographer in slides.image.photographers.all %}{{ photographer.name }}{% if not forloop.last %}&{% endif %}{% endfor %}" data-location="{% for location in slide.image.locations.all %}{{ location.name }}{% if not forloop.last %},{% endif %} {% endfor %}" data-location-description="{% for location in album.locations.all %}{% if location.district %}{{ location.district }}{% endif %}{% if location.state %}, {{ location.state }}{% endif %}{% if not forloop.last %};{% endif %} {% endfor %}" data-date="{{ album.first_published_at|date:"F Y" }}" data-url="{{ album.get_absolute_url }}" class="image-tag mfp-image">
+          <div class="grid-column">{% image slide.image max-1024x1024 as album_image %}
+            <img class="img-responsive" src="{{ album_image.url }}" alt="{{ slide.image.alt_text }}">
+          </div>
+      </a>
+    </div>
+    {% endfor %}
+</div>
+
+{% verbatim %}
+        <script id="articleAlbumTemplate" type="text/x-jsrender">
+          <div class="photo-album-popup popup hide">
+            <div class="photo-album show-slide-info">
+                <header class="header clear-fix">
+                    <div class="left left-icons">
+                        <i class="fa fa-angle-left back-to-albums" ></i>
+                    </div>
+                    <div class="right right-icons">
+                        <a href="#" class="fa fa-external-link open-in-new-tab" target="_blank"></a>
+                        <i id="showSlideInfo" href="#" class="fa fa-angle-right selected"></i>
+                    </div>
+                    <div class="carousel-index"></div>
+                </header>
+                <section class="carousel-area clear-fix">
+                  <div id="carousel" class="carousel-container slide left">
+                      <ul class="carousel-items carousel-inner" role="list-box">
+                        <!-- slides will come here -->
+                      </ul>
+                      <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+                          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                          <span class="sr-only">{% trans "Previous" %}</span>
+                      </a>
+                      <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+                          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                          <span class="sr-only">{% trans "Next" %}</span>
+                      </a>
+                  </div>
+                  <div class="right slide-info">
+                      <div class="description info"></div>
+                      <div class="title-meta-data">
+                        <div class="album-title info"></div>
+                      </div>
+                  </div>
+                </section>
+            </div>
+          </div>
+          </script>
+      {% endverbatim %}
+    {% verbatim %}
+      <script id="carouselPage" type="text/x-jsrender">
+        <li class="{{:carouselPageClass}}" data-slide-to={{:id}}>
+            <div class="wrapper">
+                <img src="{{:src}}" />
+            </div>
+        </li>
+      </script>
+    {% endverbatim %}
+
+
+{% else %}
+
     <!--  photo album starts here -->
 
-    {% verbatim %}
+
+{% verbatim %}
         <script id="photoAlbumTemplate" type="text/x-jsrender">
 
           <div class="photo-album-popup popup hide">
@@ -237,6 +346,9 @@
         </div>
     </script>
 {% endverbatim %}
+
+
+{% endif %}
 
 {% if albums %}
 
