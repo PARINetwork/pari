@@ -19,7 +19,7 @@
                 <hr style="border-top: 2px solid #eee; width: 30%;">
                 <div class="text-left">
                     {% for paragraph in description %}
-                    {% trans paragraph %}<br />
+                    <p>{% trans paragraph %}</p><br />
                     {% endfor %}
                 </div>
                 {% endif %}
