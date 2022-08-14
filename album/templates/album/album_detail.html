@@ -86,13 +86,13 @@
                 </div>
                 {% endwith %}
   </div>
-
-  <div id="photoAlbum" class="article-content-wrapper">
+  <div id="ff-slider-start"></div>
+  <div id="photoAlbum" class="article-content-wrapper" style="position:relative; z-index:1">
             {% verbatim %}
               <script id="photoAlbumTemplate" type="text/x-jsrender">
       
                 <div class="photo-album-popup hide" style="height: 700px;
-margin-bottom: 80px;">
+margin-bottom: 80px; position: sticky;">
                   <div class="photo-album show-slide-info">
                       <header class="header clear-fix">
                           <div class="left left-icons">
@@ -267,7 +267,7 @@ margin-bottom: 80px;">
     <div class="row">
        <div class="ff-album-items-gallery" >
            {% for slide in album.slides.all %}
-            <a data-target="#carousel" data-slide-to="{{ forloop.counter0 }}">
+            <a href="#ff-slider-start" data-target="#carousel" data-slide-to="{{ forloop.counter0 }}">
               {% image slide.image height-300 as image %}
                 <img class="lazyload" src="{{ image.url }}" data-src="{{ image.url }}" style="padding:5px; height:{{ image.height }}px;" alt="{{ image.alt_text }}"/>
             </a>
