@@ -10,7 +10,7 @@ Last updated: 14-08-2022
     ```
 
 * During actual deployment, 
-  * Merge the PR and 
+  * Merge the PR https://github.com/bhuvankrishna/pari/pull/1 and 
   * On the server, ensure that you are on `release-candidate` branch and run
 
     ```sh
