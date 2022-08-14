@@ -27,6 +27,8 @@ class AlbumTag(TaggedItemBase):
 @python_2_unicode_compatible
 class Album(Page):
     description = RichTextField()
+    freedom_fighters_short_description = RichTextField(blank=True)
+
     language = models.CharField(max_length=7, choices=settings.LANGUAGES)
     # album_types = ParentalManyToManyField(album_type, related_name="albums_by_type")
 
@@ -36,6 +38,7 @@ class Album(Page):
         FieldPanel('language'),
         FieldPanel('description'),
         FieldPanel('is_freedom_fighters_album'),
+        FieldPanel('freedom_fighters_short_description'),
         InlinePanel('slides', label=_('Slides'), panels=[
             ImageChooserPanel('image'),
             AudioPanel('audio'),
@@ -53,6 +56,7 @@ class Album(Page):
     search_fields = Page.search_fields + [
         index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE),
         index.SearchField('description', partial_match=True, boost=SearchBoost.DESCRIPTION),
+        index.SearchField('freedom_fighters_short_description', partial_match=True, boost=SearchBoost.DESCRIPTION),
         index.SearchField('get_locations_index', partial_match=True, boost=SearchBoost.LOCATION),
         index.SearchField('get_photographers_index', partial_match=True, boost=SearchBoost.AUTHOR),
         index.SearchField('language'),

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% load i18n wagtailimages_tags wagtailcore_tags %}
+{% load filters %}
+
 {% block meta_title %}{% blocktrans with album.title as title%} {{ title }} {% endblocktrans %}{% endblock %}
 {% block meta_description %}{{ album.description|striptags }}{% endblock %}
 
@@ -45,20 +47,27 @@
     <div style="display:none;" id="type-identifier">{{ album_type }}</div>
     <div style="display:none;" id="json-identifier">{{ json_response }}</div>
 
-
-  {{ album.is_freedom_fighters_album }}
-
-
-
 {% if album.is_freedom_fighters_album is True %}
 
-<div><h1>Yeah!</h1></div>
+
+
+
 
 <div class="container content-container" itemscope itemtype="http://schema.org/Article">
     <div class="row">
         <div class="col-lg-1 col-md-1 col-sm-1">
           <div class="container article-container">
               <div class="row">
+                <div class=""text-center>
+                    <img class="" style="" src="{{ album.slides.first.image.file.url }}">
+                <div>
+                  <h1>
+                    {{ album.title }}
+                  </h1>
+                  <p>{{ album.description | striptags }}</p>
+                </div>
+              </div>
+
                   <div class="article-content-wrapper">
                     {% verbatim %}
                       <script id="photoAlbumTemplate" type="text/x-jsrender">
