@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load i18n wagtailimages_tags %}
+{% load filters %}
+{% block feed_block %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "freedom_fighter_album_feeds" %}">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "freedom_fighter_album_feeds" %}">
+{% endblock %}
+
+{% block meta_title %}{% trans "Freedom Fighter Albums" %}{% endblock %}
+{% block title %}{% trans "Freedom Fighter Albums" %}{% endblock %}
+{% block meta_description %}{{sub_heading}}{% endblock %}
+
+{% block opengraph_block %}
+{% include "core/includes/media_sharing_meta.html" with title=title description=sub_heading url=request.get_full_path type="url" image_url=albums.first.slides.first.image.file.url date_of_item=albums.first.first_published_at%}
+{% endblock %}
+
+{% block extra_uncompressed_js %}
+<script src="//connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
+{% endblock %}
+
+{% block extra_js %}
+
+{% endblock %}
+
+{% block extra_css %}
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}album/css/magnific-popup.css">
+<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/article.less">
+<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/album/home.less">
+<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/album/slide_show.less">
+<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/v2/pages/album/photo-album.less">
+{% endblock %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+{% block breadcrumb_menu %}
+<li class="active">{% trans "Albums" %}</li>
+{% endblock %}
+{% block main %}
+
+<div class="container popup-gallery">
+    {% include "includes/grid_title.html" %}
+    <div class="filter-list-container">
+        <div class="gallery-tile-row">
+            <div class="row">
+                {% for album in albums %}
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 grid-list">
+                    <div class="grid-container" data-slug="{{ album.slug }}">
+                        <div class="gallery-image-container">
+                            <a href="{{ album.get_absolute_url }}">
+                                <div class="images-count">
+                                    <span>{{ album.slides.count }}</span>
+                                </div>
+                                {% with album.slides.all|random as random_cover %}{% image random_cover.image fill-300x250 as cover_image %}
+                                <img class="img-responsive" src="{{ cover_image.url }}" alt="{{ random_cover.image.alt_text }}">
+                                {% endwith %}
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h3>
+                                <a href="{{ album.get_absolute_url }}">{{ album.title }}</a>
+                            </h3>
+                            <div class="margin-top-20px">
+                                <span class="link-dark font-xs">{{ album.description|striptags }}</span>
+                                <br />
+                                {% for tag in album.tags.all %}
+                                <a href="{% url 'tagged-album-list' tag %}">
+                                    <span class="link-dark font-xs">#{{ tag }}</span>
+                                </a>
+                                {% endfor %}
+                            </div>
+                            <div class="margin-top-20px">
+                                {% include "includes/author-links.html" with authors=photographers|get_item:album.id author_link_class="" author_name_class="link-dark-primary font-xs"  %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--  photo album starts here -->
+
+
+
+{% if albums %}
+
+{% endif %}
+{% endblock %}

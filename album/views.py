@@ -36,7 +36,7 @@ class AlbumList(ListView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(AlbumList, self).get_context_data(*args, **kwargs)
-        album_qs = self.get_queryset().prefetch_related('slides')
+        album_qs = self.get_queryset().filter(is_freedom_fighters_album=False).prefetch_related('slides')
         filter_param = self.kwargs['filter']
         if filter_param == "talking":
             self.set_album_data(context, album_qs, _("Talking Albums"), _("Pictures and their spoken story"))
@@ -58,7 +58,7 @@ class AlbumList(ListView):
 class TaggedAlbumList(AlbumList):
     def get_queryset(self):
         qs = super(TaggedAlbumList, self).get_queryset()
-        qs = qs.filter(tags__name__iexact=self.kwargs['tag'])
+        qs = qs.filter(is_freedom_fighters_album=False).filter(tags__name__iexact=self.kwargs['tag'])
         return qs
 
 
@@ -124,3 +124,38 @@ def add_audio(request):
             "access_token": access_token,
             "client_id": sc["CLIENT_ID"]
         })
+
+class FreedomFightersAlbumList(ListView):
+    model = Album
+
+    def get_queryset(self):
+        qs = super(FreedomFightersAlbumList, self).get_queryset()
+        qs = qs.filter(live=True)
+        return qs
+
+    def set_album_data(self, context, album_qs, title, subtitle, *args):
+        if title == 'Talking Albums':
+            slide_id = AlbumSlide.objects.exclude(audio='').values_list('page__id')
+        else:
+            slide_id = AlbumSlide.objects.filter(audio='').values_list('page__id')
+        qs = album_qs.filter(id__in=slide_id)
+        qs = qs.order_by('-first_published_at')
+        context['albums'] = qs
+        context['tab'] = _("gallery")
+        context["title"] = title
+        context["sub_heading"] = subtitle
+
+    def get_context_data(self, *args):
+        context = super(FreedomFightersAlbumList, self).get_context_data(*args)
+        album_qs = self.get_queryset().filter(is_freedom_fighters_album=True).prefetch_related('slides')
+        self.set_album_data(context, album_qs, _("PARI Freedom Fighters Gallery"), _("Photos and Videos"))
+        context['albums'] = album_qs
+        photographers = {}
+        for album in context["albums"]:
+            slide_photo_graphers = []
+            for slide in album.slides.all():
+                slide_photo_graphers.extend(slide.image.photographers.all())
+            photographers[album.id] = set(slide_photo_graphers)
+        context["photographers"] = photographers
+        context["current_page"] = 'freedom-fighters-album-list'
+        return context
