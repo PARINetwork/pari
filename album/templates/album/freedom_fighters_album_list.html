@@ -6,8 +6,8 @@
 <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "freedom_fighter_album_feeds" %}">
 {% endblock %}
 
-{% block meta_title %}{% trans "Freedom Fighter Albums" %}{% endblock %}
-{% block title %}{% trans "Freedom Fighter Albums" %}{% endblock %}
+{% block meta_title %}{% blocktrans with ff_album.title as title%} {{ title }} {% endblocktrans %}{% endblock %}
+{% block title %}{% blocktrans with ff_album.title as title%} {{ title }} {% endblocktrans %}{% endblock %}
 {% block meta_description %}{{sub_heading}}{% endblock %}
 
 {% block opengraph_block %}

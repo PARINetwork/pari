@@ -126,6 +126,7 @@ def add_audio(request):
         })
 
 class FreedomFightersAlbumList(ListView):
+    context_object_name = "ff_album"
     model = Album
 
     def get_queryset(self):
@@ -158,4 +159,9 @@ class FreedomFightersAlbumList(ListView):
             photographers[album.id] = set(slide_photo_graphers)
         context["photographers"] = photographers
         context["current_page"] = 'freedom-fighters-album-list'
+        context["title"] = "PARI Freedom Fighters Gallery"
+        context["description"] = [
+            "This gallery, launched on August 15,2022, is home to photos and videos of India's little-known footsoldiers of freedom. Some of these already appear elsewhere in PARI. But there are many that don't, and this collection could keep growing - both in terms of pictures and videos. And also in the more freedom fighters will be added to our list.",
+            "The gallery is, in effect, a work in progress. Some of the photos here will appear in PARI Founder-Editor P.Sainath's forthcoming book, The Last Heroes: Footsoldiers of Indian Freedom, to be published by Penguin India. Readers of the book will find a unique QR code at the end of each chapter, scanning which will bring them to the specific freedom fighter's album in this gallery.",
+        ]
         return context
