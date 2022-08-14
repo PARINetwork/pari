@@ -42,6 +42,7 @@
     {% endwith %}
 {% endblock %}
 
+
 {% block main %}
 
     <div style="display:none;" id="type-identifier">{{ album_type }}</div>
@@ -49,26 +50,41 @@
 
 {% if album.is_freedom_fighters_album is True %}
 
-
-
-
-
 <div class="container content-container" itemscope itemtype="http://schema.org/Article">
     <div class="row">
         <div class="col-lg-1 col-md-1 col-sm-1">
           <div class="container article-container">
               <div class="row">
-                <div class=""text-center>
-                    <img class="" style="" src="{{ album.slides.first.image.file.url }}">
-                <div>
-                  <h1>
-                    {{ album.title }}
-                  </h1>
-                  <p>{{ album.description | striptags }}</p>
-                </div>
-              </div>
+                <div class="ff-title-row" style="max-width: 1000px;
+                padding: 20px;
+                margin: 80px auto;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+                box-sizing: border-box;">
+                {% with album.slides.first as cover %}{% image cover.image fill-300x300 as cover_image %}
 
-                  <div class="article-content-wrapper">
+                    <div class="ff-album-detail-title-img" style="
+                    background: url('{{ cover_image.url }}');
+                    background-size: cover;
+                    background-position: center;
+                    width: 200px;
+                    height: 200px;
+                    border-radius: 100px;
+                    filter: grayscale(1);
+                    margin-right: 30px;
+                    box-sizing: border-box;"></div>
+                    <div class="ff-album-detail-description" style="max-width: 700px; padding: 30px 10px;
+                    box-sizing: border-box;">
+                      <h1 style="margin-bottom: 10px;
+                      box-sizing: border-box;">{{ album.title }}</h1>
+                      <p>{{ album.description | striptags }}</p>
+                    </div>
+                </div>
+                {% endwith %}
+
+                  <div id="photoAlbum" class="article-content-wrapper">
                     {% verbatim %}
                       <script id="photoAlbumTemplate" type="text/x-jsrender">
               
@@ -260,11 +276,27 @@
                         </script>
                     {% endverbatim %}
                   </div>
+                  
+                  <div class="n-column-image-with-paragraph clearfix">
+                    <div class="n-column-image clearfix">
+                        {% for slide in album.slides.all %}
+                          <div class="image-block">
+                              {% image slide.image height-400 as image %}
+                              <div class="image" style="height:{{ slide.height }}px">
+                                  <img class="lazyload" src="{{ slide.url }}" data-src="{{ image.url }}" style=" height:{{ image.height }}px;" alt="{{ slide.image.alt_text }}"/>
+                              </div>
+                          </div>
+                        {% endfor %}
+                    </div>
+                  </div>
+
               </div>
           </div>
         </div>
     </div>
 </div>
+
+
 
 {% else %}
 
@@ -471,3 +503,4 @@
 
 
 {% endblock %}
+

@@ -43,25 +43,57 @@
         {% include "includes/grid_title.html" %}
         <div class="filter-list-container">
                 <div class="ff-gallery" style="display: grid;
-                grid-template-columns: repeat( auto-fit, minmax(280px, 1fr) );
-                grid-column-gap: 0.5em;
-                grid-row-gap: 0.5em;
-                margin: 80px -40px;">
+                grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+                align-items: center;
+                align-content: space-evenly;
+                justify-content: space-evenly;
+                justify-items: center;
+                grid-gap: 2rem;">
                     {% for album in albums %}
-                            <div class="ff-list-item" style="position: relative;
+                        {% with album.slides.all|first as cover %}{% image cover.image fill-280x250 as cover_image %}
+                            <a class="ff-item" href="{{ album.get_absolute_url }}" style=" display: block;
+                            width: 280px;
                             height: 250px;
-                            display: flex;
-                            flex-direction: column;" data-slug="{{ album.slug }}">
-                                    <a href="{{ album.get_absolute_url }}">
-                                        {% with album.slides.all|first as cover %}{% image cover.image fill-300x250 as cover_image %}
-                                            <img class="ff-image" style="border-radius: 10px;" src="{{ cover_image.url }}" alt="{{ cover.image.alt_text }}">
-                                        {% endwith %}
-                                    </a>
-                                    <p class="ff-name">
-                                        <a href="{{ album.get_absolute_url }}">{{ album.title }}</a>
-                                    </p>
-                                    <p class="link-dark font-xs ff-short-description">{{ album.freedom_fighters_short_description|striptags }}</p>
+                            border-radius: 20px;
+                            position: relative;
+                            background-size: cover;
+                            background-position: center;
+                            background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8)), url('{{ cover_image.url }}');
+                            margin: 0;
+                            padding: 0;
+                            box-sizing: border-box;
+                            transition: all 0.5s;
+                            " data-slug="{{ album.slug }}">
+                            <div class="ff-text" style="width: 100%;
+                            text-align: center;
+                            color: white;
+                            position: absolute;
+                            bottom: 1%;
+                            left: 50%;
+                            transform: translate(-50%, -50%) scale(1);
+                            text-shadow: 0 0 0 rgba(255, 255, 255, 0);
+                            margin: 0;
+                            padding: 0;
+                            box-sizing: border-box;
+                            transition: all 0.5s;
+                            ">
+                                <p class="ff-name" style="font-size: 24px;
+                                font-weight: bold;  margin: 0;
+                                padding: 0;
+                                box-sizing: border-box;
+                                transition: all 0.5s;
+                                line-height: unset;
+                                ">{{ album.title }}</p>
+                                <p class="ff-short-description" style="opacity: 0.8;
+                                margin-top: 10px;  margin: 0;
+                                padding: 0;
+                                box-sizing: border-box;
+                                transition: all 0.5s;
+                                line-height: unset;
+                                ">{{ album.freedom_fighters_short_description|striptags }}</p>
                             </div>
+                            </a>
+                        {% endwith %}
                     {% endfor %}
                 </div>
         </div>
