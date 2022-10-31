@@ -267,7 +267,7 @@ margin-bottom: 80px; position: sticky;">
     <div class="row">
        <div class="ff-album-items-gallery" >
            {% for slide in album.slides.all %}
-            <a href="#ff-slider-start" data-target="#carousel" data-slide-to="{{ forloop.counter0 }}">
+            <a href="#ff-slider-start" onclick="location.href='#photoAlbum';" data-target="#carousel" data-slide-to="{{ forloop.counter0 }}">
               {% image slide.image height-300 as image %}
                 <img class="lazyload" src="{{ image.url }}" data-src="{{ image.url }}" style="padding:5px; height:{{ image.height }}px;" alt="{{ image.alt_text }}"/>
             </a>
