@@ -12,17 +12,17 @@
                 <ul class="list-unstyled clear-margins">
                     <li>
                         <a itemprop="url" href="{% url "story-detail" slug="things-we-do" %}">
-                        <span itemprop="name">{% trans "Things We Do" %}</span>
+                            <span itemprop="name">{% trans "Things We Do" %}</span>
                         </a>
                     </li>
                     <li>
                         <a itemprop="url" href="{% url "story-detail" slug="things-we-make" %}">
-                        <span itemprop="name">{% trans "Things We Make" %}</span>
+                            <span itemprop="name">{% trans "Things We Make" %}</span>
                         </a>
                     </li>
                     <li>
                         <a itemprop="url" href="{% url "story-detail" slug="farming-and-its-crisis" %}">
-                        <span itemprop="name">{% trans "Farming and its Crisis" %}</span>
+                            <span itemprop="name">{% trans "Farming and its Crisis" %}</span>
                         </a>
                     </li>
                 </ul>
@@ -31,22 +31,22 @@
                 <ul class="list-unstyled clear-margins with-out-title">
                     <li>
                         <a itemprop="url" href="{% url "story-detail" slug="foot-soldiers-of-freedom" %}">
-                        <span itemprop="name">{% trans "Foot-Soldiers of Freedom" %}</span>
+                            <span itemprop="name">{% trans "Foot-Soldiers of Freedom" %}</span>
                         </a>
                     </li>
                     <li>
                         <a itemprop="url" href="{% url "story-detail" slug="the-rural-in-the-urban" %}">
-                        <span itemprop="name">{% trans "The Rural in the Urban" %}</span>
+                            <span itemprop="name">{% trans "The Rural in the Urban" %}</span>
                         </a>
                     </li>
                     <li>
                         <a itemprop="url" href="{% url "story-detail" slug="musafir" %}">
-                        <span itemprop="name">{% trans "Musafir" %}</span>
+                            <span itemprop="name">{% trans "Musafir" %}</span>
                         </a>
                     </li>
                     <li>
                         <a class="page-nav-link" itemprop="url" href="{% url "category-list" %}">
-                        <span itemprop="name">{% trans "View all Categories" %} <i class="fa fa-angle-double-right"></i></span>
+                            <span itemprop="name">{% trans "View all Categories" %} <i class="fa fa-angle-double-right"></i></span>
                         </a>
                     </li>
                 </ul>
@@ -54,15 +54,15 @@
             <div class="col-lg-4 col-md-6 col-sm-6 image-link margin-top-10px">
                 <ul class="list-unstyled clear-margins">
                     <li>
-                        <div >
-                            <img class="img-responsive" src = "{{ STATIC_URL }}img/nav_header_images/map.png" alt="The archive on a map">
+                        <div>
+                            <img class="img-responsive" src="{{ STATIC_URL }}img/nav_header_images/map.png" alt="The archive on a map">
                         </div>
                     </li>
                     <li>
                         <div>{% trans "Stories from near you" %}</div>
 
                         <a class="page-nav-link" href="{% url "map-list" %}">
-                        <span itemprop="name">{% trans "The archive on a map" %} <i class="fa fa-angle-double-right"></i></span>
+                            <span itemprop="name">{% trans "The archive on a map" %} <i class="fa fa-angle-double-right"></i></span>
                         </a>
                     </li>
                 </ul>
@@ -83,17 +83,22 @@
                     <ul class="list-unstyled clear-margins">
                         <li>
                             <a itemprop="url" href="{% url "other-album-list" %}">
-                            <span itemprop="name">{% trans "Albums" %}</span>
+                                <span itemprop="name">{% trans "Albums" %}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a itemprop="url" href="{% url "freedom-fighters-album-list" %}">
+                                <span itemprop="name">{% trans "Freedom Fighters Gallery" %}</span>
                             </a>
                         </li>
                         <li>
                             <a itemprop="url" href="{% url "gallery-detail" slug="visible-work-invisible-women" %}">
-                            <span itemprop="name">{% trans "Exhibitions" %}</span>
+                                <span itemprop="name">{% trans "Exhibitions" %}</span>
                             </a>
                         </li>
                         <li>
                             <a itemprop="url" href="{% url "gallery-detail" slug="photozone" %}">
-                            <span itemprop="name">{% trans "PARI Pics" %}</span>
+                                <span itemprop="name">{% trans "PARI Pics" %}</span>
                             </a>
                         </li>
                     </ul>
@@ -103,13 +108,13 @@
                     <ul class="list-unstyled clear-margins">
                         <li>
                             <a itemprop="url" href="{% url "gallery-detail" slug="Little takes" %}">
-                            <span itemprop="name">{% trans "Little Takes" %}</span>
+                                <span itemprop="name">{% trans "Little Takes" %}</span>
                             </a>
                         </li>
                         <li><a href="https://www.youtube.com/{{ SOCIAL_YOUTUBE }}" target="_blank">YouTube</a></li>
                         <li>
                             <a class="page-nav-link" itemprop="url" href="{% url "gallery-detail" slug="videozone" %}">
-                            <span itemprop="name">{% trans "View all videos" %} <i class="fa fa-angle-double-right"></i></span>
+                                <span itemprop="name">{% trans "View all videos" %} <i class="fa fa-angle-double-right"></i></span>
                             </a>
                         </li>
                     </ul>
@@ -119,18 +124,18 @@
                     <ul class="list-unstyled clear-margins">
                         <li>
                             <a itemprop="url" href="{% url "gallery-detail" slug="audiozone" %}">
-                            <span itemprop="name">{% trans "Music" %}</span>
+                                <span itemprop="name">{% trans "Music" %}</span>
                             </a>
                         </li>
                         <li>
                             <a itemprop="url" href="{% url "gallery-detail" slug="tongues" %}">
-                            <span itemprop="name">{% trans "Tongues" %}</span>
+                                <span itemprop="name">{% trans "Tongues" %}</span>
                             </a>
                         </li>
                         <li><a href="https://soundcloud.com/{{ SOCIAL_SOUND_CLOUD }}" target="_blank">Soundcloud</a></li>
                         <li>
                             <a class="page-nav-link" itemprop="url" href="{% url "gallery-home-page" %}">
-                            <span itemprop="name">{% trans "View Gallery highlights" %} <i class="fa fa-angle-double-right"></i></span>
+                                <span itemprop="name">{% trans "View Gallery highlights" %} <i class="fa fa-angle-double-right"></i></span>
                             </a>
                         </li>
                     </ul>
@@ -143,14 +148,14 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 image-link">
                     <ul class="list-unstyled clear-margins">
                         <li>
-                            <div >
-                                <img class="img-responsive" src = "{{ STATIC_URL }}img/nav_header_images/face.png" alt="Explore India’s facial diversity">
+                            <div>
+                                <img class="img-responsive" src="{{ STATIC_URL }}img/nav_header_images/face.png" alt="Explore India’s facial diversity">
                             </div>
                         </li>
                         <li>
                             <span>{% trans "Explore India’s facial diversity" %}</span>
                             <a class="page-nav-link" itemprop="url" href="{% url "face-list" %}">
-                            <span itemprop="name">{% trans "View FACES" %} <i class="fa fa-angle-double-right"></i></span>
+                                <span itemprop="name">{% trans "View FACES" %} <i class="fa fa-angle-double-right"></i></span>
                             </a>
                         </li>
                     </ul>
@@ -158,13 +163,13 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 image-link">
                     <ul class="list-unstyled clear-margins">
                         <li>
-                            <div >
-                                <img class="img-responsive" src = "{{ STATIC_URL }}img/nav_header_images/talking_album.png" alt="Listen to photos speak">
+                            <div>
+                                <img class="img-responsive" src="{{ STATIC_URL }}img/nav_header_images/talking_album.png" alt="Listen to photos speak">
                             </div>
                         </li>
                         <li>
                             <span>{% trans "Listen to photos speak" %}</span>
-                             <a class="page-nav-link" itemprop="url" href="{% url "talking-album-list" %}">
+                            <a class="page-nav-link" itemprop="url" href="{% url "talking-album-list" %}">
                                 <span itemprop="name">{% trans "View Talking Albums" %} <i class="fa fa-angle-double-right"></i></span>
                             </a>
                         </li>
@@ -176,7 +181,7 @@
 </li>
 <li class="dropdown resources">
     <a class="dropdown-toggle" itemprop="url" href="{% url "resource-list" %}">
-    <span itemprop="name" {% if "resources" in tab %} class="active-tab" {%endif%}>{% trans "Library" %}</span>
+        <span itemprop="name" {% if "resources" in tab %} class="active-tab" {%endif%}>{% trans "Library" %}</span>
     </a>
 </li>
 <li class="dropdown about-pari">
@@ -191,8 +196,8 @@
                     <h5>{% trans "ABOUT PARI" %}</h5>
                     <ul class="list-unstyled clear-margins">
                         <li>
-                            <a itemprop="url"  href="{% url "static_page" slug="about" %}">
-                            <span itemprop="name">{% trans "The story of PARI" %}</span>
+                            <a itemprop="url" href="{% url "static_page" slug="about" %}">
+                                <span itemprop="name">{% trans "The story of PARI" %}</span>
                             </a>
                         </li>
                         <li>
@@ -200,7 +205,7 @@
                         </li>
                         <li>
                             <a href="{% url "contact_us" %}">
-                            <span itemprop="name">{% trans "Contact us" %}</span>
+                                <span itemprop="name">{% trans "Contact us" %}</span>
                             </a>
                         </li>
                     </ul>
@@ -209,13 +214,13 @@
                     <h5>{% trans "GET INVOLVED" %}</h5>
                     <ul class="list-unstyled clear-margins">
                         <li>
-                            <a  href="{% url "contribute" slug="contribute" %}">
-                            <span itemprop="name">{% trans "Contribute" %}</span>
+                            <a href="{% url "contribute" slug="contribute" %}">
+                                <span itemprop="name">{% trans "Contribute" %}</span>
                             </a>
                         </li>
                         <li>
                             <a href="{% url "static_page" slug="donate" %}">
-                            <span itemprop="name">{% trans "Donate" %}</span>
+                                <span itemprop="name">{% trans "Donate" %}</span>
                             </a>
                         </li>
                     </ul>
@@ -225,12 +230,12 @@
                     <ul class="list-unstyled clear-margins">
                         <li>
                             <a itemprop="url" href="{% url "static_page" slug="acknowledgements" %}">
-                            <span itemprop="name">{% trans "Acknowledgements" %}</span>
+                                <span itemprop="name">{% trans "Acknowledgements" %}</span>
                             </a>
                         </li>
                         <li>
                             <a itemprop="url" href="{% url "static_page" slug="guidelines" %}">
-                            <span itemprop="name">{% trans "Guidelines" %}</span>
+                                <span itemprop="name">{% trans "Guidelines" %}</span>
                             </a>
                         </li>
                     </ul>
@@ -243,14 +248,14 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 image-link">
                     <ul class="list-unstyled clear-margins">
                         <li>
-                            <div >
-                                <img class="img-responsive" src = "{{ STATIC_URL }}img/nav_header_images/students_teachers.png" alt="PARI for students, teachers and researchers">
+                            <div>
+                                <img class="img-responsive" src="{{ STATIC_URL }}img/nav_header_images/students_teachers.png" alt="PARI for students, teachers and researchers">
                             </div>
                         </li>
                         <li>
                             <span>{% trans "PARI for students, teachers and researchers" %}</span>
-                            <a class="page-nav-link" itemprop="url"  href="{% url "static_page" slug="pari-teachers-students" %}">
-                            <span itemprop="name">{% trans "Know more" %} <i class="fa fa-angle-double-right"></i></span>
+                            <a class="page-nav-link" itemprop="url" href="{% url "static_page" slug="pari-teachers-students" %}">
+                                <span itemprop="name">{% trans "Know more" %} <i class="fa fa-angle-double-right"></i></span>
                             </a>
                         </li>
                     </ul>
@@ -258,15 +263,15 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 image-link">
                     <ul class="list-unstyled clear-margins">
                         <li>
-                            <div >
-                                <img class="img-responsive" src = "{{ STATIC_URL }}img/nav_header_images/sainath.png" alt="P. Sainath, Founder Editor">
+                            <div>
+                                <img class="img-responsive" src="{{ STATIC_URL }}img/nav_header_images/sainath.png" alt="P. Sainath, Founder Editor">
                             </div>
                         </li>
                         <li>
 
                             <span>{% trans "P. Sainath" %}, {% trans "Founder Editor" %}</span>
                             <a class="page-nav-link" itemprop="url" href="{% url "static_page" slug="about-the-editor" %}">
-                            <span itemprop="name">{% trans "Know more" %} <i class="fa fa-angle-double-right"></i></span>
+                                <span itemprop="name">{% trans "Know more" %} <i class="fa fa-angle-double-right"></i></span>
                             </a>
                         </li>
                     </ul>
@@ -277,12 +282,12 @@
 </li>
 <li class="dropdown donate">
     <a class="dropdown-toggle" itemprop="url" href="https://pari.education" target="_blank">
-    <span itemprop="name"  {% if "donate" in tab %} class="active-tab" {%endif%}>{% trans "PARI Education" %} </span>
+        <span itemprop="name" {% if "donate" in tab %} class="active-tab" {%endif%}>{% trans "PARI Education" %} </span>
     </a>
 </li>
 <li class="dropdown donate">
     <a class="dropdown-toggle" itemprop="url" href="{% url "static_page" slug="donate" %}">
-    <span itemprop="name"  {% if "donate" in tab %} class="active-tab" {%endif%}>{% trans "Donate to PARI" %} </span>
+        <span itemprop="name" {% if "donate" in tab %} class="active-tab" {%endif%}>{% trans "Donate to PARI" %} </span>
     </a>
 </li>
 <li class="dropdown search-icon ">
@@ -291,17 +296,17 @@
     </a>
 </li>
 <li class="dropdown">
-<div class="language-toggle">
-    <form style="margin-top: 0" action="{% url 'set_language' %}" method="post">{% csrf_token %}
-        <input name="next" type="hidden" value="{{ "/" }}">
-        <select name="language" onchange="this.form.submit()">
-            {% get_current_language as LANGUAGE_CODE %}
-            {% for language in SUPPORTED_LANGUAGES %}
-                <option value="{{ language.0 }}"{% if language.0 == LANGUAGE_CODE %} selected{% endif %}>
+    <div class="language-toggle">
+        <form style="margin-top: 0" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+            <input name="next" type="hidden" value="{{ "/" }}">
+            <select name="language" onchange="this.form.submit()">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% for language in SUPPORTED_LANGUAGES %}
+                <option value="{{ language.0 }}" {% if language.0 == LANGUAGE_CODE %} selected{% endif %}>
                     {{ language.1 }} ({{ language.0 }})
                 </option>
-            {% endfor %}
-        </select>
-    </form>
-</div>
+                {% endfor %}
+            </select>
+        </form>
+    </div>
 </li>

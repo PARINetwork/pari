@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'django.contrib.sites',
+    'clear_cache',
 
     'compressor',
     'taggit',
@@ -76,7 +77,8 @@ INSTALLED_APPS = [
     'wagtail.contrib.redirects',
     'wagtail.contrib.forms',
     'wagtail.contrib.modeladmin',
-    'wagtail_color_panel'
+    'wagtail_color_panel',
+    'wagtail_clear_cache'
 ]
 
 MIDDLEWARE = [

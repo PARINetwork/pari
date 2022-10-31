@@ -6,8 +6,8 @@ from django.urls import reverse
 import django.db.models.deletion
 from six import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
-from modelcluster.fields import ParentalKey
 from modelcluster.contrib.taggit import ClusterTaggableManager
+from modelcluster.fields import ParentalManyToManyField, ParentalKey
 from taggit.models import TaggedItemBase
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, \
     RichTextFieldPanel
@@ -27,11 +27,18 @@ class AlbumTag(TaggedItemBase):
 @python_2_unicode_compatible
 class Album(Page):
     description = RichTextField()
-    language = models.CharField(max_length=7, choices=settings.LANGUAGES)
+    freedom_fighters_short_description = RichTextField(blank=True)
 
+    language = models.CharField(max_length=7, choices=settings.LANGUAGES)
+    # album_types = ParentalManyToManyField(album_type, related_name="albums_by_type")
+
+    is_freedom_fighters_album = models.BooleanField(default=False)
+    
     content_panels = Page.content_panels + [
         FieldPanel('language'),
         FieldPanel('description'),
+        FieldPanel('is_freedom_fighters_album'),
+        FieldPanel('freedom_fighters_short_description'),
         InlinePanel('slides', label=_('Slides'), panels=[
             ImageChooserPanel('image'),
             AudioPanel('audio'),
@@ -40,7 +47,7 @@ class Album(Page):
     ]
 
     template = "album/album_detail.html"
-
+    
     tags = ClusterTaggableManager(through=AlbumTag, blank=True)
     promote_panels = Page.promote_panels + [
         FieldPanel('tags'),
@@ -49,12 +56,14 @@ class Album(Page):
     search_fields = Page.search_fields + [
         index.SearchField('title', partial_match=True, boost=SearchBoost.TITLE),
         index.SearchField('description', partial_match=True, boost=SearchBoost.DESCRIPTION),
+        index.SearchField('freedom_fighters_short_description', partial_match=True, boost=SearchBoost.DESCRIPTION),
         index.SearchField('get_locations_index', partial_match=True, boost=SearchBoost.LOCATION),
         index.SearchField('get_photographers_index', partial_match=True, boost=SearchBoost.AUTHOR),
         index.SearchField('language'),
         index.FilterField('language'),
         index.FilterField('get_minimal_locations'),
         index.FilterField('get_search_type'),
+        # index.FilterField('get_album_types'),
         index.FilterField('get_authors_or_photographers')
     ]
 
@@ -90,6 +99,9 @@ class Album(Page):
 
     def get_search_type(self):
         return self.__class__.__name__.lower()
+    
+    # def get_album_types(self):
+    #     return [album_type.name for album_type in self.album_types.all()]
 
     def get_context(self, request, *args, **kwargs):
         if self.slides.last().audio != '':
