@@ -27,6 +27,12 @@ Last updated: 14-08-2022
     source ../pari_env/bin/activate
     ```
 
+* Install dependencies
+    ```sh
+    pip3 install django-clear-cache
+    pip install wagtail-clear-cache
+    ```
+
 * Migrate all the changes
     ```sh
     python3 manage.py migrate
