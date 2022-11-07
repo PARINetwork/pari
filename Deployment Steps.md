@@ -1,10 +1,22 @@
 # Deployment Steps
 Document steps for all the deployments
 
+## Added captcha
+Last updated: 07-11-2022
+
+* Deployment on production
+  * Merge the PR https://github.com/bhuvankrishna/pari/pull/2 and 
+  * On the server, ensure that you are on `release-candidate` branch and run
+   
+    ```sh
+    git pull bhuvan-pari release-candidate
+    ```
+
+
 ## Freedom Fighters Gallery
 Last updated: 14-08-2022
 
-* For test desployment, on the server, run
+* For test deployment, on the server, run
     ```sh
     git fetch bhuvan-pari freedom-fighters && git checkout freedom-fighters
     ```
