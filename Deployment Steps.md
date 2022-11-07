@@ -5,6 +5,11 @@ Document steps for all the deployments
 Last updated: 07-11-2022
 
 * Deployment on production
+  * Add Hcaptcha secret keys to pari/settings/local.py
+    ```
+    HCAPTCHA_SECRET_KEY = <key>
+    ```
+    
   * Merge the PR https://github.com/bhuvankrishna/pari/pull/2 and 
   * On the server, ensure that you are on `release-candidate` branch and run
    
