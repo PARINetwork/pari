@@ -22,6 +22,9 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.formats import get_image_format
 from wagtail.images.models import AbstractImage, AbstractRendition
 from wagtail.search import index
+from django.core.exceptions import ValidationError
+import requests
+from django.conf import settings
 
 from album.models import Album
 from article.models import Article
@@ -500,9 +503,17 @@ class AffixImageRendition(AbstractRendition):
 
 @python_2_unicode_compatible
 class Contact(models.Model):
+    def validate_captcha(value):
+        data = {'secret': settings.HCAPTCHA_SECRET_KEY, 'response': value}
+        response = requests.post('https://hcaptcha.com/siteverify', data)
+        if not 'success' in response.json() or not response.json()['success']:
+            raise ValidationError('hcaptcha is not correct')
+    
     name = models.CharField(max_length=50)
     email = models.EmailField()
     message = models.TextField()
+    captcha = forms.CharField(max_length=10000, validators=[validate_captcha])
+
     created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

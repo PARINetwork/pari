@@ -158,13 +158,17 @@ def contribute(request, slug=None):
 
 def contact_us(request):
     if request.method == "POST":
-        form = ContactForm(request.POST)
+        data = request.POST.copy()
+        if 'h-captcha-response' in data:
+            data['captcha'] = data['h-captcha-response']
+        form = ContactForm(data)
         if form.is_valid():
             form.save()
             success(request, _("Your query has successfully been sent"))
             form = ContactForm()
     else:
         form = ContactForm()
+    
     return render(request, "core/contact_us.html", {
         "contact_form": form,
         "tab": "about-pari",
