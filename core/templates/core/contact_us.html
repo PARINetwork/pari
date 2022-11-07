@@ -50,6 +50,14 @@
                 {{ contact_form.message }}
             </div>
             <div class="form-group">
+
+            <div class="h-captcha" data-sitekey="3182d5bb-bd7b-4de7-8208-59b843cd9a79"></div>
+            {% for message in contact_form.captcha.errors %}
+              <div class="notification is-danger">{{ message }}</div>
+            {% endfor %}
+            </div>
+
+            <div class="form-group">
                 <input type="submit" class="primary" value="{% trans "Send" %}">
             </div>
             </div>

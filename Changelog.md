@@ -1,6 +1,13 @@
 # Changelog
 All the work that goes into the project will be documented here.
 
+
+## [Unreleased]
+
+### Added
+* Added Hcaptcha to contact us page. Now message which pass all the validations including captcha will be set to contact mail
+* Used this [link](https://djangowaves.com/tutorial/django-hcaptcha-contact-form/) as a reference
+
 ## 14-08-2022
 
 ## Added
