@@ -1,9 +1,9 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.contrib.messages import success
+from django.contrib import messages
 from django.db.models import Max
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.utils.translation import ugettext_lazy as _, activate, get_language
 from django.views.decorators.cache import cache_page
 from wagtail.admin.views.pages import PreviewOnEdit, PreviewOnCreate
@@ -14,6 +14,9 @@ from core.utils import get_translations_for_page, construct_guidelines, get_tran
 from .forms import ContactForm
 from .models import HomePage, GuidelinesPage, AboutTheEditorPage
 from django.utils.translation import get_language
+import urllib
+import json
+from django.conf import settings
 
 
 def home_page(request, slug="home-page"):
@@ -158,14 +161,26 @@ def contribute(request, slug=None):
 
 def contact_us(request):
     if request.method == "POST":
-        data = request.POST.copy()
-        if 'h-captcha-response' in data:
-            data['captcha'] = data['h-captcha-response']
-        form = ContactForm(data)
+        form = ContactForm(request.POST)
         if form.is_valid():
-            form.save()
-            success(request, _("Your query has successfully been sent"))
-            form = ContactForm()
+
+            recaptcha_response = request.POST.get('g-recaptcha-response')
+            url = 'https://www.google.com/recaptcha/api/siteverify'
+            values = {
+                'secret': settings.RECAPTCHA_PRIVATE_KEY,
+                'response': recaptcha_response
+            }
+            data = urllib.parse.urlencode(values).encode()
+            req =  urllib.request.Request(url, data=data)
+            response = urllib.request.urlopen(req)
+            result = json.loads(response.read().decode())
+
+            if result['success']:
+                form.save()
+                messages.success(request, _("Your query has successfully been sent"))
+            else:
+                messages.error(request, "Invalid captcha")
+
     else:
         form = ContactForm()
     

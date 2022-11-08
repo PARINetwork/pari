@@ -503,16 +503,9 @@ class AffixImageRendition(AbstractRendition):
 
 @python_2_unicode_compatible
 class Contact(models.Model):
-    def validate_captcha(value):
-        data = {'secret': settings.HCAPTCHA_SECRET_KEY, 'response': value}
-        response = requests.post('https://hcaptcha.com/siteverify', data)
-        if not 'success' in response.json() or not response.json()['success']:
-            raise ValidationError('hcaptcha is not correct')
-    
     name = models.CharField(max_length=50)
     email = models.EmailField()
     message = models.TextField()
-    captcha = forms.CharField(max_length=10000, validators=[validate_captcha])
 
     created_on = models.DateTimeField(auto_now_add=True)
 

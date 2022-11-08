@@ -78,7 +78,7 @@ INSTALLED_APPS = [
     'wagtail.contrib.forms',
     'wagtail.contrib.modeladmin',
     'wagtail_color_panel',
-    'wagtail_clear_cache'
+    'wagtail_clear_cache',
 ]
 
 MIDDLEWARE = [
