@@ -6,13 +6,13 @@ All the work that goes into the project will be documented here.
 ### Modified
 * Removed Hcaptcha as it was not working post deployment
 * Added Google reCaptcha-v2
-* Used (this)[https://simpleisbetterthancomplex.com/tutorial/2017/02/21/how-to-add-recaptcha-to-django-site.html] as a reference
+* Used [this](https://simpleisbetterthancomplex.com/tutorial/2017/02/21/how-to-add-recaptcha-to-django-site.html) as a reference
 
 ## 2022-11-07
 
 ### Added
 * Added Hcaptcha to contact us page. Now message which pass all the validations including captcha will be set to contact mail
-* Used (this)[https://djangowaves.com/tutorial/django-hcaptcha-contact-form/] as a reference
+* Used [this](https://djangowaves.com/tutorial/django-hcaptcha-contact-form/) as a reference
 
 ## 2022-08-14
 
