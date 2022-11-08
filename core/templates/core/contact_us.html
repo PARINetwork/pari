@@ -49,13 +49,11 @@
                 <label>{{ contact_form.message.label | upper }}</label>
                 {{ contact_form.message }}
             </div>
-            <div class="form-group">
+    
 
-            <div class="h-captcha" data-sitekey="3182d5bb-bd7b-4de7-8208-59b843cd9a79"></div>
-            {% for message in contact_form.captcha.errors %}
-              <div class="notification is-danger">{{ message }}</div>
-            {% endfor %}
-            </div>
+            <script src='https://www.google.com/recaptcha/api.js'></script>
+            <div class="g-recaptcha" data-sitekey="6Lcs9eoiAAAAAPyF4y-oC3kfi-Laxw_B_cQ99RUi"></div>
+
 
             <div class="form-group">
                 <input type="submit" class="primary" value="{% trans "Send" %}">
