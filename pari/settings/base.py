@@ -79,7 +79,6 @@ INSTALLED_APPS = [
     'wagtail.contrib.modeladmin',
     'wagtail_color_panel',
     'wagtail_clear_cache',
-    'captcha'
 ]
 
 MIDDLEWARE = [
