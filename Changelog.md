@@ -1,12 +1,14 @@
 # Changelog
 All the work that goes into the project will be documented here.
 
-##2022-11-09
+## 2022-11-09
+
+### Modified
 * Added recaptcha to both contact us form and upload file form
 * Follow this [link](https://simpleisbetterthancomplex.com/tutorial/2017/02/21/how-to-add-recaptcha-to-django-site.html) for adding recaptcha to the existing form. The example is for adding simple form. We modified and adopted it to form model.
 * This [link](http://www.googleappsscript.org/recent-additions/recaptchawithgoogleappsscript) is for adding recaptcha to google script forms
 * Get authorization to the script form and then start modifying the files. To test there are 2 methods one is to do "test deployment" and the other is to create "new deployment". For every new deployment its recomended to give a short description of changes done in the script in the title. use the URL to check the script. Once everything is tested and working fine then copy the URL and update it in the templete file One example is for contribute page and "Upload Content" link. Edit the following file and replace the link with newly generated link in core/templates/core/contribute.html and core/templates/core/contact-us.html.
-* The script version was bumpped from 56 to 64.
+* The script version used on the site is bumped from 56 to 64.
 
 ## 2022-11-08
 
