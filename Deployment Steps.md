@@ -17,6 +17,13 @@ Last updated: 07-11-2022
     ```sh
     git pull bhuvan-pari release-candidate
     ```
+  * For adding Recaptcha to file upload follow these steps
+  * Get permission to access the scripts which is in google drive with the name "File Upload"
+  * When you open the file "File Upload" from inside google drive you are taken to script.google.com site. Here you can see 2 files form.html and server.gs.
+  * Add public/site key to form.html and any other modifications
+  * Add private/secret key to server.gs and do the needed changes
+  * Generate a new link from "New Deployment"
+  * Update this link in core/templates/core/contribute.html and core/templates/core/contact-us.html files
 
 
 ## Freedom Fighters Gallery
